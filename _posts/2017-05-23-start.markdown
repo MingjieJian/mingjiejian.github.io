@@ -1,0 +1,16 @@
+---
+layout:     post
+title:      "生命不息，折腾不止"
+subtitle:   "始めよう"
+date:       2017-05-23
+author:     "Mingjie"
+header-img: "img/start-bg.jpg"
+tags:
+
+---
+
+不管闲还是不闲，人总是喜欢折腾的。
+
+两周之前雄心勃勃地写了开始语什么的，但是随着自己愚蠢地修改和上一个网页模板一起随风而逝了。Anyway，github主页算是设置好了，看看这次能存在多久吧（笑）。
+
+主页模板来自[这里](https://github.com/Huxpro/huxblog-boilerplate)。
