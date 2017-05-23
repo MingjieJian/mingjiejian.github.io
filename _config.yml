@@ -1,20 +1,20 @@
 # Site settings
-title: Your Blog
-SEOTitle: 你的博客 | Your Blog
+title: Mingjie's Blog
+SEOTitle: Mingjie的博客 | Mingjie's Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
-description: ""
+email: ssaajianmigjie@gmail.com
+description: "ひびけ"
 keyword: ""
 
 
 
 # SNS settings
 RSS: false
-weibo_username:     huxpro
-zhihu_username:     huxpro
-github_username:    huxpro
+#weibo_username:     huxpro
+zhihu_username:     jian-ming-jie
+github_username:    MingjieJian
 #twitter_username:  huxpro
-facebook_username:  huxpro
+#facebook_username:  huxpro
 
 
 
@@ -65,8 +65,8 @@ ga_domain: huangxuan.me
 
 
 # Sidebar settings
-sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "写写代码，做做设计，看看产品。世界那么大，多玩玩看看。"
+sidebar: false                         # whether or not using Sidebar.
+sidebar-about-description: "O-O"
 sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 

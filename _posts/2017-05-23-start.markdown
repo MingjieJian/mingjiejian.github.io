@@ -6,7 +6,7 @@ date:       2017-05-23
 author:     "Mingjie"
 header-img: "img/start-bg.jpg"
 tags:
-
+      - random
 ---
 
 不管闲还是不闲，人总是喜欢折腾的。
