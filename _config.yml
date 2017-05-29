@@ -65,9 +65,9 @@ ga_domain: huangxuan.me
 
 
 # Sidebar settings
-sidebar: false                         # whether or not using Sidebar.
+sidebar: true                         # whether or not using Sidebar.
 sidebar-about-description: "O-O"
-sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/profile_small.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -83,16 +83,7 @@ friends: [
         title: "Hux Blog",
         href: "http://huangxuan.me"
     },{
-        title: "Foo",
-        href: "#"
-    },{
-        title: "Bar",
-        href: "#"
-    },{
-        title: "Example Friends",
-        href: "#"
-    },{
-        title: "It helps SEO",
-        href: "#"
+        title: "Gerry",
+        href: "http://gerry.lamost.org/blog/"
     }
 ]
