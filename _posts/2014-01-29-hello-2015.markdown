@@ -1,5 +1,5 @@
 ---
-layout:     post
+layout:     post-h
 title:      "Welcome to Hux Blog"
 subtitle:   " \"Hello World, Hello Blog\""
 date:       2015-01-29 12:00:00
