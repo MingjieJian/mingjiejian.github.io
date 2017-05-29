@@ -5,6 +5,7 @@ subtitle:   "始めよう"
 date:       2017-05-23
 author:     "Mingjie"
 header-img: "img/start-bg.png"
+comments:   true
 tags:
       - random
 ---
