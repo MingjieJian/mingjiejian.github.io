@@ -16,6 +16,6 @@ tags:
 <tr><td colspan="2" style="padding-bottom: 5px; color: #F7751F; font-size: 18px; font-family: Arial, Helvetica, sans-serif;">Mingjie Jian</td></tr>
 <tr><td colspan="2" style="color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;"><i>Master Student</i></td></tr>
 <tr><td colspan="2" style="color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">Department of Astronomy, <strong>University of Tokyo</strong></td></tr>
-<tr><td width="20" valign="top" style="vertical-align: top; width: 20px; color: #F7751F; font-size: 14px; font-family: Arial, Helvetica, sans-serif;"> </td><td valign="top" style="vertical-align: top; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;"> <span style="color: #F7751F;">e:&nbsp;</span><a href="mailto:mingjie@astron.s.u-tokyo.ac.jp" style="color: #1da1db; text-decoration: none; font-weight: normal; font-size: 14px;">mingjie@astron.s.u-tokyo.ac.jp</a></td></tr>
+<tr><td valign="top" style="vertical-align: top; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;"> <span style="color: #F7751F;">email:&nbsp;</spqan><a href="mailto:mingjie@astron.s.u-tokyo.ac.jp" style="color: #1da1db; text-decoration: none; font-weight: normal; font-size: 14px;">mingjie@astron.s.u-tokyo.ac.jp</a></td></tr>
 </table>
 
