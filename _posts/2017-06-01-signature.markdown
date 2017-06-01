@@ -12,10 +12,11 @@ tags:
 
 正好拿主页试试邮件签名效果；找了个网站模板竟然必须填写电话，果断删掉。
 
-<table cellpadding="0" cellspacing="0" border="0" style="background: none; border-width: 0px; border: 0px; margin: 0; padding: 0;">
-<tr><td colspan="2" style="padding-bottom: 5px; color: #F7751F; font-size: 18px; font-family: Arial, Helvetica, sans-serif;">Mingjie Jian</td></tr>
-<tr><td colspan="2" style="color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;"><i>Master Student</i></td></tr>
-<tr><td colspan="2" style="color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;">Department of Astronomy, <strong>University of Tokyo</strong></td></tr>
-<tr><td valign="top" style="vertical-align: top; color: #333333; font-size: 14px; font-family: Arial, Helvetica, sans-serif;"> <span style="color: #F7751F;">email:&nbsp;</spqan><a href="mailto:mingjie@astron.s.u-tokyo.ac.jp" style="color: #1da1db; text-decoration: none; font-weight: normal; font-size: 14px;">mingjie@astron.s.u-tokyo.ac.jp</a></td></tr>
-</table>
+< <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Email Signature</TITLE>
 
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</HEAD><BODY style="FONT-SIZE: 10pt; FONT-FAMILY: ARIAL">		<div class="signature-content">			<table cellpadding="0" cellspacing="0" border="0" style="font-size:12px; font-family: Arial; line-height: 17px; width:480px' " width="480">				<tbody><tr>					<td style="background-color: #009ee0; padding:10px; width:240px">						<span style="color: #fff; font-size: 15px; font-weight: bold;">Mingjie  Jian</span><br>						<span style="color:#fff">Master Student</span>					</td>					<td align="right" style="width:240px; background-color:#4a4a4a; padding: 10px; font-size: 15px; font-weight: bold; color: #fff">Department of Astronomy, University of Tokyo</td>				</tr>				<tr>					<td colspan="2" height="5" style="width:480px; line-height: 5px; font-size: 5px;"> </td>				</tr>				<tr>					<td colspan="2" style="width:480px; padding: 10px; background-color: #ededed">																																							<span>Mail: mingjie@astron.s.u-tokyo.ac.jp<br></span>						<br>						<span>Website: <a href="" target="_blank"> mingjiejian.github.io</a></span>					</td>				</tr>																		<tr>					<td colspan="2" height="5" style="width:480px; line-height: 5px; font-size: 5px;"> </td>				</tr>								<tr>					<td style="width:480px; padding: 0px; text-align: center;" colspan="2" align="center">													<table style="margin:0 auto; ">															<tbody><tr>																																																																</tr>														</tbody></table>												</td>				</tr>													</tbody></table>		</div>			
+ 
+</BODY>
+</HTML>
