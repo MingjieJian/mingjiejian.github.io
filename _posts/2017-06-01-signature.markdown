@@ -4,7 +4,7 @@ title:      "邮件HTML签名尝试"
 subtitle:   "总得有点东西"
 date:       2017-06-01
 author:     "Mingjie"
-header-img: "img/start-bg.png"
+header-img: "img/post-bg-signatureu.png"
 comments:   true
 tags:
       - random
