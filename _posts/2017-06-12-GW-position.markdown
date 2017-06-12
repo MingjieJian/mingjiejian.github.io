@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "BAYESTAR：用贝叶斯方法确定引力波事件的位置"
+title:      "BAYESTAR：用贝叶斯方法确定引力波事件位置"
 subtitle:   "选课手贱的后果"
 date:       2017-06-12
 author:     "Mingjie"
