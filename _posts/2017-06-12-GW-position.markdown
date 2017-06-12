@@ -15,7 +15,7 @@ tags:
 
 最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况室各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的[文章](http://adsabs.harvard.edu/abs/2017ApJ...838..108R)，感觉有点太简单，就转向了确定引力波事件的位置的方法。
 
-![](img/in-post/post-GW/1-position-1509.png)
+![](/img/in-post/post-GW/1-position-1509.png)
 *GW150914的位置概率分布*
 
 确定引力波事件位置的方法有不少，比如上图中的cWB、LIB、BAYSTEAR和LALInforence。它们准确度依次上升，当然用时依次增加。cWB和LIB在引力波事件发生后的不久（17分钟和14小时后）就给出了天球上的位置概率分布(sky map)，并在检查完毕也就是事件发生的两天之后发给了准备做follow-up的天文台。BAYSTEAR和LALInforence用时比较长，特别是LALInforence一般要100个小时。虽然LIGO认为LALInforence的结果是最准的，但是这两个方法的sky map直到那次运行结束之后才被放出来；这导致了所有的follow-up都是根据cWB和LIB做的。
@@ -24,4 +24,8 @@ cWB、LIB和LALInforence的原理我不清楚，所以不敢说，但是BAYSTEAR
 
 首先介绍一些基础概念：探测器收到的信号等于引力波源发出的信号加上探测器的噪音，也就是signal=source+noise。用数学语言描述的话就是
 
-$$y_i(t)=x_i(t)+n_i(t)$$
+$$y_i(t)=x_i(t;\theta)+n_i(t)$$
+
+当然我们之后主要会在频域说事，所以
+
+$$Y_i(\omega)=X_i(\omega;\theta)+N_i(\omega)$$
