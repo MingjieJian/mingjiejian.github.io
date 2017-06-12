@@ -24,4 +24,4 @@ cWB、LIB和LALInforence的原理我不清楚，所以不敢说，但是BAYSTEAR
 
 首先介绍一些基础概念：探测器收到的信号等于引力波源发出的信号加上探测器的噪音，也就是signal=source+noise。用数学语言描述的话就是
 
-$y_i(t)=x_i(t)+n_i(t)$
+$$y_i(t)=x_i(t)+n_i(t)$$
