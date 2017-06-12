@@ -35,7 +35,7 @@ header-img: "img/about-bg.jpg"
         Diving into Astronomy.
     </blockquote>
   <p>
-    2016-now  Master student       University of Tokyo
+    2016-now  Master student       University of Tokyo<br>
     2012-2016 Bachelor (Astronomy) Beijing Normal University
 	<p>
 	Published paper:<br>
@@ -57,12 +57,12 @@ header-img: "img/about-bg.jpg"
     var $zh = document.querySelector(".zh");
     var $en = document.querySelector(".en");
     function onLanChange(index){
-        if(index == 0){
-            $zh.style.display = "block";
-            $en.style.display = "none";
-        }else{
-            $en.style.display = "block";
+        if(index == 1){
             $zh.style.display = "none";
+            $en.style.display = "block";
+        }else{
+            $en.style.display = "none";
+            $zh.style.display = "block";
         }
     }
     onLanChange(0);
