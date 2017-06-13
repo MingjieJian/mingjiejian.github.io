@@ -74,6 +74,9 @@ $$ X_i(\omega;\mathbf{\theta}) = \frac{r_{1,i}}{r}e^{-i\omega(t-\mathbr{d_i}\dot
 
 这里我们把\\( X_i(\omega;\mathbf{\theta}) \\)分成了两部分，前面一长串只跟外禀参数有关，后面的\\( H \\)只和内禀参数有关。但是在观测的时候比较容易得出的是波形的振幅\\( \rho_i \\)、相位\\( \gamma_i \\)和时间\\( \tau_i \\)，所以我们可以用这三个参数代替原来的7个外禀参数，使得，
 
-$$ X_i(\omega; \mathbf{\theta}_mathrm{ex}, \mathbf{\theta}_\mathrm{in} = X_i(\omega; \rho_i, \gamma_i, \tau_i, \mathbf{\theta}_\mathrm{in})) =\frac{\rho_i}{\sigma_i(\mathbf{\theta}e^{i(\gamma_i-\omega\tau_i)}H(\omega; \mathbf{\theta}_\mathrm{in})} $$
+$$ X_i(\omega; \mathbf{\theta}_mathrm{ex}, \mathbf{\theta}_\mathrm{in} = $$
+$$  X_i(\omega; \rho_i, \gamma_i, \tau_i, \mathbf{\theta}_\mathrm{in})) =\frac{\rho_i}{\sigma_i(\mathbf{\theta}e^{i(\gamma_i-\omega\tau_i)}H(\omega; \mathbf{\theta}_\mathrm{in})} $$
 
 $$ \sigma_i(\mathbf{\theta}) = (\int_0^\infty\frac{|H(\omega;\mathbf{\theta}_\mathrm{in})|^2}{S_i(\omega)}d\omega)^\frac{1}{2} = \frac{1}{r_{1,i}} $$
+
+现在\\( X_i \\)的表达式就有了。
