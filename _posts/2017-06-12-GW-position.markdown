@@ -64,4 +64,4 @@ $$ S_i(\omega) = 2\mathrm{E}[|N_i(\omega)|^2] $$
 
 $$ p(\mathbf{Y}(\omega)|\mathbf{\theta}) = \prod_i p(Y_i|\theta) \propto \exp[-\frac{1}{2} \sum_i \int_0^\infty \frac{|Y_i(\omega)-X_i(\omega;\mathbf{\theta})|^2}{S_i(\omega)}d\omega] $$
 
-频率中的连乘变成了//( e //)指数中的求和，然后将//( N_i //)消掉就行。现在一个概率变成了三项，//( S_i //)已经有定义了，要求的是$Y_i(\omega)$和//( X_i(\omega;\mathbf{\theta}) //)
+频率中的连乘变成了//( e //)指数中的求和，然后将//( N_i //)消掉就行。现在一个概率变成了三项，\( S_i \)已经有定义了，要求的是$Y_i(\omega)$和\\( X_i(\omega;\mathbf{\theta}) \\)
