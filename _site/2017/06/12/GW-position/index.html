@@ -26,7 +26,7 @@
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
     <!-- Hux Delete, sad but pending in China
@@ -170,22 +170,114 @@
 
 <p>手贱选了物理系的一门引力波课（只要4周！两学分！）；最后要做个报告，看了两周微分几何之后原理方面还是不会，就只能讲观测的了。现在天文方面的引力波观测不外乎两个方面：确定事件的位置和电磁波谱(EM)的跟踪观测。</p>
 
-<p>最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况室各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的<a href="http://adsabs.harvard.edu/abs/2017ApJ...838..108R">文章</a>，感觉有点太简单，就转向了确定引力波事件的位置的方法。</p>
+<p>最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况室各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的<a href="http:\\adsabs.harvard.edu/abs/2017ApJ...838..108R">文章</a>，感觉有点太简单，就转向了确定引力波事件的位置的方法。</p>
 
 <p><img src="/img/in-post/post-GW/1-position-1509.png" alt="" />
-<em>GW150914的位置概率分布</em></p>
+<em>GW150914的位置概率分布; 来自参考文献X</em></p>
 
 <p>确定引力波事件位置的方法有不少，比如上图中的cWB、LIB、BAYSTEAR和LALInforence。它们准确度依次上升，当然用时依次增加。cWB和LIB在引力波事件发生后的不久（17分钟和14小时后）就给出了天球上的位置概率分布(sky map)，并在检查完毕也就是事件发生的两天之后发给了准备做follow-up的天文台。BAYSTEAR和LALInforence用时比较长，特别是LALInforence一般要100个小时。虽然LIGO认为LALInforence的结果是最准的，但是这两个方法的sky map直到那次运行结束之后才被放出来；这导致了所有的follow-up都是根据cWB和LIB做的。</p>
 
-<p>cWB、LIB和LALInforence的原理我不清楚，所以不敢说，但是BAYSTEAR用了贝叶斯方法去确定位置的概率分布；它具有比较强的适用性，可以在比较短的时间内得到和LALInforence差不多的效果。同时BAYSTEAR可并行，缩短运行时间；或者对结果精度不满意的话也可以把更完整的数据丢进去。（加上它不怎么涉及引力波理论:)）所以我仔细看了BAYSTEAR<a href="http://arxiv.org/abs/1508.03634">这篇文章</a>，把其中的过程在这里说一下。</p>
+<p>cWB、LIB和LALInforence的原理我不清楚，所以不敢说，但是BAYSTEAR用了贝叶斯方法去确定位置的概率分布；它具有比较强的适用性，可以在比较短的时间内得到和LALInforence差不多的效果。同时BAYSTEAR可并行，缩短运行时间；或者对结果精度不满意的话也可以把更完整的数据丢进去。（加上它不怎么涉及引力波理论:)）所以我仔细看了BAYSTEAR<a href="http:\\arxiv.org/abs/1508.03634">这篇文章</a>，把其中的过程在这里说一下。</p>
 
 <p>首先介绍一些基础概念：探测器收到的信号等于引力波源发出的信号加上探测器的噪音，也就是signal=source+noise。用数学语言描述的话就是</p>
 
-<script type="math/tex; mode=display">y_i(t)=x_i(t;\theta)+n_i(t)</script>
+<script type="math/tex; mode=display">y_i(t)=x_i(t;\boldsymbol{\theta})+n_i(t)</script>
 
 <p>当然我们之后主要会在频域说事，所以</p>
 
-<script type="math/tex; mode=display">Y_i(\omega)=X_i(\omega;\theta)+N_i(\omega)</script>
+<script type="math/tex; mode=display">Y_i(\omega)=X_i(\omega;\boldsymbol{\theta})+N_i(\omega)</script>
+
+<p>同时我们把所有探测器接收到的引力波集合称为</p>
+
+<script type="math/tex; mode=display">\textbf{Y}(\omega)={Y_i(\omega)}_i</script>
+
+<p>这里的\ \textbf{\theta} \是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么</p>
+
+<script type="math/tex; mode=display">\boldsymbol{\theta} = [\alpha, \delta, r, t, l, \psi, \phi_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2]</script>
+
+<p>分别是赤经、赤纬、距离、引力波到达地球的时间、系统的倾斜角等外禀参数；双星的质量和它们各自的自转角动量（内禀参数）。我们关心的是前两个参数。</p>
+
+<p>理论上，因为引力波干涉仪没有指向，所以一个探测器完全不能限制源的位置、两个可以限制到一个圆上、三个是对称的两个点。如果我们也考虑引力波的振幅和相位的话，这两个参数也能提供一些位置的限制，所以之前那幅图里面并不是一个完整的圆。实际上我们想要求的是一个在天上的概率分布图\( f(\alpha, \delta) \)，以\( \alpha \)和\( \delta \)为自变量。当然这个概率分布图是以观测为基础的，所以这是一个条件概率</p>
+
+<script type="math/tex; mode=display">p(\alpha, \delta) = p(\alpha, \delta | \boldsymbol{Y}(\omega))</script>
+
+<p>这个概率并不好算，所以现在就是让贝叶斯出场的时候了</p>
+
+<script type="math/tex; mode=display">p(\alpha, \delta | \boldsymbol{Y}(\omega)) = \frac{p(\boldsymbol{Y}(\omega) | \alpha, \delta)p(\alpha, \delta)}{p(\boldsymbol{Y}(\omega))}</script>
+
+<p>留意到这里只有\( \alpha, \delta \)这两个参数，但是加上其他参数的条件概率会更容易被估计，所以我们将\( \alpha, \delta \)换成\( \boldsymbol{\theta} \)然后把不关心的参数全部积分掉，得到想要的条件概率；同时\( \boldsymbol{Y}(\omega)\)作为事件的先验是一个确定的数，在计算概率的时候并不关心，可以扔掉。所以</p>
+
+<script type="math/tex; mode=display">p(\alpha, \delta | \boldsymbol{Y}(\omega)) \propto \int p(\boldsymbol{Y}(\omega) | \alpha, \delta, \boldsymbol{\theta}_\mathrm{other})p(\alpha, \delta, \boldsymbol{\theta}_\mathrm{other}) d\boldsymbol{\theta}_\mathrm{other}</script>
+
+<p>之后的任务就是计算上式中的两个概率了。</p>
+
+<h3 id="pboldsymbolyomega--alpha-delta-boldsymboltheta_mathrmother"><script type="math/tex">p(\boldsymbol{Y}(\omega) | \alpha, \delta, \boldsymbol{\theta}_\mathrm{other})</script></h3>
+
+<p>定义noise的one-sided power spectral density为</p>
+
+<script type="math/tex; mode=display">S_i(\omega) = 2\mathrm{E}[|N_i(\omega)|^2]</script>
+
+<p>假设noise是高斯分布，而且不同探测器之间的noise是互不关联的，我们有</p>
+
+<script type="math/tex; mode=display">p(\boldsymbol{Y}(\omega)|\boldsymbol{\theta}) = \prod_i p(Y_i|\theta) \propto \exp[-\frac{1}{2} \sum_i \int_0^\infty \frac{|Y_i(\omega)-X_i(\omega;\boldsymbol{\theta})|^2}{S_i(\omega)}d\omega]</script>
+
+<p>频率中的连乘变成了\( e \)指数中的求和，然后将\( N_i \)消掉就行。现在一个概率变成了三项，\( S_i \)已经有定义了，要求的是\Y_i(\omega)\和\( X_i(\omega;\boldsymbol{\theta}) \)</p>
+
+<h4 id="x_iomegaboldsymboltheta"><script type="math/tex">X_i(\omega;\boldsymbol{\theta})</script></h4>
+
+<p>我们进一步简化模型：假设并合的双星拥有一个稳定轨道，那么根据（一篇我没有读过的）文献，</p>
+
+<script type="math/tex; mode=display">X_i(\omega;\boldsymbol{\theta}) = \frac{r_{1,i}}{r}e^{-i\omega(t-\boldsymbol{d}_i\boldsymbol{n})}e^{2i\phi_c}[\frac{1}{2}(1+\cos{l}^2)\Re(\zeta)-i\cos{l}\Im(\zeta)]H(\omega;\boldsymbol{\theta}_\mathrm{in})</script>
+
+<p>这里我们把\( X_i(\omega;\boldsymbol{\theta}) \)分成了两部分，前面一长串只跟外禀参数有关，后面的\( H \)只和内禀参数有关。但是在观测的时候比较容易得出的是波形的振幅\( \rho_i \)、相位\( \gamma_i \)和时间\( \tau_i \)，所以我们可以用这三个参数代替原来的7个外禀参数，使得，</p>
+
+<script type="math/tex; mode=display">X_i(\omega; \boldsymbol{\theta}_\mathrm{ex}, \boldsymbol{\theta}_\mathrm{in} =  X_i(\omega; \rho_i, \gamma_i, \tau_i, \boldsymbol{\theta}_\mathrm{in})) = \frac{\rho_i}{\sigma_i(\boldsymbol{\theta})}e^{i(\gamma_i-\omega\tau_i)}H(\omega; \boldsymbol{\theta}_\mathrm{in})</script>
+
+<script type="math/tex; mode=display">\sigma_i(\boldsymbol{\theta}) = (\int_0^\infty\frac{|H(\omega;\boldsymbol{\theta}_\mathrm{in})|^2}{S_i(\omega)}d\omega)^\frac{1}{2} = \frac{1}{r_{1,i}}</script>
+
+<p>现在\( X_i \)的表达式就有了。</p>
+
+<h4 id="y_iomega"><script type="math/tex">Y_i(\omega)</script></h4>
+
+<p>这里就是BAYESTAR方法很快的原因了：我们用从观测到的波形中用最大似然方法(maximum likehood method)得出的参数\( \hat{\rho_i}, \hat{\gamma_i}, \hat{\tau_i}, \hat{\boldsymbol{\theta}_\mathrm{in}} \)去代替波形；然后用和刚才对\( X_i \)相同的方法展开，得到，</p>
+
+<script type="math/tex; mode=display">Y_i(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}_\mathrm{in}}) = \frac{\hat{\rho}_i}{\sigma_i(\boldsymbol{\hat{\theta}_\mathrm{in}})}e^{i(\hat{\gamma}_i-\omega\hat{\tau}_i)}H(\omega; \boldsymbol{\hat{\theta}_\mathrm{in}})</script>
+
+<p>因为我们并不关心内禀参数究竟是什么，所以令\( \boldsymbol{\theta_\mathrm{in}} = \boldsymbol{\hat{\theta}_\mathrm{in}} \)，并将\( X_i, Y_i \)代入\( p(Y_i(\omega)|\boldsymbol{\theta}) \)中，会得到自相关函数：</p>
+
+<script type="math/tex; mode=display">p(Y_i(\omega)|\boldsymbol{\theta}) = p(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i | \rho_i, \gamma_i, \tau_i) \propto \exp{[-\frac{1}{2}\hat{\rho}_i^2 -\frac{1}{2}\rho_i^2} + \hat{\rho}_i\rho_i\Re{\{e^{i \tilde{\gamma}_i}a_i^*(\tilde{\tau_i})\}}]</script>
+
+<p>其中</p>
+
+<script type="math/tex; mode=display">\tilde{\gamma}_i = \hat{\gamma}_i - \gamma_i, \tilde{\tau}_i = \hat{\tau}_i - \tau_i</script>
+
+<script type="math/tex; mode=display">a_i(t;\boldsymbol{\theta}_\mathrm{in}) = \frac{1}{\sigma_i^2(\boldsymbol{\theta}_\mathrm{in})} \int_0^\infty \frac{|H(\omega;\boldsymbol{\hat{\theta}}_\mathrm{in})|^2}{S_i(\omega)}e^{i\omega t}d\omega</script>
+
+<p>这只是一个探测器的，将所有探测器的概率乘起来就等于在指数函数中的每一项加上一个求和号；同时留意到\( \hat{\rho}_i \)是一个常数，所以也可以扔掉：</p>
+
+<script type="math/tex; mode=display">p(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i | \rho_i, \gamma_i, \tau_i) \propto \exp{[-\frac{1}{2}\sum_i\rho_i^2} + \sum_i\hat{\rho}_i\rho_i\Re{\{e^{i \tilde{\gamma}_i}a_i^*(\tilde{\tau_i})\}}]</script>
+
+<p>一半搞定。</p>
+
+<h3 id="palpha-delta-boldsymboltheta_mathrmother-dboldsymboltheta_mathrmother"><script type="math/tex">p(\alpha, \delta, \boldsymbol{\theta}_\mathrm{other}) d\boldsymbol{\theta}_\mathrm{other}</script></h3>
+
+<p>取得\( \boldsymbol{\theta} \)的先验并不明确，因为我们并不知道引力波事件在参数空间的哪些参数中比较常见。那就平均呗，在所有可能的取值中平均就好了。所以先验可以表为：</p>
+
+<script type="math/tex; mode=display">r^md\phi_cdrdtd\cos{l}d\psi</script>
+
+<h3 id="结果">结果</h3>
+
+<p>把这两个概率的结果塞进去原来的\( p(\alpha,\delta) \)里面就得到最终的结果：</p>
+
+<script type="math/tex; mode=display">p(\alpha,\delta) = \int_0^\pi \int_{-1}^1 \int_{-T}^T \int_{r_{min}}^{r_{max}} \int_0^{2\pi} \exp{[-\frac{1}{2}\sum_i\rho_i^2 + \sum_i\hat{\rho}_i\rho_i\Re{\{e^{i \tilde{\gamma}_i}a_i^*(\tilde{\tau_i})\}}]} r^md\phi_cdrdtd\cos{l}d\psi</script>
+
+<p>把它用计算机算出来就行了。</p>
+
+<h3 id="一些比较">一些比较</h3>
+
+<p>BAYESTAR和</p>
+
+<h3 id="参考文献">参考文献</h3>
 
 
                 <hr>
@@ -196,7 +288,10 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/06/05/yokohama/" data-toggle="tooltip" data-placement="top" title="走在海边（二）横滨看风景">&larr; Previous Post</a>
+                        <a href="/2017/06/05/yokohama/" data-toggle="tooltip" data-placement="top" title="走在海边（二）横滨看风景">
+                        Previous<br>
+                        <span>走在海边（二）横滨看风景</span>
+                        </a>
                     </li>
                     
                     
@@ -298,7 +393,7 @@
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
           visible: 'always',
           placement: 'right',
@@ -347,7 +442,7 @@
                     
                     
                     <li>
-                        <a target="_blank" href="https://github.com/MingjieJian">
+                        <a target="_blank" href="https://github.com/mingjieJian">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -428,7 +523,7 @@
 
 <!--fastClick.js -->
 <script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -439,8 +534,8 @@
 
 <script>
     // dynamic User by Hux
-    var _gaId = 'UA-49627206-1';
-    var _gaDomain = 'huangxuan.me';
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
 
     // Originial
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -456,20 +551,6 @@
 
 <!-- Baidu Tongji -->
 
-<script>
-    // dynamic User by Hux
-    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
 
 
 
@@ -479,7 +560,7 @@
 
 <!-- Added for using Mathjax to type formaulas-->
 <script type="text/javascript"
-src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 </body>
