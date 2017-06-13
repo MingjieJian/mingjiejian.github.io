@@ -36,7 +36,7 @@ $$\textbf{Y}(\omega)={Y_i(\omega)}_i$$
 
 这里的\\ \textbf{\theta} \\是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么
 
-$$ \textbf{\theta} = [\aplha, \delta, r, t_\Earth, l, \psi, \phy_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2] $$
+$$ \textbf{\theta} = [\alpha, \delta, r, t, l, \psi, \phi_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2] $$
 
 分别是赤经、赤纬、距离、引力波到达地球的时间、系统的倾斜角等外禀参数；双星的质量和它们各自的自转角动量（内禀参数）。我们关心的是前两个参数。
 
@@ -64,4 +64,4 @@ $$ S_i(\omega) = 2\mathrm{E}[|N_i(\omega)|^2] $$
 
 $$ p(\mathbf{Y}(\omega)|\mathbf{\theta}) = \prod_i p(Y_i|\theta) \propto \exp[-\frac{1}{2} \sum_i \int_0^\infty \frac{|Y_i(\omega)-X_i(\omega;\mathbf{\theta})|^2}{S_i(\omega)}d\omega] $$
 
-频率中的连乘变成了//( e //)指数中的求和，然后将//( N_i //)消掉就行。现在一个概率变成了三项，//( S_i //)已经有定义了，要求的是//( Y_i(\omega) //)和//( X_i(\omega;\mathbf{\theta}) //)
+频率中的连乘变成了//( e //)指数中的求和，然后将//( N_i //)消掉就行。现在一个概率变成了三项，//( S_i //)已经有定义了，要求的是//(Y_i(\omega)//)和//( X_i(\omega;\mathbf{\theta}) //)
