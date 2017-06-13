@@ -24,8 +24,16 @@ cWB、LIB和LALInforence的原理我不清楚，所以不敢说，但是BAYSTEAR
 
 首先介绍一些基础概念：探测器收到的信号等于引力波源发出的信号加上探测器的噪音，也就是signal=source+noise。用数学语言描述的话就是
 
-$$y_i(t)=x_i(t;\theta)+n_i(t)$$
+$$y_i(t)=x_i(t;\textbf{\theta})+n_i(t)$$
 
 当然我们之后主要会在频域说事，所以
 
-$$Y_i(\omega)=X_i(\omega;\theta)+N_i(\omega)$$
+$$Y_i(\omega)=X_i(\omega;\textbf{\theta})+N_i(\omega)$$
+
+同时我们把所有探测器接收到的引力波集合称为
+
+$$\textbf{Y}(\omega)={Y_i(\omega)}_i$$
+
+这里的\\ \textbf{\theta} \\是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么
+
+$$ \tetbf{\theta} = [\aplha, \delta, r, t_\Earth, l, \psi, \phy_c; m_1, m_2]
