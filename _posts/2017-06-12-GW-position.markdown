@@ -36,11 +36,11 @@ $$\textbf{Y}(\omega)={Y_i(\omega)}_i$$
 
 这里的\\ \textbf{\theta} \\是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么
 
-$$ \textbf{\theta} = [\aplha, \delta, r, t_\Earth, l, \psi, \phy_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2]
+$$ \textbf{\theta} = [\aplha, \delta, r, t_\Earth, l, \psi, \phy_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2] $$
 
 分别是赤经、赤纬、距离、引力波到达地球的时间、系统的倾斜角等外禀参数；双星的质量和它们各自的自转角动量（内禀参数）。我们关心的是前两个参数。
 
-理论上，因为引力波干涉仪没有指向，所以一个探测器完全不能限制源的位置、两个可以限制到一个圆上、三个是对称的两个点。如果我们也考虑引力波的振幅和相位的话，这两个参数也能提供一些位置的限制，所以之前那幅图里面并不是一个完整的圆。实际上我们想要求的是一个在天上的概率分布图// f(\alpha, \delta) //，以// \alpha //和// \delta //为自变量。当然这个概率分布图是以观测为基础的，所以这是一个条件概率
+理论上，因为引力波干涉仪没有指向，所以一个探测器完全不能限制源的位置、两个可以限制到一个圆上、三个是对称的两个点。如果我们也考虑引力波的振幅和相位的话，这两个参数也能提供一些位置的限制，所以之前那幅图里面并不是一个完整的圆。实际上我们想要求的是一个在天上的概率分布图//( f(\alpha, \delta) //)，以//( \alpha //)和//( \delta //)为自变量。当然这个概率分布图是以观测为基础的，所以这是一个条件概率
 
 $$ p(\alpha, \delta) = p(\alpha, \delta | \mathbf{Y}(\omega)) $$
 
@@ -48,20 +48,20 @@ $$ p(\alpha, \delta) = p(\alpha, \delta | \mathbf{Y}(\omega)) $$
 
 $$ p(\alpha, \delta | \mathbf{Y}(\omega)) = \frac{p(\mathbf{Y}(\omega) | \alpha, \delta)p(\alpha, \delta)}{p(\mathbf{Y}(\omega))} $$
 
-留意到这里只有// \alpha, \delta //这两个参数，但是加上其他参数的条件概率会更容易被估计，所以我们将// \alpha, \delta //换成// \mathbf{\theta} //然后把不关心的参数全部积分掉，得到想要的条件概率；同时// \mathbf{Y}(\omega)//作为事件的先验是一个确定的数，在计算概率的时候并不关心，可以扔掉。所以
+留意到这里只有//( \alpha, \delta //)这两个参数，但是加上其他参数的条件概率会更容易被估计，所以我们将//( \alpha, \delta //)换成//( \mathbf{\theta} //)然后把不关心的参数全部积分掉，得到想要的条件概率；同时//( \mathbf{Y}(\omega)//)作为事件的先验是一个确定的数，在计算概率的时候并不关心，可以扔掉。所以
 
-$$ p(\alpha, \delta | \mathbf{Y}(\omega)) \propto \int p(\mathbf{Y}(\omega) | \alpha, \delta, \mathbf{\theta}_other)p(\alpha, \delta, \mathbf{\theta}_other) d\mathbf{\theta}_other $$
+$$ p(\alpha, \delta | \mathbf{Y}(\omega)) \propto \int p(\mathbf{Y}(\omega) | \alpha, \delta, \mathbf{\theta}_\mathrm{other})p(\alpha, \delta, \mathbf{\theta}_\mathrm{other}) d\mathbf{\theta}_\mathrm{other} $$
 
 之后的任务就是计算上式中的两个概率了。
 
-## $$ p(\mathbf{Y}(\omega) | \alpha, \delta, \mathbf{\theta}_other) $$
+### $$ p(\mathbf{Y}(\omega) | \alpha, \delta, \mathbf{\theta}_\mathrm{other}) $$
 
 定义noise的one-sided power spectral density为
 
-$$ S_i(\omega) = 2\mathrm{E}[\abs{N_i(\omega)}^2] $$
+$$ S_i(\omega) = 2\mathrm{E}[|N_i(\omega)|^2] $$
 
 假设noise是高斯分布，而且不同探测器的noise是互不关联的，我们有
 
-$$ p(\mathbf{Y}(\omega)|\mathbf{\theta}) = \prod_i p(Y_i|\theta) \propto exp[-\frac{1}{2} \sum_i \int_0^\infty \frac{\abs{Y_i(\omega)-X_i(\omega;\mathbf{\theta})}^2}{S_i(\omega)}d\omega] $$
+$$ p(\mathbf{Y}(\omega)|\mathbf{\theta}) = \prod_i p(Y_i|\theta) \propto \exp[-\frac{1}{2} \sum_i \int_0^\infty \frac{|Y_i(\omega)-X_i(\omega;\mathbf{\theta})|^2}{S_i(\omega)}d\omega] $$
 
-频率中的连乘变成了// e //指数中的求和，然后将// N_i //消掉就行。现在一个概率变成了三项，// S_i //已经有定义了，要求的是// Y_i(\omega) //和// X_i(\omega;\mathbf{\theta}) //
+频率中的连乘变成了//( e //)指数中的求和，然后将//( N_i //)消掉就行。现在一个概率变成了三项，//( S_i //)已经有定义了，要求的是//( Y_i(\omega) //)和//( X_i(\omega;\mathbf{\theta}) //)
