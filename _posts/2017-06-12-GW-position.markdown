@@ -9,11 +9,11 @@ tags:
     - Learning
 ---
 
-**我不是专门做引力波的，所以以下写的可能有错误，请留意。**
+**我不是做引力波的，所以以下写的可能有错误，请留意。**
 
 手贱选了物理系的一门引力波课（只要4周！两学分！）；最后要做个报告，看了两周微分几何之后原理方面还是不会，就只能讲观测的了。现在天文方面的引力波观测不外乎两个方面：确定事件的位置和电磁波谱(EM)的跟踪观测。
 
-最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况室各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的[文章](http:\\adsabs.harvard.edu/abs/2017ApJ...838..108R)，感觉有点太简单，就转向了确定引力波事件的位置的方法。
+最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况是各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的[文章](http:\\adsabs.harvard.edu/abs/2017ApJ...838..108R)，感觉有点太简单，就转向了确定引力波事件的位置的方法。
 
 ![](/img/in-post/post-GW/1-position-1509.png)
 *GW150914的位置概率分布； 来自参考文献1*
@@ -84,9 +84,9 @@ $$ \sigma_i(\boldsymbol{\theta})^2 = \int_0^\infty\frac{|H(\omega;\boldsymbol{\t
 
 #### $$ Y_i(\omega) $$
 
-这里就是BAYESTAR方法很快的原因：我们用从观测到的波形中用最大似然方法(maximum likehood method)得出的参数\\( \hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}}_\mathrm{in} \\)去代替波形；然后用和刚才对\\( X_i \\)相同的方法展开，得到，
+这里就是BAYESTAR方法很快的原因：我们用从观测到的波形中用最大似然方法(maximum likehood method)得出的参数$$ \hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}}_\mathrm{in} $$去代替波形；然后用和刚才对\\( X_i \\)相同的方法展开，得到，
 
-$$ Y_i(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}_\mathrm{in}}) = \frac{\hat{\rho}_i}{\sigma_i(\boldsymbol{\hat{\theta}_\mathrm{in}})}e^{i(\hat{\gamma}_i-\omega\hat{\tau}_i)}H(\omega; \boldsymbol{\hat{\theta}_\mathrm{in}})$$
+$$ Y_i(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}}_\mathrm{in}) = \frac{\hat{\rho}_i}{\sigma_i(\boldsymbol{\hat{\theta}_\mathrm{in}})}e^{i(\hat{\gamma}_i-\omega\hat{\tau}_i)}H(\omega; \boldsymbol{\hat{\theta}_\mathrm{in}})$$
 
 因为我们并不关心内禀参数究竟是什么，所以令\\( \boldsymbol{\theta_\mathrm{in}} = \boldsymbol{\hat{\theta}_\mathrm{in}} \\)，并将\\( X_i, Y_i \\)代入\\( p(Y_i(\omega)\|\boldsymbol{\theta}) \\)中，会得到自相关函数：
 

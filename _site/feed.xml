@@ -5,17 +5,17 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 13 Jun 2017 21:14:44 +0900</pubDate>
-    <lastBuildDate>Tue, 13 Jun 2017 21:14:44 +0900</lastBuildDate>
+    <pubDate>Thu, 15 Jun 2017 12:52:24 +0900</pubDate>
+    <lastBuildDate>Thu, 15 Jun 2017 12:52:24 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
         <title>BAYESTAR：用贝叶斯方法确定引力波事件位置</title>
-        <description>&lt;p&gt;&lt;strong&gt;我不是专门做引力波的，所以以下写的可能有错误，请留意。&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;strong&gt;我不是做引力波的，所以以下写的可能有错误，请留意。&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;手贱选了物理系的一门引力波课（只要4周！两学分！）；最后要做个报告，看了两周微分几何之后原理方面还是不会，就只能讲观测的了。现在天文方面的引力波观测不外乎两个方面：确定事件的位置和电磁波谱(EM)的跟踪观测。&lt;/p&gt;
 
-&lt;p&gt;最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况室各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的&lt;a href=&quot;http:\\adsabs.harvard.edu/abs/2017ApJ...838..108R&quot;&gt;文章&lt;/a&gt;，感觉有点太简单，就转向了确定引力波事件的位置的方法。&lt;/p&gt;
+&lt;p&gt;最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况是各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的&lt;a href=&quot;http:\\adsabs.harvard.edu/abs/2017ApJ...838..108R&quot;&gt;文章&lt;/a&gt;，感觉有点太简单，就转向了确定引力波事件的位置的方法。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-GW/1-position-1509.png&quot; alt=&quot;&quot; /&gt;
 &lt;em&gt;GW150914的位置概率分布； 来自参考文献1&lt;/em&gt;&lt;/p&gt;
@@ -23,6 +23,8 @@
 &lt;p&gt;确定引力波事件位置的方法有不少，比如上图中的cWB、LIB、BAYSTEAR和LALInforence。它们准确度依次上升，当然用时依次增加。cWB和LIB在引力波事件发生后的不久（17分钟和14小时后）就给出了天球上的位置概率分布(sky map)，并在检查完毕也就是事件发生的两天之后发给了准备做follow-up的天文台。BAYSTEAR和LALInforence用时比较长，特别是LALInforence一般要100个小时。虽然LIGO认为LALInforence的结果是最准的，但是这两个方法的sky map直到那次运行结束之后才被放出来；这导致了所有的follow-up都是根据cWB和LIB做的。&lt;/p&gt;
 
 &lt;p&gt;cWB、LIB和LALInforence的原理我不清楚，所以不敢说，但是BAYSTEAR用了贝叶斯方法去确定位置的概率分布；它具有比较强的适用性，可以在比较短的时间内得到和LALInforence差不多的效果。同时BAYSTEAR可并行，缩短运行时间；或者对结果精度不满意的话也可以把更完整的数据丢进去。（加上它不怎么涉及引力波理论:)）所以我仔细看了BAYSTEAR&lt;a href=&quot;http:\\arxiv.org/abs/1508.03634&quot;&gt;这篇文章&lt;/a&gt;，把其中的过程在这里说一下。&lt;/p&gt;
+
+&lt;h3 id=&quot;基础&quot;&gt;基础&lt;/h3&gt;
 
 &lt;p&gt;首先介绍一些基础概念：探测器收到的信号等于引力波源发出的信号加上探测器的噪音，也就是signal=source+noise。用数学语言描述的话就是&lt;/p&gt;
 
@@ -36,11 +38,11 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\textbf{Y}(\omega)={Y_i(\omega)}_i&lt;/script&gt;
 
-&lt;p&gt;这里的\ \textbf{\theta} \是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么&lt;/p&gt;
+&lt;p&gt;这里的\( \textbf{\theta} \)是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{\theta} = [\alpha, \delta, r, t, l, \psi, \phi_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2]&lt;/script&gt;
 
-&lt;p&gt;分别是赤经、赤纬、距离、引力波到达地球的时间、系统的倾斜角等外禀参数；双星的质量和它们各自的自转角动量（内禀参数）。我们关心的是前两个参数。&lt;/p&gt;
+&lt;p&gt;前七个分别是赤经、赤纬、距离、引力波到达地球的时间、系统的倾斜角等外禀参数；后面四个双星的质量和它们各自的自转角动量（内禀参数）。我们关心的是前两个参数。&lt;/p&gt;
 
 &lt;p&gt;理论上，因为引力波干涉仪没有指向，所以一个探测器完全不能限制源的位置、两个可以限制到一个圆上、三个是对称的两个点。如果我们也考虑引力波的振幅和相位的话，这两个参数也能提供一些位置的限制，所以之前那幅图里面并不是一个完整的圆。实际上我们想要求的是一个在天上的概率分布图\( f(\alpha, \delta) \)，以\( \alpha \)和\( \delta \)为自变量。当然这个概率分布图是以观测为基础的，所以这是一个条件概率&lt;/p&gt;
 
@@ -50,7 +52,7 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\alpha, \delta | \boldsymbol{Y}(\omega)) = \frac{p(\boldsymbol{Y}(\omega) | \alpha, \delta)p(\alpha, \delta)}{p(\boldsymbol{Y}(\omega))}&lt;/script&gt;
 
-&lt;p&gt;留意到这里只有\( \alpha, \delta \)这两个参数，但是加上其他参数的条件概率会更容易被估计，所以我们将\( \alpha, \delta \)换成\( \boldsymbol{\theta} \)然后把不关心的参数全部积分掉，得到想要的条件概率；同时\( \boldsymbol{Y}(\omega)\)作为事件的先验是一个确定的数，在计算概率的时候并不关心，可以扔掉。所以&lt;/p&gt;
+&lt;p&gt;留意到这里只有\( \alpha, \delta \)这两个参数，但是加上其他参数的条件概率会更容易被估计，所以我们将\( \alpha, \delta \)换成\( \boldsymbol{\theta} \)然后把不关心的参数全部积分掉，得到想要的条件概率；同时\( \boldsymbol{Y}(\omega)\)作为事件的先验是一个确定的数，在计算概率的时候也并不关心，可以扔掉。所以&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\alpha, \delta | \boldsymbol{Y}(\omega)) \propto \int p(\boldsymbol{Y}(\omega) | \alpha, \delta, \boldsymbol{\theta}_\mathrm{other})p(\alpha, \delta, \boldsymbol{\theta}_\mathrm{other}) d\boldsymbol{\theta}_\mathrm{other}&lt;/script&gt;
 
@@ -66,7 +68,7 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\boldsymbol{Y}(\omega)|\boldsymbol{\theta}) = \prod_i p(Y_i|\theta) \propto \exp[-\frac{1}{2} \sum_i \int_0^\infty \frac{|Y_i(\omega)-X_i(\omega;\boldsymbol{\theta})|^2}{S_i(\omega)}d\omega]&lt;/script&gt;
 
-&lt;p&gt;频率中的连乘变成了\( e \)指数中的求和，然后将\( N_i \)消掉就行。现在一个概率变成了三项，\( S_i \)已经有定义了，要求的是\Y_i(\omega)\和\( X_i(\omega;\boldsymbol{\theta}) \)&lt;/p&gt;
+&lt;p&gt;频率中的连乘变成了\( e \)指数中的求和，然后将\( N_i \)消掉就行。现在一个概率变成了三项，\( S_i \)已经有定义了，要求的是\( Y_i(\omega) \)和\( X_i(\omega;\boldsymbol{\theta}) \)。&lt;/p&gt;
 
 &lt;h4 id=&quot;x_iomegaboldsymboltheta&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;X_i(\omega;\boldsymbol{\theta})&lt;/script&gt;&lt;/h4&gt;
 
@@ -78,15 +80,15 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;X_i(\omega; \boldsymbol{\theta}_\mathrm{ex}, \boldsymbol{\theta}_\mathrm{in} =  X_i(\omega; \rho_i, \gamma_i, \tau_i, \boldsymbol{\theta}_\mathrm{in})) = \frac{\rho_i}{\sigma_i(\boldsymbol{\theta})}e^{i(\gamma_i-\omega\tau_i)}H(\omega; \boldsymbol{\theta}_\mathrm{in})&lt;/script&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma_i(\boldsymbol{\theta}) = (\int_0^\infty\frac{|H(\omega;\boldsymbol{\theta}_\mathrm{in})|^2}{S_i(\omega)}d\omega)^\frac{1}{2} = \frac{1}{r_{1,i}}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma_i(\boldsymbol{\theta})^2 = \int_0^\infty\frac{|H(\omega;\boldsymbol{\theta}_\mathrm{in})|^2}{S_i(\omega)}d\omega = \frac{1}{r_{1,i}^2}&lt;/script&gt;
 
 &lt;p&gt;现在\( X_i \)的表达式就有了。&lt;/p&gt;
 
 &lt;h4 id=&quot;y_iomega&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;Y_i(\omega)&lt;/script&gt;&lt;/h4&gt;
 
-&lt;p&gt;这里就是BAYESTAR方法很快的原因了：我们用从观测到的波形中用最大似然方法(maximum likehood method)得出的参数\( \hat{\rho_i}, \hat{\gamma_i}, \hat{\tau_i}, \hat{\boldsymbol{\theta}_\mathrm{in}} \)去代替波形；然后用和刚才对\( X_i \)相同的方法展开，得到，&lt;/p&gt;
+&lt;p&gt;这里就是BAYESTAR方法很快的原因：我们用从观测到的波形中用最大似然方法(maximum likehood method)得出的参数&lt;script type=&quot;math/tex&quot;&gt;\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}}_\mathrm{in}&lt;/script&gt;去代替波形；然后用和刚才对\( X_i \)相同的方法展开，得到，&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Y_i(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}_\mathrm{in}}) = \frac{\hat{\rho}_i}{\sigma_i(\boldsymbol{\hat{\theta}_\mathrm{in}})}e^{i(\hat{\gamma}_i-\omega\hat{\tau}_i)}H(\omega; \boldsymbol{\hat{\theta}_\mathrm{in}})&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Y_i(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}}_\mathrm{in}) = \frac{\hat{\rho}_i}{\sigma_i(\boldsymbol{\hat{\theta}_\mathrm{in}})}e^{i(\hat{\gamma}_i-\omega\hat{\tau}_i)}H(\omega; \boldsymbol{\hat{\theta}_\mathrm{in}})&lt;/script&gt;
 
 &lt;p&gt;因为我们并不关心内禀参数究竟是什么，所以令\( \boldsymbol{\theta_\mathrm{in}} = \boldsymbol{\hat{\theta}_\mathrm{in}} \)，并将\( X_i, Y_i \)代入\( p(Y_i(\omega)|\boldsymbol{\theta}) \)中，会得到自相关函数：&lt;/p&gt;
 
@@ -350,6 +352,91 @@
         <pubDate>Tue, 23 May 2017 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2017/05/23/start/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/05/23/start/</guid>
+        
+        <category>random</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>草稿-Lyman森林</title>
+        <description>&lt;h3 id=&quot;eac书85节&quot;&gt;EAC书8.5节&lt;/h3&gt;
+
+&lt;p&gt;在类星体的Lyman-\( \alpha \)谱线的波长和Lyman-\( \alpha \)实际波长(1216\( \AA \))之间有很多很多的中性氢吸收线，是类星体发出的光在不断红移同时穿过星系际介质的时候留下的。&lt;a href=&quot;http://v.youku.com/v_show/id_XNjk1MTIyMTc2.html&quot;&gt;这里&lt;/a&gt;有一个不错的视频，展示Lyman-\( \alpha \)森林是怎样形成的。&lt;/p&gt;
+
+&lt;h4 id=&quot;851&quot;&gt;8.5.1&lt;/h4&gt;
+
+&lt;p&gt;在Lyman-\( \alpha \)的红蓝端可以测到各自的光深不同，作为Gunn-Peterson检验；结果是我们只能测到小红移类星体的光深，相比模型太小，星系际介质不可能有连续均一的baryonic matter，或者它们都被电离掉了。
+&lt;span style=&quot;color:red&quot;&gt; 低红移的结果不能表征高红移处的结果吧？为什么就能下定论了呢？&lt;/span&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;852&quot;&gt;8.5.2&lt;/h4&gt;
+
+&lt;p&gt;要观测Lyman-\( \alpha \)森林需要比较亮的类星体和高分辨率光谱仪。等值宽度大于等于0.32埃和红移大于2的线的数密度有如下关系：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dN}{dz} \approx k(1+z)^\gamma, \gamma \approx 2.5, k \approx 4&lt;/script&gt;
+
+&lt;p&gt;这说明了数密度和红移有较强的关系：红移越大，谱线越多。低红移处Lyman-\( \alpha \)线还在UV，比较难观测，而且也不符合这个关系。&lt;/p&gt;
+
+&lt;p&gt;从每条线的等值宽度和深度中可以测出对应的HI柱密度，发现和数密度有如下关系：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dN}{dN_\mathrm{HI}} \propto N_\mathrm{HI}^{-\beta}, \beta \approx 1.6&lt;/script&gt;
+
+&lt;p&gt;这个式子在\( 10^{12} \mathrm{cm}^{-2} &amp;lt; N_\mathrm{HI} &amp;lt; 10^{22} \mathrm{cm}^{-2}\)之间适用，范围比较宽。中性氢云的温度也可以进行估计，在\( 10^4, 2\times 10^4 \)K左右。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Proximity Effect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果类星体在Lyman-\( \alpha \)线的蓝端有发射线的话，HI线的数密度会降低，因为高能光子会把HI电离掉。忽略除了H以外的其他元素时，电离复合平衡可以表示为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;n_\mathrm{HI} = \frac{\alpha}{\Gamma_\mathrm{HI}}n_p^2&lt;/script&gt;
+
+&lt;h4 id=&quot;853-模型&quot;&gt;8.5.3 模型&lt;/h4&gt;
+
+&lt;p&gt;只看新模型。&lt;/p&gt;
+
+&lt;p&gt;Recombination之后，暗物质和重子物质的行为是一样的，因为大家都刚开始聚拢，没有热压力什么的。所以重子物质也会形成和暗物质类似的结构，但是密度要高一点。有了分布之后我们就可以计算模型光谱，发现那和观测的基本没有区别。如果类星体前面有另外一个类星体的话，也会对光谱产生影响。&lt;/p&gt;
+
+&lt;p&gt;高红移处（2-4），重子物质基本上都在Lyman-\( \alpha \)森林里面了，虽然低红移的地方不是这样。加热之后就没有吸收线了。&lt;/p&gt;
+
+&lt;h4 id=&quot;854-作为宇宙学工具&quot;&gt;8.5.4 作为宇宙学工具&lt;/h4&gt;
+
+&lt;p&gt;星系际HI云的密度比较低，温度不高，重力主导；所以可以用它来表征暗物质分布。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;光深和密度的关系&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;先只放结论：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\tau = A(\frac{\rho_g}{\bar{\rho_g}})^{1.6}&lt;/script&gt;
+
+&lt;p&gt;所以可以通过测定光深来确定密度。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;powe spectrum&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在森林区域，光深可以被逐个像素地确定，意味着密度也是这样。当然只能在红移2到4处用，这是因为森林处在光学，而且不太密，比较好测量。所以这个方法可以容易地测到以前的情况，特别是以前的物质的涨落。对于一个类星体来说，只能测到一条视线方向上的；但是如果类星体很多，分布很广（事实上是这样的），就可以的到不错的三维分布。&lt;/p&gt;
+
+&lt;p&gt;两个不错的结果：对森林的观测证伪了warm dark metter理论；可以测定不同红移处的scale factor，从而知道以前的宇宙是怎样膨胀或者收缩的。&lt;/p&gt;
+
+&lt;h3 id=&quot;weinberg-et-al-2003&quot;&gt;Weinberg et al. 2003&lt;/h3&gt;
+
+&lt;h4 id=&quot;physics-of-the-forest&quot;&gt;Physics of the Forest&lt;/h4&gt;
+
+&lt;p&gt;两个角度：1是当谱线和吸收体来看，2是当背景和连续谱的降低来看。&lt;/p&gt;
+
+&lt;p&gt;模型的结果：给定一些前提条件，我们可以造出和森林很像的东西来。&lt;/p&gt;
+
+&lt;p&gt;通过改变模型的参数，我们可以得出不同的森林，比如更并合的、或者单位波长内穿过更长距离的。&lt;/p&gt;
+
+&lt;p&gt;所以森林的主要用途是用来检验我们的模型&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 01 Jan 2000 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2000/01/01/draft/</link>
+        <guid isPermaLink="true">http://localhost:4000/2000/01/01/draft/</guid>
         
         <category>random</category>
         
