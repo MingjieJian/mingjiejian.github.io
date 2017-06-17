@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 15 Jun 2017 12:52:24 +0900</pubDate>
-    <lastBuildDate>Thu, 15 Jun 2017 12:52:24 +0900</lastBuildDate>
+    <pubDate>Sat, 17 Jun 2017 21:39:32 +0900</pubDate>
+    <lastBuildDate>Sat, 17 Jun 2017 21:39:32 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -359,7 +359,52 @@
       </item>
     
       <item>
-        <title>草稿-Lyman森林</title>
+        <title>Lymann alpha Forest &amp; BAO</title>
+        <description>&lt;h3 id=&quot;what-is-lymann-alpha-forest&quot;&gt;What is Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; Forest?&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.nature.com/nature/journal/v440/n7088/images/nature04805-f2.2.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest example of QSO 1422+2309 (top panel), the interpertation of formation of the forest (middle panel), and a zoom of the spectra (bottom panel). &lt;a href=&quot;https://www.nature.com/nature/journal/v440/n7088/full/nature04805.html&quot;&gt;Springel et al. (2006)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;When we look at the spectra of a quasar, we will find there is an area with very dense absorption lines blueward to the Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; emission line wavelength. This area looks like the forest, so it is called “Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; Forest”. Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest, combined with two other kinds of absorption line (broad and narrow absorption line), raised a debate on their origin. It turned out that broad lines are from quasars themselves, while narrow lines as well as Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest comes from the galaxies and neutral hydrogen located in the line-of-sight between quasar and us.&lt;/p&gt;
+
+&lt;p&gt;Photons with a wavelength of 1216 Angstrom may be absorbed by a neutral hydrogen cloud in the line-of-sight between quarar and us. Although the absosption will always happenes in 1216 Angstrom, the spectra of quasar, becuase of the expension of Universe, will not stay in the same place. As the photon going through the expanding Universe, its wavelength will increase, that is, the whole spectra will have a redshift while the Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; absorption is still in the same wavelength. Thus those dense absorption forest are mainly caused by one absorption (some other lines suc as Lymann-&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt; will also cause a “forest”, but much weaker than Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;).&lt;/p&gt;
+
+&lt;p&gt;A clear interpertation is presented &lt;a href=&quot;https://www.youtube.com/watch?v=6Bn7Ka0Tjjw&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-ly-alpha-forest-can-be-used-as-cosmological-tool&quot;&gt;Why Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; Forest can be used as Cosmological Tool?&lt;/h3&gt;
+
+&lt;p&gt;Because the absorption which should be in the same wavelength now shifted to a wavelength range corresponding to quasar’s redshift, the absorption maps the situation of neutral hydrogen between the redshiftted Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; line of quasar and 1216 Angstrom, and we can derive the distribution from what we have observed in the telescopes.&lt;/p&gt;
+
+&lt;p&gt;Furthermore, simulation and measurement of Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; line’s broadning indicate that density of neutral hydrogen cloud is low, and their temperature is between &lt;script type=&quot;math/tex&quot;&gt;10^4&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;2 \times 10^4&lt;/script&gt;. Compared to gravity, pressure forces will be small, so the behaviour of neutral hydrogen will bacially be the same as dark metter. As a result, we can trace density distribution also from that of neutral hydrogen.&lt;/p&gt;
+
+&lt;p&gt;In short, the reasom Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest can be used as cosmological tool is by measuring it, we can constrain some parameters of our modeled cosmolog, or, in reverse, we can create the model Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest and it looks like what we actually observed.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-constrain-the-model-of-cosmology-using-ly-alpha-forest&quot;&gt;How to constrain the model of Cosmology using Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; Forest?&lt;/h3&gt;
+
+&lt;p&gt;Reality research will always be limited by observation.&lt;/p&gt;
+
+&lt;h4 id=&quot;bao&quot;&gt;BAO&lt;/h4&gt;
+
+&lt;h4 id=&quot;others&quot;&gt;Others&lt;/h4&gt;
+
+&lt;p id=&quot;ref&quot;&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+</description>
+        <pubDate>Sun, 02 Jan 2000 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2000/01/02/LF-report/</link>
+        <guid isPermaLink="true">http://localhost:4000/2000/01/02/LF-report/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>草稿-Lymann森林</title>
         <description>&lt;h3 id=&quot;eac书85节&quot;&gt;EAC书8.5节&lt;/h3&gt;
 
 &lt;p&gt;在类星体的Lyman-\( \alpha \)谱线的波长和Lyman-\( \alpha \)实际波长(1216\( \AA \))之间有很多很多的中性氢吸收线，是类星体发出的光在不断红移同时穿过星系际介质的时候留下的。&lt;a href=&quot;http://v.youku.com/v_show/id_XNjk1MTIyMTc2.html&quot;&gt;这里&lt;/a&gt;有一个不错的视频，展示Lyman-\( \alpha \)森林是怎样形成的。&lt;/p&gt;
@@ -433,6 +478,60 @@
 
 &lt;p&gt;所以森林的主要用途是用来检验我们的模型&lt;/p&gt;
 
+&lt;h3 id=&quot;weinberg-at-al-1998&quot;&gt;Weinberg at al. 1998&lt;/h3&gt;
+
+&lt;h4 id=&quot;摘要&quot;&gt;摘要&lt;/h4&gt;
+
+&lt;p&gt;从数值模拟中得到的森林的物理图景、讨论森林中对检测结构形成模型有用的参数、和观测作对比。&lt;/p&gt;
+
+&lt;p&gt;如果当作连续谱来看，其中的物理比当作谱线来看更简单&lt;/p&gt;
+
+&lt;h3 id=&quot;一些问题&quot;&gt;一些问题&lt;/h3&gt;
+
+&lt;h4 id=&quot;100h-1-mathrmmpc中的h是什么&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;100h^{-1} \mathrm{Mpc}&lt;/script&gt;中的&lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt;是什么？&lt;/h4&gt;
+
+&lt;p&gt;A： 无量纲的哈勃常数，&lt;script type=&quot;math/tex&quot;&gt;H_0/100/\mathrm{unit}&lt;/script&gt;。所以&lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt;大概是0.7左右，代进去就行。&lt;/p&gt;
+
+&lt;h4 id=&quot;correlation-function的定义&quot;&gt;Correlation function的定义&lt;/h4&gt;
+
+&lt;p&gt;相关函数指的是在某一距离上找到两个点的概率和均匀分布的差异。定义如下：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P = (\bar{n}dV)^2 [1+\xi_g(r)]&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;\xi_g(r)&lt;/script&gt;即为两点相关函数。宇宙中的相关函数满足&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\xi_g(\mathbf{r}) = (\frac{r}{r_0})^{-1.7}&lt;/script&gt;
+
+&lt;p&gt;但是它只在0.2&lt;script type=&quot;math/tex&quot;&gt;h^{-1}&lt;/script&gt;到30&lt;script type=&quot;math/tex&quot;&gt;h^{-1}&lt;/script&gt;Mpc之间有效。&lt;/p&gt;
+
+&lt;p&gt;另一个描述的方法是功率谱。相关函数强代表有聚集、也就是有起伏；有起伏就意味着可以用三角函数的和来描述，也就是功率谱不为0。所以功率谱就是相关函数的傅立叶变换：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(k) = 2\pi \int_0^\infty r^2\frac{\sin{kr}}{kr}\xi(r)dr&lt;/script&gt;
+
+&lt;p&gt;在&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;处的&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;越大，意味着尺度&lt;script type=&quot;math/tex&quot;&gt;L = 2\pi / k&lt;/script&gt;上的起伏越强。&lt;/p&gt;
+
+&lt;p&gt;通常相关函数容易观测，功率谱容易模拟，就可以通过观测限制模型。&lt;/p&gt;
+
+&lt;h4 id=&quot;baryonic-density-fluctuations-p354&quot;&gt;Baryonic density fluctuations p354&lt;/h4&gt;
+
+&lt;p&gt;&lt;span style=&quot;color:red&quot;&gt; 什么是baryon？ &lt;/span&gt; 不是很确定，应该是物质里面除了暗物质以外的东西。&lt;/p&gt;
+
+&lt;p&gt;刚开始的时候，重子物质和暗物质一样，在引力的作用下汇聚。但是，重子物质中的电子可以和光子相互作用，导致光子辐射压抵抗阴历的收缩。在大尺度上，因为光子辐射压对重子物质的改变需要通过相互作用传递，所以远处的重子物质还没感受到辐射压的改变，行为和暗物质一样。而在近处，因为有辐射压，重子物质开始产生震荡。这个震荡有一个最大波长（150Mpc左右），因为在那个时候宇宙退耦了，相互作用也就没了。退耦之后，重子物质的行为又跟暗物质差不多了。我们能从CMB上看出退耦之前的最后一刻物质的分布，那时振幅最大的波长就是150Mpc。参见Fig 7.7。&lt;/p&gt;
+
+&lt;p&gt;Fig 8.7有一个观测的例子，和模型符合得不错。&lt;/p&gt;
+
+&lt;h3 id=&quot;busca-et-al-2013&quot;&gt;Busca et al. 2013&lt;/h3&gt;
+
+&lt;p&gt;我们从类星体的光谱开始；假设我们现在已经有了光谱。&lt;/p&gt;
+
+&lt;h4 id=&quot;相关函数的测量&quot;&gt;相关函数的测量&lt;/h4&gt;
+
+&lt;p&gt;只需两步：
+第一，对于森林波长范围内的每个像素，计算delta field&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta_q(\lambda) = \frac{f_q(\lambda)}{C_q(\lambda)\bar{F}(z)}-1&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;C_q(\lambda)&lt;/script&gt;是没有吸收的流量，也就是连续谱；&lt;/p&gt;
 </description>
         <pubDate>Sat, 01 Jan 2000 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2000/01/01/draft/</link>
