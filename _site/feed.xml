@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 17 Jun 2017 21:39:32 +0900</pubDate>
-    <lastBuildDate>Sat, 17 Jun 2017 21:39:32 +0900</lastBuildDate>
+    <pubDate>Sun, 18 Jun 2017 21:24:18 +0900</pubDate>
+    <lastBuildDate>Sun, 18 Jun 2017 21:24:18 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -369,23 +369,70 @@
 
 &lt;p&gt;Photons with a wavelength of 1216 Angstrom may be absorbed by a neutral hydrogen cloud in the line-of-sight between quarar and us. Although the absosption will always happenes in 1216 Angstrom, the spectra of quasar, becuase of the expension of Universe, will not stay in the same place. As the photon going through the expanding Universe, its wavelength will increase, that is, the whole spectra will have a redshift while the Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; absorption is still in the same wavelength. Thus those dense absorption forest are mainly caused by one absorption (some other lines suc as Lymann-&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt; will also cause a “forest”, but much weaker than Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;).&lt;/p&gt;
 
-&lt;p&gt;A clear interpertation is presented &lt;a href=&quot;https://www.youtube.com/watch?v=6Bn7Ka0Tjjw&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A clear interpertation video is presented &lt;a href=&quot;https://www.youtube.com/watch?v=6Bn7Ka0Tjjw&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;why-ly-alpha-forest-can-be-used-as-cosmological-tool&quot;&gt;Why Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; Forest can be used as Cosmological Tool?&lt;/h3&gt;
 
 &lt;p&gt;Because the absorption which should be in the same wavelength now shifted to a wavelength range corresponding to quasar’s redshift, the absorption maps the situation of neutral hydrogen between the redshiftted Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; line of quasar and 1216 Angstrom, and we can derive the distribution from what we have observed in the telescopes.&lt;/p&gt;
 
-&lt;p&gt;Furthermore, simulation and measurement of Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; line’s broadning indicate that density of neutral hydrogen cloud is low, and their temperature is between &lt;script type=&quot;math/tex&quot;&gt;10^4&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;2 \times 10^4&lt;/script&gt;. Compared to gravity, pressure forces will be small, so the behaviour of neutral hydrogen will bacially be the same as dark metter. As a result, we can trace density distribution also from that of neutral hydrogen.&lt;/p&gt;
+&lt;p&gt;Furthermore, simulation and measurement of Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; line’s broadning indicate that density of neutral hydrogen cloud is low, and their temperature is between &lt;script type=&quot;math/tex&quot;&gt;10^4&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;2 \times 10^4&lt;/script&gt;. Compared to gravity, pressure forces will be small, so the behaviour of neutral hydrogen will basically be the same as dark metter. As a result, we can trace density distribution also from that of neutral hydrogen.&lt;/p&gt;
 
-&lt;p&gt;In short, the reasom Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest can be used as cosmological tool is by measuring it, we can constrain some parameters of our modeled cosmolog, or, in reverse, we can create the model Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest and it looks like what we actually observed.&lt;/p&gt;
+&lt;p&gt;Last but not least, the relation between observed flux in a peticular wavlength and density in that distance can be determined, both from a complex relation or a easier method (&lt;a href=&quot;#ref&quot;&gt;Gallerani et al. 2011&lt;/a&gt;, see next section)&lt;/p&gt;
+
+&lt;p&gt;In short, the reason Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest can be used as cosmological tool is by measuring it, we can constrain some parameters of our modeled cosmolog, or, in reverse, we can create the model Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest and it looks like what we actually observed.&lt;/p&gt;
 
 &lt;h3 id=&quot;how-to-constrain-the-model-of-cosmology-using-ly-alpha-forest&quot;&gt;How to constrain the model of Cosmology using Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; Forest?&lt;/h3&gt;
 
+&lt;p&gt;To constrain the cosmological parameters we have to first translate obserrved spectra to density fluctuation. It can be done by driectly derive the realtion from physical image, or using a more practicle way. &lt;a href=&quot;#ref&quot;&gt;Gallerani et al. 2011&lt;/a&gt; discribed both methods and it is worth repeating this here.&lt;/p&gt;
+
+&lt;p&gt;Since distribution of neutral hydrogen cloud is not homogenius along line-of-sight (LOS) between quasar and us, we have to treat each wavelength, or distance sepeartely. We first divide the LOS into &lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt; bins, then as the difinition of optical depth, we have,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{F(i)}{F_c} = e^{-\tau(i)}&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;\tau(i)&lt;/script&gt; is,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\tau(i) = cI_\alpha \frac{\Delta x}{1+z(i)} \sum_{j=1}^{N} n_\mathrm{HI}(j)\Phi_\alpha[v_H(i) - v_H(j)]&lt;/script&gt;
+
+&lt;p&gt;here &lt;script type=&quot;math/tex&quot;&gt;c&lt;/script&gt; is light speed, &lt;script type=&quot;math/tex&quot;&gt;I_\alpha&lt;/script&gt; represent the cross-sention of hydrogen, &lt;script type=&quot;math/tex&quot;&gt;\Delta x&lt;/script&gt; the bin length in comoving coordinate, &lt;script type=&quot;math/tex&quot;&gt;\Phi_\alpha&lt;/script&gt; is Voigt profile and &lt;script type=&quot;math/tex&quot;&gt;n_\mathrm{HI}&lt;/script&gt; is neutral hydrogen fraction.&lt;/p&gt;
+
+&lt;p&gt;Neutral hydrogen cloud is in a low density situation, so it’s easily ionized. We can assume that the cloud is in the equilibrium of ionizaiton and recombination, then &lt;script type=&quot;math/tex&quot;&gt;n_\mathrm{HI}&lt;/script&gt; can be express as:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)]^3 \Delta(j)^2 \propto \Delta(j)^\beta, 1.5 &lt; \beta &lt; 2.0 %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;T_0&lt;/script&gt; is IGM density at mean density at redshift &lt;script type=&quot;math/tex&quot;&gt;z(j)&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt; (slope of equation of state) indicate the reionization history of Universe, &lt;script type=&quot;math/tex&quot;&gt;\Gamma&lt;/script&gt; represent the photoionization rate at given &lt;script type=&quot;math/tex&quot;&gt;z(j)&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;\Delta(j)&lt;/script&gt; is the over density in a given &lt;script type=&quot;math/tex&quot;&gt;j&lt;/script&gt;. So we can see here &lt;script type=&quot;math/tex&quot;&gt;\tau(i)&lt;/script&gt; is related to the property of hydrogen cloud, reionization history of Universe and profile of hydrogen absorption line (if assume Gaussian, it still related to thermal state of the gas).&lt;/p&gt;
+
+&lt;p&gt;This is the reason stating direct derivation of flux-density relation is very complex; it convolutes too many factors that makes cauculation impossible or lossing accuracy if introducing more assumption. However, by using probability distribution function (PDF), this relation can be determined by computation.&lt;/p&gt;
+
+&lt;p&gt;Let us now consider the PDF of observed, or transmitte flux &lt;script type=&quot;math/tex&quot;&gt;F&lt;/script&gt; as well as over density &lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;. Here it is assumed that an over density &lt;script type=&quot;math/tex&quot;&gt;\delta_*&lt;/script&gt; is associated to a single value of &lt;script type=&quot;math/tex&quot;&gt;F_*&lt;/script&gt;, so from the conservation of probability, integral from &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;F_*&lt;/script&gt; must be equal to intergration from &lt;script type=&quot;math/tex&quot;&gt;\Delta_*&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;\infty&lt;/script&gt;, that is,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^{F_*} P_F dF = \int_{\Delta_*}^\infty P_\Delta d\Delta&lt;/script&gt;
+
+&lt;p&gt;or vise versa,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_{F_*}^1 P_F dF = \int_0^{\Delta_*} P_\Delta d\Delta&lt;/script&gt;
+
+&lt;p&gt;Of course, observation will always be accompanied by uncertainties, so when the flux is very close to 0 or 1 we cannot tell the small discrepncy from 0 or 1 is from absorption or error. To account for this, one maximum and minimum flux (&lt;script type=&quot;math/tex&quot;&gt;F_\mathrm{max}, F_\mathrm{min}&lt;/script&gt;) and the corresponding minimum and maximum optical depth (&lt;script type=&quot;math/tex&quot;&gt;\Delta_\mathrm{min}, \Delta_\mathrm{max}&lt;/script&gt;) is set as the boundary of the integral,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_{F_\mathrm{min}}^{F_*} P_F dF = \int_{\Delta_*}^{\Delta_\mathrm{max}} P_\Delta d\Delta&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_{F_*}^{F_\mathrm{max}} P_F dF = \int_{\Delta_\mathrm{min}}^{\Delta_*} P_\Delta d\Delta&lt;/script&gt;
+
+&lt;p&gt;By solving these equations, we can get the realtion of &lt;script type=&quot;math/tex&quot;&gt;F&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\Delta&lt;/script&gt;, then convert the observed spectra to over density. Simulation have shown that after setting a aset of parameters &lt;script type=&quot;math/tex&quot;&gt;(\beta, \Gamma, T_0, \gamma)&lt;/script&gt;, both the spectra and distribution of over density can be recover well.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/2-3Dd.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;From &lt;a href=&quot;#ref&quot;&gt;Gallerani et al. 2011&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;So now we cam determine a 1-dimentional density fluctuation long one LOS; this is far from enough to constrain the cosmological model. But if we have a large number of quasars spreading over a large area of celestial sphere, then it will be possible to achieve 3-D density field. Luckily, &lt;a href=&quot;http://www.sdss.org/surveys/boss/&quot;&gt;BOSS&lt;/a&gt; survey fron SDSS provides this possbiblity.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://cdn.iopscience.com/images/1538-3881/145/1/10/Full/aj451111f1_lr.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Footprint of BOSS; from &lt;a href=&quot;http://adsabs.harvard.edu/abs/2013AJ....145...10D&quot;&gt;Dawson et al. 2013&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;reconstruction-of-3-dimensional-mass-density-field&quot;&gt;Reconstruction of 3-dimensional mass density field&lt;/h4&gt;
+
+&lt;h4 id=&quot;measureing-bao-feature-from-correlation-function&quot;&gt;Measureing BAO feature from correlation function&lt;/h4&gt;
+
 &lt;p&gt;Reality research will always be limited by observation.&lt;/p&gt;
-
-&lt;h4 id=&quot;bao&quot;&gt;BAO&lt;/h4&gt;
-
-&lt;h4 id=&quot;others&quot;&gt;Others&lt;/h4&gt;
 
 &lt;p id=&quot;ref&quot;&gt;&lt;/p&gt;
 &lt;hr /&gt;
