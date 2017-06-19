@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ひびけ">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>Something about Lymann alpha Forest - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2017/06/19/LF-report/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-LF-report.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/post-bg-LF-report.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>Something about Lymann alpha Forest</h1>
+                    
+                    
+                    <h2 class="subheading">Report on Lecture <i> Cosmic web </i></h2>
+                    
+                    <span class="meta">Posted by Mingjie on June 19, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h3 id="what-is-lymann-alpha-forest">What is Lymann-<script type="math/tex">\alpha</script> Forest?</h3>
+
+<p><img src="https://www.nature.com/nature/journal/v440/n7088/images/nature04805-f2.2.jpg" alt="" />
+<em>Ly-<script type="math/tex">\alpha</script> forest example of QSO 1422+2309 (top panel), the interpretation of formation of the forest (middle panel), and a zoom of the spectra (bottom panel). <a href="https://www.nature.com/nature/journal/v440/n7088/full/nature04805.html">Springel et al. (2006)</a></em></p>
+
+<p>When we look at the spectra of a quasar, we will find there is an area with very dense absorption lines blueward to the Lymann-<script type="math/tex">\alpha</script> emission line wavelength. This area looks like the forest, so it is called “Lymann-<script type="math/tex">\alpha</script> Forest”. Ly-<script type="math/tex">\alpha</script> forest, combined with two other kinds of absorption line (broad and narrow absorption line), raised a debate on their origin. It turned out that broad lines are from quasars themselves, while narrow lines as well as Ly-<script type="math/tex">\alpha</script> forest comes from the galaxies and neutral hydrogen located in the line-of-sight between quasar and us.</p>
+
+<p>Photons with a wavelength of 1216 Angstrom may be absorbed by a neutral hydrogen cloud in the line-of-sight between quasar and us. Although the absorption will always happen in 1216 Angstrom, the spectra of quasar, because of the expansion of Universe, will not stay in the same place. As the photon going through the expanding Universe, its wavelength will increase, that is, the whole spectra will have a redshift while the Lymann-<script type="math/tex">\alpha</script> absorption is still in the same wavelength. Thus, those dense absorption forest are mainly caused by one absorption (some other lines such as Lymann-<script type="math/tex">\beta</script> will also cause a “forest”, but much weaker than Lymann-<script type="math/tex">\alpha</script>).</p>
+
+<p>A clear interpretation video is presented <a href="https://www.youtube.com/watch?v=6Bn7Ka0Tjjw">here</a>.</p>
+
+<h3 id="why-ly-alpha-forest-can-be-used-as-cosmological-tool">Why Ly-<script type="math/tex">\alpha</script> Forest can be used as Cosmological Tool?</h3>
+
+<p>Because the absorption which should be in the same wavelength now shifted to a wavelength range corresponding to quasar’s redshift, the absorption maps the situation of neutral hydrogen between the redshifted Lymann-<script type="math/tex">\alpha</script> line of quasar and 1216 Angstrom, and we can derive the distribution from what we have observed in the telescopes.</p>
+
+<p>Furthermore, simulation and measurement of Lymann-<script type="math/tex">\alpha</script> line’s broadening indicate that density of neutral hydrogen cloud is low, and their temperature is between <script type="math/tex">10^4</script> and <script type="math/tex">2 \times 10^4</script>. Compared to gravity, pressure forces will be small, so the behavior of neutral hydrogen will basically be the same as dark matter. As a result, we can trace density distribution also from that of neutral hydrogen.</p>
+
+<p>Last but not least, the relation between observed flux in a particular wavelength and density in that distance can be determined, both from a complex relation or a easier method (<a href="#ref">Gallerani et al. 2011</a>, see next section)</p>
+
+<p>In short, the reason Ly-<script type="math/tex">\alpha</script> forest can be used as cosmological tool is by measuring it, we can constrain some parameters of our modeled cosmology, or, in reverse, we can create the model Ly-<script type="math/tex">\alpha</script> forest and it looks like what we actually observed.</p>
+
+<h3 id="how-to-constrain-the-model-of-cosmology-using-ly-alpha-forest">How to constrain the model of Cosmology using Ly-<script type="math/tex">\alpha</script> Forest?</h3>
+
+<p>To constrain the cosmological parameters, we must first translate observed spectra to density fluctuation. It can be done by directly derive the relation from physical image, or using a more practical way. <a href="#ref">Gallerani et al. 2011</a> described both methods and it is worth repeating this here.</p>
+
+<p>Since distribution of neutral hydrogen cloud is not homogenous along line-of-sight (LOS) between quasar and us, we have to treat each wavelength, or distance separately. We first divide the LOS into <script type="math/tex">N</script> bins, then as the definition of optical depth, we have,</p>
+
+<script type="math/tex; mode=display">\frac{F(i)}{F_c} = e^{-\tau(i)}</script>
+
+<p>where <script type="math/tex">\tau(i)</script> is,</p>
+
+<script type="math/tex; mode=display">\tau(i) = cI_\alpha \frac{\Delta x}{1+z(i)} \sum_{j=1}^{N} n_\mathrm{HI}(j)\Phi_\alpha[v_H(i) - v_H(j)]</script>
+
+<p>here <script type="math/tex">c</script> is light speed, <script type="math/tex">I_\alpha</script> represent the cross-section of hydrogen, <script type="math/tex">\Delta x</script> the bin length in comoving coordinate, <script type="math/tex">\Phi_\alpha</script> is Voigt profile and <script type="math/tex">n_\mathrm{HI}</script> is neutral hydrogen fraction.</p>
+
+<p>Neutral hydrogen cloud is in a low-density situation, so it’s easily ionized. We can assume that the cloud is in the equilibrium of ionization and recombination, then <script type="math/tex">n_\mathrm{HI}</script> can be express as:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)]^3 \Delta(j)^2 \propto \Delta(j)^\beta, 1.5 < \beta < 2.0 %]]></script>
+
+<p>where <script type="math/tex">T_0</script> is IGM density at mean density at redshift <script type="math/tex">z(j)</script>, <script type="math/tex">\gamma</script> (slope of equation of state) indicate the reionization history of Universe, <script type="math/tex">\Gamma</script> represent the photoionization rate at given <script type="math/tex">z(j)</script>, and <script type="math/tex">\Delta(j)</script> is the over density in a given <script type="math/tex">j</script>. So we can see here <script type="math/tex">\tau(i)</script> is related to the property of hydrogen cloud, reionization history of Universe and profile of hydrogen absorption line (if assume Gaussian, it still related to thermal state of the gas).</p>
+
+<p>This is the reason stating direct derivation of flux-density relation is very complex; it convolutes too many factors that makes calculation impossible or losing accuracy if introducing more assumption. However, by using probability distribution function (PDF), this relation can be determined by computation.</p>
+
+<p>Let us now consider the PDF of observed, or transmitted flux <script type="math/tex">F</script> as well as over density <script type="math/tex">\delta</script>. Here it is assumed that an over density <script type="math/tex">\delta_*</script> is associated to a single value of <script type="math/tex">F_*</script>, so from the conservation of probability, integral from <script type="math/tex">0</script> to <script type="math/tex">F_*</script> must be equal to integration from <script type="math/tex">\Delta_*</script> to <script type="math/tex">\infty</script>, that is,</p>
+
+<script type="math/tex; mode=display">\int_0^{F_*} P_F dF = \int_{\Delta_*}^\infty P_\Delta d\Delta</script>
+
+<p>or vice versa,</p>
+
+<script type="math/tex; mode=display">\int_{F_*}^1 P_F dF = \int_0^{\Delta_*} P_\Delta d\Delta</script>
+
+<p>Of course, observation will always be accompanied by uncertainties, so when the flux is very close to 0 or 1 we cannot tell the small discrepancy from 0 or 1 is from absorption or error. To account for this, one maximum and minimum flux (<script type="math/tex">F_\mathrm{max}, F_\mathrm{min}</script>) and the corresponding minimum and maximum optical depth (<script type="math/tex">\Delta_\mathrm{min}, \Delta_\mathrm{max}</script>) is set as the boundary of the integral,</p>
+
+<script type="math/tex; mode=display">\int_{F_\mathrm{min}}^{F_*} P_F dF = \int_{\Delta_*}^{\Delta_\mathrm{max}} P_\Delta d\Delta</script>
+
+<script type="math/tex; mode=display">\int_{F_*}^{F_\mathrm{max}} P_F dF = \int_{\Delta_\mathrm{min}}^{\Delta_*} P_\Delta d\Delta</script>
+
+<p>By solving these equations, we can get the relation of <script type="math/tex">F</script> and <script type="math/tex">\Delta</script>, then convert the observed spectra to over density. Simulation have shown that after setting a set of parameters <script type="math/tex">(\beta, \Gamma, T_0, \gamma)</script>, both the spectra and distribution of over density can be recover well.</p>
+
+<p><img src="/img/in-post/post-LF-report/2-3Dd.png" alt="" />
+<em>Top: Original spectra (black) of Ly-<script type="math/tex">\alpha</script> forest and synthetic spectra (red, blue and green) using different set of <script type="math/tex">(\Gamma, T_0, \gamma)</script>; bottom: same color for top but for distribution of overdensities. From <a href="#ref">Gallerani et al. 2011</a>, Figure 3</em></p>
+
+<p>So now we cam determine a 1-dimentional density fluctuation long one LOS; this is far from enough to constrain the cosmological model. But if we have a large number of quasars spreading over a large area of celestial sphere, then it will be possible to achieve 3-D density field. Luckily, <a href="http://www.sdss.org/surveys/boss/">BOSS</a> survey from SDSS provides this possibility.</p>
+
+<p><img src="http://cdn.iopscience.com/images/1538-3881/145/1/10/Full/aj451111f1_lr.jpg" alt="" />
+<em>Footprint of BOSS; from <a href="http://adsabs.harvard.edu/abs/2013AJ....145...10D">Dawson et al. 2013</a></em></p>
+
+<h4 id="recovering-topology-and-power-spectrum">Recovering topology and power spectrum</h4>
+
+<p>Although with the data of BOSS survey, 3-D density distribution is possible to be derived, the separation of each quasar in slightly shifted LOS block us from directly detecting the distribution in between. As a result, interpolation have to be done from discretely LOS.</p>
+
+<p>Both <a href="#ref">Caucci ei al. 2008</a> and <a href="#ref">Kitaura et al. 2012</a> use a Bayesian method to interpolate. A detailed description is present in <a href="#ref">Pichon et al.</a>, and here only a summarize of this method will be present.</p>
+
+<p>The relation between optical depth and neutral hydrogen is,</p>
+
+<script type="math/tex; mode=display">\tau_l(w) = \frac{c\sigma_0}{H(\bar{z})\sqrt{\pi}} \int \int \int_{-\infty}^{\infty} \frac{n_\mathrm{HI}(x,\mathbf{x}_\perp)}{b(x,\mathbf{x}_\perp)} \exp{\frac{[w-x-v_p(x,\mathbf{x}_\perp)]^2}{b(x,\mathbf{x}_\perp)^2}}dx \delta_D(\mathbf{x}_\perp,\mathbf{x}_{\perp,l})d^2 \mathbf{x}_{\perp,l}</script>
+
+<p>With some assumption of dark matter, we can translate <script type="math/tex">n_\mathrm{HI}</script> to density of dark matter <script type="math/tex">\rho_\mathrm{DM}</script>. However, this relation still depends on many other parameters, so we have to determine them first.</p>
+
+<p>Combining all those parameters, we can make an array, <script type="math/tex">\mathbf{M}</script>, and what we want now is the probability of getting <script type="math/tex">\mathbf{M}</script> from a given data, <script type="math/tex">\mathbf{D}</script>, and according to Bayesian theorem, we have,</p>
+
+<script type="math/tex; mode=display">f(\mathbf{M} | \mathbf{D}) = \mathcal{L}(\mathbf{D} | \mathbf{M})f(\mathbf{M})</script>
+
+<p>which we can (though still a little complicated), compute the likelihood <script type="math/tex">\mathcal{L}(\mathbf{D} \| \mathbf{M})</script> and derive the prior \( f(\mathbf{M}) \) under some observation. Then, after holding the 3-D density result, visualization can be easily done.</p>
+
+<p><a href="#ref">Caucci ei al. 2008</a> recover the tropology of HI density field at redshift of 2 simulated by model. The result looks very consistent with the simulated data.</p>
+
+<p><img src="/img/in-post/post-LF-report/3-topology.png" alt="" />
+<em>Comparison between original HI density field and recovered density field. Top row indicates the unsmoothed field, while bottom row is smoothed. From <a href="#ref">Caucci ei al. 2008</a>, Figure 9</em></p>
+
+<p>It is clear that the recovered density field is in a low resolution, because of the discrete distribution of LOS. But after smoothing at a scale larger than the LOS’s separation, we can hardly tell the difference of the original and recovered. Another point worth mentioning is that the recovery in logarithmic space is better than that in linear space.</p>
+
+<p><a href="#ref">Kitaura et al. 2012</a> recovered the power spectrum of density from simulation, and the result is again consist very well.</p>
+
+<p><img src="/img/in-post/post-LF-report/4-power-spec.png" alt="" />
+<em>Comparison of simulated and recovered power spectrum. Red is from simulation, and black is recovered. From <a href="#ref">Kitaura et al. 2012</a>, Figure 7</em></p>
+
+<h4 id="measuring-bao-feature-from-correlation-function">Measuring BAO feature from correlation function</h4>
+
+<p>A more straightforward constrain on cosmological model is from <a href="#ref">Busca et al. 2013</a>. The spectra obtained by BOSS is still too sparse in the celestial sphere and the resolution is not high enough to directly recover the density distribution. This may be also the reason which <a href="#ref">Caucci ei al. 2008</a> and <a href="#ref">Kitaura et al. 2012</a> only provide the tool and use simulated data to recover. Instead correlation function of flux maybe more useful.</p>
+
+<p>To achieve this, <a href="#ref">Busca et al. 2013</a> created correlation function as,</p>
+
+<script type="math/tex; mode=display">\hat{\xi}_A = \sum_{ij\in A}w_{ij}\delta_i\delta_j / \sum_{ij\in A} w_{ij}</script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">\delta(\lambda) = \frac{f(\lambda)}{C(\lambda)\bar{F}(z)} - 1</script>
+
+<p><script type="math/tex">w_{ij}</script> is the weight of two corresponding pixel in two near quasars, <script type="math/tex">f(\lambda)</script> is observed flux, and <script type="math/tex">C(\lambda)\bar{F}(z)</script> is continuum. Volume <script type="math/tex">A</script> contains all quasars have a distance smaller than <script type="math/tex">r</script> to one quasar. So if the spectra of two quasars is similar, <script type="math/tex">\hat{\xi}_A</script> will be bigger than two whose spectra is not so similar.</p>
+
+<p>Now we can expect that in the sound horizon, the correlation function will have a (at least local) maximum, and the position of this peak will provide constrain on cosmological model.</p>
+
+<p><img src="/img/in-post/post-LF-report/5-BAO.png" alt="" />
+<em><script type="math/tex">\xi(r,\mu)</script> averaged over <script type="math/tex">% <![CDATA[
+0.8 < \mu < 1 %]]></script>. From <a href="#ref">Busca et al. 2013</a>, Figure 8</em></p>
+
+<p>Indeed, the correlation function peaks at around 150 Mpc. <script type="math/tex">\mu</script> here correspond to the transvers direction of or along the LOS, where <script type="math/tex">\mu</script> near 1 means only selecting sources along LOS. Location of this peak can be used to constrain the real position of BAO peak through two multiplicative factors; and they are related to <script type="math/tex">\Omega_m</script> and <script type="math/tex">\Omega_\Lambda</script> separately, so constrain on multiplicative factors can be converted to constrains on cosmological parameters.</p>
+
+<p><img src="/img/in-post/post-LF-report/6-BAO-constrain.png" alt="" />
+<em>Constrains on matter and dark-energy density parameters determined by different method. From <a href="#ref">Busca et al. 2013</a>, Figure 18</em></p>
+
+<p>Combined with other constrains from different method, <script type="math/tex">\Omega_m</script> and <script type="math/tex">\Omega_\Lambda</script> of model <script type="math/tex">\mathrm{\Lambda CDM}</script> can be determined much batter. Constrain by Ly-<script type="math/tex">\alpha</script> forest provide a distribution perpendicular to other methods, and it indicated <script type="math/tex">\Omega_\Lambda</script> should be greater than 0.5.</p>
+
+<p>Furthermore, after adding some constrains called WMAP7 that some parameters effecting multiplicative factors should change in the same direction, Hubble constant in redshift 2.3 <script type="math/tex">H(z=2.3)</script> can also be determined.</p>
+
+<p><img src="/img/in-post/post-LF-report/7-BAO-H.png" alt="" />
+<em>Measurements of <script type="math/tex">H(z)/(1+z) vs</script> z $$; the BAO measurement is on the right. From <a href="#ref">Busca et al. 2013</a>, Figure 21</em></p>
+
+<p>This determination largely expand the redshift range. Without this datapoint, it is not clear that the <script type="math/tex">H(z)</script> in the past is flat or increasing or decreasing; now this measurement states that our Universe first experienced a decelerating expansion, then turn to accelerating expansion at redshift between 0 and 1.</p>
+
+<h3 id="future">Future</h3>
+
+<p>The future of Ly-<script type="math/tex">\alpha</script> forest is of course the future of quasar observation. Near future sees the successor of BOSS survey, eBOSS. More and deeper quasar will enhance the completeness of our measurement and help us to trace earlier epoch. Combining data from BOSS and eBOSS, we can have a better constrain on our model of Universe.</p>
+
+<p><img src="http://www.sdss.org/wp-content/uploads/2014/06/pie_boss_eboss_marked.png" alt="" />
+<em>Planned eBOSS coverage of the Universe, from the webpage of <a href="http://www.sdss.org/surveys/eboss/">eBOSS</a></em></p>
+
+<p id="ref"></p>
+<hr />
+<h3 id="references">References</h3>
+
+<ol>
+  <li>Schneider, P. Extragalactic Astronomy and Cosmology: An Introduction. (2015).</li>
+  <li>Gallerani, S., Kitaura, F. S. &amp; Ferrara, A. Cosmic density field reconstruction from Lyα forest data. <em>Monthly Notices of the Royal Astronomical Society</em> <strong>413</strong>, L6–L10 (2011).</li>
+  <li>Pichon, C., Vergely, J. L., Rollinde, E., Colombi, S. &amp; Petitjean, P. Inversion of the Lyman α forest: three-dimensional investigation of the intergalactic medium. <em>Monthly Notices of the Royal Astronomical Society</em> <strong>326</strong>, 597–620 (2001).</li>
+  <li>Caucci, S. et al. Recovering the topology of the intergalactic medium at z ~ 2. <em>Monthly Notices of the Royal Astronomical Society</em> <strong>386</strong>, 211–229 (2008).</li>
+  <li>Kitaura, F. S., Gallerani, S. &amp; Ferrara, A. Multiscale inference of matter fields and baryon acoustic oscillations from the Lyα forest. <em>Monthly Notices of the Royal Astronomical Society</em> <strong>420</strong>, 61–74 (2012).</li>
+  <li>Busca, N. G. et al. Baryon acoustic oscillations in the Lyα forest of BOSS quasars. <em>Astronomy and Astrophysics</em> <strong>552</strong>, A96 (2013).</li>
+</ol>
+
+<hr />
+
+
+                <hr>
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/06/12/GW-position/" data-toggle="tooltip" data-placement="top" title="BAYESTAR：用贝叶斯方法确定引力波事件位置">
+                        Previous<br>
+                        <span>BAYESTAR：用贝叶斯方法确定引力波事件位置</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="2">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="2">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian";
+    var disqus_identifier = "/2017/06/19/LF-report";
+    var disqus_url = "http://localhost:4000/2017/06/19/LF-report/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2017
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<!-- Added for using Mathjax to type formaulas-->
+<script type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+
+</html>
