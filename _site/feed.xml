@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Jun 2017 15:04:22 +0900</pubDate>
-    <lastBuildDate>Mon, 19 Jun 2017 15:04:22 +0900</lastBuildDate>
+    <pubDate>Mon, 19 Jun 2017 20:44:00 +0900</pubDate>
+    <lastBuildDate>Mon, 19 Jun 2017 20:44:00 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -367,7 +367,7 @@
 
 &lt;p&gt;When we look at the spectra of a quasar, we will find there is an area with very dense absorption lines blueward to the Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; emission line wavelength. This area looks like the forest, so it is called “Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; Forest”. Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest, combined with two other kinds of absorption line (broad and narrow absorption line), raised a debate on their origin. It turned out that broad lines are from quasars themselves, while narrow lines as well as Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest comes from the galaxies and neutral hydrogen located in the line-of-sight between quasar and us.&lt;/p&gt;
 
-&lt;p&gt;Photons with a wavelength of 1216 Angstrom may be absorbed by a neutral hydrogen cloud in the line-of-sight between quarar and us. Although the absosption will always happenes in 1216 Angstrom, the spectra of quasar, becuase of the expension of Universe, will not stay in the same place. As the photon going through the expanding Universe, its wavelength will increase, that is, the whole spectra will have a redshift while the Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; absorption is still in the same wavelength. Thus those dense absorption forest are mainly caused by one absorption (some other lines suc as Lymann-&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt; will also cause a “forest”, but much weaker than Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;).&lt;/p&gt;
+&lt;p&gt;Photons with a wavelength of 1216 Angstrom may be absorbed by a neutral hydrogen cloud in the line-of-sight between quasar and us. Although the absorption will always happens in 1216 Angstrom, the spectra of quasar, because of the expension of Universe, will not stay in the same place. As the photon going through the expanding Universe, its wavelength will increase, that is, the whole spectra will have a redshift while the Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; absorption is still in the same wavelength. Thus those dense absorption forest are mainly caused by one absorption (some other lines such as Lymann-&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt; will also cause a “forest”, but much weaker than Lymann-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;).&lt;/p&gt;
 
 &lt;p&gt;A clear interpertation video is presented &lt;a href=&quot;https://www.youtube.com/watch?v=6Bn7Ka0Tjjw&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -421,7 +421,7 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
 &lt;p&gt;By solving these equations, we can get the realtion of &lt;script type=&quot;math/tex&quot;&gt;F&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\Delta&lt;/script&gt;, then convert the observed spectra to over density. Simulation have shown that after setting a aset of parameters &lt;script type=&quot;math/tex&quot;&gt;(\beta, \Gamma, T_0, \gamma)&lt;/script&gt;, both the spectra and distribution of over density can be recover well.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/2-3Dd.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;From &lt;a href=&quot;#ref&quot;&gt;Gallerani et al. 2011&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;em&gt;Top: Original spectra (black) of Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest and synthetic spectra (red, blue and green) using different set of &lt;script type=&quot;math/tex&quot;&gt;(\Gamma, T_0, \gamma)&lt;/script&gt;; bottom: same color for top but for distribution of overdensities. From &lt;a href=&quot;#ref&quot;&gt;Gallerani et al. 2011&lt;/a&gt;, Figure 3&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;So now we cam determine a 1-dimentional density fluctuation long one LOS; this is far from enough to constrain the cosmological model. But if we have a large number of quasars spreading over a large area of celestial sphere, then it will be possible to achieve 3-D density field. Luckily, &lt;a href=&quot;http://www.sdss.org/surveys/boss/&quot;&gt;BOSS&lt;/a&gt; survey fron SDSS provides this possbiblity.&lt;/p&gt;
 
@@ -436,30 +436,74 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
 
 &lt;p&gt;The relation between optical depth and neutral hydrogen is,&lt;/p&gt;
 
-&lt;p&gt;$$ \tau_l(w) = \frac{c\sigma_0}{H(\bar{z})\sqrt{\pi}} \int \int [\int_{-\infty}^{\infty} \frac{n_\mathrm{HI}(x,x_)}]&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\tau_l(w) = \frac{c\sigma_0}{H(\bar{z})\sqrt{\pi}} \int \int \int_{-\infty}^{\infty} \frac{n_\mathrm{HI}(x,\mathbf{x}_\perp)}{b(x,\mathbf{x}_\perp)} \exp{\frac{[w-x-v_p(x,\mathbf{x}_\perp)]^2}{b(x,\mathbf{x}_\perp)^2}}dx \delta_D(\mathbf{x}_\perp,\mathbf{x}_{\perp,l})d^2 \mathbf{x}_{\perp,l}&lt;/script&gt;
 
 &lt;p&gt;With some assumption of dark matter, we can translate &lt;script type=&quot;math/tex&quot;&gt;n_\mathrm{HI}&lt;/script&gt; to density of dark matter &lt;script type=&quot;math/tex&quot;&gt;\rho_\mathrm{DM}&lt;/script&gt;. However this relation still depends on many other parameters, so wen have to determine them first.&lt;/p&gt;
 
 &lt;p&gt;Combining all those paremeters, we can make an array, &lt;script type=&quot;math/tex&quot;&gt;\mathbf{M}&lt;/script&gt;, and what we want now is the probability of getting &lt;script type=&quot;math/tex&quot;&gt;\mathbf{M}&lt;/script&gt; from a given data, &lt;script type=&quot;math/tex&quot;&gt;\mathbf{D}&lt;/script&gt;, and according to Bayesian theorem, we have,&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\mathbf{M} | \mathbf{D}) = L(\mathbf{D} | \mathbf{M})f(\mathbf{M})&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\mathbf{M} | \mathbf{D}) = \mathcal{L}(\mathbf{D} | \mathbf{M})f(\mathbf{M})&lt;/script&gt;
 
-&lt;p&gt;which we can (though still a little complicated), compute the likelihood &lt;script type=&quot;math/tex&quot;&gt;L(\mathbf{D} \| \mathbf{M})&lt;/script&gt; and derive the prior \( f(\mathbf{M}) \) under some observation. Then, after holding the 3-D density result, visulization can be easily done.&lt;/p&gt;
+&lt;p&gt;which we can (though still a little complicated), compute the likelihood &lt;script type=&quot;math/tex&quot;&gt;\mathcal{L}(\mathbf{D} \| \mathbf{M})&lt;/script&gt; and derive the prior \( f(\mathbf{M}) \) under some observation. Then, after holding the 3-D density result, visulization can be easily done.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;#ref&quot;&gt;Caucci ei al. 2008&lt;/a&gt; recover the tropology of HI density field at redshift of 2 simulated by model. The result looks very consistent with the simulated data.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/3-topology.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/3-topology.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Comparison between original HI density field and recovered density field. Top row indicates the unsmoothed field, while bottom row is smoothed. From &lt;a href=&quot;#ref&quot;&gt;Caucci ei al. 2008&lt;/a&gt;, Figure 9&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It is clear that the recovered density filed is in a low resolution, because of the discrete distribution of LOS. But after smoothing at a scale larger than the LOS’s separation, we can hardly tell the difference of the original and recovered. Another point worth mentioning is that the recover in logarithmic space is better than that in linear space.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#ref&quot;&gt;Kitaura et al. 2012&lt;/a&gt; recovered the power spectrum of density from simulation, and the result is again consist very well.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/4-power-spec.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Comparison of simulated and recovered power spectrum. Red is from simulation, and black is recovered. From &lt;a href=&quot;#ref&quot;&gt;Kitaura et al. 2012&lt;/a&gt;, Figure 7&lt;/em&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;measureing-bao-feature-from-correlation-function&quot;&gt;Measureing BAO feature from correlation function&lt;/h4&gt;
 
-&lt;p&gt;Reality research will always be limited by observation.&lt;/p&gt;
+&lt;p&gt;A more straightforward constrain on cosmological model is from &lt;a href=&quot;#ref&quot;&gt;Busca et al. 2013&lt;/a&gt;. The spectra obtained by BOSS is still too sparse in the celestial sphere and the resolution is not high enough to directly recover the density distribution. This may be also the reason which &lt;a href=&quot;#ref&quot;&gt;Caucci ei al. 2008&lt;/a&gt; and &lt;a href=&quot;#ref&quot;&gt;Kitaura et al. 2012&lt;/a&gt; only provide the tool and use simulated data to recover. Instead correlation function of flux maybe more useful.&lt;/p&gt;
+
+&lt;p&gt;To achieve this, &lt;a href=&quot;#ref&quot;&gt;Busca et al. 2013&lt;/a&gt; created correlation function as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{\xi}_A = \sum_{ij\in A}w_{ij}\delta_i\delta_j / \sum_{ij\in A} w_{ij}&lt;/script&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta(\lambda) = \frac{f(\lambda)}{C(\lambda)\bar{F}(z)} - 1&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;w_{ij}&lt;/script&gt; is the weight of two corresponding pixel in two near quasars, &lt;script type=&quot;math/tex&quot;&gt;f(\lambda)&lt;/script&gt; is observed flux, and &lt;script type=&quot;math/tex&quot;&gt;C(\lambda)\bar{F}(z)&lt;/script&gt; is continuum. Volume &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; contains all quasars have a distance smaller than &lt;script type=&quot;math/tex&quot;&gt;r&lt;/script&gt; to one particular quasar. So if the spectra of two quasars is similar, &lt;script type=&quot;math/tex&quot;&gt;\hat{\xi}_A&lt;/script&gt; will be bigger than two whose spectra is not so similar.&lt;/p&gt;
+
+&lt;p&gt;Now we can expect that in the sound horizon, the correlation function will have a (at least local) maximum, and the posiiton of this peak will provide constrain on cosmological model.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/5-BAO.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;&lt;script type=&quot;math/tex&quot;&gt;\xi(r,\mu)&lt;/script&gt; averaged over &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+0.8 &lt; \mu &lt; 1 %]]&gt;&lt;/script&gt;. From &lt;a href=&quot;#ref&quot;&gt;Busca et al. 2013&lt;/a&gt;, Figure 8&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Indeed the correlation function peaks at around 150 Mpc. &lt;script type=&quot;math/tex&quot;&gt;\mu&lt;/script&gt; here correspond to the transvers direction of or along the LOS, where &lt;script type=&quot;math/tex&quot;&gt;\mu&lt;/script&gt; near 1 means only selecting sources along LOS. Location of this peak can be used to constrain the real position of BAO peak through two multiplicative factors; and they are related to &lt;script type=&quot;math/tex&quot;&gt;\Omega_m&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\Omega_\Lambda&lt;/script&gt; seperately, so constrain on multiplicative factors can be converted to constrains on cosmological parameters.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/6-BAO-constrain.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Constrains on matter and dark-energy density parameters determined by different method. From &lt;a href=&quot;#ref&quot;&gt;Busca et al. 2013&lt;/a&gt;, Figure 18&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Combined with other constrains from different method, &lt;script type=&quot;math/tex&quot;&gt;\Omega_m&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\Omega_\Lambda&lt;/script&gt; of model &lt;script type=&quot;math/tex&quot;&gt;\mathrm{\Lambda CDM}&lt;/script&gt; can be determined much batter. Constrain by Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest provide a distribution perpendicular to other methods, and it indicated &lt;script type=&quot;math/tex&quot;&gt;\Omega_\Lambda&lt;/script&gt; should be greater than 0.5.&lt;/p&gt;
+
+&lt;p&gt;Furthermore, after adding some constrains called WMAP7 that some paremeters effecting multiplicative factors should change in the same direction, Hubble constant in redshift 2.3 &lt;script type=&quot;math/tex&quot;&gt;H(z=2.3)&lt;/script&gt; can also be determined.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/7-BAO-H.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Measurements of &lt;script type=&quot;math/tex&quot;&gt;H(z)/(1+z) vs&lt;/script&gt; z $$; the BAO measurement is on the right. From &lt;a href=&quot;#ref&quot;&gt;Busca et al. 2013&lt;/a&gt;, Figure 21&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This determination largely expand the redshift range. Without this datapoint, it is not clear that the &lt;script type=&quot;math/tex&quot;&gt;H(z)&lt;/script&gt; in the past is flat or increasing or decreasing; now this measurement states that our Universe first experienced a deceleating expandsion, then trun to acclerating expandsion at redshift between 0 and 1.&lt;/p&gt;
+
+&lt;h3 id=&quot;future&quot;&gt;Future&lt;/h3&gt;
+
+&lt;p&gt;The future of Ly-&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; forest is ofcourse the future of quasar observation. Near future sees the successor of BOSS survey, eBOSS. More and deeper quasar will nhance the completeness of our measurement and help us to trace earlier epoch. Combining data from BOSS and eBOSS, we can have a better constrain on our model of Universe.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://www.sdss.org/wp-content/uploads/2014/06/pie_boss_eboss_marked.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Planned eBOSS coverage of the Universe, from the webpage of &lt;a href=&quot;http://www.sdss.org/surveys/eboss/&quot;&gt;eBOSS&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
 &lt;p id=&quot;ref&quot;&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
 &lt;hr /&gt;
-
 </description>
         <pubDate>Sun, 02 Jan 2000 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2000/01/02/LF-report/</link>

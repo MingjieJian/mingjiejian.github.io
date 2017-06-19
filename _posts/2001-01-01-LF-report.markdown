@@ -70,7 +70,7 @@ $$ \int_{F_*}^{F_\mathrm{max}} P_F dF = \int_{\Delta_\mathrm{min}}^{\Delta_*} P_
 By solving these equations, we can get the realtion of $$ F $$ and $$ \Delta $$, then convert the observed spectra to over density. Simulation have shown that after setting a aset of parameters $$ (\beta, \Gamma, T_0, \gamma) $$, both the spectra and distribution of over density can be recover well.
 
 ![](/img/in-post/post-LF-report/2-3Dd.png)
-*From [Gallerani et al. 2011](#ref)*
+*Top: Original spectra (black) of Ly-$$ \alpha $$ forest and synthetic spectra (red, blue and green) using different set of $$ (\Gamma, T_0, \gamma) $$; bottom: same color for top but for distribution of overdensities. From [Gallerani et al. 2011](#ref), Figure 3*
 
 So now we cam determine a 1-dimentional density fluctuation long one LOS; this is far from enough to constrain the cosmological model. But if we have a large number of quasars spreading over a large area of celestial sphere, then it will be possible to achieve 3-D density field. Luckily, [BOSS](http://www.sdss.org/surveys/boss/) survey fron SDSS provides this possbiblity.
 
@@ -87,25 +87,27 @@ Both [Caucci ei al. 2008](#ref) and [Kitaura et al. 2012](#ref) use a Bayesian m
 
 The relation between optical depth and neutral hydrogen is,
 
-$$ \tau_l(w) = \frac{c\sigma_0}{H(\bar{z})\sqrt{\pi}} \int \int [\int_{-\infty}^{\infty} \frac{n_\mathrm{HI}(x,x_)}]
+$$ \tau_l(w) = \frac{c\sigma_0}{H(\bar{z})\sqrt{\pi}} \int \int \int_{-\infty}^{\infty} \frac{n_\mathrm{HI}(x,\mathbf{x}_\perp)}{b(x,\mathbf{x}_\perp)} \exp{\frac{[w-x-v_p(x,\mathbf{x}_\perp)]^2}{b(x,\mathbf{x}_\perp)^2}}dx \delta_D(\mathbf{x}_\perp,\mathbf{x}_{\perp,l})d^2 \mathbf{x}_{\perp,l} $$
 
 With some assumption of dark matter, we can translate $$ n_\mathrm{HI} $$ to density of dark matter $$ \rho_\mathrm{DM} $$. However this relation still depends on many other parameters, so wen have to determine them first.
 
 Combining all those paremeters, we can make an array, $$ \mathbf{M} $$, and what we want now is the probability of getting $$ \mathbf{M} $$ from a given data, $$ \mathbf{D} $$, and according to Bayesian theorem, we have,
 
-$$ f(\mathbf{M} | \mathbf{D}) = L(\mathbf{D} | \mathbf{M})f(\mathbf{M}) $$
+$$ f(\mathbf{M} | \mathbf{D}) = \mathcal{L}(\mathbf{D} | \mathbf{M})f(\mathbf{M}) $$
 
-which we can (though still a little complicated), compute the likelihood $$ L(\mathbf{D} \| \mathbf{M}) $$ and derive the prior \\( f(\mathbf{M}) \\) under some observation. Then, after holding the 3-D density result, visulization can be easily done.
+which we can (though still a little complicated), compute the likelihood $$ \mathcal{L}(\mathbf{D} \| \mathbf{M}) $$ and derive the prior \\( f(\mathbf{M}) \\) under some observation. Then, after holding the 3-D density result, visulization can be easily done.
 
 [Caucci ei al. 2008](#ref) recover the tropology of HI density field at redshift of 2 simulated by model. The result looks very consistent with the simulated data.
 
 ![](/img/in-post/post-LF-report/3-topology.png)
+*Comparison between original HI density field and recovered density field. Top row indicates the unsmoothed field, while bottom row is smoothed. From [Caucci ei al. 2008](#ref), Figure 9*
 
 It is clear that the recovered density filed is in a low resolution, because of the discrete distribution of LOS. But after smoothing at a scale larger than the LOS's separation, we can hardly tell the difference of the original and recovered. Another point worth mentioning is that the recover in logarithmic space is better than that in linear space.
 
 [Kitaura et al. 2012](#ref) recovered the power spectrum of density from simulation, and the result is again consist very well.
 
 ![](/img/in-post/post-LF-report/4-power-spec.png)
+*Comparison of simulated and recovered power spectrum. Red is from simulation, and black is recovered. From [Kitaura et al. 2012](#ref), Figure 7*
 
 #### Measureing BAO feature from correlation function
 
@@ -117,9 +119,36 @@ $$ \hat{\xi}_A = \sum_{ij\in A}w_{ij}\delta_i\delta_j / \sum_{ij\in A} w_{ij} $$
 
 where
 
-$$ \delta(\lambda) = \frac{f(\lambda)}{C(\lambda)\bar{F}(z)} - 1
+$$ \delta(\lambda) = \frac{f(\lambda)}{C(\lambda)\bar{F}(z)} - 1 $$
 
 $$ w_{ij} $$ is the weight of two corresponding pixel in two near quasars, $$ f(\lambda) $$ is observed flux, and $$ C(\lambda)\bar{F}(z) $$ is continuum. Volume $$ A $$ contains all quasars have a distance smaller than $$ r $$ to one particular quasar. So if the spectra of two quasars is similar, $$ \hat{\xi}_A $$ will be bigger than two whose spectra is not so similar.
+
+Now we can expect that in the sound horizon, the correlation function will have a (at least local) maximum, and the posiiton of this peak will provide constrain on cosmological model. 
+
+![](/img/in-post/post-LF-report/5-BAO.png)
+*$$ \xi(r,\mu) $$ averaged over $$ 0.8 < \mu < 1 $$. From [Busca et al. 2013](#ref), Figure 8*
+
+Indeed the correlation function peaks at around 150 Mpc. $$ \mu $$ here correspond to the transvers direction of or along the LOS, where $$ \mu $$ near 1 means only selecting sources along LOS. Location of this peak can be used to constrain the real position of BAO peak through two multiplicative factors; and they are related to $$ \Omega_m $$ and $$ \Omega_\Lambda $$ seperately, so constrain on multiplicative factors can be converted to constrains on cosmological parameters.
+
+![](/img/in-post/post-LF-report/6-BAO-constrain.png)
+*Constrains on matter and dark-energy density parameters determined by different method. From [Busca et al. 2013](#ref), Figure 18*
+
+Combined with other constrains from different method, $$ \Omega_m $$ and $$ \Omega_\Lambda $$ of model $$ \mathrm{\Lambda CDM} $$ can be determined much batter. Constrain by Ly-$$ \alpha $$ forest provide a distribution perpendicular to other methods, and it indicated $$ \Omega_\Lambda $$ should be greater than 0.5.
+
+Furthermore, after adding some constrains called WMAP7 that some paremeters effecting multiplicative factors should change in the same direction, Hubble constant in redshift 2.3 $$ H(z=2.3) $$ can also be determined.
+
+![](/img/in-post/post-LF-report/7-BAO-H.png)
+*Measurements of $$ H(z)/(1+z) vs $$ z $$; the BAO measurement is on the right. From [Busca et al. 2013](#ref), Figure 21*
+
+This determination largely expand the redshift range. Without this datapoint, it is not clear that the $$ H(z) $$ in the past is flat or increasing or decreasing; now this measurement states that our Universe first experienced a deceleating expandsion, then trun to acclerating expandsion at redshift between 0 and 1.
+
+### Future
+
+The future of Ly-$$ \alpha $$ forest is ofcourse the future of quasar observation. Near future sees the successor of BOSS survey, eBOSS. More and deeper quasar will nhance the completeness of our measurement and help us to trace earlier epoch. Combining data from BOSS and eBOSS, we can have a better constrain on our model of Universe.
+
+![](http://www.sdss.org/wp-content/uploads/2014/06/pie_boss_eboss_marked.png)
+*Planned eBOSS coverage of the Universe, from the webpage of [eBOSS](http://www.sdss.org/surveys/eboss/)*
+
 
 <p id = "ref"></p>
 ---
