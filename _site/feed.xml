@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Jun 2017 10:25:32 +0900</pubDate>
-    <lastBuildDate>Mon, 19 Jun 2017 10:25:32 +0900</lastBuildDate>
+    <pubDate>Mon, 19 Jun 2017 15:04:22 +0900</pubDate>
+    <lastBuildDate>Mon, 19 Jun 2017 15:04:22 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -428,7 +428,27 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
 &lt;p&gt;&lt;img src=&quot;http://cdn.iopscience.com/images/1538-3881/145/1/10/Full/aj451111f1_lr.jpg&quot; alt=&quot;&quot; /&gt;
 &lt;em&gt;Footprint of BOSS; from &lt;a href=&quot;http://adsabs.harvard.edu/abs/2013AJ....145...10D&quot;&gt;Dawson et al. 2013&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;recovering-tropology-and-power-spectrum&quot;&gt;Recovering tropology and power spectrum&lt;/h4&gt;
+&lt;h4 id=&quot;recovering-topology-and-power-spectrum&quot;&gt;Recovering topology and power spectrum&lt;/h4&gt;
+
+&lt;p&gt;Although with the data of BOSS survey, 3-D density distribution is possible to be derived, the separation of each quasar in slightly shifted LOS block us from directly detecting the distribution in between. As a result, interpolation have to be done from discretely LOS.&lt;/p&gt;
+
+&lt;p&gt;Both &lt;a href=&quot;#ref&quot;&gt;Caucci ei al. 2008&lt;/a&gt; and &lt;a href=&quot;#ref&quot;&gt;Kitaura et al. 2012&lt;/a&gt; use a Bayesian method to interpolate. A detailed description is present in &lt;a href=&quot;#ref&quot;&gt;Pichon et al.&lt;/a&gt;, and here only a summarize of this metod will be present.&lt;/p&gt;
+
+&lt;p&gt;The relation between optical depth and neutral hydrogen is,&lt;/p&gt;
+
+&lt;p&gt;$$ \tau_l(w) = \frac{c\sigma_0}{H(\bar{z})\sqrt{\pi}} \int \int [\int_{-\infty}^{\infty} \frac{n_\mathrm{HI}(x,x_)}]&lt;/p&gt;
+
+&lt;p&gt;With some assumption of dark matter, we can translate &lt;script type=&quot;math/tex&quot;&gt;n_\mathrm{HI}&lt;/script&gt; to density of dark matter &lt;script type=&quot;math/tex&quot;&gt;\rho_\mathrm{DM}&lt;/script&gt;. However this relation still depends on many other parameters, so wen have to determine them first.&lt;/p&gt;
+
+&lt;p&gt;Combining all those paremeters, we can make an array, &lt;script type=&quot;math/tex&quot;&gt;\mathbf{M}&lt;/script&gt;, and what we want now is the probability of getting &lt;script type=&quot;math/tex&quot;&gt;\mathbf{M}&lt;/script&gt; from a given data, &lt;script type=&quot;math/tex&quot;&gt;\mathbf{D}&lt;/script&gt;, and according to Bayesian theorem, we have,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\mathbf{M} | \mathbf{D}) = L(\mathbf{D} | \mathbf{M})f(\mathbf{M})&lt;/script&gt;
+
+&lt;p&gt;which we can (though still a little complicated), compute the likelihood &lt;script type=&quot;math/tex&quot;&gt;L(\mathbf{D} \| \mathbf{M})&lt;/script&gt; and derive the prior \( f(\mathbf{M}) \) under some observation. Then, after holding the 3-D density result, visulization can be easily done.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#ref&quot;&gt;Caucci ei al. 2008&lt;/a&gt; recover the tropology of HI density field at redshift of 2 simulated by model. The result looks very consistent with the simulated data.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-LF-report/3-topology.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;measureing-bao-feature-from-correlation-function&quot;&gt;Measureing BAO feature from correlation function&lt;/h4&gt;
 
