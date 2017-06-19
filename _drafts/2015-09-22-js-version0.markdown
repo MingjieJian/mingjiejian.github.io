@@ -1,0 +1,30 @@
+---
+layout:     post
+title:      "LF Report part"
+subtitle:   "?"
+date:       2000-01-01
+author:     "mingjie"
+header-img: "img/post-bg-js-version.jpg"
+tags:
+    - learning
+---
+
+Although with the data of BOSS survey, 3-D density distribution is possible to be derived, the separation of each quasar in slightly shifted LOS block us from directly detecting the distribution in between. As a result, interpolation have to be done from discretely LOS.
+
+Both [Caucci ei al. 2008](#ref) and [Kitaura et al. 2012](#ref) use a Bayesian method to interpolate. A detailed description is present in [Pichon et al.](#ref), and here only a summarize of this metod will be present.
+
+The relation between optical depth and neutral hydrogen is,
+
+$$ \tau_l(w) = \frac{c\sigma_0}{H(\bar{z})\sqrt{\pi}} \int \int [\int_{-\infty}^{\infty} \frac{n_\mathrm{HI}(x,x_)}]
+
+With some assumption of dark matter, we can translate $$ n_\mathrm{HI} $$ to density of dark matter $$ \rho_\mathrm{DM} $$. However this relation still depends on many other parameters, so wen have to determine them first.
+
+Combining all those paremeters, we can make an array, $$ \mathbf{M} $$, and what we want now is the probability of getting $$ \mathbf{M} $$ from a given data, $$ \mathbf{D} $$, and according to Bayesian theorem, we have,
+
+$$ f(\mathbf{M} | \mathbf{D}) = L(\mathbf{D} | \mathbf{M})f(\mathbf{M}) $$
+
+which we can (though still a little complicated), compute the likelihood $$ L(\mathbf{D} | \mathbf{M}) $$ and derive the prior $$ f(\mathbf{M}) $$ under some observation. Then, after holding the 3-D density result, visulization can be easily done.
+
+[Caucci ei al. 2008](#ref) recover the tropology of HI density field at redshift of 2 simulated by model. The result looks very consistent with the simulated data.
+
+![](/img/post/in-post/post-LF-report/3-tropology.png)
