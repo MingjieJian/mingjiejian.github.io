@@ -15,21 +15,21 @@ tags:
 ![](https://www.nature.com/nature/journal/v440/n7088/images/nature04805-f2.2.jpg)
 *Ly-$$ \alpha $$ forest example of QSO 1422+2309 (top panel), the interpertation of formation of the forest (middle panel), and a zoom of the spectra (bottom panel). [Springel et al. (2006)](https://www.nature.com/nature/journal/v440/n7088/full/nature04805.html)*
 
-When we look at the spectra of a quasar, we will find there is an area with very dense absorption lines blueward to the Lymann-$$ \alpha $$ emission line wavelength. This area looks like the forest, so it is called "Lymann-$$ \alpha $$ Forest". Ly-$$ \alpha $$ forest, combined with two other kinds of absorption line (broad and narrow absorption line), raised a debate on their origin. It turned out that broad lines are from quasars themselves, while narrow lines as well as Ly-$$ \alpha $$ forest comes from the galaxies and neutral hydrogen located in the line-of-sight between quasar and us. 
+When we look at the spectra of a quasar, we will find there is an area with very dense absorption lines blueward to the Lymann-$$ \alpha $$ emission line wavelength. This area looks like the forest, so it is called "Lymann-$$ \alpha $$ Forest". Ly-$$ \alpha $$ forest, combined with two other kinds of absorption line (broad and narrow absorption line), raised a debate on their origin. It turned out that broad lines are from quasars themselves, while narrow lines as well as Ly-$$ \alpha $$ forest comes from the galaxies and neutral hydrogen located in the line-of-sight between quasar and us.
 
-Photons with a wavelength of 1216 Angstrom may be absorbed by a neutral hydrogen cloud in the line-of-sight between quarar and us. Although the absosption will always happenes in 1216 Angstrom, the spectra of quasar, becuase of the expension of Universe, will not stay in the same place. As the photon going through the expanding Universe, its wavelength will increase, that is, the whole spectra will have a redshift while the Lymann-$$ \alpha $$ absorption is still in the same wavelength. Thus those dense absorption forest are mainly caused by one absorption (some other lines suc as Lymann-$$ \beta $$ will also cause a "forest", but much weaker than Lymann-$$ \alpha $$). 
+Photons with a wavelength of 1216 Angstrom may be absorbed by a neutral hydrogen cloud in the line-of-sight between quasar and us. Although the absorption will always happens in 1216 Angstrom, the spectra of quasar, because of the expension of Universe, will not stay in the same place. As the photon going through the expanding Universe, its wavelength will increase, that is, the whole spectra will have a redshift while the Lymann-$$ \alpha $$ absorption is still in the same wavelength. Thus those dense absorption forest are mainly caused by one absorption (some other lines such as Lymann-$$ \beta $$ will also cause a "forest", but much weaker than Lymann-$$ \alpha $$).
 
 A clear interpertation video is presented [here](https://www.youtube.com/watch?v=6Bn7Ka0Tjjw).
 
 ### Why Ly-$$ \alpha $$ Forest can be used as Cosmological Tool?
 
-Because the absorption which should be in the same wavelength now shifted to a wavelength range corresponding to quasar's redshift, the absorption maps the situation of neutral hydrogen between the redshiftted Lymann-$$ \alpha $$ line of quasar and 1216 Angstrom, and we can derive the distribution from what we have observed in the telescopes. 
+Because the absorption which should be in the same wavelength now shifted to a wavelength range corresponding to quasar's redshift, the absorption maps the situation of neutral hydrogen between the redshiftted Lymann-$$ \alpha $$ line of quasar and 1216 Angstrom, and we can derive the distribution from what we have observed in the telescopes.
 
-Furthermore, simulation and measurement of Lymann-$$ \alpha $$ line's broadning indicate that density of neutral hydrogen cloud is low, and their temperature is between $$ 10^4 $$ and $$ 2 \times 10^4 $$. Compared to gravity, pressure forces will be small, so the behaviour of neutral hydrogen will basically be the same as dark metter. As a result, we can trace density distribution also from that of neutral hydrogen. 
+Furthermore, simulation and measurement of Lymann-$$ \alpha $$ line's broadning indicate that density of neutral hydrogen cloud is low, and their temperature is between $$ 10^4 $$ and $$ 2 \times 10^4 $$. Compared to gravity, pressure forces will be small, so the behaviour of neutral hydrogen will basically be the same as dark metter. As a result, we can trace density distribution also from that of neutral hydrogen.
 
 Last but not least, the relation between observed flux in a peticular wavlength and density in that distance can be determined, both from a complex relation or a easier method ([Gallerani et al. 2011](#ref), see next section)
 
-In short, the reason Ly-$$ \alpha $$ forest can be used as cosmological tool is by measuring it, we can constrain some parameters of our modeled cosmolog, or, in reverse, we can create the model Ly-$$ \alpha $$ forest and it looks like what we actually observed. 
+In short, the reason Ly-$$ \alpha $$ forest can be used as cosmological tool is by measuring it, we can constrain some parameters of our modeled cosmolog, or, in reverse, we can create the model Ly-$$ \alpha $$ forest and it looks like what we actually observed.
 
 ### How to constrain the model of Cosmology using Ly-$$ \alpha $$ Forest?
 
@@ -49,7 +49,7 @@ Neutral hydrogen cloud is in a low density situation, so it's easily ionized. We
 
 $$ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)]^3 \Delta(j)^2 \propto \Delta(j)^\beta, 1.5 < \beta < 2.0 $$
 
-where $$ T_0 $$ is IGM density at mean density at redshift $$ z(j) $$, $$ \gamma $$ (slope of equation of state) indicate the reionization history of Universe, $$ \Gamma $$ represent the photoionization rate at given $$ z(j) $$, and $$ \Delta(j) $$ is the over density in a given $$ j $$. So we can see here $$ \tau(i) $$ is related to the property of hydrogen cloud, reionization history of Universe and profile of hydrogen absorption line (if assume Gaussian, it still related to thermal state of the gas). 
+where $$ T_0 $$ is IGM density at mean density at redshift $$ z(j) $$, $$ \gamma $$ (slope of equation of state) indicate the reionization history of Universe, $$ \Gamma $$ represent the photoionization rate at given $$ z(j) $$, and $$ \Delta(j) $$ is the over density in a given $$ j $$. So we can see here $$ \tau(i) $$ is related to the property of hydrogen cloud, reionization history of Universe and profile of hydrogen absorption line (if assume Gaussian, it still related to thermal state of the gas).
 
 This is the reason stating direct derivation of flux-density relation is very complex; it convolutes too many factors that makes cauculation impossible or lossing accuracy if introducing more assumption. However, by using probability distribution function (PDF), this relation can be determined by computation.
 
@@ -57,7 +57,7 @@ Let us now consider the PDF of observed, or transmitte flux $$ F $$ as well as o
 
 $$ \int_0^{F_*} P_F dF = \int_{\Delta_*}^\infty P_\Delta d\Delta $$
 
-or vise versa, 
+or vise versa,
 
 $$ \int_{F_*}^1 P_F dF = \int_0^{\Delta_*} P_\Delta d\Delta $$
 
@@ -72,7 +72,7 @@ By solving these equations, we can get the realtion of $$ F $$ and $$ \Delta $$,
 ![](/img/in-post/post-LF-report/2-3Dd.png)
 *From [Gallerani et al. 2011](#ref)*
 
-So now we cam determine a 1-dimentional density fluctuation long one LOS; this is far from enough to constrain the cosmological model. But if we have a large number of quasars spreading over a large area of celestial sphere, then it will be possible to achieve 3-D density field. Luckily, [BOSS](http://www.sdss.org/surveys/boss/) survey fron SDSS provides this possbiblity. 
+So now we cam determine a 1-dimentional density fluctuation long one LOS; this is far from enough to constrain the cosmological model. But if we have a large number of quasars spreading over a large area of celestial sphere, then it will be possible to achieve 3-D density field. Luckily, [BOSS](http://www.sdss.org/surveys/boss/) survey fron SDSS provides this possbiblity.
 
 ![](http://cdn.iopscience.com/images/1538-3881/145/1/10/Full/aj451111f1_lr.jpg)
 *Footprint of BOSS; from [Dawson et al. 2013](http://adsabs.harvard.edu/abs/2013AJ....145...10D)*
@@ -101,13 +101,28 @@ which we can (though still a little complicated), compute the likelihood $$ L(\m
 
 ![](/img/in-post/post-LF-report/3-topology.png)
 
+It is clear that the recovered density filed is in a low resolution, because of the discrete distribution of LOS. But after smoothing at a scale larger than the LOS's separation, we can hardly tell the difference of the original and recovered. Another point worth mentioning is that the recover in logarithmic space is better than that in linear space.
+
+[Kitaura et al. 2012](#ref) recovered the power spectrum of density from simulation, and the result is again consist very well.
+
+![](/img/in-post/post-LF-report/4-power-spec.png)
+
 #### Measureing BAO feature from correlation function
 
-Reality research will always be limited by observation.
+A more straightforward constrain on cosmological model is from [Busca et al. 2013](#ref). The spectra obtained by BOSS is still too sparse in the celestial sphere and the resolution is not high enough to directly recover the density distribution. This may be also the reason which [Caucci ei al. 2008](#ref) and [Kitaura et al. 2012](#ref) only provide the tool and use simulated data to recover. Instead correlation function of flux maybe more useful.
+
+To achieve this, [Busca et al. 2013](#ref) created correlation function as,
+
+$$ \hat{\xi}_A = \sum_{ij\in A}w_{ij}\delta_i\delta_j / \sum_{ij\in A} w_{ij} $$
+
+where
+
+$$ \delta(\lambda) = \frac{f(\lambda)}{C(\lambda)\bar{F}(z)} - 1
+
+$$ w_{ij} $$ is the weight of two corresponding pixel in two near quasars, $$ f(\lambda) $$ is observed flux, and $$ C(\lambda)\bar{F}(z) $$ is continuum. Volume $$ A $$ contains all quasars have a distance smaller than $$ r $$ to one particular quasar. So if the spectra of two quasars is similar, $$ \hat{\xi}_A $$ will be bigger than two whose spectra is not so similar.
 
 <p id = "ref"></p>
 ---
 ### References
 
 ---
-
