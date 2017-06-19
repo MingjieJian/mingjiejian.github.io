@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Jun 2017 20:44:00 +0900</pubDate>
-    <lastBuildDate>Mon, 19 Jun 2017 20:44:00 +0900</lastBuildDate>
+    <pubDate>Mon, 19 Jun 2017 21:02:14 +0900</pubDate>
+    <lastBuildDate>Mon, 19 Jun 2017 21:02:14 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -502,6 +502,15 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
 &lt;p id=&quot;ref&quot;&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Schneider, P. Extragalactic Astronomy and Cosmology: An Introduction. (2015).&lt;/li&gt;
+  &lt;li&gt;Gallerani, S., Kitaura, F. S. &amp;amp; Ferrara, A. Cosmic density field reconstruction from Lyα forest data. &lt;em&gt;Monthly Notices of the Royal Astronomical Society&lt;/em&gt; &lt;strong&gt;413&lt;/strong&gt;, L6–L10 (2011).&lt;/li&gt;
+  &lt;li&gt;Pichon, C., Vergely, J. L., Rollinde, E., Colombi, S. &amp;amp; Petitjean, P. Inversion of the Lyman α forest: three-dimensional investigation of the intergalactic medium. &lt;em&gt;Monthly Notices of the Royal Astronomical Society&lt;/em&gt; &lt;strong&gt;326&lt;/strong&gt;, 597–620 (2001).&lt;/li&gt;
+  &lt;li&gt;Caucci, S. et al. Recovering the topology of the intergalactic medium at z ~ 2. &lt;em&gt;Monthly Notices of the Royal Astronomical Society&lt;/em&gt; &lt;strong&gt;386&lt;/strong&gt;, 211–229 (2008).&lt;/li&gt;
+  &lt;li&gt;Kitaura, F.-S., Gallerani, S. &amp;amp; Ferrara, A. Multiscale inference of matter fields and baryon acoustic oscillations from the Lyα forest. &lt;em&gt;Monthly Notices of the Royal Astronomical Society&lt;/em&gt; &lt;strong&gt;420&lt;/strong&gt;, 61–74 (2012).&lt;/li&gt;
+  &lt;li&gt;Busca, N. G. et al. Baryon acoustic oscillations in the Lyα forest of BOSS quasars. &lt;em&gt;Astronomy and Astrophysics&lt;/em&gt; &lt;strong&gt;552&lt;/strong&gt;, A96 (2013).&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;hr /&gt;
 </description>

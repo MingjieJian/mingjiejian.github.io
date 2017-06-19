@@ -154,4 +154,12 @@ The future of Ly-$$ \alpha $$ forest is ofcourse the future of quasar observatio
 ---
 ### References
 
+2. Schneider, P. Extragalactic Astronomy and Cosmology: An Introduction. (2015).
+5. Gallerani, S., Kitaura, F. S. & Ferrara, A. Cosmic density field reconstruction from Lyα forest data. *Monthly Notices of the Royal Astronomical Society* **413**, L6–L10 (2011).
+7. Pichon, C., Vergely, J. L., Rollinde, E., Colombi, S. & Petitjean, P. Inversion of the Lyman α forest: three-dimensional investigation of the intergalactic medium. *Monthly Notices of the Royal Astronomical Society* **326**, 597–620 (2001).
+6. Caucci, S. et al. Recovering the topology of the intergalactic medium at z ~ 2. *Monthly Notices of the Royal Astronomical Society* **386**, 211–229 (2008).
+4. Kitaura, F.-S., Gallerani, S. & Ferrara, A. Multiscale inference of matter fields and baryon acoustic oscillations from the Lyα forest. *Monthly Notices of the Royal Astronomical Society* **420**, 61–74 (2012).
+3. Busca, N. G. et al. Baryon acoustic oscillations in the Lyα forest of BOSS quasars. *Astronomy and Astrophysics* **552**, A96 (2013).
+
+
 ---
