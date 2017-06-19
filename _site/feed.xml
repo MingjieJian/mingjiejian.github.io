@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 18 Jun 2017 21:24:18 +0900</pubDate>
-    <lastBuildDate>Sun, 18 Jun 2017 21:24:18 +0900</lastBuildDate>
+    <pubDate>Mon, 19 Jun 2017 10:25:32 +0900</pubDate>
+    <lastBuildDate>Mon, 19 Jun 2017 10:25:32 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -428,7 +428,7 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
 &lt;p&gt;&lt;img src=&quot;http://cdn.iopscience.com/images/1538-3881/145/1/10/Full/aj451111f1_lr.jpg&quot; alt=&quot;&quot; /&gt;
 &lt;em&gt;Footprint of BOSS; from &lt;a href=&quot;http://adsabs.harvard.edu/abs/2013AJ....145...10D&quot;&gt;Dawson et al. 2013&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;reconstruction-of-3-dimensional-mass-density-field&quot;&gt;Reconstruction of 3-dimensional mass density field&lt;/h4&gt;
+&lt;h4 id=&quot;recovering-tropology-and-power-spectrum&quot;&gt;Recovering tropology and power spectrum&lt;/h4&gt;
 
 &lt;h4 id=&quot;measureing-bao-feature-from-correlation-function&quot;&gt;Measureing BAO feature from correlation function&lt;/h4&gt;
 
