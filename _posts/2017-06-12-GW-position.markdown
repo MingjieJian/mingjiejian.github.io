@@ -6,7 +6,7 @@ date:       2017-06-12
 author:     "Mingjie"
 header-img: "img/post-bg-GW.jpg"
 tags:
-    - Learning
+    - learning
 ---
 
 **我不是做引力波的，所以以下写的可能有错误，请留意。**
