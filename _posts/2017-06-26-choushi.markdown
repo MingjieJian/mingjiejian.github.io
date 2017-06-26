@@ -4,7 +4,7 @@ title:      "晃到关东最东去——銚子"
 subtitle:   "ちょうしはどうですか？"
 date:       2017-06-26
 author:     "Mingjie"
-header-img: "img/post-bg-js-version.jpg"
+header-img: "img/post-bg-choushi.jpg"
 tags:
     - hanging-around
 ---
