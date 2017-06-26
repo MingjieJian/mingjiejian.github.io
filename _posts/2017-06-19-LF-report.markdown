@@ -5,7 +5,7 @@ subtitle:   "Report on Lecture <i> Cosmic web </i>"
 date:       2017-06-19
 author:     "Mingjie"
 header-img: "img/post-bg-LF-report.jpg"
-comments:   false
+comments:   true
 tags:
       - learning
 ---
