@@ -5,6 +5,7 @@ subtitle:   "ちょうしはどうですか？"
 date:       2017-06-26
 author:     "Mingjie"
 header-img: "img/post-bg-choushi.jpg"
+comments:   true
 tags:
     - hanging-around
 ---

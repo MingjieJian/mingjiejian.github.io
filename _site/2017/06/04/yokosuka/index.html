@@ -130,10 +130,14 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
+        position: relative;
         background-image: url('/img/post-bg-yokosuka.jpg')
     }
+
+    
 </style>
 <header class="intro-header" >
+    <div class="header-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -251,7 +255,7 @@
 
 
 
-                <hr>
+                <hr style="visibility: hidden;">
 
                 
 
@@ -286,7 +290,11 @@
                 <!-- disqus 评论框 end -->
                 
 
-            </div>
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
 
     <!-- Sidebar Container -->
             <div class="
@@ -308,7 +316,7 @@
                             
         				
                             
-                				<a href="/tags/#hanging-around" title="hanging-around" rel="2">
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="3">
                                     hanging-around
                                 </a>
                             
@@ -339,6 +347,9 @@
         </div>
     </div>
 </article>
+
+
+
 
 
 
@@ -375,7 +386,7 @@
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
           visible: 'always',
           placement: 'right',
@@ -395,7 +406,6 @@
         }
     }
 </style>
-
 
 
     <!-- Footer -->
@@ -539,11 +549,6 @@
 <!-- Image to hack wechat -->
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
-
-<!-- Added for using Mathjax to type formaulas-->
-<script type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 
 </body>
 
