@@ -85,5 +85,8 @@ friends: [
     },{
         title: "Gerry",
         href: "http://gerry.lamost.org/blog/"
+    },{
+        title: "Fmajor's Blog"
+        href: "http://fmajor.lamost.org/blog/"
     }
 ]
