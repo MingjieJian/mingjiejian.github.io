@@ -5,9 +5,193 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 24 Jul 2017 21:21:25 +0900</pubDate>
-    <lastBuildDate>Mon, 24 Jul 2017 21:21:25 +0900</lastBuildDate>
+    <pubDate>Sat, 29 Jul 2017 22:55:27 +0900</pubDate>
+    <lastBuildDate>Sat, 29 Jul 2017 22:55:27 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>千曲万叶，若手之会</title>
+        <description>&lt;p&gt;若手夏の学校，全称是2017年度 第47回 天文 天体物理若手夏の学校，翻译成中文大致是天文、天体物理青年（学生）夏季学校。这实际上是一年一度的会议，完全由日本各大学的研究生组织策划与参加，除了邀请的演讲者之外没有任何的教授、老师参与。所有的参加者在三天内住在同一个宾馆，分成不同的领域（重力与宇宙学、致密天体、星系与星系团、太阳与恒星、星际介质、恒星形成与行星系和观测仪器分会）进行口头或者海报的研究汇报，以交流研究进展。从到这里将近一年的经验来看，日本人的英语写作尚可，但是本科生基本不怎么说英语、硕士稍微可以说一点、博士讲得比较顺畅（如果一直没有丢掉英语的话）。所以这个会议的工作语言当然是日语；本来我是没有什么兴趣去的（日常的还没说好，专业上的日语更烂），但是发现负责我们正在用的光谱仪调试的京都产业大学的同学也去，就临时起意报了个名。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/1-manual.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;长野县-千曲市-户仓站&quot;&gt;长野县 千曲市 户仓站&lt;/h3&gt;
+
+&lt;p&gt;为了节省经费，从14年开始的夏季学校都是在长野县千曲市户仓的ホテル圓山荘（圆山庄宾馆）举行的（虽然我没看出来这宾馆哪里圆了，方方正正的）。从东京到户仓一般是坐北陆新干线到上田，转信浓铁道线到户仓，全程不到三个小时。千曲市的名字是从纵贯市区的河流千曲川而来的；从定义上来说，加上出了长野县之后改名叫信浓川的部分，信浓川（千曲川）是日本最长的河流。但是千曲市出名的地方不在这，在温泉。戸倉上山田温泉是从明治中期开设的日本有名的温泉，在大正后期沿着温泉的位置建造了温泉街，现在这一带也有非常多的温泉旅馆和户外足浴池。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/2-pano1.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;站在千曲川桥上的全景，右边就是温泉街和旅馆&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;户仓所在的千曲市南部处于山谷，四周都被山丘环绕。中间的千曲川一路分叉又会合，造出了非常多的江心岛，可能这也是千曲这个名字的由来吧。路上行人不多，大都十分悠闲，感觉是个度假的好地方。&lt;/p&gt;
+
+&lt;h3 id=&quot;开会&quot;&gt;开会&lt;/h3&gt;
+
+&lt;p&gt;这次参会人数在250人左右，其中一百人为15分钟口头演讲，另一百人为海报或者海报+3分钟口头演讲（还有大概二十人打酱油），所以时间并不宽裕。报到时间仅为1个半小时，之后马上开始各个会场的报告，没有开幕式。但是因为宾馆里只有三个会场，所以一些小的分会场（比如太阳恒星啊，星际介质啊）不是每个时间段都有会，就可以跑到别的会场去听。除了普通的研究生报告之外，每个分会场还有两个招待讲演，邀请一些教授来讲讲和分会场主题有关的内容。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;此处应有演讲的照片&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;作为听讲的成果，这里介绍两个有意思的（而且我听懂了的）报告：&lt;/p&gt;
+
+&lt;h5 id=&quot;機械学習による-high-z-grb-の選定-杉山-真也-埼玉大学大学院&quot;&gt;機械学習による High-z GRB の選定 （杉山 真也 埼玉大学大学院）&lt;/h5&gt;
+
+&lt;p&gt;通过机器学习确定高红移伽马射线暴(GRB)。雨燕(Swift)卫星可以快速探测到刚刚爆发的伽马射线暴，并将伽马射线波段的数据回地球。因为我们对发生在远距离也就是高红移的GRB更感兴趣，所以希望能尽快将高红移的GRB挑选出来以供地面望远镜进行光学波段的余晖观测。Swift的数据在传回地球之后会被处理并得出一些GRB的参数（比如爆发的最大流量、爆发的持续时间等）。这个研究选择了其中的8个并通过已知红移的GRB数据尝试用机器学习的方法给出红移大小的判据。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/GRB1.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;特征量表的图&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;最初高低红移的判据是&lt;script type=&quot;math/tex&quot;&gt;z = 5&lt;/script&gt;。这个判据之下只有9个高红移GRB（低红移的有294个），所以拿8个当样本，剩下一个检验，看能否判别出剩下那个是高红移GRB。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/GRB-method1-result.png&quot; alt=&quot;&quot; /&gt;
+结果全错:)&lt;/p&gt;
+
+&lt;p&gt;然后觉得可能是因为低红移GRB太多了，导致数据不平衡；就把当作样本的高/低红移GRB的数量都减到5个，剩下的当检验&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/GRB-method2-result.png&quot; alt=&quot;&quot; /&gt;
+结果也理所应当地不怎么样&lt;/p&gt;
+
+&lt;p&gt;最后发现高红移GRB数据量太小了，将判据从5改到3，训练样本各取50个：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/GRB-method3-result.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;现在低红移的准确律提升了，但是高红移基本的还是那个样子。个人觉得还是样本数量不太够或者有不少GRB的红移在判据的分界线上，所以现在还不能达到足够的判别精度。说这个是因为这是这次会议唯一一个将机器学习应用到天文中的报告（当然还有一个别的原因），而我觉得这是天文学未来（甚至是现在就）值得关注的一个方向。&lt;/p&gt;
+
+&lt;h5 id=&quot;脈動型変光星の偏光観測による銀河系中心方向の磁場構造解析-善光哲哉-京都大学大学院&quot;&gt;脈動型変光星の偏光観測による銀河系中心方向の磁場構造解析 （善光哲哉 京都大学大学院）&lt;/h5&gt;
+
+&lt;p&gt;磁场下的星际介质粒子一般会有有序的排列，而这会导致穿过星际介质的光发生偏振。反过来说观测星光的偏振我们可以得知恒星和观测者之间的磁场情况。而在银道面上一些距离比较远或者在银心后面的恒星由于在可见光波段的消光比较严重，需要在红外进行偏振观测。这个研究就挑选了一些在银心背面附近的造父变星进行偏振观测，并得出了偏振度的图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/polarization.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;基本上恒星的偏振符合最早的偏振巡天的图（蓝色点），但是其中有5颗星的偏振方向偏离了银道面方向，所以这个区域可能有一些特别。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/poster.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;海报的展示也做得挺用心，专门海报section的时候海报的作者们基本都会在自己的海报前面向有兴趣的同学们讲解自己的研究。我们唯二的两次听讲是因为我觉得“这个描边效果看着像20年前的ppt一样”和“哇这竟然还贴了便条补充信息，好用心啊”然后作者就过来了。&lt;/p&gt;
+
+&lt;h3 id=&quot;娱乐&quot;&gt;娱乐&lt;/h3&gt;
+
+&lt;p&gt;惯例，日本的“娱乐”多数应该是飲み会。每天晚上7点吃饭，9点有“分科会”；名字挺专业的，好像还分科专门自由讨论学术问题，其实就是大家回到吃饭的地方一起喝酒。喝到什么时候呢？1点钟。基本上就是喝到一点，第二天中午12点醒，翘掉早上的会吃午饭，下午听讲座，晚上继续喝。当然也不是所有人都这么做，至少早上的会还是有不少人去的。&lt;/p&gt;
+
+&lt;p&gt;对于我来说娱乐就是出去走走转转。晚上的户仓和千曲川有着别样的静谧。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/togura-night.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;过千曲川的桥对面有一座神社，晚上看着有点可怕，但还是走了进去拍了一些看起来更可怕的照片。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/jinja.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;住宿&quot;&gt;住宿&lt;/h3&gt;
+
+&lt;p&gt;和室！不过一直以来都有点怕和室，幸好我不算太重，但是要我跪着或者盘腿坐上一个小时也是能把腿废掉的。但是宾馆里面就没有洋室（正常的房间），连吃饭都是和室。在楼梯的某个角落看见了榻榻米的全貌（就是一块大概3厘米厚的灯芯草板子），想起来租房的时候看到的计量单位“畳”就是这个东西。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;和室里所摆放的桌子、座垫、棉被、寝具等，可以做为聚餐、团聚、书房、卧室等这些用途之外，还可以做出许多各式各样用途的空间。在和室里不需要穿鞋子（包括拖鞋），赤脚走在以自然素材灯芯草做成的叠席上，有如徜徉在大自然一样。和室还有着冬暖夏凉的特性。
+–维基百科&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;怪不得我一进宾馆就觉得哪都有一股发霉的味道，原来是榻榻米的锅。对于我们这种懒人来说“各式各样用途的空间”就意味着第一天是书房，以后就都是卧室了；谁会把被铺收起来呢。晚上把床垫之类的铺好之后和室实际上就成了个大通铺，5个人睡在大概20平米的空间内。果然上下铺利用效率高一点。&lt;/p&gt;
+
+&lt;p&gt;早晚饭是自助，种类挺多，也有一小部分西式食物。中午就只有（也算不错的）盒饭了，咖哩或者是正常的便当。&lt;/p&gt;
+
+&lt;p&gt;住宿方面最大的收获应该就是泡了澡。学习了浴衣的穿法（虽然打结还是一坨），穿着浴衣和人字拖跑到澡堂里洗澡。感觉上和国内的澡堂性质差不多，只是不用自带沐浴露，而且有位置坐着洗。但是泡澡就有点难接受了。要知道平常我都习惯在二十多度的水里游泳，但是温泉水至少三十多度，下去的感觉就是“滚水渌猪肠”，二十分钟之后蘸点酱油能上碟了。&lt;/p&gt;
+
+&lt;h3 id=&quot;最后一天&quot;&gt;最后一天&lt;/h3&gt;
+
+&lt;p&gt;最后竟然有人气演讲评比。我们三个英语演讲肯定是靠边站，然后各个分会场投票选出一个演讲，海报展示选出三个，各获得15分钟的时间再讲一遍。这也算是一个激励的手段，印象中不少会议都有这样的评比之类的。&lt;/p&gt;
+
+&lt;p&gt;讲完之后就是会务会议；会务组很认真地从上次会议的经费情况开始，到下下次的会议主办方，总结了各项的事务。特别是财务方面的状况，包括上次剩下的钱，这次各单位赞助的费用，为什么还要选用同一家宾馆、注册费下调了1500块钱等等作了详细说明。虽然我不是会员，在后面敲(wan)着(zhe)键(you)盘(xi)，但是不少人都还是听得挺认真的。&lt;/p&gt;
+
+&lt;h3 id=&quot;个人收获&quot;&gt;个人收获&lt;/h3&gt;
+
+&lt;p&gt;知道了我蹩脚的日语竟然还能跟别人谈笑风生这件事。满以为在房间里会变成四个日本人哇啦哇啦我在一旁缩着玩游戏的局面，结果跟埼玉大学的杉山同学（嗯就是上面那个）聊得很high，还让他给我再讲一遍他的研究（他各种尝试夹杂英语），最后走之前还约好了下次一起喝酒去。好玩。虽然这个会议是不会再去的了，但是这几天自己还是很高兴的。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;此处应该有合照&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;相关网站&quot;&gt;相关网站&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://astro-wakate.sakura.ne.jp/ss2017/web/index.html&quot;&gt;夏の学校主页&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 29 Jul 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2017/07/29/wakate/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/29/wakate/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>如何给地球“杀菌”？</title>
+        <description>&lt;p&gt;截止到现在（2017.7.24），我们已经确认了3499个地外行星，发现了2609个行星系统。在这些地外行星中，有将近80%是由凌星的方法发现的。而随着新一代的望远镜和光谱仪的应用（JWST、TMT等），我们有望在不远的未来探测到行星大气的成分，从而由此推断行星上是否有生命。探测到地外生命的概率由两个数值决定，一个是所有行星中有生命产生的行星的比例，第二是一个行星从生命诞生到被我们观测到的时间内生命一直存续的概率。第一个数值比较难估计，但是第二个值对地外生命的探测也是很重要的。这篇文章的内容基本上来自参考文献[1]，感觉是一个有趣的脑洞。&lt;/p&gt;
+
+&lt;p&gt;我们并不能直接计算出生命存续的概率是多大，但是我们知道在天文领域内发生灾难性现象的概率是多大。换言之，只要我们数清楚有多少天文现象能给地球“杀菌”，把地球上的所有生命都杀死，就可以知道生命存续的概率有多大了。实际上有不少论文已经对能使人类灭绝的现象给出了结论，如在未来100年内地球遭受2公里大小的小行星或者彗星撞击的概率是&lt;script type=&quot;math/tex&quot;&gt;10^{-4}&lt;/script&gt;[2]，两亿年内地球很可能遭受1次伽马射线暴和20次超新星爆发[3]。这么看来人类的生命的确比较脆弱。但是如果我们发挥博爱的精神，将视野放到整个生物圈中，我们能找到一种上天入地无所不能生命力很顽强的生物来代表地球上所有的生命吗？&lt;/p&gt;
+
+&lt;p&gt;还真有。&lt;/p&gt;
+
+&lt;h3 id=&quot;水熊虫tardigrade&quot;&gt;水熊虫(Tardigrade)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/0/08/Waterbear.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Bob Goldstein and Vicky Madden, UNC Chapel Hill -
+&lt;a rel=&quot;nofollow&quot; class=&quot;external free&quot; href=&quot;http://tardigrades.bio.unc.edu/pictures/&quot;&gt;link1&lt;/a&gt;, &lt;a rel=&quot;nofollow&quot; class=&quot;external free&quot; href=&quot;https://www.flickr.com/photos/waterbears/sets/72157607218607395/&quot;&gt;link2&lt;/a&gt;, &lt;a rel=&quot;nofollow&quot; class=&quot;external free&quot; href=&quot;https://www.flickr.com/photos/waterbears/2851666759/in/album-72157607218607395/&quot;&gt;link3&lt;/a&gt; (note permission below)，&lt;a href=&quot;http://creativecommons.org/licenses/by-sa/3.0&quot; title=&quot;Creative Commons Attribution-Share Alike 3.0&quot;&gt;CC BY-SA 3.0&lt;/a&gt;，&lt;a href=&quot;https://commons.wikimedia.org/w/index.php?curid=4747599&quot;&gt;链接&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;缓步动物门（学名：Tardigrata）是动物界的一个门，是俗称水熊虫的一类小型动物，主要生活在淡水的沉渣、潮湿土壤以及苔藓植物的水膜中，少数种类生活在海水的潮间带。有记录的大约有750余种，其中许多种是世界性分布的。在喜马拉雅山脉（海拔6000米以上）或深海（海拔4000米以下）都可以找到它们的踪影。从此直至今天，人们对缓步动物在动物分类中的位置、形态学、生活方式、组织学以及其隐生性的研究兴趣就有增无减。
+&lt;br /&gt;缓步动物也是第一种已知可以在太空中生存的动物。
+&lt;br /&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%BC%93%E6%AD%A5%E5%8A%A8%E7%89%A9%E9%97%A8&quot;&gt;维基百科&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;因为长着像熊爪的爪子，所以这个很小（不超过1.5mm）的动物被称为水熊虫。水熊虫可以在151或者-272摄氏度的环境中生存几分钟，在真空、高压或者高辐射的环境里也没有问题；有几只甚至在太空中成功地进行了繁殖。如果你想杀死一只水熊虫，请看&lt;a href=&quot;https://futurism.com/images/so-you-want-to-kill-a-tardigrade-web-comic/&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;既然水熊虫的生命力这么顽强，将水熊虫杀死需要什么样的条(nao)件(dong)呢？&lt;/p&gt;
+
+&lt;h3 id=&quot;将海洋煮沸&quot;&gt;将海洋煮沸&lt;/h3&gt;
+
+&lt;p&gt;生活在陆地上的我们是很脆弱的：大气层温度的变化会将我们冻死/热死、强烈的辐射会使臭氧层消失，把我们暴露在辐射环境中。但是海洋对外界环境的变化没有那么敏感。即使是小行星撞击带来的低温也不会使海洋有很大的改变（恐龙很可能因为小行星撞击而灭绝了，但90%种类的鱼类仍然存活了下来）；同时即使地球遭受着很强的高能辐射，海水会大量吸收使得海平面几米以下的海洋辐射量仍维持在正常的水平。所以海洋是维持生命存续的一道屏障。&lt;/p&gt;
+
+&lt;p&gt;但是海水吸收了辐射之后温度会上升，所以几位作者（通过他们的脑洞）想到了：如果某个天文现象可以通过加温的方式移除海洋，那么海洋变成陆地，大家不就都完了么？同时作者希望对概率做一个上限的估计，所以就放宽了一点条件：我们所能考虑的天文现象（小行星撞击、超新星爆发和伽马射线暴）中，能把海洋煮沸的现象发生的概率有多大？&lt;/p&gt;
+
+&lt;p&gt;根据海水的比热容和质量，我们可以算出让海水升温100摄氏度需要的能量是&lt;script type=&quot;math/tex&quot;&gt;5.6 \times 10^{26} \mathrm{J}&lt;/script&gt;，这相当于半个多地球大小的TNT炸药爆炸所产生的能量。&lt;/p&gt;
+
+&lt;p&gt;假设这些能量全部由一个小行星从无穷远处落到地球表面的动能提供，那么我们需要一个质量大于&lt;script type=&quot;math/tex&quot;&gt;1.7 \times 10^{18}~\mathrm{kg}&lt;/script&gt;的小行星。这样的小行星太阳系里面有（比如灶神星和智神星），但是不多，加起来也只有19颗。模型预测的地球被不同质量小行星撞击的概率如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-tardigrade/Asteroids-ImpactRate.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;小行星撞击概率随质量的关系。虚线表示能灭绝地球上所有生命的质量范围；来自参考文献[1]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看出概率在&lt;script type=&quot;math/tex&quot;&gt;10^{-9}&lt;/script&gt;每十亿年的量级。&lt;/p&gt;
+
+&lt;p&gt;超新星爆发时所抛射的能量很大，但是能量会向四面八方扩散，地球需要离超新星足够近才能得到够多的能量将海水煮沸。这个距离是多少呢？0.04秒差距，也就是0.13光年。比邻星距离我们4.22光年，所以即使在比邻星的距离上发生了超新星爆发，海洋的温度也只会上升0.1摄氏度。&lt;/p&gt;
+
+&lt;p&gt;利用银河系模型，我们可以算出在不同的位置附近（&amp;lt;0.04pc）存在超新星的概率是多大。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-tardigrade/GHZ-SNRates-Death.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;来自参考文献[1]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;虽然看起来银心和银道面的概率挺高，但是整体的量级都在&lt;script type=&quot;math/tex&quot;&gt;10^{-6}&lt;/script&gt;每十亿年以下。&lt;/p&gt;
+
+&lt;p&gt;对伽马射线暴的计算和超新星类似；不同的是我们可以假设伽马射线暴呈喷流状，能量会更集中。这样的话能够煮沸海洋的距离就变为了13.8秒差距，比超新星远了很多。但是因为伽马射线暴的发生概率比超新星的小，所以能够杀死地球上所有生物的伽马射线暴产生概率只有&lt;script type=&quot;math/tex&quot;&gt;3.2 \times 10^{-10}&lt;/script&gt;，比前两种可能性低很多。&lt;/p&gt;
+
+&lt;p&gt;总的来说，通过这三种方法给地球“杀菌”成功的可能性只有&lt;script type=&quot;math/tex&quot;&gt;10^{-7}&lt;/script&gt;每十亿年，也就是每一百亿亿年一次。&lt;/p&gt;
+
+&lt;h3 id=&quot;没有别的办法了吗&quot;&gt;没有别的办法了吗？&lt;/h3&gt;
+
+&lt;p&gt;有，太阳。太阳在生命的晚期会膨胀，最终变成白矮星。即使膨胀的时候不足以使地球上的海洋沸腾，太阳死亡之后长时间的低温也能灭绝地球上所有的生物（包括水熊虫）。除非地球在太阳膨胀的时候被抛离太阳系，然后被另外一个恒星捕获。&lt;/p&gt;
+
+&lt;p&gt;无论如何，这篇文章的结论是相对乐观的：一旦生命在行星中产生，就很难被灭绝。但是这个难是对于水熊虫来说的，或许有朝一日地球会变成水熊虫的世界？&lt;/p&gt;
+
+&lt;h3 id=&quot;参考文献&quot;&gt;参考文献&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sloan, D., Batista, R. A. &amp;amp; Loeb, A. The Resilience of Life to Astrophysical Events. &lt;em&gt;Scientific Reports&lt;/em&gt; 7, (2017).&lt;/li&gt;
+  &lt;li&gt;Chapman, C. R. &amp;amp; Morrison, D. Impacts on the Earth by asteroids and comets: assessing the hazard. &lt;em&gt;Nature&lt;/em&gt; &lt;strong&gt;367&lt;/strong&gt;, 33–40 (1994).&lt;/li&gt;
+  &lt;li&gt;Beech, M. The past, present and future supernova threat to Earth’s biosphere. &lt;em&gt;Astrophys Space Sci&lt;/em&gt; &lt;strong&gt;336&lt;/strong&gt;, 287–302 (2011).&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Mon, 24 Jul 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2017/07/24/tardigrade/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/07/24/tardigrade/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>晃到关东最东去——銚子</title>
