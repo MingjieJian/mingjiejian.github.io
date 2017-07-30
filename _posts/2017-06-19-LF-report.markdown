@@ -7,7 +7,7 @@ author:     "Mingjie"
 header-img: "img/post-bg-LF-report.jpg"
 comments:   true
 tags:
-      - learning
+      - astro-ph
 ---
 
 ### What is Lymann-$$ \alpha $$ Forest?

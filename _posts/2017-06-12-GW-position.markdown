@@ -6,7 +6,7 @@ date:       2017-06-12
 author:     "Mingjie"
 header-img: "img/post-bg-GW.jpg"
 tags:
-    - learning
+    - astro-ph
 ---
 
 **我不是做引力波的，所以以下写的可能有错误，请留意。**
@@ -135,8 +135,7 @@ $$ p(\alpha,\delta) = \int_0^\pi \int_{-1}^1 \int_{-T}^T \int_{r_{min}}^{r_{max}
 打公式真累。不过要是今天不搞完以后可能就忘了。Stefen Ballmer教授的讲课比较清晰，跟上并不太难；不过由于自己水平太渣加上教授的字迹太瞎眼（无论板书还是笔记），最终决定从微分几何开始学起，最后对引力波原理也不怎么熟悉，只能挑一篇简单的论文讲一讲。不过也算是趁此机会看了看梁灿彬老师的[视频课](https://www.bilibili.com/video/av1157024/?from=search&seid=10126358752879864979)和书（也很清晰易懂！)，准备pre的时候各种用贝叶斯，也是学到了不少东西。
 
 ### 参考文献
- 
+
 1.  Singer, L. P. & Price, L. R. Rapid Bayesian position reconstruction for gravitational-wave transients. *Physical Review D* **93**, (2016).
 2.  Abbott, B. P. et al. Localization and Broadband Follow-up of the Gravitational-wave Transient GW150914. *The Astrophysical Journal Letters* **826**, L13 (2016).
 3.  Aasi, J. et al. First Searches for Optical Counterparts to Gravitational-wave Candidate Events. *The Astrophysical Journal Supplement Series* **211**, 7 (2014).
-

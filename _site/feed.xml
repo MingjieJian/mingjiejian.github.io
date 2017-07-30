@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 29 Jul 2017 22:55:27 +0900</pubDate>
-    <lastBuildDate>Sat, 29 Jul 2017 22:55:27 +0900</lastBuildDate>
+    <pubDate>Sun, 30 Jul 2017 20:20:10 +0900</pubDate>
+    <lastBuildDate>Sun, 30 Jul 2017 20:20:10 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -65,7 +65,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-wakate/poster.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;海报的展示也做得挺用心，专门海报section的时候海报的作者们基本都会在自己的海报前面向有兴趣的同学们讲解自己的研究。我们唯二的两次听讲是因为我觉得“这个描边效果看着像20年前的ppt一样”和“哇这竟然还贴了便条补充信息，好用心啊”然后作者就过来了。&lt;/p&gt;
+&lt;p&gt;其他的海报的展示也做得挺用心，专门海报section的时候海报的作者们基本都会在自己的海报前面向有兴趣的同学们讲解自己的研究。我们唯二的两次听讲是因为我觉得“这个描边效果看着像20年前的ppt一样”和“哇这竟然还贴了便条补充信息，好用心啊”然后作者就过来了。&lt;/p&gt;
 
 &lt;h3 id=&quot;娱乐&quot;&gt;娱乐&lt;/h3&gt;
 
@@ -100,9 +100,11 @@
 
 &lt;p&gt;讲完之后就是会务会议；会务组很认真地从上次会议的经费情况开始，到下下次的会议主办方，总结了各项的事务。特别是财务方面的状况，包括上次剩下的钱，这次各单位赞助的费用，为什么还要选用同一家宾馆、注册费下调了1500块钱等等作了详细说明。虽然我不是会员，在后面敲(wan)着(zhe)键(you)盘(xi)，但是不少人都还是听得挺认真的。&lt;/p&gt;
 
-&lt;h3 id=&quot;个人收获&quot;&gt;个人收获&lt;/h3&gt;
+&lt;h3 id=&quot;其他&quot;&gt;其他&lt;/h3&gt;
 
 &lt;p&gt;知道了我蹩脚的日语竟然还能跟别人谈笑风生这件事。满以为在房间里会变成四个日本人哇啦哇啦我在一旁缩着玩游戏的局面，结果跟埼玉大学的杉山同学（嗯就是上面那个）聊得很high，还让他给我再讲一遍他的研究（他各种尝试夹杂英语），最后走之前还约好了下次一起喝酒去。好玩。虽然这个会议是不会再去的了，但是这几天自己还是很高兴的。&lt;/p&gt;
+
+&lt;p&gt;回去的时候提早大概15分钟到了站台。我们的车到站之前刚好有另一辆车过站，特意站到了前面体验一下。本以为还能先看见车灯，然后欣赏一下车头，之后才会飞驰而过；结果从看见车头到车头经过面前根本没有反应时间，我觉得是瞬间就到了面前，伴随着风声和轮轨的摩擦声，3秒之后就过了。以前一直在高铁里面坐着，对两百或者是三百的时速没什么概念，这次站在外面看才知道原来是这么快的。旁边的中学生们在过站之后才抬起头来说了一句“はや”，也没怎么反应过来。看来高铁的确是“有催人跑的意思”。&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;此处应该有合照&lt;/em&gt;&lt;/p&gt;
 
@@ -113,7 +115,7 @@
         <link>http://localhost:4000/2017/07/29/wakate/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/07/29/wakate/</guid>
         
-        <category>learning</category>
+        <category>experience</category>
         
         
       </item>
@@ -188,7 +190,7 @@
         <link>http://localhost:4000/2017/07/24/tardigrade/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/07/24/tardigrade/</guid>
         
-        <category>learning</category>
+        <category>astro-ph</category>
         
         
       </item>
@@ -458,7 +460,7 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
         <link>http://localhost:4000/2017/06/19/LF-report/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/06/19/LF-report/</guid>
         
-        <category>learning</category>
+        <category>astro-ph</category>
         
         
       </item>
@@ -597,13 +599,12 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
   &lt;li&gt;Abbott, B. P. et al. Localization and Broadband Follow-up of the Gravitational-wave Transient GW150914. &lt;em&gt;The Astrophysical Journal Letters&lt;/em&gt; &lt;strong&gt;826&lt;/strong&gt;, L13 (2016).&lt;/li&gt;
   &lt;li&gt;Aasi, J. et al. First Searches for Optical Counterparts to Gravitational-wave Candidate Events. &lt;em&gt;The Astrophysical Journal Supplement Series&lt;/em&gt; &lt;strong&gt;211&lt;/strong&gt;, 7 (2014).&lt;/li&gt;
 &lt;/ol&gt;
-
 </description>
         <pubDate>Mon, 12 Jun 2017 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2017/06/12/GW-position/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/06/12/GW-position/</guid>
         
-        <category>learning</category>
+        <category>astro-ph</category>
         
         
       </item>
@@ -808,6 +809,192 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
         <guid isPermaLink="true">http://localhost:4000/2017/05/23/start/</guid>
         
         <category>random</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>UIE笔记</title>
+        <description>&lt;h3 id=&quot;什么是uie&quot;&gt;什么是UIE？&lt;/h3&gt;
+
+&lt;h3 id=&quot;uie的发现历史是怎么样的&quot;&gt;UIE的发现历史是怎么样的？&lt;/h3&gt;
+
+&lt;h3 id=&quot;不同的理论中关键的支持证据是什么样子的&quot;&gt;不同的理论中关键的支持证据是什么样子的？&lt;/h3&gt;
+
+&lt;h3 id=&quot;现在吵到什么程度了&quot;&gt;现在吵到什么程度了？&lt;/h3&gt;
+
+&lt;h3 id=&quot;kwok--zhang-2011&quot;&gt;Kwok &amp;amp; Zhang 2011&lt;/h3&gt;
+
+&lt;p&gt;UIE一般被认为是PAH的带。但是我们觉得不是，因为：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;在已经被发现的所有星际分子中，没有一个是PAH。&lt;/li&gt;
+  &lt;li&gt;UIE里面有分立的谱线和宽带，说明UIE不能仅仅由芳香烃组成&lt;/li&gt;
+  &lt;li&gt;MAON和流星中发现的物质很相似，比如球粒陨石&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;稍微详细的解释：&lt;/p&gt;
+
+&lt;p&gt;单独的PAH只能形成窄的谱线，但是观测到的是宽的。PAH理论认为这能被一个复杂的PAH成分解释，同时需要使用一个经验的特征轮廓 &lt;strong&gt;（什么是特征轮廓？）&lt;/strong&gt;。PAH谱带的原理是荧光，通过吸收紫外光子再在红外波段发射；但是在冷的恒星周围不一定有足够的紫外光子支撑荧光过程。&lt;/p&gt;
+
+&lt;p&gt;荧光过程是一个单光子的激发过程，PAH理论认为12微米的excess是由PAH造成的，但是Onaka对Carina nebula的观测表明弥散HII区的UIE带流量比在不同亮度的背景辐射中基本是一样的；也有文章（10）说UIE特征的波长和形状和中心星温度无关。&lt;/p&gt;
+
+&lt;p&gt;其他的一些arguments：PAH理论认为UIE的不对称性是由PAH引起的，但是MAON也可以，而且解释更自然。&lt;/p&gt;
+
+&lt;p&gt;PAH理论的原理不太在乎粒子的成分，只在乎大小，所以换成别的也行；有一些实验室结果支持别的粒子，比如说更大的。&lt;/p&gt;
+
+&lt;p&gt;另外一种对UIE的解释是复杂结构的有机颗粒，比如说煤和沥青。它本身就有宽的发射轮廓，也有更宽的平台发射特征。&lt;/p&gt;
+
+&lt;p&gt;为了验证我们的假设，我们通过分解三个有强UIE特征的天体来证明。图中天体光谱被分成了三个成分，尘埃的连续谱、宽的平台和发射线。连续谱的能量占了一半、平台特征占了大约30%、发射线只有10%左右。我们认为平台特征来自于MAON，发射线来自于PAH，所以证明了UIE载体中MAON占了主导，是芳香和脂肪的复合体。&lt;/p&gt;
+
+&lt;p&gt;还有一些小的点：MAON可容纳更多的元素，单纯的PAH不那么容易。&lt;/p&gt;
+
+&lt;p&gt;UIE形成于恒星离开AGB阶段的几百年后左右，所以观测这些恒星有利于探究UIE的形成。新星也是UIE形成的一个途径。&lt;/p&gt;
+
+&lt;h3 id=&quot;li--drain-2012&quot;&gt;Li &amp;amp; Drain 2012&lt;/h3&gt;
+
+&lt;p&gt;我们认为KZ11的文章中提出的MAON是和观测不匹配的，同时他们对PAH理论的指责也可以被解释。&lt;/p&gt;
+
+&lt;p&gt;脂肪族分子在3.4微米处有一个带。UIE在3微米处有很多谱带(Geballe 1985的图1)，包括一个强的3.3微米峰和一个弱的3.4微米成分，加上一个延展到3.6微米的平台。在有的源中，平台区域还有一些微弱的谱线。3.3微米的峰是芳香分子中的C-H伸展所激发的，但是其他的特征载体还不是很确定。如果将3.4微米的发射全部归到脂肪分子头上，我们可以由此算出UIE中脂肪分子比例的上限。&lt;/p&gt;
+
+&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;I_{3.3}, I_{3.4}&lt;/script&gt; 为观测到的3.3和3.4微米的发射强度，一般来说这两个强度的比在0.06到0.2之间。令&lt;script type=&quot;math/tex&quot;&gt;A_{3.3}, A_{3.4}&lt;/script&gt;为单个芳香C-H键和脂肪C-H键的强度；从文献可知这两个值大致为&lt;script type=&quot;math/tex&quot;&gt;A_{3.3} = 4.0 \times 10^{-18}, A_{3.4} = 2.7 \times 10^{-18}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;有了这两组值之后，我们可以算出在某个强度比之下，芳香C-H键和脂肪C-H键数量之比：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_\mathrm{H,aliph}}{N_\mathrm{H,arom}} \approx \frac{I_{3.4}}{I_{3.3}} \times \frac{A_{3.3}}{A_{3.4}} \approx 0.3&lt;/script&gt;
+
+&lt;p&gt;如果取&lt;script type=&quot;math/tex&quot;&gt;\frac{I_{3.4}}{I_{3.3}} = 0.2&lt;/script&gt;的话。假设1个脂肪C原子对应2.5个脂肪C-H键（取&lt;script type=&quot;math/tex&quot;&gt;\mathrm{-CH_2, -CH_3}&lt;/script&gt;的平均值），1个芳香C原子对应0.75个C-H键（&lt;script type=&quot;math/tex&quot;&gt;\mathrm{C_6H_6, C_{24}H_{12}}&lt;/script&gt;的平均值），得出脂肪/芳香C原子数之比为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_\mathrm{C,aliph}}{N_\mathrm{C,arom}} \approx 0.09&lt;/script&gt;
+
+&lt;p&gt;由此说明了UIE里面的脂肪族成分占比很少。KZ11用了&lt;script type=&quot;math/tex&quot;&gt;I_{3.4} / I_{3.3} \approx 1.88&lt;/script&gt;，但是这是很少见的，不是普遍情况（主要的辐射在8、11.8微米，但是平常的在7.7、8.6和11.3微米）。&lt;/p&gt;
+
+&lt;p&gt;另外，3.4微米的发射还可能是由芳香族分子发射的。当芳香族分子的能级不是等距的时候，它的相邻能级的跃迁就有可能落在3.4微米，而且强度更弱。3.4微米的特征也可以被解释为C上多连了一个H的辐射（在3.4与3.5微米左右）。这些可能性，加上KZ11的解释，可能共同组成了3.4微米的辐射。&lt;/p&gt;
+
+&lt;p&gt;KZ11认为脂肪族的C-H键主要造成3.4微米的吸收；由此，在光深很大的区域，3.3和3.4微米的特征都应该是吸收的。但是实际上不是，在不透明区域3.3微米的吸收比3.4微米弱很多，3.4微米的载体不应该为脂肪族。&lt;/p&gt;
+
+&lt;p&gt;除了3.4微米的特征之外，脂肪族分子还在6.85和7.25微米有两个带。将6.85微米和7.7微米的强度进行比较，通过类似之前的过程，可以得出脂肪/芳香族C数量比为0.14；当然KZ11也用了比较高的&lt;script type=&quot;math/tex&quot;&gt;I_{6.85} / I_{7.7}&lt;/script&gt;值，应该不太对。&lt;/p&gt;
+
+&lt;p&gt;KZ11用了脂肪族来解释谱分解中的平台成分，但是我们认为PAH中的C-C和C-H带合成也可以自然地解释这个成分。KZ11认为苯环会被打散，但是我们认为脂肪链会连起来成环。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;另一方面我们将回应KZ11对PAH的质疑&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;低温恒星没有紫外光子，不能激发单光子过程&lt;br /&gt;
+有论文证明长波光子也可以激发PAH，被观测和实验证实了。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;UIE带比在不同区域为常数&lt;br /&gt;
+这就是纳米粒子单光子发射所预言的结果，也有文献。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;星际分子中没有发现PAH&lt;br /&gt;
+因为我们需要一大堆的PAH&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;UIE不可能由纯芳香族化合物发射&lt;br /&gt;
+我们没这么说:)，可能有少部分的脂肪族化合物嘛&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;PAH的谱带窄、强&lt;br /&gt;
+种类很多就行了嘛，实验室也是只有多种PAH合在一起才能重现光谱，这是小问题啦&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;kwok--zhng-2013&quot;&gt;Kwok &amp;amp; Zhng 2013&lt;/h3&gt;
+
+&lt;p&gt;我们很高兴地看到KD12修改了一下下他们的模型，加了一些脂肪族成分进去。但是，PAH和MAON还是有很大区别的。&lt;/p&gt;
+
+&lt;h4 id=&quot;pah对uie的拟合&quot;&gt;PAH对UIE的拟合&lt;/h4&gt;
+
+&lt;p&gt;UIE由谱线、平台和连续谱组成。虽然每个源的UIE都有些微的区别整体来说UIE的特征是差不多的。显然单个PAH无法重现UIE，所以需要不同大小、结构的PAH再加上人工的宽发射线轮廓。&lt;/p&gt;
+
+&lt;p&gt;用PAH去进行拟合分为两种方法：自由度高的和自由度低的。自由度高的方法使用理论的PAH谱线进行拟合；因为理论PAH谱线很窄，所以需要非常高的自由度(&lt;strong&gt;MAON也差不多？&lt;/strong&gt;)。或者把PAH分成几个大类，中性的、一次电离的和其他小尘埃。这样做的好处在于可以将某些谱带明确地归到某类分子中。&lt;/p&gt;
+
+&lt;p&gt;第二种方法是经验拟合。LD01和LD07提出了使用观测的UIE轮廓作为PAH的模板；这使得拟合更容易，但是没有完全从理论出发。&lt;/p&gt;
+
+&lt;p&gt;经验拟合方法只覆盖了5-15微米，没有考虑3.3微米的PAH的峰（&lt;strong&gt;但是往短波去走应该挺容易的，真的没有结果吗？&lt;/strong&gt;）。我们从NASA的PAH红外光谱库中拿了18种中性PAH分子，观察它们谱线的中心波长，发现都比3.3微米要短。这说明3.3微米的发射不可能由中性PAH引起。有人认为温度可以引起中心波长的偏移，但是观察到的中心波长分布很窄（&lt;strong&gt;会不会是因为物理环境类似所以从理论波长偏到了3.3？&lt;/strong&gt;）。C上连接的H数也会改变中心波长，但是还是不够解释的。&lt;/p&gt;
+
+&lt;p&gt;平台特征是PAH理论的一个难点。MAON可以自然地解释平台，而LD12认为这是来自于PAH中的C-C和C-H带。如果PAH是对的话，在3.3微米处也应该看到类似的带，但是没有。&lt;/p&gt;
+
+&lt;p&gt;综上（虽然文章没有明确说），我们认为PAH对UIE的拟合并不好。&lt;/p&gt;
+
+&lt;h4 id=&quot;气态分子还是无定形固体&quot;&gt;气态分子还是无定形固体？&lt;/h4&gt;
+
+&lt;p&gt;PAH分子是很有规律的，但MAON是复杂的无定形分子。PAH的发射特征比较窄，而无定形分子的振动模式一般会导致宽的发射轮廓。另外PAH分子非常小（&amp;lt;50个C原子）且为平面结构，但MAON比较大而且有三维结构。所以PAH和MAON有比较大的区别。&lt;/p&gt;
+
+&lt;p&gt;PAH分子是纯碳氢化合物；但是宇宙环境中存在着很多的元素，它们很有可能会和碳、氢原子组合。PAH不太可能做到这一点，而MAON可以很容易地做到。不过对复杂分子的直接探测是比较困难的。&lt;/p&gt;
+
+&lt;p&gt;从演化上来讲，有一些证据表明实验室中的纳米粒子最后会形成脂肪/芳香族的混合结构。即使仅仅有C和H，无定形固体也是很常见的结构。PAH只是这些结构中最简单的一种，没有理由认为它会在无定形固体中占主导地位。连续谱也说明了粒子应该更大。&lt;/p&gt;
+
+&lt;h4 id=&quot;只有芳香族还是混合的对ld12质疑的回应&quot;&gt;只有芳香族还是混合的？（对LD12质疑的回应）&lt;/h4&gt;
+
+&lt;p&gt;LD12提出了一种优化之后的PAH模型，我们留意到这个模型和QCC有点类似；不同的地方是LD12的是气体，但QCC是固体。QCC可以被认为处在PAH和MAON中间。&lt;/p&gt;
+
+&lt;p&gt;LD12认为3.4微米的辐射太弱，得出了脂肪族占比很小的结论。然而3.4微米的特征是由连接在苯环的甲基和亚甲基引起的，它们是最简单的脂肪族基团；一方面更复杂的基团也有可能出现在星级介质中，另一方面它们不一定必须连接在苯环上，也可以自己组成网络。除了3.4微米的特征之外，8和12微米的平台也是MAON的复杂结构的特征。&lt;/p&gt;
+
+&lt;p&gt;有一些源的8和12微米的特征强，同时也发现了富勒烯。在这些源里面并没有发现芳香烃的特征，所以平台肯定不是因为PAH而引起的。实际上富勒烯有可能是MAON分解之后的产物。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;为了定量说明以上的推论，我们做了和11年论文相似的事情：将光谱分解成各种成分（恒星连续谱、尘埃连续谱、氢分子发射、原子发射线、UIE和平台）。我们发现平台发射的占比还是不少的，在20%左右；同时在一些源中我们还看到了有未知的21微米以及27/33微米平台成分，可能是由含碳物质发射的，因为只在富碳天体中找到。&lt;/p&gt;
+
+&lt;p&gt;从表1中看到，脂肪/芳香放出的能量比基本上不小于1，有的还更大。所以脂肪族成分是有的而且不能被忽略；但是转成丰度比还需要知道振动强度，一般来说脂肪的比芳香的强（&lt;strong&gt;和DL12反过来了&lt;/strong&gt;），所以会小一点。&lt;/p&gt;
+
+&lt;p&gt;6.2微米特征被认为是脂肪-芳香丰度比的特征：如果主要是芳香，中心波长主要在6.2；如果是脂肪，就在6.3。加热会破坏脂肪结构，这也和观测符合；这样的图景比单纯的PAH更合适。&lt;/p&gt;
+
+&lt;h4 id=&quot;激发机制&quot;&gt;激发机制&lt;/h4&gt;
+
+&lt;p&gt;UIE天体有一大部分的连续谱是在红外发射的，所以这需要比较大的尘埃（微米尺寸）；而有人认为连续谱和UIE有很强的关系，甚至共享相同的机制、有类似的演化历史。所以在考虑UIE的时候还要考虑连续谱。在低温区域，因为没有紫外光子，所以需要PAH+来作为载体；但是低温区域不太可能形成PAH+，所以LD12的假设不太对。&lt;/p&gt;
+
+&lt;h4 id=&quot;为什么没有pah被探测到&quot;&gt;为什么没有PAH被探测到？&lt;/h4&gt;
+
+&lt;p&gt;PAH会吸收很多紫外光子，如果PAH很多的话会对紫外造成很大的吸收，但是没有被探测到。LD12认为220纳米的特征可能是由于PAH的吸收，但是这个特征中心波长非常稳定，不太符合PAH的特点，还要通过更多观测来确定。另外一些PAH有强的线，应该可以被探测到。&lt;/p&gt;
+
+&lt;h4 id=&quot;结论&quot;&gt;结论&lt;/h4&gt;
+
+&lt;p&gt;PAH是有意义的，但是有点过时了，现在可以有更复杂的东西。MAON适应性更强。&lt;/p&gt;
+
+&lt;p&gt;在碳元素从恒星中被带到了表面之后，它们被星风吹走并形成各种分子。分子经受紫外光的照射并发生光化学反应，形成更多样的分子（如富勒烯）并进入星际介质&lt;/p&gt;
+
+&lt;h3 id=&quot;li之后的论文&quot;&gt;Li之后的论文&lt;/h3&gt;
+
+&lt;p&gt;扩大了考虑的分子种类，调整了&lt;script type=&quot;math/tex&quot;&gt;\frac{A_{3.3}}{A_{3.4}}&lt;/script&gt;；拓宽了波长覆盖，考察了6-7微米的脂肪特征，结论差不多。&lt;/p&gt;
+
+&lt;h3 id=&quot;onaka-2000-link&quot;&gt;Onaka 2000 &lt;a href=&quot;http://adsabs.harvard.edu/abs/2000AdSpR..25.2167O&quot;&gt;Link&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Page 6: “…suggesting that the UIR emitters should absorb not only the UV radiation, but also longer wavelength light. The spectrum seems very similar to those in other objects. “
+&lt;strong&gt;支持PAH&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;星际pah分子综述&quot;&gt;星际PAH分子（综述）&lt;/h3&gt;
+
+&lt;p&gt;二十世纪七十年代的时候，我们已经发现了在很多有星际介质的地方有红外的宽的发射特征。它们基本上被认为是PAH分子的紫外-红外荧光的结果。这样认为的原因是小分子热容小，所以吸收紫外光子之后温度变得非常高，所以可以在红外发出光子。另外，强特征预示着载体应该是气体分子而不是固态的。&lt;/p&gt;
+
+&lt;h4 id=&quot;uie的观测特征&quot;&gt;UIE的观测特征&lt;/h4&gt;
+
+&lt;p&gt;3.3, 6.2, 7.7, 8.6, 11.2, 12.7, and 16.4 &lt;script type=&quot;math/tex&quot;&gt;\mu m&lt;/script&gt;是UIE的主要特征；除此之外还有不少弱的线。 3.2 - 3.6, 6 - 9, 11 - 14, 和 15 - 19 μm有平坦的平台特征。只要有气体、尘埃，有UV光子，就会有这些特征。&lt;/p&gt;
+
+&lt;h5 id=&quot;光谱特征变化&quot;&gt;光谱特征变化&lt;/h5&gt;
+
+&lt;p&gt;有两种，一种是强度变化，一种是中心波长位置变化。&lt;/p&gt;
+
+&lt;p&gt;不同的振动引起的band强度是有关系的。CH band的位置偏差不大，但是CC band的位置有很大不同；所以同一条band可以分为不同的类型，根据中心波长和谱线轮廓。不同的类型和源的类型有关，请见图4和5。A类是被恒星照亮的，B类中心是后AGB星，C类中心后AGB星及其富碳。&lt;/p&gt;
+
+&lt;p&gt;另一种方法是将其中的成分分开：CC、CH和连续谱。有些星云上它们的空间分布有差异。这三个成分的载体被认为是离子、中性和PAH团。&lt;/p&gt;
+
+&lt;h4 id=&quot;光谱分析&quot;&gt;光谱分析&lt;/h4&gt;
+
+&lt;p&gt;一般我们会假设有一个由小颗粒尘埃引起的连续谱，温度由观测拟合得到。谱线的宽度可以认为是发射光子的原子本身处在一个不断变化的环境中，或者是PAH本身包含很多种类，每种的中心波长有一些不同。&lt;/p&gt;
+
+&lt;p&gt;7.7微米平台包含一些已知的特征，其他的不一定&lt;/p&gt;
+</description>
+        <pubDate>Sat, 01 Jan 2000 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2000/01/01/UIR/</link>
+        <guid isPermaLink="true">http://localhost:4000/2000/01/01/UIR/</guid>
+        
+        <category>learning</category>
         
         
       </item>
