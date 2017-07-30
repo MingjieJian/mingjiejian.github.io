@@ -6,7 +6,7 @@ date:       2017-07-24
 author:     "mingjie"
 header-img: "img/post-bg-OASP4.jpg"
 tags:
-    - learning
+    - astro-ph
 
 ---
 
