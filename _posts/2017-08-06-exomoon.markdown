@@ -56,6 +56,8 @@ Kipping和Teachey的应对方式似乎是一个不错的例子。与其让媒体
 
 ### 参见
 
-arixv 论文：https://arxiv.org/abs/1707.08563
-Alex 博文：https://blogs.scientificamerican.com/observations/are-astronomers-on-the-verge-of-finding-an-exomoon/
-Youtube视频：https://www.youtube.com/watch?v=8V9QHn5oHMs
+[arixv 论文](https://arxiv.org/abs/1707.08563)
+
+[Alex 博文](https://blogs.scientificamerican.com/observations/are-astronomers-on-the-verge-of-finding-an-exomoon/)
+
+[Youtube视频](https://www.youtube.com/watch?v=8V9QHn5oHMs)
