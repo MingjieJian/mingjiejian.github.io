@@ -1,0 +1,152 @@
+---
+layout:     post
+title:      "The Observation and Analysis of Stellar Photospheres - 2"
+subtitle:   "傅立叶变换"
+date:       2000-01-01
+author:     "mingjie"
+header-img: "img/.jpg"
+tags:
+    - learning
+---
+
+傅立叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅立叶变换器。
+
+### 定义
+
+一个函数$$ F(x) $$和它的傅立叶变换$$ f(\sigma) $$的关系为：
+
+$$ f(\sigma) = \int_{-\infty}^\infty F(x) e^{2\pi i x\sigma} \mathrm{d}x $$
+
+$$ F(x) = \int_{-\infty}^\infty f(\sigma) e^{-2\pi i x\sigma} \mathrm{d}\sigma $$
+
+对于傅立叶变换的直观理解[知乎上](https://www.zhihu.com/topic/19600515/top-answers)已经有了很多不错的答案，我觉得只要了解可以将任何函数拆成各种各样的三角函数相加就可以了。$$ F,f $$一般都是复函数，只有当$$ F(x) $$为实偶函数的时候对应的$$ f(\sigma) $$才是实函数。
+
+当$$ \sigma $$或$$ x = 0 $$的时候，傅立叶和逆傅立叶变换变为
+
+$$ f(0) = \int_{-\infty}^\infty F(x)  \mathrm{d}x $$
+
+$$ F(0) = \int_{-\infty}^\infty f(\sigma)  \mathrm{d}\sigma $$
+
+如果讨论谱线，此时傅立叶变换的意义就是谱线和$$ x $$轴围成的面积，也就是总吸收量。
+
+### 常见的傅立叶变换
+
+##### 方波
+
+$$ B(x) = \begin{cases} 0 & x \notin [-\frac{w}{2}, \frac{w}{2}] \\ 1 & x \in [-\frac{w}{2}, \frac{w}{2}] \end{cases}$$
+
+$$ b(\sigma) = W \frac{\sin{(\pi W\sigma)}}{\pi W\sigma} $$
+
+
+##### 高斯函数
+
+$$ G(x) = \frac{1}{\beta\pi^\frac{1}{2}} e^{-\frac{x^2}{\beta^2}} $$
+
+$$ g(\sigma) = e^{-(\pi\beta\sigma)^2} $$
+
+高斯的傅立叶变换是另一个高斯。
+
+##### 洛仑兹函数
+
+$$ L(x) = \frac{1}{\pi} \frac{\beta}{x^2+\beta^2} $$
+
+$$ l(x) = e^{-2\pi\beta|\sigma|} $$
+
+
+##### $$ \delta $$函数
+
+$$ F(x) = \delta(x-x_1) $$
+
+$$ f(\sigma) = e^{2\pi i x_1\sigma} $$
+
+单个$$ \delta $$函数的傅立叶变换的振幅是常数，相位随着$$ \sigma $$线性增加；两个正而且对称的$$ \delta $$函数的傅立叶变换是余弦函数，一正一负（对称）的傅立叶变换的振幅是正弦函数。
+
+##### Shah函数
+
+Shah函数实际上是一堆等间距分布的$$ \delta $$函数：
+
+$$ III(x) = \sum\limits_{n=-\infty}^{\infty} \delta(x - n\Delta x)$$
+
+它的傅立叶变换还是一个Shah函数，只不过间距变了：
+
+$$ III(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta \sigma})$$
+
+以上的函数以及它们的傅立叶变换在接下来的一节以及第三章都会经常用到。
+
+### 数据采样
+
+实际上观测到的数据都是离散的点，所以我们要考虑这样的离散化会带来什么样的结果。
+
+仍然从连续函数出发，离散化意味着将连续函数与Shah函数相乘（以波长为横坐标）：
+
+$$ D(\lambda) = III(\lambda)F(\lambda) $$
+
+实际测量的函数等于Shah函数与理想的连续函数相乘。同时一般来说，无论是时变数据还是光谱数据，我们都不可能无限地测量下去（望远镜时间不是无限的，光谱仪有截止波长），所以我们还需要加上一个响应度函数$$ B(\lambda) $$，来限制波长范围以及修改每个波长上的响应度（时间域上的数据应该不需要有响应度）：
+
+$$ D(\lambda) = B(\lambda)III(\lambda)F(\lambda) $$
+
+这个时候如果想求$$ D(\lambda) $$的傅立叶变换的话就需要知道几个函数相乘的傅立叶变换是什么，这就涉及到卷积了。
+
+### 卷积
+
+两个函数$$ f(\sigma), g(\sigma) $$卷积的定义为：
+
+$$ k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1 $$
+
+[维基百科](https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF)上的一张图可以比较直观地帮助理解卷积：
+
+![](https://upload.wikimedia.org/wikipedia/commons/b/b9/Convolution_of_spiky_function_with_box2.gif)
+
+将其中一个函数以0为中心翻转、从左往右平移，两函数每点相乘在求和的结果就是这两个函数在第一个函数对称中心处的值。
+
+从定义以及理解可以容易得到$$ f(\sigma) * g(\sigma) = g(\sigma) * f(\sigma) $$。
+
+#### 卷积和傅立叶变换的关系
+
+实际上两函数相乘的傅立叶变换就是这两函数各自傅立叶变换的卷积(倒过来也对)，即
+
+$$ F(x)G(x) \Longrightarrow f(\sigma) * g(\sigma) $$
+
+$$ F(x) * G(x) \Longrightarrow f(\sigma)g(\sigma) $$
+
+[维基百科](https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86)上有证明；这里为了理解方便将证明过程倒过来写一遍。简单起见我们证明两函数各自傅立叶变换的卷积的逆傅立叶变换为两函数的乘积，可用富比尼定理，则：
+
+$$ \begin{align}  \int f(\sigma) * g(\sigma) e^{-2\pi ix\sigma} \mathrm{d}\sigma & = F(x)G(x) \\ \int \left(\int f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1\right) e^{-2\pi ix\sigma} d\sigma & = \int f(\sigma_1) \left( \int g(\sigma-\sigma_1) e^{-2\pi ix\sigma} \mathrm{d}\sigma\right) \mathrm{d}\sigma_1 \\ & = \int f(\sigma_1) \left( \int g(\alpha) e^{-2\pi ix(\alpha + \sigma_1)} \mathrm{d}\alpha\right) \mathrm{d}\sigma_1 \\ & = \int f(\sigma_1) e^{-2\pi ix\sigma_1} \mathrm{d}\sigma_1 \int g(\alpha) e^{-2\pi ix\alpha} \mathrm{d}\alpha \\ & = F(x)G(x) \end{align}$$
+
+##### 与$$ \delta $$函数的卷积
+
+$$ F(x) * \delta(x-x_1) = F(x-x_1) \Longrightarrow f(\sigma) e^{2\pi ix_1\sigma} $$
+
+这个结果会在接下来的性质2中用到。
+
+##### 高斯、洛仑兹函数之间的卷积
+
+高斯函数的傅立叶变换还是高斯函数$$ g(\sigma) = e^{-(\pi\beta\sigma)^2} $$，所以两个高斯函数卷积的傅立叶变换为
+
+$$ g_a(\sigma)g_b(\sigma) = e^{-(\pi\beta_a\sigma)^2}e^{-(\pi\beta_b\sigma)^2} = e^{-(\pi\beta_c\sigma)^2} $$
+
+还是一个高斯函数；此时的$$ g(\sigma) $$更窄，但是$$ G(x) $$更宽$$ (\beta_c^2 = \beta_a^2+\beta_b^2) $$。
+
+同理，洛仑兹与洛仑兹函数的卷积也还是个洛仑兹函数，只不过现在$$ \beta_c = \beta_a + \beta_b $$。
+
+高斯函数和洛仑兹函数的卷积叫做福格特(Voigt)函数，它的傅立叶变换为
+
+$$ v(\sigma) = e^{-\pi^2\beta_g^2\sigma^2} e^{-2\pi\beta_l|\sigma|} $$
+
+在第11章会用到。
+
+### 被模糊的数据
+
+我们现在可以回到$$ D(\lambda) $$中。除了截断和采样之外，观测仪器当然也会在最终的结果中留下一些特征，叫做仪器轮廓(instrumental profile)。一般来说这些特征是一个$$ \delta $$函数；也就是说一个很窄的$$ \delta $$函数在经过观测仪器之后会变成另一个宽一点的$$ \delta $$函数，或者说两个$$ \delta $$函数卷积了。仪器轮廓可以被测出来（通过观测很细的谱线；第12章），我们在这里记作$$ I(\lambda) $$。所以现在的$$ D(\lambda) $$变成了
+
+$$ D(\lambda) = [B(\lambda)III(\lambda)F(\lambda)] * I(\lambda)$$
+
+在傅立叶域，上式变为
+
+$$ d(\sigma) = b(\sigma) * III(\sigma) * f(\sigma) \times i(\sigma) $$
+
+可以看到最终傅立叶域的函数被乘上了一个$$ i(\sigma) $$。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅立叶变换是一个相对宽的轮廓，对傅立叶域中的“低频”部分没有很大影响；但是轮廓会在“高频”部分下降，所以会抹掉“高频”部分的信息。在频率域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高频的信息“平均”掉。
+
+### 采样
+
+采样对高频信号的也会产生影响（可能比仪器轮廓更大）。信号与Shah函数的卷积$$ III(\sigma) * f(\sigma) $$会使得信号在Shah函数每个不为0处附近重复，使得一样的图样发生重叠，同样抹掉了高频的信息

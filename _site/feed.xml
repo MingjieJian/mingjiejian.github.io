@@ -5,8 +5,8 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 06 Aug 2017 21:08:44 +0900</pubDate>
-    <lastBuildDate>Sun, 06 Aug 2017 21:08:44 +0900</lastBuildDate>
+    <pubDate>Thu, 31 Aug 2017 20:06:42 +0900</pubDate>
+    <lastBuildDate>Thu, 31 Aug 2017 20:06:42 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -57,9 +57,11 @@
 
 &lt;h3 id=&quot;参见&quot;&gt;参见&lt;/h3&gt;
 
-&lt;p&gt;arixv 论文：https://arxiv.org/abs/1707.08563
-Alex 博文：https://blogs.scientificamerican.com/observations/are-astronomers-on-the-verge-of-finding-an-exomoon/
-Youtube视频：https://www.youtube.com/watch?v=8V9QHn5oHMs&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://arxiv.org/abs/1707.08563&quot;&gt;arixv 论文&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blogs.scientificamerican.com/observations/are-astronomers-on-the-verge-of-finding-an-exomoon/&quot;&gt;Alex 博文&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=8V9QHn5oHMs&quot;&gt;Youtube视频&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 06 Aug 2017 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2017/08/06/exomoon/</link>
