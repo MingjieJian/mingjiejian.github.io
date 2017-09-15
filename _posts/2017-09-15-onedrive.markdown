@@ -1,0 +1,45 @@
+---
+layout:     post
+title:      "Onedrive占用CPU过多的问题以及解决方法"
+subtitle:   "电脑退烧药"
+date:       2017-09-15
+author:     "Mingjie"
+header-img: "img/-bg.png"
+comments:   true
+tags:
+      - random
+---
+
+Surface Pro的散热曾经是一个问题，但是随着Win10的更新烫手的时候已经越来越少。但是近两个月风扇使劲转的情况越来越多，也不是在我玩游戏的时候发热，就觉得很奇怪。查看任务管理器之后发现一个叫Microsift OneDirve Setup的进程经常占用大概40%的CPU，而且手动结束之后就不发热了。想着这可能是Onedrive的更新吧，但是插着电过了很久Onedrive告诉我更新出现问题，请手动安装。戳它又没啥反应，新下载一个双击安装又卡在安装界面不动，很麻烦。
+
+暂时的解决办法就是每次手动结束进程。但是重启之后onedrive又会自动打开，总不是长久之计。之前在网上找了一下，有类似的问题但是没有很好的解决方法。今天决心搞定它，才在[这里](https://answers.microsoft.com/zh-hans/windows/forum/windows_10-files/%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85-onedrive/202b3154-093e-4234-aee0-3a56b30bb0e2)发现了完全一样的问题。
+
+不得不说微软中国解决问题的能力不是一般的差，至今没有一个官方的解决办法，最后是靠这个问题里面链接到台湾ptt的[网页](https://www.ptt.cc/bbs/Windows/M.1498386400.A.09E.html)翻译的日本网友的[解决办法](https://answers.microsoft.com/ja-jp/windows/forum/windows_10-performance/onedrivesetupexe32%E3%83%93%E3%83%83%E3%83%88/248a708a-8509-48e1-a321-1af85efd7f50)才搞定。国内不一定能上ptt，而且里面的翻译也比较大概，我就再翻一遍放在这里方便以后的人吧。
+
+## 推荐且不怎么伤的办法
+
+从解决方法来说原因应该是Onedrive的log出错了，一直以为没有更新所以卡在更新/安装上，所以一个比较简单的解决办法就是删掉错误的log。这两个log是
+`
+C:\Users\用户名\AppData\Local\Microsoft\OneDrive\setup\logs\userTelemetryCache.otc
+C:\Users\用户名\AppData\Local\Microsoft\OneDrive\setup\logs\userTelemetryCache.otc.session
+`
+1. 在Onedrive打开而且用户没有注销登录的情况下在任务管理器中结束OneDriveSetup.exe进程
+2. 将上述的两个log文件删除
+3. 运行`C:\Users\用户名\AppData\Local\Microsoft\OneDrive\Update\OneDriveSetup.exe`
+4. 应该就可以了
+
+有的时候可能自己觉得太烦想重装，已经将Onedrive卸载了（我就是这么做的）；这个时候只需要做上面的第2步然后双击安装文件就行了，不会再卡在安装那。不过之后要重新登录一下自己的账户。
+
+## 有点伤但是可能还能用的办法
+
+我们有一个不能更新的Onedrive文件夹`C:\Users\用户名\AppData\Local\Microsoft\OneDrive`。那建一个新的好的文件夹然后覆盖旧的就行了。这个办法有点伤，但是如果之前所有文件都在Onedrive同步了的话问题应该不大。
+
+1. 在电脑上建立一个新的账户，赋予管理员权限：设置-账户。视情况可能需要网络连接和一个新的Microsoft账户
+2. 切换到新的电脑账户中，打开Onedrive并登录（最好是登录到新的账户中，虽然我觉得旧的应该也行）
+3. 切换回旧电脑账户中，将`C:\Users\新用户名\AppData\Local\Microsoft\OneDrive`文件夹覆盖到`C:\Users\旧用户名\AppData\Local\Microsoft\OneDrive`
+4. 运行`C:\Users\旧用户名\AppData\Local\Microsoft\OneDrive\Update\OneDriveSetup.exe`
+5. Done
+
+## 撇清责任
+
+我没试过第二种办法，所以不知道它有没有用。希望微软赶快搞定这个问题或者我自己不再会遇到它:)
