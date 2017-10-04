@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "The Observation and Analysis of Stellar Photospheres - 2"
-subtitle:   "傅立叶变换"
+subtitle:   "傅里叶变换"
 date:       2000-01-01
 author:     "mingjie"
 header-img: "img/.jpg"
@@ -9,27 +9,27 @@ tags:
     - learning
 ---
 
-傅立叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅立叶变换器。
+傅里叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅里叶变换器。
 
 ### 定义
 
-一个函数$$ F(x) $$和它的傅立叶变换$$ f(\sigma) $$的关系为：
+一个函数$$ F(x) $$和它的傅里叶变换$$ f(\sigma) $$的关系为：
 
 $$ f(\sigma) = \int_{-\infty}^\infty F(x) e^{2\pi i x\sigma} \mathrm{d}x $$
 
 $$ F(x) = \int_{-\infty}^\infty f(\sigma) e^{-2\pi i x\sigma} \mathrm{d}\sigma $$
 
-对于傅立叶变换的直观理解[知乎上](https://www.zhihu.com/topic/19600515/top-answers)已经有了很多不错的答案，我觉得只要了解可以将任何函数拆成各种各样的三角函数相加就可以了。$$ F,f $$一般都是复函数，只有当$$ F(x) $$为实偶函数的时候对应的$$ f(\sigma) $$才是实函数。
+对于傅里叶变换的直观理解[知乎上](https://www.zhihu.com/topic/19600515/top-answers)已经有了很多不错的答案，我觉得只要了解可以将任何函数拆成各种各样的三角函数相加就可以了。$$ F,f $$一般都是复函数，只有当$$ F(x) $$为实偶函数的时候对应的$$ f(\sigma) $$才是实函数。
 
-当$$ \sigma $$或$$ x = 0 $$的时候，傅立叶和逆傅立叶变换变为
+当$$ \sigma $$或$$ x = 0 $$的时候，傅里叶和逆傅里叶变换变为
 
 $$ f(0) = \int_{-\infty}^\infty F(x)  \mathrm{d}x $$
 
 $$ F(0) = \int_{-\infty}^\infty f(\sigma)  \mathrm{d}\sigma $$
 
-如果讨论谱线，此时傅立叶变换的意义就是谱线和$$ x $$轴围成的面积，也就是总吸收量。
+如果讨论谱线，此时傅里叶变换的意义就是谱线和$$ x $$轴围成的面积，也就是总吸收量。
 
-### 常见的傅立叶变换
+### 常见的傅里叶变换
 
 ##### 方波
 
@@ -44,7 +44,7 @@ $$ G(x) = \frac{1}{\beta\pi^\frac{1}{2}} e^{-\frac{x^2}{\beta^2}} $$
 
 $$ g(\sigma) = e^{-(\pi\beta\sigma)^2} $$
 
-高斯的傅立叶变换是另一个高斯。
+高斯的傅里叶变换是另一个高斯。
 
 ##### 洛仑兹函数
 
@@ -59,7 +59,7 @@ $$ F(x) = \delta(x-x_1) $$
 
 $$ f(\sigma) = e^{2\pi i x_1\sigma} $$
 
-单个$$ \delta $$函数的傅立叶变换的振幅是常数，相位随着$$ \sigma $$线性增加；两个正而且对称的$$ \delta $$函数的傅立叶变换是余弦函数，一正一负（对称）的傅立叶变换的振幅是正弦函数。
+单个$$ \delta $$函数的傅里叶变换的振幅是常数，相位随着$$ \sigma $$线性增加；两个正而且对称的$$ \delta $$函数的傅里叶变换是余弦函数，一正一负（对称）的傅里叶变换的振幅是正弦函数。
 
 ##### Shah函数
 
@@ -67,11 +67,11 @@ Shah函数实际上是一堆等间距分布的$$ \delta $$函数：
 
 $$ III(x) = \sum\limits_{n=-\infty}^{\infty} \delta(x - n\Delta x)$$
 
-它的傅立叶变换还是一个Shah函数，只不过间距变了：
+它的傅里叶变换还是一个Shah函数，只不过间距变了：
 
 $$ III(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta \sigma})$$
 
-以上的函数以及它们的傅立叶变换在接下来的一节以及第三章都会经常用到。
+以上的函数以及它们的傅里叶变换在接下来的一节以及第三章都会经常用到。
 
 ### 数据采样
 
@@ -85,11 +85,11 @@ $$ D(\lambda) = III(\lambda)F(\lambda) $$
 
 $$ D(\lambda) = B(\lambda)III(\lambda)F(\lambda) $$
 
-这个时候如果想求$$ D(\lambda) $$的傅立叶变换的话就需要知道几个函数相乘的傅立叶变换是什么，这就涉及到卷积了。
+这个时候如果想求$$ D(\lambda) $$的傅里叶变换的话就需要知道几个函数相乘的傅里叶变换是什么，这就涉及到卷积了。
 
 ### 卷积
 
-两个函数$$ f(\sigma), g(\sigma) $$卷积的定义为：
+两个函数$$ f(\sigma), g(\sigma) $$的卷积定义为：
 
 $$ k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1 $$
 
@@ -101,15 +101,15 @@ $$ k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\si
 
 从定义以及理解可以容易得到$$ f(\sigma) * g(\sigma) = g(\sigma) * f(\sigma) $$。
 
-#### 卷积和傅立叶变换的关系
+#### 卷积和傅里叶变换的关系
 
-实际上两函数相乘的傅立叶变换就是这两函数各自傅立叶变换的卷积(倒过来也对)，即
+实际上两函数相乘的傅里叶变换就是这两函数各自傅里叶变换的卷积(倒过来也对)，即
 
 $$ F(x)G(x) \Longrightarrow f(\sigma) * g(\sigma) $$
 
 $$ F(x) * G(x) \Longrightarrow f(\sigma)g(\sigma) $$
 
-[维基百科](https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86)上有证明；这里为了理解方便将证明过程倒过来写一遍。简单起见我们证明两函数各自傅立叶变换的卷积的逆傅立叶变换为两函数的乘积，可用富比尼定理，则：
+[维基百科](https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86)上有证明；这里为了理解方便将证明过程倒过来写一遍。简单起见我们证明两函数各自傅里叶变换的卷积的逆傅里叶变换为两函数的乘积，可用富比尼定理，则：
 
 $$ \begin{align}  \int f(\sigma) * g(\sigma) e^{-2\pi ix\sigma} \mathrm{d}\sigma & = F(x)G(x) \\ \int \left(\int f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1\right) e^{-2\pi ix\sigma} d\sigma & = \int f(\sigma_1) \left( \int g(\sigma-\sigma_1) e^{-2\pi ix\sigma} \mathrm{d}\sigma\right) \mathrm{d}\sigma_1 \\ & = \int f(\sigma_1) \left( \int g(\alpha) e^{-2\pi ix(\alpha + \sigma_1)} \mathrm{d}\alpha\right) \mathrm{d}\sigma_1 \\ & = \int f(\sigma_1) e^{-2\pi ix\sigma_1} \mathrm{d}\sigma_1 \int g(\alpha) e^{-2\pi ix\alpha} \mathrm{d}\alpha \\ & = F(x)G(x) \end{align}$$
 
@@ -121,7 +121,7 @@ $$ F(x) * \delta(x-x_1) = F(x-x_1) \Longrightarrow f(\sigma) e^{2\pi ix_1\sigma}
 
 ##### 高斯、洛仑兹函数之间的卷积
 
-高斯函数的傅立叶变换还是高斯函数$$ g(\sigma) = e^{-(\pi\beta\sigma)^2} $$，所以两个高斯函数卷积的傅立叶变换为
+高斯函数的傅里叶变换还是高斯函数$$ g(\sigma) = e^{-(\pi\beta\sigma)^2} $$，所以两个高斯函数卷积的傅里叶变换为
 
 $$ g_a(\sigma)g_b(\sigma) = e^{-(\pi\beta_a\sigma)^2}e^{-(\pi\beta_b\sigma)^2} = e^{-(\pi\beta_c\sigma)^2} $$
 
@@ -129,7 +129,7 @@ $$ g_a(\sigma)g_b(\sigma) = e^{-(\pi\beta_a\sigma)^2}e^{-(\pi\beta_b\sigma)^2} =
 
 同理，洛仑兹与洛仑兹函数的卷积也还是个洛仑兹函数，只不过现在$$ \beta_c = \beta_a + \beta_b $$。
 
-高斯函数和洛仑兹函数的卷积叫做福格特(Voigt)函数，它的傅立叶变换为
+高斯函数和洛仑兹函数的卷积叫做福格特(Voigt)函数，它的傅里叶变换为
 
 $$ v(\sigma) = e^{-\pi^2\beta_g^2\sigma^2} e^{-2\pi\beta_l|\sigma|} $$
 
@@ -141,12 +141,83 @@ $$ v(\sigma) = e^{-\pi^2\beta_g^2\sigma^2} e^{-2\pi\beta_l|\sigma|} $$
 
 $$ D(\lambda) = [B(\lambda)III(\lambda)F(\lambda)] * I(\lambda)$$
 
-在傅立叶域，上式变为
+在傅里叶域，上式变为
 
 $$ d(\sigma) = b(\sigma) * III(\sigma) * f(\sigma) \times i(\sigma) $$
 
-可以看到最终傅立叶域的函数被乘上了一个$$ i(\sigma) $$。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅立叶变换是一个相对宽的轮廓，对傅立叶域中的“低频”部分没有很大影响；但是轮廓会在“高频”部分下降，所以会抹掉“高频”部分的信息。在频率域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高频的信息“平均”掉。
+可以看到最终傅里叶域的函数被乘上了一个$$ i(\sigma) $$。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅里叶变换是一个相对宽的轮廓，对傅里叶域中的“低频”部分没有很大影响；但是轮廓会在“高频”部分下降，所以会抹掉“高频”部分的信息。在频率域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高频的信息“平均”掉。
 
-### 采样
+### 采样 $$ III(\sigma) $$的影响
 
-采样对高频信号的也会产生影响（可能比仪器轮廓更大）。信号与Shah函数的卷积$$ III(\sigma) * f(\sigma) $$会使得信号在Shah函数每个不为0处附近重复，使得一样的图样发生重叠，同样抹掉了高频的信息
+采样对高频信号的也会产生影响（可能比仪器轮廓更大）。信号与Shah函数的卷积$$ III(\sigma) * f(\sigma) $$会使得信号在Shah函数每个不为0处附近重复，使得一样的图样发生重叠，同样抹掉了高频的信息。因为Shah函数傅里叶变换后成为间隔为$$ \frac{1}{\Delta x} $$的Shah函数，所以我们认为在这个间隔的一半区间内，信号是没有重叠的，叫做内奎斯特频率：
+
+$$ \sigma_N = \frac{1}{2\Delta x} $$
+
+在这里因为我们对信号进行了采样，所以得到的实际上是离散的信号点；我们并不知道点和点之间究竟是怎么样的（虽然经常认为是平滑过渡的），而点和点之间丢失的信息就对应着频域中大于内奎斯特频率的部分，它们重叠了。与仪器轮廓的不同在于采样是离散化，而仪器轮廓是模糊。
+
+我们想做的是通过测量$$ D(x) $$求得$$ d(\sigma) $$，再转换成$$ f(\sigma) $$最后求得$$ F(x) $$。从$$ d(\sigma) $$到$$ f(\sigma) $$这一步有$$ III(\sigma) $$的作用，它们都抹掉了高频的信息。如果$$ f(\sigma) $$在高频处趋于0，那么转换这一步基本上是正确的。但是如果重叠的部分很宽，这部分就不会有唯一的解，解决办法是减少采样的间隔。实际上$$ f(\sigma) $$一般的确在高频处趋于0，而且$$ i(\sigma) $$的存在也会强制使得$$ f(\sigma) $$高频的值减小，所以转换是成立的。
+
+最后一个需要提及的是$$ b(\sigma) $$。只要$$ B(x) $$够宽，问题就不大；但是不够宽的时候$$ b(\sigma) $$本身的宽度和在$$ \sigma > \frac{1}{W} $$处的起伏都会导致数据的模糊，所以有必要修改$$ B(x) $$的边缘以消除起伏。$$ b(\sigma) $$本身的宽度会使和$$ f(\sigma) $$的卷积很大，所以有必要稍微减小$$ f(\sigma) $$。12章会有更多介绍。
+
+### 一些定理
+
+1. $$ F(x_1) + F(x_2) \leftrightarrow f(\sigma_1) + f(\sigma_2) $$
+2. $$ F(x - x_1) \leftrightarrow e^{2\pi ix_1\sigma}f(\sigma) $$
+3. $$ F(ax) \leftrightarrow |\frac{1}{a}|f(\frac{1}{a})
+4. $$ \frac{\mathrm{d}F(x)}{\mathrm{d}x} \leftrightarrow 2\pi i \sigma f(\sigma) $$
+5. $$ K(x) = F(x) * G(x) \Rightarrow \frac{\mathrm{d}K(x)}{\mathrm{d}x} = \frac{\mathrm{d}F(x)}{\mathrm{d}x} * G(x) + F(x) * \frac{\mathrm{d}G(x)}{\mathrm{d}x} $$
+6. $$ \int G(x) \mathrm{d}x = 1 \Rightarrow \int F(x) * G(x) \mathrm{d}x = \int F(x) \mathrm{d}x $$
+7. 定义$$ z = \frac{\int xF(x) \mathrm{d}x}{\int F(x) \mathrm{d}x} $$，则若$$ K(x) = F(x) * G(x) $$，有$$ z_K = z_F + z_G $$
+8. $$\int F(x) G^+(x) \mathrm{d}x = \int f(\sigma) g^+(\sigma) \mathrm{d}\sigma $$
+
+### 离散计算
+
+用定义计算有的时候会带来很大的计算量；而我们经常遇到的数据是均匀采样的，这个时候用快速傅里叶变换(FFT)可以很方便地计算。
+
+FFT中的输入和结果都是离散的，也就是说$$ D(x) $$变成了$$ D(j\Delta x) $$，$$ j $$是整数。同理，将结果也离散化成$$ \sigma = k \Delta \sigma $$，从傅里叶变换的定义出发我们可以得到
+
+$$ d(\sigma) = d(k) = \sum_1^N D(j)e^{2\pi ijk\Delta x \Delta\sigma} \Delta x $$
+
+从上一节我们知道，采样后数据的傅里叶变换只在奈奎斯特频率以下包含有用数据，所以结果的计算也只到$$ \sigma_N  = \frac{1}{2\Delta x}  $$为止。同时我们结果的长度和输入的数组长度一致，而且中间为0，所以频域的步长
+
+$$ \Delta \sigma = \frac{\sigma_N}{N/2} = \frac{1}{\Delta x N} $$
+
+或者
+
+$$ \Delta \sigma \Delta x = \frac{1}{N} $$
+
+所以最后我们得到
+
+$$  d(k) = \sum_1^N D(j)e^{2\pi ijk/N} \Delta x $$
+
+其实现在就是一个FFT命令的事情。
+
+### 误差
+
+测量是有误差的，那么测量的傅里叶变换误差是多少呢？假设$$ E(x) $$为函数$$ F_0(x) $$的测量误差，即$$ F(x) = F_0(x) + E(x) $$，那么根据定理1，$$ F(x) $$的傅里叶变换为$$ f(\sigma) = f_0(\sigma) + e(\sigma) $$。同时定理8告诉我们$$\int |E(x)|^2  \mathrm{d}x = \int |e(\sigma)|^2 \mathrm{d}\sigma $$。
+
+*（实际上我们并不一定能知道$$ E(x) $$，更多时候是知道$$ E(x) $$的一些性质比如说平均值，这个时候怎么办？）*
+
+离散傅里叶变换里面上式会变为
+
+$$ \sum_1^N E^2(x_j)\Delta x = \sum_1^N e^2(\sigma_j) \Delta \sigma $$
+
+定义误差的标准差为
+
+$$ S_x = [\sum_1^N \frac{E^2(x_j)}{N-1}]^{1/2} $$
+
+$$ S_\sigma = [\sum_1^N \frac{E^2(\sigma_j)}{N-1}]^{1/2} $$
+
+代进定理8导出来的式子里面，再加上$$ \Delta x$$和$$ \Delta \sigma $$的关系，我们有
+
+$$ S_\sigma = S_x \Delta x N^{1/2} $$
+
+也就是说想减少傅里叶变换的误差，可以减少测量误差或者缩短采样间隔，或者增大采样范围。实际测量的时候只把关心的数据点纳入（比如说某条谱线），将其他的点改成平均值或者1这种误差为0的数值可以减少测量误差。
+
+*（书里提到了FFT的数组长度必须为2的指数，但是实际上似乎不是？）*
+
+当误差与$$ x,\sigma $$无关，并且采样间隔小到除了$$ \sigma $$域的主体之外，还有一部分高频的变换也在$$ \sigma_N $$之内时，我们通过可以高频部分直接测量$$ S_\sigma $$从而算出$$ S_x $$。
+
+### 时间序列（略）
+
+对于有周期的信号来说，长时间观测之后可以求出周期；但是观测时间不长或者周期性不明显的时候，可以考虑使用傅里叶变换。但是要注意由于采样引起的假信号（Shah函数），不一定每个峰都是真的。
