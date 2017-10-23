@@ -31,12 +31,15 @@ $$ F(0) = \int_{-\infty}^\infty f(\sigma)  \mathrm{d}\sigma $$
 
 ### 常见的傅里叶变换
 
+这里给出了常见的傅里叶变换以及图像。fft的结果因为是取模后画的图所以相当于解析的结果取了绝对值，同时因为离散化非常接近
+
 ##### 方波
 
-$$ B(x) = \begin{cases} 0 & x \notin [-\frac{w}{2}, \frac{w}{2}] \\ 1 & x \in [-\frac{w}{2}, \frac{w}{2}] \end{cases}$$
+$$ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\frac{W}{2}, \frac{W}{2}] \end{cases}$$
 
 $$ b(\sigma) = W \frac{\sin{(\pi W\sigma)}}{\pi W\sigma} $$
 
+![](/img/in-post/post-OASP2/01square_wave.png)
 
 ##### 高斯函数
 
@@ -46,12 +49,15 @@ $$ g(\sigma) = e^{-(\pi\beta\sigma)^2} $$
 
 高斯的傅里叶变换是另一个高斯。
 
+![](/img/in-post/post-OASP2/02gauss.png)
+
 ##### 洛仑兹函数
 
 $$ L(x) = \frac{1}{\pi} \frac{\beta}{x^2+\beta^2} $$
 
 $$ l(x) = e^{-2\pi\beta|\sigma|} $$
 
+![](/img/in-post/post-OASP2/03lorentz.png)
 
 ##### $$ \delta $$函数
 
@@ -60,6 +66,10 @@ $$ F(x) = \delta(x-x_1) $$
 $$ f(\sigma) = e^{2\pi i x_1\sigma} $$
 
 单个$$ \delta $$函数的傅里叶变换的振幅是常数，相位随着$$ \sigma $$线性增加；两个正而且对称的$$ \delta $$函数的傅里叶变换是余弦函数，一正一负（对称）的傅里叶变换的振幅是正弦函数。
+
+![](/img/in-post/post-OASP2/04delta.png)
+
+![](/img/in-post/post-OASP2/05ddelta.png)
 
 ##### Shah函数
 
@@ -70,6 +80,8 @@ $$ III(x) = \sum\limits_{n=-\infty}^{\infty} \delta(x - n\Delta x)$$
 它的傅里叶变换还是一个Shah函数，只不过间距变了：
 
 $$ III(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta \sigma})$$
+
+![](/img/in-post/post-OASP2/06shah.png)
 
 以上的函数以及它们的傅里叶变换在接下来的一节以及第三章都会经常用到。
 
@@ -101,7 +113,7 @@ $$ k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\si
 
 从定义以及理解可以容易得到$$ f(\sigma) * g(\sigma) = g(\sigma) * f(\sigma) $$。
 
-#### 卷积和傅里叶变换的关系
+##### 卷积和傅里叶变换的关系
 
 实际上两函数相乘的傅里叶变换就是这两函数各自傅里叶变换的卷积(倒过来也对)，即
 
@@ -163,7 +175,7 @@ $$ \sigma_N = \frac{1}{2\Delta x} $$
 
 1. $$ F(x_1) + F(x_2) \leftrightarrow f(\sigma_1) + f(\sigma_2) $$
 2. $$ F(x - x_1) \leftrightarrow e^{2\pi ix_1\sigma}f(\sigma) $$
-3. $$ F(ax) \leftrightarrow |\frac{1}{a}|f(\frac{1}{a})
+3. $$ F(ax) \leftrightarrow |\frac{1}{a}|f(\frac{1}{a}) $$
 4. $$ \frac{\mathrm{d}F(x)}{\mathrm{d}x} \leftrightarrow 2\pi i \sigma f(\sigma) $$
 5. $$ K(x) = F(x) * G(x) \Rightarrow \frac{\mathrm{d}K(x)}{\mathrm{d}x} = \frac{\mathrm{d}F(x)}{\mathrm{d}x} * G(x) + F(x) * \frac{\mathrm{d}G(x)}{\mathrm{d}x} $$
 6. $$ \int G(x) \mathrm{d}x = 1 \Rightarrow \int F(x) * G(x) \mathrm{d}x = \int F(x) \mathrm{d}x $$
@@ -178,7 +190,7 @@ FFT中的输入和结果都是离散的，也就是说$$ D(x) $$变成了$$ D(j\
 
 $$ d(\sigma) = d(k) = \sum_1^N D(j)e^{2\pi ijk\Delta x \Delta\sigma} \Delta x $$
 
-从上一节我们知道，采样后数据的傅里叶变换只在奈奎斯特频率以下包含有用数据，所以结果的计算也只到$$ \sigma_N  = \frac{1}{2\Delta x}  $$为止。同时我们结果的长度和输入的数组长度一致，而且中间为0，所以频域的步长
+从上一节我们知道，采样后数据的傅里叶变换只在奈奎斯特频率以下包含有用数据，所以结果的计算也只到$$ \sigma_N  = \frac{1}{2\Delta x}  $$为止。同时我们要求结果的长度和输入的数组长度一致，而且中间为0，所以频域的步长
 
 $$ \Delta \sigma = \frac{\sigma_N}{N/2} = \frac{1}{\Delta x N} $$
 
@@ -192,9 +204,19 @@ $$  d(k) = \sum_1^N D(j)e^{2\pi ijk/N} \Delta x $$
 
 其实现在就是一个FFT命令的事情。
 
+##### 有关numpy中的fft
+
+因为采样的缘故，fft只计算到内奎斯特频率的位置。而如果原函数不是实数函数，那么傅里叶变换关于0点对称的复数值将不会共轭，所以numpy中的fft先计算0到$$ \sigma_N $$的值，再计算0到$$ -\sigma_N $$的值，并使傅里叶变换的长度与源函数长度一致（一半分给正频率，一半给负频率）。这给我们画图带来了一些麻烦，所以numpy提供了`numpy.fft.fftfreq(n[, d])`来给出傅里叶变换的x值，只需输入原函数长度和步长即可。上面的画图中因为结果已知而且基本上特征都在0附近，所以人为地截断到了和原函数同样的x值上；也能看出fft的结果分辨率比解析的差很多，是截断带来的后果。
+
+有关模，fft结果乘上步长之后取模才是正确的大小，这是因为fft只计算了前两项，没有乘上最后的$$ \Delta x $$；当然这是因为程序不知道步长的缘故了。
+
+*（暂未解决shah函数的fft结果和预计不符的问题）*
+
+参见[这里](https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.fft.html#module-numpy.fft)。
+
 ### 误差
 
-测量是有误差的，那么测量的傅里叶变换误差是多少呢？假设$$ E(x) $$为函数$$ F_0(x) $$的测量误差，即$$ F(x) = F_0(x) + E(x) $$，那么根据定理1，$$ F(x) $$的傅里叶变换为$$ f(\sigma) = f_0(\sigma) + e(\sigma) $$。同时定理8告诉我们$$\int |E(x)|^2  \mathrm{d}x = \int |e(\sigma)|^2 \mathrm{d}\sigma $$。
+测量是有误差的，那么测量的傅里叶变换误差是多少呢？假设$$ E(x) $$为函数$$ F_0(x) $$的测量误差，即$$ F(x) = F_0(x) + E(x) $$，那么根据定理1，$$ F(x) $$的傅里叶变换为$$ f(\sigma) = f_0(\sigma) + e(\sigma) $$。同时定理8告诉我们$$\int \vert E(x)\vert^2  \mathrm{d}x = \int \vert e(\sigma)\vert^2 \mathrm{d}\sigma $$。
 
 *（实际上我们并不一定能知道$$ E(x) $$，更多时候是知道$$ E(x) $$的一些性质比如说平均值，这个时候怎么办？）*
 
