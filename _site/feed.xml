@@ -5,9 +5,419 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 08 Nov 2017 16:52:26 +0900</pubDate>
-    <lastBuildDate>Wed, 08 Nov 2017 16:52:26 +0900</lastBuildDate>
+    <pubDate>Sat, 11 Nov 2017 21:16:04 +0900</pubDate>
+    <lastBuildDate>Sat, 11 Nov 2017 21:16:04 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>OASP - 2</title>
+        <description>&lt;p&gt;傅里叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅里叶变换器。在这里有一点需要明确的是我们以后会经常讨论光谱，所以傅里叶变换的&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;域一般是光谱的频率域，而&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域并没有很好的名字；所以下文统一称傅里叶变换前后的域为&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;域与&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域。&lt;/p&gt;
+
+&lt;h3 id=&quot;定义&quot;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;一个函数&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;和它的傅里叶变换&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;的关系为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\sigma) = \int_{-\infty}^\infty F(x) e^{2\pi i x\sigma} \mathrm{d}x&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) = \int_{-\infty}^\infty f(\sigma) e^{-2\pi i x\sigma} \mathrm{d}\sigma&lt;/script&gt;
+
+&lt;p&gt;对于傅里叶变换的直观理解&lt;a href=&quot;https://www.zhihu.com/topic/19600515/top-answers&quot;&gt;知乎上&lt;/a&gt;已经有了很多不错的答案，我觉得只要了解可以将任何函数拆成各种各样的三角函数相加就可以了。&lt;script type=&quot;math/tex&quot;&gt;F,f&lt;/script&gt;一般都是复函数，只有当&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;为实偶函数的时候对应的&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;才是实函数。&lt;/p&gt;
+
+&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;或&lt;script type=&quot;math/tex&quot;&gt;x = 0&lt;/script&gt;的时候，傅里叶和逆傅里叶变换变为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(0) = \int_{-\infty}^\infty F(x)  \mathrm{d}x&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(0) = \int_{-\infty}^\infty f(\sigma)  \mathrm{d}\sigma&lt;/script&gt;
+
+&lt;p&gt;如果讨论谱线，此时傅里叶变换的意义就是谱线和&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;轴围成的面积，也就是总吸收量。&lt;/p&gt;
+
+&lt;h3 id=&quot;常见的傅里叶变换&quot;&gt;常见的傅里叶变换&lt;/h3&gt;
+
+&lt;p&gt;这里给出了常见的傅里叶变换以及图像。fft的结果因为是取模后画的图所以相当于解析的结果取了绝对值。&lt;/p&gt;
+
+&lt;h5 id=&quot;方波&quot;&gt;方波&lt;/h5&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+B(x) = \begin{cases} 0 &amp; x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 &amp; x \in [-\frac{W}{2}, \frac{W}{2}] \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b(\sigma) = W \frac{\sin{(\pi W\sigma)}}{\pi W\sigma}&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/01square_wave.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;高斯函数&quot;&gt;高斯函数&lt;/h5&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;G(x) = \frac{1}{\beta\pi^\frac{1}{2}} e^{-\frac{x^2}{\beta^2}}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(\sigma) = e^{-(\pi\beta\sigma)^2}&lt;/script&gt;
+
+&lt;p&gt;高斯的傅里叶变换是另一个高斯。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/02gauss.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;洛仑兹函数&quot;&gt;洛仑兹函数&lt;/h5&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L(x) = \frac{1}{\pi} \frac{\beta}{x^2+\beta^2}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l(x) = e^{-2\pi\beta|\sigma|}&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/03lorentz.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;delta函数&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数&lt;/h5&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) = \delta(x-x_1)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\sigma) = e^{2\pi i x_1\sigma}&lt;/script&gt;
+
+&lt;p&gt;单个&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数的傅里叶变换的振幅是常数，相位随着&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;线性增加；两个正而且对称的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数的傅里叶变换是余弦函数，一正一负（对称）的傅里叶变换的振幅是正弦函数。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/04delta.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/05ddelta.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;shah函数&quot;&gt;Shah函数&lt;/h5&gt;
+
+&lt;p&gt;Shah函数实际上是一堆等间距分布的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;III(x) = \sum\limits_{n=-\infty}^{\infty} \delta(x - n\Delta x)&lt;/script&gt;
+
+&lt;p&gt;它的傅里叶变换还是一个Shah函数，只不过间距变了：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;III(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta x})&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/06shah.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以上的函数以及它们的傅里叶变换在接下来的一节以及第三章都会经常用到。&lt;/p&gt;
+
+&lt;h3 id=&quot;数据采样&quot;&gt;数据采样&lt;/h3&gt;
+
+&lt;p&gt;实际上观测到的数据都是离散的点，所以我们要考虑这样的离散化会带来什么样的结果。&lt;/p&gt;
+
+&lt;p&gt;仍然从连续函数出发，离散化意味着将连续函数与Shah函数相乘（以波长为横坐标）：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D(\lambda) = III(\lambda)F(\lambda)&lt;/script&gt;
+
+&lt;p&gt;实际测量的函数等于Shah函数与理想的连续函数相乘。同时一般来说，无论是时变数据还是光谱数据，我们都不可能无限地测量下去（望远镜时间不是无限的，光谱仪有截止波长），所以我们还需要加上一个响应度函数&lt;script type=&quot;math/tex&quot;&gt;B(\lambda)&lt;/script&gt;，来限制波长范围以及修改每个波长上的响应度（时间域上的数据应该不需要有响应度）：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D(\lambda) = B(\lambda)III(\lambda)F(\lambda)&lt;/script&gt;
+
+&lt;p&gt;这个时候如果想求&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;的傅里叶变换的话就需要知道几个函数相乘的傅里叶变换是什么，这就涉及到卷积了。&lt;/p&gt;
+
+&lt;h3 id=&quot;卷积&quot;&gt;卷积&lt;/h3&gt;
+
+&lt;p&gt;两个函数&lt;script type=&quot;math/tex&quot;&gt;f(\sigma), g(\sigma)&lt;/script&gt;的卷积定义为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1&lt;/script&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF&quot;&gt;维基百科&lt;/a&gt;上的一张图可以比较直观地帮助理解卷积：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/b/b9/Convolution_of_spiky_function_with_box2.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;将其中一个函数以0为中心翻转、从左往右平移，两函数每点相乘在求和的结果就是这两个函数在第一个函数对称中心处的值。&lt;/p&gt;
+
+&lt;p&gt;从定义以及理解可以容易得到&lt;script type=&quot;math/tex&quot;&gt;f(\sigma) * g(\sigma) = g(\sigma) * f(\sigma)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h5 id=&quot;卷积和傅里叶变换的关系&quot;&gt;卷积和傅里叶变换的关系&lt;/h5&gt;
+
+&lt;p&gt;实际上两函数相乘的傅里叶变换就是这两函数各自傅里叶变换的卷积(倒过来也对)，即&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x)G(x) \Longrightarrow f(\sigma) * g(\sigma)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) * G(x) \Longrightarrow f(\sigma)g(\sigma)&lt;/script&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86&quot;&gt;维基百科&lt;/a&gt;上有证明；这里为了理解方便将证明过程倒过来写一遍。简单起见我们证明两函数各自傅里叶变换的卷积的逆傅里叶变换为两函数的乘积，可用富比尼定理，则：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}  \int f(\sigma) * g(\sigma) e^{-2\pi ix\sigma} \mathrm{d}\sigma &amp; = F(x)G(x) \\ \int \left(\int f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1\right) e^{-2\pi ix\sigma} d\sigma &amp; = \int f(\sigma_1) \left( \int g(\sigma-\sigma_1) e^{-2\pi ix\sigma} \mathrm{d}\sigma\right) \mathrm{d}\sigma_1 \\ &amp; = \int f(\sigma_1) \left( \int g(\alpha) e^{-2\pi ix(\alpha + \sigma_1)} \mathrm{d}\alpha\right) \mathrm{d}\sigma_1 \\ &amp; = \int f(\sigma_1) e^{-2\pi ix\sigma_1} \mathrm{d}\sigma_1 \int g(\alpha) e^{-2\pi ix\alpha} \mathrm{d}\alpha \\ &amp; = F(x)G(x) \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;h5 id=&quot;与delta函数的卷积&quot;&gt;与&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数的卷积&lt;/h5&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) * \delta(x-x_1) = F(x-x_1) \Longrightarrow f(\sigma) e^{2\pi ix_1\sigma}&lt;/script&gt;
+
+&lt;p&gt;这个结果会在接下来的性质2中用到。&lt;/p&gt;
+
+&lt;h5 id=&quot;高斯洛仑兹函数之间的卷积&quot;&gt;高斯、洛仑兹函数之间的卷积&lt;/h5&gt;
+
+&lt;p&gt;高斯函数的傅里叶变换还是高斯函数&lt;script type=&quot;math/tex&quot;&gt;g(\sigma) = e^{-(\pi\beta\sigma)^2}&lt;/script&gt;，所以两个高斯函数卷积的傅里叶变换为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g_a(\sigma)g_b(\sigma) = e^{-(\pi\beta_a\sigma)^2}e^{-(\pi\beta_b\sigma)^2} = e^{-(\pi\beta_c\sigma)^2}&lt;/script&gt;
+
+&lt;p&gt;还是一个高斯函数；此时的&lt;script type=&quot;math/tex&quot;&gt;G(x)&lt;/script&gt;更窄，但是&lt;script type=&quot;math/tex&quot;&gt;g(\sigma)&lt;/script&gt;更宽&lt;script type=&quot;math/tex&quot;&gt;(\beta_c^2 = \beta_a^2+\beta_b^2)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;同理，洛仑兹与洛仑兹函数的卷积也还是个洛仑兹函数，只不过现在&lt;script type=&quot;math/tex&quot;&gt;\beta_c = \beta_a + \beta_b&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;高斯函数和洛仑兹函数的卷积叫做福格特(Voigt)函数，它的傅里叶变换为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;v(\sigma) = e^{-\pi^2\beta_g^2\sigma^2} e^{-2\pi\beta_l|\sigma|}&lt;/script&gt;
+
+&lt;p&gt;在第11章会用到。&lt;/p&gt;
+
+&lt;h3 id=&quot;被模糊的数据&quot;&gt;被模糊的数据&lt;/h3&gt;
+
+&lt;p&gt;我们现在可以回到&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;中。除了截断和采样之外，观测仪器当然也会在最终的结果中留下一些特征，叫做仪器轮廓(instrumental profile)。一般来说这些特征是一个&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数；也就是说一个很窄的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数在经过观测仪器之后会变成另一个宽一点的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数，或者说两个&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数卷积了。仪器轮廓可以被测出来（通过观测很细的谱线；第12章），我们在这里记作&lt;script type=&quot;math/tex&quot;&gt;I(\lambda)&lt;/script&gt;。所以现在的&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;变成了&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D(\lambda) = [B(\lambda)III(\lambda)F(\lambda)] * I(\lambda)&lt;/script&gt;
+
+&lt;p&gt;在&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域，上式变为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(\sigma) = [b(\sigma) * III(\sigma) * f(\sigma)] \times i(\sigma)&lt;/script&gt;
+
+&lt;p&gt;可以看到最终傅里叶域的函数被乘上了一个&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅里叶变换是一个相对宽的轮廓，对&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域中的“低频”部分没有很大影响；但是轮廓会在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分下降，所以会抹掉高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分的信息。在&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;的信息“平均”掉。&lt;/p&gt;
+
+&lt;h3 id=&quot;采样-iiisigma的影响&quot;&gt;采样 &lt;script type=&quot;math/tex&quot;&gt;III(\sigma)&lt;/script&gt;的影响&lt;/h3&gt;
+
+&lt;p&gt;采样对高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;信号的也会产生影响（可能比仪器轮廓更大）。信号与Shah函数的卷积&lt;script type=&quot;math/tex&quot;&gt;III(\sigma) * f(\sigma)&lt;/script&gt;会使得信号在Shah函数每个不为0处附近重复，使得一样的图样发生重叠，同样抹掉了高&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;的信息。因为Shah函数傅里叶变换后成为间隔为&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{\Delta x}&lt;/script&gt;的Shah函数，所以我们认为在这个间隔的一半区间内，信号是没有重叠的，叫做奈奎斯特频率：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma_N = \frac{1}{2\Delta x}&lt;/script&gt;
+
+&lt;p&gt;在这里因为我们对信号进行了采样，所以得到的实际上是离散的信号点；我们并不知道点和点之间究竟是怎么样的（虽然经常认为是平滑过渡的），而点和点之间丢失的信息就对应着频域中大于奈奎斯特频率的部分，它们重叠了。与仪器轮廓的不同在于采样是离散化，而仪器轮廓是模糊。&lt;/p&gt;
+
+&lt;p&gt;我们想做的是通过测量&lt;script type=&quot;math/tex&quot;&gt;D(x)&lt;/script&gt;求得&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;，再转换成&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;最后求得&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;。从&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;这一步有&lt;script type=&quot;math/tex&quot;&gt;III(\sigma)&lt;/script&gt;的作用，它们都抹掉了高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的信息。如果&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，那么转换这一步基本上是正确的。但是如果重叠的部分很宽，这部分就不会有唯一的解，解决办法是减少采样的间隔。实际上&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;一般的确在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，而且&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;的存在也会强制使得&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的值减小，所以转换是成立的。&lt;/p&gt;
+
+&lt;p&gt;最后一个需要提及的是&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;。只要&lt;script type=&quot;math/tex&quot;&gt;B(x)&lt;/script&gt;够宽，问题就不大；但是不够宽的时候&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;本身的宽度和在&lt;script type=&quot;math/tex&quot;&gt;\sigma &gt; \frac{1}{W}&lt;/script&gt;处的起伏都会导致数据的模糊，所以有必要修改&lt;script type=&quot;math/tex&quot;&gt;B(x)&lt;/script&gt;的边缘以消除起伏。&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;本身的宽度会使和&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;的卷积很大，所以有必要稍微减小&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;。12章会有更多介绍。&lt;/p&gt;
+
+&lt;h3 id=&quot;一些定理&quot;&gt;一些定理&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x_1) + F(x_2) \Leftrightarrow f(\sigma_1) + f(\sigma_2)&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x - x_1) \Leftrightarrow e^{2\pi ix_1\sigma}f(\sigma)&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;F(ax) \Leftrightarrow |\frac{1}{a}|f(\frac{1}{a})&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathrm{d}F(x)}{\mathrm{d}x} \Leftrightarrow 2\pi i \sigma f(\sigma)&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;K(x) = F(x) * G(x) \Rightarrow \frac{\mathrm{d}K(x)}{\mathrm{d}x} = \frac{\mathrm{d}F(x)}{\mathrm{d}x} * G(x) + F(x) * \frac{\mathrm{d}G(x)}{\mathrm{d}x}&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\int G(x) \mathrm{d}x = 1 \Rightarrow \int F(x) * G(x) \mathrm{d}x = \int F(x) \mathrm{d}x&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;定义&lt;script type=&quot;math/tex&quot;&gt;z = \frac{\int xF(x) \mathrm{d}x}{\int F(x) \mathrm{d}x}&lt;/script&gt;，则若&lt;script type=&quot;math/tex&quot;&gt;K(x) = F(x) * G(x)&lt;/script&gt;，有&lt;script type=&quot;math/tex&quot;&gt;z_K = z_F + z_G&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\int F(x) G^+(x) \mathrm{d}x = \int f(\sigma) g^+(\sigma) \mathrm{d}\sigma&lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;离散计算&quot;&gt;离散计算&lt;/h3&gt;
+
+&lt;p&gt;用定义计算有的时候会带来很大的计算量；而我们经常遇到的数据是均匀采样的，这个时候用快速傅里叶变换(FFT)可以很方便地计算。&lt;/p&gt;
+
+&lt;p&gt;FFT中的输入和结果都是离散的，也就是说&lt;script type=&quot;math/tex&quot;&gt;D(x)&lt;/script&gt;变成了&lt;script type=&quot;math/tex&quot;&gt;D(j\Delta x)&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;j&lt;/script&gt;是整数，从&lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;。同理，将结果也离散化成&lt;script type=&quot;math/tex&quot;&gt;\sigma = k \Delta \sigma&lt;/script&gt;，从傅里叶变换的定义出发我们可以得到&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(\sigma) = d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk\Delta x \Delta\sigma} \Delta x&lt;/script&gt;
+
+&lt;p&gt;从上一节我们知道，采样后数据的傅里叶变换只在奈奎斯特频率以下包含有用数据，所以结果的计算也只到&lt;script type=&quot;math/tex&quot;&gt;\sigma_N  = \frac{1}{2\Delta x}&lt;/script&gt;为止。同时我们要求结果的长度和输入的数组长度一致，而且中间为0，所以频域的步长&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \sigma = \frac{\sigma_N}{N/2} = \frac{1}{\Delta x N}&lt;/script&gt;
+
+&lt;p&gt;或者&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \sigma \Delta x = \frac{1}{N}&lt;/script&gt;
+
+&lt;p&gt;所以最后我们得到&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk/N} \Delta x&lt;/script&gt;
+
+&lt;p&gt;其实现在就是一个FFT命令的事情。&lt;/p&gt;
+
+&lt;h5 id=&quot;有关numpy中的fft&quot;&gt;有关numpy中的fft&lt;/h5&gt;
+
+&lt;p&gt;因为采样的缘故，fft只计算到奈奎斯特频率的位置。而如果原函数不是实数函数，那么傅里叶变换关于0点对称的复数值将不会共轭，所以numpy中的fft先计算0到&lt;script type=&quot;math/tex&quot;&gt;\sigma_N&lt;/script&gt;的值，再计算0到&lt;script type=&quot;math/tex&quot;&gt;-\sigma_N&lt;/script&gt;的值，并使傅里叶变换的长度与源函数长度一致（一半分给正频率，一半给负频率）。这给我们画图带来了一些麻烦，所以numpy提供了&lt;code class=&quot;highlighter-rouge&quot;&gt;numpy.fft.fftfreq(n[, d])&lt;/code&gt;来给出傅里叶变换的x值，只需输入原函数长度和步长即可。上面的画图中因为结果已知而且基本上特征都在0附近，所以人为地截断到了和原函数同样的x值上；也能看出fft的结果分辨率比解析的差一点，是采样带来的后果。&lt;/p&gt;
+
+&lt;p&gt;有关模，fft结果乘上步长之后取模才是正确的大小，这是因为fft只计算了前两项，没有乘上最后的&lt;script type=&quot;math/tex&quot;&gt;\Delta x&lt;/script&gt;；当然这是因为程序不知道步长的缘故了。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;（暂未解决shah函数的fft结果和预计不符的问题）&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;参见&lt;a href=&quot;https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.fft.html#module-numpy.fft&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;误差&quot;&gt;误差&lt;/h3&gt;
+
+&lt;p&gt;测量是有误差的，那么测量的傅里叶变换误差是多少呢？假设&lt;script type=&quot;math/tex&quot;&gt;E(x)&lt;/script&gt;为函数&lt;script type=&quot;math/tex&quot;&gt;F_0(x)&lt;/script&gt;的测量误差，即&lt;script type=&quot;math/tex&quot;&gt;F(x) = F_0(x) + E(x)&lt;/script&gt;，那么根据定理1，&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;的傅里叶变换为&lt;script type=&quot;math/tex&quot;&gt;f(\sigma) = f_0(\sigma) + e(\sigma)&lt;/script&gt;。同时定理8告诉我们&lt;script type=&quot;math/tex&quot;&gt;\int \vert E(x)\vert^2  \mathrm{d}x = \int \vert e(\sigma)\vert^2 \mathrm{d}\sigma&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;（实际上我们并不一定能知道&lt;script type=&quot;math/tex&quot;&gt;E(x)&lt;/script&gt;，更多时候是知道&lt;script type=&quot;math/tex&quot;&gt;E(x)&lt;/script&gt;的一些性质比如说平均值，这个时候怎么办？）&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;离散傅里叶变换里面上式会变为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_1^N E^2(x_j)\Delta x = \sum_1^N e^2(\sigma_j) \Delta \sigma&lt;/script&gt;
+
+&lt;p&gt;定义误差的标准差为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_x = [\sum_1^N \frac{E^2(x_j)}{N-1}]^{1/2}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\sigma = [\sum_1^N \frac{E^2(\sigma_j)}{N-1}]^{1/2}&lt;/script&gt;
+
+&lt;p&gt;代进定理8导出来的式子里面，再加上&lt;script type=&quot;math/tex&quot;&gt;\Delta x&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\Delta \sigma&lt;/script&gt;的关系，我们有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\sigma = S_x \Delta x N^{1/2}&lt;/script&gt;
+
+&lt;p&gt;也就是说想减少傅里叶变换的误差，可以减少测量误差或者缩短采样间隔，或者增大采样范围。实际测量的时候只把关心的数据点纳入（比如说某条谱线），将其他的点改成平均值或者1这种误差为0的数值可以减少测量误差。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;（书里提到了FFT的数组长度必须为2的指数，但是实际上似乎不是？）&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;当误差与&lt;script type=&quot;math/tex&quot;&gt;x,\sigma&lt;/script&gt;无关，并且采样间隔小到除了&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域的主体之外，还有一部分高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的变换也在&lt;script type=&quot;math/tex&quot;&gt;\sigma_N&lt;/script&gt;之内时，我们通过可以高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分直接测量&lt;script type=&quot;math/tex&quot;&gt;S_\sigma&lt;/script&gt;从而算出&lt;script type=&quot;math/tex&quot;&gt;S_x&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;时间序列略&quot;&gt;时间序列（略）&lt;/h3&gt;
+
+&lt;p&gt;对于有周期的信号来说，长时间观测之后可以求出周期；但是观测时间不长或者周期性不明显的时候，可以考虑使用傅里叶变换。但是要注意由于采样引起的假信号（Shah函数），不一定每个峰都是真的。&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Nov 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2017/11/11/OASP2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/11/OASP2/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>恒星光球层的观测与分析(OASP) - 1</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://t1.gstatic.com/images?q=tbn:ANd9GcRhhc3AC-KuxR9-IYED0pwifa6OOgkcpjhb27ST7pFwTV35UJPr&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;书的封面&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;前言&quot;&gt;前言&lt;/h3&gt;
+
+&lt;p&gt;这是恒星光球层的观测与分析(The Observation and Analysis of Stellar Photosphere)的读书笔记。当时是找生长曲线相关资料的时候偶尔看到的，觉得不错，就打算慢慢看下去，把笔记记在这里。这本书说是对光球层的观测与分析，实际上是教你如何分析恒星光谱。写笔记中肯定会有理解错误的地方，请不吝指正，どうか。&lt;br /&gt;
+为了避免版权问题，图片尽量从其他地方找、或者自己画。&lt;/p&gt;
+
+&lt;h3 id=&quot;第一章&quot;&gt;第一章&lt;/h3&gt;
+
+&lt;p&gt;对恒星的光谱观测基本上就是对光球层的观测。我们可以从里面得到很多信息，比如质量、年龄、金属丰度、温度等等。我们关注光球层的原因是可见光光谱中的光子就是从光球层中发出的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sun_Atmosphere_Temperature_and_Density_SkyLab.jpg/800px-Sun_Atmosphere_Temperature_and_Density_SkyLab.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;恒星各层的位置和温度。来自&lt;a href=&quot;https://en.wikipedia.org/wiki/Photosphere&quot;&gt;维基百科&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;这一章简要地介绍了一些概念，没有涉及太多的计算。这里默认读者对这些概念已经了解，仅简要列举如下：&lt;/p&gt;
+
+&lt;h4 id=&quot;基本量&quot;&gt;基本量&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;重力加速度 &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;g = g_\odot \frac{m}{R^2}&lt;/script&gt;
+
+&lt;p&gt;以太阳为基准计算物理量是天文领域惯用的伎俩了；相对量不用管系数是多少，抓住和物理量有关的量确定幂次（或者更加复杂的形式）就好，&lt;script type=&quot;math/tex&quot;&gt;g_\odot&lt;/script&gt;测定就行。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;有效温度 &lt;script type=&quot;math/tex&quot;&gt;T_\mathrm{eff}&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma T_\mathrm{eff}^4 = \int_0^\infty f_\nu d\nu&lt;/script&gt;
+
+&lt;p&gt;有效温度是通过恒星的流量来定义的。这里的&lt;script type=&quot;math/tex&quot;&gt;f_\nu&lt;/script&gt;会在第五章定义。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;光度 &lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = 4\pi R^2 \sigma T_\mathrm{eff}^4&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;光谱型分类&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;略。&lt;/p&gt;
+
+&lt;h4 id=&quot;测光相关&quot;&gt;测光相关&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;星等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;m = -2.5 \lg \int_0^\infty F_\nu W(\nu) \mathrm{d}\nu + C&lt;/script&gt;
+
+&lt;p&gt;这里&lt;script type=&quot;math/tex&quot;&gt;F_\nu&lt;/script&gt;是投射到望远镜或者CCD上的光量，&lt;script type=&quot;math/tex&quot;&gt;W(\nu)&lt;/script&gt;是透过率；常数&lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt;用标准星标定。如果&lt;script type=&quot;math/tex&quot;&gt;W(\nu) = 1&lt;/script&gt;那么星等就变为热星等。&lt;/p&gt;
+
+&lt;p&gt;有关各星等系统的透过率信息在&lt;a href=&quot;http://svo2.cab.inta-csic.es/svo/theory/fps/&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;色指数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;m_a = m_b = -2.5 \lg \frac{E_1}{E_2} + C&lt;/script&gt;
+
+&lt;p&gt;这里的常数&lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt;是令某光谱型恒星色指数为0的常数。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;星际消光&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;星际消光影响星等和色织数，不影响谱线形状，但是会在光谱上产生吸收线。&lt;/p&gt;
+
+&lt;h4 id=&quot;物理公式&quot;&gt;物理公式&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;理想气体&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;PV = nRT&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P = \frac{nN_0}{V} \frac{R}{N_0} T = NKT&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;速率分布&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathrm{d}N(v_R)}{N_\mathrm{total}} = (\frac{m}{2\pi kT})^{3/2} e^{-\frac{mv_R^2}{2KT}} \mathrm{d}v_R&lt;/script&gt;
+
+&lt;p&gt;麦克斯韦分布。&lt;script type=&quot;math/tex&quot;&gt;v_R&lt;/script&gt;为视向速度分量。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathrm{d}N(v)}{N_\mathrm{total}} = (\frac{2}{\pi})^{1/2}(\frac{m}{kT})^{3/2} e^{-\frac{mv^2}{2KT}} \mathrm{d}v&lt;/script&gt;
+
+&lt;p&gt;麦克斯韦-玻尔兹曼分布。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;原子激发与电离&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于某两个能级来说，占据数有如下关系：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_n}{N_m} = \frac{g_n}{g_m} e^{-\frac{\Delta \chi}{kT}}&lt;/script&gt;
+
+&lt;p&gt;对于某一个能级和总原子数，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_n}{N} = \frac{g_n}{u(T)} e^{-\frac{\chi_n}{kT}}&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;u(T) = \Sigma g_i e^{-\frac{\chi_n}{kT}}&lt;/script&gt;为配分函数；附录D中有表格可供计算。从这里可以看出基态的占据数和温度无关（&lt;em&gt;如何理解？&lt;/em&gt;）&lt;/p&gt;
+
+&lt;p&gt;Saha方程是用在原子的电离上的，表示某电离态和原子态的数量之比：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_n}{N_0} P_e = \frac{(2\pi m_e)^{3/2}(kT)^{5/2}}{h^3} \frac{2u_1(T)}{u_0(T)}e^{-\frac{I}{kT}}&lt;/script&gt;
+
+&lt;p&gt;结合Saha方程和上上式，即可得出某能级原子占总原子数的比：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_n}{N_\mathrm{total}} = \frac{N_n}{N_0+N_1+N_2+...}&lt;/script&gt;
+
+&lt;p&gt;要讨论某个电离态里面的某个激发态的时候，就用那个电离态的&lt;script type=&quot;math/tex&quot;&gt;N_i&lt;/script&gt;去除上式，就可以把那两条式子代入了。&lt;/p&gt;
+
+&lt;h3 id=&quot;问题&quot;&gt;问题&lt;/h3&gt;
+
+&lt;p&gt;1-4略。&lt;/p&gt;
+
+&lt;p&gt;-5.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\approx 10^5 \mathrm{K}&lt;/script&gt;
+
+&lt;p&gt;-6.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_0}{N} = \frac{1}{1+\frac{N_1}{N_0}+\frac{N_2}{N_0}}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_1}{N} = \frac{1}{\frac{N_0}{N_1}+1+\frac{N_2}{N_1}}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_2}{N} = \frac{1}{\frac{N_0}{N_2}+\frac{N_1}{N_2}+1}&lt;/script&gt;
+</description>
+        <pubDate>Sat, 11 Nov 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2017/11/11/OASP1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/11/OASP1/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>给小天体起名字</title>
@@ -720,219 +1130,6 @@ n_\mathrm{HI} \propto \frac{T_0\Delta(j)^{-0.7(\gamma-1)}}{\Gamma} n_0^2 [1+z(j)
         <guid isPermaLink="true">http://localhost:4000/2017/06/19/LF-report/</guid>
         
         <category>astro-ph</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>BAYESTAR：用贝叶斯方法确定引力波事件位置</title>
-        <description>&lt;p&gt;&lt;strong&gt;我不是做引力波的，所以以下写的可能有错误，请留意。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;手贱选了物理系的一门引力波课（只要4周！两学分！）；最后要做个报告，看了两周微分几何之后原理方面还是不会，就只能讲观测的了。现在天文方面的引力波观测不外乎两个方面：确定事件的位置和电磁波谱(EM)的跟踪观测。&lt;/p&gt;
-
-&lt;p&gt;最早是想讲讲EM观测的策略的，毕竟现在给出90%置信范围区域一般有几百平方度，如果有好的策略尽快找出对应体还是可以的。但是现在情况是各个天文台各自为战，有不同的策略（而且还没有结果）；还看了一篇教你如何将天区排序的&lt;a href=&quot;http:\\adsabs.harvard.edu/abs/2017ApJ...838..108R&quot;&gt;文章&lt;/a&gt;，感觉有点太简单，就转向了确定引力波事件的位置的方法。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GW/1-position-1509.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;GW150914的位置概率分布； 来自参考文献1&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;确定引力波事件位置的方法有不少，比如上图中的cWB、LIB、BAYSTEAR和LALInforence。它们准确度依次上升，当然用时依次增加。cWB和LIB在引力波事件发生后的不久（17分钟和14小时后）就给出了天球上的位置概率分布(sky map)，并在检查完毕也就是事件发生的两天之后发给了准备做follow-up的天文台。BAYSTEAR和LALInforence用时比较长，特别是LALInforence一般要100个小时。虽然LIGO认为LALInforence的结果是最准的，但是这两个方法的sky map直到那次运行结束之后才被放出来；这导致了所有的follow-up都是根据cWB和LIB做的。&lt;/p&gt;
-
-&lt;p&gt;cWB、LIB和LALInforence的原理我不清楚，所以不敢说，但是BAYSTEAR用了贝叶斯方法去确定位置的概率分布；它具有比较强的适用性，可以在比较短的时间内得到和LALInforence差不多的效果。同时BAYSTEAR可并行，缩短运行时间；或者对结果精度不满意的话也可以把更完整的数据丢进去。（加上它不怎么涉及引力波理论:)）所以我仔细看了BAYSTEAR&lt;a href=&quot;http:\\arxiv.org/abs/1508.03634&quot;&gt;这篇文章&lt;/a&gt;，把其中的过程在这里说一下。&lt;/p&gt;
-
-&lt;h3 id=&quot;基础&quot;&gt;基础&lt;/h3&gt;
-
-&lt;p&gt;首先介绍一些基础概念：探测器收到的信号等于引力波源发出的信号加上探测器的噪音，也就是signal=source+noise。用数学语言描述的话就是&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;y_i(t)=x_i(t;\boldsymbol{\theta})+n_i(t)&lt;/script&gt;
-
-&lt;p&gt;当然我们之后主要会在频域说事，所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Y_i(\omega)=X_i(\omega;\boldsymbol{\theta})+N_i(\omega)&lt;/script&gt;
-
-&lt;p&gt;同时我们把所有探测器接收到的引力波集合称为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\textbf{Y}(\omega)={Y_i(\omega)}_i&lt;/script&gt;
-
-&lt;p&gt;这里的\( \textbf{\theta} \)是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{\theta} = [\alpha, \delta, r, t, l, \psi, \phi_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2]&lt;/script&gt;
-
-&lt;p&gt;前七个分别是赤经、赤纬、距离、引力波到达地球的时间、系统的倾斜角等外禀参数；后面四个双星的质量和它们各自的自转角动量（内禀参数）。我们关心的是前两个参数。&lt;/p&gt;
-
-&lt;p&gt;理论上，因为引力波干涉仪没有指向，所以一个探测器完全不能限制源的位置、两个可以限制到一个圆上、三个是对称的两个点。如果我们也考虑引力波的振幅和相位的话，这两个参数也能提供一些位置的限制，所以之前那幅图里面并不是一个完整的圆。实际上我们想要求的是一个在天上的概率分布图\( f(\alpha, \delta) \)，以\( \alpha \)和\( \delta \)为自变量。当然这个概率分布图是以观测为基础的，所以这是一个条件概率&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\alpha, \delta) = p(\alpha, \delta | \boldsymbol{Y}(\omega))&lt;/script&gt;
-
-&lt;p&gt;这个概率并不好算，所以现在就是让贝叶斯出场的时候了&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\alpha, \delta | \boldsymbol{Y}(\omega)) = \frac{p(\boldsymbol{Y}(\omega) | \alpha, \delta)p(\alpha, \delta)}{p(\boldsymbol{Y}(\omega))}&lt;/script&gt;
-
-&lt;p&gt;留意到这里只有\( \alpha, \delta \)这两个参数，但是加上其他参数的条件概率会更容易被估计，所以我们将\( \alpha, \delta \)换成\( \boldsymbol{\theta} \)然后把不关心的参数全部积分掉，得到想要的条件概率；同时\( \boldsymbol{Y}(\omega)\)作为事件的先验是一个确定的数，在计算概率的时候也并不关心，可以扔掉。所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\alpha, \delta | \boldsymbol{Y}(\omega)) \propto \int p(\boldsymbol{Y}(\omega) | \alpha, \delta, \boldsymbol{\theta}_\mathrm{other})p(\alpha, \delta, \boldsymbol{\theta}_\mathrm{other}) d\boldsymbol{\theta}_\mathrm{other}&lt;/script&gt;
-
-&lt;p&gt;之后的任务就是计算上式中的两个概率了。&lt;/p&gt;
-
-&lt;h3 id=&quot;pboldsymbolyomega--alpha-delta-boldsymboltheta_mathrmother&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;p(\boldsymbol{Y}(\omega) | \alpha, \delta, \boldsymbol{\theta}_\mathrm{other})&lt;/script&gt;&lt;/h3&gt;
-
-&lt;p&gt;定义noise的one-sided power spectral density为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_i(\omega) = 2\mathrm{E}[|N_i(\omega)|^2]&lt;/script&gt;
-
-&lt;p&gt;假设noise是高斯分布，而且不同探测器之间的noise是互不关联的，我们有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\boldsymbol{Y}(\omega)|\boldsymbol{\theta}) = \prod_i p(Y_i|\theta) \propto \exp[-\frac{1}{2} \sum_i \int_0^\infty \frac{|Y_i(\omega)-X_i(\omega;\boldsymbol{\theta})|^2}{S_i(\omega)}d\omega]&lt;/script&gt;
-
-&lt;p&gt;频率中的连乘变成了\( e \)指数中的求和，然后将\( N_i \)消掉就行。现在一个概率变成了三项，\( S_i \)已经有定义了，要求的是\( Y_i(\omega) \)和\( X_i(\omega;\boldsymbol{\theta}) \)。&lt;/p&gt;
-
-&lt;h4 id=&quot;x_iomegaboldsymboltheta&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;X_i(\omega;\boldsymbol{\theta})&lt;/script&gt;&lt;/h4&gt;
-
-&lt;p&gt;我们进一步简化模型：假设并合的双星拥有一个稳定轨道，那么根据（一篇我没有读过的）文献，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X_i(\omega;\boldsymbol{\theta}) = \frac{r_{1,i}}{r}e^{-i\omega(t-\boldsymbol{d}_i\boldsymbol{n})}e^{2i\phi_c}[\frac{1}{2}(1+\cos{l}^2)\Re(\zeta)-i\cos{l}\Im(\zeta)]H(\omega;\boldsymbol{\theta}_\mathrm{in})&lt;/script&gt;
-
-&lt;p&gt;这里我们把\( X_i(\omega;\boldsymbol{\theta}) \)分成了两部分，前面一长串只跟外禀参数有关，后面的\( H \)只和内禀参数有关。但是在观测的时候比较容易得出的是波形的振幅\( \rho_i \)、相位\( \gamma_i \)和时间\( \tau_i \)，所以我们可以用这三个参数代替原来的7个外禀参数，使得，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X_i(\omega; \boldsymbol{\theta}_\mathrm{ex}, \boldsymbol{\theta}_\mathrm{in} =  X_i(\omega; \rho_i, \gamma_i, \tau_i, \boldsymbol{\theta}_\mathrm{in})) = \frac{\rho_i}{\sigma_i(\boldsymbol{\theta})}e^{i(\gamma_i-\omega\tau_i)}H(\omega; \boldsymbol{\theta}_\mathrm{in})&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma_i(\boldsymbol{\theta})^2 = \int_0^\infty\frac{|H(\omega;\boldsymbol{\theta}_\mathrm{in})|^2}{S_i(\omega)}d\omega = \frac{1}{r_{1,i}^2}&lt;/script&gt;
-
-&lt;p&gt;现在\( X_i \)的表达式就有了。&lt;/p&gt;
-
-&lt;h4 id=&quot;y_iomega&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;Y_i(\omega)&lt;/script&gt;&lt;/h4&gt;
-
-&lt;p&gt;这里就是BAYESTAR方法很快的原因：我们用从观测到的波形中用最大似然方法(maximum likehood method)得出的参数&lt;script type=&quot;math/tex&quot;&gt;\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}}_\mathrm{in}&lt;/script&gt;去代替波形；然后用和刚才对\( X_i \)相同的方法展开，得到，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Y_i(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i, \hat{\boldsymbol{\theta}}_\mathrm{in}) = \frac{\hat{\rho}_i}{\sigma_i(\boldsymbol{\hat{\theta}_\mathrm{in}})}e^{i(\hat{\gamma}_i-\omega\hat{\tau}_i)}H(\omega; \boldsymbol{\hat{\theta}_\mathrm{in}})&lt;/script&gt;
-
-&lt;p&gt;因为我们并不关心内禀参数究竟是什么，所以令\( \boldsymbol{\theta_\mathrm{in}} = \boldsymbol{\hat{\theta}_\mathrm{in}} \)，并将\( X_i, Y_i \)代入\( p(Y_i(\omega)|\boldsymbol{\theta}) \)中，会得到自相关函数：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(Y_i(\omega)|\boldsymbol{\theta}) = p(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i | \rho_i, \gamma_i, \tau_i) \propto \exp{[-\frac{1}{2}\hat{\rho}_i^2 -\frac{1}{2}\rho_i^2} + \hat{\rho}_i\rho_i\Re{\{e^{i \tilde{\gamma}_i}a_i^*(\tilde{\tau_i})\}}]&lt;/script&gt;
-
-&lt;p&gt;其中&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\tilde{\gamma}_i = \hat{\gamma}_i - \gamma_i, \tilde{\tau}_i = \hat{\tau}_i - \tau_i&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a_i(t;\boldsymbol{\theta}_\mathrm{in}) = \frac{1}{\sigma_i^2(\boldsymbol{\theta}_\mathrm{in})} \int_0^\infty \frac{|H(\omega;\boldsymbol{\hat{\theta}}_\mathrm{in})|^2}{S_i(\omega)}e^{i\omega t}d\omega&lt;/script&gt;
-
-&lt;p&gt;这只是一个探测器的，将所有探测器的概率乘起来就等于在指数函数中的每一项加上一个求和号；同时留意到\( \hat{\rho}_i \)是一个常数，所以也可以扔掉：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\hat{\rho}_i, \hat{\gamma}_i, \hat{\tau}_i | \rho_i, \gamma_i, \tau_i) \propto \exp{[-\frac{1}{2}\sum_i\rho_i^2} + \sum_i\hat{\rho}_i\rho_i\Re{\{e^{i \tilde{\gamma}_i}a_i^*(\tilde{\tau_i})\}}]&lt;/script&gt;
-
-&lt;p&gt;一半搞定。&lt;/p&gt;
-
-&lt;h3 id=&quot;palpha-delta-boldsymboltheta_mathrmother-dboldsymboltheta_mathrmother&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;p(\alpha, \delta, \boldsymbol{\theta}_\mathrm{other}) d\boldsymbol{\theta}_\mathrm{other}&lt;/script&gt;&lt;/h3&gt;
-
-&lt;p&gt;取得\( \boldsymbol{\theta} \)的先验并不明确，因为我们并不知道引力波事件在参数空间的哪些参数中比较常见。那就平均呗，在所有可能的取值中平均就好了。所以先验可以表为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;r^md\phi_cdrdtd\cos{l}d\psi&lt;/script&gt;
-
-&lt;h3 id=&quot;结果&quot;&gt;结果&lt;/h3&gt;
-
-&lt;p&gt;把这两个概率的结果塞进去原来的\( p(\alpha,\delta) \)里面就得到最终的结果：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(\alpha,\delta) = \int_0^\pi \int_{-1}^1 \int_{-T}^T \int_{r_{min}}^{r_{max}} \int_0^{2\pi} \exp{[-\frac{1}{2}\sum_i\rho_i^2 + \sum_i\hat{\rho}_i\rho_i\Re{\{e^{i \tilde{\gamma}_i}a_i^*(\tilde{\tau_i})\}}]} r^md\phi_cdrdtd\cos{l}d\psi&lt;/script&gt;
-
-&lt;p&gt;把它用计算机算出来就行了。&lt;/p&gt;
-
-&lt;h3 id=&quot;一些比较&quot;&gt;一些比较&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GW/2-cumu-p.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;BAYSTAR（紫色）和LALInference（蓝色）的在不同年份不同探测器组合下模拟的累计概率。H：LIGO Hanford，L：LIGO Livingston，V：Virgo；来自参考文献1&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;根据上图可以看到BAYSTAR和LALInference基本上有相似的表现，除了16年HLV的组合之外。作者认为这是因为三个探测器的信号都进入了LALInference，但是某一个信号太弱，没有进到BAYESTAR里面，所以BAYSTAR的表现比较差。但是如果去点掉这些情况的话，两个方法的表现回到了相似的水平。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GW/3-time.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;BAYESTAR在不同线程数下的用时；来自参考文献1&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;时间方面，BAYESTAR的用时要远远短于LALInference。单线程的话仅需100秒左右，如果32线程的话时间会缩减到4秒到10秒；而LALInference的用时在100个小时左右。但是BAYESTAR需要先计算出\( Y_i \)的参数，不知道这个时间有没有算在内。当然如果不用参数直接用信号来计算的话时间应该会变长，但是我觉得还是会比LALInference短。&lt;/p&gt;
-
-&lt;h3 id=&quot;后记&quot;&gt;后记&lt;/h3&gt;
-
-&lt;p&gt;打公式真累。不过要是今天不搞完以后可能就忘了。Stefen Ballmer教授的讲课比较清晰，跟上并不太难；不过由于自己水平太渣加上教授的字迹太瞎眼（无论板书还是笔记），最终决定从微分几何开始学起，最后对引力波原理也不怎么熟悉，只能挑一篇简单的论文讲一讲。不过也算是趁此机会看了看梁灿彬老师的&lt;a href=&quot;https://www.bilibili.com/video/av1157024/?from=search&amp;amp;seid=10126358752879864979&quot;&gt;视频课&lt;/a&gt;和书（也很清晰易懂！)，准备pre的时候各种用贝叶斯，也是学到了不少东西。&lt;/p&gt;
-
-&lt;h3 id=&quot;参考文献&quot;&gt;参考文献&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Singer, L. P. &amp;amp; Price, L. R. Rapid Bayesian position reconstruction for gravitational-wave transients. &lt;em&gt;Physical Review D&lt;/em&gt; &lt;strong&gt;93&lt;/strong&gt;, (2016).&lt;/li&gt;
-  &lt;li&gt;Abbott, B. P. et al. Localization and Broadband Follow-up of the Gravitational-wave Transient GW150914. &lt;em&gt;The Astrophysical Journal Letters&lt;/em&gt; &lt;strong&gt;826&lt;/strong&gt;, L13 (2016).&lt;/li&gt;
-  &lt;li&gt;Aasi, J. et al. First Searches for Optical Counterparts to Gravitational-wave Candidate Events. &lt;em&gt;The Astrophysical Journal Supplement Series&lt;/em&gt; &lt;strong&gt;211&lt;/strong&gt;, 7 (2014).&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Mon, 12 Jun 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/06/12/GW-position/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/12/GW-position/</guid>
-        
-        <category>astro-ph</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>走在海边（二）横滨看风景</title>
-        <description>&lt;h2 id=&quot;横滨游船&quot;&gt;横滨游船&lt;/h2&gt;
-
-&lt;p&gt;横滨正好夹在了横须贺和东京之间，从横须贺坐特急只有5个站，回程干脆就顺便去看看，吃个晚饭。横滨站转港未来线岛终点就是中华街，出站之后明显感觉听到中文的机会比东京高不少。但是我们都不太喜欢人多的地方，所以看见中华街的牌坊扭头就跑，进了反方向的山下公园码头。正好当天最后一班短途游览船十分钟之后出发，想着虽然没看到航母，看看海也不错。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/14-harber.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;山下公园的码头，左边是我们坐的船和（后方的）邮轮冰川丸号，和三笠舰是同一时代的船&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;海上风挺大，但是阳光一直都很不错。而且乘船本身的速度个人一种很放松的感觉，觉得站在船边可以发呆一整天。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/15-bridge-moon.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;首都高速湾岸线和月亮；一路向左走可以到东京湾跨海大桥和羽田机场&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;船回程的时候经过一个红色的小灯塔，很有童话的味道。奇怪的是堤坝上写着“立入禁止”但是还是有人坐在上面，而且旁边没有小艇，不知道他们是怎样上去的。沿着灯塔的方向望过去正好是羽田机场，但是看到有几架飞机起飞之后先往南和西绕一个大弯飞到横滨在往北，才想起面前的这片区域应该就是横田空域了。美军的空军基地以及第五航空队司令部就在横田基地，但是横田基地在福生市，也就是东京到三鹰两倍多的距离，看似和东京没什么关系。然而美军划出来的禁飞区，也就是平常说的横田空域北至新泻的长冈、西边将近到松本、南到伊豆、东边边缘也将近到东京都心。要不是羽田机场在东京西南边美军可能把都心也都划进去了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://userdisk.webry.biglobe.ne.jp/017/947/59/N000/000/002/141603517328609783178_141114yokota_kuiki1.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;横田空域示意图&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;民航飞机想要通过横田空域需要事先批准，但是我们都知道每次都要实现批准就约等于不让你做，所以民航公司们也不会费这个心，都选择了绕开横田空域；后果当然是浪费了更多燃料、航路更拥挤了。知乎上说不少日本人是不知道横田空域的，有空问问看。嘛不过空域来说，我国空军占的不比驻日美军少www。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/17-yokoda.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;实时航路图；左下角明显可以看到JAL201为了从上方穿过横田空域在十分钟内拉高了两万英尺，飞行了不到十分钟后就该下降了&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;大栈桥&quot;&gt;大栈桥&lt;/h2&gt;
-
-&lt;p&gt;大さん橋是横滨的一个国际码头。刚刚在坐船的时候就留意到为什么旁边有一块突出来的陆地，上面还有草（和很多人）；到了之后才发现是一个国际码头，还有海关。码头上方相当于一个公园，视野非常开阔；下方是候船区和一个party hall，租一天似乎要二十万来着？&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/18-oosan-bridge.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;就是这个hall&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/20-depart.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;刚进来的时候我还在说一个公园要什么海关&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;大栈桥这种木条地板加金属边缘的设计的确很好看，也有很多（一对一对的！）年轻人们在这里卿卿我我、黏黏糊糊。我当然不会错过这个大好机会拍拍拍。感谢充电宝，得以让我在一对站着聊天的男女身后站了快十分钟等到没有云把太阳遮住，拍下了他们的剪影。我差点想走过去跟他们说：“不好意思我想拍你们，但是你们的脑门被横梁挡住了，能稍微往旁边站一点然后继续聊天吗？”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/19-roman1.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;夕阳下的闲聊&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/21-roman2.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;想找到一处没什么人的地方也挺难的&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;最后在旁边的赤レンガ倉庫吃了晚饭。这个仓库给人一种红砖厂的感觉，不过这种建筑是明治昭和年间比较常见的仓库类型，比如京都的旧舞鹤镇守府也有这样的仓库（今天真是跟海军没完了）。&lt;/p&gt;
-
-&lt;h2 id=&quot;一些彩蛋&quot;&gt;一些彩蛋&lt;/h2&gt;
-
-&lt;p&gt;顺着京急线从横须贺再往南可以到三浦海岸，是女神异闻录5福利的地方:)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/23-p5.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;往那个方向去的站台&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-yokosuka/24-p5.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;我是不是该给quin打钱了www&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;另外距离横须贺中央三个站的安针冢是英国人威廉亚当斯的慰灵碑；威廉在长途跋涉、损失了4艘船之后到达了日本，在机缘巧合之下留在了此处并为德川家康做出了不少贡献。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://media.playstation.com/is/image/SCEA/nioh-listing-thumb-01-ps4-us-08dec15?$Icon$&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;就是这个大叔&lt;/em&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 05 Jun 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/06/05/yokohama/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/05/yokohama/</guid>
-        
-        <category>hanging-around</category>
         
         
       </item>

@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      "The Observation and Analysis of Stellar Photospheres - 1"
-subtitle:   "暂空"
-date:       2000-01-01
+title:      "恒星光球层的观测与分析(OASP) - 1"
+subtitle:   "大工程"
+date:       2017-11-11
 author:     "mingjie"
-header-img: "img/.jpg"
+header-img: "img/post-bg-OASP1.png"
 tags:
     - learning
 ---
@@ -14,7 +14,7 @@ tags:
 
 ### 前言
 
-没想好。记得是找生长曲线的时候找到的，觉得很好。
+这是恒星光球层的观测与分析(The Observation and Analysis of Stellar Photosphere)的读书笔记。当时是找生长曲线相关资料的时候偶尔看到的，觉得不错，就打算慢慢看下去，把笔记记在这里。这本书说是对光球层的观测与分析，实际上是教你如何分析恒星光谱。写笔记中肯定会有理解错误的地方，请不吝指正，どうか。<br>
 为了避免版权问题，图片尽量从其他地方找、或者自己画。
 
 ### 第一章
@@ -56,7 +56,7 @@ $$ m = -2.5 \lg \int_0^\infty F_\nu W(\nu) \mathrm{d}\nu + C $$
 
 这里$$ F_\nu $$是投射到望远镜或者CCD上的光量，$$ W(\nu) $$是透过率；常数$$ C $$用标准星标定。如果$$ W(\nu) = 1 $$那么星等就变为热星等。
 
-有关星等系统的信息在[这里](http://svo2.cab.inta-csic.es/svo/theory/fps/)。
+有关各星等系统的透过率信息在[这里](http://svo2.cab.inta-csic.es/svo/theory/fps/)。
 
 - 色指数
 
