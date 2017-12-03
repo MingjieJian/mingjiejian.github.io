@@ -2,7 +2,7 @@
 layout:     post
 title:      "公开课微信群"
 subtitle:   "有监督人工学习"
-date:       2017-11-08
+date:       2017-12-03
 author:     "Mingjie"
 header-img: "img/post-bg-CG1.png"
 comments:   true
@@ -18,4 +18,4 @@ tags:
 
 有人监督的确更有动力去学，看着列表里面完成了的课越来越多挺有成就感的。下个月继续往网页设计方向稍微学深一点。
 
-同时推荐(CSS Zen Garden)[http://www.csszengarden.com/]，看看别人是怎么将同一个网页通过不同的CSS3玩出花来的。
+同时推荐[CSS Zen Garden](http://www.csszengarden.com/)，看看别人是怎么将同一个网页通过不同的CSS3玩出花来的。
