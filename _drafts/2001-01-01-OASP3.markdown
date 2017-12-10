@@ -1,0 +1,73 @@
+---
+layout:     post
+title:      "OASP笔记 - 3"
+subtitle:   "光谱仪"
+date:       2001-01-01
+author:     "mingjie"
+header-img: "img/post-bg-OASP3.jpg"
+tags:
+    - learning
+
+---
+
+我们需要它。
+低分辨率光谱仪可以得到天体的连续谱（第十章），而高分辨率的光谱仪可以得到天体的谱线（第十二章）
+
+## 概述
+
+*此处应该有图*
+
+单色光会在焦平面上形成与狭缝平行的线，强度与$$ \frac{F_\mathrm{cam}}{F_\mathrm{coll}} $$成正比，一般小于1。多色光形成连续谱，可用$$ \Delta \lambda $$描述色散程度；需要平衡$$ \Delta \lambda $$与亮度的关系，同时$$ \Delta \lambda $$也需要小于我们关注的结构。定量的计算在第十二章。
+
+## 衍射光栅
+
+好处：
+更多的光射入了我们想要的order中
+不同角度可用，方便射入不同CCD
+
+### 分辨率
+
+$$ F(x, t) = F_0(t)e^{2\pi i\frac{x\sin{\alpha}}{\lambda}} $$
+令$$ G(x) $$为光栅，
+
+$$ G(x) = $$
+
+在$$ \beta $$角上看到的光强为
+
+$$ g(\beta) = \int^{\infty}_{-\infty} F(x, t) G(x) e^{2\pi i\frac{x\sin{\beta}}{\lambda}} dx $$
+$$ g(\beta) = <F(0)>\int^{\infty}_{-\infty} G(x) e^{2\pi i\frac{x\sin{\alpha}+x\sin{\beta}}{\lambda}} dx $$
+
+令$$ \theta = \frac{\sin{\alpha} + \sin{\beta}}{\lambda} $$，有
+
+$$ g(\theta) = <F_0> \int^{\infty}_{-\infty} G(x) e^{2\pi ix\theta} dx $$
+
+所以光栅就相当于一个傅里叶变换器。
+
+### $$ G(x) $$
+
+$$ G(x) $$是由宽为$$ b $$的狭缝等距$$ d $$摆放直至充满宽度$$ W $$而来的：
+
+$$ G(x) = B_1(x) * III(x) B_2(x) $$
+
+$$ g(\theta) = b_1(\theta) iii(\theta) * b_2(\theta) $$
+
+$$ g(\theta) = \frac{b\sin{\pi\theta b}}{\pi\theta b} iii(\theta) * \frac{W\sin{\pi\theta W}}{\pi\theta W} $$
+
+$$ g(\theta) = \sum \delta(\theta-\frac{n}{d}) * \frac{W\sin{\pi\theta W}}{\pi\theta W} \frac{b\sin{\pi\theta b}}{\pi\theta b} $$
+
+$$ g(\theta) = \sum_n \frac{W\sin{\pi(\theta-\frac{n}{d}) W}}{\pi(\theta-\frac{n}{d}) W} \frac{b\sin{\pi\theta b}}{\pi\theta b} $$
+
+$$ \sin{\alpha} + \sin{\beta} = \theta' \Rightarrow d\theta' = \cos{\beta}\beta \approx \beta $$
+
+每个尖峰下降到0时的宽度为：
+
+$$ \Delta \theta = \frac{\lambda}{W} $$
+
+每个尖峰的位置为：
+
+$$ \theta' = \frac{n\lambda}{d} = \sin{\alpha} + \sin{\beta} $$
+
+所以不同波长的光有不同的宽度和尖峰位置。$$ n = 0 $$时为白光。$$ n $$越大，分的越开：
+
+$$ \frac{d\theta}{d\lambda} = \frac{n}{d} \Rightarrow \Delta \lambda = \frac{\lambda}{W} \frac{d}{n} $$
+$$ n $$小的时候要增大板宽和多刻线；$$ n $$大的时候不一定。
