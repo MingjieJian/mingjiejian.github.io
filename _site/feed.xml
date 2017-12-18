@@ -5,9 +5,160 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 14 Nov 2017 20:56:36 +0900</pubDate>
-    <lastBuildDate>Tue, 14 Nov 2017 20:56:36 +0900</lastBuildDate>
+    <pubDate>Mon, 18 Dec 2017 18:12:07 +0900</pubDate>
+    <lastBuildDate>Mon, 18 Dec 2017 18:12:07 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>OASP笔记 - 4</title>
+        <description>&lt;p&gt;这一章讲的是有关光电探测器的东西。从观测的角度来说，知道光电探测器的一些参数是很有必要的，比如说在仪器选择和之后的数据处理上。光电探测器分为两大类，积分的（常见的硅CCD）和脉冲计数的（光电倍增管）。积分类型的适合获取高信噪比图像，脉冲计数的信噪比稍低一点。当然除了探测器本身之外，我们还需要有很多其他的电子器件，来控制开关、记录时间、进行模数转换等。&lt;/p&gt;
+
+&lt;h3 id=&quot;量子效率和光谱响应&quot;&gt;量子效率和光谱响应&lt;/h3&gt;
+
+&lt;p&gt;量子效率定义为探测到的光子数和入射的光子数的比值，即&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(\lambda) = \frac{\mathrm{探测到的光子数}}{\mathrm{入射的光子数}}&lt;/script&gt;
+
+&lt;p&gt;这个量当然越大越好，因为我们不想损失任何一个光子。同时比值的分子和分母都是波长&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;的函数，所以量子效率作为波长的函数也可以被称为光谱响应；这个量也是越宽越好。&lt;/p&gt;
+
+&lt;p&gt;另一种量子效率的定义方式是从能量/电荷的角度去定义。我们可以用普朗克关系将入射光子数转化成能量：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J = N \frac{hc}{\lambda}&lt;/script&gt;
+
+&lt;p&gt;同时将探测到的光子数转化为电荷量：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q = q'(\lambda)eN&lt;/script&gt;
+
+&lt;p&gt;那么量子效率就变成了&lt;script type=&quot;math/tex&quot;&gt;J&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;的比：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;r = \frac{Q}{J} = \frac{e\lambda}{hc}q'(\lambda) = 8.066\times 10^{-5}\lambda q'(\lambda)&lt;/script&gt;
+
+&lt;p&gt;一般来说硅探测器有很高的量子效率和比较宽的光谱响应。&lt;/p&gt;
+
+&lt;h3 id=&quot;线性响应&quot;&gt;线性响应&lt;/h3&gt;
+
+&lt;p&gt;除了“横向”的光谱响应以外，“纵向”的线性响应也是一个重要的参数。线性响应指的是输出的电子数量和入射的光子数量成正比的区间。在线性响应区间内，不考虑其他的误差时，探测到的谱线形状是不变的。但是如果离开了线性响应区间，就会使误差增大同时要做适当的改正。线性响应的区域和探测器用到的原理以及之后对电子的处理有关。&lt;/p&gt;
+
+&lt;h3 id=&quot;硅二极管阵具体过程&quot;&gt;硅二极管阵（具体过程）&lt;/h3&gt;
+
+&lt;p&gt;充电之后的硅二极管阵就像一个个小电容，光子在转化成电子之后被存储在每个单元中，通过方波信号控制读取或者移动。自扫描阵列(self scanning array)是1维的阵列，但是现在用的比较多的CCD是2维的阵列。（读出方式请回忆自己的理解）电子在不同像素中移动的时候会有损失，留下来的比例比较高(0.99950-0.999999)，但是架不住CCD太大。CCD在拍摄光谱的时候会将光谱在垂直色散方向的致宽求和；至于是在读出之前求和还是读出之后求和就看天体的亮度：是太暗所以先求和减少读出误差还是太亮所以后求和防止饱和。像素合并也可以提高读出速度。&lt;/p&gt;
+
+&lt;p&gt;信号在离开探测器之后后被各种处理，放大、数字化、积分等等。重要的是最好在离开探测器之后马上进行放大，以防止后续操作带来的误差也被放大了。最后一步的数字化要求进行模数转换(Analog-to-digital, A/D conversion)，所以转换出来的数值的单位叫做ADU(A/D Unit)。ADU和光子数之间的关系可以通过放大器和探测器的性质得出。&lt;/p&gt;
+
+&lt;p&gt;探测器不同像素之间的不一致大概在百分之几左右，可以用平场解决。为了减少误差平场的信噪比应当比亮帧的高几倍。但是对于靠近光谱响应边缘的光来说，因为探测器开始变得透明，望远镜结构和探测器本身会带来一些额外的像，这是平场所不能解决的，但是对于可见光来说问题不大。&lt;/p&gt;
+
+&lt;h3 id=&quot;本底和宇宙线&quot;&gt;本底和宇宙线&lt;/h3&gt;
+
+&lt;p&gt;所有的照片都是有本底的，即使没有打开镜头盖。这些电子的产生主要是因为热运动，所以冷却是一个减少热噪声的好办法。除了冷却之外，有些探测器还需要真空，防止因为温度梯度太大导致的结霜或者结露。足够低的温度可以将热噪声降低到可被忽略的水平，但是冷却也会影响探测器的光谱响应，如当温度降低100度时，红端的响应会降到1/10。所以宽光谱响应的探测器需要把温度浮动保持在1度以下。&lt;/p&gt;
+
+&lt;p&gt;除此之外有的探测器还有一些偶尔出现的固定图样，如果每次的图样都一致的话也可以通过偏置减掉。宇宙线也会在照片中留下亮斑；只要像素合并不是很多的话比较容易被认出来。&lt;/p&gt;
+
+&lt;h3 id=&quot;噪声&quot;&gt;噪声&lt;/h3&gt;
+
+&lt;p&gt;噪声主要来自三个方面：星光本身的光子噪声、天光的光子噪声和仪器噪声。第一和第二种噪声是比较稳定而且容易计算的，所以它们的和提供了理论的噪声最小值。&lt;/p&gt;
+
+&lt;p&gt;光子噪声遵从玻色-爱因斯坦统计：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta N = N^{1/2}(1 + \frac{1}{e^{\frac{h\nu}{kT}}-1})&lt;/script&gt;
+
+&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;h\nu \ll kT&lt;/script&gt;的时候，上式可以简化为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta N = N^{1/2}&lt;/script&gt;
+
+&lt;p&gt;假设仪器噪声也符合玻色-爱因斯坦统计，我们可以得出信噪比和探测到的光子数的关系。令&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;为探测到的光子总数、&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;为探测到的来自天体的光子总数、&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;为来自所有其他源的光子总数，则根据光子守恒以及误差传递公式，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = N - B&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta L = (\Delta N^2 + \Delta B^2)^{1/2}&lt;/script&gt;
+
+&lt;p&gt;将简化的玻色-爱因斯坦统计公式代入，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta L = (N + B)^{1/2}&lt;/script&gt;
+
+&lt;p&gt;此时信噪比为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;s/n = L / \Delta L = \frac{L}{(L + 2B)^{1/2}}&lt;/script&gt;
+
+&lt;p&gt;当来自其他源的光子数很小，即&lt;script type=&quot;math/tex&quot;&gt;B \ll L&lt;/script&gt;时，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;s/n \approx L^{1/2}&lt;/script&gt;
+
+&lt;p&gt;信噪比正比于根号下恒星光子数。比如&lt;script type=&quot;math/tex&quot;&gt;10^4&lt;/script&gt;个光子对应100的信噪比，即1%的误差。而当&lt;script type=&quot;math/tex&quot;&gt;B \gg L&lt;/script&gt;的时候，式子变为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;s/n = \frac{L}{(2B)^{1/2}}&lt;/script&gt;
+
+&lt;p&gt;此时应尽量增大&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;（增大口径、提高量子效率等），或减少&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;。这个时候增大&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;对信噪比的提高比&lt;script type=&quot;math/tex&quot;&gt;B \ll L&lt;/script&gt;时要快（正比）。&lt;/p&gt;
+
+&lt;p&gt;当然在所有情况下，获得同样信噪比需要的时间是和天体的亮度有关的。&lt;/p&gt;
+
+&lt;h3 id=&quot;探测器的选择&quot;&gt;探测器的选择&lt;/h3&gt;
+
+&lt;p&gt;之前推出来的公式只是和探测到的光子数而不是天体入射的光子数有关，不利于实际计算，所以需要再作推广。&lt;/p&gt;
+
+&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;l&lt;/script&gt;为恒星入射的光子数，则有&lt;script type=&quot;math/tex&quot;&gt;L = q(\lambda)l&lt;/script&gt;；同时假设天光的光子噪声相对仪器噪声可忽略（光谱情况下），仪器噪声为&lt;script type=&quot;math/tex&quot;&gt;r&lt;/script&gt;，则信噪比表达式为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;s/n = \frac{q(\lambda)l}{(q(\lambda)l + r^2)^{1/2}}&lt;/script&gt;
+
+&lt;p&gt;从上式可以看出信噪比只和量子效率、入射光子数和读出噪声有关，而量子效率和读出噪声都可以测量。不同的&lt;script type=&quot;math/tex&quot;&gt;q, l, \Delta B&lt;/script&gt;值下的信噪比曲线如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP4/fig4.4.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;入射光子数和信噪比的图&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;显然当入射光子数大时，应选用量子效率高的探测器；而小时，应选用读出噪声小的。&lt;/p&gt;
+
+&lt;h3 id=&quot;阱深和动态范围&quot;&gt;阱深和动态范围&lt;/h3&gt;
+
+&lt;p&gt;一个像素点可以容纳的电量成为它的阱深。当势阱被填满了之后，这个像素将不能继续探测光子。所以当天体的光子噪声主导时，从理论上来说，势阱可容纳的最大光子数的平方根就是可以获得的最大信噪比。但是实际上达不到，因为逼近势阱的顶部的时候会出现其他问题；如果想提高信噪比就需要多次曝光并叠加。&lt;/p&gt;
+
+&lt;p&gt;探测器本身的读出噪声加上可容纳的最大电量可以描述探测器的动态范围，也就是可以探测到的光子数量范围。比如读出噪声是400个电子，势阱可以容纳&lt;script type=&quot;math/tex&quot;&gt;1.2 \times 10^7&lt;/script&gt;个电子，那么动态范围为&lt;script type=&quot;math/tex&quot;&gt;\frac{1.2 \times 10^7}{400} = 3 \times 10^4&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;噪声的测量&quot;&gt;噪声的测量&lt;/h3&gt;
+
+&lt;p&gt;作为主要对科学感兴趣的阵营，我们有的时候对总体的噪声水平感兴趣，而不是具体的噪声来源。一个简单而又直接的方法就是测拍摄多幅暗场，统计每个像素的ADU分布；分布的宽度就是噪声、平均值就是偏置。&lt;/p&gt;
+
+&lt;p&gt;有的时候我们想知道测得的噪声ADU值对应多少光子；这时需要利用信噪比表达式将&lt;script type=&quot;math/tex&quot;&gt;s/n, L_{\mathrm{ADU}}, u_0&lt;/script&gt;（模数转换的常数，&lt;script type=&quot;math/tex&quot;&gt;\mathrm{photons/ADU}&lt;/script&gt;）&lt;script type=&quot;math/tex&quot;&gt;, r_{\mathrm{ADU}}&lt;/script&gt;联系起来：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;s/n = \frac{u_0 L_\mathrm{ADU}}{(u_0 L_\mathrm{ADU} + u_0^2 r_\mathrm{ADU}^2)^{1/2}} \\ = \frac{L_\mathrm{ADU}}{(\frac{ L_\mathrm{ADU}}{u_0} + r_\mathrm{ADU}^2)^{1/2}}&lt;/script&gt;
+
+&lt;p&gt;利用暗场的起伏可以测出&lt;script type=&quot;math/tex&quot;&gt;r_\mathrm{ADU}&lt;/script&gt;，已知光度的灯平场以及起伏可以测出&lt;script type=&quot;math/tex&quot;&gt;s/n&lt;/script&gt;以及&lt;script type=&quot;math/tex&quot;&gt;L_\mathrm{ADU}&lt;/script&gt;，即可算出此时的&lt;script type=&quot;math/tex&quot;&gt;u_0&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;u_0 r_\mathrm{ADU}&lt;/script&gt;即为噪声对应的光子数。&lt;/p&gt;
+
+&lt;h3 id=&quot;空间分辨率&quot;&gt;空间分辨率&lt;/h3&gt;
+
+&lt;p&gt;空间分辨率是指可以将两个源分开的最小角距离。从频域的角度理解，因为像素阵列有大小，所以傅里叶变换之后频率大于奈奎斯特频率的信号会被盖掉，丢失了高频的信号。但是探测器单独的空间分辨率并不足以描述数据的轮廓；整体的谱线轮廓会在第12章讨论。&lt;/p&gt;
+
+&lt;h3 id=&quot;略过的内容&quot;&gt;略过的内容&lt;/h3&gt;
+
+&lt;p&gt;光电倍增管、照相底片&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Dec 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2017/12/18/OASP4/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/18/OASP4/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>公开课微信群</title>
+        <description>&lt;p&gt;这个月完成了Coursera网页前端基础系列课程之中的两个。&lt;/p&gt;
+
+&lt;p&gt;说起网页制作和设计，这是一直以来都挺想学的内容。第一它的实质仍然是编程，将代码转化为网页，自己对编程比较熟悉；第二它又和一直以来接触的数据处理不一样，主要负责呈现，也就是处在数据处理前面的内容。在数据可视化的过程中，一般平常用到编程语言的UI都是不怎么好看的，而且依赖于语言本身；但是通过网页前端呈现内容可以将两部分分离，也就是说不管后端用的是什么语言，只要输出格式正确，都能套到同一个网页中；而且网页的呈现方式基本上统一，HTML5+CSS3+JS，这就保证了在不同的平台/设备上都能获得相似的体验。&lt;/p&gt;
+
+&lt;p&gt;这个月主要跟的是密歇根大学的Web Design for Everybody系列课程，从HTML5到JavaScript。实际上课程难度非常小，基本上只是教了语言最基本的用法；但是其中的思考方式和数据处理是很不一样的。作为网页，HTML5+CSS3将内容和样式分离，给与了一个网页无限多的可能；同时也给代码赋予了很大的灵活性，可以将某个元素多次定义，浏览器只会显示最后定义的样式。而在数据处理中，我们总是希望（至少在一个模块内）一个变量由始至终代表同一个数据而且尽量不去改变。当然JS的确就回到了传统意义上的编程，而且也通过程序给网页带来了非常多的可能性。&lt;/p&gt;
+
+&lt;p&gt;有人监督的确更有动力去学，看着列表里面完成了的课越来越多挺有成就感的。下个月继续往网页设计方向稍微学深一点。&lt;/p&gt;
+
+&lt;p&gt;同时推荐&lt;a href=&quot;http://www.csszengarden.com/&quot;&gt;CSS Zen Garden&lt;/a&gt;，看看别人是怎么将同一个网页通过不同的CSS3玩出花来的。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 03 Dec 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2017/12/03/course-group1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/03/course-group1/</guid>
+        
+        <category>正业以外</category>
+        
+        
+      </item>
     
       <item>
         <title>OASP - 2</title>
@@ -82,7 +233,7 @@ B(x) = \begin{cases} 0 &amp; x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 &amp; x \
 
 &lt;p&gt;它的傅里叶变换还是一个Shah函数，只不过间距变了：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;III(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta x})&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;iii(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta x})&lt;/script&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/06shah.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -161,7 +312,7 @@ B(x) = \begin{cases} 0 &amp; x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 &amp; x \
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;d(\sigma) = [b(\sigma) * III(\sigma) * f(\sigma)] \times i(\sigma)&lt;/script&gt;
 
-&lt;p&gt;可以看到最终傅里叶域的函数被乘上了一个&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅里叶变换是一个相对宽的轮廓，对&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域中的“低频”部分没有很大影响；但是轮廓会在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分下降，所以会抹掉高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分的信息。在&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;的信息“平均”掉。&lt;/p&gt;
+&lt;p&gt;可以看到最终傅里叶域的函数被乘上了一个&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅里叶变换是一个相对宽的轮廓，对&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域中的“低频”部分没有很大影响；但是轮廓会在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分下降，所以会抹掉高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分的信息。在&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;的信息“平均”掉。&lt;/p&gt;
 
 &lt;h3 id=&quot;采样-iiisigma的影响&quot;&gt;采样 &lt;script type=&quot;math/tex&quot;&gt;III(\sigma)&lt;/script&gt;的影响&lt;/h3&gt;
 
@@ -171,7 +322,7 @@ B(x) = \begin{cases} 0 &amp; x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 &amp; x \
 
 &lt;p&gt;在这里因为我们对信号进行了采样，所以得到的实际上是离散的信号点；我们并不知道点和点之间究竟是怎么样的（虽然经常认为是平滑过渡的），而点和点之间丢失的信息就对应着频域中大于奈奎斯特频率的部分，它们重叠了。与仪器轮廓的不同在于采样是离散化，而仪器轮廓是模糊。&lt;/p&gt;
 
-&lt;p&gt;我们想做的是通过测量&lt;script type=&quot;math/tex&quot;&gt;D(x)&lt;/script&gt;求得&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;，再转换成&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;最后求得&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;。从&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;这一步有&lt;script type=&quot;math/tex&quot;&gt;III(\sigma)&lt;/script&gt;的作用，它们都抹掉了高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的信息。如果&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，那么转换这一步基本上是正确的。但是如果重叠的部分很宽，这部分就不会有唯一的解，解决办法是减少采样的间隔。实际上&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;一般的确在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，而且&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;的存在也会强制使得&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的值减小，所以转换是成立的。&lt;/p&gt;
+&lt;p&gt;我们想做的是通过测量&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;求得&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;，再转换成&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;最后求得&lt;script type=&quot;math/tex&quot;&gt;F(\lambda)&lt;/script&gt;。从&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;这一步有&lt;script type=&quot;math/tex&quot;&gt;III(\sigma)&lt;/script&gt;的作用，它们都抹掉了高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的信息。如果&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，那么转换这一步基本上是正确的。但是如果重叠的部分很宽，这部分就不会有唯一的解，解决办法是减少采样的间隔。实际上&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;一般的确在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，而且&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;的存在也会强制使得&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的值减小，所以转换是成立的。&lt;/p&gt;
 
 &lt;p&gt;最后一个需要提及的是&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;。只要&lt;script type=&quot;math/tex&quot;&gt;B(x)&lt;/script&gt;够宽，问题就不大；但是不够宽的时候&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;本身的宽度和在&lt;script type=&quot;math/tex&quot;&gt;\sigma &gt; \frac{1}{W}&lt;/script&gt;处的起伏都会导致数据的模糊，所以有必要修改&lt;script type=&quot;math/tex&quot;&gt;B(x)&lt;/script&gt;的边缘以消除起伏。&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;本身的宽度会使和&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;的卷积很大，所以有必要稍微减小&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;。12章会有更多介绍。&lt;/p&gt;
 
@@ -267,54 +418,6 @@ B(x) = \begin{cases} 0 &amp; x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 &amp; x \
         <pubDate>Sat, 11 Nov 2017 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2017/11/11/OASP2/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/11/11/OASP2/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP - 14</title>
-        <description>&lt;p&gt;恒星的大小和有效温度是耦合的。这是我们的定义问题。我们在第一章定义了恒星的有效温度和大小的关系：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma T_\mathrm{eff}^4 = \int_0^\infty f_\nu d\nu&lt;/script&gt;
-
-&lt;p&gt;这里的&lt;script type=&quot;math/tex&quot;&gt;f_\nu&lt;/script&gt;是恒星表面单位面积发出的流量。假设在地球上观测到的流量为&lt;script type=&quot;math/tex&quot;&gt;F_\nu&lt;/script&gt;，恒星的距离为&lt;script type=&quot;math/tex&quot;&gt;r&lt;/script&gt;，半径为&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;，则根据能量守恒有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;4\pi r^2F_\nu = 4\pi R^2f_\nu&lt;/script&gt;
-
-&lt;p&gt;有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma T_\mathrm{eff}^4 = \frac{r^2}{R^2} \int_0^\infty F_\nu d\nu&lt;/script&gt;
-
-&lt;p&gt;也就是说，想要求有效温度，需要知道&lt;script type=&quot;math/tex&quot;&gt;F_\nu, r, R&lt;/script&gt;。地球上观测到的流量还算容易得到，可以通过多色测光推断。距离的话可以通过视差得到，或者如果属于某个星团的话或许可以通过星团中的变星推断。所以剩下的就是恒星的半径&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;了。但是我们显然不能跑到恒星表面去拿尺子量，所以我们还要依赖一个能够在地球上测到的量算出&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;；这个量是恒星的角半径（或者说角直径）&lt;script type=&quot;math/tex&quot;&gt;\theta_R (\theta_D)&lt;/script&gt;。唯一一种可以直接测出恒星半径的情况是食变星，不过想要得到有效温度还是需要距离。&lt;/p&gt;
-
-&lt;p&gt;但是“恒星的半径”这个概念本身也是值得商榷的。一般我们认为恒星的半径指的是光球层到恒星中心的距离，这是因为可见光波段恒星连续谱的光基本上都是从光球层发出来的。但是在别的波段光球层不一定是最亮的，比如说太阳的射电辐射主要来自日冕，或者一些冷超巨星也会在不同的波段有不同的半径。&lt;/p&gt;
-
-&lt;p&gt;“有效温度”，也是一个值得讨论的概念。有效温度的定义是恒星表面单位面积发出的平均辐射，所以当恒星不是球形或者表面辐射不均匀的时候可能会影响到我们对温度的推断（不同的朝向）。同时有效温度其实并不是决定恒星光谱性质的物理量，实际上应该是温度的分布（？）&lt;/p&gt;
-
-&lt;p&gt;这一章里我们将介绍确定恒星半径和温度的方法。&lt;/p&gt;
-
-&lt;h2 id=&quot;恒星半径暂略&quot;&gt;恒星半径（暂略）&lt;/h2&gt;
-
-&lt;h3 id=&quot;干涉&quot;&gt;干涉&lt;/h3&gt;
-
-&lt;h3 id=&quot;月掩星&quot;&gt;月掩星&lt;/h3&gt;
-
-&lt;h3 id=&quot;食变星&quot;&gt;食变星&lt;/h3&gt;
-
-&lt;h3 id=&quot;热星等&quot;&gt;热星等&lt;/h3&gt;
-
-&lt;h2 id=&quot;有效温度&quot;&gt;有效温度&lt;/h2&gt;
-
-&lt;h3&gt;…&lt;/h3&gt;
-
-&lt;h3 id=&quot;金属线的深度等值宽度&quot;&gt;金属线的深度/等值宽度&lt;/h3&gt;
-
-</description>
-        <pubDate>Sat, 11 Nov 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/11/11/OASP14/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/11/11/OASP14/</guid>
         
         <category>learning</category>
         
@@ -721,7 +824,7 @@ Robert L. Forward的小说Camelot 30K中外星人的城市名称。这座城市�
         <link>http://localhost:4000/2017/08/06/exomoon/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/08/06/exomoon/</guid>
         
-        <category>science</category>
+        <category>astro-ph</category>
         
         
       </item>
@@ -908,111 +1011,6 @@ Robert L. Forward的小说Camelot 30K中外星人的城市名称。这座城市�
         <guid isPermaLink="true">http://localhost:4000/2017/07/24/tardigrade/</guid>
         
         <category>astro-ph</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>晃到关东最东去——銚子</title>
-        <description>&lt;p&gt;期中过去了，不浪还是人？&lt;/p&gt;
-
-&lt;h3 id=&quot;三小时车程诶&quot;&gt;三小时车程诶&lt;/h3&gt;
-
-&lt;p&gt;去铫子的缘起似乎是想看看海。东京南边的确有，但是毕竟是东京湾，被千叶的房总半岛挡住了，可以说不是真正的海。想看一望无际的大海就要到东边的房总半岛或者南边的横须贺去了。&lt;/p&gt;
-
-&lt;p&gt;（嗯我是不是刚去过横须贺来着）&lt;/p&gt;
-
-&lt;p&gt;所以本来是想跑房总那边去的，而且那里还有一个秘境站（很难去、车次很少的车站）行川アイランド，外房线在地图上看着就在海岸线上。不过查了一下实在没有什么东西，就退而求其次去一个稍微热闹一点的地方——銚子了。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%8A%9A%E5%AD%90%E5%B8%82&quot;&gt;铫子市&lt;/a&gt;是千叶县关东平原最东边的一个市，利根川在铫子北部出海进入太平洋。因为靠海，所以渔业是当地的重要产业（同时还有酱油酿造）；能源方面风电占比应该比较大。元旦的时候銚子的犬吠是看日出的著名景点，铫子电气铁道也算是挺有故事的一条铁道。&lt;/p&gt;
-
-&lt;p&gt;但是毕竟在最东边，坐火车要三个小时。而且只有总武本线和成田线能到铫子，这两条线基本上都是一个小时才一班车（从千叶或者成田出发），所以只要误了一班车就要等一个小时，非常痛苦。&lt;/p&gt;
-
-&lt;h3 id=&quot;没什么人的城市&quot;&gt;没什么人的城市&lt;/h3&gt;
-
-&lt;p&gt;晃着晃着总算是到了铫子。虽然感慨着JR的便利，看到站牌的时候也是愣了一下：竟然坐到了JR某条线的总站。过了成田之后一路人都不多，等上二三十分钟就有位置坐。在铫子下车的时候人已经很少了，基本上都是来旅游的日本人。兴冲冲地走到铫子电气铁道线的站台，有一个老伯伯告诉我们下一班车是一个小时之后。果然是城市人，太年轻，以为火车的间隔不会太大；好吧只能腿到吃饭的地方了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/1-station.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;铫子站站牌&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/2-transfer.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;没有任何遮挡的换乘站出入口&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;走在路上很明显能感觉到这座城市很少人。酱油工厂就直接矗在市区里，很多马路没有人行道（胆战心惊地走着），车也非常少；如果再破败点我真以为自己回到了国内已经空心的三四线小城市了。只有在站附近才有一些饭店，画风当然也是像公路旁的饭店了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/3-street.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;铫子街景&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;在店里排完队吃完饭，掐着点走到观音站，买了张铫子电铁的一日券，看风景的时间才算正式开始。&lt;/p&gt;
-
-&lt;h3 id=&quot;铫子电气铁道&quot;&gt;铫子电气铁道&lt;/h3&gt;
-
-&lt;p&gt;铫子电气铁道接着成田线和总武线的铫子站继续往东走，在接近海边时向南拐，最后到达外川站。虽然全长只有6.4公里，没有复线区间，但是这条铁道线比日本所有的地铁线路历史都要久。1913年开业之后，除了1917-1923年因为经营不善以及一战导致的钢材价格高企，和之后的几次事故导致的短时间停运之外，铫子铁道一直处在运行状态之中。55-60年间更是有每周末运行的新宿到外川的“房总的休日”号快速列车。现在的桃子铁道基本上一小时一班车，整条路线共有6辆列车，比我预计中的多一倍。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/4-track.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;铫子电铁铁轨&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;一个有趣的地方是线上的10个站都有各自的“爱称”。这个爱称要从2006年的经营危机说起。1990年开始铫子电铁的经营权从千叶交通手上交给了内野屋工务店。随后内野屋工务店倒闭，社长在2006年还因为贪污被逮捕，导致了铫子电铁陷入了严重的赤字。幸好铫子电铁除了开火车之外还卖煎饼，就在网上打出了请求购买煎饼以补贴经营的号召。这个号召（竟然）&lt;a href=&quot;http://www.choshi-dentetsu.jp/upload/files/kiseki-tw2.pdf&quot;&gt;反响很好&lt;/a&gt;，救活了铫子电铁。当然这个策略不会一直有效，而后来东日本大地震使得到铫子的旅客锐减，所以公司决定将站名爱称的命名权卖出去；现在除了铫子和海鹿岛之外，在普通的站牌上汉字所在的地方，都换成了冠名赞助的公司。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://www.choshi-dentetsu.jp/upload/images/nr04-03.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;正好这个站叫笠上黒生&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;过来旅行的话可以买贴到的一日券“弧廻手形Deluxe”，1000日元同时包括了1个（非常非常咸的）煎饼、“地球の丸く見える丘展望館”的门票、一个御守（虽然拿的时候会被交待“明年请务必还要过来哦”）和一些展览的门票；基本上从铫子到犬吠的车票在300日元以上，所以即使只坐一个来回（估计也没那个闲情再等一小时坐第二个），加上参观的话也还可以。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/5-kannon.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;观音站，也算是个大站了&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;列车上基本上是车长加上一个乘务员（如果人多的话）。有站员的车站会在进站的时候买票、下车由车长（或乘务员）验票；如果没有站员的话就上车的时候在车头拿一张整理券，下车再找车长或者站员买单。运行速度不快，只有40km/h；除了一些大站（观音、犬吠）之外基本只有站台或者连站台都没有，只有几个阶梯。从观音到本铫子的一段路旁边全是茂密的树，给人一种在树林里行走的感觉。铁道线上的海鹿岛站还是全关东最东的火车站；虽然也是没有站台就是了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/6-train-inside.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;列车内部；可以看到窗户外全是树&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/7-moe.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;“吸引人气”惯用伎俩：萌化&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/8-ashigajima.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;关东最东的车站：海鹿岛&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;鸡鸣犬吠&quot;&gt;鸡鸣犬吠&lt;/h3&gt;
-
-&lt;p&gt;当然实际上没有鸡鸣，也没有犬吠。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/9-inubou.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;犬吠站&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/10-inubou-inside.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;犬吠站内部&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;车到达犬吠的时候，车长已经说ありがとうございました了。很明显几乎全部人都会在这里下车，而也是这里才有一些旅游景点的感觉。景点主要是高处的“可以看到地球是圆的”展望台和海边的灯塔。一路沿着公路边和农田走上去，就看到了像老年健身中心的样子的展望台。作为最高点，展望台的确可以看到周围的海和房总半岛；最明显的是一堆风机，还有一个是戳在海里面的。围墙上的标志标出了主要景点和城市的方向，不过当然是看不到富士山的。下面还有一个“日比有爱之碑”，看了很久才这反应过来说的是菲律宾。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/11-pano.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;展望台全景&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/12-j-f.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;这都日比了还怎么友爱:)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;灯塔就在海边，可以看到嶙峋的海滩。可惜到的时候灯塔已经关了，没能上去。吹了会海风，跑回站里买了包煎饼就回程了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/13-lighthouse.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;关了门的灯塔&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-choushi/14-seashore.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;灯塔旁的海边&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;又是三个小时&quot;&gt;又是三个小时&lt;/h3&gt;
-
-&lt;p&gt;回到东京的时候天早就完全黑了。一来一回六个小时，看了一个已经并且仍在衰退的城市。说已经习惯了也好、小资心态也好，活在大城市总是想出去别的地方看看；但是要说就在小城市定居吧，也还是不情愿的。便利的交通、饮食，集聚效应降低了获取这些生活资源的成本，但也使得城乡的差距逐渐拉大。大城市不仅买走了乡村生产的资源，还吸引了周围的年轻人；让年轻人拥有无限的可能性的同时，给乡村留下了一条看不清未来的道路。&lt;/p&gt;
-
-&lt;h3 id=&quot;also-read&quot;&gt;Also read&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%8A%9A%E5%AD%90%E5%B8%82&quot;&gt;铫子市&lt;/a&gt;、
-&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E9%8A%9A%E5%AD%90%E9%9B%BB%E6%B0%97%E9%89%84%E9%81%93%E7%B7%9A&quot;&gt;銚子電気鉄道線&lt;/a&gt;、
-&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E9%8A%9A%E5%AD%90%E9%9B%BB%E6%B0%97%E9%89%84%E9%81%93&quot;&gt;銚子電気鉄道&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 26 Jun 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/06/26/choushi/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/26/choushi/</guid>
-        
-        <category>hanging-around</category>
         
         
       </item>

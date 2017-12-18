@@ -682,6 +682,9 @@ form .row:first-child .floating-label-form-group {
 .pager li > a {
   color: #404040;
 }
+.pager li > a {
+  color: #AAAAAA !important;
+}
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;

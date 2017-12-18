@@ -7,7 +7,7 @@ author:     "Mingjie"
 header-img: "img/post-bg-exomoon.png"
 comments:   true
 tags:
-    - science
+    - astro-ph
 ---
 
 事情是这样子的。7月26日，哥伦比亚大学的David Kipping教授和他的研究生Alex Teachey（还有一位业余天文学家Allen Schmitt）在arixv上发布了一篇被提交到ApJ的论文。论文通过对最有可能拥有系外卫星的行星系统光变曲线的分析，对系外卫星的存在条件提出了限制，同时提出了一个存在系外卫星的行星系统**候选体**Kepler-1625。这个候选体符合作者们所给出的筛选条件，但是我们仍然不确定上面是否真的存在系外卫星；所以作者们向哈勃望远镜提交了一个观测申请并得到了批准，并希望在得到哈勃的观测数据之后做出更准确的结论。
