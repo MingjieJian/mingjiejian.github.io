@@ -2,7 +2,7 @@
 layout:     post
 title:      "OASP笔记 - 3"
 subtitle:   "光谱仪"
-date:       20017-12-18
+date:       2017-12-18
 author:     "mingjie"
 header-img: "img/post-bg-OASP3.jpg"
 tags:
