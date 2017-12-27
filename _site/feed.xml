@@ -5,9 +5,274 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 19 Dec 2017 13:01:48 +0900</pubDate>
-    <lastBuildDate>Tue, 19 Dec 2017 13:01:48 +0900</lastBuildDate>
+    <pubDate>Wed, 27 Dec 2017 18:04:23 +0900</pubDate>
+    <lastBuildDate>Wed, 27 Dec 2017 18:04:23 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>OASP笔记 - 7</title>
+        <description>&lt;p&gt;恒星表面的主要传能方式是辐射。对流传能在恒星内部以及低温恒星是不可以忽略的，所以最后会稍微涉及到。同时也只有在辐射传能主导的区域内恒星的物理参数才会跟光谱有关系，之后也会有有效温度的例子。这一章我们会建立辐射传能的微分方程，然后讨论几种简单的解。但是除此之外的解都是数值的，需要进行数值积分。我们希望计算出合成光谱，而这个目标的前提就是有恒星光球层内尽可能多的物理参数；第七八九章就是干这个的。&lt;/p&gt;
+
+&lt;h3 id=&quot;辐射转移方程以及它的通解&quot;&gt;辐射转移方程以及它的通解&lt;/h3&gt;
+
+&lt;p&gt;接着&lt;a href=&quot;https://mingjiejian.github.io/2017/12/18/OASP5/&quot;&gt;第五章&lt;/a&gt;最后两条公式，假设辐射沿着&lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;方向传播，那么光强在一个微元上的变化&lt;script type=&quot;math/tex&quot;&gt;dI_\nu&lt;/script&gt;为损失的光加上增加的光：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;dI_\nu = -\kappa_\nu \rho I_\nu ds + j_\nu\rho ds&lt;/script&gt;
+
+&lt;p&gt;首先看到等号后面的两项都有一个&lt;script type=&quot;math/tex&quot;&gt;\rho ds&lt;/script&gt;，同时考虑到如果能把第一项变成&lt;script type=&quot;math/tex&quot;&gt;-I_\nu&lt;/script&gt;那么积分之后就是一个负e指数函数，比较方便，所以定义&lt;strong&gt;光深&lt;/strong&gt;&lt;script type=&quot;math/tex&quot;&gt;d\tau_\nu = \kappa_\nu \rho ds&lt;/script&gt;，得&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} \frac{dI_\nu}{d\tau_\nu} &amp;= -I_\nu + \frac{j_\nu}{\kappa_\nu} \\  &amp;= -I_\nu + S_\nu \end{align} \tag{7.1} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;“对吧看着很复杂的东西为什么要去管呢？把它搞成另一个变量就好了嘛！”在这样的思想指导下我们把&lt;script type=&quot;math/tex&quot;&gt;\frac{j_\nu}{\kappa_\nu}&lt;/script&gt;叫做&lt;strong&gt;源函数&lt;/strong&gt;&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;。当然实际上源函数还是代表着辐射转移方程发射（光强增加）的那一部分，只是为了凑前面光损部分的简单形式它打了个折扣，衡量得是发射与吸收的比；吸收占比越大，就越靠近负e指数下降。&lt;/p&gt;
+
+&lt;p&gt;看着式&lt;script type=&quot;math/tex&quot;&gt;(7.1)&lt;/script&gt;我们很轻易地用膝盖想到了方程的通解应该有这样的形式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(\tau_\nu) = fe^{b\tau_\nu} \tag{7.2}&lt;/script&gt;
+
+&lt;p&gt;当然&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;是个函数。把它丢进&lt;script type=&quot;math/tex&quot;&gt;(7.1)&lt;/script&gt;，得到：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;bI_\nu + e^{b\tau_\nu}\frac{df}{d\tau_\nu} = -I_\nu + S_\nu&lt;/script&gt;
+
+&lt;p&gt;前后一一对应，易得&lt;script type=&quot;math/tex&quot;&gt;b = -1&lt;/script&gt;以及&lt;script type=&quot;math/tex&quot;&gt;f = \int_0^{\tau_\nu} S_\nu e^{t_\nu} dt_\nu + c_0&lt;/script&gt;，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} I_\nu(\tau_\nu) &amp;= e^{-\tau_\nu}\int_0^{\tau_\nu} S_\nu e^{t_\nu} dt_\nu + c_0e^{-\tau_\nu} \\ &amp;= e^{-\tau_\nu}\int_0^{\tau_\nu} S_\nu e^{t_\nu} dt_\nu + I_\nu(0)e^{-\tau_\nu} \end{align} \tag{7.3} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;取决于从哪开始算以及算到哪。把负e指数丢到积分号里面，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(\tau_\nu) = \int_0^{\tau_\nu} S_\nu e^{-(\tau_\nu-t_\nu)} dt_\nu + I_\nu(0)e^{-\tau_\nu} \tag{7.4}&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP7/rt1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图，这个通解说明辐射传播方向上某一点的光强为起始点的光乘上一个负e指数衰减，加上起始点到观测点之间每一点上发出的光各自乘上负e指数衰减之和；其实挺直白的。到此似乎万事大吉，只要知道源函数表达式加上十来根头发，应该能给出解析解；不想给头发的话让计算机愣算也能给出数值解来。同时回想一下&lt;a href=&quot;https://mingjiejian.github.io/2017/12/18/OASP5/&quot;&gt;第五章&lt;/a&gt;粒子的两种散射情况，我们也能知道最简单的源函数就是平均光强(&lt;script type=&quot;math/tex&quot;&gt;J_\nu&lt;/script&gt;)和黑体辐射函数(&lt;script type=&quot;math/tex&quot;&gt;B_\nu&lt;/script&gt;)。&lt;/p&gt;
+
+&lt;h4 id=&quot;不同形状下的辐射转移方程&quot;&gt;不同形状下的辐射转移方程&lt;/h4&gt;
+
+&lt;p&gt;之前我们只考虑了一条直线上的辐射转移方程。对于星际介质来说这是没问题的，但是恒星是真空中的球形鸡，所以定义沿着恒星半径方向以及视线方向的光深会对解释恒星内部结构以及我们所看到的东西比较方便。用球坐标系,同时因为我们在观测，我们令&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;方向为视线方向，所以：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI_\nu}{\kappa_\nu \rho dz} = -I_\nu + \frac{j_\nu}{\kappa_\nu}&lt;/script&gt;
+
+&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;换成球坐标的&lt;script type=&quot;math/tex&quot;&gt;r, \theta&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI}{dz} = \frac{dI}{dr}\frac{dr}{dz} + \frac{dI}{d\theta}\frac{d\theta}{dz} \tag{7.5}&lt;/script&gt;
+
+&lt;p&gt;什么你问&lt;script type=&quot;math/tex&quot;&gt;\phi&lt;/script&gt;哪去了？当然是认为&lt;script type=&quot;math/tex&quot;&gt;\phi&lt;/script&gt;方向光强处处一样啦，简单嘛。从图中可得：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;dr = \cos{\theta} dz&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;rd\theta = -\sin{\theta} dz&lt;/script&gt;
+
+&lt;p&gt;所以，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial I_\nu}{\partial r} \frac{\cos{\theta}}{\kappa_\nu\rho} - \frac{\partial I_\nu}{\partial \theta} \frac{\sin{\theta}}{\kappa_\nu\rho r} = -I_\nu + S_\nu \tag{7.6}&lt;/script&gt;
+
+&lt;p&gt;对于恒星内部或者大气很厚的恒星（超巨星）来说这就是要解的方程；但是一般的恒星光球层非常薄，所以可以认为光强跟&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;也没有关系（高兴），得出：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{d I_\nu}{d r} \frac{\cos{\theta}}{\kappa_\nu\rho} = -I_\nu + S_\nu&lt;/script&gt;
+
+&lt;p&gt;虽然不知道为什么，但是在这里我们可以定义一个和&lt;script type=&quot;math/tex&quot;&gt;dr&lt;/script&gt;反向的量&lt;script type=&quot;math/tex&quot;&gt;dx = -dr&lt;/script&gt;以及&lt;script type=&quot;math/tex&quot;&gt;d\tau'_\nu = \kappa_\nu\rho dr&lt;/script&gt;，使得这个方程的解为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(\tau_\nu) = \int_c^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} d\tau'_\nu \tag{7.8}&lt;/script&gt;
+
+&lt;p&gt;就是在&lt;script type=&quot;math/tex&quot;&gt;t_\nu, \tau_\nu&lt;/script&gt;后面加了个&lt;script type=&quot;math/tex&quot;&gt;-\sec{\theta}&lt;/script&gt;同时把常数放进了积分下限而已。这里把原来式子的&lt;script type=&quot;math/tex&quot;&gt;I_\nu(0)e^{-\tau_\nu}&lt;/script&gt;放到了积分号的下限里面是因为之前只有视线方向一个方向，但是现在有了恒星的径向（以及反径向）和视线方向，就有一个夹角的问题：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP7/rt2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;\theta &gt; 90^\circ&lt;/script&gt;的时候是从外往里的方向，反之是从里往外。对于式子&lt;script type=&quot;math/tex&quot;&gt;(7.4)&lt;/script&gt;来说不同的方向只是换一个起始点和矢量而已，但是现在对于恒星光球层内部和外部来说有不同（而且可以确定）的边界条件，所以视线方向向内和向外的光强分别为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} I_\nu^\mathrm{out} &amp;= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \\ I_\nu^\mathrm{in} &amp;= -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;也就是说方向向外时从光球层最底层开始算，光深为&lt;script type=&quot;math/tex&quot;&gt;\infty&lt;/script&gt;，向内时从恒星表面开始算，光深为&lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;。视线方向上某一点的“总光强”为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} I_\nu(\tau_\nu) &amp;= I_\nu^\mathrm{out} + I_\nu^\mathrm{in} \\ &amp;= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \end{align} \tag{7.9} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;所以在观测从恒星表面出射的辐射的时候用的是&lt;script type=&quot;math/tex&quot;&gt;I_\nu^\mathrm{out}(0)&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu^\mathrm{out}(0) = \int_{\tau_\nu}^\infty S_\nu e^{-t_\nu\sec{\theta}}\sec{\theta} dt_\nu \tag{7.10}&lt;/script&gt;
+
+&lt;p&gt;这条式子会在计算合成光谱的时候用到。&lt;/p&gt;
+
+&lt;h4 id=&quot;光强积分&quot;&gt;光强积分&lt;/h4&gt;
+
+&lt;p&gt;就像&lt;a href=&quot;https://mingjiejian.github.io/2017/12/18/OASP5/&quot;&gt;第五章&lt;/a&gt;说的那样，实际上我们不能分辨出恒星的源面，所以当然要将光强积分成流量了。利用式&lt;script type=&quot;math/tex&quot;&gt;(5.5)&lt;/script&gt;并且认为&lt;script type=&quot;math/tex&quot;&gt;I_\nu&lt;/script&gt;与&lt;script type=&quot;math/tex&quot;&gt;\phi&lt;/script&gt;方向无关，我们得到：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} F_\nu &amp;= 2\pi \int_0^\pi I_\nu \cos{\theta} \sin{\theta} d\theta \\ &amp;= 2\pi \int_0^{\pi/2} I_\nu^\mathrm{out} \cos{\theta} \sin{\theta} d\theta + 2\pi \int_{\pi/2}^\pi I_\nu^\mathrm{in} \cos{\theta} \sin{\theta} d\theta \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;将式&lt;script type=&quot;math/tex&quot;&gt;(7.9)&lt;/script&gt;代入，得：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = 2\pi \int_0^{\pi/2}\int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu d\theta - 2\pi \int_{\pi/2}^\pi\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu d\theta&lt;/script&gt;
+
+&lt;p&gt;假设源函数各向同性，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = 2\pi \int_{\tau_\nu}^\infty S_\nu \int_0^{\pi/2} e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} d\theta dt_\nu - 2\pi \int_0^{\tau_\nu} S_\nu \int_{\pi/2}^\pi e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} d\theta dt_\nu \tag{7.11}&lt;/script&gt;
+
+&lt;p&gt;所以之后就看中间的那个&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;指数积分了。先直接给结论：令&lt;script type=&quot;math/tex&quot;&gt;w = \sec{\theta}, x = t_\nu - \tau_\nu&lt;/script&gt;，则有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^{\pi/2} e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} d\theta = \int_1^\infty \frac{e^{-xw}}{w^2} dw \tag{7.12}&lt;/script&gt;
+
+&lt;p&gt;为了方便起见将后面的&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;指数积分叫做&lt;script type=&quot;math/tex&quot;&gt;E_n&lt;/script&gt;:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E_n(x) = \int_1^\infty \frac{e^{-xw}}{w^n} dw \tag{7.13}&lt;/script&gt;
+
+&lt;p&gt;所以刚刚的流量就是：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu(\tau_\nu) = 2\pi \int_{\tau_\nu}^\infty S_\nu E_2(t_\nu - \tau_\nu) dt_\nu - 2\pi \int_0^{\tau_\nu} S_\nu E_2(\tau_\nu - t_\nu) dt_\nu \tag{7.14}&lt;/script&gt;
+
+&lt;p&gt;照例在恒星表面变成&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu(0) = 2\pi \int_{0}^\infty S_\nu(t_\nu) E_2(t_\nu) dt_\nu \tag{7.15}&lt;/script&gt;
+
+&lt;p&gt;举一反三得K积分里面的量&lt;script type=&quot;math/tex&quot;&gt;J_\nu, K_\nu&lt;/script&gt;可以表示为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} J_\nu(\tau_\nu) &amp;= \frac{1}{2} \int_{\tau_\nu}^\infty S_\nu E_1(t_\nu - \tau_\nu) dt_\nu + \frac{1}{2} \int_0^{\tau_\nu} S_\nu E_1(\tau_\nu - t_\nu) dt_\nu \\ K_\nu(\tau_\nu) &amp;= \frac{1}{2} \int_{\tau_\nu}^\infty S_\nu E_3(t_\nu - \tau_\nu) dt_\nu + \frac{1}{2} \int_0^{\tau_\nu} S_\nu E_3(\tau_\nu - t_\nu) dt_\nu \end{align} \tag{7.16} %]]&gt;&lt;/script&gt;
+
+&lt;h4 id=&quot;e指数积分的性质&quot;&gt;e指数积分的性质&lt;/h4&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E_n(0) = \int_1^\infty \frac{1}{w^n} dw = \frac{1}{n-1}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dE_n}{dx} = -E_{n-1} \tag{7.19}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;nE_{n+1}(x) = e^{-x} - xE_n(x) \tag{7.20}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E_n(x) \approx \frac{1}{xe^x}&lt;/script&gt;
+
+&lt;p&gt;大概就是这样。&lt;/p&gt;
+
+&lt;h3 id=&quot;辐射平衡&quot;&gt;辐射平衡&lt;/h3&gt;
+
+&lt;p&gt;实际上辐射平衡指的就是能量守恒。我们认为光球层是不产生能量的，所以光球层处处都不能有源或者汇，吃进去多少就得吐出来多少。我们仍然处于平面平行层的假设之中，所以散度为0的条件可以表述为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{d}{dx}F(x) = 0, F(x) = F_0 \tag{7.21}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;指的是光球层中的某一点。如果所有能量都是辐射的话，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) = \int_0^\infty F(\tau_\nu) d\nu = F_0 \tag{7.22}&lt;/script&gt;
+
+&lt;p&gt;这就是辐射平衡条件。如果也有对流的话，则变为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Phi(x) + \int_0^\infty F(\tau_\nu) d\nu = F_0 \tag{7.23}&lt;/script&gt;
+
+&lt;p&gt;还有其他能量源的话，加上去就好了。&lt;/p&gt;
+
+&lt;p&gt;先不管对流，将&lt;script type=&quot;math/tex&quot;&gt;(7.14)&lt;/script&gt;代入&lt;script type=&quot;math/tex&quot;&gt;(7.22)&lt;/script&gt;，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty [\int_{\tau_\nu}^\infty S_\nu E_2(t_\nu - \tau_\nu) dt_\nu - 2\pi \int_0^{\tau_\nu} S_\nu E_2(\tau_\nu - t_\nu) dt_\nu] d_\nu = \frac{F_0}{2\pi} \tag{7.24}&lt;/script&gt;
+
+&lt;p&gt;这叫做Milne第二公式，其他两条Milne公式之后会讨论到。这条公式里面唯一的未知量是&lt;script type=&quot;math/tex&quot;&gt;S_\nu(\tau_\nu)&lt;/script&gt;，也就是说在辐射平衡条件下，符合这条式子的源函数就是我们要找的源函数；把它丢回&lt;script type=&quot;math/tex&quot;&gt;(7.14)&lt;/script&gt;就可以将流量算出来了。&lt;/p&gt;
+
+&lt;p&gt;另外两个Milne公式可以从辐射转移方程推出来：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\cos{\theta} \frac{dI_\nu}{dx} = \kappa_\nu\rho I_\nu - \kappa_\nu\rho S_\nu \tag{7.25}&lt;/script&gt;
+
+&lt;p&gt;对立体角积分并且认为&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu, S_\nu&lt;/script&gt;与方向无关，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dF(x)}{dx} = 4\pi\kappa_\nu\rho J_\nu - 4\pi\kappa_\nu \rho S_\nu \tag{7.26}&lt;/script&gt;
+
+&lt;p&gt;对所有频率积分，并考虑到辐射平衡条件&lt;script type=&quot;math/tex&quot;&gt;(7.21)&lt;/script&gt;，左边等于0，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \kappa_\nu\rho J_\nu d\nu = \int_0^\infty \kappa_\nu\rho S_\nu d\nu \tag{7.28}&lt;/script&gt;
+
+&lt;p&gt;用&lt;script type=&quot;math/tex&quot;&gt;(7.16)&lt;/script&gt;的&lt;script type=&quot;math/tex&quot;&gt;J_\nu&lt;/script&gt;代入，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \kappa_\nu [\frac{1}{2} \int_{\tau_\nu}^\infty S_\nu E_1(t_\nu - \tau_\nu) dt_\nu + \frac{1}{2} \int_0^{\tau_\nu} S_\nu E_1(\tau_\nu - t_\nu) dt_\nu - S_\nu] d\nu = 0&lt;/script&gt;
+
+&lt;p&gt;这也是一条Milne公式（书上没写是第几条…），也是给求&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;用的。如果在恒星内部，所有频率上的光深都很大的话，&lt;script type=&quot;math/tex&quot;&gt;\frac{dF(x)}{dx}&lt;/script&gt;就大概为0，所以从&lt;script type=&quot;math/tex&quot;&gt;(7.26)&lt;/script&gt;我们可以认为&lt;script type=&quot;math/tex&quot;&gt;J_\nu = S_\nu&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;最后一条Milne公式是从&lt;script type=&quot;math/tex&quot;&gt;(7.25)&lt;/script&gt;乘上一个&lt;script type=&quot;math/tex&quot;&gt;\cos{\theta}&lt;/script&gt;来的。乘上之后对方位角和频率积分，最后一项就没了，剩下的是：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \frac{dK_\nu}{d\tau_\nu} = \frac{F_0}{4\pi}&lt;/script&gt;
+
+&lt;p&gt;同样将&lt;script type=&quot;math/tex&quot;&gt;K_\nu&lt;/script&gt;代入，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \frac{d}{d\tau_\nu} [\frac{1}{2} \int_{\tau_\nu}^\infty S_\nu E_3(t_\nu - \tau_\nu) dt_\nu + \frac{1}{2} \int_0^{\tau_\nu} S_\nu E_3(\tau_\nu - t_\nu) dt_\nu - S_\nu] d\nu = \frac{F_0}{4\pi}&lt;/script&gt;
+
+&lt;p&gt;实际上这三条Milne公式都是从光强加上辐射平衡条件来的，所以它们并不独立，满足某一条公式的源函数必定满足其他两条。回到遥远的第一章，我们可以看到现在代表着有效温度决定着&lt;script type=&quot;math/tex&quot;&gt;F_0&lt;/script&gt;，所以有效温度实际上是模型的一个重要参数。&lt;/p&gt;
+
+&lt;p&gt;现在既然所有的公式都齐了，剩下的就是确定源函数。这里只讨论一种最简单的情况，灰大气。更复杂的情况留给论文去说。&lt;/p&gt;
+
+&lt;h3 id=&quot;灰大气模型&quot;&gt;灰大气模型&lt;/h3&gt;
+
+&lt;p&gt;灰大气模型确定的源函数值得在这里讨论并不仅仅是因为它是比较早得出的解，还因为它是很多其他源函数迭代的初始函数。灰大气指的是&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;与频率无关，当然它不怎么真实(by Quin)。&lt;/p&gt;
+
+&lt;p&gt;从&lt;script type=&quot;math/tex&quot;&gt;(7.7)&lt;/script&gt;开始，将式子对全频率积分，并将积分后的结果写成不带&lt;script type=&quot;math/tex&quot;&gt;\nu&lt;/script&gt;角标的量，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\cos{\theta} \frac{dI}{d\tau} = I - S&lt;/script&gt;
+
+&lt;p&gt;可以“简单地”理解为把角标拿掉；那么式&lt;script type=&quot;math/tex&quot;&gt;(7.22), (7.28), (7.30)&lt;/script&gt;变成：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} F &amp;= F_0 \\ J &amp;= S \\ \frac{dK}{d\tau} &amp;= \frac{F_0}{4\pi} \end{align} \tag{7.32} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;在这里爱丁顿老爷子假设入射和出射的光强和方向无关，都是一样的，也就是：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+I(\tau) = \begin{cases} I^\mathrm{out}(\tau) &amp; 0 \le \theta \le \pi/2 \\ I^\mathrm{in}(\tau) &amp; \pi/2 \le \theta \le \pi \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;然后三个K积分就变成了&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} F(\tau) &amp;= \pi[I^\mathrm{out}-I^\mathrm{in}] \\ J(\tau) &amp;= \frac{1}{2}[I^\mathrm{out} + I^\mathrm{in}] \\ K(\tau) &amp;= \frac{1}{6} [I^\mathrm{out} + I^\mathrm{in}] \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;不信？不信自己代进定义里面算去。把它们丢进&lt;script type=&quot;math/tex&quot;&gt;(7.32)&lt;/script&gt;里面，该相等的相等，该积分的积分，得到&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(\tau) = J(\tau) = 3K(\tau)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;K(\tau) = \frac{F_0}{4\pi}\tau + \frac{F_0}{6\pi}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow S(\tau) = \frac{3F_0}{4\pi}(\tau+\frac{2}{3})&lt;/script&gt;
+
+&lt;p&gt;热动平衡之下我们还有黑体辐射定律；利用&lt;script type=&quot;math/tex&quot;&gt;(6.4)&lt;/script&gt;，我们可以得出&lt;script type=&quot;math/tex&quot;&gt;S(\tau) = J(\tau) = \sigma/\pi T^4(\tau),&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;F_0 = \sigma T_\mathrm{eff}^4&lt;/script&gt;，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff}&lt;/script&gt;
+
+&lt;p&gt;这样一来每层的温度由有效温度和光深决定，也可以知道了。如果把老爷子的假设去掉，解会从&lt;script type=&quot;math/tex&quot;&gt;\frac{2}{3} \rightarrow q(\tau)&lt;/script&gt;，稍微复杂一点。当然灰大气和实际情况差得比较远，因为大大简化了&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;的情况。&lt;/p&gt;
+
+&lt;h3 id=&quot;对流传能&quot;&gt;对流传能&lt;/h3&gt;
+
+&lt;p&gt;这一章快该结束了。中高温恒星的对流层比较深，但是低温恒星的对流层可以延伸到光球层的底部，所以需要考虑对流传能。对流元需要和环境温度有差别（要不然哪有能量传输），而且光深需要比较大（要不然被辐射传能搞没了）。一个对流元所携带的能量为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Phi = \rho C_p v \Delta T&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\rho, C_p, v, \Delta T&lt;/script&gt;分别为密度、比热、速度、温度差。这些对流元可上可下、可冷可热。太阳的米粒（儿）组织就是我们可以看到的对流层的顶部，同时对流层传输的能量是辐射传能的&lt;script type=&quot;math/tex&quot;&gt;\sim 10^{-3}&lt;/script&gt;倍，可以忽略掉。但是因为对流带来的速度不均匀会对光球层产生影响（对流超射），使得谱线形状发生变化，带来不对称性，所以可以用这种不对称性来研究恒星的米粒组织（第十七章）。然后对流还会产生一些声学波，将恒星内部的元素带到恒星表面。对流传能虽然能量小，但是速度比辐射传能快，周/月的量级vs&lt;script type=&quot;math/tex&quot;&gt;\sim 10^5&lt;/script&gt;年。&lt;/p&gt;
+
+&lt;h4 id=&quot;对流传能条件&quot;&gt;对流传能条件&lt;/h4&gt;
+
+&lt;p&gt;一团气体能上升主要是因为它的密度比环境要小；但是气体在上升的过程中会膨胀，所以它的密度并不是不变的。当气体密度的导数比环境密度的导数小的时候，气体就可以上升（假设对流元是绝热的）：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(\frac{d\log{\rho}}{d\log{P}})_\mathrm{cell} &gt; (\frac{d\log{\rho}}{d\log{P}})_\mathrm{average}&lt;/script&gt;
+
+&lt;p&gt;我们比较喜欢用温度来说事，利用理想气体公式&lt;script type=&quot;math/tex&quot;&gt;P = (\rho/\mu)kT&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(\frac{d\log{\rho}}{d\log{P}})_\mathrm{average} = 1 + \frac{d\log{\mu}}{d\log{P}} - \frac{d\log{T}}{d\log{P}}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow (\frac{d\log{T}}{d\log{P}})_\mathrm{average} &gt; 1 - (\frac{d\log{\rho}}{d\log{P}})_\mathrm{cell} + \frac{d\log{\mu}}{d\log{P}}&lt;/script&gt;
+
+&lt;p&gt;所以想有对流，一是增大左边，也就是温度梯度；温度梯度很大的时候恒星甚至会膨胀或者收缩。二是右边很小，也就是&lt;script type=&quot;math/tex&quot;&gt;(\frac{d\log{\rho}}{d\log{P}})_\mathrm{cell}&lt;/script&gt;比较大。这说明当恒星温度比较低，质量比较大的分子可以存在的时候对流比较容易产生；另一种增大它的方法是在对流元内部有辐射。&lt;/p&gt;
+
+&lt;p&gt;####混合长&lt;/p&gt;
+
+&lt;p&gt;解决了对流发生的条件之后我们来看看对流传能的最后两项。从能量守恒有&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{2}\rho v^2 = g\Delta\rho l&lt;/script&gt;，其中&lt;script type=&quot;math/tex&quot;&gt;l&lt;/script&gt;是对流元存活的长度，也就是混合长。压强平衡要求&lt;script type=&quot;math/tex&quot;&gt;\Delta \rho / \rho = \Delta T / T&lt;/script&gt;，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} \Phi &amp;= \rho C_p (\frac{gl}{T})^{1/2} \Delta T^{3/2} \\ &amp;= \rho C_p (\frac{gl}{T})^{1/2} [(\frac{dT}{dx})_\mathrm{cell} - (\frac{dT}{dx})_\mathrm{average}]^{3/2} \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;混合长的具体数值是任意，没有理论支撑的；它在恒星内部有一些经验取值，但是光球层上没有。&lt;/p&gt;
+
+&lt;p&gt;恒星的对流比较复杂，一些更准确的计算需要看相关论文。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Dec 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2017/12/27/OASP7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/27/OASP7/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>OASP笔记 - 6</title>
@@ -338,7 +603,7 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;s/n = \frac{q(\lambda)l}{(q(\lambda)l + r^2)^{1/2}}&lt;/script&gt;
 
-&lt;p&gt;从上式可以看出信噪比只和量子效率、入射光子数和读出噪声有关，而量子效率和读出噪声都可以测量。不同的&lt;script type=&quot;math/tex&quot;&gt;q, l, \Delta B&lt;/script&gt;值下的信噪比曲线如下图所示：&lt;/p&gt;
+&lt;p&gt;从上式可以看出信噪比只和量子效率、入射光子数和读出噪声有关，而量子效率和读出噪声都可以测量。不同的&lt;script type=&quot;math/tex&quot;&gt;q, l, r&lt;/script&gt;值下的信噪比曲线如下图所示：&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP4/fig4.4.png&quot; alt=&quot;&quot; /&gt;
 &lt;em&gt;入射光子数和信噪比的图&lt;/em&gt;&lt;/p&gt;
@@ -1181,55 +1446,6 @@ Robert L. Forward的小说Camelot 30K中外星人的城市名称。这座城市�
         <guid isPermaLink="true">http://localhost:4000/2017/10/22/hibike-ensoukai/</guid>
         
         <category>hanging-around</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Onedrive占用CPU过多的问题以及解决方法</title>
-        <description>&lt;p&gt;Surface Pro的散热曾经是一个问题，但是随着Win10的更新烫手的时候已经越来越少。不过近两个月风扇使劲转的情况越来越多，也不是在我玩游戏的时候发热，就觉得很奇怪。查看任务管理器之后发现一个叫Microsift OneDirve Setup的进程经常占用大概40%的CPU，而且手动结束之后就不发热了。想着这可能是Onedrive的更新吧，但是插着电过了很久Onedrive告诉我更新出现问题，请手动安装。戳它又没啥反应，新下载一个双击安装又卡在安装界面不动，很麻烦。&lt;/p&gt;
-
-&lt;p&gt;暂时的解决办法就是每次手动结束进程。但是重启之后onedrive又会自动打开，总不是长久之计。之前在网上找了一下，有类似的问题但是没有很好的解决方法。今天决心搞定它，才在&lt;a href=&quot;https://answers.microsoft.com/zh-hans/windows/forum/windows_10-files/%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85-onedrive/202b3154-093e-4234-aee0-3a56b30bb0e2&quot;&gt;这里&lt;/a&gt;发现了完全一样的问题。&lt;/p&gt;
-
-&lt;p&gt;不得不说微软中国解决问题的能力不是一般的差，至今没有一个官方的解决办法，最后是靠这个问题里面链接到台湾ptt的&lt;a href=&quot;https://www.ptt.cc/bbs/Windows/M.1498386400.A.09E.html&quot;&gt;网页&lt;/a&gt;翻译的日本网友的&lt;a href=&quot;https://answers.microsoft.com/ja-jp/windows/forum/windows_10-performance/onedrivesetupexe32%E3%83%93%E3%83%83%E3%83%88/248a708a-8509-48e1-a321-1af85efd7f50&quot;&gt;解决办法&lt;/a&gt;才搞定。国内不一定能上ptt，而且里面的翻译也比较大概，我就再翻一遍放在这里方便以后的人吧。&lt;/p&gt;
-
-&lt;h2 id=&quot;推荐且不怎么伤的办法&quot;&gt;推荐且不怎么伤的办法&lt;/h2&gt;
-
-&lt;p&gt;从解决方法来说原因应该是Onedrive的log出错了，一直以为没有更新所以卡在更新/安装上，所以一个比较简单的解决办法就是删掉错误的log。这两个log是&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\用户名\AppData\Local\Microsoft\OneDrive\setup\logs\userTelemetryCache.otc&lt;/code&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\用户名\AppData\Local\Microsoft\OneDrive\setup\logs\userTelemetryCache.otc.session&lt;/code&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;在Onedrive打开而且用户没有注销登录的情况下在任务管理器中结束OneDriveSetup.exe进程&lt;/li&gt;
-  &lt;li&gt;将上述的两个log文件删除&lt;/li&gt;
-  &lt;li&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\用户名\AppData\Local\Microsoft\OneDrive\Update\OneDriveSetup.exe&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;应该就可以了&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;有的时候可能自己觉得太烦想重装，已经将Onedrive卸载了（我就是这么做的）；这个时候只需要做上面的第2步然后双击安装文件就行了，不会再卡在安装那。不过之后要重新登录一下自己的账户。&lt;/p&gt;
-
-&lt;h2 id=&quot;有点伤但是可能还能用的办法&quot;&gt;有点伤但是可能还能用的办法&lt;/h2&gt;
-
-&lt;p&gt;我们有一个不能更新的Onedrive文件夹&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\用户名\AppData\Local\Microsoft\OneDrive&lt;/code&gt;。那建一个新的好的文件夹然后覆盖旧的就行了。这个办法有点伤，但是如果之前所有文件都在Onedrive同步了的话问题应该不大。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;在电脑上建立一个新的账户，赋予管理员权限：设置-账户。视情况可能需要网络连接和一个新的Microsoft账户&lt;/li&gt;
-  &lt;li&gt;切换到新的电脑账户中，打开Onedrive并登录（最好是登录到新的账户中，虽然我觉得旧的应该也行）&lt;/li&gt;
-  &lt;li&gt;切换回旧电脑账户中，将&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\新用户名\AppData\Local\Microsoft\OneDrive&lt;/code&gt;文件夹覆盖到&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\旧用户名\AppData\Local\Microsoft\OneDrive&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Users\旧用户名\AppData\Local\Microsoft\OneDrive\Update\OneDriveSetup.exe&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Done&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;撇清责任&quot;&gt;撇清责任&lt;/h2&gt;
-
-&lt;p&gt;我没试过第二种办法，所以不知道它有没有用。希望微软赶快搞定这个问题或者我自己不再会遇到它:)&lt;/p&gt;
-</description>
-        <pubDate>Fri, 15 Sep 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/09/15/onedrive/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/15/onedrive/</guid>
-        
-        <category>random</category>
         
         
       </item>
