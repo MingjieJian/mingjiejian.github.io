@@ -16,11 +16,11 @@ tags:
 
 韦恩定律（高频）：
 
-$$ I_\nu = \nu^3f(\nu/T) $$
+$$ I_\nu = \nu^3f(\nu/T) \tag{6.1}$$
 
 瑞利金斯近似（低频/长波）：
 
-$$ I_\nu = \frac{2kT\nu^2}{c^2} = {2kT}{\lambda^2} $$
+$$ I_\nu = \frac{2kT\nu^2}{c^2} = \frac{2kT}{\lambda^2} \tag{6.6}$$
 
 ### “推导”
 
