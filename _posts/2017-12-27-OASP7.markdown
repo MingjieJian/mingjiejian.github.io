@@ -86,7 +86,7 @@ $$ \begin{align} I_\nu(\tau_\nu) &= I_\nu^\mathrm{out} + I_\nu^\mathrm{in} \\ &=
 
 所以在观测从恒星表面出射的辐射的时候用的是$$ I_\nu^\mathrm{out}(0) $$：
 
-$$ I_\nu^\mathrm{out}(0) = \int_{\tau_\nu}^\infty S_\nu e^{-t_\nu\sec{\theta}}\sec{\theta} dt_\nu \tag{7.10}$$
+$$ I_\nu^\mathrm{out}(0) = \int_{0}^\infty S_\nu e^{-t_\nu\sec{\theta}}\sec{\theta} dt_\nu \tag{7.10}$$
 
 这条式子会在计算合成光谱的时候用到。
 

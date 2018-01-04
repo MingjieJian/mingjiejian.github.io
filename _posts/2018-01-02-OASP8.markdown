@@ -1,0 +1,13 @@
+---
+layout:     post
+title:      "OASP笔记 - 9"
+subtitle:   "光球层模型"
+date:       2018-01-02
+author:     "mingjie"
+header-img: "img/post-bg-OASP9.jpg"
+tags:
+    - learning
+
+---
+
+### Kurucz模型
