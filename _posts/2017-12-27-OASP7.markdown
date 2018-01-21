@@ -218,7 +218,7 @@ $$ \Rightarrow S(\tau) = \frac{3F_0}{4\pi}(\tau+\frac{2}{3}) $$
 
 热动平衡之下我们还有黑体辐射定律；利用$$ (6.4) $$，我们可以得出$$ S(\tau) = J(\tau) = \sigma/\pi T^4(\tau), $$$$ F_0 = \sigma T_\mathrm{eff}^4 $$，所以
 
-$$ T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff} $$
+$$ T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff} \tag{7.36}$$
 
 这样一来每层的温度由有效温度和光深决定，也可以知道了。如果把老爷子的假设去掉，解会从$$ \frac{2}{3} \rightarrow q(\tau) $$，稍微复杂一点。当然灰大气和实际情况差得比较远，因为大大简化了$$ \kappa_\nu $$的情况。
 

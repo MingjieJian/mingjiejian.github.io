@@ -5,9 +5,73 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 04 Jan 2018 14:46:03 +0900</pubDate>
-    <lastBuildDate>Thu, 04 Jan 2018 14:46:03 +0900</lastBuildDate>
+    <pubDate>Sun, 21 Jan 2018 19:11:59 +0900</pubDate>
+    <lastBuildDate>Sun, 21 Jan 2018 19:11:59 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>如何在Linux上制作延时摄影视频</title>
+        <description>&lt;p&gt;在Windows上制作延时摄影有很多软件，AE、LRTimelapse（去闪）之类的；但是Linux上相关的制作软件虽然有，但是并不是很熟悉。隐约感觉Linux肯定能做，而且可以在命令行上面做，但是需要问问谷歌。结果来说的确可以做出来，这里就把相关的软件以及命令记录一下。&lt;/p&gt;
+
+&lt;h3 id=&quot;原材料&quot;&gt;原材料&lt;/h3&gt;
+
+&lt;p&gt;2017年底拍摄的东大赤门的100张照片，间隔大概在1秒左右，jpg格式。&lt;/p&gt;
+
+&lt;h3 id=&quot;处理jpg文件&quot;&gt;处理jpg文件&lt;/h3&gt;
+
+&lt;p&gt;因为拍摄的时候曝光有点不足，所以需要对每张照片进行亮度和对比度的处理。这里用的是GIMP；如果没有安装过的话先安装GIMP：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install gimp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后安装批处理的插件：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install gimp-plugin-registry&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-time-lapse-linux/batch-open.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;安装之后打开GIMP，上方菜单栏里面会多了一些栏目。选择&lt;code class=&quot;highlighter-rouge&quot;&gt;Filters - Batch - Batch Process&lt;/code&gt;：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-time-lapse-linux/batch-window.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个批处理窗口提供了一些我们需要的功能。选择&lt;code class=&quot;highlighter-rouge&quot;&gt;Add Files&lt;/code&gt;将要处理的照片都添加进去。简单的亮度对比度颜色处理在&lt;code class=&quot;highlighter-rouge&quot;&gt;Colour&lt;/code&gt;里面，选择&lt;code class=&quot;highlighter-rouge&quot;&gt;Enable&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Auto Levels&lt;/code&gt;就可以了。最后在&lt;code class=&quot;highlighter-rouge&quot;&gt;Rename&lt;/code&gt;里面选择要输出的文件夹，需要的话先测试一下(&lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;)，觉得没有问题的话&lt;code class=&quot;highlighter-rouge&quot;&gt;Start&lt;/code&gt;就行。处理过程中可能会报错，但是只要能成功输出就不用管了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-time-lapse-linux/comp.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;处理前后的对比&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;将jpg转换成视频&quot;&gt;将jpg转换成视频&lt;/h3&gt;
+
+&lt;p&gt;所以我们现在有了一堆处理过的jpg文件，之后只要把它们拼成视频就行了。这一步需要保证文件的顺序是正确的，也就是没有从999到001的情况。如果有的话需要将它们按照正确的顺序重命名。另一个需要注意的细节是可以通过命令调节输出视频的分辨率，不过我一般按照源片的分辨率来，也不用调整了。拼合的命令如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ffmpeg -r 24 -pattern_type glob -i '*.jpg' -c:v copy output.avi&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt;后面的数字是帧数，可以随意调整，最后的&lt;code class=&quot;highlighter-rouge&quot;&gt;output.avi&lt;/code&gt;是输出的文件名字。我还没试过其他的格式，而这个命令会原原本本地将照片拼到一个视频里面，所以这个视频是没有被压缩过的，占用的空间和照片们的空间一样。&lt;/p&gt;
+
+&lt;p&gt;这里的视频大小是2.2G，只是100张照片。当然这个大小不能轻易地放到网上去共享，所以我们进行压缩：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ffmpeg -i MVI_7274.MOV -vcodec libx264 -preset fast -crf 20 -y -vf &quot;scale=1920:-1&quot; -acodec libmp3lame -ab 128k a.mp4&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;参考链接里面有很详细的介绍，这里不赘述了。最重要的是&lt;code class=&quot;highlighter-rouge&quot;&gt;-crf&lt;/code&gt;后面的参数，数字越小视频质量越高。可以多试几个不同的数字然后取合适的大小和质量。最后的视频如下：&lt;/p&gt;
+
+&lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;/img/in-post/post-time-lapse-linux/cloud_tl.mp4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h3 id=&quot;闲话&quot;&gt;闲话&lt;/h3&gt;
+
+&lt;p&gt;刚刚想到其实也有别的思路，比如在GIMP编辑照片的时候将分辨率降低，那么占用的空间和后续处理时间都会变小。另外GIMP也有命令行模式，应该可以更细致地控制参数；不过稍微有点复杂，还需要研究一下。&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ubuntuforums.org/showthread.php?t=2022316&quot;&gt;jpg转成视频&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002502526&quot;&gt;视频压缩&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 21 Jan 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/01/21/time-lapse-linux/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/21/time-lapse-linux/</guid>
+        
+        <category>experience</category>
+        
+        
+      </item>
     
       <item>
         <title>OASP笔记 - 8</title>
@@ -206,19 +270,6 @@
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\kappa_\nu = \frac{\kappa_\mathrm{total}}{\sum A_j\mu_j}&lt;/script&gt;
 
 &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\sum A_j\mu_j&lt;/script&gt;的典型值为&lt;script type=&quot;math/tex&quot;&gt;2.0\times10^{-24}&lt;/script&gt;g/H。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 02 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/01/02/OASP9/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/01/02/OASP9/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 9</title>
-        <description>&lt;h3 id=&quot;kurucz模型&quot;&gt;Kurucz模型&lt;/h3&gt;
 </description>
         <pubDate>Tue, 02 Jan 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/01/02/OASP8/</link>
@@ -448,7 +499,7 @@ I(\tau) = \begin{cases} I^\mathrm{out}(\tau) &amp; 0 \le \theta \le \pi/2 \\ I^\
 
 &lt;p&gt;热动平衡之下我们还有黑体辐射定律；利用&lt;script type=&quot;math/tex&quot;&gt;(6.4)&lt;/script&gt;，我们可以得出&lt;script type=&quot;math/tex&quot;&gt;S(\tau) = J(\tau) = \sigma/\pi T^4(\tau),&lt;/script&gt;&lt;script type=&quot;math/tex&quot;&gt;F_0 = \sigma T_\mathrm{eff}^4&lt;/script&gt;，所以&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff} \tag{7.36}&lt;/script&gt;
 
 &lt;p&gt;这样一来每层的温度由有效温度和光深决定，也可以知道了。如果把老爷子的假设去掉，解会从&lt;script type=&quot;math/tex&quot;&gt;\frac{2}{3} \rightarrow q(\tau)&lt;/script&gt;，稍微复杂一点。当然灰大气和实际情况差得比较远，因为大大简化了&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;的情况。&lt;/p&gt;
 
