@@ -9,7 +9,7 @@ keyword: ""
 
 
 # SNS settings
-RSS: false
+RSS: true
 #weibo_username:
 zhihu_username:     jian-ming-jie
 github_username:    mingjieJian
@@ -90,3 +90,8 @@ friends: [
         href: "http://huangxuan.me"
     }
 ]
+
+# RSS feed
+name:         Mingjie's Blog
+description:  Write everything, think everything.
+url:          https://mingjiejian.github.io/
