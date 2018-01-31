@@ -5,9 +5,113 @@
     <description>ひびけ</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 22 Jan 2018 12:55:10 +0900</pubDate>
-    <lastBuildDate>Mon, 22 Jan 2018 12:55:10 +0900</lastBuildDate>
+    <pubDate>Wed, 31 Jan 2018 10:39:30 +0900</pubDate>
+    <lastBuildDate>Wed, 31 Jan 2018 10:39:30 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Jupyter Notebook + Python 备忘</title>
+        <description>&lt;h2 id=&quot;catagory&quot;&gt;Catagory&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#jpynb&quot;&gt;Jpynb备忘&lt;/a&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#jpynb-color_change&quot;&gt;改变Notebook里面Markdown文字颜色&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jpynb-theta&quot;&gt;Matplotlib中&lt;code class=&quot;highlighter-rouge&quot;&gt;'\theta'&lt;/code&gt;变为&lt;code class=&quot;highlighter-rouge&quot;&gt;heta&lt;/code&gt;的问题&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#py&quot;&gt;Python备忘&lt;/a&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#py-array_stack&quot;&gt;Numpy中的矩阵合并&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#py-package&quot;&gt;自己写包&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p id=&quot;jpynb&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;jpynb备忘&quot;&gt;Jpynb备忘&lt;/h3&gt;
+
+&lt;p id=&quot;jpynb-color_change&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;改变notebook里面markdown文字颜色&quot;&gt;改变Notebook里面Markdown文字颜色&lt;/h4&gt;
+
+&lt;p&gt;例如想要这样的效果：foo &lt;font color=&quot;red&quot;&gt; bar &lt;/font&gt; foo&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;foo &amp;lt;font color='red'&amp;gt; bar &amp;lt;/font&amp;gt; foo&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;其实就是一个HTML的attribute。&lt;/p&gt;
+
+&lt;p id=&quot;jpynb-theta&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;matplotlib中theta变为heta的问题&quot;&gt;Matplotlib中&lt;code class=&quot;highlighter-rouge&quot;&gt;'\theta'&lt;/code&gt;变为&lt;code class=&quot;highlighter-rouge&quot;&gt;heta&lt;/code&gt;的问题&lt;/h4&gt;
+
+&lt;p&gt;这是因为&lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt;在字符串中会被转义为Tab，所以要在字符串前加上一个&lt;code class=&quot;highlighter-rouge&quot;&gt;r&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p id=&quot;py&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;python备忘&quot;&gt;Python备忘&lt;/h3&gt;
+
+&lt;p id=&quot;py-array_stack&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;numpy中的矩阵合并&quot;&gt;Numpy中的矩阵合并&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;列合并/扩展：np.column_stack()&lt;/li&gt;
+  &lt;li&gt;行合并/扩展：np.row_stack()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p id=&quot;py-package&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;自己写包&quot;&gt;自己写包&lt;/h4&gt;
+
+&lt;p&gt;一直都想这么干了，之前的代码都是复制粘贴，觉得很没有效率；所以决定将常用的代码写成一个包方便调用。目标是想numpy一样有层级，同时只导入包名能用Tab提示下面层级的内容。&lt;/p&gt;
+
+&lt;p&gt;首先描述文件结构：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\ruler
+  \ruler
+    __init__.py
+    convert.py
+    \subpackage
+      __init__.py
+      something.py
+  setup.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;因为还没完全写好，就先把一个示例放上来。最外面的ruler是安装用的，不叫包名应该也可以（但是如果要上传到PyPi的话应该有要求），里面的setup.py需要有这样的内容：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from setuptools import setup
+
+setup(name='ruler',
+      version='0.1',
+      description='The ruler for spectra',
+      url='',
+      author='Mingjie Jian',
+      author_email='ssaajianmingjie@gmail.com',
+      license='MIT',
+      packages=['ruler'],
+      zip_safe=False)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果只有&lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;version&lt;/code&gt;的话可能也行。第二层的ruler是真正的包，它以及里面的每个文件夹都需要有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;，表示这是包。从这一级开始里面就可以放module，也就是&lt;code class=&quot;highlighter-rouge&quot;&gt;.py&lt;/code&gt;文件了。不过要达到之前的目的（仅import包名但自动提示模块）需要在每一个&lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;里面将对应文件夹包含的module以及子文件夹们import掉；比如ruler里面的要这样写：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from . import convert
+from . import subpackage
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当然subpackage里面的也需要这样写才能把所有的module都带上。想要测试的话先import然后用&lt;code class=&quot;highlighter-rouge&quot;&gt;dir()&lt;/code&gt;看看module和子文件夹在不在里面就行。&lt;/p&gt;
+
+&lt;p&gt;这些搞定之后就可以跑回最外级的ruler里面打开终端，运行&lt;code class=&quot;highlighter-rouge&quot;&gt;pip install -e .&lt;/code&gt;。暂时不知道为什么，但是这种方法可以直接在Jpynb里面用，把Jpynb重启一遍就行了。&lt;/p&gt;
+
+&lt;p&gt;参考资料：&lt;br /&gt;
+&lt;a href=&quot;https://docs.python.org/3/tutorial/modules.html#packages&quot;&gt;Python Tutorial Chap. 6&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://python-packaging.readthedocs.io/en/latest/index.html&quot;&gt;How To Package Your Python Code&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://codingpy.com/article/python-import-101/&quot;&gt;Python导入模块的几种姿势&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 29 Jan 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/01/29/jpynb/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/29/jpynb/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>箱根探路者</title>
@@ -1278,270 +1382,6 @@ G(x) = \begin{cases} 1 &amp; \mathrm{狭缝中}\\ 0　&amp; \mathrm{狭缝外} \
         <guid isPermaLink="true">http://localhost:4000/2017/12/03/course-group1/</guid>
         
         <category>正业以外</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP - 2</title>
-        <description>&lt;p&gt;傅里叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅里叶变换器。在这里有一点需要明确的是我们以后会经常讨论光谱，所以傅里叶变换的&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;域一般是光谱的频率域，而&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域并没有很好的名字；所以下文统一称傅里叶变换前后的域为&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;域与&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域。&lt;/p&gt;
-
-&lt;h3 id=&quot;定义&quot;&gt;定义&lt;/h3&gt;
-
-&lt;p&gt;一个函数&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;和它的傅里叶变换&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;的关系为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\sigma) = \int_{-\infty}^\infty F(x) e^{2\pi i x\sigma} \mathrm{d}x&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) = \int_{-\infty}^\infty f(\sigma) e^{-2\pi i x\sigma} \mathrm{d}\sigma&lt;/script&gt;
-
-&lt;p&gt;对于傅里叶变换的直观理解&lt;a href=&quot;https://www.zhihu.com/topic/19600515/top-answers&quot;&gt;知乎上&lt;/a&gt;已经有了很多不错的答案，我觉得只要了解可以将任何函数拆成各种各样的三角函数相加就可以了。&lt;script type=&quot;math/tex&quot;&gt;F,f&lt;/script&gt;一般都是复函数，只有当&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;为实偶函数的时候对应的&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;才是实函数。&lt;/p&gt;
-
-&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;或&lt;script type=&quot;math/tex&quot;&gt;x = 0&lt;/script&gt;的时候，傅里叶和逆傅里叶变换变为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(0) = \int_{-\infty}^\infty F(x)  \mathrm{d}x&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(0) = \int_{-\infty}^\infty f(\sigma)  \mathrm{d}\sigma&lt;/script&gt;
-
-&lt;p&gt;如果讨论谱线，此时傅里叶变换的意义就是谱线和&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;轴围成的面积，也就是总吸收量。&lt;/p&gt;
-
-&lt;h3 id=&quot;常见的傅里叶变换&quot;&gt;常见的傅里叶变换&lt;/h3&gt;
-
-&lt;p&gt;这里给出了常见的傅里叶变换以及图像。fft的结果因为是取模后画的图所以相当于解析的结果取了绝对值。&lt;/p&gt;
-
-&lt;h5 id=&quot;方波&quot;&gt;方波&lt;/h5&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-B(x) = \begin{cases} 0 &amp; x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 &amp; x \in [-\frac{W}{2}, \frac{W}{2}] \end{cases} %]]&gt;&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;b(\sigma) = W \frac{\sin{(\pi W\sigma)}}{\pi W\sigma}&lt;/script&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/01square_wave.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;高斯函数&quot;&gt;高斯函数&lt;/h5&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;G(x) = \frac{1}{\beta\pi^\frac{1}{2}} e^{-\frac{x^2}{\beta^2}}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(\sigma) = e^{-(\pi\beta\sigma)^2}&lt;/script&gt;
-
-&lt;p&gt;高斯的傅里叶变换是另一个高斯。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/02gauss.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;洛仑兹函数&quot;&gt;洛仑兹函数&lt;/h5&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;L(x) = \frac{1}{\pi} \frac{\beta}{x^2+\beta^2}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;l(x) = e^{-2\pi\beta|\sigma|}&lt;/script&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/03lorentz.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;delta函数&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数&lt;/h5&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) = \delta(x-x_1)&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\sigma) = e^{2\pi i x_1\sigma}&lt;/script&gt;
-
-&lt;p&gt;单个&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数的傅里叶变换的振幅是常数，相位随着&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;线性增加；两个正而且对称的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数的傅里叶变换是余弦函数，一正一负（对称）的傅里叶变换的振幅是正弦函数。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/04delta.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/05ddelta.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;shah函数&quot;&gt;Shah函数&lt;/h5&gt;
-
-&lt;p&gt;Shah函数实际上是一堆等间距分布的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;III(x) = \sum\limits_{n=-\infty}^{\infty} \delta(x - n\Delta x)&lt;/script&gt;
-
-&lt;p&gt;它的傅里叶变换还是一个Shah函数，只不过间距变了：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;iii(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta x})&lt;/script&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP2/06shah.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;以上的函数以及它们的傅里叶变换在接下来的一节以及第三章都会经常用到。&lt;/p&gt;
-
-&lt;h3 id=&quot;数据采样&quot;&gt;数据采样&lt;/h3&gt;
-
-&lt;p&gt;实际上观测到的数据都是离散的点，所以我们要考虑这样的离散化会带来什么样的结果。&lt;/p&gt;
-
-&lt;p&gt;仍然从连续函数出发，离散化意味着将连续函数与Shah函数相乘（以波长为横坐标）：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;D(\lambda) = III(\lambda)F(\lambda)&lt;/script&gt;
-
-&lt;p&gt;实际测量的函数等于Shah函数与理想的连续函数相乘。同时一般来说，无论是时变数据还是光谱数据，我们都不可能无限地测量下去（望远镜时间不是无限的，光谱仪有截止波长），所以我们还需要加上一个响应度函数&lt;script type=&quot;math/tex&quot;&gt;B(\lambda)&lt;/script&gt;，来限制波长范围以及修改每个波长上的响应度（时间域上的数据应该不需要有响应度）：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;D(\lambda) = B(\lambda)III(\lambda)F(\lambda)&lt;/script&gt;
-
-&lt;p&gt;这个时候如果想求&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;的傅里叶变换的话就需要知道几个函数相乘的傅里叶变换是什么，这就涉及到卷积了。&lt;/p&gt;
-
-&lt;h3 id=&quot;卷积&quot;&gt;卷积&lt;/h3&gt;
-
-&lt;p&gt;两个函数&lt;script type=&quot;math/tex&quot;&gt;f(\sigma), g(\sigma)&lt;/script&gt;的卷积定义为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1&lt;/script&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF&quot;&gt;维基百科&lt;/a&gt;上的一张图可以比较直观地帮助理解卷积：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/b/b9/Convolution_of_spiky_function_with_box2.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;将其中一个函数以0为中心翻转、从左往右平移，两函数每点相乘在求和的结果就是这两个函数在第一个函数对称中心处的值。&lt;/p&gt;
-
-&lt;p&gt;从定义以及理解可以容易得到&lt;script type=&quot;math/tex&quot;&gt;f(\sigma) * g(\sigma) = g(\sigma) * f(\sigma)&lt;/script&gt;。&lt;/p&gt;
-
-&lt;h5 id=&quot;卷积和傅里叶变换的关系&quot;&gt;卷积和傅里叶变换的关系&lt;/h5&gt;
-
-&lt;p&gt;实际上两函数相乘的傅里叶变换就是这两函数各自傅里叶变换的卷积(倒过来也对)，即&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x)G(x) \Longrightarrow f(\sigma) * g(\sigma)&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) * G(x) \Longrightarrow f(\sigma)g(\sigma)&lt;/script&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86&quot;&gt;维基百科&lt;/a&gt;上有证明；这里为了理解方便将证明过程倒过来写一遍。简单起见我们证明两函数各自傅里叶变换的卷积的逆傅里叶变换为两函数的乘积，可用富比尼定理，则：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}  \int f(\sigma) * g(\sigma) e^{-2\pi ix\sigma} \mathrm{d}\sigma &amp; = F(x)G(x) \\ \int \left(\int f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1\right) e^{-2\pi ix\sigma} d\sigma &amp; = \int f(\sigma_1) \left( \int g(\sigma-\sigma_1) e^{-2\pi ix\sigma} \mathrm{d}\sigma\right) \mathrm{d}\sigma_1 \\ &amp; = \int f(\sigma_1) \left( \int g(\alpha) e^{-2\pi ix(\alpha + \sigma_1)} \mathrm{d}\alpha\right) \mathrm{d}\sigma_1 \\ &amp; = \int f(\sigma_1) e^{-2\pi ix\sigma_1} \mathrm{d}\sigma_1 \int g(\alpha) e^{-2\pi ix\alpha} \mathrm{d}\alpha \\ &amp; = F(x)G(x) \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;h5 id=&quot;与delta函数的卷积&quot;&gt;与&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数的卷积&lt;/h5&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x) * \delta(x-x_1) = F(x-x_1) \Longrightarrow f(\sigma) e^{2\pi ix_1\sigma}&lt;/script&gt;
-
-&lt;p&gt;这个结果会在接下来的性质2中用到。&lt;/p&gt;
-
-&lt;h5 id=&quot;高斯洛仑兹函数之间的卷积&quot;&gt;高斯、洛仑兹函数之间的卷积&lt;/h5&gt;
-
-&lt;p&gt;高斯函数的傅里叶变换还是高斯函数&lt;script type=&quot;math/tex&quot;&gt;g(\sigma) = e^{-(\pi\beta\sigma)^2}&lt;/script&gt;，所以两个高斯函数卷积的傅里叶变换为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;g_a(\sigma)g_b(\sigma) = e^{-(\pi\beta_a\sigma)^2}e^{-(\pi\beta_b\sigma)^2} = e^{-(\pi\beta_c\sigma)^2}&lt;/script&gt;
-
-&lt;p&gt;还是一个高斯函数；此时的&lt;script type=&quot;math/tex&quot;&gt;G(x)&lt;/script&gt;更窄，但是&lt;script type=&quot;math/tex&quot;&gt;g(\sigma)&lt;/script&gt;更宽&lt;script type=&quot;math/tex&quot;&gt;(\beta_c^2 = \beta_a^2+\beta_b^2)&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;同理，洛仑兹与洛仑兹函数的卷积也还是个洛仑兹函数，只不过现在&lt;script type=&quot;math/tex&quot;&gt;\beta_c = \beta_a + \beta_b&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;高斯函数和洛仑兹函数的卷积叫做福格特(Voigt)函数，它的傅里叶变换为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;v(\sigma) = e^{-\pi^2\beta_g^2\sigma^2} e^{-2\pi\beta_l|\sigma|}&lt;/script&gt;
-
-&lt;p&gt;在第11章会用到。&lt;/p&gt;
-
-&lt;h3 id=&quot;被模糊的数据&quot;&gt;被模糊的数据&lt;/h3&gt;
-
-&lt;p&gt;我们现在可以回到&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;中。除了截断和采样之外，观测仪器当然也会在最终的结果中留下一些特征，叫做仪器轮廓(instrumental profile)。一般来说这些特征是一个&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数；也就是说一个很窄的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数在经过观测仪器之后会变成另一个宽一点的&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数，或者说两个&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数卷积了。仪器轮廓可以被测出来（通过观测很细的谱线；第12章），我们在这里记作&lt;script type=&quot;math/tex&quot;&gt;I(\lambda)&lt;/script&gt;。所以现在的&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;变成了&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;D(\lambda) = [B(\lambda)III(\lambda)F(\lambda)] * I(\lambda)&lt;/script&gt;
-
-&lt;p&gt;在&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域，上式变为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(\sigma) = [b(\sigma) * III(\sigma) * f(\sigma)] \times i(\sigma)&lt;/script&gt;
-
-&lt;p&gt;可以看到最终傅里叶域的函数被乘上了一个&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅里叶变换是一个相对宽的轮廓，对&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域中的“低频”部分没有很大影响；但是轮廓会在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分下降，所以会抹掉高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分的信息。在&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;的信息“平均”掉。&lt;/p&gt;
-
-&lt;h3 id=&quot;采样-iiisigma的影响&quot;&gt;采样 &lt;script type=&quot;math/tex&quot;&gt;III(\sigma)&lt;/script&gt;的影响&lt;/h3&gt;
-
-&lt;p&gt;采样对高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;信号的也会产生影响（可能比仪器轮廓更大）。信号与Shah函数的卷积&lt;script type=&quot;math/tex&quot;&gt;III(\sigma) * f(\sigma)&lt;/script&gt;会使得信号在Shah函数每个不为0处附近重复，使得一样的图样发生重叠，同样抹掉了高&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;的信息。因为Shah函数傅里叶变换后成为间隔为&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{\Delta x}&lt;/script&gt;的Shah函数，所以我们认为在这个间隔的一半区间内，信号是没有重叠的，叫做奈奎斯特频率：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma_N = \frac{1}{2\Delta x}&lt;/script&gt;
-
-&lt;p&gt;在这里因为我们对信号进行了采样，所以得到的实际上是离散的信号点；我们并不知道点和点之间究竟是怎么样的（虽然经常认为是平滑过渡的），而点和点之间丢失的信息就对应着频域中大于奈奎斯特频率的部分，它们重叠了。与仪器轮廓的不同在于采样是离散化，而仪器轮廓是模糊。&lt;/p&gt;
-
-&lt;p&gt;我们想做的是通过测量&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;求得&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;，再转换成&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;最后求得&lt;script type=&quot;math/tex&quot;&gt;F(\lambda)&lt;/script&gt;。从&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;这一步有&lt;script type=&quot;math/tex&quot;&gt;III(\sigma)&lt;/script&gt;的作用，它们都抹掉了高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的信息。如果&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，那么转换这一步基本上是正确的。但是如果重叠的部分很宽，这部分就不会有唯一的解，解决办法是减少采样的间隔。实际上&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;一般的确在高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;处趋于0，而且&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;的存在也会强制使得&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的值减小，所以转换是成立的。&lt;/p&gt;
-
-&lt;p&gt;最后一个需要提及的是&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;。只要&lt;script type=&quot;math/tex&quot;&gt;B(x)&lt;/script&gt;够宽，问题就不大；但是不够宽的时候&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;本身的宽度和在&lt;script type=&quot;math/tex&quot;&gt;\sigma &gt; \frac{1}{W}&lt;/script&gt;处的起伏都会导致数据的模糊，所以有必要修改&lt;script type=&quot;math/tex&quot;&gt;B(x)&lt;/script&gt;的边缘以消除起伏。&lt;script type=&quot;math/tex&quot;&gt;b(\sigma)&lt;/script&gt;本身的宽度会使和&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;的卷积很大，所以有必要稍微减小&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;。12章会有更多介绍。&lt;/p&gt;
-
-&lt;h3 id=&quot;一些定理&quot;&gt;一些定理&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x_1) + F(x_2) \Leftrightarrow f(\sigma_1) + f(\sigma_2)&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x - x_1) \Leftrightarrow e^{2\pi ix_1\sigma}f(\sigma)&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;F(ax) \Leftrightarrow |\frac{1}{a}|f(\frac{1}{a})&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathrm{d}F(x)}{\mathrm{d}x} \Leftrightarrow 2\pi i \sigma f(\sigma)&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;K(x) = F(x) * G(x) \Rightarrow \frac{\mathrm{d}K(x)}{\mathrm{d}x} = \frac{\mathrm{d}F(x)}{\mathrm{d}x} * G(x) + F(x) * \frac{\mathrm{d}G(x)}{\mathrm{d}x}&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\int G(x) \mathrm{d}x = 1 \Rightarrow \int F(x) * G(x) \mathrm{d}x = \int F(x) \mathrm{d}x&lt;/script&gt;
-  &lt;/li&gt;
-  &lt;li&gt;定义&lt;script type=&quot;math/tex&quot;&gt;z = \frac{\int xF(x) \mathrm{d}x}{\int F(x) \mathrm{d}x}&lt;/script&gt;，则若&lt;script type=&quot;math/tex&quot;&gt;K(x) = F(x) * G(x)&lt;/script&gt;，有&lt;script type=&quot;math/tex&quot;&gt;z_K = z_F + z_G&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\int F(x) G^+(x) \mathrm{d}x = \int f(\sigma) g^+(\sigma) \mathrm{d}\sigma&lt;/script&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;离散计算&quot;&gt;离散计算&lt;/h3&gt;
-
-&lt;p&gt;用定义计算有的时候会带来很大的计算量；而我们经常遇到的数据是均匀采样的，这个时候用快速傅里叶变换(FFT)可以很方便地计算。&lt;/p&gt;
-
-&lt;p&gt;FFT中的输入和结果都是离散的，也就是说&lt;script type=&quot;math/tex&quot;&gt;D(x)&lt;/script&gt;变成了&lt;script type=&quot;math/tex&quot;&gt;D(j\Delta x)&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;j&lt;/script&gt;是整数，从&lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;到&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;。同理，将结果也离散化成&lt;script type=&quot;math/tex&quot;&gt;\sigma = k \Delta \sigma&lt;/script&gt;，从傅里叶变换的定义出发我们可以得到&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(\sigma) = d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk\Delta x \Delta\sigma} \Delta x&lt;/script&gt;
-
-&lt;p&gt;从上一节我们知道，采样后数据的傅里叶变换只在奈奎斯特频率以下包含有用数据，所以结果的计算也只到&lt;script type=&quot;math/tex&quot;&gt;\sigma_N  = \frac{1}{2\Delta x}&lt;/script&gt;为止。同时我们要求结果的长度和输入的数组长度一致，而且中间为0，所以频域的步长&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \sigma = \frac{\sigma_N}{N/2} = \frac{1}{\Delta x N}&lt;/script&gt;
-
-&lt;p&gt;或者&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \sigma \Delta x = \frac{1}{N}&lt;/script&gt;
-
-&lt;p&gt;所以最后我们得到&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk/N} \Delta x&lt;/script&gt;
-
-&lt;p&gt;其实现在就是一个FFT命令的事情。&lt;/p&gt;
-
-&lt;h5 id=&quot;有关numpy中的fft&quot;&gt;有关numpy中的fft&lt;/h5&gt;
-
-&lt;p&gt;因为采样的缘故，fft只计算到奈奎斯特频率的位置。而如果原函数不是实数函数，那么傅里叶变换关于0点对称的复数值将不会共轭，所以numpy中的fft先计算0到&lt;script type=&quot;math/tex&quot;&gt;\sigma_N&lt;/script&gt;的值，再计算0到&lt;script type=&quot;math/tex&quot;&gt;-\sigma_N&lt;/script&gt;的值，并使傅里叶变换的长度与源函数长度一致（一半分给正频率，一半给负频率）。这给我们画图带来了一些麻烦，所以numpy提供了&lt;code class=&quot;highlighter-rouge&quot;&gt;numpy.fft.fftfreq(n[, d])&lt;/code&gt;来给出傅里叶变换的x值，只需输入原函数长度和步长即可。上面的画图中因为结果已知而且基本上特征都在0附近，所以人为地截断到了和原函数同样的x值上；也能看出fft的结果分辨率比解析的差一点，是采样带来的后果。&lt;/p&gt;
-
-&lt;p&gt;有关模，fft结果乘上步长之后取模才是正确的大小，这是因为fft只计算了前两项，没有乘上最后的&lt;script type=&quot;math/tex&quot;&gt;\Delta x&lt;/script&gt;；当然这是因为程序不知道步长的缘故了。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;（暂未解决shah函数的fft结果和预计不符的问题）&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;参见&lt;a href=&quot;https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.fft.html#module-numpy.fft&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;误差&quot;&gt;误差&lt;/h3&gt;
-
-&lt;p&gt;测量是有误差的，那么测量的傅里叶变换误差是多少呢？假设&lt;script type=&quot;math/tex&quot;&gt;E(x)&lt;/script&gt;为函数&lt;script type=&quot;math/tex&quot;&gt;F_0(x)&lt;/script&gt;的测量误差，即&lt;script type=&quot;math/tex&quot;&gt;F(x) = F_0(x) + E(x)&lt;/script&gt;，那么根据定理1，&lt;script type=&quot;math/tex&quot;&gt;F(x)&lt;/script&gt;的傅里叶变换为&lt;script type=&quot;math/tex&quot;&gt;f(\sigma) = f_0(\sigma) + e(\sigma)&lt;/script&gt;。同时定理8告诉我们&lt;script type=&quot;math/tex&quot;&gt;\int \vert E(x)\vert^2  \mathrm{d}x = \int \vert e(\sigma)\vert^2 \mathrm{d}\sigma&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;（实际上我们并不一定能知道&lt;script type=&quot;math/tex&quot;&gt;E(x)&lt;/script&gt;，更多时候是知道&lt;script type=&quot;math/tex&quot;&gt;E(x)&lt;/script&gt;的一些性质比如说平均值，这个时候怎么办？）&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;离散傅里叶变换里面上式会变为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_1^N E^2(x_j)\Delta x = \sum_1^N e^2(\sigma_j) \Delta \sigma&lt;/script&gt;
-
-&lt;p&gt;定义误差的标准差为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_x = [\sum_1^N \frac{E^2(x_j)}{N-1}]^{1/2}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\sigma = [\sum_1^N \frac{E^2(\sigma_j)}{N-1}]^{1/2}&lt;/script&gt;
-
-&lt;p&gt;代进定理8导出来的式子里面，再加上&lt;script type=&quot;math/tex&quot;&gt;\Delta x&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\Delta \sigma&lt;/script&gt;的关系，我们有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\sigma = S_x \Delta x N^{1/2}&lt;/script&gt;
-
-&lt;p&gt;也就是说想减少傅里叶变换的误差，可以减少测量误差或者缩短采样间隔，或者增大采样范围。实际测量的时候只把关心的数据点纳入（比如说某条谱线），将其他的点改成平均值或者1这种误差为0的数值可以减少测量误差。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;（书里提到了FFT的数组长度必须为2的指数，但是实际上似乎不是？）&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;当误差与&lt;script type=&quot;math/tex&quot;&gt;x,\sigma&lt;/script&gt;无关，并且采样间隔小到除了&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域的主体之外，还有一部分高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的变换也在&lt;script type=&quot;math/tex&quot;&gt;\sigma_N&lt;/script&gt;之内时，我们通过可以高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分直接测量&lt;script type=&quot;math/tex&quot;&gt;S_\sigma&lt;/script&gt;从而算出&lt;script type=&quot;math/tex&quot;&gt;S_x&lt;/script&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;时间序列略&quot;&gt;时间序列（略）&lt;/h3&gt;
-
-&lt;p&gt;对于有周期的信号来说，长时间观测之后可以求出周期；但是观测时间不长或者周期性不明显的时候，可以考虑使用傅里叶变换。但是要注意由于采样引起的假信号（Shah函数），不一定每个峰都是真的。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 11 Nov 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/11/11/OASP2/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/11/11/OASP2/</guid>
-        
-        <category>learning</category>
         
         
       </item>
