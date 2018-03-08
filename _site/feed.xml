@@ -2,12 +2,447 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mingjie's Blog</title>
-    <description>ひびけ</description>
+    <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 01 Feb 2018 13:56:11 +0900</pubDate>
-    <lastBuildDate>Thu, 01 Feb 2018 13:56:11 +0900</lastBuildDate>
+    <pubDate>Thu, 08 Mar 2018 20:27:18 +0900</pubDate>
+    <lastBuildDate>Thu, 08 Mar 2018 20:27:18 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>OASP笔记 - 9</title>
+        <description>&lt;p&gt;乍看起来人为地制造一个恒星或者光球层的模型似乎没有必要。难道就不能从观测到的恒星光谱中导出我们想要的参数吗？就像从视差算出距离一样，只不过现在的公式或者方法比倒数麻烦很多而已。不过抱歉还真的不能，因为影响恒星光谱的因素实在太多，所以这样做一般是不现实的。所以要知道我们想知道的信息，我们只能倒过来，从一些理论和物理规律去造出一个模型，然后将模型产生的光谱和实际的光谱对比并不断修正，直到它们非常相像，我们才认为这个模型至少反映了一些实际，并用模型的参数去反映恒星的参数。&lt;/p&gt;
+
+&lt;p&gt;我们在第七章看到计算光强或者流量的时候我们需要源函数，同时在第八章看到计算&lt;script type=&quot;math/tex&quot;&gt;\kappa&lt;/script&gt;的时候还需要压强（气体的和电子的）；所以光球层模型至少需要包括不同光深下面的源函数和压强（三列很多行的一个表），当然需要的话还可以在后面加上其他的参数。作为例子，这里给出一个Kurucz的模型（MOOG格式）：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;KURUCZ&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TEFF   4750.  GRAVITY 2.50000 LTE[0.0] VTURB=2  L/H=1.25 NOVER&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ntau=       72&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;\rho x&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;N_\mathrm{e}&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;script type=&quot;math/tex&quot;&gt;\kappa_\mathrm{ross}&lt;/script&gt;&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2.48844185E-03&lt;/td&gt;
+      &lt;td&gt;2877.3&lt;/td&gt;
+      &lt;td&gt;7.869E-01&lt;/td&gt;
+      &lt;td&gt;3.746E+07&lt;/td&gt;
+      &lt;td&gt;5.359E-05&lt;/td&gt;
+      &lt;td&gt;9.873E-03&lt;/td&gt;
+      &lt;td&gt;2.000E+05&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3.29274059E-03&lt;/td&gt;
+      &lt;td&gt;2900.6&lt;/td&gt;
+      &lt;td&gt;1.041E+00&lt;/td&gt;
+      &lt;td&gt;4.908E+07&lt;/td&gt;
+      &lt;td&gt;5.701E-05&lt;/td&gt;
+      &lt;td&gt;1.014E-02&lt;/td&gt;
+      &lt;td&gt;2.000E+05&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4.29948870E-03&lt;/td&gt;
+      &lt;td&gt;2923.9&lt;/td&gt;
+      &lt;td&gt;1.360E+00&lt;/td&gt;
+      &lt;td&gt;6.364E+07&lt;/td&gt;
+      &lt;td&gt;6.082E-05&lt;/td&gt;
+      &lt;td&gt;1.011E-02&lt;/td&gt;
+      &lt;td&gt;2.000E+05&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;第一行是指名模型类型（MOOG也接受其他的一些模型），第二行是注释（有效温度和logg），第三行指名接下来的72行都是模型的内容。计算光谱的时候用到的物理量是光深、温度、气体压强、电子数密度或者是压强、Rossland不透明度。这里没有用到源函数的原因应该是认为热动平衡下每层的源函数都是普朗克函数，所以有温度就可以算出源函数了。所以有了模型之后就可以根据&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;来算流量了。&lt;/p&gt;
+
+&lt;p&gt;这本书的主旨是“读完某一章之后就可以拿这一章的内容来做计算”，所以这里提到的模型肯定有很多假设，距离真实情况有一定距离。但是这不代表着它们没有用，它们仍然是不错的工具和真实模型的起点。这里的假设和简化包括：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;平面平行层假设，所有物理量只和深度有关&lt;/li&gt;
+  &lt;li&gt;处于流体静力学平衡，没有很大的膨胀和收缩，没有质量损失&lt;/li&gt;
+  &lt;li&gt;忽略米粒组织和和黑子，或者把它们也包括在光球层的平均物理量里面&lt;/li&gt;
+  &lt;li&gt;忽略磁场的影响&lt;/li&gt;
+  &lt;li&gt;处于热动平衡，有&lt;script type=&quot;math/tex&quot;&gt;(1.18), (1.19)&lt;/script&gt;以及源函数为普朗克函数&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;很明显想要改进模型的话放宽这些条件就行了。十七、十八章会放宽最后一个条件。热动平衡并不是全局的，只是在某一个（相对光球层）比较小的&lt;script type=&quot;math/tex&quot;&gt;dx&lt;/script&gt;里面成立，所以我们将光球层分成很多个子层，每一层有一个温度对应（上面的模型表格）；这就叫局部热动平衡(LTE)。&lt;/p&gt;
+
+&lt;h3 id=&quot;流体静力学平衡&quot;&gt;流体静力学平衡&lt;/h3&gt;
+
+&lt;p&gt;流体静力学平衡就意味着压强差等于体元的所受的重力：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;dP = dF/dA = \rho g dx&lt;/script&gt;
+
+&lt;p&gt;这里的&lt;script type=&quot;math/tex&quot;&gt;dF,dx&lt;/script&gt;都是里面减外面；而我们用&lt;script type=&quot;math/tex&quot;&gt;dx&lt;/script&gt;定义的光深刚好也是这个方向的，所以：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dP}{d\tau_\nu} = \frac{g}{\kappa_\nu} \tag{9.1}&lt;/script&gt;
+
+&lt;p&gt;这里的压强是总的压强。一般来说这里面气体压强占大头，除了一些特殊情况：高温恒星的辐射压&lt;script type=&quot;math/tex&quot;&gt;(5.11)&lt;/script&gt;、磁场的压强或者湍流的压强。所以我们又欢乐地将总压强替换成气体压强&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}&lt;/script&gt;了。&lt;/p&gt;
+
+&lt;p&gt;对&lt;script type=&quot;math/tex&quot;&gt;(9.1)&lt;/script&gt;两边都乘一个&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}^{1/2}&lt;/script&gt;，然后为了方便起见将某波长上的光深&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;换成参考波长5000Å上的光深&lt;script type=&quot;math/tex&quot;&gt;\kappa_0&lt;/script&gt;，得：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g}^{1/2} dP_\mathrm{g} = P_\mathrm{g}^{1/2}\frac{g}{\kappa_0} d\tau_0&lt;/script&gt;
+
+&lt;p&gt;要多说两句的是以后下标带&lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;的量都指的是在参考波长上的量；在后面会看到&lt;script type=&quot;math/tex&quot;&gt;\tau_0&lt;/script&gt;可以转换成其他波长上的光深，并且因为不同波长上的同一个光深值一般代表着不同的几何深度，在比较不同波长上的量的时候转换到同一个光深尺度下面是有必要的。&lt;/p&gt;
+
+&lt;p&gt;将上式两边积分，得：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} P_\mathrm{g}(\tau_0) &amp;= ( \frac{3}{2} g \int_0^{\tau_0} \frac{P_\mathrm{g}^{1/2}}{\kappa_0} dt_0 )^{2/3} \\ &amp;= ( \frac{3}{2} g \int_{-\infty}^{\log{\tau_0}} \frac{t_0^{1/2}P_\mathrm{g}^{1/2}}{\kappa_0 \log{e}} d\log{t_0} )^{2/3} \end{align} \tag{9.2} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;换成&lt;script type=&quot;math/tex&quot;&gt;\log{}&lt;/script&gt;是因为这样能有更高的精度。这是个超越方程所以我们先猜一个&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}(\tau_0)&lt;/script&gt;，代进去算出新的&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}(\tau_0)&lt;/script&gt;之后再重复直到收敛。即使我们猜了&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}(\tau_0)&lt;/script&gt;，上面的式子里仍有吸收系数&lt;script type=&quot;math/tex&quot;&gt;\kappa_0&lt;/script&gt;是未知的，所以我们先要知道&lt;script type=&quot;math/tex&quot;&gt;\kappa_0&lt;/script&gt;。这就是第八章干的活，而从那里的结论我们知道&lt;script type=&quot;math/tex&quot;&gt;\kappa_0&lt;/script&gt;是温度和电子压强的函数，然后我们就要去求&lt;script type=&quot;math/tex&quot;&gt;T(\tau_0), P_\mathrm{e}(\tau_0)&lt;/script&gt;了。&lt;/p&gt;
+
+&lt;h3 id=&quot;恒星光球层的温度&quot;&gt;恒星光球层的温度&lt;/h3&gt;
+
+&lt;h5 id=&quot;太阳&quot;&gt;太阳&lt;/h5&gt;
+
+&lt;p&gt;我们有两个方法获取恒星光球层的温度：临边昏暗以及吸收系数在不同波长上的变化。&lt;/p&gt;
+
+&lt;p&gt;很明显临边昏暗只能用在太阳身上。&lt;script type=&quot;math/tex&quot;&gt;(7.10)&lt;/script&gt;给出：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(0) = \int_{0}^\infty S_\nu e^{-t_\nu\sec{\theta}}\sec{\theta} dt_\nu \tag{9.3}&lt;/script&gt;
+
+&lt;p&gt;也就是说太阳表面的辐射强度是受&lt;script type=&quot;math/tex&quot;&gt;e^{-t_\nu\sec{\theta}}&lt;/script&gt;调节的。辐射强度主要的贡献来自于&lt;script type=&quot;math/tex&quot;&gt;S_\nu\sec{\theta} \sim \frac{1}{e} S_\nu\sec{\theta}&lt;/script&gt;的这个范围内，而随着我们的视线方向逐渐远离太阳中心，达到&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{e} S_\nu\sec{\theta}&lt;/script&gt;所需的光深越来越小，也就是我们能看到的表面越来越浅。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/Limb_darkening.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;太阳的临边昏暗&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;在灰大气模型下，&lt;script type=&quot;math/tex&quot;&gt;(7.34)&lt;/script&gt;可以写成：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu = a + b\tau_\nu&lt;/script&gt;
+
+&lt;p&gt;代进&lt;script type=&quot;math/tex&quot;&gt;(9.3)&lt;/script&gt;里面可以得到：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(0) = a + b \cos{theta}&lt;/script&gt;
+
+&lt;p&gt;也就是说在&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;角观测到的辐射强度就是在光深&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;处的源函数的值，所以只要观测辐射强度我们就知道了源函数；这叫做Eddington-Barbier关系。当然更复杂一点的源函数也可以通过数值模拟来找到。&lt;/p&gt;
+
+&lt;p&gt;一个稍微定量一点的方法是将&lt;script type=&quot;math/tex&quot;&gt;(9.3)&lt;/script&gt;写成对数坐标下的形式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(0) = \int_{-\infty}^\infty S_\nu e^{-t_\nu\sec{\theta}}t_\nu\sec{\theta} \frac{d\log{t_\nu}}{\log{e}} \tag{9.4}&lt;/script&gt;
+
+&lt;p&gt;右边的积分叫做贡献函数，它反映了每层的辐射对表面光强的贡献。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.3.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;不同角度位置上的贡献函数&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图，右边为大气底部，左边为大气顶端（对于光深来讲）。我们可以看到没有光从很顶端以及底部的区域发射出来，同时越靠近恒星边缘我们主要看见的光就越从光深更小的地方发射。这里的源函数取得非常随意，只是保证了普朗克函数的形式(&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{e^{0.001/\tau}-1}&lt;/script&gt;)，所以&lt;script type=&quot;math/tex&quot;&gt;dI_\nu&lt;/script&gt;的值和书上的有较大差异。同样实际操作中我们也是把顺序倒过来，通过观测到的&lt;script type=&quot;math/tex&quot;&gt;I_\nu&lt;/script&gt;计算出源函数。&lt;/p&gt;
+
+&lt;p&gt;第二个办法是在不同波段上观测。除了角度之外，吸收系数&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;也会决定我们能看得多深，所以对于中低温恒星来说在16000Å左右我们能看得最深，；往短波方向走我们看得越来越浅因为负氢离子的吸收变大（第八章的gif图）；波长小于2500Å之后虽然负氢离子的吸收变小了但是金属的吸收变大了。当然能结合临边昏暗以及不同波长能给我们带来最多的信息。其他还有的办法是观测强的谱线，将在第十三章详述。&lt;/p&gt;
+
+&lt;p&gt;所以对于太阳来说，结果大致是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://wwwuser.oats.inaf.it/castelli/sun.html&quot;&gt;Kurucz模型&lt;/a&gt;
+&lt;a href=&quot;http://marcs.astro.uu.se/index.php&quot;&gt;MARCS&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;基本上在&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+-3 &lt; \log{\tau_0} &lt; 1 %]]&gt;&lt;/script&gt;的范围内所有模型都一致，因为有观测数据支撑；更深的地方模型们开始有分歧，因为处理对流的方式不一样。而在光深很小的地方的分歧部分原因是LTE不再成立。&lt;/p&gt;
+
+&lt;p&gt;另一个必须要提及的点是实际上同一层内温度肯定不会处处相同；温度起伏在百分之几到25%左右，这也是模型没有顾及的。&lt;/p&gt;
+
+&lt;h5 id=&quot;其他恒星&quot;&gt;其他恒星&lt;/h5&gt;
+
+&lt;p&gt;显然我们不能用临边昏暗去得到其他恒星的温度（边看都看不见还昏什么暗）。所以我们一是完全从理论计算，或者直接将太阳的模型变换到别的恒星上。&lt;/p&gt;
+
+&lt;p&gt;理论计算来源于&lt;script type=&quot;math/tex&quot;&gt;(7.14)&lt;/script&gt;。当然还要加上&lt;script type=&quot;math/tex&quot;&gt;(7.22), (7.28), (7.30)&lt;/script&gt;和流量守恒（恒星大气不发光）。先猜一个源函数，代进&lt;script type=&quot;math/tex&quot;&gt;(7.14)&lt;/script&gt;算出流量，再根据流量守恒去修改源函数直到收敛。具体例子可以看P179中间提到的论文。有的时候我们还要加上谱线的影响，称之为line blanketing。&lt;/p&gt;
+
+&lt;p&gt;理论计算主要的误差来源与不准确的&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;以及对对流的处理（混合长的选择什么的）。对流并不会对表面流量产生很大的影响，但是会改变底层的温度。我们会在第十七章引入对流。&lt;/p&gt;
+
+&lt;p&gt;恒星大气的理论模型十分复杂，所以多数的研究都会把模型算好并发布，直接拿来用就行了。&lt;/p&gt;
+
+&lt;p&gt;将太阳的模型变换到别的恒星上虽然看起来比较粗暴但是还是有一些理由的。它的做法是用一个常数去乘太阳的温度，得到恒星的温度：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;T(\tau_0) = S_0 T_\odot(\tau_0)&lt;/script&gt;
+
+&lt;p&gt;灰大气模型下面这么做是完全没有问题的，因为&lt;script type=&quot;math/tex&quot;&gt;(7.36)&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff}&lt;/script&gt;
+
+&lt;p&gt;可得&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;T(\tau) = \frac{T_\mathrm{eff}}{T_\mathrm{eff}^\odot}T_\odot(\tau)&lt;/script&gt;
+
+&lt;p&gt;这两种方法的结果是差不多的&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当然巨星和矮星会有不同，可能需要一个标准巨星。&lt;/p&gt;
+
+&lt;p&gt;实际操作中也可以直接拿格点中的恒星模型来稍作变换然后得到想要的模型，因为常数&lt;script type=&quot;math/tex&quot;&gt;S_0&lt;/script&gt;可以随便取。&lt;/p&gt;
+
+&lt;p&gt;到此我们就认为我们已经知道恒星大气每层的温度了。下一个要知道的是气体压强。&lt;/p&gt;
+
+&lt;h3 id=&quot;气体压强-电子压强-温度关系&quot;&gt;气体压强-电子压强-温度关系&lt;/h3&gt;
+
+&lt;p&gt;当我们在解&lt;script type=&quot;math/tex&quot;&gt;(9.2)&lt;/script&gt;的时候我们先猜一个气体压强&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}&lt;/script&gt;。之后我们就需要算&lt;script type=&quot;math/tex&quot;&gt;\kappa_0&lt;/script&gt;，所以我们马上就要求出电子压强&lt;script type=&quot;math/tex&quot;&gt;p_\mathrm{e}&lt;/script&gt;和气体压强的关系。令单位体积内某种元素&lt;script type=&quot;math/tex&quot;&gt;j&lt;/script&gt;的一次电离离子的数量为&lt;script type=&quot;math/tex&quot;&gt;N_{1j}&lt;/script&gt;，原子数量为&lt;script type=&quot;math/tex&quot;&gt;N_{0j}&lt;/script&gt;，则根据&lt;script type=&quot;math/tex&quot;&gt;(1.20)&lt;/script&gt;有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_{1j}}{N_{0j}} = \frac{\Phi_j(T)}{P_\mathrm{e}}&lt;/script&gt;
+
+&lt;p&gt;忽略二次及以上的电离，&lt;script type=&quot;math/tex&quot;&gt;N_{1j}&lt;/script&gt;就和&lt;script type=&quot;math/tex&quot;&gt;j&lt;/script&gt;元素贡献的电子的数量&lt;script type=&quot;math/tex&quot;&gt;N_{ej}&lt;/script&gt;相同，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\Phi_j(T)}{P_\mathrm{e}} = \frac{N_{ej}}{N_{0j}} = \frac{N_{ej}}{N_{j} - N_{ej}}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow N_{\mathrm{e}j} = N_j \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}&lt;/script&gt;
+
+&lt;p&gt;由理想气体公式，压强为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{\mathrm{e}} = \sum_j N_{\mathrm{e}j}kT&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} = \sum_j (N_{\mathrm{e}j} + N_{j})kT&lt;/script&gt;
+
+&lt;p&gt;所以压强之比为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} \frac{P_\mathrm{e}}{P_\mathrm{g}} &amp;= \frac{\sum_j N_{\mathrm{e}j}kT}{\sum_j (N_{\mathrm{e}j} + N_{j})kT} \\ &amp;= \frac{\sum_j N_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j N_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;上下同除以单位体积内氢原子数量&lt;script type=&quot;math/tex&quot;&gt;N_\mathrm{H}&lt;/script&gt;，令&lt;script type=&quot;math/tex&quot;&gt;A_j = N_\mathrm{j}/N_\mathrm{H}&lt;/script&gt;为相对丰度，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} = P_\mathrm{g} \frac{\sum_j A_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j A_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}&lt;/script&gt;
+
+&lt;p&gt;这是一个超越方程，同样也需要迭代对于每一个光深的值去解。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图，我们能看出高温时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g} \approx 2P_\mathrm{e}&lt;/script&gt;（因为氢基本上电离了），低温时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e} \approx P_\mathrm{g}^{1/2}&lt;/script&gt;。低温这个结论也可以从公式中推出来。先认为恒星大气中只由一种元素的原子组成，则&lt;script type=&quot;math/tex&quot;&gt;(9.8)&lt;/script&gt;变为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} = P_\mathrm{g} \frac{\Phi(T)/P_\mathrm{e}}{1 + 2\Phi(T)/P_\mathrm{e}}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow P_\mathrm{e}^2 = \Phi(T)(P_\mathrm{g} - 2P_\mathrm{e})&lt;/script&gt;
+
+&lt;p&gt;低温时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e} \ll P_\mathrm{g}&lt;/script&gt;，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e}^2 \approx \Phi(T)P_\mathrm{g} \tag{9.9}&lt;/script&gt;
+
+&lt;p&gt;低温恒星在迭代的时候还要注意元素丰度的问题，因为这个时候金属元素提供了主要的电子，迭代的时候可能也需要修改元素丰度。&lt;/p&gt;
+
+&lt;h3 id=&quot;模型小结&quot;&gt;模型小结&lt;/h3&gt;
+
+&lt;p&gt;我们已经可以计算大气模型了。拿已经有了的&lt;script type=&quot;math/tex&quot;&gt;T(\tau_0)&lt;/script&gt;和猜测的&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}(\tau_0)&lt;/script&gt;计算&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e}(\tau_0)&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\kappa_0(\tau_0)&lt;/script&gt;，然后通过&lt;script type=&quot;math/tex&quot;&gt;(9.2)&lt;/script&gt;算出一个新的&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}(\tau_0)&lt;/script&gt;，如此重复。如果&lt;script type=&quot;math/tex&quot;&gt;T(\tau_0)&lt;/script&gt;是从太阳的转换来的话那收敛之后就完了；但如果&lt;script type=&quot;math/tex&quot;&gt;T(\tau_0)&lt;/script&gt;是理论值的话我们还要求它满足流量守恒，修正&lt;script type=&quot;math/tex&quot;&gt;T(\tau_0)&lt;/script&gt;然后再重复。&lt;/p&gt;
+
+&lt;h3 id=&quot;从模型中导出来的东西&quot;&gt;从模型中导出来的东西&lt;/h3&gt;
+
+&lt;h5 id=&quot;几何深度&quot;&gt;几何深度&lt;/h5&gt;
+
+&lt;p&gt;几何深度就是&lt;script type=&quot;math/tex&quot;&gt;dx = d\tau_0 / \kappa_0 \rho&lt;/script&gt;啦，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x(\tau_0) = \int_0^{\tau_0} \frac{1}{\kappa(t_0)\rho(t_0)} dt_0 \tag{9.10}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\kappa&lt;/script&gt;已经在刚刚的迭代中确定了，&lt;script type=&quot;math/tex&quot;&gt;\rho&lt;/script&gt;可以算出来：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\rho = N_\mathrm{H} \times \sum A_j \mu_j&lt;/script&gt;
+
+&lt;p&gt;同时&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;N_\mathrm{H} = \frac{N - N_\mathrm{e}}{\sum A_j} = \frac{P_\mathrm{g} - P_\mathrm{e}}{kT\sum A_j}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow x(\tau_0) = \int_0^{\log{\tau_0}} \frac{kT(t_0)\sum A_jt_0}{\kappa(t_0) \sum A_j\mu_j[P_\mathrm{g} - P_\mathrm{e}]\log{e}} d\log{t_0} \tag{9.11}&lt;/script&gt;
+
+&lt;p&gt;或者利用本文第一条公式&lt;script type=&quot;math/tex&quot;&gt;dP_\mathrm{g} = \rho g dx&lt;/script&gt;积分，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x(P_\mathrm{g}) = \frac{1}{g} \int_0^{P_\mathrm{g}} \frac{kT(p)\sum A_j}{\sum A_j\mu_j} \frac{dp}{p-P_\mathrm{e}} \tag{9.12}&lt;/script&gt;
+
+&lt;p&gt;从这里我们可以看到恒星大气的几何深度和&lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt;是成反比的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;模型的计算&quot;&gt;模型的计算&lt;/h5&gt;
+
+&lt;p&gt;模型最重要的结果自然是光谱，或者说是不同波长上的流量。这个东西可以从&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;计算出来：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = 2\pi \int_{-\infty}^{\infty} S_\nu(\tau_0) E_2(\tau_\nu) \frac{\kappa_\nu(\tau_0)\tau_0 d\log{\tau_0}}{\kappa_0(\tau_0)\log{e}} \tag{9.13}&lt;/script&gt;
+
+&lt;p&gt;这条式子和&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;的区别在于&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;以及&lt;script type=&quot;math/tex&quot;&gt;d \tau_\nu&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;的自变量被改成了&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;，这是因为热动平衡下&lt;script type=&quot;math/tex&quot;&gt;S_\nu(\tau_\nu) = B_\nu[T(\tau_\nu)]&lt;/script&gt;，当我们在讨论同一个几何深度的薄层时无论用的自变量是&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;还是&lt;script type=&quot;math/tex&quot;&gt;\tau_0&lt;/script&gt;，所表达的温度都是一样的（因为是同一层），所以方便起见我们用&lt;script type=&quot;math/tex&quot;&gt;\tau_0&lt;/script&gt;。要注意的是&lt;script type=&quot;math/tex&quot;&gt;E_2&lt;/script&gt;不能这样做，因为&lt;script type=&quot;math/tex&quot;&gt;E_2&lt;/script&gt;是一个积分，整个积分是随着&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;的变化而变化的。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;d \tau_\nu&lt;/script&gt;的话根据几何深度的定义，我们有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;dx = \frac{d\tau_\nu}{\kappa_\nu \rho} = \frac{d\tau_0}{\kappa_0 \rho}&lt;/script&gt;
+
+&lt;p&gt;代进去再换成log scale，就有了最后的那坨东西。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;(9.13)&lt;/script&gt;式的微分是恒星某一层在某个波长上发出的光的流量多少，我们将他称为flux contribution function。它说明了在这个波长下，恒星的光主要是从哪一层发出来的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;从上图我们可以看出8000埃处的恒星光主要来自更高的位置，说明了&lt;script type=&quot;math/tex&quot;&gt;\kappa_{8000}&lt;/script&gt;更大。&lt;/p&gt;
+
+&lt;p&gt;另一个明显的例子是巴尔末跳跃前后的flux contribution function。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到3646的辐射层远高于3648，说明多数的3646辐射都被氢原子吸收掉了。&lt;/p&gt;
+
+&lt;p&gt;以上讨论的主要是&lt;script type=&quot;math/tex&quot;&gt;E_2&lt;/script&gt;对FCF的影响，同时源函数（其实也就是温度分度分布）对FCF也有影响。温度越高，辐射越多，辐射峰值也稍微往高处走（因为温度会使吸收系数发生变化）。&lt;/p&gt;
+
+&lt;p&gt;最后，我们还有别的方法去计算流量，比如对&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;的另一种积分：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = \pi S_\nu(0) + 2\pi \int_0^\infty \frac{dS}{d\tau_\nu}E_3(\tau_\nu)d \tau_\nu&lt;/script&gt;
+
+&lt;p&gt;它和边界的流量以及源函数的梯度有关。&lt;/p&gt;
+
+&lt;h5 id=&quot;模型的性质压强关系&quot;&gt;模型的性质：压强关系&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图9.12显示了气体压强和温度的关系&lt;script type=&quot;math/tex&quot;&gt;T(P_g)&lt;/script&gt;。可以看到不同温度下的曲线并不像&lt;script type=&quot;math/tex&quot;&gt;T(\tau_0)&lt;/script&gt;一样可以直接乘上一个常数；这是我们用光深而不用气体压强做自变量的一个原因（不方便）。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;(7.39)&lt;/script&gt;表明了当上图的斜率超过&lt;script type=&quot;math/tex&quot;&gt;1-1/\gamma \approx 0.4&lt;/script&gt;的时候，会发生对流。所以很多模型到了这里附近会不稳定，需要加入对流的因素。一件好事是对流一般发生在恒星大气的底部，因为大气比较稀薄的时候主要还是辐射传能。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.13.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/img/in-post/post-OASP9/9.14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图9.13和9.14显示了两个不同温度的模型在不同光深处的气体以及电子压强。在低温模型的大气上层，电子压强远远小于气体压强；向恒星内部走，温度升高使得电离增强，所以电子压强也升高，但是仍然没有完全电离。对于高温恒星，两条线距离很小，意味着基本上完全电离了。&lt;/p&gt;
+
+&lt;p&gt;我们还可以看看表面重力加速度和压强的关系。由&lt;script type=&quot;math/tex&quot;&gt;(9.2)&lt;/script&gt;，我们有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} \approx C(T) g^{2/3} \tag{9.19}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;C(T)&lt;/script&gt;就是那一堆积分加常数。然后从&lt;script type=&quot;math/tex&quot;&gt;(9.9)&lt;/script&gt;，对于低温模型，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} \approx \text{constant}\, g^{1/3} \tag{9.20}&lt;/script&gt;
+
+&lt;p&gt;高温模型下因为&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e} \approx 0.5 P_\mathrm{g}&lt;/script&gt;，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} \approx \text{constant}\, g^{2/3} \tag{9.21}&lt;/script&gt;
+
+&lt;p&gt;这个结论是和计算一致的。&lt;/p&gt;
+
+&lt;h5 id=&quot;金属丰度的影响&quot;&gt;金属丰度的影响&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.15.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/img/in-post/post-OASP9/9.16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图9.15和9.16显示了低温模型不同金属丰度下气体压强的情况。高温模型的话主要是氢原子提供电子，同时压强也和金属丰度关系不大了。对于低温恒星，金属丰度越大、电子压强也越大。这是显而易见的，因为更多的金属提供了更多的电子。当然在大气底层，增大金属丰度对电子压强影响不大，因为此时（又）主要是由氢原子提供电子了，也不在乎金属提供的那点电子。稍微不那么好理解的是气体压强，为什么金属丰度增大之后气体压强反而减小了呢？这不是因为气体压强本身的问题，而是电子增多带来的不透明度增大。电子增多会带来更大的连续谱吸收，导致同一个几何深度上的光深变大，所以我们看到的恒星大气厚度变小，整条线右移、气体压强自然就“减小”了。&lt;/p&gt;
+
+&lt;p&gt;当然这可以用公式推出来；我们计算这么一个量：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} = \frac{P_\mathrm{e}}{P_\mathrm{g}} \frac{N_\mathrm{H}}{\sum N_J} \frac{kT}{kT} = \frac{P_\mathrm{e}}{P_\mathrm{g}} \frac{P_\mathrm{H}}{\sum N_j kT} \approx \frac{P_\mathrm{e}}{\sum N_j kT}&lt;/script&gt;
+
+&lt;p&gt;恒星里面主要是氢嘛，所以&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{H}&lt;/script&gt;就近似相等了。继续，&lt;script type=&quot;math/tex&quot;&gt;N_j&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e}&lt;/script&gt;可以表述为原子离子的组合：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum N_j = \sum (N_1+N_0)_j, P_\mathrm{e} = N_\mathrm{e}kT = \sum N_{1j}kT&lt;/script&gt;
+
+&lt;p&gt;所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx \frac{\sum N_{1j}}{\sum (N_1+N_0)_j}&lt;/script&gt;
+
+&lt;p&gt;那么当金属基本上被电离的时候，&lt;script type=&quot;math/tex&quot;&gt;\sum N_{1j} \gg \sum N_{0j}&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx 1 \tag{9.22}&lt;/script&gt;
+
+&lt;p&gt;金属处于中性的时候，&lt;script type=&quot;math/tex&quot;&gt;\sum N_{1j} \ll \sum (N_{1j} + N_{0j})&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx \frac{\sum N_{1j}}{\sum N_{0j}} \tag{9.23}&lt;/script&gt;
+
+&lt;p&gt;在金属电离的情况下，&lt;script type=&quot;math/tex&quot;&gt;(9.1)&lt;/script&gt;可以写成：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d P_\mathrm{g} = \frac{g}{\kappa_0}d\tau_0 = \frac{g}{P_\mathrm{e}\kappa_0/P_\mathrm{e}}d\tau_0 = \frac{g}{P_\mathrm{g}\sum A_j \kappa_0/P_\mathrm{e}}d\tau_0&lt;/script&gt;
+
+&lt;p&gt;对&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g}&lt;/script&gt;积分，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{1}{2} P_\mathrm{g}^2 = \frac{1}{\sum A_j} \int_0^{\tau_0} \frac{g}{\kappa_0 / P_\mathrm{e}} d\tau_0&lt;/script&gt;
+
+&lt;p&gt;把后面的积分当作常数，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} = c_0 (\sum A_j)^{-1/2} \tag{9.24}&lt;/script&gt;
+
+&lt;p&gt;然后从&lt;script type=&quot;math/tex&quot;&gt;(9.22)&lt;/script&gt;有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} = c_0 (\sum A_j)^{1/2} \tag{9.25}&lt;/script&gt;
+
+&lt;p&gt;当然这只是一个定性的估算，而且只在大气外部成立。&lt;/p&gt;
+
+&lt;p&gt;在金属中性的情况下，只考虑一种金属使得&lt;script type=&quot;math/tex&quot;&gt;N_1/N_0 = \Phi(T)/P_\mathrm{e}&lt;/script&gt;，则有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} = c_1 (\sum A_j)^{-1/3}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} = c_1 (\sum A_j)^{1/3}&lt;/script&gt;
+
+&lt;p&gt;我们还可以比较一下图9.13和9.16，可以发现在恒星大气顶部，增大金属丰度和增大&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;对电子压强的影响是类似的，所以这两个物理量同向变化的时候对大气顶端的光谱特征的影响也是类似的。也就是说从光谱特征的变化我们分不出究竟是金属丰度还是&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;变大/变小了。&lt;/p&gt;
+
+&lt;p&gt;氦元素丰度也可以稍微使得压强发生变化。利用&lt;script type=&quot;math/tex&quot;&gt;(8.19)&lt;/script&gt;我们可以将&lt;script type=&quot;math/tex&quot;&gt;(9.1)&lt;/script&gt;写成&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;dP_\mathrm{g} = \frac{g}{\kappa_0}d\tau_0 = \frac{g}{\kappa}\sum A_j \mu_j d\tau_0&lt;/script&gt;
+
+&lt;p&gt;从这里我们能看到&lt;script type=&quot;math/tex&quot;&gt;\sum A_j \mu_j&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt;的地位是相似的，所以根据&lt;script type=&quot;math/tex&quot;&gt;(9.19)&lt;/script&gt;有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} = \text{constant} (\sum A_j \mu_j)^{2/3}&lt;/script&gt;
+
+&lt;p&gt;同时&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum A_j \mu_j = A(\mathrm{H})\mu_\mathrm{H} + A(\mathrm{He})\mu_\mathrm{He} + ... \approx 1.66\times 10^{-24} [1+4A(\mathrm{He})]&lt;/script&gt;
+
+&lt;p&gt;我们又忽略了其他元素。所以类似的，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} = \text{constant} [1+4A(\mathrm{He})]^{2/3}&lt;/script&gt;
+
+&lt;p&gt;至于电子压强，代进&lt;script type=&quot;math/tex&quot;&gt;(9.9)&lt;/script&gt;附近的结论就行了。&lt;/p&gt;
+
+&lt;h5 id=&quot;压强和有效温度的关系&quot;&gt;压强和有效温度的关系&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.17.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/img/in-post/post-OASP9/9.18.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;继续看图说话，9.17和9.18。我们只看大气的某一层，对于电子压强来说提高温度自然有更多电子出来，所以成正比，直到氢被电离为止。正比的那一段可以用一条直线来拟合；而气体压强就和图9.15类似了，因为电子多了所以看不深，只能看到外面压强，就小了。&lt;/p&gt;
+
+&lt;h4 id=&quot;复习&quot;&gt;复习&lt;/h4&gt;
+
+&lt;p&gt;够长的一章。这里所提及的模型都是很简单的，只要确定了有效温度、&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;和金属丰度的话就可以完全确定。放松最开始提到的假设可以造出更符合实际（或者需要）的模型，这个会在之后提到。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Mar 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/03/08/OASP9/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/08/OASP9/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Bash 备忘</title>
+        <description>&lt;h2 id=&quot;catagory&quot;&gt;Catagory&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#jpynb&quot;&gt;Jpynb备忘&lt;/a&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#jpynb-color_change&quot;&gt;改变Notebook里面Markdown文字颜色&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jpynb-theta&quot;&gt;Matplotlib中&lt;code class=&quot;highlighter-rouge&quot;&gt;'\theta'&lt;/code&gt;变为&lt;code class=&quot;highlighter-rouge&quot;&gt;heta&lt;/code&gt;的问题&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#py&quot;&gt;Python备忘&lt;/a&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#py-array_stack&quot;&gt;Numpy中的矩阵合并&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#py-package&quot;&gt;自己写包&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p id=&quot;jpynb&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -1 -d */*/* | sed -e 's/\// /g' -e 's/_pipeline/ pipeline/'&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 29 Jan 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/01/29/bash/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/29/bash/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>Jupyter Notebook + Python 备忘</title>
@@ -26,6 +461,7 @@
       &lt;li&gt;&lt;a href=&quot;#py-package&quot;&gt;自己写包&lt;/a&gt;&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
+  &lt;li&gt;Pandas&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p id=&quot;jpynb&quot;&gt;&lt;/p&gt;
@@ -55,6 +491,22 @@
   &lt;li&gt;行合并/扩展：np.row_stack()&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p id=&quot;py-pandas&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;pandas&quot;&gt;Pandas&lt;/h4&gt;
+
+&lt;p&gt;DataFrame里面选出几列：&lt;code class=&quot;highlighter-rouge&quot;&gt;df[['a', 'b']]&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;从pdf中提取表格&quot;&gt;从pdf中提取表格&lt;/h4&gt;
+&lt;p&gt;先安装tabula-py：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;pip install tablua-py&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;导入，使用：&lt;/p&gt;
+
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tabula&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;tabula&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'xxx.pdf'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'--pages 4'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p id=&quot;py-package&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;自己写包&quot;&gt;自己写包&lt;/h4&gt;
 
@@ -75,23 +527,23 @@
 
 &lt;p&gt;因为还没完全写好，就先把一个示例放上来。最外面的ruler是安装用的，不叫包名应该也可以（但是如果要上传到PyPi的话应该有要求），里面的setup.py需要有这样的内容：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from setuptools import setup
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;setuptools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;
 
-setup(name='ruler',
-      version='0.1',
-      description='The ruler for spectra',
-      url='',
-      author='Mingjie Jian',
-      author_email='ssaajianmingjie@gmail.com',
-      license='MIT',
-      packages=['ruler'],
-      zip_safe=False)
+&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ruler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0.1'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'The ruler for spectra'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Mingjie Jian'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;author_email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ssaajianmingjie@gmail.com'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'MIT'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;packages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ruler'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;zip_safe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;如果只有&lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;version&lt;/code&gt;的话可能也行。第二层的ruler是真正的包，它以及里面的每个文件夹都需要有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;，表示这是包。从这一级开始里面就可以放module，也就是&lt;code class=&quot;highlighter-rouge&quot;&gt;.py&lt;/code&gt;文件了。不过要达到之前的目的（仅import包名但自动提示模块）需要在每一个&lt;code class=&quot;highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;里面将对应文件夹包含的module以及子文件夹们import掉；比如ruler里面的要这样写：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from . import convert
-from . import subpackage
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subpackage&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -103,6 +555,17 @@ from . import subpackage
 &lt;a href=&quot;https://docs.python.org/3/tutorial/modules.html#packages&quot;&gt;Python Tutorial Chap. 6&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://python-packaging.readthedocs.io/en/latest/index.html&quot;&gt;How To Package Your Python Code&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;http://codingpy.com/article/python-import-101/&quot;&gt;Python导入模块的几种姿势&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;pandas-1&quot;&gt;Pandas&lt;/h4&gt;
+
+&lt;h5 id=&quot;读取固定宽度表格&quot;&gt;读取固定宽度表格&lt;/h5&gt;
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_fwf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'catalog/Kovtyukh/Kovtyukh04/table1.dat'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;colspecs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;34&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;41&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;46&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                                     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;47&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;52&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;53&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;68&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt;
+                           &lt;span class=&quot;n&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Star'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Teff'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'N'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'e_Teff'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'logg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Vt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'[Fe/H]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'VMAG'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                  &lt;span class=&quot;s&quot;&gt;'B-V'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Rem'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Mon, 29 Jan 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/01/29/jpynb/</link>
@@ -233,6 +696,8 @@ from . import subpackage
 &lt;h4 id=&quot;if-raw-file&quot;&gt;If raw file&lt;/h4&gt;
 
 &lt;p&gt;https://www.darktable.org/&lt;/p&gt;
+
+&lt;p&gt;批处理：lighttable -&amp;gt; history stack; copy and paste&lt;/p&gt;
 
 &lt;h3 id=&quot;处理jpg文件&quot;&gt;处理jpg文件&lt;/h3&gt;
 
@@ -1127,273 +1592,6 @@ I(\tau) = \begin{cases} I^\mathrm{out}(\tau) &amp; 0 \le \theta \le \pi/2 \\ I^\
         <guid isPermaLink="true">http://localhost:4000/2017/12/18/OASP4/</guid>
         
         <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 3</title>
-        <description>&lt;p&gt;我们需要光谱仪，没有光谱仪哪来的光谱。低分辨率光谱仪可以得到天体的连续谱（第十章），而高分辨率的光谱仪可以得到天体的谱线（第十二章）。&lt;/p&gt;
-
-&lt;h3 id=&quot;概述&quot;&gt;概述&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/3.1.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;光谱仪示意图&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;从望远镜中过来的光在狭缝的中心聚焦，然后被准直器变为平行光照到光栅上面，色散后经过改正镜再被聚焦到CCD上。单色光会在焦面上形成一条线；而因为一般狭缝的宽度都比较大，最终在焦面形成的线宽基本不受光栅衍射条纹的影响。而当复色光入射到光谱仪的时候，焦面上将形成一段连续谱。连续谱中每个颜色的“纯净”程度由&lt;script type=&quot;math/tex&quot;&gt;\Delta \lambda&lt;/script&gt;决定。&lt;script type=&quot;math/tex&quot;&gt;\Delta \lambda&lt;/script&gt;越小，色散程度越大，天文学家们越高兴。不过色散程度也需要和天体入射的光的总量协调，因为色散程度越大每个像素的光流量越小，需要的积分时间就越长。一般来说我们需要&lt;script type=&quot;math/tex&quot;&gt;\Delta \lambda&lt;/script&gt;小于我们关心的光谱结构；第十二章有定量计算。&lt;/p&gt;
-
-&lt;h3 id=&quot;衍射光栅及其原理&quot;&gt;衍射光栅及其原理&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/3.2.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;衍射光栅示意图&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;P(0)&lt;/script&gt;所指示的点为相位0点，则在光栅上任一点和它的相位差为&lt;script type=&quot;math/tex&quot;&gt;x \sin{\alpha}&lt;/script&gt;；&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;为入射平面光法向与光栅法向的夹角，是一个定值。所以我们可以将在光栅上的入射光表达为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(x, t) = F_0(t)e^{2\pi i\frac{x\sin{\alpha}}{\lambda}} \tag{3.1}&lt;/script&gt;
-
-&lt;p&gt;同时因为入射光的频率很大，积分时间一般又比较长，所以可以将&lt;script type=&quot;math/tex&quot;&gt;F_0(t)&lt;/script&gt;用它的平均值&lt;script type=&quot;math/tex&quot;&gt;F_0&lt;/script&gt;代替。&lt;/p&gt;
-
-&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;G(x)&lt;/script&gt;为光栅，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-G(x) = \begin{cases} 1 &amp; \mathrm{狭缝中}\\ 0　&amp; \mathrm{狭缝外} \end{cases} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;在&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;角上看到的光强为&lt;script type=&quot;math/tex&quot;&gt;F(x, t)&lt;/script&gt;与&lt;script type=&quot;math/tex&quot;&gt;G(x)&lt;/script&gt;的乘积加上离开光栅后的相位差在&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;上的积分：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} g(\beta) &amp; = \int^{\infty}_{-\infty} F(x, t) e^{2\pi i\frac{x\sin{\beta}}{\lambda}} G(x) dx \\ &amp; = F_0\int^{\infty}_{-\infty} G(x) e^{2\pi i\frac{x\sin{\alpha}+x\sin{\beta}}{\lambda}} dx \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;\theta = \frac{\theta'}{\lambda} = \frac{\sin{\alpha} + \sin{\beta}}{\lambda}&lt;/script&gt;，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;g(\theta) = F_0 \int^{\infty}_{-\infty} G(x) e^{2\pi ix\theta} dx \tag{3.2}&lt;/script&gt;
-
-&lt;p&gt;将这个式子与&lt;a href=&quot;https://mingjiejian.github.io/2017/11/11/OASP2/&quot;&gt;第二章&lt;/a&gt;的傅里叶变换定义式比较，我们发现它们是一样的，所以光栅就相当于一个傅里叶变换器。因为这里&lt;script type=&quot;math/tex&quot;&gt;F_0&lt;/script&gt;是一个常数，重要的是后面的积分，所以之后我们将直接讨论&lt;script type=&quot;math/tex&quot;&gt;G(x)&lt;/script&gt;的傅里叶变换。&lt;/p&gt;
-
-&lt;h4 id=&quot;gx的傅里叶变换&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;G(x)&lt;/script&gt;的傅里叶变换&lt;/h4&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;G(x)&lt;/script&gt;是由宽为&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;的狭缝等距&lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt;摆放直至充满宽度&lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt;而来的：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;G(x) = B_1(x) * III(x) B_2(x) \tag{3.3}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;B_1(x)&lt;/script&gt;为单个狭缝，它与&lt;script type=&quot;math/tex&quot;&gt;III(x)&lt;/script&gt;的卷积为无限宽的光栅，&lt;script type=&quot;math/tex&quot;&gt;B_2(x)&lt;/script&gt;为光栅的宽度。它的傅里叶变换为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}  g(\theta) &amp;= b_1(\theta) iii(\theta) * b_2(\theta) \\  &amp; = \frac{b\sin{\pi\theta b}}{\pi\theta b} iii(\theta) * \frac{W\sin{\pi\theta W}}{\pi\theta W} \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;将Shah函数用&lt;script type=&quot;math/tex&quot;&gt;\delta&lt;/script&gt;函数表达：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} g(\theta) &amp; = \sum \delta(\theta-\frac{n}{d}) * \frac{W\sin{\pi\theta W}}{\pi\theta W} \frac{b\sin{\pi\theta b}}{\pi\theta b} \\ &amp; = \sum_n \frac{W\sin{\pi(\theta-\frac{n}{d}) W}}{\pi(\theta-\frac{n}{d}) W} \frac{b\sin{\pi\theta b}}{\pi\theta b}  \end{align} \tag{3.4} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/grating.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;光栅以及它的傅里叶变换&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;在小角度下&lt;script type=&quot;math/tex&quot;&gt;d\theta'&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;d\beta&lt;/script&gt;近似是一样的：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sin{\alpha} + \sin{\beta} = \theta' \Rightarrow d\theta' = \cos{\beta} d\beta \approx d\beta&lt;/script&gt;
-
-&lt;p&gt;每个尖峰下降到0时的宽度由&lt;script type=&quot;math/tex&quot;&gt;B_2(x)&lt;/script&gt;决定：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \theta' = \frac{\lambda}{W}&lt;/script&gt;
-
-&lt;p&gt;每个尖峰的位置由&lt;script type=&quot;math/tex&quot;&gt;III(x)&lt;/script&gt;决定：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta' = \frac{n\lambda}{d} = \sin{\alpha} + \sin{\beta} \tag{3.5}&lt;/script&gt;
-
-&lt;p&gt;所以不同波长的光有不同的宽度和尖峰位置。这里的&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;称为级数，0级光谱所有波长的光都集中在&lt;script type=&quot;math/tex&quot;&gt;x=0&lt;/script&gt;处，所以为白光。1级和其他级光谱的分辨率为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{d\theta'}{d\lambda} = \frac{n}{d} \tag{3.6}&lt;/script&gt;
-
-&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;\Delta \theta' = \frac{\lambda}{W}&lt;/script&gt;代入&lt;script type=&quot;math/tex&quot;&gt;(3.6)&lt;/script&gt;，得：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \lambda = \frac{\lambda}{W} \frac{d}{n} \tag{3.7}&lt;/script&gt;
-
-&lt;p&gt;这个量可以理解为单位角度上的波长改变量是多少；我们当然希望它越小越好，所以&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;小的时候要增大板宽和多刻线；&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;大的时候则不一定。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/chrome_I.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;复色光入射时的情况&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;闪耀光栅&quot;&gt;闪耀光栅&lt;/h3&gt;
-
-&lt;p&gt;上图中我们可以看到透射光栅的光谱受到狭缝宽度影响，主要的能量落在了0级处，并没有分开。我们自然不希望这样，而是想让多数的光落在我们想要的级数上。要做到这一点，我们只需要将&lt;script type=&quot;math/tex&quot;&gt;b_2(\theta)&lt;/script&gt;的最高点从0移动到对应的级数位置即可。第二章傅里叶变换的性质2表明如果想在某个域上平移函数，需要在另一个域上引入相位差，在这里也就是不同的光程。实际的操作可以在狭缝中插入三棱镜让光线偏转，但是棱镜会带来色散，而且这样的光栅也很难制作。所以常用的是将狭缝改成倾斜的面镜，从而将光反射到某个特定角度。这样的光栅叫闪耀光栅，光栅法线与槽面法线之间的夹角&lt;script type=&quot;math/tex&quot;&gt;\phi&lt;/script&gt;叫闪耀角(在法线同侧的角度正负号相同)。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/3.3.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;闪耀光栅（右）示意图&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;这个时候式子&lt;script type=&quot;math/tex&quot;&gt;(3.4)&lt;/script&gt;的最后一项发生了变化，&lt;script type=&quot;math/tex&quot;&gt;\alpha, \beta&lt;/script&gt;变成了&lt;script type=&quot;math/tex&quot;&gt;\alpha-\phi, \beta-\phi&lt;/script&gt;。这里用减号的原因是虽然对于槽面来说，图示的&lt;script type=&quot;math/tex&quot;&gt;\phi&lt;/script&gt;角会使得入射角和反射角都增大，但是&lt;script type=&quot;math/tex&quot;&gt;(3.4)&lt;/script&gt;中的&lt;script type=&quot;math/tex&quot;&gt;\alpha, \beta&lt;/script&gt;指的是箭头所指的线段长度，这两段线在反射光栅的情况下都减小了。所以对于归一化的这一项，我们有：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(\beta) = \left[\frac{\sin{\left\{ \pi b/\lambda [\sin{(\alpha-\phi)}+\sin{(\beta-\phi)}]\right\}}}{\pi b/\lambda [\sin{(\alpha-\phi)}+\sin{(\beta-\phi)}]}\right]^2 \tag{3.8}&lt;/script&gt;
-
-&lt;p&gt;因为光栅的分光，只有符合&lt;script type=&quot;math/tex&quot;&gt;(3.5)&lt;/script&gt;的波长的光才能通过，所以我们可以将&lt;script type=&quot;math/tex&quot;&gt;(3.5)&lt;/script&gt;代入&lt;script type=&quot;math/tex&quot;&gt;(3.8)&lt;/script&gt;消去&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;（注意&lt;script type=&quot;math/tex&quot;&gt;(3.5)&lt;/script&gt;中的&lt;script type=&quot;math/tex&quot;&gt;\alpha, \beta&lt;/script&gt;不变），得到：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(\beta) = \left[\frac{\sin{\left\{ n\pi b/d [\cos{\phi}-\sin{\phi}\frac{\cos{\alpha}+\cos{\beta}}{\sin{\alpha}+\sin{\beta}}]\right\}}}{n\pi b/d [\cos{\phi}-\sin{\phi}\frac{\cos{\alpha}+\cos{\beta}}{\sin{\alpha}+\sin{\beta}}]}\right]^2 \tag{3.8}&lt;/script&gt;
-
-&lt;p&gt;示例图如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/blazed_I.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;闪耀光栅的光强包络线，&lt;script type=&quot;math/tex&quot;&gt;\phi=15^\circ&lt;/script&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看到这个时候整个函数的最大值被推到了&lt;script type=&quot;math/tex&quot;&gt;\alpha+\beta = 2\phi&lt;/script&gt;的地方。当然我们也可以用&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;作为自变量，画出&lt;script type=&quot;math/tex&quot;&gt;I(\beta)&lt;/script&gt;随&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;的变化情况。&lt;/p&gt;
-
-&lt;h4 id=&quot;利特罗条件&quot;&gt;利特罗条件&lt;/h4&gt;
-
-&lt;p&gt;一般来说光栅在制造的时候会被造成当入射角和衍射角一样的时候，1级光谱会被闪耀，这被叫做利特罗条件。但是当入射光线和衍射光线在同一个方向的时候，我们并不能接收到光谱，所以一般使用的是别的入射角；这种情况下1级光谱的闪耀波长会发生变化。假设利特罗条件下的闪耀波长为&lt;script type=&quot;math/tex&quot;&gt;\lambda_0&lt;/script&gt;，则根据&lt;script type=&quot;math/tex&quot;&gt;(3.5)&lt;/script&gt;有：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{n\lambda}{d} = \sin{\alpha} + \sin{\beta}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} \frac{n\lambda_0}{d} &amp;= 2\sin{\phi} \\ &amp;= 2\sin{\alpha+\beta} \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;两式相除，得：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda = \lambda_0 \cos{0.5(\alpha-\beta)}&lt;/script&gt;
-
-&lt;h4 id=&quot;阴影&quot;&gt;阴影&lt;/h4&gt;
-
-&lt;p&gt;光栅的摆放方式有很多种。我们之前讨论的都是入射光线和光栅法线在槽面法线的两侧；当然也可以倒过来摆，将入射光线和光栅法线放在槽面法线的同一侧(&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\alpha &lt; \beta %]]&gt;&lt;/script&gt;的时候)。不过这样的话会引起一部分的光在反射后照射到槽的侧面，引起光损和杂散光。光损比例由下式决定：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f=\frac{2\tan{\phi}\tan{\beta-\phi}}{1+\tan{\phi}\tan{\beta-\phi}}&lt;/script&gt;
-
-&lt;h4 id=&quot;如果光谱仪有缺陷&quot;&gt;如果光谱仪有缺陷&lt;/h4&gt;
-
-&lt;p&gt;首先有周期性缺陷的光谱仪一般会产生鬼线。这样的光谱仪相当于两个光谱仪的叠加：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;G'(x) = G(x)H(x)&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;H(x) = B_3(x) * III(x) B_2(x)&lt;/script&gt;
-
-&lt;p&gt;所以“缺陷光谱仪”会在原来的谱线周围再加上一堆鬼线。如果周期性缺陷相对于原来的光谱的间隔很大，那么鬼线会在母线（原来的谱线）附近。我们可以仿照&lt;script type=&quot;math/tex&quot;&gt;(3.5)&lt;/script&gt;并且代入&lt;script type=&quot;math/tex&quot;&gt;(3.6)&lt;/script&gt;写出鬼线的&lt;script type=&quot;math/tex&quot;&gt;\Delta \lambda&lt;/script&gt;：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \theta_g = \frac{m\lambda_g}{D}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \lambda_g = \frac{d}{n}\frac{m}{D}\lambda_g&lt;/script&gt;
-
-&lt;p&gt;所以鬼线是等距分布的。鬼线的光强比较复杂，但是一般母线的强度最大。&lt;/p&gt;
-
-&lt;p&gt;还有另外的几种因缺陷引起的线，如卫星线（有一块刻歪了）等。&lt;/p&gt;
-
-&lt;h3 id=&quot;色散和分辨率&quot;&gt;色散和分辨率&lt;/h3&gt;
-
-&lt;p&gt;分辨率是光谱仪很重要的一个参数。但是在讨论分辨率之前我们需要分清楚它和色散的区别。&lt;/p&gt;
-
-&lt;h4 id=&quot;角线色散&quot;&gt;角、线色散&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/3.4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如上图，如果两束不同波长的光射入镜头的角度为&lt;script type=&quot;math/tex&quot;&gt;\Delta \beta&lt;/script&gt;，则称它们的角色散为&lt;script type=&quot;math/tex&quot;&gt;\Delta \beta&lt;/script&gt;。角色散的大小是由光栅决定的，具体来说是&lt;script type=&quot;math/tex&quot;&gt;(3.6)&lt;/script&gt;式。这个角度最终在焦平面上投影的长度叫做线色散，易得：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta x = f_\mathrm{cam} \Delta \beta&lt;/script&gt;
-
-&lt;p&gt;或者&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{d\beta}{dx} = \frac{1}{f_\mathrm{cam}}&lt;/script&gt;
-
-&lt;p&gt;将角度转化成波长，有：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} \frac{d\lambda}{dx} &amp;= \frac{d\lambda}{d\beta} \frac{d\beta}{dx} \\ &amp;= \frac{1}{f_\mathrm{cam}} \frac{1}{d\beta/d\lambda} \\ &amp;= \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;这里没有小角度入射的假设，所以有一个&lt;script type=&quot;math/tex&quot;&gt;\cos{\beta}&lt;/script&gt;在。同样，高的色散程度对应着小的&lt;script type=&quot;math/tex&quot;&gt;\frac{d\lambda}{dx}&lt;/script&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;分辨率&quot;&gt;分辨率&lt;/h4&gt;
-
-&lt;p&gt;我们从狭缝的大小开始考虑。令&lt;script type=&quot;math/tex&quot;&gt;f_\mathrm{coll}, f_\mathrm{cam}&lt;/script&gt;为准直器、成像相机的焦距，在小角度情况下，宽度为&lt;script type=&quot;math/tex&quot;&gt;W'&lt;/script&gt;的狭缝在准直器（或者光栅）上的角度为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \alpha = \frac{W'}{f_\mathrm{coll}}&lt;/script&gt;
-
-&lt;p&gt;对&lt;script type=&quot;math/tex&quot;&gt;(3.5)&lt;/script&gt;式求导，得出：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta\beta = -\frac{\cos{\alpha}}{\cos{\beta}} \Delta \alpha&lt;/script&gt;
-
-&lt;p&gt;所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \beta = -\frac{\cos{\alpha}W'}{\cos{\beta}f_\mathrm{coll}}&lt;/script&gt;
-
-&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;为狭缝在CCD上的像宽，则&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} w &amp;= \Delta \beta f_\mathrm{cam} \\ &amp;= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;{w/W'}&lt;/script&gt;正比于&lt;script type=&quot;math/tex&quot;&gt;f_\mathrm{cam}/f_\mathrm{coll}&lt;/script&gt;。一般来说我们需要CCD的像素与狭缝在CCD上的像宽相匹配，最好是1个单位像宽对应CCD上的两个像素（奈奎斯特频率）。稍微的过采样可能会有好处，但是面临着更长时间曝光和深度减小的问题；而欠采样会使得信息丢失。&lt;/p&gt;
-
-&lt;p&gt;我们也可以将像宽&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;转换成单位长度上的波长改变量（分辨率）：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} \Delta \lambda &amp;= w \frac{d\lambda}{dx} \\ &amp;= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \\ &amp;= -\cos{\alpha} \frac{W'd}{f_\mathrm{coll}n} \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;可以看出分辨率与成像相机的焦距没有关系。提升分辨率可以通过改变上式的参数，但是一般会导致光损(减小&lt;script type=&quot;math/tex&quot;&gt;W'&lt;/script&gt;)或者需要更大/更好的光栅(增大&lt;script type=&quot;math/tex&quot;&gt;f_\mathrm{coll}&lt;/script&gt;或者&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;)。&lt;/p&gt;
-
-&lt;h3 id=&quot;阶梯光谱仪&quot;&gt;阶梯光谱仪&lt;/h3&gt;
-
-&lt;p&gt;通过增大&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;来提高分辨率实际上没那么简单。使用高级数光谱的时候，虽然光谱的确被色散到了更宽的角度上（当然传统上这意味着需要更长的CCD），但是不同级数的光谱会发生重叠，使得不同（但是分立）波长的光同时照到了一个像素上。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/wav_inter.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;高级数光谱重叠情况；选择的当的话黑色虚线中间可以包含了整个波长范围的光&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;那么如果我们截取某一段区域，使得这段区域几个级数的光谱加起来刚好覆盖我们想要的波长，然后在后面加上一个在另一个方向上色散的光栅，就可以把光谱分成独立的条状并且覆盖很宽的波长范围；这就是阶梯光谱仪。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/echelle.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;阶梯光谱仪示意图&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;阶梯光谱仪的一个例子是京都产业大学制造的&lt;a href=&quot;http://merlot.kyoto-su.ac.jp/LIH/WINERED/index.html&quot;&gt;WINERED&lt;/a&gt;：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP3/winered-index.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://merlot.kyoto-su.ac.jp/LIH/WINERED/images/pic-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;图中下方从右到左为狭缝、准直镜以及阶梯光栅，中间的白色部分为CCD。这个光谱仪波长虽然在近红外(&lt;script type=&quot;math/tex&quot;&gt;0.90-1.35 \mu \mathrm{m}&lt;/script&gt;)，但是除了CCD部分之外都在常温下工作，不需要冷却；同时在分辨率、波长覆盖和灵敏度上都有不错的数值。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://merlot.kyoto-su.ac.jp/LIH/WINERED/images/pic-2.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;WINERED与其他光谱仪参数对比&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;略过的内容&quot;&gt;略过的内容&lt;/h3&gt;
-
-&lt;p&gt;多目标光谱仪、迈克尔逊干涉仪、望远镜基础&lt;/p&gt;
-</description>
-        <pubDate>Mon, 18 Dec 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/12/18/OASP3/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/18/OASP3/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>公开课微信群</title>
-        <description>&lt;h4 id=&quot;20181&quot;&gt;2018.1&lt;/h4&gt;
-
-&lt;p&gt;这次的总结主要是对自己完成状况的评价吧。&lt;/p&gt;
-
-&lt;p&gt;到现在来说有的时候会陷入一种比较迷茫的状态；不知道现在所学的对以后有没有用处，所以会上很多的课，但是有的时候又不是很有动力。实际上编程的课仍然不难，但是总会自己寻找理由去拖延。希望3月开始能继续之前的习惯每周按时完成，要时刻提醒自己一件事情只要开始了就不会太难。&lt;/p&gt;
-
-&lt;p&gt;其他的话，还在机器学习的课程里面，完成了一周。另外尝试了学习论文写作的课程，但是觉得不是很适合自己，还是在老师的指导下完成一个实际的任务比较适合我的学习习惯。遵循这个原则，我也报名参加了一个meetup，每周一在一家小公司的场地里面自由编程，如果有问题可以问其他人。我觉得这样的氛围比较好，也可以让自己和别人交流，学到一些新的东西。课程本身的话，让我觉得机器学习和回归的界限渐渐变得模糊了起来，实际上线性回归也是寻找比较适合的一组数字去描述我们所拥有的数据，所以也可以看作是一种“学习”。但是机器学习的特殊之处在于它用不同层中复杂的关系来描述数据，使得我们不需要思考什么样的模型是适合的。这当然能为我们提供一个功能强大的黑盒子，不过有的时候会让我们知其然而不知其所以然，还是需要留意一下的。当然最好的办法就是完全从模型出发，然后再用模型描述观测数据，由此不断修正模型。&lt;/p&gt;
-
-&lt;h4 id=&quot;201712&quot;&gt;2017.12&lt;/h4&gt;
-
-&lt;p&gt;这个月有一点忙，所以完成的质量不是很高；不过至少完成了python的matplotlib课程。
-稍微简单总结一下吧，matplotlib是一个画图的软件包。画图虽然看起来很简单基本上而且是研究的最后一步，但是它却比一般想象中的重要。首先我们要思考的是我们需要用什么样的图去表达我们的数据；如果是时间序列那很显然不应该用柱状图而应该用点线来表达，如果是比例大小那就应该用饼图。选定了图表种类之后应该考虑的是如何准确地表达数据。如果柱状图中不同的柱子相差很小，那么将y轴范围设到刚好小于最小值与刚好大于最大值可以“显著地”拉开它们的差距，给人一种相差很大的感觉；这招在16年美国大选的时候被媒体用来误导读者川普的支持率很低。在准确性之上还有图表的配色，比如我是应该用不同的颜色去区分不同的线还是用不同的线型；两组不同的线可以再用什么风格去区分？这里的原则是能尽量不用彩色就不用彩色；不仅是因为印刷的时候更费油墨，也是考虑到色盲/色弱读者的情况。第二是面对不同的读者群体使用不同的风格。如果是同行/研究者，图标应该越简单越好，有利于同行尽快得到信息。而如果是面对普通读者，那么可以考虑加一些令人印象深刻的元素，比如用男女身体曲线来表达数据，会让看过的人很难忘记这组数据。&lt;/p&gt;
-
-&lt;p&gt;当然现在matplotlib里面已经内置了不少画图的包，拿来用就好了。不过从默认到真正合适的图表还是要花不少心思的。&lt;/p&gt;
-
-&lt;h4 id=&quot;201711&quot;&gt;2017.11&lt;/h4&gt;
-
-&lt;p&gt;这个月完成了Coursera网页前端基础系列课程之中的两个。&lt;/p&gt;
-
-&lt;p&gt;说起网页制作和设计，这是一直以来都挺想学的内容。第一它的实质仍然是编程，将代码转化为网页，自己对编程比较熟悉；第二它又和一直以来接触的数据处理不一样，主要负责呈现，也就是处在数据处理前面的内容。在数据可视化的过程中，一般平常用到编程语言的UI都是不怎么好看的，而且依赖于语言本身；但是通过网页前端呈现内容可以将两部分分离，也就是说不管后端用的是什么语言，只要输出格式正确，都能套到同一个网页中；而且网页的呈现方式基本上统一，HTML5+CSS3+JS，这就保证了在不同的平台/设备上都能获得相似的体验。&lt;/p&gt;
-
-&lt;p&gt;这个月主要跟的是密歇根大学的Web Design for Everybody系列课程，从HTML5到JavaScript。实际上课程难度非常小，基本上只是教了语言最基本的用法；但是其中的思考方式和数据处理是很不一样的。作为网页，HTML5+CSS3将内容和样式分离，给与了一个网页无限多的可能；同时也给代码赋予了很大的灵活性，可以将某个元素多次定义，浏览器只会显示最后定义的样式。而在数据处理中，我们总是希望（至少在一个模块内）一个变量由始至终代表同一个数据而且尽量不去改变。当然JS的确就回到了传统意义上的编程，而且也通过程序给网页带来了非常多的可能性。&lt;/p&gt;
-
-&lt;p&gt;有人监督的确更有动力去学，看着列表里面完成了的课越来越多挺有成就感的。下个月继续往网页设计方向稍微学深一点。&lt;/p&gt;
-
-&lt;p&gt;同时推荐&lt;a href=&quot;http://www.csszengarden.com/&quot;&gt;CSS Zen Garden&lt;/a&gt;，看看别人是怎么将同一个网页通过不同的CSS3玩出花来的。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Dec 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/12/03/course-group1/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/03/course-group1/</guid>
-        
-        <category>正业以外</category>
         
         
       </item>

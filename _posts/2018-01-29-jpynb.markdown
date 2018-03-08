@@ -18,6 +18,7 @@ tags:
 2. [Python备忘](#py)
 	1. [Numpy中的矩阵合并](#py-array_stack)
 	2. [自己写包](#py-package)
+  3. Pandas
 
 <p id = "jpynb"></p>
 ### Jpynb备忘
@@ -44,6 +45,22 @@ tags:
 - 列合并/扩展：np.column_stack()
 - 行合并/扩展：np.row_stack()
 
+<p id = "py-pandas"></p>
+#### Pandas
+
+DataFrame里面选出几列：`df[['a', 'b']]`
+
+#### 从pdf中提取表格
+先安装tabula-py：
+`pip install tablua-py`
+
+导入，使用：
+
+```py
+import tabula
+tabula.read_pdf('xxx.pdf', options='--pages 4')
+```
+
 <p id = "py-package"></p>
 #### 自己写包
 
@@ -64,7 +81,7 @@ tags:
 
 因为还没完全写好，就先把一个示例放上来。最外面的ruler是安装用的，不叫包名应该也可以（但是如果要上传到PyPi的话应该有要求），里面的setup.py需要有这样的内容：
 
-```
+```py
 from setuptools import setup
 
 setup(name='ruler',
@@ -79,7 +96,7 @@ setup(name='ruler',
 ```
 如果只有`name`和`version`的话可能也行。第二层的ruler是真正的包，它以及里面的每个文件夹都需要有一个`__init__.py`，表示这是包。从这一级开始里面就可以放module，也就是`.py`文件了。不过要达到之前的目的（仅import包名但自动提示模块）需要在每一个`__init__.py`里面将对应文件夹包含的module以及子文件夹们import掉；比如ruler里面的要这样写：
 
-```
+```py
 from . import convert
 from . import subpackage
 ```
@@ -92,3 +109,14 @@ from . import subpackage
 [Python Tutorial Chap. 6](https://docs.python.org/3/tutorial/modules.html#packages)<br>
 [How To Package Your Python Code](https://python-packaging.readthedocs.io/en/latest/index.html)<br>
 [Python导入模块的几种姿势](http://codingpy.com/article/python-import-101/)
+
+#### Pandas
+
+##### 读取固定宽度表格
+```py
+pd.read_fwf('catalog/Kovtyukh/Kovtyukh04/table1.dat',
+                           colspecs=[(0,10), (11, 15), (16,19), (20,24), (25,29), (30,34), (35,40), (41,46),
+                                     (47,52), (53,68)],
+                           names=['Star', 'Teff', 'N', 'e_Teff', 'logg', 'Vt', '[Fe/H]', 'VMAG',
+                                  'B-V', 'Rem'])
+```

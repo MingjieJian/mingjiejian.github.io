@@ -1,0 +1,25 @@
+---
+layout:     post
+title:      "Bash 备忘"
+subtitle:   "人蠢继续多动手"
+date:       2018-01-29
+author:     "mingjie"
+header-img: "img/post-bg-jpynb.jpg"
+tags:
+    - learning
+
+---
+
+## Catagory
+
+1. [Jpynb备忘](#jpynb)
+	1. [改变Notebook里面Markdown文字颜色](#jpynb-color_change)
+	2. [Matplotlib中`'\theta'`变为`heta`的问题](#jpynb-theta)
+2. [Python备忘](#py)
+	1. [Numpy中的矩阵合并](#py-array_stack)
+	2. [自己写包](#py-package)
+
+<p id = "jpynb"></p>
+
+
+`ls -1 -d */*/* | sed -e 's/\// /g' -e 's/_pipeline/ pipeline/'`

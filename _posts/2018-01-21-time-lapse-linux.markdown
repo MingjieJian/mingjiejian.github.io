@@ -20,6 +20,8 @@ tags:
 
 https://www.darktable.org/
 
+批处理：lighttable -> history stack; copy and paste
+
 ### 处理jpg文件
 
 因为拍摄的时候曝光有点不足，所以需要对每张照片进行亮度和对比度的处理。这里用的是GIMP；如果没有安装过的话先安装GIMP：

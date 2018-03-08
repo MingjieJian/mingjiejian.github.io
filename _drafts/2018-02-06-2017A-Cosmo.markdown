@@ -1,0 +1,381 @@
+---
+layout:     post
+title:      "Structure Formation & Cosmology Assignment"
+subtitle:   "Homework of Cosmology Course; by Mingjie Jian, 35-166358"
+date:       2018-02-06
+author:     "mingjie"
+header-img: "img/post-bg-cosmology.png"
+tags:
+    - learning
+
+---
+
+## Catagory
+
+1. [ASSIGNMENT 1](#A1)
+	- [1.1](#A1.1)
+		- [Matter-dominated dust model](#A1.1.1)
+		- [Radiation-dominated model](#A1.1.2)
+	- [1.2](#A1.2)
+	- [1.3](#A1.3)
+	- [1.4](#A1.4)
+2. [ASSIGNMENT 2](#A2)
+	- [2.1](#A2.1)
+	- [2.2](#A2.2)
+	- [2.3](#A2.3)
+3. [ASSIGNMENT 3](#A3)
+	- [2.1](#A3.1)
+	- [2.2](#A3.2)
+
+<p id = "A1"></p>
+### ASSIGNMENT 1 “Friedmann Universe”
+
+<p id = "A1.1"></p>
+#### 1.1
+
+<p id = "D1.1"></p>
+From energy conservation we have:
+
+$$ \rho a^{3(1+w)} = \mathrm{const} = \rho_0 a_0^{3(1+w)} \tag{i}$$
+
+so that
+
+$$ \rho = \rho_0 \frac{a_0^{3(1+w)}}{a^{3(1+w)}} $$
+
+substitute it into $$ (1) $$, we have
+
+$$ (\dot{a})^2 = \frac{8\pi G}{3}\rho_0 \frac{a_0^{3(1+w)}}{a^{3(1+w)}} a^2 $$
+
+$$ \begin{align}
+\Rightarrow a^{\frac{3(1+w)}{2}-1} \frac{da}{dt} &= \sqrt{\frac{8\pi G}{3}\rho_0 a_0^{3(1+w)}} \\
+\int_0^{a} a^{\frac{3(1+w)}{2}-1} da &= \int_0^t \sqrt{\frac{8\pi G}{3}\rho_0 a_0^{3(1+w)}} dt
+\end{align}
+$$
+
+$$ \begin{align}
+\Rightarrow \frac{2}{3(1+w)} a^{\frac{3(1+w)}{2}} = \sqrt{\frac{8\pi G}{3}\rho_0 a_0^{3(1+w)}} t\\
+a = \frac{3(1+w)}{2} (\frac{8\pi G}{3}\rho_0 a_0^{3(1+w)})^{\frac{1}{3(1+w)}} t^{\frac{2}{3(1+w)}}
+\end{align}
+$$
+
+Use $$ a_0 $$ to eliminate the constant:
+
+$$ a(t) = a_0 (\frac{t}{t_0})^{\frac{2}{3(1+w)}} \tag{ii}$$
+
+<p id = "A1.1.1"></p>
+##### Matter-dominated dust model ($$ w = 0 $$)
+
+Now $$ (\mathrm{ii}) $$ turns into
+
+$$ a(t) = a_0 (\frac{t}{t_0})^{\frac{2}{3}} \tag{2}$$
+
+$$ \Rightarrow \frac{da}{dt} = \frac{2}{3} a_0 t_0^{-2/3} t^{-1/3} $$
+
+$$ H(t) = \frac{1}{a} \frac{da}{dt} = \frac{2}{3t} \tag{3}$$
+
+$$ \frac{d^2a}{dt^2} = -\frac{2}{9}\frac{a_0}{t_0^{2/3}} t^{-4/3} $$
+
+$$ q = -\frac{\frac{d^2a}{dt^2}a}{(\frac{da}{dt})^2} = \frac{1}{2} \tag{4}$$
+
+From $$ (3) $$ we can directly get:
+
+$$ t = \frac{2}{3H(t)} \Rightarrow t_0 = \frac{2}{3H_0} \tag{5}$$
+
+For density,
+
+$$ \rho_\mathrm{crit} = \frac{3H(t)^2}{8\pi G} = \frac{1}{6\pi Gt^2} \tag{6}$$
+
+<p id = "A1.1.2"></p>
+##### Radiation-dominated model ($$ w = \frac{1}{3} $$)
+
+Similar to Matter-dominated dust model,
+
+$$ a(t) = a_0 (\frac{t}{t_0})^{\frac{1}{2}} \tag{7}$$
+
+$$ \Rightarrow \frac{da}{dt} = \frac{1}{2} a_0 t_0^{-1/2} t^{-1/2} $$
+
+$$ H(t) = \frac{1}{a} \frac{da}{dt} = \frac{1}{2t} \tag{8}$$
+
+$$ \Rightarrow t = \frac{1}{2H}, t_0 = \frac{1}{2H_0} \tag{10}$$
+
+$$ \frac{d^2a}{dt^2} = -\frac{1}{4}\frac{a_0}{t_0^{1/2}} t^{-3/2} $$
+
+$$ q = -\frac{\frac{d^2a}{dt^2}a}{(\frac{da}{dt})^2} = 1 \tag{9}$$
+
+$$ \rho_\mathrm{crit} = \frac{3H(t)^2}{8\pi G} = \frac{3}{32\pi Gt^2} \tag{11}$$
+
+<p id = "A1.2"></p>
+#### 1.2
+
+With the perfect fulid assumption $$ (p = w\rho) $$,
+
+$$ \begin{align} d(\rho a^3) + pd(a^3) &= d(\rho a^3) + w\rho d(a^3) \\
+ &= a^3d\rho + \rho d(a^3) + w\rho d(a^3) \\
+ &= a^3d\rho + (1 + w)\rho d(a^3) \\
+ &= 0
+\end{align} $$
+
+$$ \Rightarrow \frac{1}{\rho} d\rho = - (1 + w) \frac{1}{a^3} d(a^3) $$
+
+Integrate over both side, then
+
+$$ \rho a^{3(1+w)} = \mathrm{const.} = \rho_0 a_0^{3(1+w)} \tag{12}$$
+
+<p id = "A1.3"></p>
+#### 1.3
+
+For the first formula $$ a(t) = a_0 (\frac{t}{t_0})^{\frac{2}{3(1+w)}}$$, please refer to the derivation of $$ (ii) $$ in [problem 1.1](#D1.1).
+
+Then
+
+$$ \frac{da}{dt} = \frac{2}{3(1+w)} a_0 t_0^{-2/3(1+w)} t^{2/3(1+w)-1} $$
+
+$$ H(t) = \frac{1}{a} \frac{da}{dt} = \frac{2}{3(1+w)t}$$
+
+$$ \Rightarrow t = \frac{2}{3(1+w)H}, t_0 = \frac{1}{H_0}\frac{2}{3(1+w)} \tag{13}$$
+
+So the answer obtained is consistent with problem 1.1.
+
+<p id = "A1.4"></p>
+#### 1.4
+
+Differentiate $$ \dot{a}^2 + k = \frac{8\pi G}{3}\rho a^2 $$,
+
+$$ 2\ddot{a} = \frac{8\pi G}{3} \dot{\rho} \frac{a^2}{\dot{a}} + \frac{16\pi G}{3}\rho a $$
+
+Then differentiate $$ (12) $$ shows that,
+
+$$ \dot{\rho} = -3 \rho \frac{\dot{a}}{a} $$
+
+$$ \Rightarrow 2\ddot{a} = -\frac{8\pi G}{3}\rho a $$
+
+$$ 2q(t) = -2\frac{a\ddot{a}}{\dot{a}^2} = -\frac{8\pi G}{3}\rho \frac{a^2}{\dot{a}^2} = 1 + \frac{k}{a^2H^2} $$
+
+**Discussion**
+
+$$ \begin{align} \rho &= \frac{3}{8\pi G}(H^2 + \frac{k}{a^2}) \\
+ &= \frac{3H^2}{8\pi G} (1 + \frac{k}{a^2h^2}) \\
+ &= \frac{3H^2}{8\pi G} 2q
+\end{align} $$
+
+$$ \Omega_0 = \frac{\rho_0}{\rho_{\mathrm{cric},0}} = 2q_0 $$
+
+Thus,
+
+
+| $$ k $$ | $$ q_0 $$ | $$ \Omega_0 $$ |
+|:-----:|:-----:|:-----:|
+| $$ -1 $$ | $$ < \frac{1}{2} $$    | $$ < 1 $$     |
+| $$ 0 $$ |  $$ = \frac{1}{2} $$   |  $$ = 1 $$    |
+| $$ 1 $$ |  $$ > \frac{1}{2} $$   |  $$ > 1 $$    |
+
+<p id = "A2"></p>
+### ASSIGNMENT 2 <br> “Cosmic Look-back Time & Comoving Distance”
+
+<p id = "A2.1"></p>
+#### 2.1
+
+Using the 0-0 component of Friedmann euqation $$ (1) $$, with $$ \rho $$ and $$ \Omega $$ defined as follow:
+
+$$ \rho = \rho_\mathrm{m+r} = \rho_\mathrm{m,0}a^{-3} + \rho_\mathrm{r,0}a^{-4} $$
+
+$$ \begin{align} \Omega_\mathrm{m} &= \frac{\rho_\mathrm{m,0}}{\rho_\mathrm{cr}} = \frac{1}{H_0^2} \frac{8\pi G}{3}\rho_\mathrm{m,0} \\
+\Omega_\mathrm{r} &= \frac{\rho_\mathrm{r,0}}{\rho_\mathrm{cr}} = \frac{1}{H_0^2} \frac{8\pi G}{3}\rho_\mathrm{r,0} \\
+\Omega_\mathrm{k} &= -\frac{Kc^2}{H_0^2} \\
+\Omega_\mathrm{\Lambda} &= \frac{\Lambda}{3H_0^2}
+\end{align} $$
+
+Neglect the radiation, it can be witten as:
+
+$$ H^2(t) = H^2_0 [\frac{\Omega_\mathrm{m}}{a^3(t)} + \frac{\Omega_\mathrm{k}}{a^2(t)} + \Omega_\mathrm{\Lambda}] $$
+
+The age of universe at a given redshift or scale follows:
+
+$$ dt = (\frac{da}{dt})^{-1} da = \frac{1}{aH} da $$
+
+$$ \begin{align} \Rightarrow t(z) &= \frac{1}{H_0} \int [\Omega_\mathrm{m}a^{-1} - \frac{Kc^2}{H_0^2} + a^2\Omega_\mathrm{\Lambda}]^{-1/2} da \\
+ &= \frac{1}{H_0} \int_0^z [\Omega_\mathrm{m}(1+z')^3 - \Omega_\mathrm{k}(1+z')^2 + \Omega_\mathrm{\Lambda}]^{-1/2} \frac{dz'}{1+z'} \\
+ &= \frac{1}{H_0} \int_0^z \frac{1}{E(z')} \frac{dz'}{1+z'}
+\end{align}$$
+
+As for comoving distance,
+
+$$ ds = -c^2dt^2 + a^2dr^2 = 0 $$
+
+$$\Rightarrow dr = \frac{c}{a} dt $$
+
+$$ \begin{align} r &= \frac{c}{H_0} \int_0^z [\Omega_\mathrm{m}(1+z')^3 - \Omega_\mathrm{k}(1+z')^2 + \Omega_\mathrm{\Lambda}]^{-1/2} dz' \\
+ &= \frac{c}{H_0} \int_0^z \frac{1}{E(z')} dz'
+\end{align} $$
+
+<p id = "A2.2"></p>
+#### 2.2
+
+The python code of calculating the integral is as below:
+
+```python
+import numpy as np
+
+def cal_tr(z_array, O=[1,0,0], dz=0.005):
+    '''
+    The function to calculate the look-back time and comoving distance.
+
+    Parameters
+    ----------
+    z_array : array_like or number
+        Array or number for redshift z to calculate the look-back time and distance.
+    O : array_like, shape (3,), optional
+        Array for specifying the density of the universe, [Omega_m, Omega_k, Omega_lambda]. By default it will be 1,0,0.
+    dz : number, optional
+        Number, for specifying the step of redshift when calculating, by default 0.005.
+
+    Returns
+    ----------
+    t : Array or number
+        The look-back time of input z, in Gyr.
+    r : Array or number  
+        The comoving distance of input z, in Mpc.
+    '''
+
+    import astropy.constants as cons
+    # Input constant and required number
+    H0 = 70 / 3.086e19
+    c = cons.c.value
+    O_m = O[0]
+    O_k = O[1]
+    O_l = O[2]
+    if type(z_array) == float or type(z_array) == int:
+        # Input z is a number
+        z = np.arange(0, z_array, dz)
+
+        # Define dt and dr
+        E_z = np.sqrt(O_m*(1+z)**3 + O_k*(1+z)**2 + O_l)
+
+        dt = 1 / H0 / E_z / (1+z)
+        dr = c / H0 / E_z
+
+        # SUmmarize the array
+        t = np.sum(dt[:-1] + dt[1:]) / 2 * dz /31556952/1e9
+        r = np.sum(dr[:-1] + dr[1:]) / 2 * dz * 3.24e-23        
+    else:
+        # Input z is an array
+        t = []
+        r = []
+        for i in z_array:
+            z = np.arange(0, i, dz)
+
+            # Define dt and dr
+            E_z = np.sqrt(O_m*(1+z)**3 + O_k*(1+z)**2 + O_l)
+
+            dt = 1 / H0 / E_z / (1+z)
+            dr = c / H0 / E_z
+
+            # Summarize the array
+            t.append(np.sum(dt[:-1] + dt[1:]) / 2 * dz /31556952/1e9)
+            r.append(np.sum(dr[:-1] + dr[1:]) / 2 * dz * 3.24e-23)
+
+    return t, r
+
+z = np.arange(0,20,0.01)
+res1 = cal_tr(z, O=[1,0,0])
+res2 = cal_tr(z, O=[0.3,0.7,0])
+res3 = cal_tr(z, O=[0.3,0,0.7])
+```
+
+<p id = "A2.3"></p>
+#### 2.3
+
+Please refer to the figure and table below.
+
+![](/img/in-post/post-cosmology/tr.png)
+
+**a)** $$ \Omega_\mathrm{m}=1.0, \Omega_\mathrm{k}=0.0, \Omega_\mathrm{l}=0.0 $$
+
+| z | t (Gyr) | r (Mpc) |
+|:--:|:--:|:--:|
+| 0.5 | 4.22 | 1559.9 |
+| 1.0 | 6.01 | 2500.9 |
+| 3.0 | 8.15 | 4279.5 |
+| 5.0 | 8.68 | 5066.5 |
+| 10.0 | 9.06 | 5981.5 |
+
+**b)** $$ \Omega_\mathrm{m}=0.3, \Omega_\mathrm{k}=0.7, \Omega_\mathrm{l}=0.0 $$
+
+| z | t (Gyr) | r (Mpc) |
+|:--:|:--:|:--:|
+| 0.5 | 4.49 | 1666.3 |
+| 1.0 | 6.61 | 2785.4 |
+| 3.0 | 9.46 | 5173.8 |
+| 5.0 | 10.25 | 6354.2 |
+| 10.0 | 10.86 | 7822.4 |
+
+**c)** $$ \Omega_\mathrm{m}=0.3, \Omega_\mathrm{k}=0.0, \Omega_\mathrm{l}=0.7 $$
+
+| z | t (Gyr) | r (Mpc) |
+|:--:|:--:|:--:|
+| 0.5 | 5.01 | 1872.0 |
+| 1.0 | 7.70 | 3291.2 |
+| 3.0 | 11.35 | 6350.0 |
+| 5.0 | 12.31 | 7771.7 |
+| 10.0 | 13.00 | 9437.9 |
+
+<p id = "A3"></p>
+### ASSIGNMENT 3 “Cosmological Perturbation”
+
+<p id = "A3.1"></p>
+#### 3.1
+
+To transform the coordinate from proper to comoving, we have
+
+$$ \nabla_\vec{r} = \frac{1}{a}\nabla_\vec{x}, \frac{\partial}{\partial t}_\vec{r} = \frac{\partial}{\partial t}_\vec{x} - \frac{\dot{a}}{a}\vec{x}\nabla_\vec{x} $$
+
+Then the mass conservation function becomes
+
+$$ \frac{\partial\rho}{\partial t} - \frac{\dot{a}}{a}\vec{x}\nabla \rho + \frac{1}{a}\nabla (\dot{a}\rho \vec{x} + \rho\vec{v}) = 0 $$
+
+$$ \Rightarrow \frac{\partial\rho}{\partial t} + \frac{3\dot{a}}{a}\rho + \frac{1}{a}\nabla(\rho \vec{v}) = 0 $$
+
+Write perturbation as $$ \rho = \bar{\rho} (1 + \delta) $$, then
+
+$$ \bar{\rho}\frac{\partial\delta}{\partial t} + \frac{3\dot{a}}{a}\bar{\rho}(1+\delta) + \frac{1}{a}\nabla[\bar{\rho} (1 + \delta) \vec{v}] = 0 $$
+
+$$ \Rightarrow \frac{\partial\delta}{\partial t} + \frac{1}{a}\nabla[(1 + \delta) \vec{v}] = 0 \tag{19}$$
+
+Similarly, substitute the related difination into Euler equation,
+
+$$ \frac{\partial}{\partial t} (\dot{a}\vec{x}+\vec{v}) + \frac{1}{a}[(\dot{a}\vec{x}+\vec{v})\nabla] (\dot{a}\vec{x}+\vec{v}) = -\frac{1}{a\rho}\nabla P - \frac{1}{a}\nabla(\phi - \frac{a\ddot{a}x^2}{2}) $$
+
+$$ \Rightarrow \frac{\partial \vec{v}}{\partial t} + \frac{1}{a}(\vec{v}\nabla)\vec{v} + \frac{\dot{a}}{a}\vec{v} = -\frac{1}{a\rho}\nabla P - \frac{1}{a}\nabla\phi \tag{20}$$
+
+<p id = "A3.2"></p>
+#### 3.2
+
+Now $$ \delta \ll 1 $$, then euqation $$ (19), (20) $$ becomes,
+
+$$ \frac{\partial\delta}{\partial t} + \frac{1}{a}\nabla\vec{v} = 0 \tag{iii}$$
+
+$$\frac{\partial \vec{v}}{\partial t} + \frac{\dot{a}}{a}\vec{v} = -\frac{1}{a\rho}\nabla P - \frac{1}{a}\nabla\phi \tag{iv}$$
+
+$$ \frac{\partial}{\partial t} \mathrm{(iii)}$$ and $$ \nabla \mathrm{(iv)}$$, we get
+
+$$ \ddot{\delta} - \frac{\dot{a}}{a^2}\nabla\vec{v} + \frac{1}{a}\nabla\dot{\vec{v}} = 0$$
+
+$$ \frac{\partial}{\partial t}\nabla\vec{v} + \frac{\dot{a}}{a}\nabla\vec{v} = -\frac{1}{a\rho}\nabla^2 P - \frac{1}{a}\nabla^2\phi $$
+
+substitute the second one into the first one and recall the Possion equation,
+
+$$ \ddot{\delta} + 2 \frac{\dot{a}}{a}\delta = \frac{c_s^2}{a^2} \nabla^2\delta + 4\pi G \rho_b \delta $$
+
+then substitute $$ \delta = \delta(t) e^{i\vec{k}\vec{x}} $$,
+
+$$ \ddot{\delta} + 2 \frac{\dot{a}}{a}\delta = 4\pi G \rho_b \delta -\frac{c_s^2k^2}{a^2} \delta \tag{21}$$
+
+in the dust case, $$ k \rightarrow 0 $$, $$ (21) $$ simplifies into
+
+$$ \ddot{\delta} + 2 \frac{\dot{a}}{a}\dot{\delta} - 4\pi G \rho_b \delta = 0 $$
+
+so we have a solution in the form of $$ \delta(t) \propto t^q $$. For the matter-dominated EdS universe, we have $$ (2)-(6) $$, so
+
+$$ \ddot{\delta} + \frac{4}{3t}\dot{\delta} - \frac{2}{3t^2} \delta = 0 $$
+
+substitute the solution into the equation we can solve for $$ q = \frac{2}{3} $$ or $$ q = -1 $$, so we will have two modes $$ \delta_+ \propto t^{2/3} $$ and $$ \delta_- \propto t^{-1} $$.
