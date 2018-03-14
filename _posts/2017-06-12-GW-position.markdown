@@ -36,7 +36,7 @@ $$Y_i(\omega)=X_i(\omega;\boldsymbol{\theta})+N_i(\omega)$$
 
 $$\textbf{Y}(\omega)={Y_i(\omega)}_i$$
 
-这里的\\( \textbf{\theta} \\)是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么
+这里的$$ \boldsymbol{\theta} $$是引力波源的参数，包括位置、时间、质量、自转等等。如果我们忽略轨道偏心率、潮汐变形，认为两个子星的自转是平行的或者没有自转，那么
 
 $$ \boldsymbol{\theta} = [\alpha, \delta, r, t, l, \psi, \phi_c; m_1, m_2, \textbf{S}_1, \textbf{S}_2] $$
 

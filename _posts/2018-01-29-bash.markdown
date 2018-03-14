@@ -23,3 +23,6 @@ tags:
 
 
 `ls -1 -d */*/* | sed -e 's/\// /g' -e 's/_pipeline/ pipeline/'`
+
+合并pdf
+`pdftk file1.pdf file2.pdf cat output mergedfile.pdf`
