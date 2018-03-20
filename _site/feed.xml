@@ -5,9 +5,180 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Mar 2018 21:04:37 +0900</pubDate>
-    <lastBuildDate>Wed, 14 Mar 2018 21:04:37 +0900</lastBuildDate>
+    <pubDate>Tue, 20 Mar 2018 19:43:12 +0900</pubDate>
+    <lastBuildDate>Tue, 20 Mar 2018 19:43:12 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Deep Learning笔记2</title>
+        <description>&lt;p&gt;[1],[2]代表神经网络的层数；(i)代表某一个训练样本（都是上标）。下标不带任何括号，表示某一层中的第几个节点。当有两层的时候，刚开始的输入是&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;，但是之后的输入会变成了&lt;script type=&quot;math/tex&quot;&gt;a^{[i]}&lt;/script&gt;这样。&lt;/p&gt;
+
+&lt;h4 id=&quot;神经网络的命名&quot;&gt;神经网络的命名&lt;/h4&gt;
+
+&lt;p&gt;输入层、隐层、输出层。&lt;script type=&quot;math/tex&quot;&gt;a^{[0]} = x&lt;/script&gt;。在数层数的时候，不算输入层。每一层都有一套&lt;script type=&quot;math/tex&quot;&gt;w, b&lt;/script&gt;配套。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;每一个节点都有两步：线性回归以及丢进sigmod函数里面。所以都有两条公式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+  z_1^{[1]} &amp;= w_1^{[1]T}x + b_1^{[1]}, a_1^{[1]} = \sigma(z_1^{[1]}) \\
+  z_2^{[1]} &amp;= w_2^{[1]T}x + b_2^{[1]}, a_2^{[1]} = \sigma(z_2^{[1]}) \\
+  z_3^{[1]} &amp;= w_3^{[1]T}x + b_3^{[1]}, a_3^{[1]} = \sigma(z_3^{[1]}) \\
+  z_4^{[1]} &amp;= w_4^{[1]T}x + b_4^{[1]}, a_4^{[1]} = \sigma(z_4^{[1]}) \\
+  \vdots
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;能看到这些式子排得很整齐，那何不矩阵化了呢？&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z^{[1]} =
+  \begin{bmatrix}
+    z_1^{[1]} \\ z_2^{[1]} \\ z_3^{[1]} \\ z_4^{[1]}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \cdots w_1^{[1]T} \cdots \\ \cdots w_2^{[1]T} \cdots \\ \cdots w_3^{[1]T} \cdots \\ \cdots w_4^{[1]T} \cdots
+  \end{bmatrix}
+  \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    b_1^{[1]} \\ b_2^{[1]} \\ b_3^{[1]} \\ b_4^{[1]}
+  \end{bmatrix}
+  = W^{[1]} x + b^{[1]}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;（本层节点数）行&lt;script type=&quot;math/tex&quot;&gt;[i-1]&lt;/script&gt;（上层节点数）列的矩阵，也就是负责将上层节点的结果转成本层节点的结果。&lt;script type=&quot;math/tex&quot;&gt;b^{[i]}&lt;/script&gt;自然是&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行1列的向量了。最后再将结果各自丢进sigmod函数里面，不说了。&lt;/p&gt;
+
+&lt;p&gt;如果写出个通式的话也行：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+   z^{[i]} &amp;=  W^{[i]} a^{[i-1]} + b^{[i]} \\
+   a^{[i]} &amp;= \sigma(z^{[i]})
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;不过注意&lt;script type=&quot;math/tex&quot;&gt;a^{[0]}&lt;/script&gt;就是输入值，没有放入sigmod函数里面。同时矩阵&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个“行矩阵”，每一行是每一个节点的系数的转置&lt;script type=&quot;math/tex&quot;&gt;[\cdots w_i^{[1]T} \cdots]&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;对于整个训练样本&quot;&gt;对于整个训练样本&lt;/h4&gt;
+
+&lt;p&gt;当然可以继续矩阵化啦。把整个训练样本的列向量&lt;script type=&quot;math/tex&quot;&gt;x,b&lt;/script&gt;排成一行（这也是惟一的排法了），结果&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;也这么做，然后大写，就变成了：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+Z^{[1]} &amp;=
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    z^{[1](1)} &amp; z^{[1](2)} &amp; \cdots &amp; z^{[1](m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \cdots w_1^{[1]T} \cdots \\ \cdots w_2^{[1]T} \cdots \\ \vdots \\ \cdots w_{[i]}^{[1]T} \cdots
+  \end{bmatrix}
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    x^{(1)} &amp; x^{(2)} &amp; \cdots &amp; x^{(m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    b^{[1]} &amp; b^{[1]} &amp; \cdots &amp; b^{[1]} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix} \\
+  &amp;= W^{[1]} X + B^{[1]}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;或者对于某一层来说&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+Z^{[i]} &amp;=
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    z^{[i](1)} &amp; z^{[i](2)} &amp; \cdots &amp; z^{[i](m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \cdots w_1^{[i]T} \cdots \\ \cdots w_2^{[i]T} \cdots \\ \vdots \\ \cdots w_{[i]}^{[i]T} \cdots
+  \end{bmatrix}
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    a^{[i](1)} &amp; a^{[i](2)} &amp; \cdots &amp; a^{[i](m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    b^{[i]} &amp; b^{[i]} &amp; \cdots &amp; b^{[i]} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix} \\
+  &amp;= W^{[i]} X + B^{[i]}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;总结一下，&lt;script type=&quot;math/tex&quot;&gt;Z^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;[i-1]&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;A^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;B^{[i]}&lt;/script&gt;也是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，但是每一列都是一样的。&lt;/p&gt;
+
+&lt;p&gt;通式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+   Z^{[i]} &amp;=  W^{[i]} A^{[i-1]} + B^{[i]} \\
+   A^{[i]} &amp;= \sigma(Z^{[i]})
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;不同的activation-function&quot;&gt;不同的activation function&lt;/h4&gt;
+
+&lt;p&gt;sigmod函数的问题是它恒为正，所以算出来的结果不会关于0对称。所以隐藏层一般用&lt;script type=&quot;math/tex&quot;&gt;\tanh(z)&lt;/script&gt;而不是sigmod，但是输出层还是用回sigmod。&lt;/p&gt;
+
+&lt;p&gt;但是&lt;script type=&quot;math/tex&quot;&gt;\tanh(z)&lt;/script&gt;也还是有问题：当&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;很大的时候，斜率很小，所以会降低学习速率；所以也可以用RelU函数（折线），或者将RelU小于0的折线再改小一点。即使斜率为0实际上也还是可以的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;为什么activation-function不是线性的&quot;&gt;为什么activation function不是线性的？&lt;/h4&gt;
+
+&lt;p&gt;也就是说为什么要给它套上一个奇怪的函数？&lt;/p&gt;
+
+&lt;p&gt;线性的AF意味着从头到脚都是线性的，也就没有意义（人又不是线性思考的233）。例外是在回归里面，当输出不在0到1之间的时候，最后一层可以用线性的。但是其他层还是要用非线性的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;af的导数&quot;&gt;AF的导数&lt;/h4&gt;
+
+&lt;p&gt;求就是了，又不是不会。按照链式反应（chain rule啦）来求就行了。按照之前的结论其实&lt;script type=&quot;math/tex&quot;&gt;\frac{dL}{da^{[2]}}&lt;/script&gt;不用求，有&lt;script type=&quot;math/tex&quot;&gt;\frac{dL}{dz^{[2]}} = a^{[2]} - y&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;完全向量化之后出现的&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{m}&lt;/script&gt;以及求和是因为之前对某一个训练样本来说，只能计算损失函数；但是对于整个训练样本集来说，我们计算的是代价函数，而&lt;script type=&quot;math/tex&quot;&gt;J = \frac{1}{m}\sum L&lt;/script&gt;，所以多了点东西。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;随机初值&quot;&gt;随机初值&lt;/h4&gt;
+
+&lt;p&gt;参数全为0的话，所有的节点都是一样（对称）的，就没用了。所以要随机取值。一般会将&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;取为很小的高斯随机数，但是&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;没所谓。很小的高斯随机数是为了取到比较大的导数值，防止落到导数很靠近0的地方。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 17 Mar 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/03/17/DL-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/17/DL-2/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>Deep Learning笔记1</title>
@@ -157,9 +328,9 @@ L(\hat{y}, y) &amp;= -[y \ln{\hat{y}} + (1-y) \ln{(1-\hat{y})}] \\
 &lt;p&gt;当&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt;是一个列向量的时候，比如要算&lt;code class=&quot;highlighter-rouge&quot;&gt;z[i] = w.T * x[i] + b&lt;/code&gt;的时候，可以这么做：&lt;code class=&quot;highlighter-rouge&quot;&gt;np.dot(w,x)+b&lt;/code&gt;。高级一点的话直接和矩阵相乘：&lt;code class=&quot;highlighter-rouge&quot;&gt;np.dot(w,X)+b&lt;/code&gt;。
 &lt;code class=&quot;highlighter-rouge&quot;&gt;dz[i] = a[i] - y[i]&lt;/code&gt;可以转为&lt;code class=&quot;highlighter-rouge&quot;&gt;dZ = A - Y&lt;/code&gt;；&lt;code class=&quot;highlighter-rouge&quot;&gt;dw1 += x1[i]dz[i]&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;dW = 1/m * X*dZ.T&lt;/code&gt;；&lt;code class=&quot;highlighter-rouge&quot;&gt;db += dz[i]&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;1/m * np.sum(dZ)&lt;/code&gt;。还要注意的一点是在&lt;code class=&quot;highlighter-rouge&quot;&gt;reshape&lt;/code&gt;的时候最好把行列都写全。&lt;/p&gt;
 </description>
-        <pubDate>Fri, 09 Mar 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/03/09/DL-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/09/DL-1/</guid>
+        <pubDate>Wed, 14 Mar 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/03/14/DL-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/14/DL-1/</guid>
         
         <category>learning</category>
         
@@ -1442,184 +1613,6 @@ I(\tau) = \begin{cases} I^\mathrm{out}(\tau) &amp; 0 \le \theta \le \pi/2 \\ I^\
         <pubDate>Tue, 19 Dec 2017 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2017/12/19/OASP6/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/12/19/OASP6/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 5</title>
-        <description>&lt;h3 id=&quot;辐射强度-specific-intensity&quot;&gt;辐射强度 (specific intensity)&lt;/h3&gt;
-
-&lt;p&gt;辐射强度描述的是穿过一个表面的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。&lt;/p&gt;
-
-&lt;p&gt;我们只能通过单位时间、单位频率下穿过单位面积面元的能量大小来描述光的强度。但是面元是有朝向的，一个只朝一个方向的辐射场和面元的法向量平行的时候会产生最大的通量；如果将辐射场（或者面元）旋转一个角度，除了方向外辐射场没有任何其他的变化，不过通量就小了。然而辐射强度是辐射场的性质，和面元的方向无关，所以除了&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}A\mathrm{d}t\mathrm{d}\nu&lt;/script&gt;需要和描述辐射场强度（其实就是辐射强度）的量相乘之外，我们还需要一个表示方向的立体角源和表示方向与面元法向夹角的余弦值将（可能倾斜的）面元“摆正”，去导出正确的能量。所以能量和辐射强度有这样的关系：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{d}E_\nu = I_\nu cos{\theta} \mathrm{d}\omega\mathrm{d}A\mathrm{d}t\mathrm{d}\nu&lt;/script&gt;
-
-&lt;p&gt;也得到了辐射强度的表达式：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = \frac{\mathrm{d}E_\nu}{cos{\theta}\mathrm{d}\omega\mathrm{d}A\mathrm{d}t\mathrm{d}\nu} \tag{5.1}&lt;/script&gt;
-
-&lt;p&gt;它表达的是单位时间(&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}t&lt;/script&gt;)单位频率(&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}\nu&lt;/script&gt;)下穿过某一点(&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}A&lt;/script&gt;)朝某个方向(&lt;script type=&quot;math/tex&quot;&gt;cos{\theta}\mathrm{d}\omega&lt;/script&gt;)的光的能量。当然我们也可以用波长去表达，而从上式我们可以推出&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu\mathrm{d}\nu = I_\lambda\mathrm{d}\lambda  \tag{5.2}&lt;/script&gt;
-
-&lt;p&gt;它们的单位分别是&lt;script type=&quot;math/tex&quot;&gt;\mathrm{erg / (s~cm^2~rad^2~Hz)}, \mathrm{W / (m^2~rad^2~Hz)}&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\mathrm{erg / (s~cm^2~rad^2~Å)}, \mathrm{W / (m^2~rad^2~Å)}&lt;/script&gt;。这条式子，加上熟悉的频率-波长关系&lt;script type=&quot;math/tex&quot;&gt;\lambda\nu = c&lt;/script&gt;，我们会发现同一个物体&lt;script type=&quot;math/tex&quot;&gt;I_\nu&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;I_\lambda&lt;/script&gt;的形状是不一样的。这是因为&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}\nu = -\frac{c}{\lambda^2}\mathrm{d}\lambda \Rightarrow -\frac{c}{\lambda^2}I_\nu = I_\lambda&lt;/script&gt;（负号表示波长和频率变化方向相反），所以即使不同波长下的辐射强度一样，翻译到频率下会变成一条曲线。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://soap.siteturbine.com/uploaded_files/www.oceanopticsbook.info/images/WebBook/2048a65071bc4c0a0e2402ba5bc51157.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;频域和波长域下太阳的辐射强度，可以看到形状改变了。取自&lt;a href=&quot;http://www.oceanopticsbook.info/view/light_and_radiometry/level_2/a_common_misconception&quot;&gt;这里&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;我们也可以定义平均辐射强度，为辐射强度在所有方向上的平均：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_\nu = \frac{1}{4\pi} \oint I_\nu \mathrm{d}\omega  \tag{5.3}&lt;/script&gt;
-
-&lt;h3 id=&quot;流量&quot;&gt;流量&lt;/h3&gt;
-
-&lt;p&gt;比起辐射强度，流量可能更容易理解一点。流量就是通过一个面的所有能量之和；一个方向为正的话，另一个方向就为负；或者说流量就是一个面对所有方向辐射强度的积分。从这两个表述里面我们可以得到流量的两个定义式：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = \frac{\oint \mathrm{d}E_\nu}{\mathrm{d}A\mathrm{d}t\mathrm{d}\nu} = \oint I_\nu \cos{\theta} \mathrm{d}\omega  \tag{5.4}&lt;/script&gt;
-
-&lt;p&gt;显然当辐射场各向同性的时候，流量为零（进出一样）；所以也可以说流量是衡量辐射场非各向同性程度的一个量。&lt;/p&gt;
-
-&lt;p&gt;假设我们讨论的点在恒星的表面上，将流量的辐射强度积分拆成两个半球，一个在恒星内部，一个在外部，我们可以得到&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} F_\nu &amp; = \int_0^{2\pi}\mathrm{d}\phi\int_0^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta \\ &amp; = \int_0^{2\pi}\mathrm{d}\phi (\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta + \int_\frac{2}{\pi}^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta) \\ &amp; = F_\nu^\mathrm{out} + F_\nu^\mathrm{in} \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;实际上就是向里的和向外的之和。对于恒星来说，一般是没有向内的辐射的；同时如果在&lt;script type=&quot;math/tex&quot;&gt;\phi&lt;/script&gt;方向各向同性的话，上式可以简化为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu  = 2\pi\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta  \tag{5.6}&lt;/script&gt;
-
-&lt;p&gt;再简化一下，如果向外的辐射在各个&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;方向都相等的话，那么&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = \pi I_\nu  \tag{5.7}&lt;/script&gt;
-
-&lt;p&gt;对恒星来说这样的简化是可以接受的。&lt;/p&gt;
-
-&lt;p&gt;辐射强度是一个辐射场的内禀量，所以不应该随着距离而变化；而流量遵循平方反比律。这里的不同之处在于辐射强度的定义式中有一个&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}\omega&lt;/script&gt;，但流量里面没有。这也说明了只有当我们明确知道观测的源的&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}\omega&lt;/script&gt;有多大，也就是能分辨清楚源面的时候，我们才能测量辐射强度；否则我们测量的只能是流量。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP5/if.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;图中左侧是天空中的一个均匀的延展源，右侧是它的像。假设我们现在讨论通过中间透镜的辐射强度和流量，而&lt;script type=&quot;math/tex&quot;&gt;A_S&lt;/script&gt;所张的立体角刚好可以看作一个面元。这那么根据定义，包含在&lt;script type=&quot;math/tex&quot;&gt;A_S&lt;/script&gt;这个圆锥中的能量就是在透镜这一点上、&lt;script type=&quot;math/tex&quot;&gt;A_S&lt;/script&gt;方向的辐射强度。如果我们改变这个源的距离，因为这个圆锥（立体角大小）不变，虽然源距离我们远了，每个点发出的光少了，但是有更多的面积进入了&lt;script type=&quot;math/tex&quot;&gt;A_S&lt;/script&gt;中，所以接收到的能量是不变的。当整个源的面积小于等于&lt;script type=&quot;math/tex&quot;&gt;A_S&lt;/script&gt;的时候，我们就不能分辨源的面了，所以此时测量到的就变成了流量，遵循平方反比定律。&lt;/p&gt;
-
-&lt;h3 id=&quot;k积分&quot;&gt;K积分&lt;/h3&gt;
-
-&lt;p&gt;到现在为止我们从辐射强度中引出了两个值，平均辐射强度和流量：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} J_\nu &amp; = \frac{1}{4\pi} \oint I_\nu \mathrm{d}\omega \\ F_\nu &amp; = \oint I_\nu \cos{\theta} \mathrm{d}\omega \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;如果在积分号里面再加一个&lt;script type=&quot;math/tex&quot;&gt;\cos{\theta}&lt;/script&gt;，也可以定义出一个有物理意义的量：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;K_\nu = \frac{1}{4\pi} \oint I_\nu \cos^2{\theta} \mathrm{d}\omega  \tag{5.8}&lt;/script&gt;
-
-&lt;p&gt;它跟辐射压有关。&lt;/p&gt;
-
-&lt;p&gt;光子的动量为&lt;script type=&quot;math/tex&quot;&gt;P = \frac{E}{c}&lt;/script&gt;，则单位时间单位面积内穿过某个面的总动量就是辐射压：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{d}P_\nu = \frac{\mathrm{d}E_\nu}{c} \frac{\cos{\theta}}{\mathrm{d}t\mathrm{d}A}&lt;/script&gt;
-
-&lt;p&gt;用辐射强度代入，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{d}P_\nu = \frac{I_\nu}{c} \cos^2{\theta} \mathrm{d}\nu\mathrm{d}\omega&lt;/script&gt;
-
-&lt;p&gt;对立体角和频率积分一下，就有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_R = \frac{1}{c} \int_0^\infty\oint I_\nu \cos^2{\theta} \mathrm{d}\omega\mathrm{d}\nu = \frac{4\pi}{c} \int_0^\infty K_\nu \mathrm{d}\nu  \tag{5.9}&lt;/script&gt;
-
-&lt;p&gt;如果各向同性的话，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_R = \frac{4\pi}{3c} \int_0^\infty I_\nu \mathrm{d}\nu \tag{5.10}&lt;/script&gt;
-
-&lt;p&gt;而第六章会讨论温度的一个定义方式：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi\int_0^\infty I_\nu \mathrm{d}\nu = \sigma T^4&lt;/script&gt;
-
-&lt;p&gt;故有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_R = \frac{4\sigma}{3c}T^4 \tag{5.11}&lt;/script&gt;
-
-&lt;p&gt;所以高温恒星的辐射压是很强的；同时太阳等低温恒星辐射压可以被忽略。&lt;/p&gt;
-
-&lt;h3 id=&quot;辐射能量密度&quot;&gt;辐射能量密度&lt;/h3&gt;
-
-&lt;p&gt;在继续之前我们稍微再从不同的角度理解一下辐射强度。辐射强度可以被理解为单位时间单位频率内往某个方向的能量对某个面元的平均，也就是这个“摆正了的”面元单位时间单位频率内的单位面积上有多少正前方的能量穿过。所以辐射强度某种程度上来说是辐射能量面密度。&lt;/p&gt;
-
-&lt;p&gt;那么有了面密度，能不能有体密度呢？当然是可以的，我们仿照辐射强度把&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}A&lt;/script&gt;写成&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}V&lt;/script&gt;就行了（记得带上&lt;script type=&quot;math/tex&quot;&gt;\cos{\theta}&lt;/script&gt;）。但是注意到我们在讨论光，光肯定以光速运动，所以面元在空间中相对光扫过的体积和面积的关系为&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}V = c\mathrm{d}A&lt;/script&gt;，也就是说&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;u_\nu = \frac{I_\nu}{c}&lt;/script&gt;
-
-&lt;p&gt;体积的数值肯定比面积大，所以同样的光分摊到了一个更大的数字上，密度就小了。&lt;/p&gt;
-
-&lt;h3 id=&quot;吸收系数和光深&quot;&gt;吸收系数和光深&lt;/h3&gt;
-
-&lt;p&gt;光穿过介质时候的衰减遵循以下规律：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{d}I_\nu = -\kappa_\nu\rho I_\nu \mathrm{d}x \tag{5.12}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\rho&lt;/script&gt;是单位体积的质量密度，&lt;script type=&quot;math/tex&quot;&gt;\mathrm{d}x&lt;/script&gt;是长度，所以&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;是单位质量上的面积(&lt;script type=&quot;math/tex&quot;&gt;\mathrm{\frac{cm^2}{g}}&lt;/script&gt;)，也就是吸收截面。&lt;/p&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;反映的是物质本身的性质；实际上这个值有两个方面，一个是真正的吸收，另一个是物质对光的散射。所以这个吸收系数实际上是消光系数。&lt;/p&gt;
-
-&lt;p&gt;在没有介质发射的情况下我们可以装作化简地把式子写得简单一点，利用&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} \tau_\nu &amp; = \int_0^L \kappa_\nu \rho \mathrm{d}x \Rightarrow \\ \mathrm{d}I_\nu &amp; = -I_\nu\mathrm{d}\tau_\nu \Rightarrow \\ I_\nu &amp; = I_\nu^0 \exp{-\tau_\nu} \end{align} \tag{5.13} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;这是最简单的消光规律。&lt;/p&gt;
-
-&lt;h3 id=&quot;发射系数和源函数&quot;&gt;发射系数和源函数&lt;/h3&gt;
-
-&lt;p&gt;对发射系数的定义和吸收系数非常类似，只是没有了负号：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{d}I_\nu = j_\nu \rho \mathrm{d}x \tag{5.14}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;j_\nu&lt;/script&gt;的单位是&lt;script type=&quot;math/tex&quot;&gt;\mathrm{\frac{erg}{s~rad^2~Hz~g}}&lt;/script&gt;。发射系数同样包含真正的发射和散射到我们考虑的方向上的光。&lt;/p&gt;
-
-&lt;p&gt;如果我们把发射系数和吸收系数相除，我们会发现这个商的单位和辐射强度是一样的；所以我们可以把这个商当作一个新的“辐射强度”，并定义为源函数：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu = \frac{j_\nu}{\kappa_\nu} \tag{5.15}&lt;/script&gt;
-
-&lt;p&gt;源函数的表征了光线在穿过介质的时候被介质替换掉的比例。它在之后的辐射转移中很有用。但是源函数的计算是比较复杂的，这里只考虑两个最极端的例子，纯各向同性散射以及纯吸收。&lt;/p&gt;
-
-&lt;h5 id=&quot;纯各向同性散射&quot;&gt;纯各向同性散射&lt;/h5&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP5/pis.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如上图，介质中的粒子在接收到来自某个方向的光(&lt;script type=&quot;math/tex&quot;&gt;I_\nu \mathrm{d}\omega&lt;/script&gt;)之后会将其中一部分(&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;)散射掉，而且是均匀地散射到&lt;script type=&quot;math/tex&quot;&gt;4\pi&lt;/script&gt;立体角中。所以对于某个方向上单位立体角的观测者来说只能接收到&lt;script type=&quot;math/tex&quot;&gt;1/4\pi&lt;/script&gt;的光，即&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{d}j_\nu = \frac{1}{4\pi}\kappa_\nu I_\nu \mathrm{d}\omega&lt;/script&gt;
-
-&lt;p&gt;对不同方向求积分，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;j_\nu = \frac{1}{4\pi} \oint\kappa_\nu I_\nu \mathrm{d}\omega&lt;/script&gt;
-
-&lt;p&gt;一般来说&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;和方向没有关系，所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu = \frac{j_\nu}{\kappa_\nu} = \frac{1}{4\pi} \oint I_\nu \mathrm{d}\omega = J_\nu&lt;/script&gt;
-
-&lt;p&gt;此时粒子“发射”的辐射强度是入射光的平均辐射强度，源函数只取决于辐射场，和粒子本身无关。&lt;/p&gt;
-
-&lt;h5 id=&quot;纯吸收&quot;&gt;纯吸收&lt;/h5&gt;
-
-&lt;p&gt;纯吸收并不意味着粒子就不发光了；只不过之前的散射是只改变光的方向，现在粒子吸收全部的光然后再发出自己的光。一般来说我们讨论粒子到达了热动平衡之后的状态，那么此时的源函数就是黑体辐射函数&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu = B_\nu = \frac{2h\nu^3}{c^2} \frac{1}{e^{h\nu/kT}-1} \tag{5.16}&lt;/script&gt;
-
-&lt;p&gt;此时粒子作为&lt;strong&gt;黑体&lt;/strong&gt;发光。&lt;/p&gt;
-
-&lt;h3 id=&quot;爱因斯坦系数&quot;&gt;爱因斯坦系数&lt;/h3&gt;
-
-&lt;p&gt;我们将自发辐射归入辐射，受激辐射（负吸收）和受激吸收归到吸收里面，并分别用&lt;script type=&quot;math/tex&quot;&gt;A, B&lt;/script&gt;表示它们的爱因斯坦系数，&lt;script type=&quot;math/tex&quot;&gt;l, u&lt;/script&gt;表示低、高能级，则有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} j_\nu\rho &amp; = N_uA_{ul}h\nu \\ \kappa_\nu\rho I_\nu &amp; = N_l B_{lu}I_\nu h\nu - N_uB_{ul}I_\nu h\nu \end{align} \tag{5.17} %]]&gt;&lt;/script&gt;
-</description>
-        <pubDate>Mon, 18 Dec 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/12/18/OASP5/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/18/OASP5/</guid>
         
         <category>learning</category>
         

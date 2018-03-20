@@ -2,7 +2,7 @@
 layout:     post
 title:      "Deep Learning笔记1"
 subtitle:   "Logistic Regression 逻辑回归"
-date:       2018-03-09
+date:       2018-03-14
 author:     "mingjie"
 header-img: "img/post-bg-DL-1.jpg"
 tags:
