@@ -5,175 +5,87 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 20 Mar 2018 19:43:12 +0900</pubDate>
-    <lastBuildDate>Tue, 20 Mar 2018 19:43:12 +0900</lastBuildDate>
+    <pubDate>Mon, 02 Apr 2018 19:25:11 +0900</pubDate>
+    <lastBuildDate>Mon, 02 Apr 2018 19:25:11 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
         <title>Deep Learning笔记2</title>
-        <description>&lt;p&gt;[1],[2]代表神经网络的层数；(i)代表某一个训练样本（都是上标）。下标不带任何括号，表示某一层中的第几个节点。当有两层的时候，刚开始的输入是&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;，但是之后的输入会变成了&lt;script type=&quot;math/tex&quot;&gt;a^{[i]}&lt;/script&gt;这样。&lt;/p&gt;
+        <description>&lt;h4 id=&quot;数据集&quot;&gt;数据集&lt;/h4&gt;
 
-&lt;h4 id=&quot;神经网络的命名&quot;&gt;神经网络的命名&lt;/h4&gt;
+&lt;p&gt;以前是分成两个的，训练和测试。现在分成3个，训练、发展和测试集。用发展去测试训练，最后再用测试去测试表现；甚至没有测试集都行。这里的区别是发展集是用来overfitting的，测试集不是。&lt;/p&gt;
 
-&lt;p&gt;输入层、隐层、输出层。&lt;script type=&quot;math/tex&quot;&gt;a^{[0]} = x&lt;/script&gt;。在数层数的时候，不算输入层。每一层都有一套&lt;script type=&quot;math/tex&quot;&gt;w, b&lt;/script&gt;配套。&lt;/p&gt;
+&lt;p&gt;要注意不同数据集的数据要同质，质量相同&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;每一个节点都有两步：线性回归以及丢进sigmod函数里面。所以都有两条公式：&lt;/p&gt;
+&lt;h4 id=&quot;bias和variance&quot;&gt;bias和variance&lt;/h4&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-  z_1^{[1]} &amp;= w_1^{[1]T}x + b_1^{[1]}, a_1^{[1]} = \sigma(z_1^{[1]}) \\
-  z_2^{[1]} &amp;= w_2^{[1]T}x + b_2^{[1]}, a_2^{[1]} = \sigma(z_2^{[1]}) \\
-  z_3^{[1]} &amp;= w_3^{[1]T}x + b_3^{[1]}, a_3^{[1]} = \sigma(z_3^{[1]}) \\
-  z_4^{[1]} &amp;= w_4^{[1]T}x + b_4^{[1]}, a_4^{[1]} = \sigma(z_4^{[1]}) \\
-  \vdots
-\end{align} %]]&gt;&lt;/script&gt;
+&lt;p&gt;训练集的错误率比与预期的高：高bias；发展集的错误率比训练集的高：高variance&lt;/p&gt;
 
-&lt;p&gt;能看到这些式子排得很整齐，那何不矩阵化了呢？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;z^{[1]} =
-  \begin{bmatrix}
-    z_1^{[1]} \\ z_2^{[1]} \\ z_3^{[1]} \\ z_4^{[1]}
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    \cdots w_1^{[1]T} \cdots \\ \cdots w_2^{[1]T} \cdots \\ \cdots w_3^{[1]T} \cdots \\ \cdots w_4^{[1]T} \cdots
-  \end{bmatrix}
-  \begin{bmatrix}
-    x_1 \\ x_2 \\ x_3
-  \end{bmatrix}
-  +
-  \begin{bmatrix}
-    b_1^{[1]} \\ b_2^{[1]} \\ b_3^{[1]} \\ b_4^{[1]}
-  \end{bmatrix}
-  = W^{[1]} x + b^{[1]}&lt;/script&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;（本层节点数）行&lt;script type=&quot;math/tex&quot;&gt;[i-1]&lt;/script&gt;（上层节点数）列的矩阵，也就是负责将上层节点的结果转成本层节点的结果。&lt;script type=&quot;math/tex&quot;&gt;b^{[i]}&lt;/script&gt;自然是&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行1列的向量了。最后再将结果各自丢进sigmod函数里面，不说了。&lt;/p&gt;
+&lt;h4 id=&quot;正则化&quot;&gt;正则化&lt;/h4&gt;
 
-&lt;p&gt;如果写出个通式的话也行：&lt;/p&gt;
+&lt;p&gt;在代价函数后面加上&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;的2或者1范数&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-   z^{[i]} &amp;=  W^{[i]} a^{[i-1]} + b^{[i]} \\
-   a^{[i]} &amp;= \sigma(z^{[i]})
-\end{align} %]]&gt;&lt;/script&gt;
+&lt;p&gt;通过强制减小&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;简化神经网络，减小权重。&lt;/p&gt;
 
-&lt;p&gt;不过注意&lt;script type=&quot;math/tex&quot;&gt;a^{[0]}&lt;/script&gt;就是输入值，没有放入sigmod函数里面。同时矩阵&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个“行矩阵”，每一行是每一个节点的系数的转置&lt;script type=&quot;math/tex&quot;&gt;[\cdots w_i^{[1]T} \cdots]&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;dropout正则化&quot;&gt;Dropout正则化&lt;/h4&gt;
 
-&lt;h4 id=&quot;对于整个训练样本&quot;&gt;对于整个训练样本&lt;/h4&gt;
+&lt;p&gt;随机删掉一些节点来做一次正反向传递，然后不断重复。要注意的是删掉之后要把整个节点的值除以一个删掉的阈值概率，把取值回覆到正常水平。测试集不要用。Dropoyt的意思是不让某个节点依赖于某几个前面一层的节点，所以也是减小权重的意思。不同的层可以有不同的dropout节点数。输入层一般不dropout（或者是很小的duopout数）。最后在看J减小的时候要小心一点，必要的时候关掉dropout&lt;/p&gt;
 
-&lt;p&gt;当然可以继续矩阵化啦。把整个训练样本的列向量&lt;script type=&quot;math/tex&quot;&gt;x,b&lt;/script&gt;排成一行（这也是惟一的排法了），结果&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;也这么做，然后大写，就变成了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-Z^{[1]} &amp;=
-  \begin{bmatrix}
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-    z^{[1](1)} &amp; z^{[1](2)} &amp; \cdots &amp; z^{[1](m)} \\
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    \cdots w_1^{[1]T} \cdots \\ \cdots w_2^{[1]T} \cdots \\ \vdots \\ \cdots w_{[i]}^{[1]T} \cdots
-  \end{bmatrix}
-  \begin{bmatrix}
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-    x^{(1)} &amp; x^{(2)} &amp; \cdots &amp; x^{(m)} \\
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-  \end{bmatrix}
-  +
-  \begin{bmatrix}
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-    b^{[1]} &amp; b^{[1]} &amp; \cdots &amp; b^{[1]} \\
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-  \end{bmatrix} \\
-  &amp;= W^{[1]} X + B^{[1]}
-\end{align} %]]&gt;&lt;/script&gt;
+&lt;h4 id=&quot;奇技淫巧&quot;&gt;奇技淫巧&lt;/h4&gt;
 
-&lt;p&gt;或者对于某一层来说&lt;/p&gt;
+&lt;p&gt;增加训练样本：把图像翻过来/旋转/放大，或者几种加起来。不过信息量其实还是一样的。标准是人脑还是会把它当成同一样东西。&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-Z^{[i]} &amp;=
-  \begin{bmatrix}
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-    z^{[i](1)} &amp; z^{[i](2)} &amp; \cdots &amp; z^{[i](m)} \\
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    \cdots w_1^{[i]T} \cdots \\ \cdots w_2^{[i]T} \cdots \\ \vdots \\ \cdots w_{[i]}^{[i]T} \cdots
-  \end{bmatrix}
-  \begin{bmatrix}
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-    a^{[i](1)} &amp; a^{[i](2)} &amp; \cdots &amp; a^{[i](m)} \\
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-  \end{bmatrix}
-  +
-  \begin{bmatrix}
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-    b^{[i]} &amp; b^{[i]} &amp; \cdots &amp; b^{[i]} \\
-    \vdots &amp; \vdots &amp;  &amp; \vdots \\
-  \end{bmatrix} \\
-  &amp;= W^{[i]} X + B^{[i]}
-\end{align} %]]&gt;&lt;/script&gt;
+&lt;p&gt;提早停止：看发展集的误差，以它的最小值为基准。思路是&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;会随着迭代而不断增大，导致太大以至于我们不想看到。提早停止可以防止这个。&lt;/p&gt;
 
-&lt;p&gt;总结一下，&lt;script type=&quot;math/tex&quot;&gt;Z^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;[i-1]&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;A^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;B^{[i]}&lt;/script&gt;也是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，但是每一列都是一样的。&lt;/p&gt;
+&lt;p&gt;正交化：将减小损失函数和防止overfit分开。提早停止违反了这个原则。&lt;/p&gt;
 
-&lt;p&gt;通式：&lt;/p&gt;
+&lt;p&gt;L2正则化比较简单，不过要试各种的&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;。&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-   Z^{[i]} &amp;=  W^{[i]} A^{[i-1]} + B^{[i]} \\
-   A^{[i]} &amp;= \sigma(Z^{[i]})
-\end{align} %]]&gt;&lt;/script&gt;
+&lt;h3 id=&quot;建立最优化问题&quot;&gt;建立最优化问题&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;归一化训练集&quot;&gt;归一化训练集&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;看图，把输入数字移到0左右，将标准差scale到1。注意训练集和测试集的移动和scale需要完全一样。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;这么做的理由：将代价函数搞得好看一点，简单一点，学习速率也能快一点。&lt;/p&gt;
 
-&lt;h4 id=&quot;不同的activation-function&quot;&gt;不同的activation function&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;sigmod函数的问题是它恒为正，所以算出来的结果不会关于0对称。所以隐藏层一般用&lt;script type=&quot;math/tex&quot;&gt;\tanh(z)&lt;/script&gt;而不是sigmod，但是输出层还是用回sigmod。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;但是&lt;script type=&quot;math/tex&quot;&gt;\tanh(z)&lt;/script&gt;也还是有问题：当&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;很大的时候，斜率很小，所以会降低学习速率；所以也可以用RelU函数（折线），或者将RelU小于0的折线再改小一点。即使斜率为0实际上也还是可以的。&lt;/p&gt;
+&lt;h4 id=&quot;奇怪的导数值&quot;&gt;奇怪的导数值&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;在训练很深的神经网络的时候，有的时候导数值可能会很大或者很小，比如矩阵遇到了指数增长/减小什么的。&lt;/p&gt;
 
-&lt;h4 id=&quot;为什么activation-function不是线性的&quot;&gt;为什么activation function不是线性的？&lt;/h4&gt;
+&lt;p&gt;一个治标的办法是选择初始的权重。&lt;script type=&quot;math/tex&quot;&gt;z = w_1x_1 + w_2x_2 + \cdots + w_nx_n&lt;/script&gt;。&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;越大，&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;就越大，所以我们控制&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;的标准差为&lt;script type=&quot;math/tex&quot;&gt;\sqrt{\frac{2}{n^{[l-1]}}}&lt;/script&gt;。这里的2是Relu函数带来的。当然也可以当它是一个超参数来试。&lt;/p&gt;
 
-&lt;p&gt;也就是说为什么要给它套上一个奇怪的函数？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;线性的AF意味着从头到脚都是线性的，也就没有意义（人又不是线性思考的233）。例外是在回归里面，当输出不在0到1之间的时候，最后一层可以用线性的。但是其他层还是要用非线性的。&lt;/p&gt;
+&lt;h4 id=&quot;导数值检查&quot;&gt;导数值检查&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;往左和往右挪，计算&lt;script type=&quot;math/tex&quot;&gt;\frac{y}{x}&lt;/script&gt;。愣算就行。&lt;/p&gt;
 
-&lt;h4 id=&quot;af的导数&quot;&gt;AF的导数&lt;/h4&gt;
+&lt;p&gt;具体：将所有的参数竖着排成一个巨长的向量，包括正向的和反向的。然后愣算其中某个参数的导数，看两个向量之间的二范数比各自的二范数的大小。比值是拿来看相对大小的，防止它们本来就很小或者大。&lt;/p&gt;
 
-&lt;p&gt;求就是了，又不是不会。按照链式反应（chain rule啦）来求就行了。按照之前的结论其实&lt;script type=&quot;math/tex&quot;&gt;\frac{dL}{da^{[2]}}&lt;/script&gt;不用求，有&lt;script type=&quot;math/tex&quot;&gt;\frac{dL}{dz^{[2]}} = a^{[2]} - y&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;检查只能用在debug上。如果出错了，看具体的值哪个不正常。如果有的话，记得加上正则化项。检查不能用在dropout上，要用的话先关掉。&lt;/p&gt;
 
-&lt;p&gt;完全向量化之后出现的&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{m}&lt;/script&gt;以及求和是因为之前对某一个训练样本来说，只能计算损失函数；但是对于整个训练样本集来说，我们计算的是代价函数，而&lt;script type=&quot;math/tex&quot;&gt;J = \frac{1}{m}\sum L&lt;/script&gt;，所以多了点东西。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;随机初值&quot;&gt;随机初值&lt;/h4&gt;
-
-&lt;p&gt;参数全为0的话，所有的节点都是一样（对称）的，就没用了。所以要随机取值。一般会将&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;取为很小的高斯随机数，但是&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;没所谓。很小的高斯随机数是为了取到比较大的导数值，防止落到导数很靠近0的地方。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/2-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sat, 17 Mar 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/03/17/DL-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/17/DL-2/</guid>
+        <pubDate>Wed, 14 Mar 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/03/14/DL-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/03/14/DL-2/</guid>
         
         <category>learning</category>
         
@@ -182,7 +94,9 @@ Z^{[i]} &amp;=
     
       <item>
         <title>Deep Learning笔记1</title>
-        <description>&lt;h4 id=&quot;binary-classification&quot;&gt;Binary Classification&lt;/h4&gt;
+        <description>&lt;h3 id=&quot;逻辑回归&quot;&gt;逻辑回归&lt;/h3&gt;
+
+&lt;h4 id=&quot;binary-classification&quot;&gt;Binary Classification&lt;/h4&gt;
 
 &lt;p&gt;Binary Classification指的是输入一堆东西，最后给出一个只有两个结果（0或者1）的输出的分类过程。一个典型而符合惯例的例子是判断某张图片上有没有猫，也就是将图片的红绿蓝像素值矩阵作为输入，是猫(1)以及不是猫(0)作为输出。&lt;/p&gt;
 
@@ -204,7 +118,7 @@ Z^{[i]} &amp;=
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/1-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;逻辑回归&quot;&gt;逻辑回归&lt;/h4&gt;
+&lt;h4 id=&quot;逻辑回归-1&quot;&gt;逻辑回归&lt;/h4&gt;
 
 &lt;p&gt;实际上逻辑回归是在二项分布之下的一个概念，是实现二项分布的一个方法。我们需要的是在上面的定义下，构造一个盒子，接收输入&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;, 并输出在输入&lt;script type=&quot;math/tex&quot;&gt;\mathbf{x}&lt;/script&gt;的情况下二项分布结果为1的概率&lt;script type=&quot;math/tex&quot;&gt;\hat{y} = P(y=1 \lvert \boldsymbol{x})&lt;/script&gt;。然后我们有相应的参数&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{w} \in \mathbb{R}^{n_x}, b \in \mathbb{R}&lt;/script&gt;。&lt;/p&gt;
 
@@ -327,6 +241,200 @@ L(\hat{y}, y) &amp;= -[y \ln{\hat{y}} + (1-y) \ln{(1-\hat{y})}] \\
 
 &lt;p&gt;当&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt;是一个列向量的时候，比如要算&lt;code class=&quot;highlighter-rouge&quot;&gt;z[i] = w.T * x[i] + b&lt;/code&gt;的时候，可以这么做：&lt;code class=&quot;highlighter-rouge&quot;&gt;np.dot(w,x)+b&lt;/code&gt;。高级一点的话直接和矩阵相乘：&lt;code class=&quot;highlighter-rouge&quot;&gt;np.dot(w,X)+b&lt;/code&gt;。
 &lt;code class=&quot;highlighter-rouge&quot;&gt;dz[i] = a[i] - y[i]&lt;/code&gt;可以转为&lt;code class=&quot;highlighter-rouge&quot;&gt;dZ = A - Y&lt;/code&gt;；&lt;code class=&quot;highlighter-rouge&quot;&gt;dw1 += x1[i]dz[i]&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;dW = 1/m * X*dZ.T&lt;/code&gt;；&lt;code class=&quot;highlighter-rouge&quot;&gt;db += dz[i]&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;1/m * np.sum(dZ)&lt;/code&gt;。还要注意的一点是在&lt;code class=&quot;highlighter-rouge&quot;&gt;reshape&lt;/code&gt;的时候最好把行列都写全。&lt;/p&gt;
+
+&lt;h3 id=&quot;浅神经网络&quot;&gt;浅神经网络&lt;/h3&gt;
+
+&lt;p&gt;[1],[2]代表神经网络的层数；(i)代表某一个训练样本（都是上标）。下标不带任何括号，表示某一层中的第几个节点。当有两层的时候，刚开始的输入是&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;，但是之后的输入会变成了&lt;script type=&quot;math/tex&quot;&gt;a^{[i]}&lt;/script&gt;这样。&lt;/p&gt;
+
+&lt;h4 id=&quot;神经网络的命名&quot;&gt;神经网络的命名&lt;/h4&gt;
+
+&lt;p&gt;输入层、隐层、输出层。&lt;script type=&quot;math/tex&quot;&gt;a^{[0]} = x&lt;/script&gt;。在数层数的时候，不算输入层。每一层都有一套&lt;script type=&quot;math/tex&quot;&gt;w, b&lt;/script&gt;配套。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;每一个节点都有两步：线性回归以及丢进sigmod函数里面。所以都有两条公式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+  z_1^{[1]} &amp;= w_1^{[1]T}x + b_1^{[1]}, a_1^{[1]} = \sigma(z_1^{[1]}) \\
+  z_2^{[1]} &amp;= w_2^{[1]T}x + b_2^{[1]}, a_2^{[1]} = \sigma(z_2^{[1]}) \\
+  z_3^{[1]} &amp;= w_3^{[1]T}x + b_3^{[1]}, a_3^{[1]} = \sigma(z_3^{[1]}) \\
+  z_4^{[1]} &amp;= w_4^{[1]T}x + b_4^{[1]}, a_4^{[1]} = \sigma(z_4^{[1]}) \\
+  \vdots
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;能看到这些式子排得很整齐，那何不矩阵化了呢？&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z^{[1]} =
+  \begin{bmatrix}
+    z_1^{[1]} \\ z_2^{[1]} \\ z_3^{[1]} \\ z_4^{[1]}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \cdots w_1^{[1]T} \cdots \\ \cdots w_2^{[1]T} \cdots \\ \cdots w_3^{[1]T} \cdots \\ \cdots w_4^{[1]T} \cdots
+  \end{bmatrix}
+  \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    b_1^{[1]} \\ b_2^{[1]} \\ b_3^{[1]} \\ b_4^{[1]}
+  \end{bmatrix}
+  = W^{[1]} x + b^{[1]}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;n^{[i]}&lt;/script&gt;（本层节点数）行&lt;script type=&quot;math/tex&quot;&gt;n^{[i-1]}&lt;/script&gt;（上层节点数）列的矩阵，也就是负责将上层节点的结果转成本层节点的结果。&lt;script type=&quot;math/tex&quot;&gt;b^{[i]}&lt;/script&gt;自然是&lt;script type=&quot;math/tex&quot;&gt;n^{[i]}&lt;/script&gt;行1列的向量了。最后再将结果各自丢进sigmod函数里面，不说了。&lt;/p&gt;
+
+&lt;p&gt;如果写出个通式的话也行：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+   z^{[i]} &amp;=  W^{[i]} a^{[i-1]} + b^{[i]} \\
+   a^{[i]} &amp;= \sigma(z^{[i]})
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;不过注意&lt;script type=&quot;math/tex&quot;&gt;a^{[0]}&lt;/script&gt;就是输入值，没有放入sigmod函数里面。同时矩阵&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个“行矩阵”，每一行是每一个节点的系数的转置&lt;script type=&quot;math/tex&quot;&gt;[\cdots w_i^{[1]T} \cdots]&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;对于整个训练样本&quot;&gt;对于整个训练样本&lt;/h4&gt;
+
+&lt;p&gt;当然可以继续矩阵化啦。把整个训练样本的列向量&lt;script type=&quot;math/tex&quot;&gt;x,b&lt;/script&gt;排成一行（这也是惟一的排法了），结果&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;也这么做，然后大写，就变成了：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+Z^{[1]} &amp;=
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    z^{[1](1)} &amp; z^{[1](2)} &amp; \cdots &amp; z^{[1](m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \cdots w_1^{[1]T} \cdots \\ \cdots w_2^{[1]T} \cdots \\ \vdots \\ \cdots w_{[i]}^{[1]T} \cdots
+  \end{bmatrix}
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    x^{(1)} &amp; x^{(2)} &amp; \cdots &amp; x^{(m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    \vdots \\ b^{[1]} \\ \vdots \\
+  \end{bmatrix} \\
+  &amp;= W^{[1]} X + b^{[1]}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;或者对于某一层来说&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+Z^{[i]} &amp;=
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    z^{[i](1)} &amp; z^{[i](2)} &amp; \cdots &amp; z^{[i](m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \cdots w_1^{[i]T} \cdots \\ \cdots w_2^{[i]T} \cdots \\ \vdots \\ \cdots w_{[i]}^{[i]T} \cdots
+  \end{bmatrix}
+  \begin{bmatrix}
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+    a^{[i](1)} &amp; a^{[i](2)} &amp; \cdots &amp; a^{[i](m)} \\
+    \vdots &amp; \vdots &amp;  &amp; \vdots \\
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    \vdots \\ b^{[i]} \\ \vdots \\
+  \end{bmatrix} \\
+  &amp;= W^{[i]} X + b^{[i]}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;总结一下，&lt;script type=&quot;math/tex&quot;&gt;Z^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;n^{[i]}&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;W^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;n^{[i]}&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;n^{[i-1]}&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;A^{[i]}&lt;/script&gt;是一个&lt;script type=&quot;math/tex&quot;&gt;n^{[i]}&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵，&lt;script type=&quot;math/tex&quot;&gt;b^{[i]}&lt;/script&gt;本来应该也是一个&lt;script type=&quot;math/tex&quot;&gt;[i]&lt;/script&gt;行&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;列的矩阵（每列都是一样），但是在python里面，同行数的向量和矩阵相加时，向量会被自动展成相应的矩阵，所以也就不用写成大写的&lt;script type=&quot;math/tex&quot;&gt;B^{[i]}&lt;/script&gt;了。可以留意的是向量/矩阵的偏导数和它自己有相同的形状。&lt;/p&gt;
+
+&lt;p&gt;通式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+   Z^{[i]} &amp;=  W^{[i]} A^{[i-1]} + b^{[i]} \\
+   A^{[i]} &amp;= \sigma(Z^{[i]})
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;不同的activation-function&quot;&gt;不同的activation function&lt;/h4&gt;
+
+&lt;p&gt;sigmod函数的问题是它恒为正，所以算出来的结果不会关于0对称。所以隐藏层一般用&lt;script type=&quot;math/tex&quot;&gt;\tanh(z)&lt;/script&gt;而不是sigmod，但是输出层还是用回sigmod。&lt;/p&gt;
+
+&lt;p&gt;但是&lt;script type=&quot;math/tex&quot;&gt;\tanh(z)&lt;/script&gt;也还是有问题：当&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;很大的时候，斜率很小，所以会降低学习速率；所以也可以用RelU函数（折线），或者将RelU小于0的折线再改小一点。即使斜率为0实际上也还是可以的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;为什么activation-function不是线性的&quot;&gt;为什么activation function不是线性的？&lt;/h4&gt;
+
+&lt;p&gt;也就是说为什么要给它套上一个奇怪的函数？&lt;/p&gt;
+
+&lt;p&gt;线性的AF意味着从头到脚都是线性的，也就没有意义（人又不是线性思考的233）。例外是在回归里面，当输出不在0到1之间的时候，最后一层可以用线性的。但是其他层还是要用非线性的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;af的导数&quot;&gt;AF的导数&lt;/h4&gt;
+
+&lt;p&gt;求就是了，又不是不会。按照链式反应（chain rule啦）来求就行了。按照之前的结论其实&lt;script type=&quot;math/tex&quot;&gt;\frac{dL}{da^{[2]}}&lt;/script&gt;不用求，有&lt;script type=&quot;math/tex&quot;&gt;\frac{dL}{dz^{[2]}} = a^{[2]} - y&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;完全向量化之后出现的&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{m}&lt;/script&gt;以及求和是因为之前对某一个训练样本来说，只能计算损失函数；但是对于整个训练样本集来说，我们计算的是代价函数，而&lt;script type=&quot;math/tex&quot;&gt;J = \frac{1}{m}\sum L&lt;/script&gt;，所以多了点东西。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;随机初值&quot;&gt;随机初值&lt;/h4&gt;
+
+&lt;p&gt;参数全为0的话，所有的节点都是一样（对称）的，就没用了。所以要随机取值。一般会将&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;取为很小的高斯随机数，但是&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;没所谓。很小的高斯随机数是为了取到比较大的导数值，防止落到导数很靠近0的地方。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/2-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;深神经网络&quot;&gt;深神经网络&lt;/h3&gt;
+
+&lt;p&gt;多层的神经网络和2层的其实是一样的，只不过多了一堆循环而已。&lt;/p&gt;
+
+&lt;h4 id=&quot;为什么要用深的神经网络&quot;&gt;为什么要用深的神经网络？&lt;/h4&gt;
+
+&lt;p&gt;层数从小到大：简单元素 -&amp;gt; 复杂元素。所以我们需要比较多层，但是每层里面的节点不一定多。&lt;/p&gt;
+
+&lt;p&gt;比单层的好用&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/3-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;正向传递&quot;&gt;正向传递&lt;/h4&gt;
+
+&lt;p&gt;计算不同层数的时候可以用循环。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/3-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;反向传递&quot;&gt;反向传递&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/3-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;具体做法&quot;&gt;具体做法&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-1/3-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;因为反向传递的时候有一个&lt;script type=&quot;math/tex&quot;&gt;g'^{[l]}(z^{[l]})&lt;/script&gt;，所以在正向传递的时候要将&lt;script type=&quot;math/tex&quot;&gt;z^{[l]}&lt;/script&gt;记录下来。&lt;/p&gt;
+
+&lt;h4 id=&quot;参数和超参数&quot;&gt;参数和超参数&lt;/h4&gt;
+
+&lt;p&gt;超参数：人为指定的参数&lt;/p&gt;
+
+&lt;p&gt;看超参数和&lt;script type=&quot;math/tex&quot;&gt;J&lt;/script&gt;的关系（选多少的时候最小），是一个经验方法。最佳的超参数集可能会随着时间变化（电脑更新了）&lt;/p&gt;
+
+&lt;p&gt;这次的笔记本还演示了如何载入另外一个笔记本的函数。&lt;/p&gt;
 </description>
         <pubDate>Wed, 14 Mar 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/03/14/DL-1/</link>

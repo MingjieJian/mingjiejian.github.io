@@ -154,33 +154,39 @@
             ">
     			
 <div class="post-preview">
-    <a href="/2018/03/17/DL-2/">
+    <a href="/2018/03/14/DL-2/">
         <h2 class="post-title">
             Deep Learning笔记2
         </h2>
         
         <h3 class="post-subtitle">
-            Shallow Neural Network 神经网络
+            调参
         </h3>
         
         <div class="post-content-preview">
-            [1],[2]代表神经网络的层数；(i)代表某一个训练样本（都是上标）。下标不带任何括号，表示某一层中的第几个节点。当有两层的时候，刚开始的输入是，但是之后的输入会变成了这样。
+            数据集
 
-神经网络的命名
+以前是分成两个的，训练和测试。现在分成3个，训练、发展和测试集。用发展去测试训练，最后再用测试去测试表现；甚至没有测试集都行。这里的区别是发展集是用来overfitting的，测试集不是。
 
-输入层、隐层、输出层。。在数层数的时候，不算输入层。每一层都有一套配套。
-
-
-
-每一个节点都有两步：线性回归以及丢进sigmod函数里面。所以都有两条公式：
+要注意不同数据集的数据要同质，质量相同
 
 
 
-能看到这些式子排得很整齐，那何不...
+bias和variance
+
+训练集的错误率比与预期的高：高bias；发展集的错误率比训练集的高：高variance
+
+
+
+
+
+正则化
+
+在代价函...
         </div>
     </a>
     <p class="post-meta">
-        Posted by mingjie on March 17, 2018
+        Posted by mingjie on March 14, 2018
     </p>
 </div>
 <hr>
@@ -192,17 +198,17 @@
         </h2>
         
         <h3 class="post-subtitle">
-            Logistic Regression 逻辑回归
+            逻辑回归与神经网络
         </h3>
         
         <div class="post-content-preview">
-            Binary Classification
+            逻辑回归
+
+Binary Classification
 
 Binary Classification指的是输入一堆东西，最后给出一个只有两个结果（0或者1）的输出的分类过程。一个典型而符合惯例的例子是判断某张图片上有没有猫，也就是将图片的红绿蓝像素值矩阵作为输入，是猫(1)以及不是猫(0)作为输出。
 
-在这里我们不考虑这么多细节，直接将红绿蓝的像素排成一列，作为输入。的大小就是总的像素数或者。
-
-如果按...
+在这里我们不考虑这么多细节，直接将红绿蓝的像素排成一列，作为输入。的大小就是总的像素数或者...
         </div>
     </a>
     <p class="post-meta">
