@@ -84,7 +84,7 @@ $$ \begin{align} P_\mathrm{g}(\tau_0) &= ( \frac{3}{2} g \int_0^{\tau_0} \frac{P
 
  代进$$ (9.3) $$里面可以得到：
 
- $$ I_\nu(0) = a + b \cos{theta} $$
+ $$ I_\nu(0) = a + b \cos{\theta} $$
 
  也就是说在$$ \theta $$角观测到的辐射强度就是在光深$$ \tau_\nu $$处的源函数的值，所以只要观测辐射强度我们就知道了源函数；这叫做Eddington-Barbier关系。当然更复杂一点的源函数也可以通过数值模拟来找到。
 
@@ -154,13 +154,13 @@ $$ \frac{N_{1j}}{N_{0j}} = \frac{\Phi_j(T)}{P_\mathrm{e}} $$
 
 $$ \frac{\Phi_j(T)}{P_\mathrm{e}} = \frac{N_{ej}}{N_{0j}} = \frac{N_{ej}}{N_{j} - N_{ej}} $$
 
-$$ \Rightarrow N_{\mathrm{e}j} = N_j \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}} $$
+$$ \Rightarrow N_{\mathrm{e}j} = N_j \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}} \tag{9.6}$$
 
 由理想气体公式，压强为：
 
 $$ P_\mathrm{\mathrm{e}} = \sum_j N_{\mathrm{e}j}kT $$
 
-$$ P_\mathrm{g} = \sum_j (N_{\mathrm{e}j} + N_{j})kT $$
+$$ P_\mathrm{g} = \sum_j (N_{\mathrm{e}j} + N_{j})kT \tag{9.7}$$
 
 所以压强之比为：
 
@@ -168,13 +168,13 @@ $$ \begin{align} \frac{P_\mathrm{e}}{P_\mathrm{g}} &= \frac{\sum_j N_{\mathrm{e}
 
 上下同除以单位体积内氢原子数量$$ N_\mathrm{H} $$，令$$ A_j = N_\mathrm{j}/N_\mathrm{H} $$为相对丰度，有：
 
-$$ P_\mathrm{e} = P_\mathrm{g} \frac{\sum_j A_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j A_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} $$
+$$ P_\mathrm{e} = P_\mathrm{g} \frac{\sum_j A_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j A_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} \tag{9.8}$$
 
 这是一个超越方程，同样也需要迭代对于每一个光深的值去解。
 
 ![](/img/in-post/post-OASP9/9.7.png)
 
-如上图，我们能看出高温时$$ P_\mathrm{g} \approx 2P_\mathrm{e} $$（因为氢基本上电离了），低温时$$ P_\mathrm{e} \approx P_\mathrm{g}^{1/2} $$。低温这个结论也可以从公式中推出来。先认为恒星大气中只由一种元素的原子组成，则$$ (9.8) $$变为：
+如上图，我们能看出高温时$$ P_\mathrm{g} \approx 2P_\mathrm{e} $$，或者$$\log{P_\mathrm{g}} \approx \log{P_\mathrm{e}} + 0.3$$（因为氢基本上电离了），低温时$$ P_\mathrm{e} \approx P_\mathrm{g}^{1/2} $$，或者$$ \log{P_\mathrm{e}} \approx 0.5 \log{P_\mathrm{g}} $$。低温这个结论也可以从公式中推出来。先认为恒星大气中只由一种元素的原子组成，则$$ (9.8) $$变为：
 
 $$ P_\mathrm{e} = P_\mathrm{g} \frac{\Phi(T)/P_\mathrm{e}}{1 + 2\Phi(T)/P_\mathrm{e}}$$
 

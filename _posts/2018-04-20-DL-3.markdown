@@ -1,0 +1,31 @@
+---
+layout:     post
+title:      "Deep Learning笔记3"
+subtitle:   "机器学习策略"
+date:       2018-04-20
+author:     "mingjie"
+header-img: "img/post-bg-DL-1.jpg"
+tags:
+    - learning
+
+---
+
+这么多改进的方式，究竟要用哪个？
+
+## 正交化
+
+我们希望某个/些参数只影响某些结果。我们有训练样本、发展样本、测试样本、真实数据上的结果。最好就是存在某些参数可以分别改变网络在它们上的表现。
+
+### Single Number evaluation metric
+
+找一个可以方便比较的数字。
+
+精确度和完整性：Harmonic average.
+
+### 复杂目标
+
+optimizing：数字越小/大越好；satisficing：够小就行了
+
+一般选一个作为optimizing，其他作为optimizing。
+
+而且实际上的模型好坏还包含别的东西，比如会不会推荐小黄片什么的。或者换一个模型或者评判的函数。

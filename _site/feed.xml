@@ -5,9 +5,40 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Apr 2018 19:25:11 +0900</pubDate>
-    <lastBuildDate>Mon, 02 Apr 2018 19:25:11 +0900</lastBuildDate>
+    <pubDate>Mon, 23 Apr 2018 09:52:52 +0900</pubDate>
+    <lastBuildDate>Mon, 23 Apr 2018 09:52:52 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Deep Learning笔记3</title>
+        <description>&lt;p&gt;这么多改进的方式，究竟要用哪个？&lt;/p&gt;
+
+&lt;h2 id=&quot;正交化&quot;&gt;正交化&lt;/h2&gt;
+
+&lt;p&gt;我们希望某个/些参数只影响某些结果。我们有训练样本、发展样本、测试样本、真实数据上的结果。最好就是存在某些参数可以分别改变网络在它们上的表现。&lt;/p&gt;
+
+&lt;h3 id=&quot;single-number-evaluation-metric&quot;&gt;Single Number evaluation metric&lt;/h3&gt;
+
+&lt;p&gt;找一个可以方便比较的数字。&lt;/p&gt;
+
+&lt;p&gt;精确度和完整性：Harmonic average.&lt;/p&gt;
+
+&lt;h3 id=&quot;复杂目标&quot;&gt;复杂目标&lt;/h3&gt;
+
+&lt;p&gt;optimizing：数字越小/大越好；satisficing：够小就行了&lt;/p&gt;
+
+&lt;p&gt;一般选一个作为optimizing，其他作为optimizing。&lt;/p&gt;
+
+&lt;p&gt;而且实际上的模型好坏还包含别的东西，比如会不会推荐小黄片什么的。或者换一个模型或者评判的函数。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Apr 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/04/20/DL-3/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/04/20/DL-3/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>Deep Learning笔记2</title>
@@ -82,6 +113,97 @@
 &lt;p&gt;检查只能用在debug上。如果出错了，看具体的值哪个不正常。如果有的话，记得加上正则化项。检查不能用在dropout上，要用的话先关掉。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-DL-2/1-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;加速&quot;&gt;加速&lt;/h3&gt;
+
+&lt;h4 id=&quot;切成小块&quot;&gt;切成小块&lt;/h4&gt;
+
+&lt;p&gt;每次只处理1000个训练样本，然后循环。基本上都得用。计算1000个之后就马上更新参数。当然也可以见到1个，不过随机性就很强；这也被叫做随机梯度下降。随机梯度下降相当于没有向量化，所以很慢，而且很多噪音。&lt;/p&gt;
+
+&lt;p&gt;但是怎么选小块的大小？当整体训练样本小的时候，当然应该整个一起搞；如果大的话，可以用2的某次方来做（可能快一点），或者和CPU/GPU匹配的大小。试呗。&lt;/p&gt;
+
+&lt;h4 id=&quot;不用梯度下降&quot;&gt;不用梯度下降&lt;/h4&gt;
+
+&lt;h5 id=&quot;指数平均&quot;&gt;指数平均&lt;/h5&gt;
+&lt;p&gt;其实就是滑动平均的一种，只不过前后的数据不平权。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;v_t = \beta v_{t-1} + (1-\beta)\theta_t&lt;/script&gt;
+
+&lt;p&gt;它会将之前的数据累积起来，但是不断乘上&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;。大概相当于前&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{1-\beta}&lt;/script&gt;天的温度平均：&lt;script type=&quot;math/tex&quot;&gt;v_t = \sum_{i=0}^n 0.1 \times 0.9^i \theta_i&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h5 id=&quot;bias-correction&quot;&gt;Bias Correction&lt;/h5&gt;
+
+&lt;p&gt;更准确的计算。因为上式从0开始，所以一开始的时候肯定是不对的。当然一般数据量大的话可以不管，反正可以等。或者除一个&lt;script type=&quot;math/tex&quot;&gt;(1-\beta^t)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h5 id=&quot;gradient-descent-with-momentum&quot;&gt;Gradient descent with momentum&lt;/h5&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+ v_{dW} &amp;= \beta v_{dW} + (1-\beta) dW \\
+ v_{db} &amp;= \beta v_{db} + (1-\beta) db \\
+ W &amp;= W - \alpha v_{dW} \\
+ b &amp;= b - \alpha v_{db} \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;这样做的好处是它会在摆动的方向将摆动平均掉，在正确的方向保留导数值，所以可以加速收敛。一般&lt;script type=&quot;math/tex&quot;&gt;\beta = 0.9&lt;/script&gt;是个不错的选择。&lt;/p&gt;
+
+&lt;h5 id=&quot;rmsprop&quot;&gt;RMSprop&lt;/h5&gt;
+
+&lt;p&gt;另一种方式的加速。看图。&lt;/p&gt;
+
+&lt;h5 id=&quot;adam&quot;&gt;Adam&lt;/h5&gt;
+
+&lt;p&gt;合在一起。看图。&lt;/p&gt;
+
+&lt;h4 id=&quot;降低学习速率&quot;&gt;降低学习速率&lt;/h4&gt;
+
+&lt;p&gt;可以手动降低，乘上一个线性增大的分母，或者是e指数减小&lt;/p&gt;
+
+&lt;h3 id=&quot;避免局部极小&quot;&gt;避免局部极小&lt;/h3&gt;
+
+&lt;p&gt;很多导数为0的点实际上是鞍点，因为参数非常多。不过在那附近会转悠好久，比较慢。&lt;/p&gt;
+
+&lt;h2 id=&quot;调超参&quot;&gt;调超参&lt;/h2&gt;
+
+&lt;h3 id=&quot;要调的东西&quot;&gt;要调的东西&lt;/h3&gt;
+
+&lt;p&gt;学习速率&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;；动量项&lt;script type=&quot;math/tex&quot;&gt;\beta / (\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8})&lt;/script&gt;、多少节点、mini-batch大小；多少隐层、学习速率变化。&lt;/p&gt;
+
+&lt;p&gt;但是调超参的时候不要用网格，随即就好；因为超参数量太多了，而且不同的超参对模型影响不同，所以随机会给所有的超参更多选择。最初的参数空间可能比较大，都跑一次之后可以缩小参数空间再做一次。随机的时候，对于某些超参，也可以不用平均随机，而是用其他的概率分布，或者log scale，量级上平均就行。或者说在模型对超参变化更剧烈的时候放更多的点。&lt;/p&gt;
+
+&lt;h3 id=&quot;训练中&quot;&gt;训练中&lt;/h3&gt;
+
+&lt;p&gt;训练中可以不断调整超参什么的。或者同时训练很多个模型，有钱有资源的话。&lt;/p&gt;
+
+&lt;h3 id=&quot;让模型更稳健&quot;&gt;让模型更稳健&lt;/h3&gt;
+
+&lt;p&gt;逻辑回归的时候将输入归一化可以让代价函数更规则，那么在神经网络里面也可以这么做，对&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;归一化。可以将&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;的平均值和标准差倒过来，或者自己设定一组数，或者让网络自己学习去。&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;也可以不要了，因为归一化的时候带上了常数。&lt;/p&gt;
+
+&lt;p&gt;其他具体流程和普通的差不多。它防止了隐层的值的分布距离原点太远。它会带来一些噪声。&lt;/p&gt;
+
+&lt;p&gt;在测试集的时候，我们可以用指数平均的方法记录训练集的平均值和scatter，然后当成测试集的均值以及&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;多项选择题&quot;&gt;多项选择题&lt;/h2&gt;
+
+&lt;p&gt;Softmax回归。在最后一层隐层的地方将节点数和分类数相等，让每一个节点表示属于每一类的概率。sigmod函数会变成softmax函数，对这节点的值进行e指数，归一化。因为e指数会将值之间的差异扩大，所以可以进行分类。如果只有两类的话，softmax会退化回逻辑回归。&lt;/p&gt;
+
+&lt;p&gt;损失函数：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L(y, \hat{y}) = -\sum y_j \ln{\hat{y_j}}&lt;/script&gt;
+
+&lt;p&gt;只留下正确的那一项，然后最大化它的概率。&lt;/p&gt;
+
+&lt;p&gt;代价函数：还是损失函数的平均。&lt;/p&gt;
+
+&lt;p&gt;反向传递：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;dz^{[l]} = \hat{y} - y&lt;/script&gt;
+
+&lt;p&gt;但是在用框架的时候，只要正向传递对了，反向传递交给框架就行。&lt;/p&gt;
+
+&lt;h2 id=&quot;机器学习框架&quot;&gt;机器学习框架&lt;/h2&gt;
+
+&lt;p&gt;易用、快速、开源（特别是长期开源）&lt;/p&gt;
 </description>
         <pubDate>Wed, 14 Mar 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/03/14/DL-2/</link>
@@ -560,7 +682,7 @@ Z^{[i]} &amp;=
 
 &lt;p&gt;代进&lt;script type=&quot;math/tex&quot;&gt;(9.3)&lt;/script&gt;里面可以得到：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(0) = a + b \cos{theta}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(0) = a + b \cos{\theta}&lt;/script&gt;
 
 &lt;p&gt;也就是说在&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;角观测到的辐射强度就是在光深&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;处的源函数的值，所以只要观测辐射强度我们就知道了源函数；这叫做Eddington-Barbier关系。当然更复杂一点的源函数也可以通过数值模拟来找到。&lt;/p&gt;
 
@@ -631,13 +753,13 @@ Z^{[i]} &amp;=
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\Phi_j(T)}{P_\mathrm{e}} = \frac{N_{ej}}{N_{0j}} = \frac{N_{ej}}{N_{j} - N_{ej}}&lt;/script&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow N_{\mathrm{e}j} = N_j \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow N_{\mathrm{e}j} = N_j \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}} \tag{9.6}&lt;/script&gt;
 
 &lt;p&gt;由理想气体公式，压强为：&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{\mathrm{e}} = \sum_j N_{\mathrm{e}j}kT&lt;/script&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} = \sum_j (N_{\mathrm{e}j} + N_{j})kT&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{g} = \sum_j (N_{\mathrm{e}j} + N_{j})kT \tag{9.7}&lt;/script&gt;
 
 &lt;p&gt;所以压强之比为：&lt;/p&gt;
 
@@ -646,13 +768,13 @@ Z^{[i]} &amp;=
 
 &lt;p&gt;上下同除以单位体积内氢原子数量&lt;script type=&quot;math/tex&quot;&gt;N_\mathrm{H}&lt;/script&gt;，令&lt;script type=&quot;math/tex&quot;&gt;A_j = N_\mathrm{j}/N_\mathrm{H}&lt;/script&gt;为相对丰度，有：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} = P_\mathrm{g} \frac{\sum_j A_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j A_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} = P_\mathrm{g} \frac{\sum_j A_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j A_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} \tag{9.8}&lt;/script&gt;
 
 &lt;p&gt;这是一个超越方程，同样也需要迭代对于每一个光深的值去解。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP9/9.7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;如上图，我们能看出高温时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g} \approx 2P_\mathrm{e}&lt;/script&gt;（因为氢基本上电离了），低温时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e} \approx P_\mathrm{g}^{1/2}&lt;/script&gt;。低温这个结论也可以从公式中推出来。先认为恒星大气中只由一种元素的原子组成，则&lt;script type=&quot;math/tex&quot;&gt;(9.8)&lt;/script&gt;变为：&lt;/p&gt;
+&lt;p&gt;如上图，我们能看出高温时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g} \approx 2P_\mathrm{e}&lt;/script&gt;，或者&lt;script type=&quot;math/tex&quot;&gt;\log{P_\mathrm{g}} \approx \log{P_\mathrm{e}} + 0.3&lt;/script&gt;（因为氢基本上电离了），低温时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e} \approx P_\mathrm{g}^{1/2}&lt;/script&gt;，或者&lt;script type=&quot;math/tex&quot;&gt;\log{P_\mathrm{e}} \approx 0.5 \log{P_\mathrm{g}}&lt;/script&gt;。低温这个结论也可以从公式中推出来。先认为恒星大气中只由一种元素的原子组成，则&lt;script type=&quot;math/tex&quot;&gt;(9.8)&lt;/script&gt;变为：&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;P_\mathrm{e} = P_\mathrm{g} \frac{\Phi(T)/P_\mathrm{e}}{1 + 2\Phi(T)/P_\mathrm{e}}&lt;/script&gt;
 
@@ -1660,67 +1782,6 @@ I(\tau) = \begin{cases} I^\mathrm{out}(\tau) &amp; 0 \le \theta \le \pi/2 \\ I^\
         <pubDate>Wed, 27 Dec 2017 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2017/12/27/OASP7/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/12/27/OASP7/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 6</title>
-        <description>&lt;p&gt;无聊的一章。请自行谷歌黑体辐射。&lt;/p&gt;
-
-&lt;h3 id=&quot;可公开的信息&quot;&gt;可公开的信息&lt;/h3&gt;
-
-&lt;p&gt;韦恩定律（高频）：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = \nu^3f(\nu/T) \tag{6.1}&lt;/script&gt;
-
-&lt;p&gt;瑞利金斯近似（低频/长波）：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = \frac{2kT\nu^2}{c^2} = \frac{2kT}{\lambda^2} \tag{6.6}&lt;/script&gt;
-
-&lt;h3 id=&quot;推导&quot;&gt;“推导”&lt;/h3&gt;
-
-&lt;p&gt;前提：只有两个能级 + 处于热动平衡&lt;/p&gt;
-
-&lt;p&gt;第一章的原子激发与电离里面有这样的一个公式：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_n}{N_m} = \frac{g_n}{g_m} e^{-\frac{h\nu}{kT}}&lt;/script&gt;
-
-&lt;p&gt;从第五章最后的两个公式得出细致平衡原理：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;N_u A_{ul} + N_u B_{ul} I_\nu = N_l B_{lu} I_\nu&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = \frac{A_{ul}}{B_{lu}(N_l/N_u) - B_{ul}}&lt;/script&gt;
-
-&lt;p&gt;合在一起就有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = \frac{A_{ul}}{(g_l/g_u)B_{lu}e^{-\frac{h\nu}{kT}} - B_{ul}}&lt;/script&gt;
-
-&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;指数展开&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu \approx \frac{A_{ul}}{(g_l/g_u)B_{lu} + (g_l/g_u)B_{lu}\frac{h\nu}{kT} - B_{ul}}&lt;/script&gt;
-
-&lt;p&gt;令它等于瑞利金斯近似，得&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;B_{ul} = B_{lu}g_l/g_u, A_{ul} = \frac{2h\nu^3}{c^2}B_{ul}&lt;/script&gt;
-
-&lt;p&gt;所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = B_\nu = \frac{2h\nu^3}{c^2} \frac{1}{e^{-\frac{h\nu}{kT}}-1}&lt;/script&gt;
-
-&lt;p&gt;求导等于0可以得出韦恩位移定律，对频率积分可以得出斯特芬玻尔兹曼定律：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda T = b, F_\nu = \oint I_\nu \cos{\theta} d\omega = \sigma T^4&lt;/script&gt;
-
-&lt;p&gt;之前有一个疑惑就是物质的发射或者吸收是怎么从稀薄的谱线到一大块的黑体谱的，&lt;a href=&quot;https://physics.stackexchange.com/questions/105875/blackbody-radiation-and-spectral-lines&quot;&gt;这里&lt;/a&gt;有一个思路。&lt;/p&gt;
-
-&lt;p&gt;再联络。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 19 Dec 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017/12/19/OASP6/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/19/OASP6/</guid>
         
         <category>learning</category>
         
