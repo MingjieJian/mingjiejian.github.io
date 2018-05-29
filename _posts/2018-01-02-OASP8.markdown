@@ -191,7 +191,7 @@ $$ \Rightarrow \kappa(\mathrm{e}) = \alpha(\mathrm{e}) \frac{P_\mathrm{e}}{P_\ma
 
 $$ \kappa_\mathrm{total} = \{[\kappa(\mathrm{H_{bf}}) + \kappa(\mathrm{H_{ff}}) + \kappa(\mathrm{H_{bf}^-}) + \kappa(\mathrm{H_{2}^+})](1-10^{-\chi_\lambda \theta}) + \kappa(\mathrm{H_{ff}^-}) + ...\} \times \frac{1}{1 + \Phi(\mathrm{H})/P_\mathrm{e}}\\ + \kappa(\mathrm{metals}) + \kappa(\mathrm{He_{ff}^-}) + \kappa(\mathrm{e}) + ... $$
 
-大括号后面的因子是将单位从每个中性氢原子专成每个氢原子的（Saha公式）。要转成单位质量的话除一个平均质量就行：
+大括号后面的因子是将单位从每个中性氢原子转成每个氢原子的（Saha公式）。要转成单位质量的话除一个平均质量就行：
 
 $$ \kappa_\nu = \frac{\kappa_\mathrm{total}}{\sum A_j\mu_j} $$
 

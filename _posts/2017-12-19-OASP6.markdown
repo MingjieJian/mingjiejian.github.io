@@ -46,7 +46,7 @@ $$ I_\nu \approx \frac{A_{ul}}{(g_l/g_u)B_{lu} + (g_l/g_u)B_{lu}\frac{h\nu}{kT} 
 
 令它等于瑞利金斯近似，得
 
-$$ B_{ul} = B_{lu}g_l/g_u, A_{ul} = \frac{2h\nu^3}{c^2}B_{ul} $$
+$$ B_{ul} = B_{lu}g_l/g_u, A_{ul} = \frac{2h\nu^3}{c^2}B_{ul} \tag{6.8}$$
 
 所以
 

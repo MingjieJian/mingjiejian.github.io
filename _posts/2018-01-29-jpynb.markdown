@@ -19,6 +19,7 @@ tags:
 	1. [Numpy中的矩阵合并](#py-array_stack)
 	2. [自己写包](#py-package)
   3. Pandas
+  4. matplotlib
 
 <p id = "jpynb"></p>
 ### Jpynb备忘
@@ -120,3 +121,8 @@ pd.read_fwf('catalog/Kovtyukh/Kovtyukh04/table1.dat',
                            names=['Star', 'Teff', 'N', 'e_Teff', 'logg', 'Vt', '[Fe/H]', 'VMAG',
                                   'B-V', 'Rem'])
 ```
+#### Matplotlib
+
+##### 防止重叠或者出边界
+
+`plt.tight_layout()`

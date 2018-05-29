@@ -69,6 +69,9 @@ $$ P(\theta \vert x) = \frac{P(x \vert \theta)P(x)}{\int_\theta P(x \vert \theta
 ------------
 什么是MCMC？
 
+看这里：[David Kipping的视频](https://www.youtube.com/watch?v=vTUwEu53uzs)，[slide](https://github.com/davidkipping)
+Sagan workshop是个好东西。
+
 什么是Hierarchical Bayesian modeling？
 
 什么是Gaussian process？

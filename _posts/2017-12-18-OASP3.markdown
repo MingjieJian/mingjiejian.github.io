@@ -163,7 +163,7 @@ $$ \frac{d\beta}{dx} = \frac{1}{f_\mathrm{cam}} $$
 
 将角度转化成波长，有：
 
-$$ \begin{align} \frac{d\lambda}{dx} &= \frac{d\lambda}{d\beta} \frac{d\beta}{dx} \\ &= \frac{1}{f_\mathrm{cam}} \frac{1}{d\beta/d\lambda} \\ &= \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \end{align} $$
+$$ \begin{align} \frac{d\lambda}{dx} &= \frac{d\lambda}{d\beta} \frac{d\beta}{dx} \\ &= \frac{1}{f_\mathrm{cam}} \frac{1}{d\beta/d\lambda} \\ &= \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \tag{3.13} \end{align} $$
 
 这里没有小角度入射的假设，所以有一个$$ \cos{\beta} $$在。同样，高的色散程度对应着小的$$ \frac{d\lambda}{dx} $$。
 
@@ -183,13 +183,13 @@ $$ \Delta \beta = -\frac{\cos{\alpha}W'}{\cos{\beta}f_\mathrm{coll}} $$
 
 令$$ w $$为狭缝在CCD上的像宽，则
 
-$$ \begin{align} w &= \Delta \beta f_\mathrm{cam} \\ &= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \end{align}$$
+$$ \begin{align} w &= \Delta \beta f_\mathrm{cam} \\ &= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \tag{3.14} \end{align}$$
 
 $$ {w/W'} $$正比于$$ f_\mathrm{cam}/f_\mathrm{coll} $$。一般来说我们需要CCD的像素与狭缝在CCD上的像宽相匹配，最好是1个单位像宽对应CCD上的两个像素（奈奎斯特频率）。稍微的过采样可能会有好处，但是面临着更长时间曝光和深度减小的问题；而欠采样会使得信息丢失。
 
 我们也可以将像宽$$ w $$转换成单位长度上的波长改变量（分辨率）：
 
-$$ \begin{align} \Delta \lambda &= w \frac{d\lambda}{dx} \\ &= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \\ &= -\cos{\alpha} \frac{W'd}{f_\mathrm{coll}n} \end{align} $$
+$$ \begin{align} \Delta \lambda &= w \frac{d\lambda}{dx} \\ &= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \\ &= -\cos{\alpha} \frac{W'd}{f_\mathrm{coll}n} \tag{3.15}\end{align} $$
 
 可以看出分辨率与成像相机的焦距没有关系。提升分辨率可以通过改变上式的参数，但是一般会导致光损(减小$$ W' $$)或者需要更大/更好的光栅(增大$$ f_\mathrm{coll} $$或者$$ n $$)。
 
