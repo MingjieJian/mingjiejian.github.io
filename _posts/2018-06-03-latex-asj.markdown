@@ -1,0 +1,46 @@
+---
+layout:     post
+title:      "日本天文年会相关文件"
+subtitle:   "latex + 除了英语以外的语言都是邪教"
+date:       2018-06-03
+author:     "mingjie"
+header-img: "img/post-bg-OASP10.jpg"
+tags:
+    - learning
+
+---
+
+作为初级阶段的学生，经常要写各种初级文书。日本人的长处在于把一切都整得井井有条，给你一个excel表格里面不能填的就是不能填；不过当遇上latex这个对非英语语言不怎么友好的东西的时候就很容易抓瞎。这里记录一下日本天文年会相关文件的编译方法，以免（其实免不了）我忘掉。
+
+
+
+
+### 年会报名
+
+用英语来进行年会报名其实不难。只要跑到[这里](http://www.asj.or.jp/nenkai/abs/)下载package（“パッケージをダウンロードしてご利用ください”里面那个パッケージ的链接），然后按照里面的readme-en.txt的指示做就行了。tex文件的编码方式不用在意，反正里面也没有日语；编译方式好像也没什么要求。记得报名的时候是把**tex文件**而不是编译好的pdf发到abs2018b@nenkai.asj.or.jp。
+
+记得在报名前入会，报名之后记得交钱。
+
+### 早川幸男基金
+
+这个是最麻烦的，但是给钱。重点在于它不能用平常的命令去编译，而是必须用`platex`。如果使用TeXstudio的话需要将设置-命令里面的latex改成
+
+```sh
+  platex -src -interaction=nonstopmode %.tex
+```
+
+然后在`Build-Build & View`里面改成`DVI->PDF Chain`，这样应该就可以了。
+
+顺便原来的命令是
+
+```sh
+  latex  -synctex=1 -interaction=nonstopmode %.tex
+```
+
+### 若手  
+
+
+
+### Reference
+
+http://www.asj.or.jp/nenkai/abs/

@@ -214,7 +214,7 @@ $$ S(\tau) = J(\tau) = 3K(\tau) $$
 
 $$ K(\tau) = \frac{F_0}{4\pi}\tau + \frac{F_0}{6\pi} $$
 
-$$ \Rightarrow S(\tau) = \frac{3F_0}{4\pi}(\tau+\frac{2}{3}) $$
+$$ \Rightarrow S(\tau) = \frac{3F_0}{4\pi}(\tau+\frac{2}{3}) \tag{7.34}$$
 
 热动平衡之下我们还有黑体辐射定律；利用$$ (6.4) $$，我们可以得出$$ S(\tau) = J(\tau) = \sigma/\pi T^4(\tau), $$$$ F_0 = \sigma T_\mathrm{eff}^4 $$，所以
 

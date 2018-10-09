@@ -126,3 +126,47 @@ pd.read_fwf('catalog/Kovtyukh/Kovtyukh04/table1.dat',
 ##### 防止重叠或者出边界
 
 `plt.tight_layout()`
+
+##### 画密度散点图
+
+来自[这里](https://stackoverflow.com/questions/20105364/how-can-i-make-a-scatter-plot-colored-by-density-in-matplotlib?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import gaussian_kde
+
+# Generate fake data
+x = np.random.normal(size=1000)
+y = x * 3 + np.random.normal(size=1000)
+
+# Calculate the point density
+xy = np.vstack([x,y])
+z = gaussian_kde(xy)(xy)
+
+# Sort the points by density, so that the densest points are plotted last
+idx = z.argsort()
+x, y, z = x[idx], y[idx], z[idx]
+
+fig, ax = plt.subplots()
+cax = ax.scatter(x, y, c=z, s=5, edgecolor='')
+fig.colorbar(cax)
+plt.show()
+```
+
+##### subplot中加上总标题
+```py
+plt.suptitle('This is a somewhat long figure title', fontsize=16)
+```
+
+##### subplot中加上总xylabel
+```py
+plt.gcf().text(0.5, 0.04, 'LDR', fontsize=17)
+plt.subplots_adjust(left=0.07, right=0.93, top=0.85, bottom=0.15)
+```
+
+##### subplot中加上编号（子图相对位置统一）
+```py
+ax1 = plt.subplot(121)
+plt.text(0.86, 0.89, '(a)', fontsize=14, transform = ax1.transAxes)
+```

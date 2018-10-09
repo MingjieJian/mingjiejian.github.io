@@ -5,9 +5,411 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 29 May 2018 20:59:28 +0900</pubDate>
-    <lastBuildDate>Tue, 29 May 2018 20:59:28 +0900</lastBuildDate>
+    <pubDate>Tue, 09 Oct 2018 09:40:53 +0900</pubDate>
+    <lastBuildDate>Tue, 09 Oct 2018 09:40:53 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>OASP笔记 - 13</title>
+        <description>&lt;p&gt;Image credit: &lt;a href=&quot;http://www.jonathanwalker.net.au/spectral-painting.php&quot;&gt;Jonathan Walker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;我们在归一化光谱下面讨论。&lt;/p&gt;
+
+&lt;h3 id=&quot;谱线的转移方程&quot;&gt;谱线的转移方程&lt;/h3&gt;
+
+&lt;p&gt;主要参考第七章的东西。大气连续谱上有吸收和发射，那么谱线也有。&lt;/p&gt;
+
+&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;l_\nu&lt;/script&gt;为谱线吸收系数，&lt;script type=&quot;math/tex&quot;&gt;j^l_\nu&lt;/script&gt;为谱线发射系数；对于连续谱这两个量是&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu, j^c_\nu&lt;/script&gt;。那么对于式子&lt;script type=&quot;math/tex&quot;&gt;(7.1)&lt;/script&gt;，我们还有同样的形式：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} \frac{dI_\nu}{d\tau_\nu} &amp;= -I_\nu + \frac{j^l_\nu + j^c_\nu}{l_\nu + \kappa_\nu} \\  &amp;= -I_\nu + S_\nu \end{align} \tag{13.3} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;只是这时候光深&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;包含了谱线和连续谱的部分，变成了&lt;script type=&quot;math/tex&quot;&gt;\frac{j^l_\nu + j^c_\nu}{l_\nu + \kappa_\nu}&lt;/script&gt;。同样光深也要包含谱线的贡献：&lt;script type=&quot;math/tex&quot;&gt;d\tau_\nu = (l_\nu + \kappa_\nu) \rho dx&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;因为光深还是&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;，所以大气辐射转移的基本式子&lt;script type=&quot;math/tex&quot;&gt;(7.4), (7.9)&lt;/script&gt;以及它们有关恒星表面的推论&lt;script type=&quot;math/tex&quot;&gt;(7.10), (7.15)&lt;/script&gt;仍然成立，就不抄过来了。&lt;/p&gt;
+
+&lt;p&gt;如此这般，这般如此，我们的主要任务还是回到了如何求新的源函数上。&lt;/p&gt;
+
+&lt;h3 id=&quot;谱线的源函数&quot;&gt;谱线的源函数&lt;/h3&gt;
+
+&lt;p&gt;我们先定性的看谱线形成的深度。利用灰大气假设，我们有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(\tau_\nu) = \frac{3F_\nu(0)}{4\pi}(\tau_\nu+\frac{2}{3}) \tag{13.7}&lt;/script&gt;
+
+&lt;p&gt;形式和&lt;script type=&quot;math/tex&quot;&gt;(7.34)&lt;/script&gt;是完全一样的，只不过虽然连续谱和波长无关，谱线却和波长有关，所以&lt;script type=&quot;math/tex&quot;&gt;\nu&lt;/script&gt;的下标回来了。这个式子告诉我们光深越大的时候源函数越大（大气底层发射更多嘛），同时&lt;script type=&quot;math/tex&quot;&gt;F_\nu(0)&lt;/script&gt;也与光深成正比。这就说明了谱线中心所对应的光深比较小，形成场所在大气较上层；而谱线的边缘所对应的光深比较大，形成场所在大气较下层。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP13/01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当然这个只是定性的分析，实际定量的要这么做：&lt;/p&gt;
+
+&lt;p&gt;我们引入谱线的发射和吸收轮廓&lt;script type=&quot;math/tex&quot;&gt;\psi(\nu), \phi(\nu)&lt;/script&gt;，并且加在&lt;script type=&quot;math/tex&quot;&gt;(5.16), (5.17)&lt;/script&gt;上面：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;j^l_\nu \rho = N_u A_{ul} \psi(\nu) h\nu&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l^l_\nu \rho = N_l B_{lu} \phi(\nu) h\nu - N_u B_{ul} \phi(\nu) h\nu&lt;/script&gt;
+
+&lt;p&gt;所以源函数就是&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_l = \frac{j^l_\nu}{l^l_\nu} = \frac{N_u A_{ul} \psi(\nu) h\nu}{N_l B_{lu} \phi(\nu) h\nu - N_u B_{ul} \phi(\nu) h\nu}&lt;/script&gt;
+
+&lt;p&gt;把&lt;script type=&quot;math/tex&quot;&gt;(6.8)&lt;/script&gt;拿过来消掉所有的AABB：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_l = \frac{2h\nu^3}{c^2} \frac{1}{(N_l/N_u)(g_u/g_l)-1}\frac{\psi(\nu)}{\phi(\nu)} \tag{13.9}&lt;/script&gt;
+
+&lt;p&gt;这就是non-LTE下的源函数。&lt;/p&gt;
+
+&lt;p&gt;如果在LTE下并且有细致平衡原理的话，吸收发射轮廓相等并且有&lt;script type=&quot;math/tex&quot;&gt;(1.17)&lt;/script&gt;，则&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_l = \frac{2h\nu^3}{c^2} \frac{1}{e^{h\nu/kT}-1} = B_\nu(T) \tag{13.10}&lt;/script&gt;
+
+&lt;p&gt;就比较简单了。&lt;/p&gt;
+
+&lt;p&gt;LTE的东西当然比较好用，不过最近在华沙的一个Gaia Workshop里面Maria Bergermann把LTE批判了一番，说nLTE对于元素丰度确定来说很重要。&lt;/p&gt;
+
+&lt;h4 id=&quot;nlte下的源函数&quot;&gt;nLTE下的源函数&lt;/h4&gt;
+
+&lt;p&gt;假设我们已知发射/吸收轮廓（或者它们比较好确定？），&lt;script type=&quot;math/tex&quot;&gt;(3.19)&lt;/script&gt;剩下的东西就是&lt;script type=&quot;math/tex&quot;&gt;(N_l/N_u)&lt;/script&gt;了。在稳态下处于某个能级的原子数量是不变的，所以有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dN_j}{dt} = \sum^M_{i=1}(N_iP_{ij} - N_jP_{ji}) = 0 \tag{13.11}&lt;/script&gt;
+
+&lt;p&gt;也是守恒嘛。那这俩概率&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;怎么求呢？它们包含了辐射跃迁的概率以及碰撞跃迁的概率：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_{ij} = 4\pi A_{ij} + 4\pi B_{ij} \int_0^\infty J_\nu\phi(\nu)d\nu + C_{ij} \tag{13.12}&lt;/script&gt;
+
+&lt;p&gt;就是概率=自发的+受激的+碰撞的呗。当然&lt;script type=&quot;math/tex&quot;&gt;i \ne j&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;i \lt j&lt;/script&gt;时&lt;script type=&quot;math/tex&quot;&gt;A_{ij}&lt;/script&gt;就没了。&lt;/p&gt;
+
+&lt;p&gt;类似的对于&lt;script type=&quot;math/tex&quot;&gt;P_{ji}&lt;/script&gt;也有相似的形式，只不过&lt;script type=&quot;math/tex&quot;&gt;i \lt j&lt;/script&gt;变成了&lt;script type=&quot;math/tex&quot;&gt;i \gt j&lt;/script&gt;。有了这一堆&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;之后我们就可以解方程&lt;script type=&quot;math/tex&quot;&gt;(3.11)&lt;/script&gt;了。&lt;/p&gt;
+
+&lt;p&gt;所以我们可以从这里看出来想求&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;我们需要&lt;script type=&quot;math/tex&quot;&gt;(N_l/N_u)&lt;/script&gt;，从而需要一堆&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;，从而需要&lt;script type=&quot;math/tex&quot;&gt;J_\nu&lt;/script&gt;，从而需要&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;。循环了怎么办？迭代呗。&lt;/p&gt;
+
+&lt;h4 id=&quot;还有一些东西&quot;&gt;还有一些东西&lt;/h4&gt;
+
+&lt;p&gt;实际上什么时候是LTE，什么时候是nLTE呢？大致来说，恒星大气内部是LTE，外部是nLTE。这其实很好理解，因为内部密度大，基本上能把里面来的光全部吸收掉再发射，就LTE了；而大气外部密度下降，就会有光子逃逸，所以就会逐渐偏离LTE。同时光子逃逸说明外层原子发射的光子变少了，源函数减小，并且原子逐渐变为吸收源，为谱线中心的吸收作出了贡献。&lt;/p&gt;
+
+&lt;p&gt;这个结论同时也可以有一个有趣的推论：谱线中心是nLTE的，而线翼是LTE的。一个例子是太阳的Na D线。&lt;/p&gt;
+
+&lt;h3 id=&quot;lte下的谱线轮廓计算&quot;&gt;LTE下的谱线轮廓计算&lt;/h3&gt;
+
+&lt;p&gt;No more nLTE things. 究竟什么时候LTE是好的得通过实际比较才能知道，或者问Maria去。&lt;/p&gt;
+
+&lt;p&gt;实际计算用的是&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;，但是要加上谱线的吸收系数。&lt;script type=&quot;math/tex&quot;&gt;(13.15), (13.16)&lt;/script&gt;还没完全理解就不放上来了，毕竟这本书也没有涉及到具体详细的计算方法。&lt;/p&gt;
+
+&lt;p&gt;有一个有用的推论就是：当谱线比较弱的时候，谱线的轮廓和吸收系数的轮廓是一样的。&lt;/p&gt;
+
+&lt;p&gt;令&lt;script type=&quot;math/tex&quot;&gt;(13.7)&lt;/script&gt;中的&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu = (4\pi-2)/3 = \tau_1&lt;/script&gt;，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu(\tau_1) = F_\nu(0) \tag{13.8}&lt;/script&gt;
+
+&lt;p&gt;那么&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{F_c - F_\nu}{F_c} \approx \frac{S_\nu(\tau_c=\tau_1) - S_\nu(\tau_\nu=\tau_1)}{S_\nu(\tau_c=\tau_1)} \tag{13.17}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\tau_c,\tau_\nu&lt;/script&gt;指的是没有/有谱线下的光深，并且LTE下谱线以及连续谱的源函数都是黑体辐射函数。&lt;/p&gt;
+
+&lt;p&gt;现在的光深变为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\tau_\nu = \int_0^{\tau_0} \frac{l_\nu}{\kappa_0}dt_0 + \int_0^{\tau_0} \frac{\kappa_\nu}{\kappa_0}dt_0 = \tau_l + \tau_c&lt;/script&gt;
+
+&lt;p&gt;（不熟悉的话参见第九章&lt;script type=&quot;math/tex&quot;&gt;(9.13)&lt;/script&gt;后面的式子）&lt;/p&gt;
+
+&lt;p&gt;简化，假设&lt;script type=&quot;math/tex&quot;&gt;\frac{l_\nu}{\kappa_0}, \frac{\kappa_\nu}{\kappa_0}&lt;/script&gt;与光深无关，有&lt;script type=&quot;math/tex&quot;&gt;\tau_l = \frac{l_\nu}{\kappa_0}\tau_0, \tau_c = \frac{\kappa_\nu}{\kappa_0}\tau_0&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;S_\nu(\tau_\nu=\tau_1) = S_\nu(\tau_l+\tau_c=\tau_1) = S_\nu(\tau_c=\tau_1-\tau_l)&lt;/script&gt;以及&lt;script type=&quot;math/tex&quot;&gt;\tau_l \ll \tau_c&lt;/script&gt;，泰勒展开有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu(\tau_\nu=\tau_1) = S_\nu(\tau_c=\tau_1) + \frac{dS_\nu}{d\tau_c}(-\tau_l) + ...&lt;/script&gt;
+
+&lt;p&gt;所以&lt;script type=&quot;math/tex&quot;&gt;(13.17)&lt;/script&gt;变为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{F_c - F_\nu}{F_c} \approx \frac{\tau_l}{S_\nu(\tau_c=\tau_1)} \frac{dS_\nu}{d\tau_c}|_{\tau1} = \tau_l  \frac{d\ln{S_\nu}}{d\tau_c}|_{\tau1}&lt;/script&gt;
+
+&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;\tau_l = \frac{l_\nu}{\kappa_0}\tau_0&lt;/script&gt;代入，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align} \frac{F_c - F_\nu}{F_c} &amp;\approx \frac{l_\nu}{\kappa_0}\tau_0 \frac{d\ln{S_\nu}}{d\tau_c}|_{\tau1} \\
+&amp;= \frac{l_\nu}{\kappa_\nu}\tau_c \frac{d\ln{S_\nu}}{d\tau_c}|_{\tau1}\\
+&amp;= \text{constant} \frac{l_\nu}{\kappa_\nu} \tag{13.19}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;就是这样。&lt;/p&gt;
+
+&lt;h3 id=&quot;谱线的贡献函数&quot;&gt;谱线的贡献函数&lt;/h3&gt;
+
+&lt;p&gt;“王老五就是未结婚的王老五”，贡献函数就是第九章的贡献函数。不多说了，放两张图自己体会。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP13/02.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/img/in-post/post-OASP13/03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;谱线强度的行为&quot;&gt;谱线强度的行为&lt;/h3&gt;
+
+&lt;p&gt;这里只讨论几个对谱线强度有比较大影响的参数：温度、&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;以及金属丰度。&lt;/p&gt;
+
+&lt;h4 id=&quot;温度&quot;&gt;温度&lt;/h4&gt;
+
+&lt;p&gt;对于弱线来说，温度变化影响了原子的占据数以及跃迁、连续谱的吸收，从而改变了谱线强度。强线以及氢线的话，还要考虑&lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt;随温度的变化。&lt;/p&gt;
+
+&lt;p&gt;这里姑且只讨论弱线，则有下图：&lt;/p&gt;
+
+&lt;p&gt;首先由&lt;script type=&quot;math/tex&quot;&gt;(8.12)&lt;/script&gt;有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\kappa_\nu = \text{constant} T^{-5/2} P_\mathrm{e} e^{0.75/kT}&lt;/script&gt;
+
+&lt;p&gt;Case 1时，是原子谱线+中性原子：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;N_l = \text{constant} N_0 e^{-\chi/kT} \approx e^{-\chi/kT}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow R = \frac{l_\nu}{\kappa_\nu} = \text{constant} \frac{T^{5/2}}{P_\mathrm{e}} e^{-(\chi+0.75)/kT} \tag{13.20}&lt;/script&gt;
+
+&lt;p&gt;又因为&lt;script type=&quot;math/tex&quot;&gt;(9.27)&lt;/script&gt;，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\ln{R} = \text{constant} +2.5 \ln{T} - \frac{chi+0.75}{kT} -\Omega T&lt;/script&gt;
+
+&lt;p&gt;其他Case类似，具体公式请看书。要留意Case 1和4的表达式是完全一样的，但是因为温度范围不同趋势不同。&lt;/p&gt;
+
+&lt;h4 id=&quot;压力&quot;&gt;压力&lt;/h4&gt;
+
+&lt;p&gt;有三种：1. 电离平衡改变导致谱线/连续谱吸收原子数改变； 2. damping常数与与压力有关； 3. 线性斯塔克效应。&lt;/p&gt;
+
+&lt;p&gt;这里的讨论都基于&lt;script type=&quot;math/tex&quot;&gt;(13.19)&lt;/script&gt;；低温时&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu \propto P_\mathrm{e}&lt;/script&gt;，高温时&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu \propto \text{constant}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;第一种：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l_\nu \propto N_i&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{N_{r+1}}{N_r} = \frac{\Phi(T)}{P_\mathrm{e}}&lt;/script&gt;
+
+&lt;p&gt;实际上是原子电离的Saha方程&lt;script type=&quot;math/tex&quot;&gt;(1.20)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;当跃迁是发生在&lt;script type=&quot;math/tex&quot;&gt;r&lt;/script&gt;电离态而多数原子在&lt;script type=&quot;math/tex&quot;&gt;r+1&lt;/script&gt;电离态的时候，&lt;script type=&quot;math/tex&quot;&gt;l_\nu \propto P_\mathrm{e}&lt;/script&gt;；当跃迁是发生在&lt;script type=&quot;math/tex&quot;&gt;r+1&lt;/script&gt;电离态而多数原子在&lt;script type=&quot;math/tex&quot;&gt;r+1&lt;/script&gt;电离态的时候，&lt;script type=&quot;math/tex&quot;&gt;l_\nu \propto \text{constant}&lt;/script&gt;。当跃迁是发生在&lt;script type=&quot;math/tex&quot;&gt;r+1&lt;/script&gt;电离态而多数原子在&lt;script type=&quot;math/tex&quot;&gt;r&lt;/script&gt;电离态的时候，&lt;script type=&quot;math/tex&quot;&gt;l_\nu \propto P_\mathrm{e}^{-1}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;第二种主要作用于线翼处，&lt;script type=&quot;math/tex&quot;&gt;l_\nu \propto \gamma = \gamma_6 + \gamma_4 + \gamma_\mathrm{nat}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;第三种主要影响氢线，&lt;script type=&quot;math/tex&quot;&gt;l_\nu \propto P_\mathrm{e}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;再往高温走，电子散射会比较重要，所以由&lt;script type=&quot;math/tex&quot;&gt;(8.17)&lt;/script&gt;有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\kappa_\nu \approx \kappa_\mathrm{e} = \frac{\alpha(e)P_\mathrm{e}\sum A_j}{P_\mathrm{g}-P_\mathrm{e}}&lt;/script&gt;
+
+&lt;p&gt;此时&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{g} \approx 2P_\mathrm{e}&lt;/script&gt;，所以&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;独立于&lt;script type=&quot;math/tex&quot;&gt;P_\mathrm{e}&lt;/script&gt;；同时&lt;script type=&quot;math/tex&quot;&gt;l_\nu \propto P_\mathrm{e}^2&lt;/script&gt;（哪来的？）&lt;/p&gt;
+
+&lt;h4 id=&quot;金属丰度&quot;&gt;金属丰度&lt;/h4&gt;
+
+&lt;p&gt;生长曲线。&lt;/p&gt;
+
+&lt;p&gt;简单地来说，我们考虑这么一个图像：连续谱光源在后面，前面是一团冷的气体，厚度为&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = F_c e^{-\tau_\nu} \tag{13.28}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\tau_\nu = \int_0^L l_\nu \rho dx = \int_0^L N \alpha dx = A \int_0^L (N/N_E) N_\mathrm{H} \alpha dx \tag{13.29}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;为吸收原子个数，&lt;script type=&quot;math/tex&quot;&gt;N_E&lt;/script&gt;为这种原子的总个数。&lt;/p&gt;
+
+&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu \ll 1&lt;/script&gt;，即谱线很弱的时候，我们有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu \approx F_c(1-\tau_\nu)&lt;/script&gt;
+
+&lt;p&gt;所以这个时候线深和谱线强都都正比于&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;对于强线来说，我们需要考虑线翼；结论是&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;W = (\langle\gamma\rangle Afh)^{1/2} \int_0^\infty (1-e^{-1/u^2})du \tag{13.31}&lt;/script&gt;
+
+&lt;p&gt;这里的生长曲线指的是仅仅改变某个元素的丰度；而如果我们改变整个恒星的金属丰度的话，生长曲线会不一样；这是因为改变整体的丰度会改变电离平衡、连续谱吸收以及碰撞的damping。一个例子如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;图&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;对于实际的谱线来说，例子如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;图三张&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;最后的碎碎念&quot;&gt;最后的碎碎念&lt;/h3&gt;
+
+&lt;p&gt;LTE和nLTE都有可能出错&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;图两张&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;它们都需要致宽；就连生长曲线都会受到致宽的影响（为什么？）&lt;/p&gt;
+</description>
+        <pubDate>Sun, 07 Oct 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/10/07/OASP13/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/07/OASP13/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>OASP笔记 - 12</title>
+        <description>&lt;p&gt;手里有数据，心里不慌。上一章讲了谱线的轮廓，那么实际我们怎么去测这个轮廓呢？毕竟测到了才能推出下面几章的东西来，那么就要看看我们是拿什么东西来测量谱线轮廓，以及怎么还原谱线轮廓的了。&lt;/p&gt;
+
+&lt;h3 id=&quot;仪器&quot;&gt;仪器&lt;/h3&gt;
+
+&lt;p&gt;打住。我不是做仪器的，所以这块就不详细说了。要有轮廓肯定需要高色散光谱仪（虽然不同波段的高指的分辨率不一样，大家也都在吹自己的是高色散），光谱仪有分辨率公式&lt;script type=&quot;math/tex&quot;&gt;(3.15)&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \lambda = - \frac{W'}{f_\mathrm{coll}} \frac{d}{n} \cos{\alpha} \tag{12.1}&lt;/script&gt;
+
+&lt;p&gt;所以要减小&lt;script type=&quot;math/tex&quot;&gt;\Delta \lambda&lt;/script&gt;，提高分辨率，主要就是增大&lt;script type=&quot;math/tex&quot;&gt;f_\mathrm{coll}&lt;/script&gt;或者&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;。所以要不就做得老长老长，要不就把反射光栅搞好，提升可用级数大小。&lt;/p&gt;
+
+&lt;p&gt;第二是每个光谱仪都需要有一个slit viewer，说白了就是导星镜。但是恒星的光都到狭缝里面去了，射到导星镜的光又怎么来呢？实际上是将狭缝的两边变成镜子，然后将狭缝稍微斜过来，就可以反光了。&lt;/p&gt;
+
+&lt;h3 id=&quot;仪器轮廓&quot;&gt;仪器轮廓&lt;/h3&gt;
+
+&lt;p&gt;仪器肯定会对谱线有致宽，这个致宽就叫仪器轮廓。假设我们有一个理想谱线，宽度可以忽略不计，它通过光谱仪之后的形状我们叫做&lt;script type=&quot;math/tex&quot;&gt;I(\lambda)&lt;/script&gt;。令理想光谱为&lt;script type=&quot;math/tex&quot;&gt;F(\lambda)&lt;/script&gt;，那么观测到的光谱&lt;script type=&quot;math/tex&quot;&gt;D(\lambda)&lt;/script&gt;自然是它们俩的卷积：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+  D(\lambda) &amp;= \int_{-\infty}^{\infty} I(\lambda-\lambda_0) F(\lambda_0) d\lambda_0\\
+  &amp;= I(\lambda) * F(\lambda) \tag{12.2}
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;假设一个仪器轮廓是半高全宽为0.1埃的高斯函数，那么它的傅立叶变换还是一个高斯，只是宽度变为了10埃而已。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;这里有图&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;在&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域里面说话，观测到的光谱的傅立叶变换&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;就是&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(\sigma) = i(\sigma) f(\sigma) \tag{12.3}&lt;/script&gt;
+
+&lt;p&gt;这意味着仪器轮廓充当了一个低通滤波器的角色，把高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的信号滤掉了。从&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;域的角度来说，也就是卷积将光谱模糊/平滑了。这都是第二章的东西。&lt;/p&gt;
+
+&lt;p&gt;这看起来没什么，毕竟这么高分辨率的信号我们也看不到（后面还有采样在）。不过需要留意的一点是仪器轮廓还会改变谱线的深度和宽度。当然这也是显然的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;这里有图&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;复原&quot;&gt;复原&lt;/h3&gt;
+
+&lt;p&gt;&lt;del&gt;说完生光我们就该复圆了。&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;我们想求&lt;script type=&quot;math/tex&quot;&gt;f(\sigma)&lt;/script&gt;。这好说，把&lt;script type=&quot;math/tex&quot;&gt;(12.3)&lt;/script&gt;的&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;除过去不就完了：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\sigma) = d(\sigma) / i(\sigma) \tag{12.4}&lt;/script&gt;
+
+&lt;p&gt;为了处理不对称的轮廓，我们需要让上式中的三个量都为复数，则有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+  f_\mathrm{R}(\sigma) &amp;= \frac{d_\mathrm{R}(\sigma)i_\mathrm{R}(\sigma) + d_\mathrm{I}(\sigma)i_\mathrm{I}(\sigma)}{i_\mathrm{R}(\sigma)^2 + i_\mathrm{I}(\sigma)^2} \\
+  f_\mathrm{I}(\sigma) &amp;= \frac{d_\mathrm{I}(\sigma)i_\mathrm{R}(\sigma) - d_\mathrm{R}(\sigma)i_\mathrm{I}(\sigma)}{i_\mathrm{R}(\sigma)^2 + i_\mathrm{I}(\sigma)^2} \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;最后做个逆傅立叶变换就好了。&lt;/p&gt;
+
+&lt;h3 id=&quot;噪声&quot;&gt;噪声&lt;/h3&gt;
+
+&lt;p&gt;问题在于噪声和另外一个东西。令噪声为&lt;script type=&quot;math/tex&quot;&gt;n(\sigma0)&lt;/script&gt;，则有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d(\sigma) = d_0(\sigma) + n(\sigma) \tag{12.6}&lt;/script&gt;
+
+&lt;p&gt;所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(\sigma) = \frac{d_0(\sigma)}{i(\sigma)} + \frac{n(\sigma)}{i(\sigma)}&lt;/script&gt;
+
+&lt;p&gt;噪声一般是高频的，而&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;在高频处很小，所以仪器轮廓会加大噪声。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;这里有图&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;那怎么办？这么搞的话光谱毛刺特别多。这个时候我们就要人为加入一个低通滤波器将高频的信号滤掉，反正主要是噪声。&lt;/p&gt;
+
+&lt;p&gt;我们将低通滤波器叫做&lt;script type=&quot;math/tex&quot;&gt;\phi(\sigma)&lt;/script&gt;，那么加入了滤波器的“真实”信号就是&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f_1(\sigma) = d(\sigma) \phi(\sigma) / i(\sigma) \tag{12.7}&lt;/script&gt;
+
+&lt;p&gt;我们希望&lt;script type=&quot;math/tex&quot;&gt;f_1(\sigma)&lt;/script&gt;与&lt;script type=&quot;math/tex&quot;&gt;f_0(\sigma)&lt;/script&gt;的区别尽量的小，所以我们需要将&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\epsilon = f_0(\sigma) - f_1(\sigma) = f_0(\sigma)[1-\phi(\sigma)] - n(\sigma)\phi(\sigma)/i(\sigma)&lt;/script&gt;
+
+&lt;p&gt;最小化。结论是&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi = \frac{1}{1+[n(\sigma)/d(\sigma)]^2} \tag{12.9}&lt;/script&gt;
+
+&lt;p&gt;噪声的傅立叶变换大小可以测量出来，令&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+B= &lt;n(\sigma)&gt; %]]&gt;&lt;/script&gt;；&lt;script type=&quot;math/tex&quot;&gt;d(\sigma)&lt;/script&gt;可以用一个高斯函数来近似：&lt;script type=&quot;math/tex&quot;&gt;d(\sigma) \approx A 10^{-b_0^2\sigma^2}&lt;/script&gt;，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi = \frac{1}{1+(B/A)^2 10^{-2b_0^2\sigma^2}} \tag{12.9}&lt;/script&gt;
+
+&lt;p&gt;就安排得明明白白了。&lt;/p&gt;
+
+&lt;p&gt;当然如果仪器轮廓太大或者信噪比太低那神仙都救不了，需要其他办法比如正向建模或者干脆data-driven的办法。&lt;/p&gt;
+
+&lt;p&gt;仪器轮廓会平滑掉一些高频信息，所以当仪器轮廓比较大的时候，采样频率可以适当降低；反之亦然。&lt;/p&gt;
+
+&lt;h4 id=&quot;仪器轮廓的测量&quot;&gt;仪器轮廓的测量&lt;/h4&gt;
+
+&lt;p&gt;可以通过汞灯、激光以及大气吸收线来测量。当仪器轮廓被狭缝宽度主导的时候，它与级数无关；但是最好还是用和恒星曝光时类似的设置来测量。&lt;/p&gt;
+
+&lt;h3 id=&quot;散射光&quot;&gt;散射光&lt;/h3&gt;
+
+&lt;p&gt;略写。主要是因为我们只考虑了仪器轮廓附近的波长范围，如果外面还有光进来的话就归为散射光。散射光主要集中在低&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;部分，抬高了&lt;script type=&quot;math/tex&quot;&gt;i(\sigma)&lt;/script&gt;所以会使得整个光谱被压低，所以散射光越小越好。&lt;/p&gt;
+
+&lt;h3 id=&quot;等值宽度&quot;&gt;等值宽度&lt;/h3&gt;
+
+&lt;p&gt;等值宽度定义为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;W = \int_{-\infty}^{\infty} \frac{F_\mathrm{c}-F_\mathrm{\nu}}{F_\mathrm{c}} \mathrm{d}\nu \tag{12.20}&lt;/script&gt;
+
+&lt;p&gt;但是实际上我们测得的是&lt;script type=&quot;math/tex&quot;&gt;D_\mathrm{\nu} = I(\lambda) * (F_\mathrm{c}-F_\mathrm{\nu})&lt;/script&gt;，所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;W_\mathrm{m} = \int_{-\lambda_0}^{\lambda_0} \frac{I(\lambda) * (F_\mathrm{c}-F_\mathrm{\nu})}{D_\mathrm{c}} \mathrm{d}\nu \tag{12.20}&lt;/script&gt;
+
+&lt;p&gt;这导致了我们有的时候不能覆盖整条谱线的范围，因为有别的线在；同时一般来说我们会低估&lt;script type=&quot;math/tex&quot;&gt;D_\mathrm{c}&lt;/script&gt;，导致&lt;script type=&quot;math/tex&quot;&gt;W_\mathrm{m}&lt;/script&gt;被高估。&lt;/p&gt;
+
+&lt;h3 id=&quot;谱线测量方法&quot;&gt;谱线测量方法&lt;/h3&gt;
+
+&lt;p&gt;在波长域我们可以测量谱线的半高全宽，以此表征比如自转之类的一些物理量。谱线的位置不对称性可以从谱线的中线看出来。&lt;/p&gt;
+
+&lt;p&gt;在&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;域我们可以方便地测量误差（看高&lt;script type=&quot;math/tex&quot;&gt;\sigma&lt;/script&gt;的弥散）、将卷积可视化（变成相乘了）等等。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 14 Jun 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/06/14/OASP12/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/06/14/OASP12/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>日本天文年会相关文件</title>
+        <description>&lt;p&gt;作为初级阶段的学生，经常要写各种初级文书。日本人的长处在于把一切都整得井井有条，给你一个excel表格里面不能填的就是不能填；不过当遇上latex这个对非英语语言不怎么友好的东西的时候就很容易抓瞎。这里记录一下日本天文年会相关文件的编译方法，以免（其实免不了）我忘掉。&lt;/p&gt;
+
+&lt;h3 id=&quot;年会报名&quot;&gt;年会报名&lt;/h3&gt;
+
+&lt;p&gt;用英语来进行年会报名其实不难。只要跑到&lt;a href=&quot;http://www.asj.or.jp/nenkai/abs/&quot;&gt;这里&lt;/a&gt;下载package（“パッケージをダウンロードしてご利用ください”里面那个パッケージ的链接），然后按照里面的readme-en.txt的指示做就行了。tex文件的编码方式不用在意，反正里面也没有日语；编译方式好像也没什么要求。记得报名的时候是把&lt;strong&gt;tex文件&lt;/strong&gt;而不是编译好的pdf发到abs2018b@nenkai.asj.or.jp。&lt;/p&gt;
+
+&lt;p&gt;记得在报名前入会，报名之后记得交钱。&lt;/p&gt;
+
+&lt;h3 id=&quot;早川幸男基金&quot;&gt;早川幸男基金&lt;/h3&gt;
+
+&lt;p&gt;这个是最麻烦的，但是给钱。重点在于它不能用平常的命令去编译，而是必须用&lt;code class=&quot;highlighter-rouge&quot;&gt;platex&lt;/code&gt;。如果使用TeXstudio的话需要将设置-命令里面的latex改成&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  platex -src -interaction&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nonstopmode %.tex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后在&lt;code class=&quot;highlighter-rouge&quot;&gt;Build-Build &amp;amp; View&lt;/code&gt;里面改成&lt;code class=&quot;highlighter-rouge&quot;&gt;DVI-&amp;gt;PDF Chain&lt;/code&gt;，这样应该就可以了。&lt;/p&gt;
+
+&lt;p&gt;顺便原来的命令是&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  latex  -synctex&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 -interaction&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nonstopmode %.tex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;若手&quot;&gt;若手&lt;/h3&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;p&gt;http://www.asj.or.jp/nenkai/abs/&lt;/p&gt;
+</description>
+        <pubDate>Sun, 03 Jun 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2018/06/03/latex-asj/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/06/03/latex-asj/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>OASP笔记 - 11</title>
@@ -45,16 +447,18 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;z = \frac{e}{m} \frac{E_0 e^{i\omega t}}{\omega_0^2 - \omega^2 + i\gamma\omega} = \frac{e}{m} \frac{E}{\omega_0^2 - \omega^2 + i\gamma\omega}&lt;/script&gt;
 
-&lt;p&gt;可以看到&lt;script type=&quot;math/tex&quot;&gt;\omega = \omega_0&lt;/script&gt;的时候振幅最大，被称为共振频率，也是谱线所在的地方。将这个结果代回(11.2)，就有&lt;/p&gt;
+&lt;p&gt;可以看到&lt;script type=&quot;math/tex&quot;&gt;\omega = \omega_0&lt;/script&gt;的时候振幅最大，被称为共振频率，也是谱线所在的地方。将这个结果代回&lt;script type=&quot;math/tex&quot;&gt;(11.2)&lt;/script&gt;，就有&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\epsilon}{\epsilon_0} = 1 + \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\epsilon}{\epsilon_0} = 1 + \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \tag{11.4 }&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;很接近&lt;script type=&quot;math/tex&quot;&gt;\epsilon_0&lt;/script&gt;，所以有泰勒展开：&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align} \frac{c}{v} = \left(\frac{\epsilon}{\epsilon_0}\right)^{1/2} &amp;\approx 1 + \frac{1}{2} \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \\
 &amp;= 1 + \frac{2\pi Ne^2}{m}\left[\frac{\omega_0^2-\omega^2}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2} - i\frac{\gamma\omega}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2}\right]
 \end{align} %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;我们希望将这个量代回场强那里，然后求光强；而光强是场强实部的平方，所以可以只考虑上式中的虚部，有：&lt;/p&gt;
+&lt;p&gt;我们希望将这个量代回&lt;script type=&quot;math/tex&quot;&gt;(11.1)&lt;/script&gt;中间那里，然后求光强；而光强是场强实部的平方，所以可以只考虑上式中的虚部，有：&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;I = I_0 e^{-2k\omega x/c} = I_0 e^{-l_\nu \rho x}&lt;/script&gt;
 
@@ -87,7 +491,7 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \alpha d\lambda = \frac{\pi e^2}{mc} \frac{\lambda^2}{c} \tag{11.9}&lt;/script&gt;
 
-&lt;p&gt;着个量指的是一个原子每秒每平方弧度（只有一个方向）所吸收的光的比例。实际上的比例比上两式要小，这是因为在推导的过程中我们没有考虑量子力学带来的修正。假设这个修正量为&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;，上面的积分同时意味着原子发生吸收的概率，也就是&lt;script type=&quot;math/tex&quot;&gt;B_{lu}h\nu (5.17)&lt;/script&gt;，所以&lt;/p&gt;
+&lt;p&gt;这个量指的是一个原子每秒每平方弧度（只有一个方向）所吸收的光的比例。实际上的比例比上两式要小，这是因为在推导的过程中我们没有考虑量子力学带来的修正。假设这个修正量为&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;，上面的积分同时意味着原子发生吸收的概率，也就是&lt;script type=&quot;math/tex&quot;&gt;B_{lu}h\nu (5.17)&lt;/script&gt;，所以&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \alpha d\nu = \frac{\pi e^2}{mc}f = B_{lu}h\nu&lt;/script&gt;
 
@@ -136,7 +540,7 @@
 
 &lt;h3 id=&quot;压力致宽&quot;&gt;压力致宽&lt;/h3&gt;
 
-&lt;p&gt;压力致宽其实挺好理解，原子被别人撞了（在别的粒子附近），能级就变了，会带来谱线移动、不对称性和致宽。因为是在别的粒子附近，所以实际上是粒子的电场使得原子的能级发生变化，一般指的是斯塔克效应(Stark effect)。同时粒子离原子越近(&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;越小)，影响(&lt;script type=&quot;math/tex&quot;&gt;\Delta W&lt;/script&gt;)应该就越大；根据这个思想我们可以写出这样的一条式子：&lt;/p&gt;
+&lt;p&gt;压力致宽其实挺好理解，原子被别人撞了（在别的粒子附近），能级就变了，会带来谱线移动、不对称性和致宽。因为是在别的粒子附近，所以实际上是粒子的电场使得原子的能级发生变化，一般指的是&lt;a href=&quot;https://en.wikipedia.org/wiki/Stark_effect&quot;&gt;斯塔克效应(Stark effect)&lt;/a&gt;；其实斯塔克效应就是电场下的赛曼效应。同时粒子离原子越近(&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;越小)，影响(&lt;script type=&quot;math/tex&quot;&gt;\Delta W&lt;/script&gt;)应该就越大；根据这个思想我们可以写出这样的一条式子：&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta W = c/R^n \tag{11.16}&lt;/script&gt;
 
@@ -185,11 +589,11 @@
 
 &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;C_n&lt;/script&gt;需要被测出来。&lt;/p&gt;
 
-&lt;h4 id=&quot;简化&quot;&gt;简化！&lt;/h4&gt;
+&lt;h4 id=&quot;简化the-impact-approximation&quot;&gt;简化！(The impact approximation)&lt;/h4&gt;
 
 &lt;p&gt;貌似到这里我们还没能给出谱线轮廓，怎么办？当然是简化了。假设碰撞是绝热的，也就是碰撞不会导致跃迁；同时因为恒星大气比较稀薄，我们认为碰撞的时间远远短于两次碰撞的时间(impact apprximation)。&lt;/p&gt;
 
-&lt;p&gt;我们把一个光子看成一个长为&lt;script type=&quot;math/tex&quot;&gt;W = \Delta t&lt;/script&gt;的方波，那么它的光谱就是&lt;script type=&quot;math/tex&quot;&gt;\mathrm{sinc}^2{\pi\Delta t (\nu - \nu_0)}&lt;/script&gt;，宽度为&lt;script type=&quot;math/tex&quot;&gt;\Delta \nu = 1 / \Delta t&lt;/script&gt;。现在吸收这个光子的原子被另外的粒子影响，而且影响的大小不断在变化，那么我们就将这个光子分成很多小份（小的方波&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;），每个小份之间的相位不在一样，就需要独立地看待了。当然这个时候小份光的光谱就变宽了(&lt;script type=&quot;math/tex&quot;&gt;\Delta \nu_j = 1 / \Delta t_j&lt;/script&gt;)。&lt;/p&gt;
+&lt;p&gt;我们把一个光子看成一个长为&lt;script type=&quot;math/tex&quot;&gt;W = \Delta t&lt;/script&gt;的方波，那么它的光谱就是&lt;script type=&quot;math/tex&quot;&gt;\mathrm{sinc}^2{\pi\Delta t (\nu - \nu_0)}&lt;/script&gt;，宽度为&lt;script type=&quot;math/tex&quot;&gt;\Delta \nu = 1 / \Delta t&lt;/script&gt;。现在吸收这个光子的原子被另外的粒子影响，而且影响的大小不断在变化，那么我们就将这个光子分成很多小份（小的方波&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;），每个小份之间的相位在受到碰撞之后不再一样，就需要独立地看待了。当然这个时候小份光的光谱就变宽了(&lt;script type=&quot;math/tex&quot;&gt;\Delta \nu_j = 1 / \Delta t_j&lt;/script&gt;)。&lt;/p&gt;
 
 &lt;p&gt;回到宏观的视角，每一次碰撞的&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;都是不一样的，那么最后中的谱线宽应该为&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;对应的sinc函数乘上它的概率再对所有的&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;积分。通过简单的推理可得&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;的分布为&lt;/p&gt;
 
@@ -215,7 +619,8 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi = 2\pi \int_0^\infty C_n \frac{cos^n{\theta}}{\rho^n} dt&lt;/script&gt;
 
-&lt;p&gt;&lt;em&gt;需要有图&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP11/01-collision-diagram.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;原子受影响的示意图&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;换元什么的，&lt;script type=&quot;math/tex&quot;&gt;v = dy/dt = (\rho/\cos{\theta})d\theta/dt, dt = (\rho/v)d\theta/\cos^2{\theta}&lt;/script&gt;，有&lt;/p&gt;
 
@@ -280,7 +685,8 @@
 
 &lt;p&gt;画出来就像下面这样：&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;应该有图&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP11/02-damping-const.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Na I D2线的damping constent&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;上面这两条式子在谱线计算里面经常会被用到。当然实际和理论还是有点区别，所以会加一个系数，随时修正。&lt;/p&gt;
 
@@ -1558,226 +1964,56 @@ Z^{[i]} &amp;=
 &lt;h5 id=&quot;防止重叠或者出边界&quot;&gt;防止重叠或者出边界&lt;/h5&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;plt.tight_layout()&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;画密度散点图&quot;&gt;画密度散点图&lt;/h5&gt;
+
+&lt;p&gt;来自&lt;a href=&quot;https://stackoverflow.com/questions/20105364/how-can-i-make-a-scatter-plot-colored-by-density-in-matplotlib?utm_medium=organic&amp;amp;utm_source=google_rich_qa&amp;amp;utm_campaign=google_rich_qa&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.stats&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gaussian_kde&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Generate fake data&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Calculate the point density&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;xy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gaussian_kde&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Sort the points by density, so that the densest points are plotted last&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argsort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subplots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edgecolor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorbar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;subplot中加上总标题&quot;&gt;subplot中加上总标题&lt;/h5&gt;
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;suptitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'This is a somewhat long figure title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;subplot中加上总xylabel&quot;&gt;subplot中加上总xylabel&lt;/h5&gt;
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gcf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'LDR'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subplots_adjust&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.07&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.93&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.85&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;subplot中加上编号子图相对位置统一&quot;&gt;subplot中加上编号（子图相对位置统一）&lt;/h5&gt;
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ax1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;121&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.86&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.89&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'(a)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ax1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transAxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Mon, 29 Jan 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/01/29/jpynb/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/01/29/jpynb/</guid>
         
         <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Bash 备忘</title>
-        <description>&lt;h2 id=&quot;catagory&quot;&gt;Catagory&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;#jpynb&quot;&gt;Jpynb备忘&lt;/a&gt;
-    &lt;ol&gt;
-      &lt;li&gt;&lt;a href=&quot;#jpynb-color_change&quot;&gt;改变Notebook里面Markdown文字颜色&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#jpynb-theta&quot;&gt;Matplotlib中&lt;code class=&quot;highlighter-rouge&quot;&gt;'\theta'&lt;/code&gt;变为&lt;code class=&quot;highlighter-rouge&quot;&gt;heta&lt;/code&gt;的问题&lt;/a&gt;&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#py&quot;&gt;Python备忘&lt;/a&gt;
-    &lt;ol&gt;
-      &lt;li&gt;&lt;a href=&quot;#py-array_stack&quot;&gt;Numpy中的矩阵合并&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#py-package&quot;&gt;自己写包&lt;/a&gt;&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p id=&quot;jpynb&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ls -1 -d */*/* | sed -e 's/\// /g' -e 's/_pipeline/ pipeline/'&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;合并pdf
-&lt;code class=&quot;highlighter-rouge&quot;&gt;pdftk file1.pdf file2.pdf cat output mergedfile.pdf&lt;/code&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 29 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/01/29/bash/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/01/29/bash/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>箱根探路者</title>
-        <description>&lt;p&gt;箱根是我一直想去的地方，一是因为在那能看见富士山，第二是那里是新世纪福音战士第三新东京市的原型。正好这周想出去逛逛（当然发现switch入货是临时的事情），来实习的诺亚同学也刚好错过了松永组织的镰仓社寺一日游（真的全是社寺），就拉上他一起去那看看了。当然也有踩点的意思，毕竟下个月打算还来一次。&lt;/p&gt;
-
-&lt;h3 id=&quot;大致路线&quot;&gt;大致路线&lt;/h3&gt;
-
-&lt;p&gt;因为只能去一天，所以基本上是按照小田急给出的示范行程来走的，从箱根汤本一路往西经过强罗、大涌谷到达桃源台港，然后坐船穿过芦之湖到达箱根町和元箱根，稍作参观之后坐巴士回到箱根汤本，終了。一路的交通都是挺方便的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/hakone-route.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;出发之前&quot;&gt;出发之前&lt;/h3&gt;
-
-&lt;p&gt;东京到箱根的交通大致分为两类：不使用JR和使用JR。一般不使用JR的方式是在新宿站购买小田急的箱根Free Pass（箱根フリーパス）并预约来回的特急“浪漫特快”（ロマンスカー），这样可以解决全部在箱根的交通问题和一大部分的景点门票。从新宿出发的2日箱根Free Pass是5140日元（儿童是1500），购买Free Pass之后单程的浪漫特快还需要加890日元，所以一共是6920日元。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/freepass-price.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Free Pass只有两天和三天的选择，所以即使只去一天也需要买两天的。不过这么一圈坐下来如果不买Pass的话大概是六千多日元，而且有Pass的话上下车相对自由一点。这些票都可以在新宿或者小田原的小田急窗口处购买。&lt;/p&gt;
-
-&lt;p&gt;如果有JR Pass的话也可以选择乘坐JR到小田原再转箱根登山铁道到箱根汤本。上面最后一行写的就是在小田原购买箱根Free Pass的价格；如果不购买的话交通费大概是四千七日元，所以也还是买Pass便宜一点。&lt;/p&gt;
-
-&lt;h3 id=&quot;特急浪漫特快&quot;&gt;特急“浪漫特快”&lt;/h3&gt;
-
-&lt;p&gt;开往箱根汤本的浪漫特快无论工作日还是周末都是从7点钟开始首发，平均下来大概半个小时一班的样子。不住在新宿附近的话周末选择7:30、8:00、8:30或者9:00的比较合适，工作日的话就是7:00、7:27或者8:53了。（请注意时刻表可能会变，请到&lt;a href=&quot;http://www.odakyu.jp/romancecar/timetable/weekday/&quot;&gt;这里&lt;/a&gt;确认一下）。回来的车基本上都会停新宿，所以选择余地比较大，我觉得晚上7点出发的比较合适。&lt;/p&gt;
-
-&lt;p&gt;时刻表里面带“展”字的车次是有展望席的，车头或者车尾有很大的窗户，适合观景。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/view-seat.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;大概是这个样子，司机要爬到上面开车。这些票和旺季（春节？）的特急票都可以在&lt;a href=&quot;https://www.web-odakyu.com/e-romancecar/&quot;&gt;这里&lt;/a&gt;提前预约或者购买。实际上展望席后面还紧接着两个不算展望席的座位，但是位置是和展望席一样的，所以没有预约到展望席又想坐在附近的话不妨在买票的时候问问还有没有展望席的位置。&lt;/p&gt;
-
-&lt;p&gt;浪漫特快虽然叫特快，但是毕竟不是新干线而且过了小田原之后的登山铁道部分只有单线，所以从新宿出发还是需要85分钟的，请带上论文/书/ipad/3DS/Switch等。&lt;/p&gt;
-
-&lt;h3 id=&quot;强罗午饭&quot;&gt;强罗=午饭&lt;/h3&gt;
-
-&lt;p&gt;出于对时间的些许担心，我们决定到了箱根汤本之后马上去强罗。换乘去强罗的登山电车不需要出闸，直接到3号站台坐车就行。虽然从地图上看箱根汤本到强罗并不算远，但是登山电车本来就慢加上路上有三处像京张铁路的人字形轨道，所以整个用时为40分钟。这么下来我们到强罗的时候已经是10点半，该吃午饭了。&lt;/p&gt;
-
-&lt;p&gt;这么早考虑午饭的原因在于想去试试一家比较出名的餐厅，田むら銀かつ亭。很多攻略都推荐了这家餐厅，既然来了就去试试呗。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/resturant.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;就是这家。11点开始营业，但是一般10点半开始就会有人来取号，开始营业之后按照号码顺序就餐。我们大概是40到的，已经是11号了。当然吃完之后出来发现还有将近三十个号在排队，看来的确挺出名的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/lunch.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;午饭基本上点的都是招牌套餐，豆腐猪排套餐(1330日元)和御膳(2050日元)。这两种的区别在于后者多了一个甜品、饮料和沙拉，而且后者的猪排下面是有小火一直加热的。我上面点的是套餐，就只有这几样。感觉还挺好吃，不过排队的人数让我觉得里面也有宣传的成分。&lt;/p&gt;
-
-&lt;h3 id=&quot;强罗公园&quot;&gt;强罗公园&lt;/h3&gt;
-
-&lt;p&gt;吃完饭之后走了走附近的强罗公园。冬天能看的不多，也没有雪，就是近处的温泉和远处的火山烟：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/gora-park.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;值得一提的是公园里面还有两个热带植物馆，可以取暖（误）。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/park-flower1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/park-flower2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;看到了在南方随处可见的勒杜鹃还有鹤望兰。&lt;/p&gt;
-
-&lt;h3 id=&quot;大涌谷&quot;&gt;大涌谷&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/cable-car.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;从强罗公园南门出来左转走一分钟就到了登山缆车的公园下站，等一会就有缆车带着上到早云山了。还是要注意一下发车时刻的，间隔在20分钟左右。本来在早云山可以直接转乘空中缆车到达大涌谷（顺便在空中看看硫磺烟），但是1月16日到2月7日之间早云山-大涌谷之间的&lt;a href=&quot;http://www.hakoneropeway.co.jp/info_img/255_pdf.pdf&quot;&gt;缆车维修&lt;/a&gt;，所以只能坐专用的大巴过去。出战之后跟着大部队走就行了，我们坐的是旅游大巴所以都有位置。&lt;/p&gt;
-
-&lt;p&gt;大涌谷就是火山活动留下来的一直在往外冒烟的山谷，而因为附近硫磺比较多所以空气比较…臭。看还是挺好看的，也有很多吃的和纪念品卖。最出名的应该就是黑色的鸡蛋了，用山上的温泉泡熟，因为水中的成分和鸡蛋壳作用变成了黑色。实际上就是煮鸡蛋，里面没有任何区别。大涌谷本来还有两条登山道，但是我们去的时候因为空气中硫化物含量太高&lt;a href=&quot;http://www.hakoneropeway.co.jp/ohwakudani/&quot;&gt;封闭了&lt;/a&gt;，可惜。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/owakudani.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;芦之湖&quot;&gt;芦之湖&lt;/h3&gt;
-
-&lt;p&gt;整个行程可能最需要注意的就是芦之湖海贼船的&lt;a href=&quot;https://www.hakone-kankosen.co.jp/timesheet/&quot;&gt;时刻表&lt;/a&gt;了，间隔可能会到一个小时左右，所以在大涌谷的时候要留意时间。大涌谷到湖边的桃源台港需要16分钟，也是空中缆车，之后就可以等着船准备坐半个小时了。如果嫌船挤的话可以花500日元买高级舱的票，人就不那么多了（资本主义）。在船上可以看见湖边的鸟居：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/lake-tori.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;至于终点到箱根町还是元箱根都没什么所谓，就算是走路也才十来分钟而已，还有巴士来往。&lt;/p&gt;
-
-&lt;h3 id=&quot;箱根町和元箱根&quot;&gt;箱根町和元箱根&lt;/h3&gt;
-
-&lt;p&gt;到这里的时候已经过了四点，天开始黑了，我们就只走了走箱根关所和恩赐箱根公园。这公园原来是天皇避暑的地方，也接待过不少政界要人，但是在之后的两次地震之中塌了75%的楼宇……现在只有一栋楼在那了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/park-tree.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;别的还有箱根神社可以看看，挺大的。晚上路灯亮了之后很有神秘的感觉。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-hakone-pathfinder/shrine.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;然后就是坐巴士回箱根汤本了。在元箱根出发的话R、H和K线都能到箱根汤本，每天的最后一班是R线17:40的车，25分钟到箱根汤本。错过了的话……我不知道了:)&lt;/p&gt;
-
-&lt;h3 id=&quot;回程&quot;&gt;回程&lt;/h3&gt;
-
-&lt;p&gt;回去之后还有一点时间，想逛一下EVA屋但是关门了。这个时候基本上所有的店铺都开始关门了，但是还是可以进去逛一下的；站内的商店没关，但是便当就不一定有了，另外我们坐的19:10的特急没有车内售卖的服务，所以最差的情况可能需要在附近的便利店买点吃的或者看看站台的小卖部有没有了（但是我没有确认过）。回到新宿8点半，时间挺合适。我觉得箱根还是一天比较好，虽然是一天稍微有一点赶，但是两天又感觉景点不够支撑的，没有太特别的理由一天就行。&lt;/p&gt;
-
-&lt;h3 id=&quot;also-read&quot;&gt;Also Read&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.hakonenavi.jp/cn/&quot;&gt;小田急箱根导航&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.marshyfood.com/2015/06/2015.html&quot;&gt;有用的攻略&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 22 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/01/22/hakone-pathfinder/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/01/22/hakone-pathfinder/</guid>
-        
-        <category>hanging-around</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>如何在Linux上制作延时摄影视频</title>
-        <description>&lt;p&gt;在Windows上制作延时摄影有很多软件，AE、LRTimelapse（去闪）之类的；但是Linux上相关的制作软件虽然有，但是并不是很熟悉。隐约感觉Linux肯定能做，而且可以在命令行上面做，但是需要问问谷歌。结果来说的确可以做出来，这里就把相关的软件以及命令记录一下。&lt;/p&gt;
-
-&lt;h3 id=&quot;原材料&quot;&gt;原材料&lt;/h3&gt;
-
-&lt;p&gt;2017年底拍摄的东大赤门的100张照片，间隔大概在1秒左右，jpg格式。&lt;/p&gt;
-
-&lt;h4 id=&quot;if-raw-file&quot;&gt;If raw file&lt;/h4&gt;
-
-&lt;p&gt;https://www.darktable.org/&lt;/p&gt;
-
-&lt;p&gt;批处理：lighttable -&amp;gt; history stack; copy and paste&lt;/p&gt;
-
-&lt;h3 id=&quot;处理jpg文件&quot;&gt;处理jpg文件&lt;/h3&gt;
-
-&lt;p&gt;因为拍摄的时候曝光有点不足，所以需要对每张照片进行亮度和对比度的处理。这里用的是GIMP；如果没有安装过的话先安装GIMP：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install gimp&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;然后安装批处理的插件：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install gimp-plugin-registry&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-time-lapse-linux/batch-open.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;安装之后打开GIMP，上方菜单栏里面会多了一些栏目。选择&lt;code class=&quot;highlighter-rouge&quot;&gt;Filters - Batch - Batch Process&lt;/code&gt;：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-time-lapse-linux/batch-window.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这个批处理窗口提供了一些我们需要的功能。选择&lt;code class=&quot;highlighter-rouge&quot;&gt;Add Files&lt;/code&gt;将要处理的照片都添加进去。简单的亮度对比度颜色处理在&lt;code class=&quot;highlighter-rouge&quot;&gt;Colour&lt;/code&gt;里面，选择&lt;code class=&quot;highlighter-rouge&quot;&gt;Enable&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Auto Levels&lt;/code&gt;就可以了。最后在&lt;code class=&quot;highlighter-rouge&quot;&gt;Rename&lt;/code&gt;里面选择要输出的文件夹，需要的话先测试一下(&lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;)，觉得没有问题的话&lt;code class=&quot;highlighter-rouge&quot;&gt;Start&lt;/code&gt;就行。处理过程中可能会报错，但是只要能成功输出就不用管了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-time-lapse-linux/comp.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;处理前后的对比&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;将jpg转换成视频&quot;&gt;将jpg转换成视频&lt;/h3&gt;
-
-&lt;p&gt;所以我们现在有了一堆处理过的jpg文件，之后只要把它们拼成视频就行了。这一步需要保证文件的顺序是正确的，也就是没有从999到001的情况。如果有的话需要将它们按照正确的顺序重命名。另一个需要注意的细节是可以通过命令调节输出视频的分辨率，不过我一般按照源片的分辨率来，也不用调整了。拼合的命令如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ffmpeg -r 24 -pattern_type glob -i '*.jpg' -c:v copy output.avi&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-r&lt;/code&gt;后面的数字是帧数，可以随意调整，最后的&lt;code class=&quot;highlighter-rouge&quot;&gt;output.avi&lt;/code&gt;是输出的文件名字。我还没试过其他的格式，而这个命令会原原本本地将照片拼到一个视频里面，所以这个视频是没有被压缩过的，占用的空间和照片们的空间一样。&lt;/p&gt;
-
-&lt;p&gt;这里的视频大小是2.2G，只是100张照片。当然这个大小不能轻易地放到网上去共享，所以我们进行压缩：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ffmpeg -i MVI_7274.MOV -vcodec libx264 -preset fast -crf 20 -y -vf &quot;scale=1920:-1&quot; -acodec libmp3lame -ab 128k a.mp4&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;参考链接里面有很详细的介绍，这里不赘述了。最重要的是&lt;code class=&quot;highlighter-rouge&quot;&gt;-crf&lt;/code&gt;后面的参数，数字越小视频质量越高。可以多试几个不同的数字然后取合适的大小和质量。最后的视频如下：&lt;/p&gt;
-
-&lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;/img/in-post/post-time-lapse-linux/cloud_tl.mp4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h3 id=&quot;闲话&quot;&gt;闲话&lt;/h3&gt;
-
-&lt;p&gt;刚刚想到其实也有别的思路，比如在GIMP编辑照片的时候将分辨率降低，那么占用的空间和后续处理时间都会变小。另外GIMP也有命令行模式，应该可以更细致地控制参数；不过稍微有点复杂，还需要研究一下。&lt;/p&gt;
-
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://ubuntuforums.org/showthread.php?t=2022316&quot;&gt;jpg转成视频&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002502526&quot;&gt;视频压缩&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 21 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/01/21/time-lapse-linux/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/01/21/time-lapse-linux/</guid>
-        
-        <category>experience</category>
         
         
       </item>

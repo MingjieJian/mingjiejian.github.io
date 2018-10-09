@@ -44,15 +44,17 @@ $$ -\omega^2 z + \gamma i\omega z + \omega_0^2 z = \frac{e}{m} E_0 e^{i\omega t}
 
 $$ z = \frac{e}{m} \frac{E_0 e^{i\omega t}}{\omega_0^2 - \omega^2 + i\gamma\omega} = \frac{e}{m} \frac{E}{\omega_0^2 - \omega^2 + i\gamma\omega} $$
 
-可以看到$$ \omega = \omega_0 $$的时候振幅最大，被称为共振频率，也是谱线所在的地方。将这个结果代回(11.2)，就有
+可以看到$$ \omega = \omega_0 $$的时候振幅最大，被称为共振频率，也是谱线所在的地方。将这个结果代回$$ (11.2) $$，就有
 
-$$ \frac{\epsilon}{\epsilon_0} = 1 + \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} $$
+$$ \frac{\epsilon}{\epsilon_0} = 1 + \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \tag{11.4 }$$
+
+$$ \epsilon $$很接近$$ \epsilon_0 $$，所以有泰勒展开：
 
 $$ \begin{align} \frac{c}{v} = \left(\frac{\epsilon}{\epsilon_0}\right)^{1/2} &\approx 1 + \frac{1}{2} \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \\
 &= 1 + \frac{2\pi Ne^2}{m}\left[\frac{\omega_0^2-\omega^2}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2} - i\frac{\gamma\omega}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2}\right]
 \end{align}$$
 
-我们希望将这个量代回场强那里，然后求光强；而光强是场强实部的平方，所以可以只考虑上式中的虚部，有：
+我们希望将这个量代回$$ (11.1) $$中间那里，然后求光强；而光强是场强实部的平方，所以可以只考虑上式中的虚部，有：
 
 $$ I = I_0 e^{-2k\omega x/c} = I_0 e^{-l_\nu \rho x} $$
 
@@ -84,7 +86,7 @@ $$ \int_0^\infty \alpha d\nu = \int_{-\infty}^\infty \alpha d\Delta\nu = \frac{\
 
 $$ \int_0^\infty \alpha d\lambda = \frac{\pi e^2}{mc} \frac{\lambda^2}{c} \tag{11.9}$$
 
-着个量指的是一个原子每秒每平方弧度（只有一个方向）所吸收的光的比例。实际上的比例比上两式要小，这是因为在推导的过程中我们没有考虑量子力学带来的修正。假设这个修正量为$$ f $$，上面的积分同时意味着原子发生吸收的概率，也就是$$ B_{lu}h\nu (5.17)$$，所以
+这个量指的是一个原子每秒每平方弧度（只有一个方向）所吸收的光的比例。实际上的比例比上两式要小，这是因为在推导的过程中我们没有考虑量子力学带来的修正。假设这个修正量为$$ f $$，上面的积分同时意味着原子发生吸收的概率，也就是$$ B_{lu}h\nu (5.17)$$，所以
 
 $$ \int_0^\infty \alpha d\nu = \frac{\pi e^2}{mc}f = B_{lu}h\nu $$
 
@@ -132,7 +134,7 @@ $$ \gamma_u = 4\pi \sum A_{ul} + 4\pi \sum I_\nu B_{ul} + 4\pi \sum I_\nu B_{uk}
 
 ### 压力致宽
 
-压力致宽其实挺好理解，原子被别人撞了（在别的粒子附近），能级就变了，会带来谱线移动、不对称性和致宽。因为是在别的粒子附近，所以实际上是粒子的电场使得原子的能级发生变化，一般指的是斯塔克效应(Stark effect)。同时粒子离原子越近($$ R $$越小)，影响($$ \Delta W $$)应该就越大；根据这个思想我们可以写出这样的一条式子：
+压力致宽其实挺好理解，原子被别人撞了（在别的粒子附近），能级就变了，会带来谱线移动、不对称性和致宽。因为是在别的粒子附近，所以实际上是粒子的电场使得原子的能级发生变化，一般指的是[斯塔克效应(Stark effect)](https://en.wikipedia.org/wiki/Stark_effect)；其实斯塔克效应就是电场下的赛曼效应。同时粒子离原子越近($$ R $$越小)，影响($$ \Delta W $$)应该就越大；根据这个思想我们可以写出这样的一条式子：
 
 $$ \Delta W = c/R^n \tag{11.16} $$
 
@@ -151,11 +153,11 @@ $$ \Delta \nu = C_n / R^n \tag{11.17}$$
 
 $$ C_n $$需要被测出来。
 
-#### 简化！
+#### 简化！(The impact approximation)
 
 貌似到这里我们还没能给出谱线轮廓，怎么办？当然是简化了。假设碰撞是绝热的，也就是碰撞不会导致跃迁；同时因为恒星大气比较稀薄，我们认为碰撞的时间远远短于两次碰撞的时间(impact apprximation)。
 
-我们把一个光子看成一个长为$$ W = \Delta t $$的方波，那么它的光谱就是$$ \mathrm{sinc}^2{\pi\Delta t (\nu - \nu_0)} $$，宽度为$$ \Delta \nu = 1 / \Delta t $$。现在吸收这个光子的原子被另外的粒子影响，而且影响的大小不断在变化，那么我们就将这个光子分成很多小份（小的方波$$ \Delta t_j $$），每个小份之间的相位不在一样，就需要独立地看待了。当然这个时候小份光的光谱就变宽了($$ \Delta \nu_j = 1 / \Delta t_j $$)。
+我们把一个光子看成一个长为$$ W = \Delta t $$的方波，那么它的光谱就是$$ \mathrm{sinc}^2{\pi\Delta t (\nu - \nu_0)} $$，宽度为$$ \Delta \nu = 1 / \Delta t $$。现在吸收这个光子的原子被另外的粒子影响，而且影响的大小不断在变化，那么我们就将这个光子分成很多小份（小的方波$$ \Delta t_j $$），每个小份之间的相位在受到碰撞之后不再一样，就需要独立地看待了。当然这个时候小份光的光谱就变宽了($$ \Delta \nu_j = 1 / \Delta t_j $$)。
 
 回到宏观的视角，每一次碰撞的$$ \Delta t_j $$都是不一样的，那么最后中的谱线宽应该为$$ \Delta t_j $$对应的sinc函数乘上它的概率再对所有的$$ \Delta t_j $$积分。通过简单的推理可得$$ \Delta t_j $$的分布为
 
@@ -181,7 +183,8 @@ $$ \phi = 2\pi \int_0^\infty \Delta \nu dt = 2\pi \int_0^\infty C_n R^{-n} dt \t
 
 $$ \phi = 2\pi \int_0^\infty C_n \frac{cos^n{\theta}}{\rho^n} dt $$
 
-*需要有图*
+![](/img/in-post/post-OASP11/01-collision-diagram.png)
+*原子受影响的示意图*
 
 换元什么的，$$ v = dy/dt = (\rho/\cos{\theta})d\theta/dt, dt = (\rho/v)d\theta/\cos^2{\theta} $$，有
 
@@ -223,7 +226,8 @@ $$ \log{\gamma_6} \approx 20 + 0.4 \log{C_6} + \log{P_\mathrm{e}} - 0.7 \log{T} 
 
 画出来就像下面这样：
 
-*应该有图*
+![](/img/in-post/post-OASP11/02-damping-const.png)
+*Na I D2线的damping constent*
 
 上面这两条式子在谱线计算里面经常会被用到。当然实际和理论还是有点区别，所以会加一个系数，随时修正。
 
