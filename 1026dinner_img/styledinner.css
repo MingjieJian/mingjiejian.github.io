@@ -1,0 +1,36 @@
+body{
+  margin: auto 3%;
+  background-color:#CCCCCC;
+}
+
+header{
+  text-align: center;
+  font-size: 200%;
+}
+
+h2{
+  font-size: 250%;
+}
+
+#texta{
+  text-align: center;
+  border: 2px solid black;
+}
+
+p{
+  font-size: 200%;
+}
+
+footer{
+  text-align: center;
+}
+
+#q_text{
+  text-align: left;
+  font-family: "Georgia";
+}
+
+table{
+  margin: 2.5%;
+  vertical-align: middle;
+}
