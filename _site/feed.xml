@@ -5,8 +5,8 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 27 Oct 2018 15:22:13 +0900</pubDate>
-    <lastBuildDate>Sat, 27 Oct 2018 15:22:13 +0900</lastBuildDate>
+    <pubDate>Sat, 27 Oct 2018 21:12:25 +0900</pubDate>
+    <lastBuildDate>Sat, 27 Oct 2018 21:12:25 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -116,7 +116,9 @@
 
 &lt;p&gt;&lt;img src=&quot;https://3iom3142cnb81rlnt6w4mtlr-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/fig2-3.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;银盘的半径大约为5万光年，而银晕的半径约为75万，实际上银晕比银盘大很多。比较好奇的是书里面没有提及核球的大小，可以查一下。银晕里面有暗物质存在，而且很多，所以叫做暗物质晕也可以。&lt;/p&gt;
+&lt;p&gt;银盘的半径大约为5万光年，而银晕的半径约为75万，实际上银晕比银盘大很多。比较好奇的是书里面没有提及核球的大小，大约是&lt;a href=&quot;http://astronomy.swin.edu.au/cosmos/B/Bulges&quot;&gt;2kpc&lt;/a&gt;。银晕里面有暗物质存在，而且很多，所以叫做暗物质晕也可以。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;问题：核球有多大？它的边界是怎么定义的？&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;银河系和M31，加上一堆杂七杂八的小星系，构成了本星系群，分布如下：&lt;/p&gt;
 
@@ -141,6 +143,80 @@
 &lt;p&gt;上面的星分为MS、MSTO、RGB和HB几个区域；我们可以通过这幅图推测出M3的年龄以及金属丰度，也就知道了它是什么时候形成的、是一次性形成还是分多次形成的，或者说知道了它的历史。详细的方法会在第三章讲。&lt;/p&gt;
 
 &lt;p&gt;概括地来说，银河考古学就是研究恒星动力学与元素丰度的领域。这两方面的信息就决定了银河系的历史以及演化。&lt;/p&gt;
+
+&lt;h2 id=&quot;2-星系运动学与银河系动力学&quot;&gt;2 星系运动学与银河系动力学&lt;/h2&gt;
+
+&lt;h3 id=&quot;恒星的轨道运动&quot;&gt;恒星的轨道运动&lt;/h3&gt;
+
+&lt;p&gt;星系很大、恒星很小。所以我们可以忽略每个恒星自身附近引力场的凹陷，以及假设恒星和恒星之间不会有相互作用，简化一下这个世界。简化之后的重点就在于重力势了，重力势决定了在里面的恒星会有什么样的轨道，又有什么样的轨道是不被允许的。下面举几个典型的粒例子：&lt;/p&gt;
+
+&lt;h4 id=&quot;球对称引力势下的轨道&quot;&gt;球对称引力势下的轨道&lt;/h4&gt;
+
+&lt;p&gt;球对称引力势下的引力永远指向球心，所以角动量守恒。当质量集中在一点下的时候，恒星做椭圆轨道运动；而当质量均匀分布的时候，各个方向相当于一个谐振子，所以恒星围绕质心做椭圆运动。实际上银河系的引力势大概介于这俩之间，这么来看的话恒星的轨道是花形的，不闭合。&lt;/p&gt;
+
+&lt;h5 id=&quot;运动积分&quot;&gt;运动积分&lt;/h5&gt;
+
+&lt;p&gt;我们想找不变量。&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{r},\boldsymbol{v}&lt;/script&gt;自然随时间变化，但是还有其他的不变量。如果系孤立，那么能量&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;是守恒的；如果引力势轴对称，那么角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{L}&lt;/script&gt;也是守恒的。&lt;/p&gt;
+
+&lt;p&gt;具体的推导什么的我认为不是太重要，如果用到的时候我再在这里补充，同时请参阅&lt;a href=&quot;https://opac.dl.itc.u-tokyo.ac.jp/opac/opac_details/?reqCode=fromlist&amp;amp;lang=0&amp;amp;amode=11&amp;amp;bibid=2002551617&amp;amp;opkey=B154063368720919&amp;amp;start=1&amp;amp;totalnum=21&amp;amp;listnum=7&amp;amp;place=&amp;amp;list_disp=20&amp;amp;list_sort=6&quot;&gt;Galactic dynamics&lt;/a&gt;。广义的运动积分&lt;script type=&quot;math/tex&quot;&gt;J_i&lt;/script&gt;有如下的性质：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;被引力场束缚的轨道的运动积分&lt;script type=&quot;math/tex&quot;&gt;\ge 0&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;当引力势的变化时标与系统的动力学时标相比很大的时候，&lt;script type=&quot;math/tex&quot;&gt;J_i&lt;/script&gt;是绝热不变量&lt;/li&gt;
+  &lt;li&gt;一个轨道群在相空间&lt;script type=&quot;math/tex&quot;&gt;(\boldsymbol{r},\boldsymbol{v})&lt;/script&gt;所占的体积与它们在运动积分空间&lt;script type=&quot;math/tex&quot;&gt;J_i&lt;/script&gt;所占的体积成比例&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;重点说说第二点，比如说如果太阳的质量在缓慢增加的时候，地球的偏心率是不变的，但是轨道总体会向太阳靠近；但是要是变化很快的话，偏心率也会变。这个时间的临界点大概在1年左右。&lt;/p&gt;
+
+&lt;h4 id=&quot;非球对称引力势下的轨道&quot;&gt;非球对称引力势下的轨道&lt;/h4&gt;
+
+&lt;p&gt;实际的银河系引力势肯定不是球对称的。稍微放宽一点，轴对称的引力势下恒星的轨道是一个tube，非轴对称下的可能是一个箱形轨道。这里的箱形轨道与核球的形状可能有一定联系。&lt;/p&gt;
+
+&lt;h3 id=&quot;恒星运动学和银河系的自转&quot;&gt;恒星运动学和银河系的自转&lt;/h3&gt;
+
+&lt;p&gt;在不同区域内的恒星有不同的运动状态，同时恒星还能追踪暗物质的情况。&lt;/p&gt;
+
+&lt;h4 id=&quot;恒星的速度成分&quot;&gt;恒星的速度成分&lt;/h4&gt;
+
+&lt;p&gt;想知道恒星的运动状况就要知道它的位置与速度。这里我们引入本地静止坐标系LSR，并定义从LSR向外、顺太阳公转方向以及向上的速度为&lt;script type=&quot;math/tex&quot;&gt;U, V, W&lt;/script&gt;；那么在知道太阳的位置&lt;script type=&quot;math/tex&quot;&gt;(R_0, \Theta_0)&lt;/script&gt;以及速度&lt;script type=&quot;math/tex&quot;&gt;(U_\odot, V_\odot, W_\odot)&lt;/script&gt;之后，只要测出恒星的日心速度&lt;script type=&quot;math/tex&quot;&gt;(u,v,w) = (U-U_\odot, V-V_\odot, W-W_\odot)&lt;/script&gt;就可以知道恒星的运动速度了。&lt;/p&gt;
+
+&lt;h4 id=&quot;太阳的信息怎么测&quot;&gt;太阳的信息怎么测？&lt;/h4&gt;
+
+&lt;p&gt;太阳的速度可以通过测量太阳邻域的恒星的速度弥散来确定（具体推导过程忽略）；位置的话可以用银晕球状星团中的RR Lyras变星的公转、Oort常数或者VLBI确定的银河系中心SgrA*的自行来确定公转速度，用银晕球状星团中的RR Lyras变星的距离、银心附近水脉泽天体的大小或者围绕银心附近天体的运动学信息求得距离。结果如下：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;U_\odot = -11.10 \mathrm{km/s}, V_\odot = 12.24 \mathrm{km/s}, W_\odot = 7.25 \mathrm{km/s}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_0 = 8.3 \mathrm{kpc}, \Theta_0 = 239 \mathrm{km/s}&lt;/script&gt;
+
+&lt;h4 id=&quot;银河系自转曲线&quot;&gt;银河系自转曲线&lt;/h4&gt;
+
+&lt;p&gt;太阳系内部的自转曲线不多说了，外部的除了视向速度之外还要确定距离；最后得出来的就是那个人尽皆知的平坦形状。&lt;/p&gt;
+
+&lt;h3 id=&quot;银河系引力势模型&quot;&gt;银河系引力势模型&lt;/h3&gt;
+
+&lt;p&gt;既然我们有了自转曲线，那么什么样的引力势模型才能提供这样一马平川的曲线呢？&lt;/p&gt;
+
+&lt;p&gt;最简单的想法是在&lt;script type=&quot;math/tex&quot;&gt;R,z&lt;/script&gt;两个方向上的指数递减，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\rho(R,z) = \rho_0 e^{-R/h}e^{-|z|/z_0}&lt;/script&gt;
+
+&lt;p&gt;但是仅靠这个造出来的自转曲线不平，要加上核球以及银晕的引力势，才能再现；其中一个例子是&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:astro-ph/9502005&quot;&gt;Johnston+95&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果想排除不规则轨道，让模型与初始条件无关的话，可以用Stackel模型（比如&lt;a href=&quot;http://adsabs.harvard.edu/abs/1985MNRAS.216..273D&quot;&gt;这个&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;h3 id=&quot;恒星的理论力学和动力学&quot;&gt;恒星的理论力学和动力学&lt;/h3&gt;
+
+&lt;p&gt;提及了恒星系统在相空间占据的位置随时间的变化、玻尔兹曼以及金斯方程、位力定理（位力半径）、金斯定理。&lt;/p&gt;
+
+&lt;h4 id=&quot;太阳邻域的恒星速度&quot;&gt;太阳邻域的恒星速度&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;富金属星（银盘）的速度集中在&lt;script type=&quot;math/tex&quot;&gt;(U,V)=0&lt;/script&gt;附近&lt;/li&gt;
+  &lt;li&gt;贫金属星的&lt;script type=&quot;math/tex&quot;&gt;V&lt;/script&gt;速度为负，且弥散比较大&lt;/li&gt;
+  &lt;li&gt;极贫金属星（银晕）的速度集中在&lt;script type=&quot;math/tex&quot;&gt;-\Theta_0&lt;/script&gt;附近且弥散大&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;从富金属星到贫金属星的变化可以理解为年龄比较大的恒星从圆轨道渐渐被各种拉扯，出现偏离。&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Oct 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/10/26/GA/</link>
@@ -162,21 +238,46 @@
 
 &lt;ul&gt;
   &lt;li&gt;不同来源的数据给出了一致的结果&lt;/li&gt;
-  &lt;li&gt;SFR：一个点；SFH：一条线&lt;/li&gt;
+  &lt;li&gt;SFR(Stellar Forming Rate)：一个点；SFH(Stellar Forming History)：一条线&lt;/li&gt;
   &lt;li&gt;通过不同方法可以探测星系的光度（不同波段），或者通过一些特征线等可以推断出星系的恒星形成率&lt;/li&gt;
+  &lt;li&gt;观测到的SN II数量为SFH提供了一个下限（因为有被挡住的）&lt;/li&gt;
   &lt;li&gt;超级神冈探测器可以探测到弥散的超新星中微子背景，这提供了一个上限（大概是有多少恒星才能有多少超新星？）&lt;/li&gt;
+  &lt;li&gt;SFH应该与同时间的恒星质量密度(stellar mass density)匹配，但是在高红移处恒星质量密度显著低于SFH；这可能是我们的假设以及遮挡引起的。如果低红移处也有问题的话可能是因为IMF：SFR是从大质量恒星的光度得到的，而恒星质量密度主要是从小质量恒星处的到的，所以将这两个联系在一起的IMF的正确性就很重要了。当然从下图来说(b)使用的IMF更好一点，至少低红移处一致了。
+&lt;img src=&quot;/img/in-post/post-GA/1s-1-hb06.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;HB06, Fig.5. (a)、(b)使用的是&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003ApJ...593..258B&quot;&gt;SalA和BG IMF&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;金属的质量密度就更难观测了&lt;/li&gt;
+  &lt;li&gt;模型和观测的超新星出现率还是挺一致的，而且观测到的有阻挡，所以比模型低是正常的。&lt;/li&gt;
+  &lt;li&gt;delay time控制的是SN Ia的拐点。
+&lt;img src=&quot;/img/in-post/post-GA/1s-2-hb06.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;HB06, Fig.7. 上面是SN II、下面是SN Ia的出现率。(a)、(b)使用的是&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003ApJ...593..258B&quot;&gt;SalA和BG IMF&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;什么是SFH的归一化？为什么要归一化？是指Fig. 1的那条曲线吗？&lt;/li&gt;
-  &lt;li&gt;Salpeter IMF是什么样子的》基于什么假设？&lt;/li&gt;
+  &lt;li&gt;什么是SFH的归一化？为什么要归一化？是指Fig. 1的那条曲线吗？&lt;br /&gt;
+我认为这里的归一化指的是对SFH的限制，比如上下限；当然给出具体曲线也是归一化的一种。&lt;/li&gt;
+  &lt;li&gt;Salpeter IMF是什么样子的基于什么假设？&lt;br /&gt;
+未查，参考&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003ApJ...593..258B&quot;&gt;论文&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;buonanno1994中的fig-11&quot;&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1994A%26A...290...69B&quot;&gt;Buonanno+1994&lt;/a&gt;中的Fig. 11&lt;/h3&gt;
 &lt;p&gt;M3的CMD有不少版本，挺不一样的，比较一下应该会有意思。
 &lt;img src=&quot;/img/in-post/post-GA/1-b94.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;完整性：文中给出了一个计算完整性的方法(section 2.4)；限于时间问题没有细看。我自己的想法是可以模拟一个恒星数密度关系然后看投影之后能看到多少恒星。操作层面来说，我们只能观测一个甜甜圈的范围，太里面的因为不完整其实不能拿来画图。&lt;/li&gt;
+  &lt;li&gt;CMD示意图给出了对图中各部分的解释:
+&lt;img src=&quot;/img/in-post/post-GA/1s-3.png&quot; alt=&quot;&quot; /&gt;
+&lt;a href=&quot;http://www.astro.caltech.edu/~george/ay20/eaa-globcl.pdf&quot;&gt;来源&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;MS、RGB的位置以及宽度可以推断金属丰度（大小以及弥散）&lt;/li&gt;
+  &lt;li&gt;和我的印象不一样的是，AGB是这些成分里面演化到最晚期的&lt;/li&gt;
+  &lt;li&gt;TO可以用来测量年龄，是星团里面最准确的年龄推断&lt;/li&gt;
+  &lt;li&gt;HB的位置由元素丰度、氦闪时He核质量以及包层质量决定；所以恒星在RGB阶段经历的质量流失是不一样的&lt;/li&gt;
+  &lt;li&gt;由上，RHB和BHB也可以用来推断年龄&lt;/li&gt;
+  &lt;li&gt;HB中间是不稳定gap，是RR Lyrae&lt;/li&gt;
+  &lt;li&gt;BSS可能是两恒星的合并或者质量交换得来的，它们基本上处于星团的核心部位&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Fri, 26 Oct 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/10/26/GA-S/</link>

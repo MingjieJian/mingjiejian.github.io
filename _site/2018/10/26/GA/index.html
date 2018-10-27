@@ -275,7 +275,9 @@
 
 <p><img src="https://3iom3142cnb81rlnt6w4mtlr-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/fig2-3.jpg" alt="" /></p>
 
-<p>银盘的半径大约为5万光年，而银晕的半径约为75万，实际上银晕比银盘大很多。比较好奇的是书里面没有提及核球的大小，可以查一下。银晕里面有暗物质存在，而且很多，所以叫做暗物质晕也可以。</p>
+<p>银盘的半径大约为5万光年，而银晕的半径约为75万，实际上银晕比银盘大很多。比较好奇的是书里面没有提及核球的大小，大约是<a href="http://astronomy.swin.edu.au/cosmos/B/Bulges">2kpc</a>。银晕里面有暗物质存在，而且很多，所以叫做暗物质晕也可以。</p>
+
+<p><em>问题：核球有多大？它的边界是怎么定义的？</em></p>
 
 <p>银河系和M31，加上一堆杂七杂八的小星系，构成了本星系群，分布如下：</p>
 
@@ -300,6 +302,80 @@
 <p>上面的星分为MS、MSTO、RGB和HB几个区域；我们可以通过这幅图推测出M3的年龄以及金属丰度，也就知道了它是什么时候形成的、是一次性形成还是分多次形成的，或者说知道了它的历史。详细的方法会在第三章讲。</p>
 
 <p>概括地来说，银河考古学就是研究恒星动力学与元素丰度的领域。这两方面的信息就决定了银河系的历史以及演化。</p>
+
+<h2 id="2-星系运动学与银河系动力学">2 星系运动学与银河系动力学</h2>
+
+<h3 id="恒星的轨道运动">恒星的轨道运动</h3>
+
+<p>星系很大、恒星很小。所以我们可以忽略每个恒星自身附近引力场的凹陷，以及假设恒星和恒星之间不会有相互作用，简化一下这个世界。简化之后的重点就在于重力势了，重力势决定了在里面的恒星会有什么样的轨道，又有什么样的轨道是不被允许的。下面举几个典型的粒例子：</p>
+
+<h4 id="球对称引力势下的轨道">球对称引力势下的轨道</h4>
+
+<p>球对称引力势下的引力永远指向球心，所以角动量守恒。当质量集中在一点下的时候，恒星做椭圆轨道运动；而当质量均匀分布的时候，各个方向相当于一个谐振子，所以恒星围绕质心做椭圆运动。实际上银河系的引力势大概介于这俩之间，这么来看的话恒星的轨道是花形的，不闭合。</p>
+
+<h5 id="运动积分">运动积分</h5>
+
+<p>我们想找不变量。<script type="math/tex">\boldsymbol{r},\boldsymbol{v}</script>自然随时间变化，但是还有其他的不变量。如果系孤立，那么能量<script type="math/tex">E</script>是守恒的；如果引力势轴对称，那么角动量<script type="math/tex">\boldsymbol{L}</script>也是守恒的。</p>
+
+<p>具体的推导什么的我认为不是太重要，如果用到的时候我再在这里补充，同时请参阅<a href="https://opac.dl.itc.u-tokyo.ac.jp/opac/opac_details/?reqCode=fromlist&amp;lang=0&amp;amode=11&amp;bibid=2002551617&amp;opkey=B154063368720919&amp;start=1&amp;totalnum=21&amp;listnum=7&amp;place=&amp;list_disp=20&amp;list_sort=6">Galactic dynamics</a>。广义的运动积分<script type="math/tex">J_i</script>有如下的性质：</p>
+
+<ol>
+  <li>被引力场束缚的轨道的运动积分<script type="math/tex">\ge 0</script></li>
+  <li>当引力势的变化时标与系统的动力学时标相比很大的时候，<script type="math/tex">J_i</script>是绝热不变量</li>
+  <li>一个轨道群在相空间<script type="math/tex">(\boldsymbol{r},\boldsymbol{v})</script>所占的体积与它们在运动积分空间<script type="math/tex">J_i</script>所占的体积成比例</li>
+</ol>
+
+<p>重点说说第二点，比如说如果太阳的质量在缓慢增加的时候，地球的偏心率是不变的，但是轨道总体会向太阳靠近；但是要是变化很快的话，偏心率也会变。这个时间的临界点大概在1年左右。</p>
+
+<h4 id="非球对称引力势下的轨道">非球对称引力势下的轨道</h4>
+
+<p>实际的银河系引力势肯定不是球对称的。稍微放宽一点，轴对称的引力势下恒星的轨道是一个tube，非轴对称下的可能是一个箱形轨道。这里的箱形轨道与核球的形状可能有一定联系。</p>
+
+<h3 id="恒星运动学和银河系的自转">恒星运动学和银河系的自转</h3>
+
+<p>在不同区域内的恒星有不同的运动状态，同时恒星还能追踪暗物质的情况。</p>
+
+<h4 id="恒星的速度成分">恒星的速度成分</h4>
+
+<p>想知道恒星的运动状况就要知道它的位置与速度。这里我们引入本地静止坐标系LSR，并定义从LSR向外、顺太阳公转方向以及向上的速度为<script type="math/tex">U, V, W</script>；那么在知道太阳的位置<script type="math/tex">(R_0, \Theta_0)</script>以及速度<script type="math/tex">(U_\odot, V_\odot, W_\odot)</script>之后，只要测出恒星的日心速度<script type="math/tex">(u,v,w) = (U-U_\odot, V-V_\odot, W-W_\odot)</script>就可以知道恒星的运动速度了。</p>
+
+<h4 id="太阳的信息怎么测">太阳的信息怎么测？</h4>
+
+<p>太阳的速度可以通过测量太阳邻域的恒星的速度弥散来确定（具体推导过程忽略）；位置的话可以用银晕球状星团中的RR Lyras变星的公转、Oort常数或者VLBI确定的银河系中心SgrA*的自行来确定公转速度，用银晕球状星团中的RR Lyras变星的距离、银心附近水脉泽天体的大小或者围绕银心附近天体的运动学信息求得距离。结果如下：</p>
+
+<script type="math/tex; mode=display">U_\odot = -11.10 \mathrm{km/s}, V_\odot = 12.24 \mathrm{km/s}, W_\odot = 7.25 \mathrm{km/s}</script>
+
+<script type="math/tex; mode=display">R_0 = 8.3 \mathrm{kpc}, \Theta_0 = 239 \mathrm{km/s}</script>
+
+<h4 id="银河系自转曲线">银河系自转曲线</h4>
+
+<p>太阳系内部的自转曲线不多说了，外部的除了视向速度之外还要确定距离；最后得出来的就是那个人尽皆知的平坦形状。</p>
+
+<h3 id="银河系引力势模型">银河系引力势模型</h3>
+
+<p>既然我们有了自转曲线，那么什么样的引力势模型才能提供这样一马平川的曲线呢？</p>
+
+<p>最简单的想法是在<script type="math/tex">R,z</script>两个方向上的指数递减，</p>
+
+<script type="math/tex; mode=display">\rho(R,z) = \rho_0 e^{-R/h}e^{-|z|/z_0}</script>
+
+<p>但是仅靠这个造出来的自转曲线不平，要加上核球以及银晕的引力势，才能再现；其中一个例子是<a href="http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:astro-ph/9502005">Johnston+95</a>。</p>
+
+<p>如果想排除不规则轨道，让模型与初始条件无关的话，可以用Stackel模型（比如<a href="http://adsabs.harvard.edu/abs/1985MNRAS.216..273D">这个</a>）。</p>
+
+<h3 id="恒星的理论力学和动力学">恒星的理论力学和动力学</h3>
+
+<p>提及了恒星系统在相空间占据的位置随时间的变化、玻尔兹曼以及金斯方程、位力定理（位力半径）、金斯定理。</p>
+
+<h4 id="太阳邻域的恒星速度">太阳邻域的恒星速度</h4>
+
+<ul>
+  <li>富金属星（银盘）的速度集中在<script type="math/tex">(U,V)=0</script>附近</li>
+  <li>贫金属星的<script type="math/tex">V</script>速度为负，且弥散比较大</li>
+  <li>极贫金属星（银晕）的速度集中在<script type="math/tex">-\Theta_0</script>附近且弥散大</li>
+</ul>
+
+<p>从富金属星到贫金属星的变化可以理解为年龄比较大的恒星从圆轨道渐渐被各种拉扯，出现偏离。</p>
 
 
                 <hr style="visibility: hidden;">
