@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>恒星光球层的观测与分析(OASP) - 1 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2017/11/11/OASP1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-OASP1.png" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-OASP1.png')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>恒星光球层的观测与分析(OASP) - 1</h1>
+                    
+                    
+                    <h2 class="subheading">大工程</h2>
+                    
+                    <span class="meta">Posted by mingjie on November 11, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p><img src="http://t1.gstatic.com/images?q=tbn:ANd9GcRhhc3AC-KuxR9-IYED0pwifa6OOgkcpjhb27ST7pFwTV35UJPr" alt="" />
+<em>书的封面</em></p>
+
+<h3 id="前言">前言</h3>
+
+<p>这是恒星光球层的观测与分析(The Observation and Analysis of Stellar Photosphere)的读书笔记。当时是找生长曲线相关资料的时候偶尔看到的，觉得不错，就打算慢慢看下去，把笔记记在这里。这本书说是对光球层的观测与分析，实际上是教你如何分析恒星光谱。写笔记中肯定会有理解错误的地方，请不吝指正，どうか。<br />
+为了避免版权问题，图片尽量从其他地方找、或者自己画。</p>
+
+<h3 id="第一章">第一章</h3>
+
+<p>对恒星的光谱观测基本上就是对光球层的观测。我们可以从里面得到很多信息，比如质量、年龄、金属丰度、温度等等。我们关注光球层的原因是可见光光谱中的光子就是从光球层中发出的。</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sun_Atmosphere_Temperature_and_Density_SkyLab.jpg/800px-Sun_Atmosphere_Temperature_and_Density_SkyLab.jpg" alt="" />
+<em>恒星各层的位置和温度。来自<a href="https://en.wikipedia.org/wiki/Photosphere">维基百科</a></em></p>
+
+<p>这一章简要地介绍了一些概念，没有涉及太多的计算。这里默认读者对这些概念已经了解，仅简要列举如下：</p>
+
+<h4 id="基本量">基本量</h4>
+
+<ul>
+  <li>重力加速度 <script type="math/tex">g</script></li>
+</ul>
+
+<script type="math/tex; mode=display">g = g_\odot \frac{m}{R^2}</script>
+
+<p>以太阳为基准计算物理量是天文领域惯用的伎俩了；相对量不用管系数是多少，抓住和物理量有关的量确定幂次（或者更加复杂的形式）就好，<script type="math/tex">g_\odot</script>测定就行。</p>
+
+<ul>
+  <li>有效温度 <script type="math/tex">T_\mathrm{eff}</script></li>
+</ul>
+
+<script type="math/tex; mode=display">\sigma T_\mathrm{eff}^4 = \int_0^\infty f_\nu d\nu</script>
+
+<p>有效温度是通过恒星的流量来定义的。这里的<script type="math/tex">f_\nu</script>会在第五章定义。</p>
+
+<ul>
+  <li>光度 <script type="math/tex">L</script></li>
+</ul>
+
+<script type="math/tex; mode=display">L = 4\pi R^2 \sigma T_\mathrm{eff}^4</script>
+
+<ul>
+  <li>光谱型分类</li>
+</ul>
+
+<p>略。</p>
+
+<h4 id="测光相关">测光相关</h4>
+
+<ul>
+  <li>星等</li>
+</ul>
+
+<script type="math/tex; mode=display">m = -2.5 \lg \int_0^\infty F_\nu W(\nu) \mathrm{d}\nu + C</script>
+
+<p>这里<script type="math/tex">F_\nu</script>是投射到望远镜或者CCD上的光量，<script type="math/tex">W(\nu)</script>是透过率；常数<script type="math/tex">C</script>用标准星标定。如果<script type="math/tex">W(\nu) = 1</script>那么星等就变为热星等。</p>
+
+<p>有关各星等系统的透过率信息在<a href="http://svo2.cab.inta-csic.es/svo/theory/fps/">这里</a>。</p>
+
+<ul>
+  <li>色指数</li>
+</ul>
+
+<script type="math/tex; mode=display">m_a = m_b = -2.5 \lg \frac{E_1}{E_2} + C</script>
+
+<p>这里的常数<script type="math/tex">C</script>是令某光谱型恒星色指数为0的常数。</p>
+
+<ul>
+  <li>星际消光</li>
+</ul>
+
+<p>星际消光影响星等和色织数，不影响谱线形状，但是会在光谱上产生吸收线。</p>
+
+<h4 id="物理公式">物理公式</h4>
+
+<ul>
+  <li>理想气体</li>
+</ul>
+
+<script type="math/tex; mode=display">PV = nRT</script>
+
+<script type="math/tex; mode=display">P = \frac{nN_0}{V} \frac{R}{N_0} T = NKT</script>
+
+<ul>
+  <li>速率分布</li>
+</ul>
+
+<script type="math/tex; mode=display">\frac{\mathrm{d}N(v_R)}{N_\mathrm{total}} = (\frac{m}{2\pi kT})^{3/2} e^{-\frac{mv_R^2}{2KT}} \mathrm{d}v_R</script>
+
+<p>麦克斯韦分布。<script type="math/tex">v_R</script>为视向速度分量。</p>
+
+<script type="math/tex; mode=display">\frac{\mathrm{d}N(v)}{N_\mathrm{total}} = (\frac{2}{\pi})^{1/2}(\frac{m}{kT})^{3/2} e^{-\frac{mv^2}{2KT}} \mathrm{d}v</script>
+
+<p>麦克斯韦-玻尔兹曼分布。</p>
+
+<ul>
+  <li>原子激发与电离</li>
+</ul>
+
+<p>对于某两个能级来说，占据数有如下关系：</p>
+
+<script type="math/tex; mode=display">\frac{N_n}{N_m} = \frac{g_n}{g_m} e^{-\frac{\Delta \chi}{kT}}</script>
+
+<p>对于某一个能级和总原子数，有</p>
+
+<script type="math/tex; mode=display">\frac{N_n}{N} = \frac{g_n}{u(T)} e^{-\frac{\chi_n}{kT}}</script>
+
+<p>其中<script type="math/tex">u(T) = \Sigma g_i e^{-\frac{\chi_n}{kT}}</script>为配分函数；附录D中有表格可供计算。从这里可以看出基态的占据数和温度无关（<em>如何理解？</em>）</p>
+
+<p>Saha方程是用在原子的电离上的，表示某电离态和原子态的数量之比：</p>
+
+<script type="math/tex; mode=display">\frac{N_n}{N_0} P_e = \frac{(2\pi m_e)^{3/2}(kT)^{5/2}}{h^3} \frac{2u_1(T)}{u_0(T)}e^{-\frac{I}{kT}}</script>
+
+<p>结合Saha方程和上上式，即可得出某能级原子占总原子数的比：</p>
+
+<script type="math/tex; mode=display">\frac{N_n}{N_\mathrm{total}} = \frac{N_n}{N_0+N_1+N_2+...}</script>
+
+<p>要讨论某个电离态里面的某个激发态的时候，就用那个电离态的<script type="math/tex">N_i</script>去除上式，就可以把那两条式子代入了。</p>
+
+<h3 id="问题">问题</h3>
+
+<p>1-4略。</p>
+
+<p>-5.</p>
+
+<script type="math/tex; mode=display">\approx 10^5 \mathrm{K}</script>
+
+<p>-6.</p>
+
+<script type="math/tex; mode=display">\frac{N_0}{N} = \frac{1}{1+\frac{N_1}{N_0}+\frac{N_2}{N_0}}</script>
+
+<script type="math/tex; mode=display">\frac{N_1}{N} = \frac{1}{\frac{N_0}{N_1}+1+\frac{N_2}{N_1}}</script>
+
+<script type="math/tex; mode=display">\frac{N_2}{N} = \frac{1}{\frac{N_0}{N_2}+\frac{N_1}{N_2}+1}</script>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/11/08/MU69/" >
+                        Previous<br>
+                        <span>给小天体起名字</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/11/11/OASP2/" >
+                        Next<br>
+                        <span>OASP - 2</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2017/11/11/OASP1/";
+    var disqus_url = "http://localhost:4000/2017/11/11/OASP1/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

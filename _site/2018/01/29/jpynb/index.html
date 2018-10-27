@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>Jupyter Notebook + Python 备忘 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2018/01/29/jpynb/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-jpynb.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-jpynb.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>Jupyter Notebook + Python 备忘</h1>
+                    
+                    
+                    <h2 class="subheading">人蠢就得多动手</h2>
+                    
+                    <span class="meta">Posted by mingjie on January 29, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h2 id="catagory">Catagory</h2>
+
+<ol>
+  <li><a href="#jpynb">Jpynb备忘</a>
+    <ol>
+      <li><a href="#jpynb-color_change">改变Notebook里面Markdown文字颜色</a></li>
+      <li><a href="#jpynb-theta">Matplotlib中<code class="highlighter-rouge">'\theta'</code>变为<code class="highlighter-rouge">heta</code>的问题</a></li>
+    </ol>
+  </li>
+  <li><a href="#py">Python备忘</a>
+    <ol>
+      <li><a href="#py-array_stack">Numpy中的矩阵合并</a></li>
+      <li><a href="#py-package">自己写包</a></li>
+    </ol>
+  </li>
+  <li>Pandas</li>
+  <li>matplotlib</li>
+</ol>
+
+<p id="jpynb"></p>
+<h3 id="jpynb备忘">Jpynb备忘</h3>
+
+<p id="jpynb-color_change"></p>
+<h4 id="改变notebook里面markdown文字颜色">改变Notebook里面Markdown文字颜色</h4>
+
+<p>例如想要这样的效果：foo <font color="red"> bar </font> foo</p>
+
+<p><code class="highlighter-rouge">foo &lt;font color='red'&gt; bar &lt;/font&gt; foo</code></p>
+
+<p>其实就是一个HTML的attribute。</p>
+
+<p id="jpynb-theta"></p>
+<h4 id="matplotlib中theta变为heta的问题">Matplotlib中<code class="highlighter-rouge">'\theta'</code>变为<code class="highlighter-rouge">heta</code>的问题</h4>
+
+<p>这是因为<code class="highlighter-rouge">\t</code>在字符串中会被转义为Tab，所以要在字符串前加上一个<code class="highlighter-rouge">r</code>。</p>
+
+<p id="py"></p>
+<h3 id="python备忘">Python备忘</h3>
+
+<p id="py-array_stack"></p>
+<h4 id="numpy中的矩阵合并">Numpy中的矩阵合并</h4>
+<ul>
+  <li>列合并/扩展：np.column_stack()</li>
+  <li>行合并/扩展：np.row_stack()</li>
+</ul>
+
+<p id="py-pandas"></p>
+<h4 id="pandas">Pandas</h4>
+
+<p>DataFrame里面选出几列：<code class="highlighter-rouge">df[['a', 'b']]</code></p>
+
+<h4 id="从pdf中提取表格">从pdf中提取表格</h4>
+<p>先安装tabula-py：
+<code class="highlighter-rouge">pip install tablua-py</code></p>
+
+<p>导入，使用：</p>
+
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tabula</span>
+<span class="n">tabula</span><span class="o">.</span><span class="n">read_pdf</span><span class="p">(</span><span class="s">'xxx.pdf'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s">'--pages 4'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p id="py-package"></p>
+<h4 id="自己写包">自己写包</h4>
+
+<p>一直都想这么干了，之前的代码都是复制粘贴，觉得很没有效率；所以决定将常用的代码写成一个包方便调用。目标是想numpy一样有层级，同时只导入包名能用Tab提示下面层级的内容。</p>
+
+<p>首先描述文件结构：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>\ruler
+  \ruler
+    __init__.py
+    convert.py
+    \subpackage
+      __init__.py
+      something.py
+  setup.py
+</code></pre>
+</div>
+
+<p>因为还没完全写好，就先把一个示例放上来。最外面的ruler是安装用的，不叫包名应该也可以（但是如果要上传到PyPi的话应该有要求），里面的setup.py需要有这样的内容：</p>
+
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'ruler'</span><span class="p">,</span>
+      <span class="n">version</span><span class="o">=</span><span class="s">'0.1'</span><span class="p">,</span>
+      <span class="n">description</span><span class="o">=</span><span class="s">'The ruler for spectra'</span><span class="p">,</span>
+      <span class="n">url</span><span class="o">=</span><span class="s">''</span><span class="p">,</span>
+      <span class="n">author</span><span class="o">=</span><span class="s">'Mingjie Jian'</span><span class="p">,</span>
+      <span class="n">author_email</span><span class="o">=</span><span class="s">'ssaajianmingjie@gmail.com'</span><span class="p">,</span>
+      <span class="n">license</span><span class="o">=</span><span class="s">'MIT'</span><span class="p">,</span>
+      <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s">'ruler'</span><span class="p">],</span>
+      <span class="n">zip_safe</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>如果只有<code class="highlighter-rouge">name</code>和<code class="highlighter-rouge">version</code>的话可能也行。第二层的ruler是真正的包，它以及里面的每个文件夹都需要有一个<code class="highlighter-rouge">__init__.py</code>，表示这是包。从这一级开始里面就可以放module，也就是<code class="highlighter-rouge">.py</code>文件了。不过要达到之前的目的（仅import包名但自动提示模块）需要在每一个<code class="highlighter-rouge">__init__.py</code>里面将对应文件夹包含的module以及子文件夹们import掉；比如ruler里面的要这样写：</p>
+
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">convert</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">subpackage</span>
+</code></pre>
+</div>
+
+<p>当然subpackage里面的也需要这样写才能把所有的module都带上。想要测试的话先import然后用<code class="highlighter-rouge">dir()</code>看看module和子文件夹在不在里面就行。</p>
+
+<p>这些搞定之后就可以跑回最外级的ruler里面打开终端，运行<code class="highlighter-rouge">pip install -e .</code>。暂时不知道为什么，但是这种方法可以直接在Jpynb里面用，把Jpynb重启一遍就行了。</p>
+
+<p>参考资料：<br />
+<a href="https://docs.python.org/3/tutorial/modules.html#packages">Python Tutorial Chap. 6</a><br />
+<a href="https://python-packaging.readthedocs.io/en/latest/index.html">How To Package Your Python Code</a><br />
+<a href="http://codingpy.com/article/python-import-101/">Python导入模块的几种姿势</a></p>
+
+<h4 id="pandas-1">Pandas</h4>
+
+<h5 id="读取固定宽度表格">读取固定宽度表格</h5>
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="s">'catalog/Kovtyukh/Kovtyukh04/table1.dat'</span><span class="p">,</span>
+                           <span class="n">colspecs</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">41</span><span class="p">,</span><span class="mi">46</span><span class="p">),</span>
+                                     <span class="p">(</span><span class="mi">47</span><span class="p">,</span><span class="mi">52</span><span class="p">),</span> <span class="p">(</span><span class="mi">53</span><span class="p">,</span><span class="mi">68</span><span class="p">)],</span>
+                           <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">'Star'</span><span class="p">,</span> <span class="s">'Teff'</span><span class="p">,</span> <span class="s">'N'</span><span class="p">,</span> <span class="s">'e_Teff'</span><span class="p">,</span> <span class="s">'logg'</span><span class="p">,</span> <span class="s">'Vt'</span><span class="p">,</span> <span class="s">'[Fe/H]'</span><span class="p">,</span> <span class="s">'VMAG'</span><span class="p">,</span>
+                                  <span class="s">'B-V'</span><span class="p">,</span> <span class="s">'Rem'</span><span class="p">])</span>
+</code></pre>
+</div>
+<h4 id="matplotlib">Matplotlib</h4>
+
+<h5 id="防止重叠或者出边界">防止重叠或者出边界</h5>
+
+<p><code class="highlighter-rouge">plt.tight_layout()</code></p>
+
+<h5 id="画密度散点图">画密度散点图</h5>
+
+<p>来自<a href="https://stackoverflow.com/questions/20105364/how-can-i-make-a-scatter-plot-colored-by-density-in-matplotlib?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">这里</a></p>
+
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="c"># Generate fake data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c"># Calculate the point density</span>
+<span class="n">xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">xy</span><span class="p">)(</span><span class="n">xy</span><span class="p">)</span>
+
+<span class="c"># Sort the points by density, so that the densest points are plotted last</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<h5 id="subplot中加上总标题">subplot中加上总标题</h5>
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'This is a somewhat long figure title'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h5 id="subplot中加上总xylabel">subplot中加上总xylabel</h5>
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s">'LDR'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.93</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h5 id="subplot中加上编号子图相对位置统一">subplot中加上编号（子图相对位置统一）</h5>
+<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.89</span><span class="p">,</span> <span class="s">'(a)'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/01/29/bash/" >
+                        Previous<br>
+                        <span>Bash 备忘</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/03/08/OASP9/" >
+                        Next<br>
+                        <span>OASP笔记 - 9</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2018/01/29/jpynb/";
+    var disqus_url = "http://localhost:4000/2018/01/29/jpynb/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

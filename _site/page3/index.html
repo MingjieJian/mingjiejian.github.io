@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/page3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Mingjie's Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">Mingjie's Blog</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			
+<div class="post-preview">
+    <a href="/2017/12/18/OASP4/">
+        <h2 class="post-title">
+            OASP笔记 - 4
+        </h2>
+        
+        <h3 class="post-subtitle">
+            光电探测器
+        </h3>
+        
+        <div class="post-content-preview">
+            这一章讲的是有关光电探测器的东西。从观测的角度来说，知道光电探测器的一些参数是很有必要的，比如说在仪器选择和之后的数据处理上。光电探测器分为两大类，积分的（常见的硅CCD）和脉冲计数的（光电倍增管）。积分类型的适合获取高信噪比图像，脉冲计数的信噪比稍低一点。当然除了探测器本身之外，我们还需要有很多其他的电子器件，来控制开关、记录时间、进行模数转换等。
+
+量子效率和光谱响应
+
+量子效率定义为探...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on December 18, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/12/18/OASP3/">
+        <h2 class="post-title">
+            OASP笔记 - 3
+        </h2>
+        
+        <h3 class="post-subtitle">
+            光谱仪
+        </h3>
+        
+        <div class="post-content-preview">
+            我们需要光谱仪，没有光谱仪哪来的光谱。低分辨率光谱仪可以得到天体的连续谱（第十章），而高分辨率的光谱仪可以得到天体的谱线（第十二章）。
+
+概述
+
+
+光谱仪示意图
+
+从望远镜中过来的光在狭缝的中心聚焦，然后被准直器变为平行光照到光栅上面，色散后经过改正镜再被聚焦到CCD上。单色光会在焦面上形成一条线；而因为一般狭缝的宽度都比较大，最终在焦面形成的线宽基本不受光栅衍射条纹的影响。而当复色光入射到...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on December 18, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/12/03/course-group1/">
+        <h2 class="post-title">
+            公开课微信群
+        </h2>
+        
+        <h3 class="post-subtitle">
+            有监督人工学习
+        </h3>
+        
+        <div class="post-content-preview">
+            2018.1
+
+这次的总结主要是对自己完成状况的评价吧。
+
+到现在来说有的时候会陷入一种比较迷茫的状态；不知道现在所学的对以后有没有用处，所以会上很多的课，但是有的时候又不是很有动力。实际上编程的课仍然不难，但是总会自己寻找理由去拖延。希望3月开始能继续之前的习惯每周按时完成，要时刻提醒自己一件事情只要开始了就不会太难。
+
+其他的话，还在机器学习的课程里面，完成了一周。另外尝试了学习论文写作...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Mingjie on December 3, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/11/11/OASP2/">
+        <h2 class="post-title">
+            OASP - 2
+        </h2>
+        
+        <h3 class="post-subtitle">
+            傅里叶变换
+        </h3>
+        
+        <div class="post-content-preview">
+            傅里叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅里叶变换器。在这里有一点需要明确的是我们以后会经常讨论光谱，所以傅里叶变换的域一般是光谱的频率域，而域并没有很好的名字；所以下文统一称傅里叶变换前后的域为域与域。
+
+定义
+
+一个函数和它的傅里叶变换的关系为：
+
+
+
+
+
+对于傅里叶变换的直观理解知乎上已经有了很多不错的答案，我觉得只要了解可以将任何...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on November 11, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/11/11/OASP1/">
+        <h2 class="post-title">
+            恒星光球层的观测与分析(OASP) - 1
+        </h2>
+        
+        <h3 class="post-subtitle">
+            大工程
+        </h3>
+        
+        <div class="post-content-preview">
+            
+书的封面
+
+前言
+
+这是恒星光球层的观测与分析(The Observation and Analysis of Stellar Photosphere)的读书笔记。当时是找生长曲线相关资料的时候偶尔看到的，觉得不错，就打算慢慢看下去，把笔记记在这里。这本书说是对光球层的观测与分析，实际上是教你如何分析恒星光谱。写笔记中肯定会有理解错误的地方，请不吝指正，どうか。
+为了避免版权问题，图片尽量...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on November 11, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/11/08/MU69/">
+        <h2 class="post-title">
+            给小天体起名字
+        </h2>
+        
+        <h3 class="post-subtitle">
+            喜迎双11，NASA专项活动
+        </h3>
+        
+        <div class="post-content-preview">
+            还记得两年前我们第一次看到印在冥王星上面巨大的心型吗？那是我们第一次如此近距离地看到冥王星的样子。在那之后，负责拍照的探测器新视野号并没有停下它的脚步，而是向着柯依伯带进发。2019年1月1日，新视野号将飞掠柯依伯带天体(486958) 2014 MU69（后文简称MU69），我们将第一次近距离观测柯依伯带天体的“真容”。作为吃瓜群众，我们能做的除了等待之外，还有为这个小天体取一个更好记的名...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Mingjie on November 8, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/10/22/hibike-ensoukai/">
+        <h2 class="post-title">
+            吹响吧！上低音号 第二次定期演奏会
+        </h2>
+        
+        <h3 class="post-subtitle">
+            私たちは、いま！
+        </h3>
+        
+        <div class="post-content-preview">
+            记得是6月份的时候某一次刷響け！的主页看到了第二次定期演奏会的消息（当然还有秋季剧场版），就打起了去看的主意。那个时候还不知道现在有什么安排，但是担心买的人比较多（网页上说要抽选），就定了。抽到之后才想起来其实买的人可能也不多，抽选可能只是一个幌子；事实上夜场直到11号还有余票。
+
+想着正好是周末就去大阪同学那玩玩，周日去京都然后坐夜行巴士回东京，计划完美；结果遇上了强台风（躺），还和日本战...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Mingjie on October 22, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/09/15/onedrive/">
+        <h2 class="post-title">
+            Onedrive占用CPU过多的问题以及解决方法
+        </h2>
+        
+        <h3 class="post-subtitle">
+            电脑退烧药
+        </h3>
+        
+        <div class="post-content-preview">
+            Surface Pro的散热曾经是一个问题，但是随着Win10的更新烫手的时候已经越来越少。不过近两个月风扇使劲转的情况越来越多，也不是在我玩游戏的时候发热，就觉得很奇怪。查看任务管理器之后发现一个叫Microsift OneDirve Setup的进程经常占用大概40%的CPU，而且手动结束之后就不发热了。想着这可能是Onedrive的更新吧，但是插着电过了很久Onedrive告诉我更新出...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Mingjie on September 15, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/08/06/exomoon/">
+        <h2 class="post-title">
+            老大哥在看着你......的观测申请
+        </h2>
+        
+        <h3 class="post-subtitle">
+            又是奇奇怪怪的东西了
+        </h3>
+        
+        <div class="post-content-preview">
+            事情是这样子的。7月26日，哥伦比亚大学的David Kipping教授和他的研究生Alex Teachey（还有一位业余天文学家Allen Schmitt）在arixv上发布了一篇被提交到ApJ的论文。论文通过对最有可能拥有系外卫星的行星系统光变曲线的分析，对系外卫星的存在条件提出了限制，同时提出了一个存在系外卫星的行星系统候选体Kepler-1625。这个候选体符合作者们所给出的筛选条件...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Mingjie on August 6, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2017/07/29/wakate/">
+        <h2 class="post-title">
+            千曲万叶，若手之会
+        </h2>
+        
+        <h3 class="post-subtitle">
+            2017 天文 若手夏の学校
+        </h3>
+        
+        <div class="post-content-preview">
+            若手夏の学校，全称是2017年度 第47回 天文 天体物理若手夏の学校，翻译成中文大致是天文、天体物理青年（学生）夏季学校。这实际上是一年一度的会议，完全由日本各大学的研究生组织策划与参加，除了邀请的演讲者之外没有任何的教授、老师参与。所有的参加者在三天内住在同一个宾馆，分成不同的领域（重力与宇宙学、致密天体、星系与星系团、太阳与恒星、星际介质、恒星形成与行星系和观测仪器分会）进行口头或者海...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on July 29, 2017
+    </p>
+</div>
+<hr>
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/page2">&larr; Newer Posts</a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/page4">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="/img/profile_small.jpeg" />
+                        
+                        
+                            <p>Diving into Astronomy</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            <li>
+                                <a href="/feed.xml">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/mingjieJian">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+    		</div>
+        
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

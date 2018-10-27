@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>OASP笔记 - 14 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2018/10/14/OASP14/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-OASP14.png" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-OASP14.png')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>OASP笔记 - 14</h1>
+                    
+                    
+                    <h2 class="subheading">半径与有效温度的确定</h2>
+                    
+                    <span class="meta">Posted by mingjie on October 14, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>这俩参数是恒星的基本参数。假设有俩以某恒星为中心的同心球，一个半径万为恒星半径<script type="math/tex">R</script>，另一个的半径为恒星到观测者的距离<script type="math/tex">d</script>；在这两个球面上接收到的辐射量为<script type="math/tex">\mathscr{F}_\nu, F_\nu</script>，则有</p>
+
+<script type="math/tex; mode=display">4\pi d^2 F_\nu =  4\pi R^2 \mathscr{F}_\nu \tag{14.1}</script>
+
+<p>将有效温度的定义<script type="math/tex">(1.2)</script>代入并积分，有</p>
+
+<script type="math/tex; mode=display">\int_0^\infty F_\nu d\nu = (R/d)^2 \int_0^\infty \mathscr{F}_\nu d\nu = \theta_\mathrm{R}^2 \sigma T_\mathrm{eff}^4 \tag{14.2}</script>
+
+<p><script type="math/tex">\theta_\mathrm{R}</script>自然是角半径了。测量得到<script type="math/tex">\int_0^\infty F_\nu d\nu</script>和角直径和距离之后就可以算出恒星半径以及有效温度了。例外是食双星，可以直接得出线直径。</p>
+
+<p>不同波段是有不同的半径的，毕竟光深和几何深度的关系随着频率而变化。同时有效温度实际上在恒星不同的表面上是不一样的（有米粒组织等），而且决定恒星大气更根本的参数是温度随着光深的分布。但是这一章我们先忽略这些东西，就看这两个参数。</p>
+
+<h2 id="半径测量">半径测量</h2>
+
+<p>半径测量分为直接和间接的方法。</p>
+
+<h3 id="直接方法">直接方法</h3>
+
+<h5 id="干涉法">干涉法</h5>
+
+<p>干涉法好说，测量一个方波傅立叶变换之后的零点位置可以得出这个方波的大小，而干涉仪可以测出这个零点。现在(2003年)的精度已经达到了0.05毫角秒，有几百颗星的角直径被测出来了。</p>
+
+<h5 id="月掩星法">月掩星法</h5>
+
+<p>也好说，测量恒星被掩食的时候的光变然后建模拟合就行。局限在于不同波度的光变幅度不一样，所以需要用比较窄的滤光片；类似的，月球边缘的起伏也会造成不同次掩食时光变和时标的不一样。当然最大的问题是白道和月球的运动是固定的，这个方法只对少部分恒星适用。通过这个方法测出来角直径的恒星也在100颗左右。</p>
+
+<h5 id="食双星">食双星</h5>
+
+<p>对于食双星，我们知道掩食时间与视向速度，那就知道线直径了。不过密近双星经常会偏离球形，同时物质交换会使得两颗恒星的光谱趋同，加大掩食时间与视向速度的测量难度。远距离双星的难度主要在于视向速度的测量方面。</p>
+
+<h5 id="热流量法">热流量法</h5>
+
+<p>对<script type="math/tex">(14.2)</script>稍作变形：</p>
+
+<script type="math/tex; mode=display">\frac{R}{d} = \theta_\mathrm{R} = \sqrt{\frac{\int_0^\infty F_\nu d\nu}{\sigma T_\mathrm{eff}^4}} \tag{14.4}</script>
+
+<p>不过同样需要知道距离、有效温度以及恒星的热辐射。</p>
+
+<p>热辐射可以通过恒星的光谱来估计，或者与太阳的数据作差转换成热星等，利用第十章的热改正来得到恒星的热星等。有效温度大致是从恒星模型来，也就是之后说的一些方法，直接或间接地得到。</p>
+
+<h5 id="测光半径">测光半径</h5>
+
+<p>热流量法要求我们知道整个光谱范围的流量，而测光半径法则走向了另一个极端。从<script type="math/tex">(14.1)</script>我们可得：</p>
+
+<script type="math/tex; mode=display">\theta_\mathrm{R} = R/d = (F_\nu/\mathscr{F}_\nu)^{1/2} \tag{14.7}</script>
+
+<p>那如果我们能够准确知道某一个波长下的<script type="math/tex">F_\nu, \mathscr{F}_\nu</script>，我们就能算出角直径来了。<script type="math/tex">F_\nu</script>好测，而<script type="math/tex">\mathscr{F}_\nu</script>可以从模型来。只要在几个不同的波长上有测光，我们就可以将不同参数的模型与之匹配，找到最合适的那个。当然这些测光点是越多越好，有利于选择正确的模型。</p>
+
+<p>这个方法依赖绝对定标，对测光以及模型的流量绝对定标要求不低。还有一个红外流量法，介于这两个方法之间：假设一个<script type="math/tex">T_\mathrm{eff}</script>，得到一个<script type="math/tex">\theta_\mathrm{R}</script>，又得到一个新的<script type="math/tex">T_\mathrm{eff}</script>，如此循环。不过这个方法又和有效温度以及模型扯上了关系，同时红外的模型准确度也是要考虑的问题。</p>
+
+<h3 id="间接方法">间接方法</h3>
+
+<h5 id="表面亮度法">表面亮度法</h5>
+
+<p>还是从热流量法出发，将<script type="math/tex">(14.4)</script>取对数并将流量转成星等，有</p>
+
+<script type="math/tex; mode=display">\lg{\theta_\mathrm{R}} = - 0.2 (m_\mathrm{V} - BC) - 2\lg{T_\mathrm{eff}} + \text{constant} \tag{14.5}</script>
+
+<p>于太阳的参数作差，把不好测量的项移到一边并定义一个新变量：</p>
+
+<script type="math/tex; mode=display">\mathbb{P}_\mathrm{V} = \lg{\frac{T_\mathrm{eff}}{T_\mathrm{eff}^\odot}} - 0.1 (BC-BC^\odot) = -0.1 (m_\mathrm{V}-m_\mathrm{V}^\odot) - 0.5 \lg{\frac{\theta_\mathrm{R}}{\theta_\mathrm{R}^\odot}} \tag{14.10}</script>
+
+<p>当我们有一批通过直接方法测出来的<script type="math/tex">\theta_\mathrm{R}</script>以及它们的<script type="math/tex">m_\mathrm{V}</script>时，就可以很容易地算出<script type="math/tex">\mathbb{P}_\mathrm{V}</script>；再用公式拟合<script type="math/tex">\mathbb{P}_\mathrm{V}</script>和某些观测量（比如色指数）的关系后，就可以通过测量色指数来得到角半径了。</p>
+
+<h5 id="把这些结果-放到一张-图上">把这些结果 放到一张 图上</h5>
+
+<p><img src="/img/in-post/post-OASP14/01.png" alt="" /></p>
+
+<p>我们能从这张图上看出不少信息。</p>
+
+<p>首先不同方法测出来的结果是一致的，没有哪种结果有很大偏离。对于矮星来说半径的弥散比较小，而且有一个下限零龄主序(ZAMS)在。<script type="math/tex">B-V > 0.5</script>的恒星演化时标比较长，所以没怎么演化，都堆在了一起；反之高温恒星的弥散就大一点了。在0.4到0.6左右矮星半径有一个快速的下降，这是因为对流传能开始占据一定比例，帮助恒星更快地收缩（但是为什么之后又慢了？）。</p>
+
+<p>对巨星的分布书中没有详细的描述。</p>
+
+<h2 id="有效温度测量">有效温度测量</h2>
+
+<p>仍然从<script type="math/tex">(14.2)</script>出发：</p>
+
+<script type="math/tex; mode=display">T_\mathrm{eff} = \frac{\left( \int_0^\infty F_\nu d\nu / \sigma \right)^{1/4}}{(R/d)^{1/2}} \tag{14.14}</script>
+
+<script type="math/tex; mode=display">T_\mathrm{eff} = \frac{T_\mathrm{eff}^\odot \left( \int_0^\infty F_\nu d\nu / \int_0^\infty F_\nu^\odot d\nu \right)^{1/4}}{(\theta_\mathrm{R}/\theta_\mathrm{R}^\odot)^{1/2}} \tag{14.15}</script>
+
+<p>前者需要流量的绝对定标、后者和太阳作比；现在的话这俩都可以用。只不过恒星的热辐射不能完全被测出来，里面就涉及到恒星模型的帮助；那么用恒型模型也可以测出有效温度。</p>
+
+<h3 id="光球层模型法">光球层模型法</h3>
+
+<p>也就是算出一个模型来（温度分布），然后加上各个波段上的吸收系数就有辐射了。当然它的好坏取决于模型有多合适。</p>
+
+<h3 id="有效温度关系校准">有效温度关系校准</h3>
+
+<p>有效温度和很多的参数有关系，比如色指数和光谱型。当然误差会来自色指数的测量、星周包层带来的红化等等。既然说到了校准，我们之后就介绍一些校准有效温度的方法。毕竟多数时候有效温度只是区分恒星的一个数字，所以拿什么来校准问题都不大。</p>
+
+<h5 id="帕邢连续谱">帕邢连续谱</h5>
+
+<p>实际上指的是帕邢连续谱的斜率。连续谱受谱线以及<script type="math/tex">\log{g}</script>的影响不大，基本上是LTE，还对有效温度比较敏感。当然对于高温和低温恒星不一定有用，因为它们的主要辐射不在可见光了。还有一点就是连续谱形成于比较深的地方，所以从斜率转化到有效温度的时候要注意匹配。</p>
+
+<h5 id="模型色指数">模型色指数</h5>
+
+<p>当合成光谱质量很高的时候，我们可以去计算模型的色指数。这包括连续谱和谱线的计算，以及模型与观测星等的零点校正，还有观测波段的透过率。</p>
+
+<h5 id="巴尔末跳跃">巴尔末跳跃</h5>
+
+<p>用于高温恒星，类似于帕邢连续谱，但是是测量巴尔末线系限左右的流量差。不过也受<script type="math/tex">\log{g}</script>和元素丰度影响，需要进行改正。同时在线系限附近有很多的巴尔末线，连续谱不好确定。帕邢和巴尔末附近的恒星模型有的时候也给出不同的结果。</p>
+
+<h5 id="氢线">氢线</h5>
+
+<p>氢线的强度对有效温度很敏感。但是氢线太胖了不好测量，以及高温之后它也会和<script type="math/tex">\log{g}</script>有关系。</p>
+
+<h5 id="原子谱线的ldr">原子谱线的LDR</h5>
+
+<p>这就是我的硕士毕业论文，不多说了。</p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/10/07/OASP13/" >
+                        Previous<br>
+                        <span>OASP笔记 - 13</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/10/26/GA-S/" >
+                        Next<br>
+                        <span>銀河考古学总结 - 附录</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2018/10/14/OASP14/";
+    var disqus_url = "http://localhost:4000/2018/10/14/OASP14/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

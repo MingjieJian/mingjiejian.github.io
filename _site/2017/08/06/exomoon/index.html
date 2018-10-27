@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>老大哥在看着你......的观测申请 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2017/08/06/exomoon/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-exomoon.png" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-exomoon.png')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#astro-ph" title="astro-ph">astro-ph</a>
+                        
+                    </div>
+                    <h1>老大哥在看着你......的观测申请</h1>
+                    
+                    
+                    <h2 class="subheading">又是奇奇怪怪的东西了</h2>
+                    
+                    <span class="meta">Posted by Mingjie on August 6, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>事情是这样子的。7月26日，哥伦比亚大学的David Kipping教授和他的研究生Alex Teachey（还有一位业余天文学家Allen Schmitt）在arixv上发布了一篇被提交到ApJ的论文。论文通过对最有可能拥有系外卫星的行星系统光变曲线的分析，对系外卫星的存在条件提出了限制，同时提出了一个存在系外卫星的行星系统<strong>候选体</strong>Kepler-1625。这个候选体符合作者们所给出的筛选条件，但是我们仍然不确定上面是否真的存在系外卫星；所以作者们向哈勃望远镜提交了一个观测申请并得到了批准，并希望在得到哈勃的观测数据之后做出更准确的结论。</p>
+
+<p>这听起来挺让人激动，毕竟可能是我们发现的第一颗系外卫星。但是问题在于这个研究还没有结束，或者说作者们还没有准确的结论就将论文公布了（而且是在同行评议之前）。实际上作者们的确希望在分析完哈勃的数据之后再发表论文。那么到底发生了什么才能让他们如此匆忙地将现阶段的结果公之于世呢？</p>
+
+<h3 id="被关注的观测申请">被关注的观测申请</h3>
+
+<p>原因出在哈勃的观测申请上。每次哈勃在批准观测申请之后都会将它们做成列表和摘要集公开地<a href="http://www.stsci.edu/hst/proposing/">放在网上</a>，所有人都可以看到。Teachey申请的Cycle25从今年的10月1号开始到明年的9月30号结束，一共有340个申请被批准了。</p>
+
+<p><img src="/img/in-post/post-exomoon/1-proposal.png" alt="" />
+<em>事情的开端：哈勃望远镜的观测申请摘要</em></p>
+
+<p>一般来说没有人会完整地阅读一遍这340页的摘要集去看有什么申请是值得关注的，所以Kipping认为有些同行（可能是他们申请隔壁几页的申请者）看到了他们的申请，并发到了twitter上。之后他们接到了“至少一个媒体会将这个申请的内容进行发布”的消息。这让他们担心媒体是否能正确地将“系外卫星候选体”这个信息传达出去而不是以此搞个大新闻，以及有其他同行利用这些数据作出确切的结论。所以他们决定在媒体发布之前将手中所有的信息先行公开，就有了这篇arxiv和Alex Teachey写的博文。</p>
+
+<p>在博文中，Teachey写道：
+我们对结果非常谨慎，不仅仅是因为希望摆脱尴尬的局面，同时也是因为不希望在未来对结果的进一步声明甚至是撤回损害公众在科学上的信任。（而将文章在同行评议之前放到arixv上则是因为）每个人都能亲眼看到我们得出了什么结论，没有得出什么结论。</p>
+
+<p><img src="/img/in-post/post-exomoon/2-blog.png" alt="" />
+<em>Teachey发表的博文</em></p>
+
+<h3 id="openscience">Openscience</h3>
+
+<p>最早听到这个消息的时候以为得到批准的观测申请不是公开的，所以比较惊讶；后再来知道前因后果之后觉得可以理解。这件事也给了媒体一个追踪研究热点除了arixv外的另一个方法：守着观测申请。简单地在网页或者pdf里面搜索一下比如系外行星（卫星）、引力波之类的词汇，可能会有意外的发现。</p>
+
+<p>当然这也对研究人员提出了新的要求。arxiv作为论文预印本网站，放到上面的论文本质上还是草稿，而观测申请更是研究还未完成时的产物。而这些资料的公开除了可以带来同行更及时的讨论和意见之外，也意味着我们要在给早的阶段考虑如何将研究准确地向公众传播。</p>
+
+<h3 id="如何应对">如何应对？</h3>
+
+<p>Kipping和Teachey的应对方式似乎是一个不错的例子。与其让媒体按照各自的理解对自己的原话进行解释，不如主动先将手上的信息发布，以避免误解。</p>
+
+<p>他们一共用了三种渠道向公众公布有关系外卫星的信息：arxiv论文预印本、scientific american上的博文和Youtube上面的一段视频。arxiv上论文的重点在于系外卫星存在条件限制的结论，只是在最后一节中讨论了候选体Kepler-1625。博文则将一半的篇幅给了对候选体结果的讨论，着重强调了还没有确认的事实；而在13分钟的视频里，Kippig和Teachey通过对话的方式再次强调了候选体还没被证认的情况，并解释了为什么要在同行评议结束之前将文章放到arxiv上面去。</p>
+
+<p><img src="/img/in-post/post-exomoon/3-video.png" alt="" />
+<em>视频的截图；左为Alex Teachey，右为David Kipping</em></p>
+
+<p>从结果来看，推特上面大家基本上都加上了may或者possible的字眼，引用的多数是BBC的文章，表达的意思并没有偏离论文作者的想法。唯二看到以为系外卫星已经被确认的页面，一个作者是”Expert in Sports”，另一个是用Universe Sandbox模拟的Youtube视频up主。</p>
+
+<h3 id="同行评议">同行评议</h3>
+
+<p>有一点稍微令人担心的是论文的同行评议。有没有经过同行评议一般是文章能否被发表的标志，而这个过程不应该被其他的因素所影响。Tecachey在视频中也说了这是一个不寻常的情况，但是他们担心当媒体的新闻报道出来之后，在传播的过程中信息很可能被扭曲成他们所不希望见到的样子。所以他们仍然在提交评议之后马上将文章发布在了arxiv上。Nature也在网站上发表了<a href="http://www.nature.com/news/why-astronomers-reluctantly-announced-a-possible-exomoon-discovery-1.22377">一篇文章</a>评论这件事情。</p>
+
+<h3 id="总结">总结</h3>
+
+<p>就像Youtube视频下面某一条评论说的，推特、博客和新闻头条改变了科学研究的方式。一方面，研究的进展和结果可以更迅速地在同行传播，使得大家对学科发展的了解更统一，对某个研究的意见或者批评更容易被作者知悉；同时公众也可以从媒体中更快地了解到有什么新的、激动人心的研究正在进行。但另一方面，从媒体中报道的新闻可能会有一定程度的扭曲，而这不是科研工作者们想看到的。所以在现在的网络环境下，拥有或者是了解可以直接向公众发声的渠道还是有必要的，至少可以将需要解释的地方解释清楚，而不是眼睁睁地看着新闻标题变得越来越奇怪。</p>
+
+<h3 id="参见">参见</h3>
+
+<p><a href="https://arxiv.org/abs/1707.08563">arixv 论文</a></p>
+
+<p><a href="https://blogs.scientificamerican.com/observations/are-astronomers-on-the-verge-of-finding-an-exomoon/">Alex 博文</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=8V9QHn5oHMs">Youtube视频</a></p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/07/29/wakate/" >
+                        Previous<br>
+                        <span>千曲万叶，若手之会</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/09/15/onedrive/" >
+                        Next<br>
+                        <span>Onedrive占用CPU过多的问题以及解决方法</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2017/08/06/exomoon/";
+    var disqus_url = "http://localhost:4000/2017/08/06/exomoon/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

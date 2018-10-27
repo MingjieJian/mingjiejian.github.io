@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>OASP笔记 - 3 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2017/12/18/OASP3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-OASP3.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-OASP3.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>OASP笔记 - 3</h1>
+                    
+                    
+                    <h2 class="subheading">光谱仪</h2>
+                    
+                    <span class="meta">Posted by mingjie on December 18, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>我们需要光谱仪，没有光谱仪哪来的光谱。低分辨率光谱仪可以得到天体的连续谱（第十章），而高分辨率的光谱仪可以得到天体的谱线（第十二章）。</p>
+
+<h3 id="概述">概述</h3>
+
+<p><img src="/img/in-post/post-OASP3/3.1.png" alt="" />
+<em>光谱仪示意图</em></p>
+
+<p>从望远镜中过来的光在狭缝的中心聚焦，然后被准直器变为平行光照到光栅上面，色散后经过改正镜再被聚焦到CCD上。单色光会在焦面上形成一条线；而因为一般狭缝的宽度都比较大，最终在焦面形成的线宽基本不受光栅衍射条纹的影响。而当复色光入射到光谱仪的时候，焦面上将形成一段连续谱。连续谱中每个颜色的“纯净”程度由<script type="math/tex">\Delta \lambda</script>决定。<script type="math/tex">\Delta \lambda</script>越小，色散程度越大，天文学家们越高兴。不过色散程度也需要和天体入射的光的总量协调，因为色散程度越大每个像素的光流量越小，需要的积分时间就越长。一般来说我们需要<script type="math/tex">\Delta \lambda</script>小于我们关心的光谱结构；第十二章有定量计算。</p>
+
+<h3 id="衍射光栅及其原理">衍射光栅及其原理</h3>
+
+<p><img src="/img/in-post/post-OASP3/3.2.png" alt="" />
+<em>衍射光栅示意图</em></p>
+
+<p>令<script type="math/tex">P(0)</script>所指示的点为相位0点，则在光栅上任一点和它的相位差为<script type="math/tex">x \sin{\alpha}</script>；<script type="math/tex">\alpha</script>为入射平面光法向与光栅法向的夹角，是一个定值。所以我们可以将在光栅上的入射光表达为：</p>
+
+<script type="math/tex; mode=display">F(x, t) = F_0(t)e^{2\pi i\frac{x\sin{\alpha}}{\lambda}} \tag{3.1}</script>
+
+<p>同时因为入射光的频率很大，积分时间一般又比较长，所以可以将<script type="math/tex">F_0(t)</script>用它的平均值<script type="math/tex">F_0</script>代替。</p>
+
+<p>令<script type="math/tex">G(x)</script>为光栅，</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+G(x) = \begin{cases} 1 & \mathrm{狭缝中}\\ 0　& \mathrm{狭缝外} \end{cases} %]]></script>
+
+<p>在<script type="math/tex">\beta</script>角上看到的光强为<script type="math/tex">F(x, t)</script>与<script type="math/tex">G(x)</script>的乘积加上离开光栅后的相位差在<script type="math/tex">x</script>上的积分：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} g(\beta) & = \int^{\infty}_{-\infty} F(x, t) e^{2\pi i\frac{x\sin{\beta}}{\lambda}} G(x) dx \\ & = F_0\int^{\infty}_{-\infty} G(x) e^{2\pi i\frac{x\sin{\alpha}+x\sin{\beta}}{\lambda}} dx \end{align} %]]></script>
+
+<p>令<script type="math/tex">\theta = \frac{\theta'}{\lambda} = \frac{\sin{\alpha} + \sin{\beta}}{\lambda}</script>，有</p>
+
+<script type="math/tex; mode=display">g(\theta) = F_0 \int^{\infty}_{-\infty} G(x) e^{2\pi ix\theta} dx \tag{3.2}</script>
+
+<p>将这个式子与<a href="https://mingjiejian.github.io/2017/11/11/OASP2/">第二章</a>的傅里叶变换定义式比较，我们发现它们是一样的，所以光栅就相当于一个傅里叶变换器。因为这里<script type="math/tex">F_0</script>是一个常数，重要的是后面的积分，所以之后我们将直接讨论<script type="math/tex">G(x)</script>的傅里叶变换。</p>
+
+<h4 id="gx的傅里叶变换"><script type="math/tex">G(x)</script>的傅里叶变换</h4>
+
+<p><script type="math/tex">G(x)</script>是由宽为<script type="math/tex">b</script>的狭缝等距<script type="math/tex">d</script>摆放直至充满宽度<script type="math/tex">W</script>而来的：</p>
+
+<script type="math/tex; mode=display">G(x) = B_1(x) * III(x) B_2(x) \tag{3.3}</script>
+
+<p><script type="math/tex">B_1(x)</script>为单个狭缝，它与<script type="math/tex">III(x)</script>的卷积为无限宽的光栅，<script type="math/tex">B_2(x)</script>为光栅的宽度。它的傅里叶变换为：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}  g(\theta) &= b_1(\theta) iii(\theta) * b_2(\theta) \\  & = \frac{b\sin{\pi\theta b}}{\pi\theta b} iii(\theta) * \frac{W\sin{\pi\theta W}}{\pi\theta W} \end{align} %]]></script>
+
+<p>将Shah函数用<script type="math/tex">\delta</script>函数表达：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} g(\theta) & = \sum \delta(\theta-\frac{n}{d}) * \frac{W\sin{\pi\theta W}}{\pi\theta W} \frac{b\sin{\pi\theta b}}{\pi\theta b} \\ & = \sum_n \frac{W\sin{\pi(\theta-\frac{n}{d}) W}}{\pi(\theta-\frac{n}{d}) W} \frac{b\sin{\pi\theta b}}{\pi\theta b}  \end{align} \tag{3.4} %]]></script>
+
+<p><img src="/img/in-post/post-OASP3/grating.png" alt="" />
+<em>光栅以及它的傅里叶变换</em></p>
+
+<p>在小角度下<script type="math/tex">d\theta'</script>和<script type="math/tex">d\beta</script>近似是一样的：</p>
+
+<script type="math/tex; mode=display">\sin{\alpha} + \sin{\beta} = \theta' \Rightarrow d\theta' = \cos{\beta} d\beta \approx d\beta</script>
+
+<p>每个尖峰下降到0时的宽度由<script type="math/tex">B_2(x)</script>决定：</p>
+
+<script type="math/tex; mode=display">\Delta \theta' = \frac{\lambda}{W}</script>
+
+<p>每个尖峰的位置由<script type="math/tex">III(x)</script>决定：</p>
+
+<script type="math/tex; mode=display">\theta' = \frac{n\lambda}{d} = \sin{\alpha} + \sin{\beta} \tag{3.5}</script>
+
+<p>所以不同波长的光有不同的宽度和尖峰位置。这里的<script type="math/tex">n</script>称为级数，0级光谱所有波长的光都集中在<script type="math/tex">x=0</script>处，所以为白光。1级和其他级光谱的分辨率为：</p>
+
+<script type="math/tex; mode=display">\frac{d\theta'}{d\lambda} = \frac{n}{d} \tag{3.6}</script>
+
+<p>将<script type="math/tex">\Delta \theta' = \frac{\lambda}{W}</script>代入<script type="math/tex">(3.6)</script>，得：</p>
+
+<script type="math/tex; mode=display">\Delta \lambda = \frac{\lambda}{W} \frac{d}{n} \tag{3.7}</script>
+
+<p>这个量可以理解为单位角度上的波长改变量是多少；我们当然希望它越小越好，所以<script type="math/tex">n</script>小的时候要增大板宽和多刻线；<script type="math/tex">n</script>大的时候则不一定。</p>
+
+<p><img src="/img/in-post/post-OASP3/chrome_I.png" alt="" />
+<em>复色光入射时的情况</em></p>
+
+<h3 id="闪耀光栅">闪耀光栅</h3>
+
+<p>上图中我们可以看到透射光栅的光谱受到狭缝宽度影响，主要的能量落在了0级处，并没有分开。我们自然不希望这样，而是想让多数的光落在我们想要的级数上。要做到这一点，我们只需要将<script type="math/tex">b_2(\theta)</script>的最高点从0移动到对应的级数位置即可。第二章傅里叶变换的性质2表明如果想在某个域上平移函数，需要在另一个域上引入相位差，在这里也就是不同的光程。实际的操作可以在狭缝中插入三棱镜让光线偏转，但是棱镜会带来色散，而且这样的光栅也很难制作。所以常用的是将狭缝改成倾斜的面镜，从而将光反射到某个特定角度。这样的光栅叫闪耀光栅，光栅法线与槽面法线之间的夹角<script type="math/tex">\phi</script>叫闪耀角(在法线同侧的角度正负号相同)。</p>
+
+<p><img src="/img/in-post/post-OASP3/3.3.png" alt="" />
+<em>闪耀光栅（右）示意图</em></p>
+
+<p>这个时候式子<script type="math/tex">(3.4)</script>的最后一项发生了变化，<script type="math/tex">\alpha, \beta</script>变成了<script type="math/tex">\alpha-\phi, \beta-\phi</script>。这里用减号的原因是虽然对于槽面来说，图示的<script type="math/tex">\phi</script>角会使得入射角和反射角都增大，但是<script type="math/tex">(3.4)</script>中的<script type="math/tex">\alpha, \beta</script>指的是箭头所指的线段长度，这两段线在反射光栅的情况下都减小了。所以对于归一化的这一项，我们有：</p>
+
+<script type="math/tex; mode=display">I(\beta) = \left[\frac{\sin{\left\{ \pi b/\lambda [\sin{(\alpha-\phi)}+\sin{(\beta-\phi)}]\right\}}}{\pi b/\lambda [\sin{(\alpha-\phi)}+\sin{(\beta-\phi)}]}\right]^2 \tag{3.8}</script>
+
+<p>因为光栅的分光，只有符合<script type="math/tex">(3.5)</script>的波长的光才能通过，所以我们可以将<script type="math/tex">(3.5)</script>代入<script type="math/tex">(3.8)</script>消去<script type="math/tex">\lambda</script>（注意<script type="math/tex">(3.5)</script>中的<script type="math/tex">\alpha, \beta</script>不变），得到：</p>
+
+<script type="math/tex; mode=display">I(\beta) = \left[\frac{\sin{\left\{ n\pi b/d [\cos{\phi}-\sin{\phi}\frac{\cos{\alpha}+\cos{\beta}}{\sin{\alpha}+\sin{\beta}}]\right\}}}{n\pi b/d [\cos{\phi}-\sin{\phi}\frac{\cos{\alpha}+\cos{\beta}}{\sin{\alpha}+\sin{\beta}}]}\right]^2 \tag{3.8}</script>
+
+<p>示例图如下：</p>
+
+<p><img src="/img/in-post/post-OASP3/blazed_I.png" alt="" />
+<em>闪耀光栅的光强包络线，<script type="math/tex">\phi=15^\circ</script></em></p>
+
+<p>可以看到这个时候整个函数的最大值被推到了<script type="math/tex">\alpha+\beta = 2\phi</script>的地方。当然我们也可以用<script type="math/tex">\lambda</script>作为自变量，画出<script type="math/tex">I(\beta)</script>随<script type="math/tex">\lambda</script>的变化情况。</p>
+
+<h4 id="利特罗条件">利特罗条件</h4>
+
+<p>一般来说光栅在制造的时候会被造成当入射角和衍射角一样的时候，1级光谱会被闪耀，这被叫做利特罗条件。但是当入射光线和衍射光线在同一个方向的时候，我们并不能接收到光谱，所以一般使用的是别的入射角；这种情况下1级光谱的闪耀波长会发生变化。假设利特罗条件下的闪耀波长为<script type="math/tex">\lambda_0</script>，则根据<script type="math/tex">(3.5)</script>有：</p>
+
+<script type="math/tex; mode=display">\frac{n\lambda}{d} = \sin{\alpha} + \sin{\beta}</script>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} \frac{n\lambda_0}{d} &= 2\sin{\phi} \\ &= 2\sin{\alpha+\beta} \end{align} %]]></script>
+
+<p>两式相除，得：</p>
+
+<script type="math/tex; mode=display">\lambda = \lambda_0 \cos{0.5(\alpha-\beta)}</script>
+
+<h4 id="阴影">阴影</h4>
+
+<p>光栅的摆放方式有很多种。我们之前讨论的都是入射光线和光栅法线在槽面法线的两侧；当然也可以倒过来摆，将入射光线和光栅法线放在槽面法线的同一侧(<script type="math/tex">% <![CDATA[
+\alpha < \beta %]]></script>的时候)。不过这样的话会引起一部分的光在反射后照射到槽的侧面，引起光损和杂散光。光损比例由下式决定：</p>
+
+<script type="math/tex; mode=display">f=\frac{2\tan{\phi}\tan{\beta-\phi}}{1+\tan{\phi}\tan{\beta-\phi}}</script>
+
+<h4 id="如果光谱仪有缺陷">如果光谱仪有缺陷</h4>
+
+<p>首先有周期性缺陷的光谱仪一般会产生鬼线。这样的光谱仪相当于两个光谱仪的叠加：</p>
+
+<script type="math/tex; mode=display">G'(x) = G(x)H(x)</script>
+
+<script type="math/tex; mode=display">H(x) = B_3(x) * III(x) B_2(x)</script>
+
+<p>所以“缺陷光谱仪”会在原来的谱线周围再加上一堆鬼线。如果周期性缺陷相对于原来的光谱的间隔很大，那么鬼线会在母线（原来的谱线）附近。我们可以仿照<script type="math/tex">(3.5)</script>并且代入<script type="math/tex">(3.6)</script>写出鬼线的<script type="math/tex">\Delta \lambda</script>：</p>
+
+<script type="math/tex; mode=display">\Delta \theta_g = \frac{m\lambda_g}{D}</script>
+
+<script type="math/tex; mode=display">\Delta \lambda_g = \frac{d}{n}\frac{m}{D}\lambda_g</script>
+
+<p>所以鬼线是等距分布的。鬼线的光强比较复杂，但是一般母线的强度最大。</p>
+
+<p>还有另外的几种因缺陷引起的线，如卫星线（有一块刻歪了）等。</p>
+
+<h3 id="色散和分辨率">色散和分辨率</h3>
+
+<p>分辨率是光谱仪很重要的一个参数。但是在讨论分辨率之前我们需要分清楚它和色散的区别。</p>
+
+<h4 id="角线色散">角、线色散</h4>
+
+<p><img src="/img/in-post/post-OASP3/3.4.png" alt="" /></p>
+
+<p>如上图，如果两束不同波长的光射入镜头的角度为<script type="math/tex">\Delta \beta</script>，则称它们的角色散为<script type="math/tex">\Delta \beta</script>。角色散的大小是由光栅决定的，具体来说是<script type="math/tex">(3.6)</script>式。这个角度最终在焦平面上投影的长度叫做线色散，易得：</p>
+
+<script type="math/tex; mode=display">\Delta x = f_\mathrm{cam} \Delta \beta</script>
+
+<p>或者</p>
+
+<script type="math/tex; mode=display">\frac{d\beta}{dx} = \frac{1}{f_\mathrm{cam}}</script>
+
+<p>将角度转化成波长，有：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} \frac{d\lambda}{dx} &= \frac{d\lambda}{d\beta} \frac{d\beta}{dx} \\ &= \frac{1}{f_\mathrm{cam}} \frac{1}{d\beta/d\lambda} \\ &= \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \tag{3.13} \end{align} %]]></script>
+
+<p>这里没有小角度入射的假设，所以有一个<script type="math/tex">\cos{\beta}</script>在。同样，高的色散程度对应着小的<script type="math/tex">\frac{d\lambda}{dx}</script>。</p>
+
+<h4 id="分辨率">分辨率</h4>
+
+<p>我们从狭缝的大小开始考虑。令<script type="math/tex">f_\mathrm{coll}, f_\mathrm{cam}</script>为准直器、成像相机的焦距，在小角度情况下，宽度为<script type="math/tex">W'</script>的狭缝在准直器（或者光栅）上的角度为：</p>
+
+<script type="math/tex; mode=display">\Delta \alpha = \frac{W'}{f_\mathrm{coll}}</script>
+
+<p>对<script type="math/tex">(3.5)</script>式求导，得出：</p>
+
+<script type="math/tex; mode=display">\Delta\beta = -\frac{\cos{\alpha}}{\cos{\beta}} \Delta \alpha</script>
+
+<p>所以</p>
+
+<script type="math/tex; mode=display">\Delta \beta = -\frac{\cos{\alpha}W'}{\cos{\beta}f_\mathrm{coll}}</script>
+
+<p>令<script type="math/tex">w</script>为狭缝在CCD上的像宽，则</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} w &= \Delta \beta f_\mathrm{cam} \\ &= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \tag{3.14} \end{align} %]]></script>
+
+<p><script type="math/tex">{w/W'}</script>正比于<script type="math/tex">f_\mathrm{cam}/f_\mathrm{coll}</script>。一般来说我们需要CCD的像素与狭缝在CCD上的像宽相匹配，最好是1个单位像宽对应CCD上的两个像素（奈奎斯特频率）。稍微的过采样可能会有好处，但是面临着更长时间曝光和深度减小的问题；而欠采样会使得信息丢失。</p>
+
+<p>我们也可以将像宽<script type="math/tex">w</script>转换成单位长度上的波长改变量（分辨率）：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} \Delta \lambda &= w \frac{d\lambda}{dx} \\ &= -\frac{\cos{\alpha}}{\cos{\beta}} \frac{f_\mathrm{cam}}{f_\mathrm{coll}} W' \frac{1}{f_\mathrm{cam}} \frac{d\cos{\beta}}{n} \\ &= -\cos{\alpha} \frac{W'd}{f_\mathrm{coll}n} \tag{3.15}\end{align} %]]></script>
+
+<p>可以看出分辨率与成像相机的焦距没有关系。提升分辨率可以通过改变上式的参数，但是一般会导致光损(减小<script type="math/tex">W'</script>)或者需要更大/更好的光栅(增大<script type="math/tex">f_\mathrm{coll}</script>或者<script type="math/tex">n</script>)。</p>
+
+<h3 id="阶梯光谱仪">阶梯光谱仪</h3>
+
+<p>通过增大<script type="math/tex">n</script>来提高分辨率实际上没那么简单。使用高级数光谱的时候，虽然光谱的确被色散到了更宽的角度上（当然传统上这意味着需要更长的CCD），但是不同级数的光谱会发生重叠，使得不同（但是分立）波长的光同时照到了一个像素上。</p>
+
+<p><img src="/img/in-post/post-OASP3/wav_inter.png" alt="" />
+<em>高级数光谱重叠情况；选择的当的话黑色虚线中间可以包含了整个波长范围的光</em></p>
+
+<p>那么如果我们截取某一段区域，使得这段区域几个级数的光谱加起来刚好覆盖我们想要的波长，然后在后面加上一个在另一个方向上色散的光栅，就可以把光谱分成独立的条状并且覆盖很宽的波长范围；这就是阶梯光谱仪。</p>
+
+<p><img src="/img/in-post/post-OASP3/echelle.png" alt="" />
+<em>阶梯光谱仪示意图</em></p>
+
+<p>阶梯光谱仪的一个例子是京都产业大学制造的<a href="http://merlot.kyoto-su.ac.jp/LIH/WINERED/index.html">WINERED</a>：</p>
+
+<p><img src="/img/in-post/post-OASP3/winered-index.png" alt="" /></p>
+
+<p><img src="http://merlot.kyoto-su.ac.jp/LIH/WINERED/images/pic-4.png" alt="" /></p>
+
+<p>图中下方从右到左为狭缝、准直镜以及阶梯光栅，中间的白色部分为CCD。这个光谱仪波长虽然在近红外(<script type="math/tex">0.90-1.35 \mu \mathrm{m}</script>)，但是除了CCD部分之外都在常温下工作，不需要冷却；同时在分辨率、波长覆盖和灵敏度上都有不错的数值。</p>
+
+<p><img src="http://merlot.kyoto-su.ac.jp/LIH/WINERED/images/pic-2.png" alt="" />
+<em>WINERED与其他光谱仪参数对比</em></p>
+
+<h3 id="略过的内容">略过的内容</h3>
+
+<p>多目标光谱仪、迈克尔逊干涉仪、望远镜基础</p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/12/03/course-group1/" >
+                        Previous<br>
+                        <span>公开课微信群</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/12/18/OASP4/" >
+                        Next<br>
+                        <span>OASP笔记 - 4</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2017/12/18/OASP3/";
+    var disqus_url = "http://localhost:4000/2017/12/18/OASP3/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

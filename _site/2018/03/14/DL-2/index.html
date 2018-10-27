@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>Deep Learning笔记2 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2018/03/14/DL-2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-DL-1.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-DL-1.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>Deep Learning笔记2</h1>
+                    
+                    
+                    <h2 class="subheading">调参</h2>
+                    
+                    <span class="meta">Posted by mingjie on March 14, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h4 id="数据集">数据集</h4>
+
+<p>以前是分成两个的，训练和测试。现在分成3个，训练、发展和测试集。用发展去测试训练，最后再用测试去测试表现；甚至没有测试集都行。这里的区别是发展集是用来overfitting的，测试集不是。</p>
+
+<p>要注意不同数据集的数据要同质，质量相同</p>
+
+<p><img src="/img/in-post/post-DL-2/1-1.png" alt="" /></p>
+
+<h4 id="bias和variance">bias和variance</h4>
+
+<p>训练集的错误率比与预期的高：高bias；发展集的错误率比训练集的高：高variance</p>
+
+<p><img src="/img/in-post/post-DL-2/1-2.png" alt="" /></p>
+
+<p><img src="/img/in-post/post-DL-2/1-3.png" alt="" /></p>
+
+<h4 id="正则化">正则化</h4>
+
+<p>在代价函数后面加上<script type="math/tex">w</script>的2或者1范数</p>
+
+<p>通过强制减小<script type="math/tex">w</script>简化神经网络，减小权重。</p>
+
+<p><img src="/img/in-post/post-DL-2/1-4.png" alt="" /></p>
+
+<p><img src="/img/in-post/post-DL-2/1-5.png" alt="" /></p>
+
+<h4 id="dropout正则化">Dropout正则化</h4>
+
+<p>随机删掉一些节点来做一次正反向传递，然后不断重复。要注意的是删掉之后要把整个节点的值除以一个删掉的阈值概率，把取值回覆到正常水平。测试集不要用。Dropoyt的意思是不让某个节点依赖于某几个前面一层的节点，所以也是减小权重的意思。不同的层可以有不同的dropout节点数。输入层一般不dropout（或者是很小的duopout数）。最后在看J减小的时候要小心一点，必要的时候关掉dropout</p>
+
+<p><img src="/img/in-post/post-DL-2/1-6.png" alt="" /></p>
+
+<h4 id="奇技淫巧">奇技淫巧</h4>
+
+<p>增加训练样本：把图像翻过来/旋转/放大，或者几种加起来。不过信息量其实还是一样的。标准是人脑还是会把它当成同一样东西。</p>
+
+<p>提早停止：看发展集的误差，以它的最小值为基准。思路是<script type="math/tex">w</script>会随着迭代而不断增大，导致太大以至于我们不想看到。提早停止可以防止这个。</p>
+
+<p>正交化：将减小损失函数和防止overfit分开。提早停止违反了这个原则。</p>
+
+<p>L2正则化比较简单，不过要试各种的<script type="math/tex">\lambda</script>。</p>
+
+<h3 id="建立最优化问题">建立最优化问题</h3>
+
+<h4 id="归一化训练集">归一化训练集</h4>
+
+<p>看图，把输入数字移到0左右，将标准差scale到1。注意训练集和测试集的移动和scale需要完全一样。</p>
+
+<p>这么做的理由：将代价函数搞得好看一点，简单一点，学习速率也能快一点。</p>
+
+<p><img src="/img/in-post/post-DL-2/1-7.png" alt="" /></p>
+
+<p><img src="/img/in-post/post-DL-2/1-8.png" alt="" /></p>
+
+<h4 id="奇怪的导数值">奇怪的导数值</h4>
+
+<p>在训练很深的神经网络的时候，有的时候导数值可能会很大或者很小，比如矩阵遇到了指数增长/减小什么的。</p>
+
+<p>一个治标的办法是选择初始的权重。<script type="math/tex">z = w_1x_1 + w_2x_2 + \cdots + w_nx_n</script>。<script type="math/tex">n</script>越大，<script type="math/tex">z</script>就越大，所以我们控制<script type="math/tex">w</script>的标准差为<script type="math/tex">\sqrt{\frac{2}{n^{[l-1]}}}</script>。这里的2是Relu函数带来的。当然也可以当它是一个超参数来试。</p>
+
+<p><img src="/img/in-post/post-DL-2/1-9.png" alt="" /></p>
+
+<h4 id="导数值检查">导数值检查</h4>
+
+<p>往左和往右挪，计算<script type="math/tex">\frac{y}{x}</script>。愣算就行。</p>
+
+<p>具体：将所有的参数竖着排成一个巨长的向量，包括正向的和反向的。然后愣算其中某个参数的导数，看两个向量之间的二范数比各自的二范数的大小。比值是拿来看相对大小的，防止它们本来就很小或者大。</p>
+
+<p>检查只能用在debug上。如果出错了，看具体的值哪个不正常。如果有的话，记得加上正则化项。检查不能用在dropout上，要用的话先关掉。</p>
+
+<p><img src="/img/in-post/post-DL-2/1-10.png" alt="" /></p>
+
+<h3 id="加速">加速</h3>
+
+<h4 id="切成小块">切成小块</h4>
+
+<p>每次只处理1000个训练样本，然后循环。基本上都得用。计算1000个之后就马上更新参数。当然也可以见到1个，不过随机性就很强；这也被叫做随机梯度下降。随机梯度下降相当于没有向量化，所以很慢，而且很多噪音。</p>
+
+<p>但是怎么选小块的大小？当整体训练样本小的时候，当然应该整个一起搞；如果大的话，可以用2的某次方来做（可能快一点），或者和CPU/GPU匹配的大小。试呗。</p>
+
+<h4 id="不用梯度下降">不用梯度下降</h4>
+
+<h5 id="指数平均">指数平均</h5>
+<p>其实就是滑动平均的一种，只不过前后的数据不平权。</p>
+
+<script type="math/tex; mode=display">v_t = \beta v_{t-1} + (1-\beta)\theta_t</script>
+
+<p>它会将之前的数据累积起来，但是不断乘上<script type="math/tex">\beta</script>。大概相当于前<script type="math/tex">\frac{1}{1-\beta}</script>天的温度平均：<script type="math/tex">v_t = \sum_{i=0}^n 0.1 \times 0.9^i \theta_i</script>。</p>
+
+<h5 id="bias-correction">Bias Correction</h5>
+
+<p>更准确的计算。因为上式从0开始，所以一开始的时候肯定是不对的。当然一般数据量大的话可以不管，反正可以等。或者除一个<script type="math/tex">(1-\beta^t)</script>。</p>
+
+<h5 id="gradient-descent-with-momentum">Gradient descent with momentum</h5>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+ v_{dW} &= \beta v_{dW} + (1-\beta) dW \\
+ v_{db} &= \beta v_{db} + (1-\beta) db \\
+ W &= W - \alpha v_{dW} \\
+ b &= b - \alpha v_{db} \\
+\end{align} %]]></script>
+
+<p>这样做的好处是它会在摆动的方向将摆动平均掉，在正确的方向保留导数值，所以可以加速收敛。一般<script type="math/tex">\beta = 0.9</script>是个不错的选择。</p>
+
+<h5 id="rmsprop">RMSprop</h5>
+
+<p>另一种方式的加速。看图。</p>
+
+<h5 id="adam">Adam</h5>
+
+<p>合在一起。看图。</p>
+
+<h4 id="降低学习速率">降低学习速率</h4>
+
+<p>可以手动降低，乘上一个线性增大的分母，或者是e指数减小</p>
+
+<h3 id="避免局部极小">避免局部极小</h3>
+
+<p>很多导数为0的点实际上是鞍点，因为参数非常多。不过在那附近会转悠好久，比较慢。</p>
+
+<h2 id="调超参">调超参</h2>
+
+<h3 id="要调的东西">要调的东西</h3>
+
+<p>学习速率<script type="math/tex">\alpha</script>；动量项<script type="math/tex">\beta / (\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8})</script>、多少节点、mini-batch大小；多少隐层、学习速率变化。</p>
+
+<p>但是调超参的时候不要用网格，随即就好；因为超参数量太多了，而且不同的超参对模型影响不同，所以随机会给所有的超参更多选择。最初的参数空间可能比较大，都跑一次之后可以缩小参数空间再做一次。随机的时候，对于某些超参，也可以不用平均随机，而是用其他的概率分布，或者log scale，量级上平均就行。或者说在模型对超参变化更剧烈的时候放更多的点。</p>
+
+<h3 id="训练中">训练中</h3>
+
+<p>训练中可以不断调整超参什么的。或者同时训练很多个模型，有钱有资源的话。</p>
+
+<h3 id="让模型更稳健">让模型更稳健</h3>
+
+<p>逻辑回归的时候将输入归一化可以让代价函数更规则，那么在神经网络里面也可以这么做，对<script type="math/tex">z</script>归一化。可以将<script type="math/tex">z</script>的平均值和标准差倒过来，或者自己设定一组数，或者让网络自己学习去。<script type="math/tex">b</script>也可以不要了，因为归一化的时候带上了常数。</p>
+
+<p>其他具体流程和普通的差不多。它防止了隐层的值的分布距离原点太远。它会带来一些噪声。</p>
+
+<p>在测试集的时候，我们可以用指数平均的方法记录训练集的平均值和scatter，然后当成测试集的均值以及<script type="math/tex">\sigma</script>。</p>
+
+<h2 id="多项选择题">多项选择题</h2>
+
+<p>Softmax回归。在最后一层隐层的地方将节点数和分类数相等，让每一个节点表示属于每一类的概率。sigmod函数会变成softmax函数，对这节点的值进行e指数，归一化。因为e指数会将值之间的差异扩大，所以可以进行分类。如果只有两类的话，softmax会退化回逻辑回归。</p>
+
+<p>损失函数：</p>
+
+<script type="math/tex; mode=display">L(y, \hat{y}) = -\sum y_j \ln{\hat{y_j}}</script>
+
+<p>只留下正确的那一项，然后最大化它的概率。</p>
+
+<p>代价函数：还是损失函数的平均。</p>
+
+<p>反向传递：</p>
+
+<script type="math/tex; mode=display">dz^{[l]} = \hat{y} - y</script>
+
+<p>但是在用框架的时候，只要正向传递对了，反向传递交给框架就行。</p>
+
+<h2 id="机器学习框架">机器学习框架</h2>
+
+<p>易用、快速、开源（特别是长期开源）</p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/03/14/DL-1/" >
+                        Previous<br>
+                        <span>Deep Learning笔记1</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/04/20/DL-3/" >
+                        Next<br>
+                        <span>Deep Learning笔记3</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2018/03/14/DL-2/";
+    var disqus_url = "http://localhost:4000/2018/03/14/DL-2/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

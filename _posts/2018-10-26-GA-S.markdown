@@ -1,0 +1,34 @@
+---
+layout:     post
+title:      "銀河考古学总结 - 附录"
+subtitle:   "图片里的故事"
+date:       2018-10-26
+author:     "mingjie"
+header-img: "img/post-bg-OASP14.png"
+tags:
+    - learning
+
+---
+
+这里主要讲讲銀河考古学总结用到的论文图片背后的故事。论文不一定细读，但是至少要到能解释图片怎么来的、结果意味着什么的地步。
+
+## 1 序章
+
+### [Hopkins & Beacom 2006](http://adsabs.harvard.edu/abs/2006ApJ...651..142H)中的Fig. 1
+![](/img/in-post/post-GA/1-hb06.png)
+
+- 不同来源的数据给出了一致的结果
+- SFR：一个点；SFH：一条线
+- 通过不同方法可以探测星系的光度（不同波段），或者通过一些特征线等可以推断出星系的恒星形成率
+- 超级神冈探测器可以探测到弥散的超新星中微子背景，这提供了一个上限（大概是有多少恒星才能有多少超新星？）
+
+
+----
+
+- 什么是SFH的归一化？为什么要归一化？是指Fig. 1的那条曲线吗？
+- Salpeter IMF是什么样子的》基于什么假设？
+
+
+### [Buonanno+1994](http://adsabs.harvard.edu/abs/1994A%26A...290...69B)中的Fig. 11
+M3的CMD有不少版本，挺不一样的，比较一下应该会有意思。
+![](/img/in-post/post-GA/1-b94.png)

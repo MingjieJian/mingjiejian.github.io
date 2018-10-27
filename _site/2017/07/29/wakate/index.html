@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>千曲万叶，若手之会 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2017/07/29/wakate/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-wakate.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-wakate.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#experience" title="experience">experience</a>
+                        
+                    </div>
+                    <h1>千曲万叶，若手之会</h1>
+                    
+                    
+                    <h2 class="subheading">2017 天文 若手夏の学校</h2>
+                    
+                    <span class="meta">Posted by mingjie on July 29, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>若手夏の学校，全称是2017年度 第47回 天文 天体物理若手夏の学校，翻译成中文大致是天文、天体物理青年（学生）夏季学校。这实际上是一年一度的会议，完全由日本各大学的研究生组织策划与参加，除了邀请的演讲者之外没有任何的教授、老师参与。所有的参加者在三天内住在同一个宾馆，分成不同的领域（重力与宇宙学、致密天体、星系与星系团、太阳与恒星、星际介质、恒星形成与行星系和观测仪器分会）进行口头或者海报的研究汇报，以交流研究进展。从到这里将近一年的经验来看，日本人的英语写作尚可，但是本科生基本不怎么说英语、硕士稍微可以说一点、博士讲得比较顺畅（如果一直没有丢掉英语的话）。所以这个会议的工作语言当然是日语；本来我是没有什么兴趣去的（日常的还没说好，专业上的日语更烂），但是发现负责我们正在用的光谱仪调试的京都产业大学的同学也去，就临时起意报了个名。</p>
+
+<p><img src="/img/in-post/post-wakate/1-manual.jpg" alt="" /></p>
+
+<h3 id="长野县-千曲市-户仓站">长野县 千曲市 户仓站</h3>
+
+<p>为了节省经费，从14年开始的夏季学校都是在长野县千曲市户仓的ホテル圓山荘（圆山庄宾馆）举行的（虽然我没看出来这宾馆哪里圆了，方方正正的）。从东京到户仓一般是坐北陆新干线到上田，转信浓铁道线到户仓，全程不到三个小时。千曲市的名字是从纵贯市区的河流千曲川而来的；从定义上来说，加上出了长野县之后改名叫信浓川的部分，信浓川（千曲川）是日本最长的河流。但是千曲市出名的地方不在这，在温泉。戸倉上山田温泉是从明治中期开设的日本有名的温泉，在大正后期沿着温泉的位置建造了温泉街，现在这一带也有非常多的温泉旅馆和户外足浴池。</p>
+
+<p><img src="/img/in-post/post-wakate/2-pano1.jpg" alt="" />
+<em>站在千曲川桥上的全景，右边就是温泉街和旅馆</em></p>
+
+<p>户仓所在的千曲市南部处于山谷，四周都被山丘环绕。中间的千曲川一路分叉又会合，造出了非常多的江心岛，可能这也是千曲这个名字的由来吧。路上行人不多，大都十分悠闲，感觉是个度假的好地方。</p>
+
+<h3 id="开会">开会</h3>
+
+<p>这次参会人数在250人左右，其中一百人为15分钟口头演讲，另一百人为海报或者海报+3分钟口头演讲（还有大概二十人打酱油），所以时间并不宽裕。报到时间仅为1个半小时，之后马上开始各个会场的报告，没有开幕式。但是因为宾馆里只有三个会场，所以一些小的分会场（比如太阳恒星啊，星际介质啊）不是每个时间段都有会，就可以跑到别的会场去听。除了普通的研究生报告之外，每个分会场还有两个招待讲演，邀请一些教授来讲讲和分会场主题有关的内容。</p>
+
+<p><em>此处应有演讲的照片</em></p>
+
+<p>作为听讲的成果，这里介绍两个有意思的（而且我听懂了的）报告：</p>
+
+<h5 id="機械学習による-high-z-grb-の選定-杉山-真也-埼玉大学大学院">機械学習による High-z GRB の選定 （杉山 真也 埼玉大学大学院）</h5>
+
+<p>通过机器学习确定高红移伽马射线暴(GRB)。雨燕(Swift)卫星可以快速探测到刚刚爆发的伽马射线暴，并将伽马射线波段的数据回地球。因为我们对发生在远距离也就是高红移的GRB更感兴趣，所以希望能尽快将高红移的GRB挑选出来以供地面望远镜进行光学波段的余晖观测。Swift的数据在传回地球之后会被处理并得出一些GRB的参数（比如爆发的最大流量、爆发的持续时间等）。这个研究选择了其中的8个并通过已知红移的GRB数据尝试用机器学习的方法给出红移大小的判据。</p>
+
+<p><img src="/img/in-post/post-wakate/GRB1.png" alt="" />
+<em>特征量表的图</em></p>
+
+<p>最初高低红移的判据是<script type="math/tex">z = 5</script>。这个判据之下只有9个高红移GRB（低红移的有294个），所以拿8个当样本，剩下一个检验，看能否判别出剩下那个是高红移GRB。</p>
+
+<p><img src="/img/in-post/post-wakate/GRB-method1-result.png" alt="" />
+结果全错:)</p>
+
+<p>然后觉得可能是因为低红移GRB太多了，导致数据不平衡；就把当作样本的高/低红移GRB的数量都减到5个，剩下的当检验</p>
+
+<p><img src="/img/in-post/post-wakate/GRB-method2-result.png" alt="" />
+结果也理所应当地不怎么样</p>
+
+<p>最后发现高红移GRB数据量太小了，将判据从5改到3，训练样本各取50个：</p>
+
+<p><img src="/img/in-post/post-wakate/GRB-method3-result.png" alt="" /></p>
+
+<p>现在低红移的准确律提升了，但是高红移基本的还是那个样子。个人觉得还是样本数量不太够或者有不少GRB的红移在判据的分界线上，所以现在还不能达到足够的判别精度。说这个是因为这是这次会议唯一一个将机器学习应用到天文中的报告（当然还有一个别的原因），而我觉得这是天文学未来（甚至是现在就）值得关注的一个方向。</p>
+
+<h5 id="脈動型変光星の偏光観測による銀河系中心方向の磁場構造解析-善光哲哉-京都大学大学院">脈動型変光星の偏光観測による銀河系中心方向の磁場構造解析 （善光哲哉 京都大学大学院）</h5>
+
+<p>磁场下的星际介质粒子一般会有有序的排列，而这会导致穿过星际介质的光发生偏振。反过来说观测星光的偏振我们可以得知恒星和观测者之间的磁场情况。而在银道面上一些距离比较远或者在银心后面的恒星由于在可见光波段的消光比较严重，需要在红外进行偏振观测。这个研究就挑选了一些在银心背面附近的造父变星进行偏振观测，并得出了偏振度的图。</p>
+
+<p><img src="/img/in-post/post-wakate/polarization.png" alt="" /></p>
+
+<p>基本上恒星的偏振符合最早的偏振巡天的图（蓝色点），但是其中有5颗星的偏振方向偏离了银道面方向，所以这个区域可能有一些特别。</p>
+
+<p><img src="/img/in-post/post-wakate/poster.jpg" alt="" /></p>
+
+<p>其他的海报的展示也做得挺用心，专门海报section的时候海报的作者们基本都会在自己的海报前面向有兴趣的同学们讲解自己的研究。我们唯二的两次听讲是因为我觉得“这个描边效果看着像20年前的ppt一样”和“哇这竟然还贴了便条补充信息，好用心啊”然后作者就过来了。</p>
+
+<h3 id="娱乐">娱乐</h3>
+
+<p>惯例，日本的“娱乐”多数应该是飲み会。每天晚上7点吃饭，9点有“分科会”；名字挺专业的，好像还分科专门自由讨论学术问题，其实就是大家回到吃饭的地方一起喝酒。喝到什么时候呢？1点钟。基本上就是喝到一点，第二天中午12点醒，翘掉早上的会吃午饭，下午听讲座，晚上继续喝。当然也不是所有人都这么做，至少早上的会还是有不少人去的。</p>
+
+<p>对于我来说娱乐就是出去走走转转。晚上的户仓和千曲川有着别样的静谧。</p>
+
+<p><img src="/img/in-post/post-wakate/togura-night.jpg" alt="" /></p>
+
+<p>过千曲川的桥对面有一座神社，晚上看着有点可怕，但还是走了进去拍了一些看起来更可怕的照片。</p>
+
+<p><img src="/img/in-post/post-wakate/jinja.jpg" alt="" /></p>
+
+<h3 id="住宿">住宿</h3>
+
+<p>和室！不过一直以来都有点怕和室，幸好我不算太重，但是要我跪着或者盘腿坐上一个小时也是能把腿废掉的。但是宾馆里面就没有洋室（正常的房间），连吃饭都是和室。在楼梯的某个角落看见了榻榻米的全貌（就是一块大概3厘米厚的灯芯草板子），想起来租房的时候看到的计量单位“畳”就是这个东西。</p>
+
+<blockquote>
+  <p>和室里所摆放的桌子、座垫、棉被、寝具等，可以做为聚餐、团聚、书房、卧室等这些用途之外，还可以做出许多各式各样用途的空间。在和室里不需要穿鞋子（包括拖鞋），赤脚走在以自然素材灯芯草做成的叠席上，有如徜徉在大自然一样。和室还有着冬暖夏凉的特性。
+–维基百科</p>
+</blockquote>
+
+<p>怪不得我一进宾馆就觉得哪都有一股发霉的味道，原来是榻榻米的锅。对于我们这种懒人来说“各式各样用途的空间”就意味着第一天是书房，以后就都是卧室了；谁会把被铺收起来呢。晚上把床垫之类的铺好之后和室实际上就成了个大通铺，5个人睡在大概20平米的空间内。果然上下铺利用效率高一点。</p>
+
+<p>早晚饭是自助，种类挺多，也有一小部分西式食物。中午就只有（也算不错的）盒饭了，咖哩或者是正常的便当。</p>
+
+<p>住宿方面最大的收获应该就是泡了澡。学习了浴衣的穿法（虽然打结还是一坨），穿着浴衣和人字拖跑到澡堂里洗澡。感觉上和国内的澡堂性质差不多，只是不用自带沐浴露，而且有位置坐着洗。但是泡澡就有点难接受了。要知道平常我都习惯在二十多度的水里游泳，但是温泉水至少三十多度，下去的感觉就是“滚水渌猪肠”，二十分钟之后蘸点酱油能上碟了。</p>
+
+<h3 id="最后一天">最后一天</h3>
+
+<p>最后竟然有人气演讲评比。我们三个英语演讲肯定是靠边站，然后各个分会场投票选出一个演讲，海报展示选出三个，各获得15分钟的时间再讲一遍。这也算是一个激励的手段，印象中不少会议都有这样的评比之类的。</p>
+
+<p>讲完之后就是会务会议；会务组很认真地从上次会议的经费情况开始，到下下次的会议主办方，总结了各项的事务。特别是财务方面的状况，包括上次剩下的钱，这次各单位赞助的费用，为什么还要选用同一家宾馆、注册费下调了1500块钱等等作了详细说明。虽然我不是会员，在后面敲(wan)着(zhe)键(you)盘(xi)，但是不少人都还是听得挺认真的。</p>
+
+<h3 id="其他">其他</h3>
+
+<p>知道了我蹩脚的日语竟然还能跟别人谈笑风生这件事。满以为在房间里会变成四个日本人哇啦哇啦我在一旁缩着玩游戏的局面，结果跟埼玉大学的杉山同学（嗯就是上面那个）聊得很high，还让他给我再讲一遍他的研究（他各种尝试夹杂英语），最后走之前还约好了下次一起喝酒去。好玩。虽然这个会议是不会再去的了，但是这几天自己还是很高兴的。</p>
+
+<p>回去的时候提早大概15分钟到了站台。我们的车到站之前刚好有另一辆车过站，特意站到了前面体验一下。本以为还能先看见车灯，然后欣赏一下车头，之后才会飞驰而过；结果从看见车头到车头经过面前根本没有反应时间，我觉得是瞬间就到了面前，伴随着风声和轮轨的摩擦声，3秒之后就过了。以前一直在高铁里面坐着，对两百或者是三百的时速没什么概念，这次站在外面看才知道原来是这么快的。旁边的中学生们在过站之后才抬起头来说了一句“はや”，也没怎么反应过来。看来高铁的确是“有催人跑的意思”。</p>
+
+<p><em>此处应该有合照</em></p>
+
+<h3 id="相关网站">相关网站</h3>
+<p><a href="http://astro-wakate.sakura.ne.jp/ss2017/web/index.html">夏の学校主页</a></p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/07/24/tardigrade/" >
+                        Previous<br>
+                        <span>如何给地球“杀菌”？</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/08/06/exomoon/" >
+                        Next<br>
+                        <span>老大哥在看着你......的观测申请</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2017/07/29/wakate/";
+    var disqus_url = "http://localhost:4000/2017/07/29/wakate/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

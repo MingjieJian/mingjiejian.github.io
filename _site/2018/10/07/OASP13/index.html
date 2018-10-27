@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>OASP笔记 - 13 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2018/10/07/OASP13/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-OASP13.JPG" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-OASP13.JPG')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>OASP笔记 - 13</h1>
+                    
+                    
+                    <h2 class="subheading">谱线的行为</h2>
+                    
+                    <span class="meta">Posted by mingjie on October 7, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>Image credit: <a href="http://www.jonathanwalker.net.au/spectral-painting.php">Jonathan Walker</a>.</p>
+
+<p>我们在归一化光谱下面讨论。</p>
+
+<h3 id="谱线的转移方程">谱线的转移方程</h3>
+
+<p>主要参考第七章的东西。大气连续谱上有吸收和发射，那么谱线也有。</p>
+
+<p>令<script type="math/tex">l_\nu</script>为谱线吸收系数，<script type="math/tex">j^l_\nu</script>为谱线发射系数；对于连续谱这两个量是<script type="math/tex">\kappa_\nu, j^c_\nu</script>。那么对于式子<script type="math/tex">(7.1)</script>，我们还有同样的形式：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} \frac{dI_\nu}{d\tau_\nu} &= -I_\nu + \frac{j^l_\nu + j^c_\nu}{l_\nu + \kappa_\nu} \\  &= -I_\nu + S_\nu \end{align} \tag{13.3} %]]></script>
+
+<p>只是这时候光深<script type="math/tex">S_\nu</script>包含了谱线和连续谱的部分，变成了<script type="math/tex">\frac{j^l_\nu + j^c_\nu}{l_\nu + \kappa_\nu}</script>。同样光深也要包含谱线的贡献：<script type="math/tex">d\tau_\nu = (l_\nu + \kappa_\nu) \rho dx</script>。</p>
+
+<p>因为光深还是<script type="math/tex">S_\nu</script>，所以大气辐射转移的基本式子<script type="math/tex">(7.4), (7.9)</script>以及它们有关恒星表面的推论<script type="math/tex">(7.10), (7.15)</script>仍然成立，就不抄过来了。</p>
+
+<p>如此这般，这般如此，我们的主要任务还是回到了如何求新的源函数上。</p>
+
+<h3 id="谱线的源函数">谱线的源函数</h3>
+
+<p>我们先定性的看谱线形成的深度。利用灰大气假设，我们有</p>
+
+<script type="math/tex; mode=display">S(\tau_\nu) = \frac{3F_\nu(0)}{4\pi}(\tau_\nu+\frac{2}{3}) \tag{13.7}</script>
+
+<p>形式和<script type="math/tex">(7.34)</script>是完全一样的，只不过虽然连续谱和波长无关，谱线却和波长有关，所以<script type="math/tex">\nu</script>的下标回来了。这个式子告诉我们光深越大的时候源函数越大（大气底层发射更多嘛），同时<script type="math/tex">F_\nu(0)</script>也与光深成正比。这就说明了谱线中心所对应的光深比较小，形成场所在大气较上层；而谱线的边缘所对应的光深比较大，形成场所在大气较下层。</p>
+
+<p><img src="/img/in-post/post-OASP13/01.png" alt="" /></p>
+
+<p>当然这个只是定性的分析，实际定量的要这么做：</p>
+
+<p>我们引入谱线的发射和吸收轮廓<script type="math/tex">\psi(\nu), \phi(\nu)</script>，并且加在<script type="math/tex">(5.16), (5.17)</script>上面：</p>
+
+<script type="math/tex; mode=display">j^l_\nu \rho = N_u A_{ul} \psi(\nu) h\nu</script>
+
+<script type="math/tex; mode=display">l^l_\nu \rho = N_l B_{lu} \phi(\nu) h\nu - N_u B_{ul} \phi(\nu) h\nu</script>
+
+<p>所以源函数就是</p>
+
+<script type="math/tex; mode=display">S_l = \frac{j^l_\nu}{l^l_\nu} = \frac{N_u A_{ul} \psi(\nu) h\nu}{N_l B_{lu} \phi(\nu) h\nu - N_u B_{ul} \phi(\nu) h\nu}</script>
+
+<p>把<script type="math/tex">(6.8)</script>拿过来消掉所有的AABB：</p>
+
+<script type="math/tex; mode=display">S_l = \frac{2h\nu^3}{c^2} \frac{1}{(N_l/N_u)(g_u/g_l)-1}\frac{\psi(\nu)}{\phi(\nu)} \tag{13.9}</script>
+
+<p>这就是non-LTE下的源函数。</p>
+
+<p>如果在LTE下并且有细致平衡原理的话，吸收发射轮廓相等并且有<script type="math/tex">(1.17)</script>，则</p>
+
+<script type="math/tex; mode=display">S_l = \frac{2h\nu^3}{c^2} \frac{1}{e^{h\nu/kT}-1} = B_\nu(T) \tag{13.10}</script>
+
+<p>就比较简单了。</p>
+
+<p>LTE的东西当然比较好用，不过最近在华沙的一个Gaia Workshop里面Maria Bergermann把LTE批判了一番，说nLTE对于元素丰度确定来说很重要。</p>
+
+<h4 id="nlte下的源函数">nLTE下的源函数</h4>
+
+<p>假设我们已知发射/吸收轮廓（或者它们比较好确定？），<script type="math/tex">(3.19)</script>剩下的东西就是<script type="math/tex">(N_l/N_u)</script>了。在稳态下处于某个能级的原子数量是不变的，所以有</p>
+
+<script type="math/tex; mode=display">\frac{dN_j}{dt} = \sum^M_{i=1}(N_iP_{ij} - N_jP_{ji}) = 0 \tag{13.11}</script>
+
+<p>也是守恒嘛。那这俩概率<script type="math/tex">P</script>怎么求呢？它们包含了辐射跃迁的概率以及碰撞跃迁的概率：</p>
+
+<script type="math/tex; mode=display">P_{ij} = 4\pi A_{ij} + 4\pi B_{ij} \int_0^\infty J_\nu\phi(\nu)d\nu + C_{ij} \tag{13.12}</script>
+
+<p>就是概率=自发的+受激的+碰撞的呗。当然<script type="math/tex">i \ne j</script>，<script type="math/tex">i \lt j</script>时<script type="math/tex">A_{ij}</script>就没了。</p>
+
+<p>类似的对于<script type="math/tex">P_{ji}</script>也有相似的形式，只不过<script type="math/tex">i \lt j</script>变成了<script type="math/tex">i \gt j</script>。有了这一堆<script type="math/tex">P</script>之后我们就可以解方程<script type="math/tex">(3.11)</script>了。</p>
+
+<p>所以我们可以从这里看出来想求<script type="math/tex">S_\nu</script>我们需要<script type="math/tex">(N_l/N_u)</script>，从而需要一堆<script type="math/tex">P</script>，从而需要<script type="math/tex">J_\nu</script>，从而需要<script type="math/tex">S_\nu</script>。循环了怎么办？迭代呗。</p>
+
+<h4 id="还有一些东西">还有一些东西</h4>
+
+<p>实际上什么时候是LTE，什么时候是nLTE呢？大致来说，恒星大气内部是LTE，外部是nLTE。这其实很好理解，因为内部密度大，基本上能把里面来的光全部吸收掉再发射，就LTE了；而大气外部密度下降，就会有光子逃逸，所以就会逐渐偏离LTE。同时光子逃逸说明外层原子发射的光子变少了，源函数减小，并且原子逐渐变为吸收源，为谱线中心的吸收作出了贡献。</p>
+
+<p>这个结论同时也可以有一个有趣的推论：谱线中心是nLTE的，而线翼是LTE的。一个例子是太阳的Na D线。</p>
+
+<h3 id="lte下的谱线轮廓计算">LTE下的谱线轮廓计算</h3>
+
+<p>No more nLTE things. 究竟什么时候LTE是好的得通过实际比较才能知道，或者问Maria去。</p>
+
+<p>实际计算用的是<script type="math/tex">(7.15)</script>，但是要加上谱线的吸收系数。<script type="math/tex">(13.15), (13.16)</script>还没完全理解就不放上来了，毕竟这本书也没有涉及到具体详细的计算方法。</p>
+
+<p>有一个有用的推论就是：当谱线比较弱的时候，谱线的轮廓和吸收系数的轮廓是一样的。</p>
+
+<p>令<script type="math/tex">(13.7)</script>中的<script type="math/tex">\tau_\nu = (4\pi-2)/3 = \tau_1</script>，有</p>
+
+<script type="math/tex; mode=display">S_\nu(\tau_1) = F_\nu(0) \tag{13.8}</script>
+
+<p>那么</p>
+
+<script type="math/tex; mode=display">\frac{F_c - F_\nu}{F_c} \approx \frac{S_\nu(\tau_c=\tau_1) - S_\nu(\tau_\nu=\tau_1)}{S_\nu(\tau_c=\tau_1)} \tag{13.17}</script>
+
+<p><script type="math/tex">\tau_c,\tau_\nu</script>指的是没有/有谱线下的光深，并且LTE下谱线以及连续谱的源函数都是黑体辐射函数。</p>
+
+<p>现在的光深变为：</p>
+
+<script type="math/tex; mode=display">\tau_\nu = \int_0^{\tau_0} \frac{l_\nu}{\kappa_0}dt_0 + \int_0^{\tau_0} \frac{\kappa_\nu}{\kappa_0}dt_0 = \tau_l + \tau_c</script>
+
+<p>（不熟悉的话参见第九章<script type="math/tex">(9.13)</script>后面的式子）</p>
+
+<p>简化，假设<script type="math/tex">\frac{l_\nu}{\kappa_0}, \frac{\kappa_\nu}{\kappa_0}</script>与光深无关，有<script type="math/tex">\tau_l = \frac{l_\nu}{\kappa_0}\tau_0, \tau_c = \frac{\kappa_\nu}{\kappa_0}\tau_0</script>。</p>
+
+<p><script type="math/tex">S_\nu(\tau_\nu=\tau_1) = S_\nu(\tau_l+\tau_c=\tau_1) = S_\nu(\tau_c=\tau_1-\tau_l)</script>以及<script type="math/tex">\tau_l \ll \tau_c</script>，泰勒展开有：</p>
+
+<script type="math/tex; mode=display">S_\nu(\tau_\nu=\tau_1) = S_\nu(\tau_c=\tau_1) + \frac{dS_\nu}{d\tau_c}(-\tau_l) + ...</script>
+
+<p>所以<script type="math/tex">(13.17)</script>变为</p>
+
+<script type="math/tex; mode=display">\frac{F_c - F_\nu}{F_c} \approx \frac{\tau_l}{S_\nu(\tau_c=\tau_1)} \frac{dS_\nu}{d\tau_c}|_{\tau1} = \tau_l  \frac{d\ln{S_\nu}}{d\tau_c}|_{\tau1}</script>
+
+<p>将<script type="math/tex">\tau_l = \frac{l_\nu}{\kappa_0}\tau_0</script>代入，有</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} \frac{F_c - F_\nu}{F_c} &\approx \frac{l_\nu}{\kappa_0}\tau_0 \frac{d\ln{S_\nu}}{d\tau_c}|_{\tau1} \\
+&= \frac{l_\nu}{\kappa_\nu}\tau_c \frac{d\ln{S_\nu}}{d\tau_c}|_{\tau1}\\
+&= \text{constant} \frac{l_\nu}{\kappa_\nu} \tag{13.19}
+\end{align} %]]></script>
+
+<p>就是这样。</p>
+
+<h3 id="谱线的贡献函数">谱线的贡献函数</h3>
+
+<p>“王老五就是未结婚的王老五”，贡献函数就是第九章的贡献函数。不多说了，放两张图自己体会。</p>
+
+<p><img src="/img/in-post/post-OASP13/02.png" alt="" />
+<img src="/img/in-post/post-OASP13/03.png" alt="" /></p>
+
+<h3 id="谱线强度的行为">谱线强度的行为</h3>
+
+<p>这里只讨论几个对谱线强度有比较大影响的参数：温度、<script type="math/tex">\log{g}</script>以及金属丰度。</p>
+
+<h4 id="温度">温度</h4>
+
+<p>对于弱线来说，温度变化影响了原子的占据数以及跃迁、连续谱的吸收，从而改变了谱线强度。强线以及氢线的话，还要考虑<script type="math/tex">\gamma</script>随温度的变化。</p>
+
+<p>这里姑且只讨论弱线，则有下图：</p>
+
+<p>首先由<script type="math/tex">(8.12)</script>有：</p>
+
+<script type="math/tex; mode=display">\kappa_\nu = \text{constant} T^{-5/2} P_\mathrm{e} e^{0.75/kT}</script>
+
+<p>Case 1时，是原子谱线+中性原子：</p>
+
+<script type="math/tex; mode=display">N_l = \text{constant} N_0 e^{-\chi/kT} \approx e^{-\chi/kT}</script>
+
+<script type="math/tex; mode=display">\Rightarrow R = \frac{l_\nu}{\kappa_\nu} = \text{constant} \frac{T^{5/2}}{P_\mathrm{e}} e^{-(\chi+0.75)/kT} \tag{13.20}</script>
+
+<p>又因为<script type="math/tex">(9.27)</script>，有：</p>
+
+<script type="math/tex; mode=display">\ln{R} = \text{constant} +2.5 \ln{T} - \frac{chi+0.75}{kT} -\Omega T</script>
+
+<p>其他Case类似，具体公式请看书。要留意Case 1和4的表达式是完全一样的，但是因为温度范围不同趋势不同。</p>
+
+<h4 id="压力">压力</h4>
+
+<p>有三种：1. 电离平衡改变导致谱线/连续谱吸收原子数改变； 2. damping常数与与压力有关； 3. 线性斯塔克效应。</p>
+
+<p>这里的讨论都基于<script type="math/tex">(13.19)</script>；低温时<script type="math/tex">\kappa_\nu \propto P_\mathrm{e}</script>，高温时<script type="math/tex">\kappa_\nu \propto \text{constant}</script>。</p>
+
+<p>第一种：</p>
+
+<script type="math/tex; mode=display">l_\nu \propto N_i</script>
+
+<script type="math/tex; mode=display">\frac{N_{r+1}}{N_r} = \frac{\Phi(T)}{P_\mathrm{e}}</script>
+
+<p>实际上是原子电离的Saha方程<script type="math/tex">(1.20)</script>。</p>
+
+<p>当跃迁是发生在<script type="math/tex">r</script>电离态而多数原子在<script type="math/tex">r+1</script>电离态的时候，<script type="math/tex">l_\nu \propto P_\mathrm{e}</script>；当跃迁是发生在<script type="math/tex">r+1</script>电离态而多数原子在<script type="math/tex">r+1</script>电离态的时候，<script type="math/tex">l_\nu \propto \text{constant}</script>。当跃迁是发生在<script type="math/tex">r+1</script>电离态而多数原子在<script type="math/tex">r</script>电离态的时候，<script type="math/tex">l_\nu \propto P_\mathrm{e}^{-1}</script>。</p>
+
+<p>第二种主要作用于线翼处，<script type="math/tex">l_\nu \propto \gamma = \gamma_6 + \gamma_4 + \gamma_\mathrm{nat}</script></p>
+
+<p>第三种主要影响氢线，<script type="math/tex">l_\nu \propto P_\mathrm{e}</script>。</p>
+
+<p>再往高温走，电子散射会比较重要，所以由<script type="math/tex">(8.17)</script>有</p>
+
+<script type="math/tex; mode=display">\kappa_\nu \approx \kappa_\mathrm{e} = \frac{\alpha(e)P_\mathrm{e}\sum A_j}{P_\mathrm{g}-P_\mathrm{e}}</script>
+
+<p>此时<script type="math/tex">P_\mathrm{g} \approx 2P_\mathrm{e}</script>，所以<script type="math/tex">\kappa_\nu</script>独立于<script type="math/tex">P_\mathrm{e}</script>；同时<script type="math/tex">l_\nu \propto P_\mathrm{e}^2</script>（哪来的？）</p>
+
+<h4 id="金属丰度">金属丰度</h4>
+
+<p>生长曲线。</p>
+
+<p>简单地来说，我们考虑这么一个图像：连续谱光源在后面，前面是一团冷的气体，厚度为<script type="math/tex">L</script>。</p>
+
+<script type="math/tex; mode=display">F_\nu = F_c e^{-\tau_\nu} \tag{13.28}</script>
+
+<script type="math/tex; mode=display">\tau_\nu = \int_0^L l_\nu \rho dx = \int_0^L N \alpha dx = A \int_0^L (N/N_E) N_\mathrm{H} \alpha dx \tag{13.29}</script>
+
+<p><script type="math/tex">N</script>为吸收原子个数，<script type="math/tex">N_E</script>为这种原子的总个数。</p>
+
+<p>当<script type="math/tex">\tau_\nu \ll 1</script>，即谱线很弱的时候，我们有</p>
+
+<script type="math/tex; mode=display">F_\nu \approx F_c(1-\tau_\nu)</script>
+
+<p>所以这个时候线深和谱线强都都正比于<script type="math/tex">A</script>。</p>
+
+<p>对于强线来说，我们需要考虑线翼；结论是</p>
+
+<script type="math/tex; mode=display">W = (\langle\gamma\rangle Afh)^{1/2} \int_0^\infty (1-e^{-1/u^2})du \tag{13.31}</script>
+
+<p>这里的生长曲线指的是仅仅改变某个元素的丰度；而如果我们改变整个恒星的金属丰度的话，生长曲线会不一样；这是因为改变整体的丰度会改变电离平衡、连续谱吸收以及碰撞的damping。一个例子如下图：</p>
+
+<p><em>图</em></p>
+
+<p>对于实际的谱线来说，例子如下：</p>
+
+<p><em>图三张</em></p>
+
+<h3 id="最后的碎碎念">最后的碎碎念</h3>
+
+<p>LTE和nLTE都有可能出错</p>
+
+<p><em>图两张</em></p>
+
+<p>它们都需要致宽；就连生长曲线都会受到致宽的影响（为什么？）</p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/06/14/OASP12/" >
+                        Previous<br>
+                        <span>OASP笔记 - 12</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/10/14/OASP14/" >
+                        Next<br>
+                        <span>OASP笔记 - 14</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2018/10/07/OASP13/";
+    var disqus_url = "http://localhost:4000/2018/10/07/OASP13/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

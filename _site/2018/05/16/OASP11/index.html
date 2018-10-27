@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>OASP笔记 - 11 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2018/05/16/OASP11/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-OASP10.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-OASP10.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>OASP笔记 - 11</h1>
+                    
+                    
+                    <h2 class="subheading">谱线吸收系数</h2>
+                    
+                    <span class="meta">Posted by mingjie on May 16, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>看了这么久从这一章开始才是正餐。</p>
+
+<p>谱线的强度和形状都是我们很关心的东西，因为它们可以同时受多个物理量影响；相反连续谱的形状基本上只是有效温度的函数。谱线吸收系数就决定了这条谱线位于什么波长、将会有什么形状。</p>
+
+<p>这一章我们基本上讨论三种谱线致宽的机制：自然致宽、压强致宽以及热运动致宽。虽然字面上看起来这三个机制只会告诉我们谱线宽了多少，但是实际上我们会推导出谱线吸收系数，也就把能定的都定下来了。从结论上来说前两个致宽是一个洛仑兹轮廓，最后一个是高斯轮廓；然后把它们卷积起来就得到最终的轮廓了。</p>
+
+<h3 id="自然致宽">自然致宽</h3>
+
+<p>吸收嘛，肯定得有入射光<script type="math/tex">E</script>和吸收光的原子。光作为电磁波有波动方程以及光速的关系：</p>
+
+<script type="math/tex; mode=display">\frac{\partial^2 E}{\partial t^2} = v^2 \frac{\partial^2 E}{\partial x^2}</script>
+
+<script type="math/tex; mode=display">v = c\left(\frac{\epsilon_0 \mu_0}{\epsilon \mu}\right)^{1/2}</script>
+
+<p>而且光可以叠加，为了简单起见只考虑其中的一个成分：</p>
+
+<script type="math/tex; mode=display">E = E_0 e^{-2\pi i (x/\lambda-t/P)} = E_0 e^{-2\pi i (x-vt)/\lambda} = E_0 e^{-i\omega (x/v-t)} \tag{11.1}</script>
+
+<p>我们忽略磁场，就有<script type="math/tex">\mu = \mu_0</script>。但是因为吸收光的原子是一个个电偶极子，所以介电常数发生了变化：</p>
+
+<script type="math/tex; mode=display">\frac{\epsilon}{\epsilon_0} = \frac{E + 4\pi Nqz}{E} = 1 + \frac{4\pi Nqz}{E} \tag{11.2}</script>
+
+<p><script type="math/tex">N</script>为电偶极子数密度、<script type="math/tex">q</script>为电偶极子电量（之后一般会换成<script type="math/tex">e</script>）、<script type="math/tex">z</script>为电偶极子长度。把电偶极子看成谐振子(<script type="math/tex">\frac{d^2 z}{dt^2}</script>)，加上驱动力(<script type="math/tex">\omega_0^2 z</script>)和阻尼(<script type="math/tex">\gamma \frac{dz}{dt}</script>)，就有振动方程：</p>
+
+<script type="math/tex; mode=display">\frac{d^2 z}{dt^2} + \gamma \frac{dz}{dt} + \omega_0^2 z = \frac{e}{m} E_0 e^{i\omega t} \tag{11.3}</script>
+
+<p><script type="math/tex">x = 0</script>时方程有解为<script type="math/tex">z = z_0 e^{i\omega t}</script>，所以<script type="math/tex">\dot{z} = i\omega z, \ddot{z} = -\omega^2 z</script>，方程变为：</p>
+
+<script type="math/tex; mode=display">-\omega^2 z + \gamma i\omega z + \omega_0^2 z = \frac{e}{m} E_0 e^{i\omega t}</script>
+
+<p>或者</p>
+
+<script type="math/tex; mode=display">z = \frac{e}{m} \frac{E_0 e^{i\omega t}}{\omega_0^2 - \omega^2 + i\gamma\omega} = \frac{e}{m} \frac{E}{\omega_0^2 - \omega^2 + i\gamma\omega}</script>
+
+<p>可以看到<script type="math/tex">\omega = \omega_0</script>的时候振幅最大，被称为共振频率，也是谱线所在的地方。将这个结果代回<script type="math/tex">(11.2)</script>，就有</p>
+
+<script type="math/tex; mode=display">\frac{\epsilon}{\epsilon_0} = 1 + \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \tag{11.4 }</script>
+
+<p><script type="math/tex">\epsilon</script>很接近<script type="math/tex">\epsilon_0</script>，所以有泰勒展开：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} \frac{c}{v} = \left(\frac{\epsilon}{\epsilon_0}\right)^{1/2} &\approx 1 + \frac{1}{2} \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \\
+&= 1 + \frac{2\pi Ne^2}{m}\left[\frac{\omega_0^2-\omega^2}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2} - i\frac{\gamma\omega}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2}\right]
+\end{align} %]]></script>
+
+<p>我们希望将这个量代回<script type="math/tex">(11.1)</script>中间那里，然后求光强；而光强是场强实部的平方，所以可以只考虑上式中的虚部，有：</p>
+
+<script type="math/tex; mode=display">I = I_0 e^{-2k\omega x/c} = I_0 e^{-l_\nu \rho x}</script>
+
+<script type="math/tex; mode=display">l_\nu \rho = \frac{4\pi Ne^2}{mc} \frac{\gamma\omega^2}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2} \tag{11.5}</script>
+
+<p>考虑到谱线轮廓很小，<script type="math/tex">\omega \approx \omega_0</script>，有</p>
+
+<script type="math/tex; mode=display">\omega_0^2 - \omega^2 = (\omega_0-\omega)(\omega_0+\omega) \approx 2\omega \Delta\omega</script>
+
+<p>所以<script type="math/tex">(11.5)</script>就变成了</p>
+
+<script type="math/tex; mode=display">l_\nu \rho = \frac{2\pi Ne^2}{mc} \frac{\gamma}{\Delta\omega^2 + (\gamma/2)^2} \tag{11.6}</script>
+
+<p>这是某个圆频率下单位体积内的总吸收，而如果我们想计算单个原子的吸收的话，有<script type="math/tex">l_\nu \rho = N \alpha</script>，</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+  \alpha &= \frac{2\pi e^2}{mc} \frac{\gamma}{\Delta\omega^2 + (\gamma/2)^2} \\
+  &= \frac{e^2}{mc} \frac{\gamma/4\pi}{\Delta\nu^2 + (\gamma/4\pi)^2} \\
+  &= \frac{e^2}{mc} \frac{\lambda^2}{c} \frac{\gamma\lambda^2/4\pi}{\Delta\lambda^2 + (\gamma\lambda^2/4\pi c)^2} \tag{11.7}
+\end{align} %]]></script>
+
+<p>分别在圆频率、频率和波长下。这就是主要的结果了，也是一个洛仑兹轮廓。不知道的话请看<a href="https://mingjiejian.github.io/2017/11/11/OASP2/">第二章</a>。这个轮廓的宽度由阻尼系数<script type="math/tex">\gamma</script>决定。</p>
+
+<p>洛仑兹轮廓的积分为<script type="math/tex">\pi</script>，所以</p>
+
+<script type="math/tex; mode=display">\int_0^\infty \alpha d\nu = \int_{-\infty}^\infty \alpha d\Delta\nu = \frac{\pi e^2}{mc} \tag{11.8}</script>
+
+<p>或者</p>
+
+<script type="math/tex; mode=display">\int_0^\infty \alpha d\lambda = \frac{\pi e^2}{mc} \frac{\lambda^2}{c} \tag{11.9}</script>
+
+<p>这个量指的是一个原子每秒每平方弧度（只有一个方向）所吸收的光的比例。实际上的比例比上两式要小，这是因为在推导的过程中我们没有考虑量子力学带来的修正。假设这个修正量为<script type="math/tex">f</script>，上面的积分同时意味着原子发生吸收的概率，也就是<script type="math/tex">B_{lu}h\nu (5.17)</script>，所以</p>
+
+<script type="math/tex; mode=display">\int_0^\infty \alpha d\nu = \frac{\pi e^2}{mc}f = B_{lu}h\nu</script>
+
+<script type="math/tex; mode=display">\Rightarrow f = \frac{mc}{\pi e^2} B_{lu}h\nu = 7.484 \times 10^{-7} \frac{B_{lu}}{\lambda} \tag{11.11}</script>
+
+<p>用<script type="math/tex">(6.8)</script>将<script type="math/tex">B_{lu}</script>换成<script type="math/tex">A_{lu}</script>，有</p>
+
+<script type="math/tex; mode=display">f = \frac{mc^3}{2\pi e^2\nu^2} \frac{g_u}{g_l}A_{ul} = 1.884 \times 10^{-15} \lambda^2 \frac{g_u}{g_l} A_{ul} \tag{11.12}</script>
+
+<p>如果我们只考虑受激辐射的话，可以写出类似的公式：</p>
+
+<script type="math/tex; mode=display">f_\mathrm{em} = \frac{mc}{\pi e^2} B_{ul}h\nu</script>
+
+<p>所以有</p>
+
+<script type="math/tex; mode=display">g_u f_\mathrm{em} = g_l f_\mathrm{abs}</script>
+
+<p>因此很多实际的表格会给出<script type="math/tex">gf</script>而不是单纯的<script type="math/tex">f</script>以避免歧义。多数的<script type="math/tex">f</script>值都是测出来的，不过有些简单的比如氢原子有公式：</p>
+
+<script type="math/tex; mode=display">f = \frac{2^5}{3^{3/2}\pi} \frac{g_\mathrm{bb}}{l^5u^3} \left( \frac{1}{l^2} - \frac{1}{u^2} \right)^{-3}</script>
+
+<h4 id="自然致宽的阻尼常数">自然致宽的阻尼常数</h4>
+
+<p>知道了自然致宽是一个洛仑兹轮廓之后，只要知道阻尼常数<script type="math/tex">\gamma</script>就可以确定轮廓了。Menzal (1961)给出了阻尼常数的方程：</p>
+
+<script type="math/tex; mode=display">\frac{dW}{dt} = -\frac{2}{3}\frac{e^2\omega^2}{mc^3}W = -\gamma W</script>
+
+<p>所以可以得出</p>
+
+<script type="math/tex; mode=display">\gamma = \frac{2e^2\omega^2}{3mc^3} = \frac{0.22}{\lambda^2}</script>
+
+<p>当然后面的等号需要<script type="math/tex">\lambda</script>的单位为厘米。把<script type="math/tex">\gamma</script>和它的变式放回<script type="math/tex">(11.7)</script>就可以算出不同自变量下的轮廓宽度了。可以看到在<script type="math/tex">\Delta \lambda</script>下，所有谱线的宽度都是一样的，<script type="math/tex">0.59\times 10^{-4}</script>埃。</p>
+
+<p>同样也需要引入量子力学的修正。一个现象学的方法就是将能级的能量<script type="math/tex">W</script>看作很多个分立的小能级之和，<script type="math/tex">W = N_uh\nu</script>，那么<script type="math/tex">(11.13)</script>可以被写成<script type="math/tex">dN_u/dt = -\gamma N_u</script>。同时能级占据数对时间的导数也是跃迁的概率，所以<script type="math/tex">dN_u/dt = -4\pi A_{ul} N_u</script>。考虑所有可能的跃迁，有</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\gamma_u = 4\pi \sum_{l<u} A_{ul} %]]></script>
+
+<p>这个爱因斯坦系数可以和海森堡不确定原理联系起来。不确定原理告诉我们<script type="math/tex">\Delta W_u \Delta t \gtrsim h/2\pi</script>，而<script type="math/tex">\Delta t = 1/\sum 4\pi A_{ul}</script>，因为<script type="math/tex">A_{ul}</script>代表着1秒内跃迁的概率。所以<script type="math/tex">\Delta W_u \gtrsim 2h \sum A_{ul}</script>，也就是每个能级都有一个宽度。</p>
+
+<p>那么跃迁总不是一个能级的事情，所以谱线的自然致宽阻尼常数是两个能级的轮廓卷积。从第二章我们知道<script type="math/tex">\gamma = \gamma_u + \gamma_l</script>。如果辐射场很强的话，我们还要考虑受激辐射和吸收的问题：</p>
+
+<script type="math/tex; mode=display">\gamma_u = 4\pi \sum A_{ul} + 4\pi \sum I_\nu B_{ul} + 4\pi \sum I_\nu B_{uk}</script>
+
+<p>这样会更全面一点。</p>
+
+<h3 id="压力致宽">压力致宽</h3>
+
+<p>压力致宽其实挺好理解，原子被别人撞了（在别的粒子附近），能级就变了，会带来谱线移动、不对称性和致宽。因为是在别的粒子附近，所以实际上是粒子的电场使得原子的能级发生变化，一般指的是<a href="https://en.wikipedia.org/wiki/Stark_effect">斯塔克效应(Stark effect)</a>；其实斯塔克效应就是电场下的赛曼效应。同时粒子离原子越近(<script type="math/tex">R</script>越小)，影响(<script type="math/tex">\Delta W</script>)应该就越大；根据这个思想我们可以写出这样的一条式子：</p>
+
+<script type="math/tex; mode=display">\Delta W = c/R^n \tag{11.16}</script>
+
+<p>至于<script type="math/tex">n</script>是多少，就取决于粒子的种类了；一般的作用如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><script type="math/tex">n</script></th>
+      <th style="text-align: center">种类</th>
+      <th style="text-align: center">影响的谱线</th>
+      <th style="text-align: center">粒子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">线性斯塔克效应</td>
+      <td style="text-align: center">氢线</td>
+      <td style="text-align: center">光子、电子</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">共振致宽</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">同种原子</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">二次斯塔克效应</td>
+      <td style="text-align: center">高温恒星中的多数谱线</td>
+      <td style="text-align: center">离子、电子</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">范德瓦尔斯效应</td>
+      <td style="text-align: center">低温恒星中的多数谱线</td>
+      <td style="text-align: center">中性氢</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>把上面的能级能量变化转为谱线频率的变化，可以得出</p>
+
+<script type="math/tex; mode=display">\Delta \nu = C_n / R^n \tag{11.17}</script>
+
+<p><script type="math/tex">C_n</script>需要被测出来。</p>
+
+<h4 id="简化the-impact-approximation">简化！(The impact approximation)</h4>
+
+<p>貌似到这里我们还没能给出谱线轮廓，怎么办？当然是简化了。假设碰撞是绝热的，也就是碰撞不会导致跃迁；同时因为恒星大气比较稀薄，我们认为碰撞的时间远远短于两次碰撞的时间(impact apprximation)。</p>
+
+<p>我们把一个光子看成一个长为<script type="math/tex">W = \Delta t</script>的方波，那么它的光谱就是<script type="math/tex">\mathrm{sinc}^2{\pi\Delta t (\nu - \nu_0)}</script>，宽度为<script type="math/tex">\Delta \nu = 1 / \Delta t</script>。现在吸收这个光子的原子被另外的粒子影响，而且影响的大小不断在变化，那么我们就将这个光子分成很多小份（小的方波<script type="math/tex">\Delta t_j</script>），每个小份之间的相位在受到碰撞之后不再一样，就需要独立地看待了。当然这个时候小份光的光谱就变宽了(<script type="math/tex">\Delta \nu_j = 1 / \Delta t_j</script>)。</p>
+
+<p>回到宏观的视角，每一次碰撞的<script type="math/tex">\Delta t_j</script>都是不一样的，那么最后中的谱线宽应该为<script type="math/tex">\Delta t_j</script>对应的sinc函数乘上它的概率再对所有的<script type="math/tex">\Delta t_j</script>积分。通过简单的推理可得<script type="math/tex">\Delta t_j</script>的分布为</p>
+
+<script type="math/tex; mode=display">dP(\Delta t_j) = e^{-\Delta t_j/\Delta t_0} d\Delta t_j/\Delta t_0</script>
+
+<p>其中<script type="math/tex">\Delta t_0</script>是典型的碰撞间隔时间。所以原子吸收系数就是：</p>
+
+<script type="math/tex; mode=display">\alpha = \int_0^\infty \Delta t^2 \left( \frac{\sin{\pi \Delta t (\nu-\nu_0)}}{\pi \Delta t (\nu-\nu_0)} \right)^2 e^{-\Delta t_j/\Delta t_0} d\Delta t_j/\Delta t_0</script>
+
+<p>积分的结果（理所当然地）是一个洛仑兹轮廓：</p>
+
+<script type="math/tex; mode=display">\alpha = \frac{\mathrm{constant}}{4\pi^2(\nu-\nu_0)^2 + (1/\Delta t_0)^2} = \mathrm{constant} \frac{\gamma_n/4\pi}{(\nu-\nu_0)^2 + (\gamma_n/4\pi)^2} \tag{11.19}</script>
+
+<h4 id="压力致宽的阻尼系数">压力致宽的阻尼系数</h4>
+
+<p>从上面可以看出来<script type="math/tex">\gamma_n = 2/\Delta t_0</script>，那就是要算<script type="math/tex">\Delta t_0</script>了；不过这里我们要绕一个圈子。</p>
+
+<p>考虑谱线频率的累积变化：</p>
+
+<script type="math/tex; mode=display">\phi = 2\pi \int_0^\infty \Delta \nu dt = 2\pi \int_0^\infty C_n R^{-n} dt \tag{11.20}</script>
+
+<p>先只考虑一个粒子，做直线运动，有</p>
+
+<script type="math/tex; mode=display">\phi = 2\pi \int_0^\infty C_n \frac{cos^n{\theta}}{\rho^n} dt</script>
+
+<p><img src="/img/in-post/post-OASP11/01-collision-diagram.png" alt="" />
+<em>原子受影响的示意图</em></p>
+
+<p>换元什么的，<script type="math/tex">v = dy/dt = (\rho/\cos{\theta})d\theta/dt, dt = (\rho/v)d\theta/\cos^2{\theta}</script>，有</p>
+
+<script type="math/tex; mode=display">\phi = \frac{2\pi C_n}{v\rho^{n-1}} \int_{-\pi/2}^{\pi/2} \cos^{n-2}{\theta} d\theta \tag{11.21}</script>
+
+<p>这个积分在某些<script type="math/tex">n</script>的值如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">n</th>
+      <th style="text-align: center"><script type="math/tex">\int_{-\pi/2}^{\pi/2} \cos^{n-2}{\theta} d\theta</script></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center"><script type="math/tex">\pi</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center"><script type="math/tex">2</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center"><script type="math/tex">\pi/2</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center"><script type="math/tex">4/3</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center"><script type="math/tex">3\pi/8</script></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>我们很随意地确定一个阈值，<script type="math/tex">\phi = 1 \mathrm{rad}</script>，得到一个临界半径：</p>
+
+<script type="math/tex; mode=display">\rho_0 = \left[ \frac{2\pi C_n}{v} \int_{-\pi/2}^{\pi/2} \cos^{n-2}{\theta} d\theta \right]^{1/(n-1)} \tag{11.22}</script>
+
+<p>然后我们只考虑那些相位差超过1个弧度，也就是距离小于临界半径的那些碰撞。在<script type="math/tex">\Delta t_1</script>的时间内，这样的碰撞应该有<script type="math/tex">\pi \rho_0^2 v N \Delta t_1</script>次。那么当我们让<script type="math/tex">\Delta t_1 = \Delta t_0</script>时，应该只有1次碰撞。所以</p>
+
+<script type="math/tex; mode=display">\gamma_n = \frac{2}{\Delta t_0} = 2\pi \rho_0^2 v N \tag{11.23}</script>
+
+<p>上式就剩一个平均相对速率<script type="math/tex">v</script>不知道。其实就是Maxwell-Boltzmann分布的结论：</p>
+
+<script type="math/tex; mode=display">v = \left[ \frac{8kT}{\pi} \left( \frac{1}{m_A} + \frac{1}{m_p} \right) \right]^{1/2} \tag{11.24}</script>
+
+<p>其实<script type="math/tex">\gamma_n</script>更准确的形式可以表示为</p>
+
+<script type="math/tex; mode=display">\gamma_n = N \int_{-\infty}^\infty vf(v)\sigma_n(v)dv \tag{11.25}</script>
+
+<h4 id="两个例子">两个例子</h4>
+
+<p>请自行推导，对于二次斯塔克效应以及范德瓦尔斯效应，有：</p>
+
+<script type="math/tex; mode=display">\log{\gamma_4} \approx 19 + \frac{2}{3} \log{C_4} + \log{P_\mathrm{e}} - \frac{5}{6} \log{T} \tag{11.27}</script>
+
+<script type="math/tex; mode=display">\log{\gamma_6} \approx 20 + 0.4 \log{C_6} + \log{P_\mathrm{e}} - 0.7 \log{T} \tag{11.29}</script>
+
+<p>画出来就像下面这样：</p>
+
+<p><img src="/img/in-post/post-OASP11/02-damping-const.png" alt="" />
+<em>Na I D2线的damping constent</em></p>
+
+<p>上面这两条式子在谱线计算里面经常会被用到。当然实际和理论还是有点区别，所以会加一个系数，随时修正。</p>
+
+<h3 id="氢线的致宽">氢线的致宽</h3>
+
+<p>见过谱线的同学们应该都知道，氢线的致宽和其他线的致宽根本不在一个量级上。这是因为氢线致宽的因素主要是线性斯塔克效应。那么应该怎么去计算氢线的致宽呢？</p>
+
+<p>与压力致宽的想法类似，我们从下式开始：</p>
+
+<script type="math/tex; mode=display">\Delta \lambda_j = c_j E \tag{11.31}</script>
+
+<p>最早我们只考虑了一次电离离子的影响(<script type="math/tex">E = e/R^2</script>)，同时因为平方反比下降，我们只考虑距离氢原子最近的那个离子。此时在半径为<script type="math/tex">R</script>的球面上找到最近的离子的概率为不在球内的概率乘上在表面的概率：</p>
+
+<script type="math/tex; mode=display">P(R)dR = P_N(R)4\pi R^2 N dR \tag{11.32}</script>
+
+<p>那么再次通过简单的推理得到在半径为<script type="math/tex">R</script>的球内找不到最近的离子的概率为</p>
+
+<script type="math/tex; mode=display">P_n(R) = P_n(0)e^{-4\pi R^3N/3}</script>
+
+<p>考虑到<script type="math/tex">R = 0, P_n = 1</script>以及定义<script type="math/tex">R_0 = (4\pi N/3)^{-1/3}</script>，</p>
+
+<script type="math/tex; mode=display">P_n(R) = e^{-(R/R_0)^3}</script>
+
+<p>所以<script type="math/tex">(11.32)</script>变为</p>
+
+<script type="math/tex; mode=display">P(R)dR = 3 \frac{R^2}{R_0^3} e^{-(R/R_0)^3} dR</script>
+
+<p>或者换元成场强<script type="math/tex">\beta = E/E_0</script>的话，</p>
+
+<script type="math/tex; mode=display">P(\beta)d\beta = \frac{3}{2} \beta^{-5/2} e^{-\beta^{-3/2}} d\beta \tag{11.34}</script>
+
+<p>就差不多了。当然更准确<script type="math/tex">P(\beta)</script>也是有的，式子<script type="math/tex">(11.35)</script>。</p>
+
+<p>现在轮廓已经有了，然后就是加上量子力学修正（暂时略，还没有很好的理解）。最后画出来就像图11.9一样。当然还有一些没有考虑：电子带来的致宽，在线翼处会很明显；还有其他氢原子带来的致宽，在中低温恒星中比较明显。</p>
+
+<h3 id="热运动致宽">热运动致宽</h3>
+
+<p>这个就简单了，高中生都知道的东西。多普勒致宽是因为有视向速度<script type="math/tex">v_R</script>：</p>
+
+<script type="math/tex; mode=display">\frac{\Delta\lambda}{\lambda} = \frac{\Delta\nu}{\nu} = \frac{v_R}{c} \tag{11.38}</script>
+
+<p>由<script type="math/tex">(11.1)</script>有</p>
+
+<script type="math/tex; mode=display">\frac{\mathrm{d}N(v_R)}{N} = \frac{1}{\pi^{1/2}v_0} e^{-(\frac{v_R}{v_0})^2} \mathrm{d}v_R</script>
+
+<p><script type="math/tex">v_0^2 = 2kT/m</script>，那么就有</p>
+
+<script type="math/tex; mode=display">\Delta \lambda_\mathrm{D} = \frac{v_0}{c}\lambda_0 = \frac{v_0}{c} \left( \frac{2kT}{m} \right) \tag{11.39}</script>
+
+<script type="math/tex; mode=display">\Delta \mu_\mathrm{D} = \frac{v_0}{c}\mu_0 = \frac{v_0}{c} \left( \frac{2kT}{m} \right) \tag{11.40}</script>
+
+<script type="math/tex; mode=display">\frac{\mathrm{d}N(\Delta\lambda)}{N} = \frac{1}{\pi^{1/2}\lambda_\mathrm{D}} e^{-(\frac{\Delta\lambda}{\lambda_\mathrm{D}})^2} \mathrm{d}\Delta\lambda \tag{11.41}</script>
+
+<p>转成能量就有</p>
+
+<script type="math/tex; mode=display">\alpha d\lambda = \frac{\pi^{1/2}e^2}{mc} f \frac{\lambda_0^2}{c} \frac{1}{\Delta\lambda_\mathrm{D}} e^{-(\frac{\Delta\lambda}{\lambda_\mathrm{D}})^2} d\lambda \tag{11.42}</script>
+
+<script type="math/tex; mode=display">\alpha d\nu = \frac{\pi^{1/2}e^2}{mc} f \frac{1}{\Delta\nu_\mathrm{D}} e^{-(\frac{\Delta\mu}{\nu_\mathrm{D}})^2} d\nu \tag{11.43}</script>
+
+<p>显然是个高斯轮廓。</p>
+
+<h3 id="microturbulence">Microturbulence</h3>
+
+<p>这东西我一直不知道怎么翻译比较好。这个东西指的是小尺度上的质量运动（谁的？），可以用宽度为<script type="math/tex">\xi</script>的高斯分布描述。具体会在第17章讨论。</p>
+
+<h3 id="将轮廓合起来">将轮廓合起来</h3>
+
+<p>这也好说，卷卷卷卷卷积起来就好了：</p>
+
+<script type="math/tex; mode=display">\alpha(\mathrm{total}) = \alpha(\mathrm{natural}) * \alpha(\mathrm{Stark}) * \alpha(\mathrm{v.d. Waals}) * \alpha(\mathrm{thermal}) * \alpha(\mathrm{micro}) \tag{11.44}</script>
+
+<p>前三个是一个宽为<script type="math/tex">\gamma = \gamma_\mathrm{natural} + \gamma_4 + \gamma_6</script>的洛仑兹轮廓，后面两个的宽度是</p>
+
+<script type="math/tex; mode=display">\Delta \lambda_\mathrm{D} = \frac{\lambda_0}{c} \left( \frac{2kT}{m} + \xi^2 \right) \tag{11.45}</script>
+
+<script type="math/tex; mode=display">\Delta \nu_\mathrm{D} = \frac{\nu_0}{c} \left( \frac{2kT}{m} + \xi^2 \right) \tag{11.45}</script>
+
+<p>最终</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+  \alpha &= \frac{\pi e^2}{mc} f \frac{\gamma/4\pi^2}{\Delta\nu^2 + (\gamma/4\pi)^2} * \frac{1}{\pi^{1/2} \Delta\nu_\mathrm{D}} e^{-(\frac{\Delta\nu}{\nu_\mathrm{D}})^2} \\
+  &= \frac{\pi^{1/2}e^2}{mc} \frac{f}{\Delta\nu_\mathrm{D}}H(u,a) \\
+  &= \frac{\pi^{1/2}e^2}{mc} \frac{\lambda_0^2 f}{\Delta\lambda_\mathrm{D}}H(u,a) \tag{11.46}
+\end{align} %]]></script>
+
+<p>其中<script type="math/tex">H(u,a)</script>为Hjerting函数，自变量为<script type="math/tex">u = \Delta\nu/\Delta\nu_\mathrm{D} = \Delta\lambda/\Delta\lambda_\mathrm{D}</script>，和</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+  a &= \frac{\gamma}{4\pi} \frac{1}{\Delta\nu_\mathrm{D}} \\
+  &= \frac{\gamma}{4\pi} \frac{\lambda_0^2}{c} \frac{1}{\Delta\lambda_\mathrm{D}} \tag{11.47}
+\end{align} %]]></script>
+
+<p>当<script type="math/tex">a = 0</script>时，Hjerting函数就变回高斯了。我们也可以用Voigt函数来表示Hjerting函数，<script type="math/tex">V(u,a) = H(u,a)/(\pi^{1/2}\Delta\nu_\mathrm{D}</script>)。</p>
+
+<p>氢线的话，也是<script type="math/tex">(11.35)</script>乘上Hjerting函数。</p>
+
+<h3 id="差不多就是这样">差不多就是这样</h3>
+
+<p>有些再多的就用到再来总结。</p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/05/11/OASP10/" >
+                        Previous<br>
+                        <span>OASP笔记 - 10</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/06/03/latex-asj/" >
+                        Next<br>
+                        <span>日本天文年会相关文件</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2018/05/16/OASP11/";
+    var disqus_url = "http://localhost:4000/2018/05/16/OASP11/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

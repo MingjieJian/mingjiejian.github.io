@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>箱根探路者 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2018/01/22/hakone-pathfinder/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-hakone-pathfinder.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-hakone-pathfinder.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#hanging-around" title="hanging-around">hanging-around</a>
+                        
+                    </div>
+                    <h1>箱根探路者</h1>
+                    
+                    
+                    <h2 class="subheading">有臭味的山谷</h2>
+                    
+                    <span class="meta">Posted by mingjie on January 22, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<p>箱根是我一直想去的地方，一是因为在那能看见富士山，第二是那里是新世纪福音战士第三新东京市的原型。正好这周想出去逛逛（当然发现switch入货是临时的事情），来实习的诺亚同学也刚好错过了松永组织的镰仓社寺一日游（真的全是社寺），就拉上他一起去那看看了。当然也有踩点的意思，毕竟下个月打算还来一次。</p>
+
+<h3 id="大致路线">大致路线</h3>
+
+<p>因为只能去一天，所以基本上是按照小田急给出的示范行程来走的，从箱根汤本一路往西经过强罗、大涌谷到达桃源台港，然后坐船穿过芦之湖到达箱根町和元箱根，稍作参观之后坐巴士回到箱根汤本，終了。一路的交通都是挺方便的。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/hakone-route.gif" alt="" /></p>
+
+<h3 id="出发之前">出发之前</h3>
+
+<p>东京到箱根的交通大致分为两类：不使用JR和使用JR。一般不使用JR的方式是在新宿站购买小田急的箱根Free Pass（箱根フリーパス）并预约来回的特急“浪漫特快”（ロマンスカー），这样可以解决全部在箱根的交通问题和一大部分的景点门票。从新宿出发的2日箱根Free Pass是5140日元（儿童是1500），购买Free Pass之后单程的浪漫特快还需要加890日元，所以一共是6920日元。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/freepass-price.png" alt="" /></p>
+
+<p>Free Pass只有两天和三天的选择，所以即使只去一天也需要买两天的。不过这么一圈坐下来如果不买Pass的话大概是六千多日元，而且有Pass的话上下车相对自由一点。这些票都可以在新宿或者小田原的小田急窗口处购买。</p>
+
+<p>如果有JR Pass的话也可以选择乘坐JR到小田原再转箱根登山铁道到箱根汤本。上面最后一行写的就是在小田原购买箱根Free Pass的价格；如果不购买的话交通费大概是四千七日元，所以也还是买Pass便宜一点。</p>
+
+<h3 id="特急浪漫特快">特急“浪漫特快”</h3>
+
+<p>开往箱根汤本的浪漫特快无论工作日还是周末都是从7点钟开始首发，平均下来大概半个小时一班的样子。不住在新宿附近的话周末选择7:30、8:00、8:30或者9:00的比较合适，工作日的话就是7:00、7:27或者8:53了。（请注意时刻表可能会变，请到<a href="http://www.odakyu.jp/romancecar/timetable/weekday/">这里</a>确认一下）。回来的车基本上都会停新宿，所以选择余地比较大，我觉得晚上7点出发的比较合适。</p>
+
+<p>时刻表里面带“展”字的车次是有展望席的，车头或者车尾有很大的窗户，适合观景。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/view-seat.jpg" alt="" /></p>
+
+<p>大概是这个样子，司机要爬到上面开车。这些票和旺季（春节？）的特急票都可以在<a href="https://www.web-odakyu.com/e-romancecar/">这里</a>提前预约或者购买。实际上展望席后面还紧接着两个不算展望席的座位，但是位置是和展望席一样的，所以没有预约到展望席又想坐在附近的话不妨在买票的时候问问还有没有展望席的位置。</p>
+
+<p>浪漫特快虽然叫特快，但是毕竟不是新干线而且过了小田原之后的登山铁道部分只有单线，所以从新宿出发还是需要85分钟的，请带上论文/书/ipad/3DS/Switch等。</p>
+
+<h3 id="强罗午饭">强罗=午饭</h3>
+
+<p>出于对时间的些许担心，我们决定到了箱根汤本之后马上去强罗。换乘去强罗的登山电车不需要出闸，直接到3号站台坐车就行。虽然从地图上看箱根汤本到强罗并不算远，但是登山电车本来就慢加上路上有三处像京张铁路的人字形轨道，所以整个用时为40分钟。这么下来我们到强罗的时候已经是10点半，该吃午饭了。</p>
+
+<p>这么早考虑午饭的原因在于想去试试一家比较出名的餐厅，田むら銀かつ亭。很多攻略都推荐了这家餐厅，既然来了就去试试呗。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/resturant.jpg" alt="" /></p>
+
+<p>就是这家。11点开始营业，但是一般10点半开始就会有人来取号，开始营业之后按照号码顺序就餐。我们大概是40到的，已经是11号了。当然吃完之后出来发现还有将近三十个号在排队，看来的确挺出名的。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/lunch.jpg" alt="" /></p>
+
+<p>午饭基本上点的都是招牌套餐，豆腐猪排套餐(1330日元)和御膳(2050日元)。这两种的区别在于后者多了一个甜品、饮料和沙拉，而且后者的猪排下面是有小火一直加热的。我上面点的是套餐，就只有这几样。感觉还挺好吃，不过排队的人数让我觉得里面也有宣传的成分。</p>
+
+<h3 id="强罗公园">强罗公园</h3>
+
+<p>吃完饭之后走了走附近的强罗公园。冬天能看的不多，也没有雪，就是近处的温泉和远处的火山烟：</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/gora-park.jpg" alt="" /></p>
+
+<p>值得一提的是公园里面还有两个热带植物馆，可以取暖（误）。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/park-flower1.jpg" alt="" /></p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/park-flower2.jpg" alt="" /></p>
+
+<p>看到了在南方随处可见的勒杜鹃还有鹤望兰。</p>
+
+<h3 id="大涌谷">大涌谷</h3>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/cable-car.jpg" alt="" /></p>
+
+<p>从强罗公园南门出来左转走一分钟就到了登山缆车的公园下站，等一会就有缆车带着上到早云山了。还是要注意一下发车时刻的，间隔在20分钟左右。本来在早云山可以直接转乘空中缆车到达大涌谷（顺便在空中看看硫磺烟），但是1月16日到2月7日之间早云山-大涌谷之间的<a href="http://www.hakoneropeway.co.jp/info_img/255_pdf.pdf">缆车维修</a>，所以只能坐专用的大巴过去。出战之后跟着大部队走就行了，我们坐的是旅游大巴所以都有位置。</p>
+
+<p>大涌谷就是火山活动留下来的一直在往外冒烟的山谷，而因为附近硫磺比较多所以空气比较…臭。看还是挺好看的，也有很多吃的和纪念品卖。最出名的应该就是黑色的鸡蛋了，用山上的温泉泡熟，因为水中的成分和鸡蛋壳作用变成了黑色。实际上就是煮鸡蛋，里面没有任何区别。大涌谷本来还有两条登山道，但是我们去的时候因为空气中硫化物含量太高<a href="http://www.hakoneropeway.co.jp/ohwakudani/">封闭了</a>，可惜。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/owakudani.jpg" alt="" /></p>
+
+<h3 id="芦之湖">芦之湖</h3>
+
+<p>整个行程可能最需要注意的就是芦之湖海贼船的<a href="https://www.hakone-kankosen.co.jp/timesheet/">时刻表</a>了，间隔可能会到一个小时左右，所以在大涌谷的时候要留意时间。大涌谷到湖边的桃源台港需要16分钟，也是空中缆车，之后就可以等着船准备坐半个小时了。如果嫌船挤的话可以花500日元买高级舱的票，人就不那么多了（资本主义）。在船上可以看见湖边的鸟居：</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/lake-tori.jpg" alt="" /></p>
+
+<p>至于终点到箱根町还是元箱根都没什么所谓，就算是走路也才十来分钟而已，还有巴士来往。</p>
+
+<h3 id="箱根町和元箱根">箱根町和元箱根</h3>
+
+<p>到这里的时候已经过了四点，天开始黑了，我们就只走了走箱根关所和恩赐箱根公园。这公园原来是天皇避暑的地方，也接待过不少政界要人，但是在之后的两次地震之中塌了75%的楼宇……现在只有一栋楼在那了。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/park-tree.jpg" alt="" /></p>
+
+<p>别的还有箱根神社可以看看，挺大的。晚上路灯亮了之后很有神秘的感觉。</p>
+
+<p><img src="/img/in-post/post-hakone-pathfinder/shrine.jpg" alt="" /></p>
+
+<p>然后就是坐巴士回箱根汤本了。在元箱根出发的话R、H和K线都能到箱根汤本，每天的最后一班是R线17:40的车，25分钟到箱根汤本。错过了的话……我不知道了:)</p>
+
+<h3 id="回程">回程</h3>
+
+<p>回去之后还有一点时间，想逛一下EVA屋但是关门了。这个时候基本上所有的店铺都开始关门了，但是还是可以进去逛一下的；站内的商店没关，但是便当就不一定有了，另外我们坐的19:10的特急没有车内售卖的服务，所以最差的情况可能需要在附近的便利店买点吃的或者看看站台的小卖部有没有了（但是我没有确认过）。回到新宿8点半，时间挺合适。我觉得箱根还是一天比较好，虽然是一天稍微有一点赶，但是两天又感觉景点不够支撑的，没有太特别的理由一天就行。</p>
+
+<h3 id="also-read">Also Read</h3>
+
+<p><a href="http://www.hakonenavi.jp/cn/">小田急箱根导航</a></p>
+
+<p><a href="http://www.marshyfood.com/2015/06/2015.html">有用的攻略</a></p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/01/21/time-lapse-linux/" >
+                        Previous<br>
+                        <span>如何在Linux上制作延时摄影视频</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/01/29/bash/" >
+                        Next<br>
+                        <span>Bash 备忘</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2018/01/22/hakone-pathfinder/";
+    var disqus_url = "http://localhost:4000/2018/01/22/hakone-pathfinder/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>

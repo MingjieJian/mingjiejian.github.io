@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Write everything, think everything.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/myicon.ico">
+
+    <title>OASP笔记 - 5 - Mingjie的博客 | Mingjie's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/2017/12/18/OASP5/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mingjie's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-OASP5.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-OASP5.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        
+                    </div>
+                    <h1>OASP笔记 - 5</h1>
+                    
+                    
+                    <h2 class="subheading">有关辐射的各种定义</h2>
+                    
+                    <span class="meta">Posted by mingjie on December 18, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h3 id="辐射强度-specific-intensity">辐射强度 (specific intensity)</h3>
+
+<p>辐射强度描述的是穿过一个表面的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。</p>
+
+<p>我们只能通过单位时间、单位频率下穿过单位面积面元的能量大小来描述光的强度。但是面元是有朝向的，一个只朝一个方向的辐射场和面元的法向量平行的时候会产生最大的通量；如果将辐射场（或者面元）旋转一个角度，除了方向外辐射场没有任何其他的变化，不过通量就小了。然而辐射强度是辐射场的性质，和面元的方向无关，所以除了<script type="math/tex">\mathrm{d}A\mathrm{d}t\mathrm{d}\nu</script>需要和描述辐射场强度（其实就是辐射强度）的量相乘之外，我们还需要一个表示方向的立体角源和表示方向与面元法向夹角的余弦值将（可能倾斜的）面元“摆正”，去导出正确的能量。所以能量和辐射强度有这样的关系：</p>
+
+<script type="math/tex; mode=display">\mathrm{d}E_\nu = I_\nu cos{\theta} \mathrm{d}\omega\mathrm{d}A\mathrm{d}t\mathrm{d}\nu</script>
+
+<p>也得到了辐射强度的表达式：</p>
+
+<script type="math/tex; mode=display">I_\nu = \frac{\mathrm{d}E_\nu}{cos{\theta}\mathrm{d}\omega\mathrm{d}A\mathrm{d}t\mathrm{d}\nu} \tag{5.1}</script>
+
+<p>它表达的是单位时间(<script type="math/tex">\mathrm{d}t</script>)单位频率(<script type="math/tex">\mathrm{d}\nu</script>)下穿过某一点(<script type="math/tex">\mathrm{d}A</script>)朝某个方向(<script type="math/tex">cos{\theta}\mathrm{d}\omega</script>)的光的能量。当然我们也可以用波长去表达，而从上式我们可以推出</p>
+
+<script type="math/tex; mode=display">I_\nu\mathrm{d}\nu = I_\lambda\mathrm{d}\lambda  \tag{5.2}</script>
+
+<p>它们的单位分别是<script type="math/tex">\mathrm{erg / (s~cm^2~rad^2~Hz)}, \mathrm{W / (m^2~rad^2~Hz)}</script>和<script type="math/tex">\mathrm{erg / (s~cm^2~rad^2~Å)}, \mathrm{W / (m^2~rad^2~Å)}</script>。这条式子，加上熟悉的频率-波长关系<script type="math/tex">\lambda\nu = c</script>，我们会发现同一个物体<script type="math/tex">I_\nu</script>和<script type="math/tex">I_\lambda</script>的形状是不一样的。这是因为<script type="math/tex">\mathrm{d}\nu = -\frac{c}{\lambda^2}\mathrm{d}\lambda \Rightarrow -\frac{c}{\lambda^2}I_\nu = I_\lambda</script>（负号表示波长和频率变化方向相反），所以即使不同波长下的辐射强度一样，翻译到频率下会变成一条曲线。</p>
+
+<p><img src="http://soap.siteturbine.com/uploaded_files/www.oceanopticsbook.info/images/WebBook/2048a65071bc4c0a0e2402ba5bc51157.png" alt="" />
+<em>频域和波长域下太阳的辐射强度，可以看到形状改变了。取自<a href="http://www.oceanopticsbook.info/view/light_and_radiometry/level_2/a_common_misconception">这里</a></em></p>
+
+<p>我们也可以定义平均辐射强度，为辐射强度在所有方向上的平均：</p>
+
+<script type="math/tex; mode=display">J_\nu = \frac{1}{4\pi} \oint I_\nu \mathrm{d}\omega  \tag{5.3}</script>
+
+<h3 id="流量">流量</h3>
+
+<p>比起辐射强度，流量可能更容易理解一点。流量就是通过一个面的所有能量之和；一个方向为正的话，另一个方向就为负；或者说流量就是一个面对所有方向辐射强度的积分。从这两个表述里面我们可以得到流量的两个定义式：</p>
+
+<script type="math/tex; mode=display">F_\nu = \frac{\oint \mathrm{d}E_\nu}{\mathrm{d}A\mathrm{d}t\mathrm{d}\nu} = \oint I_\nu \cos{\theta} \mathrm{d}\omega  \tag{5.4}</script>
+
+<p>显然当辐射场各向同性的时候，流量为零（进出一样）；所以也可以说流量是衡量辐射场非各向同性程度的一个量。</p>
+
+<p>假设我们讨论的点在恒星的表面上，将流量的辐射强度积分拆成两个半球，一个在恒星内部，一个在外部，我们可以得到</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} F_\nu & = \int_0^{2\pi}\mathrm{d}\phi\int_0^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta \\ & = \int_0^{2\pi}\mathrm{d}\phi (\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta + \int_\frac{2}{\pi}^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta) \\ & = F_\nu^\mathrm{out} + F_\nu^\mathrm{in} \end{align} %]]></script>
+
+<p>实际上就是向里的和向外的之和。对于恒星来说，一般是没有向内的辐射的；同时如果在<script type="math/tex">\phi</script>方向各向同性的话，上式可以简化为</p>
+
+<script type="math/tex; mode=display">F_\nu  = 2\pi\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta  \tag{5.6}</script>
+
+<p>再简化一下，如果向外的辐射在各个<script type="math/tex">\theta</script>方向都相等的话，那么</p>
+
+<script type="math/tex; mode=display">F_\nu = \pi I_\nu  \tag{5.7}</script>
+
+<p>对恒星来说这样的简化是可以接受的。</p>
+
+<p>辐射强度是一个辐射场的内禀量，所以不应该随着距离而变化；而流量遵循平方反比律。这里的不同之处在于辐射强度的定义式中有一个<script type="math/tex">\mathrm{d}\omega</script>，但流量里面没有。这也说明了只有当我们明确知道观测的源的<script type="math/tex">\mathrm{d}\omega</script>有多大，也就是能分辨清楚源面的时候，我们才能测量辐射强度；否则我们测量的只能是流量。</p>
+
+<p><img src="/img/in-post/post-OASP5/if.png" alt="" /></p>
+
+<p>图中左侧是天空中的一个均匀的延展源，右侧是它的像。假设我们现在讨论通过中间透镜的辐射强度和流量，而<script type="math/tex">A_S</script>所张的立体角刚好可以看作一个面元。这那么根据定义，包含在<script type="math/tex">A_S</script>这个圆锥中的能量就是在透镜这一点上、<script type="math/tex">A_S</script>方向的辐射强度。如果我们改变这个源的距离，因为这个圆锥（立体角大小）不变，虽然源距离我们远了，每个点发出的光少了，但是有更多的面积进入了<script type="math/tex">A_S</script>中，所以接收到的能量是不变的。当整个源的面积小于等于<script type="math/tex">A_S</script>的时候，我们就不能分辨源的面了，所以此时测量到的就变成了流量，遵循平方反比定律。</p>
+
+<h3 id="k积分">K积分</h3>
+
+<p>到现在为止我们从辐射强度中引出了两个值，平均辐射强度和流量：</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} J_\nu & = \frac{1}{4\pi} \oint I_\nu \mathrm{d}\omega \\ F_\nu & = \oint I_\nu \cos{\theta} \mathrm{d}\omega \end{align} %]]></script>
+
+<p>如果在积分号里面再加一个<script type="math/tex">\cos{\theta}</script>，也可以定义出一个有物理意义的量：</p>
+
+<script type="math/tex; mode=display">K_\nu = \frac{1}{4\pi} \oint I_\nu \cos^2{\theta} \mathrm{d}\omega  \tag{5.8}</script>
+
+<p>它跟辐射压有关。</p>
+
+<p>光子的动量为<script type="math/tex">P = \frac{E}{c}</script>，则单位时间单位面积内穿过某个面的总动量就是辐射压：</p>
+
+<script type="math/tex; mode=display">\mathrm{d}P_\nu = \frac{\mathrm{d}E_\nu}{c} \frac{\cos{\theta}}{\mathrm{d}t\mathrm{d}A}</script>
+
+<p>用辐射强度代入，有</p>
+
+<script type="math/tex; mode=display">\mathrm{d}P_\nu = \frac{I_\nu}{c} \cos^2{\theta} \mathrm{d}\nu\mathrm{d}\omega</script>
+
+<p>对立体角和频率积分一下，就有</p>
+
+<script type="math/tex; mode=display">P_R = \frac{1}{c} \int_0^\infty\oint I_\nu \cos^2{\theta} \mathrm{d}\omega\mathrm{d}\nu = \frac{4\pi}{c} \int_0^\infty K_\nu \mathrm{d}\nu  \tag{5.9}</script>
+
+<p>如果各向同性的话，</p>
+
+<script type="math/tex; mode=display">P_R = \frac{4\pi}{3c} \int_0^\infty I_\nu \mathrm{d}\nu \tag{5.10}</script>
+
+<p>而第六章会讨论温度的一个定义方式：</p>
+
+<script type="math/tex; mode=display">\pi\int_0^\infty I_\nu \mathrm{d}\nu = \sigma T^4</script>
+
+<p>故有</p>
+
+<script type="math/tex; mode=display">P_R = \frac{4\sigma}{3c}T^4 \tag{5.11}</script>
+
+<p>所以高温恒星的辐射压是很强的；同时太阳等低温恒星辐射压可以被忽略。</p>
+
+<h3 id="辐射能量密度">辐射能量密度</h3>
+
+<p>在继续之前我们稍微再从不同的角度理解一下辐射强度。辐射强度可以被理解为单位时间单位频率内往某个方向的能量对某个面元的平均，也就是这个“摆正了的”面元单位时间单位频率内的单位面积上有多少正前方的能量穿过。所以辐射强度某种程度上来说是辐射能量面密度。</p>
+
+<p>那么有了面密度，能不能有体密度呢？当然是可以的，我们仿照辐射强度把<script type="math/tex">\mathrm{d}A</script>写成<script type="math/tex">\mathrm{d}V</script>就行了（记得带上<script type="math/tex">\cos{\theta}</script>）。但是注意到我们在讨论光，光肯定以光速运动，所以面元在空间中相对光扫过的体积和面积的关系为<script type="math/tex">\mathrm{d}V = c\mathrm{d}A</script>，也就是说</p>
+
+<script type="math/tex; mode=display">u_\nu = \frac{I_\nu}{c}</script>
+
+<p>体积的数值肯定比面积大，所以同样的光分摊到了一个更大的数字上，密度就小了。</p>
+
+<h3 id="吸收系数和光深">吸收系数和光深</h3>
+
+<p>光穿过介质时候的衰减遵循以下规律：</p>
+
+<script type="math/tex; mode=display">\mathrm{d}I_\nu = -\kappa_\nu\rho I_\nu \mathrm{d}x \tag{5.12}</script>
+
+<p><script type="math/tex">\rho</script>是单位体积的质量密度，<script type="math/tex">\mathrm{d}x</script>是长度，所以<script type="math/tex">\kappa_\nu</script>是单位质量上的面积(<script type="math/tex">\mathrm{\frac{cm^2}{g}}</script>)，也就是吸收截面。</p>
+
+<p><script type="math/tex">\kappa_\nu</script>反映的是物质本身的性质；实际上这个值有两个方面，一个是真正的吸收，另一个是物质对光的散射。所以这个吸收系数实际上是消光系数。</p>
+
+<p>在没有介质发射的情况下我们可以装作化简地把式子写得简单一点，利用</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} \tau_\nu & = \int_0^L \kappa_\nu \rho \mathrm{d}x \Rightarrow \\ \mathrm{d}I_\nu & = -I_\nu\mathrm{d}\tau_\nu \Rightarrow \\ I_\nu & = I_\nu^0 \exp{-\tau_\nu} \end{align} \tag{5.13} %]]></script>
+
+<p>这是最简单的消光规律。</p>
+
+<h3 id="发射系数和源函数">发射系数和源函数</h3>
+
+<p>对发射系数的定义和吸收系数非常类似，只是没有了负号：</p>
+
+<script type="math/tex; mode=display">\mathrm{d}I_\nu = j_\nu \rho \mathrm{d}x \tag{5.14}</script>
+
+<p><script type="math/tex">j_\nu</script>的单位是<script type="math/tex">\mathrm{\frac{erg}{s~rad^2~Hz~g}}</script>。发射系数同样包含真正的发射和散射到我们考虑的方向上的光。</p>
+
+<p>如果我们把发射系数和吸收系数相除，我们会发现这个商的单位和辐射强度是一样的；所以我们可以把这个商当作一个新的“辐射强度”，并定义为源函数：</p>
+
+<script type="math/tex; mode=display">S_\nu = \frac{j_\nu}{\kappa_\nu} \tag{5.15}</script>
+
+<p>源函数的表征了光线在穿过介质的时候被介质替换掉的比例。它在之后的辐射转移中很有用。但是源函数的计算是比较复杂的，这里只考虑两个最极端的例子，纯各向同性散射以及纯吸收。</p>
+
+<h5 id="纯各向同性散射">纯各向同性散射</h5>
+
+<p><img src="/img/in-post/post-OASP5/pis.png" alt="" /></p>
+
+<p>如上图，介质中的粒子在接收到来自某个方向的光(<script type="math/tex">I_\nu \mathrm{d}\omega</script>)之后会将其中一部分(<script type="math/tex">\kappa_\nu</script>)散射掉，而且是均匀地散射到<script type="math/tex">4\pi</script>立体角中。所以对于某个方向上单位立体角的观测者来说只能接收到<script type="math/tex">1/4\pi</script>的光，即</p>
+
+<script type="math/tex; mode=display">\mathrm{d}j_\nu = \frac{1}{4\pi}\kappa_\nu I_\nu \mathrm{d}\omega</script>
+
+<p>对不同方向求积分，有</p>
+
+<script type="math/tex; mode=display">j_\nu = \frac{1}{4\pi} \oint\kappa_\nu I_\nu \mathrm{d}\omega</script>
+
+<p>一般来说<script type="math/tex">\kappa_\nu</script>和方向没有关系，所以</p>
+
+<script type="math/tex; mode=display">S_\nu = \frac{j_\nu}{\kappa_\nu} = \frac{1}{4\pi} \oint I_\nu \mathrm{d}\omega = J_\nu</script>
+
+<p>此时粒子“发射”的辐射强度是入射光的平均辐射强度，源函数只取决于辐射场，和粒子本身无关。</p>
+
+<h5 id="纯吸收">纯吸收</h5>
+
+<p>纯吸收并不意味着粒子就不发光了；只不过之前的散射是只改变光的方向，现在粒子吸收全部的光然后再发出自己的光。一般来说我们讨论粒子到达了热动平衡之后的状态，那么此时的源函数就是黑体辐射函数</p>
+
+<script type="math/tex; mode=display">S_\nu = B_\nu = \frac{2h\nu^3}{c^2} \frac{1}{e^{h\nu/kT}-1} \tag{5.16}</script>
+
+<p>此时粒子作为<strong>黑体</strong>发光。</p>
+
+<h3 id="爱因斯坦系数">爱因斯坦系数</h3>
+
+<p>我们将自发辐射归入辐射，受激辐射（负吸收）和受激吸收归到吸收里面，并分别用<script type="math/tex">A, B</script>表示它们的爱因斯坦系数，<script type="math/tex">l, u</script>表示低、高能级，则有</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align} j_\nu\rho & = N_uA_{ul}h\nu \\ \kappa_\nu\rho I_\nu & = N_l B_{lu}I_\nu h\nu - N_uB_{ul}I_\nu h\nu \end{align} \tag{5.17} %]]></script>
+
+
+                <hr style="visibility: hidden;">
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/12/18/OASP4/" >
+                        Previous<br>
+                        <span>OASP笔记 - 4</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/12/19/OASP6/" >
+                        Next<br>
+                        <span>OASP笔记 - 6</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#random" title="random" rel="4">
+                                    random
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#hanging-around" title="hanging-around" rel="5">
+                                    hanging-around
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
+                                    astro-ph
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#experience" title="experience" rel="2">
+                                    experience
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#learning" title="learning" rel="22">
+                                    learning
+                                </a>
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+                    
+                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "mingjiejian-github-io";
+    var disqus_identifier = "mingjiejian-github-io//2017/12/18/OASP5/";
+    var disqus_url = "http://localhost:4000/2017/12/18/OASP5/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/mingjieJian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mingjie's Blog 2018
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-100940889-1';
+    var _gaDomain = 'mingjiejian.github.io';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+</html>
