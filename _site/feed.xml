@@ -5,8 +5,8 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 27 Oct 2018 21:12:25 +0900</pubDate>
-    <lastBuildDate>Sat, 27 Oct 2018 21:12:25 +0900</lastBuildDate>
+    <pubDate>Mon, 29 Oct 2018 21:55:20 +0900</pubDate>
+    <lastBuildDate>Mon, 29 Oct 2018 21:55:20 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -217,6 +217,270 @@
 &lt;/ul&gt;
 
 &lt;p&gt;从富金属星到贫金属星的变化可以理解为年龄比较大的恒星从圆轨道渐渐被各种拉扯，出现偏离。&lt;/p&gt;
+
+&lt;h2 id=&quot;恒星分类与演化&quot;&gt;恒星分类与演化&lt;/h2&gt;
+
+&lt;h3 id=&quot;颜色星等图cmd&quot;&gt;颜色星等图(CMD)&lt;/h3&gt;
+
+&lt;p&gt;这里主要比较一下太阳邻域的CMD和星团的CMD。书里面给出的是&lt;a href=&quot;http://adsabs.harvard.edu/abs/1997A%26A...323L..49P&quot;&gt;Perryman+97&lt;/a&gt;的CMD，但是这都8102年了我们当然看看Gaia的结果啦：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-GC18.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;太阳邻域(&amp;lt;100pc)内的恒星CMD；&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1804.09378&quot;&gt;Gaia Collaboration+18&lt;/a&gt;, Fig. 6&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;我们能看到和M3的CMD不同的是这个CMD的主序是很完整的，表明太阳邻域的恒星比较年轻，或者说知道最近为止仍然有恒星形成。Gaia的结果多了很多白矮星，这自然是以前恒星的骨灰以及现在观测技术先进的原因了。&lt;/p&gt;
+
+&lt;p&gt;其他详细的各成分解释请见&lt;a href=&quot;https://mingjiejian.github.io/2018/10/26/GA-S/&quot;&gt;附录&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;恒星演化&quot;&gt;恒星演化&lt;/h3&gt;
+
+&lt;p&gt;恒星演化路径如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-i67.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;主序星的能量来源是氢的聚变，分为p-p链和CNO循环两种。CNO循环的效率更高，一般在更高温的恒星中出现。当氢的核聚变开始时，恒星位于位置1处，为ZAMS；而1-2为主序阶段，很长很长。2-3是中心氢烧完了开始往壳层烧但是中心的氦还没开始燃烧的过程，虽然中心收缩，但是壳层没有（因为烧起来了）。3-4-5是由于壳层的燃烧放热导致恒星迅速膨胀，开始发生对流，所以温度迅速下降，进入RGB阶段。&lt;/p&gt;
+
+&lt;p&gt;中心温度继续升高，氦开始燃烧之后，质量大于&lt;script type=&quot;math/tex&quot;&gt;2.2M_\odot&lt;/script&gt;的恒星的内部并没有进入简并状态，所以可以像主序一样继续稳定燃烧，并通过热压力与引力平衡来收缩膨胀。而小质量恒星的核则在氦开始燃烧之前就进入了简并状态，所以升温并不会导致密度下降，而简并物质又是热的良导体，所以一旦温度足够触发氦的燃烧，核心会进行短暂的失控核聚变，称为氦闪，并迅速重组恒星内部结构。在HR图上就会看到恒星在氦闪之后从RGB突然闪现到了HB上。&lt;/p&gt;
+
+&lt;p&gt;再之后的话大家都跑到了AGB上（问题：小质量恒星似乎还有一次闪现？），然后该白矮星白矮星，该黑洞黑洞之类的。&lt;/p&gt;
+
+&lt;h3 id=&quot;星族合成&quot;&gt;星族合成&lt;/h3&gt;
+
+&lt;p&gt;我们的主要目标是银河系，所以将银河系的所有恒星的光合起来应该就能得到银河系的SED了。当然主要的光源是小质量恒星，所以就来看看小质量恒星的性质。&lt;/p&gt;
+
+&lt;p&gt;小质量恒星不同年龄的isochrone其实和不同金属丰度的isochrone很像，参见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1994ApJS...95..107W&quot;&gt;这里&lt;/a&gt;的Fig.2, 3。年龄越大或者金属丰度越大，isochrone就越靠右；这就是年龄和金属丰度的简并。同时这个简并也会在SED上反映出来，年龄越大或者金属丰度越大，短波辐射就越少(Fig. 38)。所以我们需要先确定金属丰度，或者两个同时确定。&lt;/p&gt;
+
+&lt;h3 id=&quot;元素的起源&quot;&gt;元素的起源&lt;/h3&gt;
+
+&lt;p&gt;宇宙中除了大爆炸的时候产生的元素之外，其他的元素当然是从恒星里面来，特别是恒星死亡之后会将里面的元素再进行一次合成然后抛回星际介质中。&lt;/p&gt;
+
+&lt;p&gt;我们主要关心两种：Ia型和II型超新星。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-t95-1.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/img/in-post/post-GA/2-t95-2.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1995MNRAS.277..945T&quot;&gt;Tsujimoto+95&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;很明显Ia型超新星主要形成铁族元素，而II型主要形成&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;元素。而因为II型超新星主要是大质量恒星，我们可以预期银河系早期的元素丰度是&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;为主，后期铁族渐渐赶上来。&lt;/p&gt;
+
+&lt;h4 id=&quot;比铁更重的元素&quot;&gt;比铁更重的元素&lt;/h4&gt;
+
+&lt;p&gt;这得靠&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变。比铁重的元素含量不多，但是可以看到有几个地方是有个峰值的，这就是元素经过了s过程和/或r过程之后到达的稳态。r过程给出的元素一般比s过程的原子序数要小，因为它先到达了&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%B9%BB%E6%95%B8&quot;&gt;幻数&lt;/a&gt;，之后在衰变；而s过程因为比较慢所以可以比较接近幻数。&lt;/p&gt;
+
+&lt;p&gt;问题：图3.13中为什么峰值和幻数不匹配？&lt;/p&gt;
+
+&lt;p&gt;Na、Al： 在恒星内部生成，与恒星初始质量、金属丰度有关；&lt;br /&gt;
+Mg：在大质量恒星内部生成，与恒星初始质量有关，SN Ia基本不生成；&lt;br /&gt;
+其他&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;元素：恒星内部以及SN II；&lt;br /&gt;
+铁族元素：除铜和铅之外SN Ia、II都能生成；&lt;br /&gt;
+Ba、Pb：s过程；&lt;br /&gt;
+Eu、Pt、Au、Th、U：r过程；&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;贫金属星和星族ii&quot;&gt;贫金属星和星族II&lt;/h3&gt;
+
+&lt;p&gt;金属丰度小于-2.5的恒星基本上认为只受过一次超新星爆发的污染，是很有用的目标。&lt;/p&gt;
+
+&lt;h4 id=&quot;alpha元素&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;元素&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-a02.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2002ApJ...576L.141A&quot;&gt;Aoki+02&lt;/a&gt;, Fig. 2&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;金属丰度小于-1的恒星有正的[Mg/Fe]，说明是从早期的SN II中来的&lt;/li&gt;
+  &lt;li&gt;金属丰度小于-2.5的恒星的[Mg/Fe]弥散大，这是由于早期SN II质量能量有弥散导致的，并没有经历多次的超新星爆发。&lt;/li&gt;
+  &lt;li&gt;富金属端[Mg/Fe]接近0，说明新近的恒星遭受了SN Ia的污染&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;rs过程元素&quot;&gt;r、s过程元素&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-s00.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;贫金属星的r过程元素（点）与太阳的r过程元素（实线）比较；&lt;a href=&quot;http://iopscience.iop.org/article/10.1086/312631&quot;&gt;Sneden+00&lt;/a&gt;, Fig. 2&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;r过程是普遍的，不论是在贫金属星还是富金属星上&lt;/li&gt;
+  &lt;li&gt;这样的元素丰度应该来自于SN II&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-a00.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;贫金属星的s过程元素（点）与太阳的s过程元素（实线）比较；&lt;a href=&quot;http://adsabs.harvard.edu/abs/2000ApJ...536L..97A&quot;&gt;Aoki+00&lt;/a&gt;, Fig. 3&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;s过程不是普遍的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;超贫金属星&quot;&gt;超贫金属星&lt;/h4&gt;
+
+&lt;p&gt;金属丰度小于-2.5的超贫金属星的特点之一是碳过程；它们被称作CEMP星，s过程元素比较多。这个主要是因为它们在AGB阶段的对流层将恒星内部的碳搬了上来；一些对流层很薄的恒星则可能是它们的伴星将碳丢到了它们头上。&lt;/p&gt;
+
+&lt;p&gt;问题：正常恒星到AGB也有对流，碳含量也应该上升，为何单单关注超贫金属星的碳？&lt;/p&gt;
+
+&lt;p&gt;还有一些CEMP星s过程元素很少；这可能是因为它们不一定受SN II而是受极新星污染，亦或是超新星爆发的时候某些元素只沿轴向抛射，并不是球对称的。&lt;/p&gt;
+
+&lt;h4 id=&quot;星族iii&quot;&gt;星族III&lt;/h4&gt;
+
+&lt;p&gt;星族III的星还有没有呢？现在认为很有可能多数都是大质量恒星，寿命短，已经挂掉了。&lt;/p&gt;
+
+&lt;h2 id=&quot;银河系的化学演化&quot;&gt;银河系的化学演化&lt;/h2&gt;
+
+&lt;h3 id=&quot;基本量&quot;&gt;基本量&lt;/h3&gt;
+
+&lt;p&gt;恒星形成率SFR，可认为只和时间有关：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\psi(t) \propto \rho_\mathrm{gas}^n&lt;/script&gt;
+
+&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;n=1&lt;/script&gt;时，恒星质量的增加率就是一个简单的e指数衰减。对高红移星系的观测认为&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;的取值在1.4左右。&lt;/p&gt;
+
+&lt;p&gt;初始质量函数IMF&lt;script type=&quot;math/tex&quot;&gt;\phi(m)&lt;/script&gt;，只与质量有关：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi(m) \propto m^{-\alpha}&lt;/script&gt;
+
+&lt;p&gt;简单的话就一个&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;搞定，复杂一点就可以两个什么的。&lt;/p&gt;
+
+&lt;h3 id=&quot;基本公式&quot;&gt;基本公式&lt;/h3&gt;
+
+&lt;p&gt;SFR实际上是从星际介质到恒星中的质量的比例，那么定义&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;为从恒星到星际介质中的质量比例，&lt;script type=&quot;math/tex&quot;&gt;F, E&lt;/script&gt;为星系星际介质从外界的流入的以及流出的比例，则恒星和星际介质的质量变化为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{s}}{dt} = \psi - e&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{g}}{dt} = -\psi + e + F - E&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;可以表述为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;e = \int_{m_\mathrm{t}}^\infty (m-m_\mathrm{rem})\psi(t-\tau_m)\phi(m)dm&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\tau_m, m_\mathrm{t}&lt;/script&gt;是质量为&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;的恒星寿命以及在时刻&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;下可以死亡的恒星的最小质量，&lt;script type=&quot;math/tex&quot;&gt;m_\mathrm{rem}&lt;/script&gt;是恒星残骸的质量。&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;意思就是在时刻&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;下所有死亡恒星抛出的质量，所以这个积分有下限，同时还涉及到&lt;script type=&quot;math/tex&quot;&gt;t-\tau_m&lt;/script&gt;这个时刻上产生的质量为&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;的恒星的比例&lt;script type=&quot;math/tex&quot;&gt;\psi(t-\tau_m)\phi(m)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;我们关心的是金属的变化，那么气体中金属质量的变化率为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{ZM_\mathrm{g}}{dt} = -Z\psi + e_Z +Z_F F - Z_E E&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;Z_F, Z_E&lt;/script&gt;为流入流出的气体的金属丰度，&lt;script type=&quot;math/tex&quot;&gt;e_Z&lt;/script&gt;可以表达为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;e_Z(t) = \int_{m_\mathrm{t}}^\infty [(m-m_\mathrm{rem})Z(t-\tau_m) + mp_\mathrm{zm}]\psi(t-\tau_m)\phi(m)dm&lt;/script&gt;
+
+&lt;p&gt;也就是恒星形成时所拥有的金属质量&lt;script type=&quot;math/tex&quot;&gt;(m-m_\mathrm{rem})Z(t-\tau_m)&lt;/script&gt;加上恒星演化过程中造出来而且释放了的金属质量&lt;script type=&quot;math/tex&quot;&gt;mp_\mathrm{zm}&lt;/script&gt;乘上时刻&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;下挂掉的恒星比例。&lt;/p&gt;
+
+&lt;p&gt;再定义两个量，一个叫return function，是恒星抛出物的比例：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R = \int_{m_\mathrm{t}}^\infty (m-m_\mathrm{rem})\phi(m)dm&lt;/script&gt;
+
+&lt;p&gt;以及我们最终关心的量：星际介质经过恒星加工之后，产生金属的效率yield：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;y = \frac{1}{1-R} \int_{m_\mathrm{t}}^\infty mp_\mathrm{zm}\phi(m)dm&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;y=0&lt;/script&gt;意味着恒星对星际介质的金属丰度没有任何变化。&lt;/p&gt;
+
+&lt;h4 id=&quot;瞬间循环近似instantaneous-recycling-approximation&quot;&gt;瞬间循环近似(instantaneous recycling approximation)&lt;/h4&gt;
+
+&lt;p&gt;继续简化，我们假设大于一个太阳质量的恒星因为寿命比较短，诞生之后马上挂掉，而小于一个太阳质量的恒星一直存活；那么对于上面涉及积分的式子来讲，&lt;script type=&quot;math/tex&quot;&gt;\tau_m = 0&lt;/script&gt;，可以简化为&lt;script type=&quot;math/tex&quot;&gt;e(t)=R\psi(t), e_z(t)=RZ\psi(t)+y(1-R)\psi(t)&lt;/script&gt;，以及：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{s}}{dt} = (1-R)\psi&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{g}}{dt} = -(1-R)\psi + F - E&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{ZM_\mathrm{g}}{dt} = -Z(1-R)\psi + y(1-R)e_Z +Z_F F - Z_E E \tag{3.25}&lt;/script&gt;
+
+&lt;h3 id=&quot;简单模型&quot;&gt;简单模型&lt;/h3&gt;
+
+&lt;p&gt;我们用上面这三条式子，再加上以下假设：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;没有星际介质的流入流出；&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;Z(0) = 0&lt;/script&gt;；&lt;/li&gt;
+  &lt;li&gt;IMF与时间无关&lt;/li&gt;
+  &lt;li&gt;气体中的金属的空间分布是均匀的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;那么可以从&lt;script type=&quot;math/tex&quot;&gt;(3.25)&lt;/script&gt;得到：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;M_\mathrm{g}\frac{dZ}{dM_\mathrm{g}} = -y \Rightarrow Z = y \ln{\frac{M_\mathrm{g}(0)}{M_\mathrm{g}(t)}} = y \frac{1}{\ln{\mu}}&lt;/script&gt;
+
+&lt;p&gt;也就是说星际介质中的金属随着星际介质被消耗单调增加，同时不依赖于SFR。&lt;/p&gt;
+
+&lt;p&gt;但是我们并不能观测星际介质中的金属，只能观测恒星中的金属丰度，所以我们要将这个结果转成某个金属丰度下恒星的数量&lt;script type=&quot;math/tex&quot;&gt;dS/d\mathrm{[Fe/H]}&lt;/script&gt;。以现在的恒星质量为归一化的恒星质量为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S = \frac{M_\mathrm{s}}{M_\mathrm{s1}} = \frac{1-\mu_1^{Z/Z_1}}{1-\mu_1}&lt;/script&gt;
+
+&lt;p&gt;换元成&lt;script type=&quot;math/tex&quot;&gt;dS/d\mathrm{[Fe/H]}&lt;/script&gt;，就有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dS}{d\mathrm{[Fe/H]}} = \frac{\ln{10}/y}{1-e^{-Z_1/y}} 10^{\mathrm{[Fe/H]}} e^{-10^{\mathrm{[Fe/H]}}/y}&lt;/script&gt;
+
+&lt;p&gt;但是将它和实际上的G型矮星数量比较的话，这个分布会给出过多的贫金属星，这就是G型矮星问题。当然实际上的银河系没有这么简单。&lt;/p&gt;
+
+&lt;p&gt;不过这个模型对描述星际气体的金属丰度还是不错的；详见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1987ApJ...317...82G&quot;&gt;Garnett &amp;amp; Shields 1987&lt;/a&gt;的Fig. 9, 10c。&lt;/p&gt;
+
+&lt;h4 id=&quot;有气体流入流出的银河系&quot;&gt;有气体流入流出的银河系&lt;/h4&gt;
+
+&lt;h5 id=&quot;仅有流出&quot;&gt;仅有流出&lt;/h5&gt;
+
+&lt;p&gt;我们可以认为流出的量与恒星形成率有关：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E = c\psi(t)&lt;/script&gt;
+
+&lt;p&gt;比如说恒星变成超新星爆发之后会把气体吹飞。这个时候的结果变为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z = y \frac{1-R}{1-R+c} \frac{1}{\ln{\mu}}&lt;/script&gt;
+
+&lt;p&gt;也就是说流出使得金属丰度的增加变慢了；这样会增加贫金属星的量，和观测也不符。&lt;/p&gt;
+
+&lt;h5 id=&quot;仅有流入&quot;&gt;仅有流入&lt;/h5&gt;
+
+&lt;p&gt;简单起见，认为无金属气体流入使得星际介质质量不变：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F = (1-R) \psi&lt;/script&gt;
+
+&lt;p&gt;这个时候有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z = y(1-e^{-M_\mathrm{s}/M_\mathrm{g}})&lt;/script&gt;
+
+&lt;p&gt;就可以造出更多富金属星了。&lt;/p&gt;
+
+&lt;h5 id=&quot;解决g型矮星问题&quot;&gt;解决G型矮星问题&lt;/h5&gt;
+
+&lt;p&gt;我们需要气体流入，那么一个来源自然就是银晕了。当然要解释观测结果的话，需要落下的时标很长才行。&lt;/p&gt;
+
+&lt;h4 id=&quot;abundance随时间的演化&quot;&gt;abundance随时间的演化&lt;/h4&gt;
+
+&lt;p&gt;这里我们不一定要看时间，可以看abundace随metallicity的变化；这里的结论是SN Ia应在SN II的1.5Gyr之后出现，也就是说瞬间循环近似不适用了。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;缺图&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;不均匀的化学演化&quot;&gt;不均匀的化学演化&lt;/h4&gt;
+
+&lt;p&gt;第一次SN II的时候我们可以预见银河系金属的污染是不均匀的；这或许可以解释贫金属星abundance的弥散。&lt;/p&gt;
+
+&lt;h2 id=&quot;4-银河系的构造&quot;&gt;4 银河系的构造&lt;/h2&gt;
+
+&lt;h3 id=&quot;核球&quot;&gt;核球&lt;/h3&gt;
+
+&lt;p&gt;核球处在银心方向，所以星际消光是很严重的。想要观测主要在JHK的近红外波段以及消光小的巴纳德之窗。&lt;/p&gt;
+
+&lt;h4 id=&quot;cmd&quot;&gt;CMD&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/3-z03.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003A%26A...399..931Z&quot;&gt;Zoccali+03&lt;/a&gt;, Fig. 24&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;乍一看核球的年龄在100Gyr左右（isochrone的年龄），有一定的金属丰度。不过由于简并所以不好明确确定。&lt;/p&gt;
+
+&lt;h4 id=&quot;金属丰度和元素丰度&quot;&gt;金属丰度和元素丰度&lt;/h4&gt;
+
+&lt;p&gt;这两个量基本上需要光谱观测。核球中比较明亮的是K巨星，但是因为温度比较低所以误差比较大；而另一个机会是趁引力透镜的时候来观测矮星的光谱。&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/2013A%26A...549A.147B&quot;&gt;Bensby+13&lt;/a&gt;用各种方法得到了核球金属丰度的直方图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/3-b13.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/2013A%26A...549A.147B&quot;&gt;Bensby+13&lt;/a&gt;, Fig. 12&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到核球中心部分的金属丰度在0.5到-0.5之间，呈双峰分布，富金属峰更高；而在核球外部，贫金属峰更高。&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1807.06377&quot;&gt;这篇文章&lt;/a&gt;进一步明确了这两种恒星的比例，接近一半。&lt;/p&gt;
+
+&lt;p&gt;问题：这个比例和银心的距离有关吗？这样的分布对核球的形成有什么启示？&lt;/p&gt;
+
+&lt;p&gt;至于元素丰度，也有不错的结果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/3-a10.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1001.2521&quot;&gt;Alves-Brito+10&lt;/a&gt;, Fig. 6&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;这里的恒星都是红巨星，可以看到Mg的丰度比其他组分高或者一样，所以形成时间比其他组分早。有趣的是富金属端的Mg丰度也比其他组分高，我对此还没有好的解释。&lt;/p&gt;
+
+&lt;p&gt;问题：有没有矮星的元素丰度？富金属端的Mg丰度也比其他组分高是为什么？银河系的核球和其他星系的核球相比有什么异同？&lt;/p&gt;
+
+&lt;p&gt;问题：这些结果完整吗？如此小的样本能不能将核球的性质反映出来？巴纳德之窗的代表性几何？&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Oct 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/10/26/GA/</link>
@@ -270,12 +534,15 @@
   &lt;li&gt;CMD示意图给出了对图中各部分的解释:
 &lt;img src=&quot;/img/in-post/post-GA/1s-3.png&quot; alt=&quot;&quot; /&gt;
 &lt;a href=&quot;http://www.astro.caltech.edu/~george/ay20/eaa-globcl.pdf&quot;&gt;来源&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;演化顺序：MS-&amp;gt;TO-&amp;gt;RGB-&amp;gt;HB-&amp;gt;AGB&lt;/li&gt;
+  &lt;li&gt;RC其实是HB&lt;/li&gt;
   &lt;li&gt;MS、RGB的位置以及宽度可以推断金属丰度（大小以及弥散）&lt;/li&gt;
   &lt;li&gt;和我的印象不一样的是，AGB是这些成分里面演化到最晚期的&lt;/li&gt;
   &lt;li&gt;TO可以用来测量年龄，是星团里面最准确的年龄推断&lt;/li&gt;
-  &lt;li&gt;HB的位置由元素丰度、氦闪时He核质量以及包层质量决定；所以恒星在RGB阶段经历的质量流失是不一样的&lt;/li&gt;
+  &lt;li&gt;HB的位置由元素丰度（主要）、氦闪时He核质量以及包层质量决定；所以恒星在RGB阶段经历的质量流失是不一样的。次要原因还没有明确定论&lt;/li&gt;
+  &lt;li&gt;金属丰度越高、包层质量越大、He核质量越小，HB越红（参见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1987ApJS...65...95S&quot;&gt;这里&lt;/a&gt;、&lt;a href=&quot;http://adsabs.harvard.edu/abs/1990ApJ...350..155L&quot;&gt;这里&lt;/a&gt;）&lt;/li&gt;
   &lt;li&gt;由上，RHB和BHB也可以用来推断年龄&lt;/li&gt;
-  &lt;li&gt;HB中间是不稳定gap，是RR Lyrae&lt;/li&gt;
+  &lt;li&gt;HB中间是不稳定gap，是RR Lyrae（参见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1996ARA&amp;amp;A..34..551G&quot;&gt;这里&lt;/a&gt;）&lt;/li&gt;
   &lt;li&gt;BSS可能是两恒星的合并或者质量交换得来的，它们基本上处于星团的核心部位&lt;/li&gt;
 &lt;/ul&gt;
 </description>
