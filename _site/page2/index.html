@@ -154,6 +154,78 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2018/04/20/DL-3/">
+        <h2 class="post-title">
+            Deep Learning笔记3
+        </h2>
+        
+        <h3 class="post-subtitle">
+            机器学习策略
+        </h3>
+        
+        <div class="post-content-preview">
+            这么多改进的方式，究竟要用哪个？
+
+正交化
+
+我们希望某个/些参数只影响某些结果。我们有训练样本、发展样本、测试样本、真实数据上的结果。最好就是存在某些参数可以分别改变网络在它们上的表现。
+
+Single Number evaluation metric
+
+找一个可以方便比较的数字。
+
+精确度和完整性：Harmonic average.
+
+复杂目标
+
+optimizing：数字越小/大越好；...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on April 20, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/03/14/DL-2/">
+        <h2 class="post-title">
+            Deep Learning笔记2
+        </h2>
+        
+        <h3 class="post-subtitle">
+            调参
+        </h3>
+        
+        <div class="post-content-preview">
+            数据集
+
+以前是分成两个的，训练和测试。现在分成3个，训练、发展和测试集。用发展去测试训练，最后再用测试去测试表现；甚至没有测试集都行。这里的区别是发展集是用来overfitting的，测试集不是。
+
+要注意不同数据集的数据要同质，质量相同
+
+
+
+bias和variance
+
+训练集的错误率比与预期的高：高bias；发展集的错误率比训练集的高：高variance
+
+
+
+
+
+正则化
+
+在代价函...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on March 14, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2018/03/14/DL-1/">
         <h2 class="post-title">
             Deep Learning笔记1
@@ -373,92 +445,6 @@ ht...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2017/12/19/OASP6/">
-        <h2 class="post-title">
-            OASP笔记 - 6
-        </h2>
-        
-        <h3 class="post-subtitle">
-            黑体和黑体辐射
-        </h3>
-        
-        <div class="post-content-preview">
-            无聊的一章。请自行谷歌黑体辐射。
-
-可公开的信息
-
-韦恩定律（高频）：
-
-
-
-瑞利金斯近似（低频/长波）：
-
-
-
-“推导”
-
-前提：只有两个能级 + 处于热动平衡
-
-第一章的原子激发与电离里面有这样的一个公式：
-
-
-
-从第五章最后的两个公式得出细致平衡原理：
-
-
-
-
-
-合在一起就有
-
-
-
-将指数展开
-
-
-
-令它等于瑞利金斯近似，得
-
-
-
-所以
-
-
-
-求导等于0可以得出韦恩位移定律，对频率积分...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 19, 2017
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2017/12/18/OASP5/">
-        <h2 class="post-title">
-            OASP笔记 - 5
-        </h2>
-        
-        <h3 class="post-subtitle">
-            有关辐射的各种定义
-        </h3>
-        
-        <div class="post-content-preview">
-            辐射强度 (specific intensity)
-
-辐射强度描述的是穿过一个表面的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。
-
-我们只能通过单位时间、单位频率下穿过单位面积面元的能量大小来描述光的强度。但是面元是有朝向的...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 18, 2017
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -517,7 +503,7 @@ ht...
                             
                         
                             
-                                <a href="/tags/#learning" title="learning" rel="22">
+                                <a href="/tags/#learning" title="learning" rel="24">
                                     learning
                                 </a>
                             
