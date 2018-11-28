@@ -251,7 +251,11 @@
 
 <p>No more nLTE things. 究竟什么时候LTE是好的得通过实际比较才能知道，或者问Maria去。</p>
 
-<p>实际计算用的是<script type="math/tex">(7.15)</script>，但是要加上谱线的吸收系数。<script type="math/tex">(13.15), (13.16)</script>还没完全理解就不放上来了，毕竟这本书也没有涉及到具体详细的计算方法。</p>
+<p>实际计算用的是<script type="math/tex">(9.13)</script>：</p>
+
+<script type="math/tex; mode=display">F_\nu = 2\pi \int_{-\infty}^{\infty} B_\nu(\tau_0) E_2(\tau_\nu) \frac{\kappa_\nu(\tau_0)\tau_0 d\log{\tau_0}}{\kappa_0(\tau_0)\log{e}} \tag{13.15}</script>
+
+<p>如果你想算<script type="math/tex">\tau_\nu</script>的话，把上式<script type="math/tex">E_2(\tau_\nu)</script>那堆积分就行了，就是<script type="math/tex">(13.16)</script>。</p>
 
 <p>有一个有用的推论就是：当谱线比较弱的时候，谱线的轮廓和吸收系数的轮廓是一样的。</p>
 
@@ -374,7 +378,7 @@
 
 <p>这里的生长曲线指的是仅仅改变某个元素的丰度；而如果我们改变整个恒星的金属丰度的话，生长曲线会不一样；这是因为改变整体的丰度会改变电离平衡、连续谱吸收以及碰撞的damping。一个例子如下图：</p>
 
-<p><em>图</em></p>
+<p><img src="/img/in-post/post-OASP13/04.png" alt="" /></p>
 
 <p>对于实际的谱线来说，例子如下：</p>
 
@@ -468,7 +472,7 @@
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="24">
+                				<a href="/tags/#learning" title="learning" rel="25">
                                     learning
                                 </a>
                             
