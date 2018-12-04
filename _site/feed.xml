@@ -5,12 +5,12 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 28 Nov 2018 22:41:18 +0900</pubDate>
-    <lastBuildDate>Wed, 28 Nov 2018 22:41:18 +0900</lastBuildDate>
+    <pubDate>Sun, 02 Dec 2018 18:43:44 +0900</pubDate>
+    <lastBuildDate>Sun, 02 Dec 2018 18:43:44 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
-        <title>OASP笔记 - 14</title>
+        <title>OASP笔记 - 16</title>
         <description>&lt;p&gt;恒星的化学丰度所包含的信息我认为超过了其他恒星参数所含信息的量。现在的恒星演化模型、星团模型以及星系模型都可以给出恒星或者恒星群在HR图上的分布；但是恒星的化学丰度并不容易从模型中导出。这是因为化学丰度不仅和恒星自身的状况有关，还反映了形成时的星际环境状况。最近再次变得热门的银河考古学就是希望通过低质量恒星的长寿命以及它们的元素丰度去推断银河系早期的状况以及之后的演化。而对于恒星自身来说，锂和碳的同位素反映了恒星的演化阶段。&lt;/p&gt;
 
 &lt;p&gt;我们用于分析化学丰度的手段仍然是光谱的谱线。所以我们的第一反应应该是，元素丰度的分析是和恒星的有效温度、&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;等参数的确定耦合在一起的。要不然就先把基本的参数确定再搞丰度，要不然就一块定了。&lt;/p&gt;
@@ -37,7 +37,7 @@
 
 &lt;p&gt;我们从&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;出发，经过换元得到&lt;script type=&quot;math/tex&quot;&gt;(13.15)&lt;/script&gt;：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = 2\pi \int_{-\infty}^{\infty} B_\nu(\tau_0) E_2(\tau_\nu) \frac{\kappa_\nu(\tau_0)\tau_0 d\log{\tau_0}}{\kappa_0(\tau_0)\log{e}}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = 2\pi \int_{-\infty}^{\infty} B_\nu(\tau_0) E_2(\tau_\nu) \frac{[l_\nu(\tau_0)+\kappa_\nu(\tau_0)]\tau_0 d\log{\tau_0}}{\kappa_0(\tau_0)\log{e}}&lt;/script&gt;
 
 &lt;p&gt;我们想算的是等值宽度：&lt;/p&gt;
 
@@ -53,7 +53,7 @@
 
 &lt;p&gt;我们应用弱线近似：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{F_c-F-\nu}{F_c} \approx \text{constant} \frac{l_\nu}{\kappa_\nu} \tag{16.1}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{F_c-F_\nu}{F_c} \approx \text{constant} \frac{l_\nu}{\kappa_\nu} \tag{16.1}&lt;/script&gt;
 
 &lt;p&gt;对整个频率域积分，得到等值宽度：&lt;/p&gt;
 
@@ -73,29 +73,39 @@
 
 &lt;p&gt;(MOOG也用了这条式子)&lt;script type=&quot;math/tex&quot;&gt;\frac{w}{\lambda}&lt;/script&gt;是为了将和多普勒有关的现象归一化（&lt;em&gt;介又是什么？&lt;/em&gt;）。上式说明了右侧后面这四项的地位是一致的，所以当其他三个固定的时候，剩下那个就可以作为横坐标出现在生长曲线图上了。&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;em&gt;之后的这一大段没有看懂&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;温度的影响&quot;&gt;温度的影响&lt;/h3&gt;
 
 &lt;p&gt;温度会影响&lt;script type=&quot;math/tex&quot;&gt;(16.4)&lt;/script&gt;中的&lt;script type=&quot;math/tex&quot;&gt;\frac{N_j}{N_E}, \kappa_\nu, \theta_ex&lt;/script&gt;，也就是说会将生长曲线向左或者右平移。不过一般100K的误差只相当于0.1dex的移动，所以还好。&lt;/p&gt;
 
-&lt;p&gt;但是有效温度的差异也会影响恒星模型的温度分布，从而移动生长曲线。图16.2就反应了这么一个情况。当然不同温度还会改变谱线饱和的点。&lt;/p&gt;
+&lt;p&gt;但是有效温度的差异也会影响恒星模型的温度分布，从而移动生长曲线。图16.2就反应了这么一个情况。当然不同温度还会改变谱线饱和的点；温度越高，饱和点越早。这个现象在LDR的研究中也出现了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;logg的影响&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;的影响&lt;/h3&gt;
 
-&lt;p&gt;我们只讨论线性区间。&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;对谱线的影响主要在第13章讨论过了。对于低激发能元素的中性谱线来说，基本上&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;不会对谱线宽度有什么影响，但是其他的就不一定了。我们从图16.3中可以看出，&lt;script type=&quot;math/tex&quot;&gt;\Delta\log{a}, \Delta\log{g}&lt;/script&gt;之间是有线性关系的，所以我们在表上看到CaI基本上不怎么受影响，而其他的就不一定了。从Ca到Cr再到Fe的过程就是激发能逐渐上升的过程。&lt;/p&gt;
+&lt;p&gt;我们只讨论线性区间。&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;对谱线的影响主要在第13章讨论过了。对于低激发能元素的中性谱线来说，基本上&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;不会对谱线宽度有什么影响，但是其他的就不一定了。我们从图16.3中可以看出，&lt;script type=&quot;math/tex&quot;&gt;\Delta\log{A}, \Delta\log{g}&lt;/script&gt;之间是有线性关系的，所以我们在表上看到CaI基本上不怎么受影响，而其他的就不一定了。从Ca到Cr再到Fe的过程就是激发能逐渐上升的过程。&lt;/p&gt;
 
 &lt;p&gt;如果&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;已知，那么我们可以分别确定中性谱线和电离谱线的金属丰度。而如果&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;未知的话，我们也可以通过调整&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;来让中性和电离谱线的金属丰度一致，这也可以确定&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;。&lt;/p&gt;
 
 &lt;p&gt;如果非要用强线的话也行，不过会引入更多的变量。&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;饱和部分&quot;&gt;饱和部分&lt;/h3&gt;
 
 &lt;p&gt;饱和部分的斜率很小，所以由此确定的金属丰度误差会大。另外还有一些因素会影响到这部分的生长曲线。&lt;/p&gt;
 
-&lt;p&gt;microturbulence(&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;)，&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;会将生长曲线的饱和部分拉高，并延迟饱和的点。当然这个特性也可以用来确定&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;的值，只要用不同&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;的生长曲线来拟合模型的就行了。超精细分裂以及磁场分裂造成的影响和&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;差不多，不过超精细的影响对不同种类的原子不一样。&lt;/p&gt;
+&lt;p&gt;microturbulence(&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;)，&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;会将生长曲线的饱和部分拉高，并延迟饱和的点。当然这个特性也可以用来确定&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;的值，只要先用线性部分确定基本参数、再用不同&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;来拟合生长曲线的饱和部分就行了。超精细分裂以及磁场分裂造成的影响和&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;差不多，不过超精细的影响对不同种类的原子不一样。&lt;/p&gt;
 
-&lt;p&gt;温度分布对饱和部分也有影响。温度越高，饱和得就早。具体是为什么我还不是很理解。同时nLTE成分越大，饱和也越早。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/05.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;温度分布对饱和部分也有影响。温度越高，饱和得就早，和&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;类似。具体是为什么我还不是很理解。同时nLTE成分越大，饱和也越早。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;金属丰度的确定&quot;&gt;金属丰度的确定&lt;/h3&gt;
 
@@ -125,7 +135,7 @@
 
 &lt;h2 id=&quot;合成光谱法&quot;&gt;合成光谱法&lt;/h2&gt;
 
-&lt;p&gt;这方法在线重叠较多、温度较低的恒星上好使，虽然它需要把所有的线都证认出来并有良好的参数。具体就是是错呗，在参数空间里面找啊找，找到了就好了。&lt;a href=&quot;http://adsabs.harvard.edu/abs/2002ApJS..139..219J&quot;&gt;Johnson 2002&lt;/a&gt;讨论了误差。&lt;/p&gt;
+&lt;p&gt;这方法在线重叠较多、温度较低的恒星上好使，虽然它需要把所有的线都证认出来并有良好的参数。具体就是试错呗，在参数空间里面找啊找，找到了就好了。&lt;a href=&quot;http://adsabs.harvard.edu/abs/2002ApJS..139..219J&quot;&gt;Johnson 2002&lt;/a&gt;讨论了误差。&lt;/p&gt;
 
 &lt;h2 id=&quot;丰度指标&quot;&gt;丰度指标&lt;/h2&gt;
 
@@ -137,7 +147,10 @@
 
 &lt;p&gt;太阳丰度的数据来源可以不只是光球层光谱，还可以是色球层、日冕、黑子等。&lt;/p&gt;
 
-&lt;p&gt;太阳丰度在铁附近有峰值（银河考古学那篇应该有解释），同时偶数元素比奇数的多，这和&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;过程有关。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/A+09.png&quot; alt=&quot;&quot; /&gt;
+&lt;a href=&quot;http://adsabs.harvard.edu/abs/2009ARA%26A..47..481A&quot;&gt;Asplund+2009&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;太阳丰度在铁附近有峰值（银河考古学那篇应该有解释），同时偶数元素比奇数的多，这和&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;捕获有关。&lt;/p&gt;
 
 &lt;h2 id=&quot;银河系的恒星丰度&quot;&gt;银河系的恒星丰度&lt;/h2&gt;
 
@@ -145,11 +158,17 @@
 
 &lt;p&gt;金属丰度和年龄是有关系的。Velanti+06和最近都有用APOGEE去做恒星年龄。锂丰度也有一些有趣的现象。图16.13显示最早的恒星有类似的锂丰度（应该和大爆炸匹配），之后的丰度弥散很大，这是因为锂污染的不均匀以及锂的耗损（&lt;em&gt;什么？&lt;/em&gt;）。&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;锂丰度&quot;&gt;锂丰度&lt;/h3&gt;
 
 &lt;p&gt;之前也说过锂丰度和恒星演化阶段有关。drege up当然会把内部的锂带上来，所以观测到的锂丰度是初始丰度和drege up的结合。&lt;/p&gt;
 
 &lt;p&gt;图16.14看到，老年低温恒星锂丰度很低，这是因为对流层底部温度和压强升高以及寿命长导致的锂被清除掉了。（&lt;em&gt;什么？&lt;/em&gt;）左边的平台和初始丰度有关，但是可能也有耗损。图16.15反映出越老的恒星锂丰度越小，同时Pleides的弥散来自于自转速度的不同，或者不止一个population。锂丰度在6400-6800K还有一个坑，可能和恒星自身有关。锂6在恒星中很少，所以可以用锂6来探测系外行星。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Be也可以用来探测恒星内部结构。&lt;/p&gt;
 
