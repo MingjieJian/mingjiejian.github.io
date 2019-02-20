@@ -5,9 +5,305 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 02 Dec 2018 18:43:44 +0900</pubDate>
-    <lastBuildDate>Sun, 02 Dec 2018 18:43:44 +0900</lastBuildDate>
+    <pubDate>Mon, 21 Jan 2019 09:46:46 +0900</pubDate>
+    <lastBuildDate>Mon, 21 Jan 2019 09:46:46 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>TOPCAT大型星表筛选交叉方法</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#星团证认m4&quot; id=&quot;markdown-toc-星团证认m4&quot;&gt;星团证认：M4&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#一获取m4附近的gaia数据&quot; id=&quot;markdown-toc-一获取m4附近的gaia数据&quot;&gt;一、获取M4附近的Gaia数据&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#二通过自行挑出星团成员&quot; id=&quot;markdown-toc-二通过自行挑出星团成员&quot;&gt;二、通过自行挑出星团成员&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#三验证成员星&quot; id=&quot;markdown-toc-三验证成员星&quot;&gt;三、验证成员星&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#四确定m4的视差&quot; id=&quot;markdown-toc-四确定m4的视差&quot;&gt;四、确定M4的视差&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#相空间的星团证认毕星团&quot; id=&quot;markdown-toc-相空间的星团证认毕星团&quot;&gt;相空间的星团证认：毕星团&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#获取太阳附近的gaia数据&quot; id=&quot;markdown-toc-获取太阳附近的gaia数据&quot;&gt;获取太阳附近的Gaia数据&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tap教程&quot; id=&quot;markdown-toc-tap教程&quot;&gt;TAP教程&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#选择星表的前n行select&quot; id=&quot;markdown-toc-选择星表的前n行select&quot;&gt;选择星表的前n行：SELECT&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#排序order-by&quot; id=&quot;markdown-toc-排序order-by&quot;&gt;排序：ORDER BY&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#表达式的一些内容&quot; id=&quot;markdown-toc-表达式的一些内容&quot;&gt;表达式的一些内容&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#有条件选择where&quot; id=&quot;markdown-toc-有条件选择where&quot;&gt;有条件选择：WHERE&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#交叉证认join&quot; id=&quot;markdown-toc-交叉证认join&quot;&gt;交叉证认：JOIN&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#更复杂的交叉证认join-on&quot; id=&quot;markdown-toc-更复杂的交叉证认join-on&quot;&gt;更复杂的交叉证认：JOIN ON&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#令人头大的交叉证认基于位置&quot; id=&quot;markdown-toc-令人头大的交叉证认基于位置&quot;&gt;令人头大的交叉证认：基于位置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#俄罗斯套娃查询中的查询&quot; id=&quot;markdown-toc-俄罗斯套娃查询中的查询&quot;&gt;俄罗斯套娃：查询中的查询&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#topcat使用的某些tips&quot; id=&quot;markdown-toc-topcat使用的某些tips&quot;&gt;TOPCAT使用的某些tips&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#表格&quot; id=&quot;markdown-toc-表格&quot;&gt;表格&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;TOPCAT是个神器。师兄说的好，要是把它用6了，编程工作减少一半。它在星表读入输出、交叉、画图中具有的非常多的功能使得我们可以方便地获取数据、进行初步处理并查看某些参数的分布。这里通过两个有关Gaia的教程（&lt;a href=&quot;https://github.com/mbtaylor/tctuto/releases/download/asterics-vo-school-4/tctuto.pdf&quot;&gt;1&lt;/a&gt;、&lt;a href=&quot;http://docs.g-vo.org/adql-gaia/html/&quot;&gt;2&lt;/a&gt;）介绍一下如何获取像Gaia DR2这样的星表。这里默认读者已经有TOPCAT的基本使用经验。&lt;/p&gt;
+
+&lt;h2 id=&quot;星团证认m4&quot;&gt;星团证认：M4&lt;/h2&gt;
+
+&lt;h3 id=&quot;一获取m4附近的gaia数据&quot;&gt;一、获取M4附近的Gaia数据&lt;/h3&gt;
+
+&lt;p&gt;这里我们将会用到Cone Search。这是专用于获取某个坐标附近一定角距离的程序。如果想获取多个坐标附近的源的话，用Multicone就可以了（当然得准备一个位置和搜索半径的表）。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;打开VO|Cone Search&lt;br /&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;在&lt;strong&gt;Keyword&lt;/strong&gt;中输入&lt;code class=&quot;highlighter-rouge&quot;&gt;gaia dr2&lt;/code&gt;并点击&lt;strong&gt;Find Service&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;在搜索结果中选择&lt;code class=&quot;highlighter-rouge&quot;&gt;ARI-Gaia&lt;/code&gt;并在下面的&lt;strong&gt;Object Name&lt;/strong&gt;中输入&lt;code class=&quot;highlighter-rouge&quot;&gt;M4&lt;/code&gt;并点击&lt;strong&gt;Resove&lt;/strong&gt;，在&lt;strong&gt;Radius&lt;/strong&gt;中填入&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;(degree)
+&lt;img src=&quot;/img/in-post/post-topcat/3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;点击&lt;strong&gt;OK&lt;/strong&gt;并等待一会，TOPCAT就会将我们要的星表准备好了，44662个源&lt;/li&gt;
+  &lt;li&gt;回到主界面点击&lt;code class=&quot;highlighter-rouge&quot;&gt;Sky Plot&lt;/code&gt;，看一下这个星表的空间分布
+&lt;img src=&quot;/img/in-post/post-topcat/4.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;你看这个Gaia它又大又圆&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;至于实际上应该选择哪个星表，我的建议是在TAP窗口中搜索并看看星表的各种参数以及列名再确定。&lt;/p&gt;
+
+&lt;h3 id=&quot;二通过自行挑出星团成员&quot;&gt;二、通过自行挑出星团成员&lt;/h3&gt;
+
+&lt;p&gt;这样下下来的星表包含了M3的成员星以及非常多的前景场星，而且它们混在了一起，所以我们需要通过星团成员星有相似的移动速度这个条件来将成员星挑出来。要注意这个方法只是为了演示，因为M4的自行非常大所以才能这样做，其他的星团基本上不行。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;回到主界面点击&lt;code class=&quot;highlighter-rouge&quot;&gt;Plane Plot&lt;/code&gt;，并将x与y轴设为&lt;code class=&quot;highlighter-rouge&quot;&gt;pmra&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;pmdec&lt;/code&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/5.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;场星一般都是太阳附近的恒星，所以它们相对太阳应该没有整体的运动。所以中心不在(0,0)的那坨星就是星团的成员星了；将他们框起来并命名为&lt;code class=&quot;highlighter-rouge&quot;&gt;comoving&lt;/code&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/6.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;三验证成员星&quot;&gt;三、验证成员星&lt;/h3&gt;
+
+&lt;p&gt;这里我们将成员星与非成员星的自行画出来看一下。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;打开&lt;strong&gt;Row Subset&lt;/strong&gt;，选中&lt;strong&gt;comoving&lt;/strong&gt;，然后点击创建互补subset的按钮，瞬间就多了个&lt;strong&gt;not_comoving&lt;/strong&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/7.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;打开&lt;strong&gt;SKy Plot&lt;/strong&gt;，将&lt;strong&gt;subsets&lt;/strong&gt;选为&lt;strong&gt;comoving&lt;/strong&gt;与&lt;strong&gt;NOT_comoving&lt;/strong&gt;并换一下位置
+&lt;img src=&quot;/img/in-post/post-topcat/8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;在&lt;strong&gt;Frame&lt;/strong&gt;中加入&lt;strong&gt;Sky Vector&lt;/strong&gt;，然后将&lt;strong&gt;Delta Longitude&lt;/strong&gt;设为&lt;code class=&quot;highlighter-rouge&quot;&gt;pmra&lt;/code&gt;以及&lt;em&gt;*Delta Latitude设为&lt;code class=&quot;highlighter-rouge&quot;&gt;pmdec&lt;/code&gt;，你就会发现
+&lt;img src=&quot;/img/in-post/post-topcat/9.png&quot; alt=&quot;&quot; /&gt;
+*好多头发！&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;将&lt;strong&gt;Scale&lt;/strong&gt;调小，就可以看到两个subset不同的自行规律了
+&lt;img src=&quot;/img/in-post/post-topcat/10.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;四确定m4的视差&quot;&gt;四、确定M4的视差&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;打开上述两个subset的&lt;strong&gt;Histogram Plot&lt;/strong&gt;，x轴设为&lt;code class=&quot;highlighter-rouge&quot;&gt;parallax&lt;/code&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/11.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;在&lt;strong&gt;Forms&lt;/strong&gt;中添加&lt;strong&gt;Add Gaussian&lt;/strong&gt;，就可以看到这两个subset的视差平均值了
+&lt;img src=&quot;/img/in-post/post-topcat/12.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/13.png&quot; alt=&quot;&quot; /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;d_{\mathrm{M4}} = 1000 / \mathrm{Mean} = 2000 pc&lt;/script&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;要注意的是因为Gaia的视差误差不小（特别对于远的恒星来说），所以直接计算视差的倒数作为距离是不合适的。这里可以这样做是因为我们有很多恒星在同一个距离上。&lt;/p&gt;
+
+&lt;h2 id=&quot;相空间的星团证认毕星团&quot;&gt;相空间的星团证认：毕星团&lt;/h2&gt;
+
+&lt;p&gt;这个例子使用相空间（3维速度空间）的密度来找星团。&lt;/p&gt;
+
+&lt;h3 id=&quot;获取太阳附近的gaia数据&quot;&gt;获取太阳附近的Gaia数据&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;打开TAP窗口，搜索&lt;code class=&quot;highlighter-rouge&quot;&gt;gaia&lt;/code&gt;并选择&lt;strong&gt;GAIA&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;选择&lt;code class=&quot;highlighter-rouge&quot;&gt;gaiadr2_gata_source&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;在ADQL Text窗口输入：
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT ra, dec, pmra, pmdec, parallax, radial_velocity, bp_rp,
+phot_g_mean_mag + 5*log10(parallax/100) as g_abs
+FROM gaiadr2.gaia_source WHERE parallax &amp;gt; 15 AND parallax_over_error &amp;gt; 5
+AND radial_velocity IS NOT NULL
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;tap教程&quot;&gt;TAP教程&lt;/h2&gt;
+
+&lt;h3 id=&quot;选择星表的前n行select&quot;&gt;选择星表的前n行：SELECT&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT TOP 1 1+1 AS result FROM gaiadr1.tgas_source&lt;/code&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/T-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT [TOP setLimit] selectList FROM fromClause [WHERE conditions] [GROUP BY columns] [ORDER BY columns] &lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;选择 行内容 列内容 AS 结果列名 FROM 源星表&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT TOP 10 * FROM gaiadr1.tgas_source&lt;/code&gt;
+&lt;img src=&quot;/img/in-post/post-topcat/T-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;表示全部列都要（握拳）。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;排序order-by&quot;&gt;排序：ORDER BY&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
+  FROM gaiadr1.tgas_source
+  ORDER BY parallax
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-topcat/T-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;降序的话可以这样写：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
+  FROM gaiadr1.tgas_source
+  ORDER BY parallax DESC
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, phot_g_mean_mag , parallax
+  FROM gaiadr1.tgas_source
+  ORDER BY phot_g_mean_mag, parallax
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;第二个排序列名的作用暂未确定。噢顺便，首行不缩进是因为：好看。&lt;/p&gt;
+
+&lt;p&gt;练习：在gaiadr1.tgas_source中选出最亮的20颗星的id和视星等&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;表达式的一些内容&quot;&gt;表达式的一些内容&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;SQL中的名字是大小写敏感的&lt;/li&gt;
+  &lt;li&gt;浮点数形式：&lt;code class=&quot;highlighter-rouge&quot;&gt;4.5e-8&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;字符串必须用单引号括起来（双引号不行）&lt;/li&gt;
+  &lt;li&gt;运算符号们
+    &lt;ul&gt;
+      &lt;li&gt;加减乘除：&lt;code class=&quot;highlighter-rouge&quot;&gt;+-*/&lt;/code&gt;；次幂：&lt;code class=&quot;highlighter-rouge&quot;&gt;POWER(), SQRT(x),  SQUARE(x)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;不等号：&lt;code class=&quot;highlighter-rouge&quot;&gt;=, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=&lt;/code&gt;；注意不是&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;和或否：&lt;code class=&quot;highlighter-rouge&quot;&gt;AND, OR, NOT&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;字符串相加：&lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;（未验证）&lt;/li&gt;
+      &lt;li&gt;格式化字符串：&lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE()&lt;/code&gt;；支持&lt;code class=&quot;highlighter-rouge&quot;&gt;%, _, *, ?&lt;/code&gt;等（未验证）&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COS, ASIN, ATAN, ATAN2, COS, SIN, TAN&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;EXP, LOG&lt;/code&gt;(natural logarithm),&lt;code class=&quot;highlighter-rouge&quot;&gt;LOG10&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FLOOR(x), CEILING(x), ROUND(x), ROUND(x, n), TRUNCATE(x), TRUNCATE(x,n)&lt;/code&gt;；n表示截止到多少位小数&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DEGREES(rads), RADIANS(degs)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RAND(seed)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MOD(x,y)&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10
+  source_id,
+  SQRT(POWER(pmdec_error,2)+POWER(pmra_error,2)) AS pm_errTot
+  FROM gaiadr1.tgas_source
+  ORDER BY pm_errTot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;自己算出来的东西&lt;code class=&quot;highlighter-rouge&quot;&gt;pm_errTot&lt;/code&gt;马上就可以拿来排序。&lt;/p&gt;
+
+&lt;p&gt;练习：Select the source id, position, proper motion in arcsec/yr and mag g for the 20 fastest stars in tgas_source.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;有条件选择where&quot;&gt;有条件选择：WHERE&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT source_id, ra, dec
+  FROM gaiadr1.tgas_source
+  WHERE
+  phot_g_mean_flux &amp;gt; 13
+  AND parallax &amp;lt; 0.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;练习：Select the absolute magnitude, position and the source id for the 20 stars with the largest observed apparent magnitude in the g band from the table tgas_source (in case you don’t remember: The absolute magnitude is M= 5 + 5log π+ m with the parallax in arcsec π and the apparent magnitude m (check the units!). This will fail. Try to fix it.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;交叉证认join&quot;&gt;交叉证认：JOIN&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10 h1.ra, h1.dec, h1.hip, t1.hip
+  FROM hipparcos AS h1
+  JOIN tycho2 AS t1
+  USING (hip)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM hipparcos AS h1
+  JOIN tycho2 AS t1
+  USING (hip)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Don’t execute them.这俩是假例子。这俩的结果应该是内积。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;更复杂的交叉证认join-on&quot;&gt;更复杂的交叉证认：JOIN ON&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 20 source_id, h.hip
+  FROM gaiadr1.tgas_source AS tgas
+  LEFT OUTER JOIN hipparcos as h ON (tgas.phot_g_mean_mag BETWEEN h.hpmag -0.05 AND h.hpmag+0.05)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里就不是内积了，是留左表，同时交叉条件改成了星等差在&lt;script type=&quot;math/tex&quot;&gt;\pm 0.05&lt;/script&gt;之内。
+（会出现1对n的情况吗？）&lt;/p&gt;
+
+&lt;p&gt;举一反三，肯定还有&lt;code class=&quot;highlighter-rouge&quot;&gt;INNER JOIN&lt;/code&gt;（和&lt;code class=&quot;highlighter-rouge&quot;&gt;JOIN&lt;/code&gt;一样）、&lt;code class=&quot;highlighter-rouge&quot;&gt;RIGHT OUTER JOIN&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;FULL OUTER JOIN&lt;/code&gt;。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;令人头大的交叉证认基于位置&quot;&gt;令人头大的交叉证认：基于位置&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5
+  source_id, tgas.ra, tgas.dec, tm.raj2000, tm.dej2000, hmag, e_hmag
+  FROM gaiadr1.tgas_source as tgas
+  JOIN twomass AS tm
+  ON 1=CONTAINS (
+     POINT('ICRS', tm.raj2000, tm.dej2000),
+     CIRCLE('ICRS', tgas.ra, tgas.dec, 1.5/3600))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果历元不同的话，最好不要在查询中转换历元（位置加减自行），而是将交叉半径扩大，然后用WHERE去解决历元的问题：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT
+   TOP 30
+   *
+   FROM ppmxl AS m
+   JOIN gaiadr2.gaia_source AS g
+   ON 1=CONTAINS(POINT('ICRS', m.raj2000, m.dej2000),
+                 CIRCLE('ICRS', g.ra, g.dec, 30./3600.))
+   WHERE 1=CONTAINS(POINT('ICRS',
+   m.raj2000+m.pmra*COS(RADIANS(m.dej2000))*15,
+   m.dej2000+m.pmde*15),
+   CIRCLE('ICRS', g.ra, g.dec, 0.5/3600.))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;俄罗斯套娃查询中的查询&quot;&gt;俄罗斯套娃：查询中的查询&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT count(*) as n, round((hmag-jmag)*2) as bin
+  FROM (SELECT TOP 4000 * FROM twomass) AS q
+  GROUP BY bin
+  ORDER BY bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(SELECT TOP 4000 * FROM twomass)&lt;/code&gt;就是一个小的查询，用括号括起来就行了&lt;/p&gt;
+
+&lt;h2 id=&quot;topcat使用的某些tips&quot;&gt;TOPCAT使用的某些tips&lt;/h2&gt;
+
+&lt;h3 id=&quot;表格&quot;&gt;表格&lt;/h3&gt;
+
+&lt;p&gt;Column Window中的 &lt;img src=&quot;/img/in-post/post-topcat/T-4.png&quot; alt=&quot;&quot; /&gt; 可以为subset在总表中添加布尔值标识&lt;/p&gt;
+</description>
+        <pubDate>Sat, 19 Jan 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/01/19/topcat/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/19/topcat/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>OASP笔记 - 16</title>
@@ -1682,393 +1978,6 @@ B= &lt;n(\sigma)&gt; %]]&gt;&lt;/script&gt;；&lt;script type=&quot;math/tex&quo
         <pubDate>Sun, 03 Jun 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/06/03/latex-asj/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/06/03/latex-asj/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 11</title>
-        <description>&lt;p&gt;看了这么久从这一章开始才是正餐。&lt;/p&gt;
-
-&lt;p&gt;谱线的强度和形状都是我们很关心的东西，因为它们可以同时受多个物理量影响；相反连续谱的形状基本上只是有效温度的函数。谱线吸收系数就决定了这条谱线位于什么波长、将会有什么形状。&lt;/p&gt;
-
-&lt;p&gt;这一章我们基本上讨论三种谱线致宽的机制：自然致宽、压强致宽以及热运动致宽。虽然字面上看起来这三个机制只会告诉我们谱线宽了多少，但是实际上我们会推导出谱线吸收系数，也就把能定的都定下来了。从结论上来说前两个致宽是一个洛仑兹轮廓，最后一个是高斯轮廓；然后把它们卷积起来就得到最终的轮廓了。&lt;/p&gt;
-
-&lt;h3 id=&quot;自然致宽&quot;&gt;自然致宽&lt;/h3&gt;
-
-&lt;p&gt;吸收嘛，肯定得有入射光&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;和吸收光的原子。光作为电磁波有波动方程以及光速的关系：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\partial^2 E}{\partial t^2} = v^2 \frac{\partial^2 E}{\partial x^2}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;v = c\left(\frac{\epsilon_0 \mu_0}{\epsilon \mu}\right)^{1/2}&lt;/script&gt;
-
-&lt;p&gt;而且光可以叠加，为了简单起见只考虑其中的一个成分：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;E = E_0 e^{-2\pi i (x/\lambda-t/P)} = E_0 e^{-2\pi i (x-vt)/\lambda} = E_0 e^{-i\omega (x/v-t)} \tag{11.1}&lt;/script&gt;
-
-&lt;p&gt;我们忽略磁场，就有&lt;script type=&quot;math/tex&quot;&gt;\mu = \mu_0&lt;/script&gt;。但是因为吸收光的原子是一个个电偶极子，所以介电常数发生了变化：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\epsilon}{\epsilon_0} = \frac{E + 4\pi Nqz}{E} = 1 + \frac{4\pi Nqz}{E} \tag{11.2}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;为电偶极子数密度、&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;为电偶极子电量（之后一般会换成&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;）、&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;为电偶极子长度。把电偶极子看成谐振子(&lt;script type=&quot;math/tex&quot;&gt;\frac{d^2 z}{dt^2}&lt;/script&gt;)，加上驱动力(&lt;script type=&quot;math/tex&quot;&gt;\omega_0^2 z&lt;/script&gt;)和阻尼(&lt;script type=&quot;math/tex&quot;&gt;\gamma \frac{dz}{dt}&lt;/script&gt;)，就有振动方程：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{d^2 z}{dt^2} + \gamma \frac{dz}{dt} + \omega_0^2 z = \frac{e}{m} E_0 e^{i\omega t} \tag{11.3}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;x = 0&lt;/script&gt;时方程有解为&lt;script type=&quot;math/tex&quot;&gt;z = z_0 e^{i\omega t}&lt;/script&gt;，所以&lt;script type=&quot;math/tex&quot;&gt;\dot{z} = i\omega z, \ddot{z} = -\omega^2 z&lt;/script&gt;，方程变为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;-\omega^2 z + \gamma i\omega z + \omega_0^2 z = \frac{e}{m} E_0 e^{i\omega t}&lt;/script&gt;
-
-&lt;p&gt;或者&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = \frac{e}{m} \frac{E_0 e^{i\omega t}}{\omega_0^2 - \omega^2 + i\gamma\omega} = \frac{e}{m} \frac{E}{\omega_0^2 - \omega^2 + i\gamma\omega}&lt;/script&gt;
-
-&lt;p&gt;可以看到&lt;script type=&quot;math/tex&quot;&gt;\omega = \omega_0&lt;/script&gt;的时候振幅最大，被称为共振频率，也是谱线所在的地方。将这个结果代回&lt;script type=&quot;math/tex&quot;&gt;(11.2)&lt;/script&gt;，就有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\epsilon}{\epsilon_0} = 1 + \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \tag{11.4 }&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;很接近&lt;script type=&quot;math/tex&quot;&gt;\epsilon_0&lt;/script&gt;，所以有泰勒展开：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align} \frac{c}{v} = \left(\frac{\epsilon}{\epsilon_0}\right)^{1/2} &amp;\approx 1 + \frac{1}{2} \frac{4\pi Ne^2}{m}\frac{1}{\omega_0^2 - \omega^2 + i\gamma\omega} \\
-&amp;= 1 + \frac{2\pi Ne^2}{m}\left[\frac{\omega_0^2-\omega^2}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2} - i\frac{\gamma\omega}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2}\right]
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;我们希望将这个量代回&lt;script type=&quot;math/tex&quot;&gt;(11.1)&lt;/script&gt;中间那里，然后求光强；而光强是场强实部的平方，所以可以只考虑上式中的虚部，有：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I = I_0 e^{-2k\omega x/c} = I_0 e^{-l_\nu \rho x}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;l_\nu \rho = \frac{4\pi Ne^2}{mc} \frac{\gamma\omega^2}{(\omega_0^2-\omega^2)^2 + \gamma^2\omega^2} \tag{11.5}&lt;/script&gt;
-
-&lt;p&gt;考虑到谱线轮廓很小，&lt;script type=&quot;math/tex&quot;&gt;\omega \approx \omega_0&lt;/script&gt;，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\omega_0^2 - \omega^2 = (\omega_0-\omega)(\omega_0+\omega) \approx 2\omega \Delta\omega&lt;/script&gt;
-
-&lt;p&gt;所以&lt;script type=&quot;math/tex&quot;&gt;(11.5)&lt;/script&gt;就变成了&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;l_\nu \rho = \frac{2\pi Ne^2}{mc} \frac{\gamma}{\Delta\omega^2 + (\gamma/2)^2} \tag{11.6}&lt;/script&gt;
-
-&lt;p&gt;这是某个圆频率下单位体积内的总吸收，而如果我们想计算单个原子的吸收的话，有&lt;script type=&quot;math/tex&quot;&gt;l_\nu \rho = N \alpha&lt;/script&gt;，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-  \alpha &amp;= \frac{2\pi e^2}{mc} \frac{\gamma}{\Delta\omega^2 + (\gamma/2)^2} \\
-  &amp;= \frac{e^2}{mc} \frac{\gamma/4\pi}{\Delta\nu^2 + (\gamma/4\pi)^2} \\
-  &amp;= \frac{e^2}{mc} \frac{\lambda^2}{c} \frac{\gamma\lambda^2/4\pi}{\Delta\lambda^2 + (\gamma\lambda^2/4\pi c)^2} \tag{11.7}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;分别在圆频率、频率和波长下。这就是主要的结果了，也是一个洛仑兹轮廓。不知道的话请看&lt;a href=&quot;https://mingjiejian.github.io/2017/11/11/OASP2/&quot;&gt;第二章&lt;/a&gt;。这个轮廓的宽度由阻尼系数&lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt;决定。&lt;/p&gt;
-
-&lt;p&gt;洛仑兹轮廓的积分为&lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \alpha d\nu = \int_{-\infty}^\infty \alpha d\Delta\nu = \frac{\pi e^2}{mc} \tag{11.8}&lt;/script&gt;
-
-&lt;p&gt;或者&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \alpha d\lambda = \frac{\pi e^2}{mc} \frac{\lambda^2}{c} \tag{11.9}&lt;/script&gt;
-
-&lt;p&gt;这个量指的是一个原子每秒每平方弧度（只有一个方向）所吸收的光的比例。实际上的比例比上两式要小，这是因为在推导的过程中我们没有考虑量子力学带来的修正。假设这个修正量为&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;，上面的积分同时意味着原子发生吸收的概率，也就是&lt;script type=&quot;math/tex&quot;&gt;B_{lu}h\nu (5.17)&lt;/script&gt;，所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty \alpha d\nu = \frac{\pi e^2}{mc}f = B_{lu}h\nu&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow f = \frac{mc}{\pi e^2} B_{lu}h\nu = 7.484 \times 10^{-7} \frac{B_{lu}}{\lambda} \tag{11.11}&lt;/script&gt;
-
-&lt;p&gt;用&lt;script type=&quot;math/tex&quot;&gt;(6.8)&lt;/script&gt;将&lt;script type=&quot;math/tex&quot;&gt;B_{lu}&lt;/script&gt;换成&lt;script type=&quot;math/tex&quot;&gt;A_{lu}&lt;/script&gt;，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f = \frac{mc^3}{2\pi e^2\nu^2} \frac{g_u}{g_l}A_{ul} = 1.884 \times 10^{-15} \lambda^2 \frac{g_u}{g_l} A_{ul} \tag{11.12}&lt;/script&gt;
-
-&lt;p&gt;如果我们只考虑受激辐射的话，可以写出类似的公式：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f_\mathrm{em} = \frac{mc}{\pi e^2} B_{ul}h\nu&lt;/script&gt;
-
-&lt;p&gt;所以有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;g_u f_\mathrm{em} = g_l f_\mathrm{abs}&lt;/script&gt;
-
-&lt;p&gt;因此很多实际的表格会给出&lt;script type=&quot;math/tex&quot;&gt;gf&lt;/script&gt;而不是单纯的&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;以避免歧义。多数的&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;值都是测出来的，不过有些简单的比如氢原子有公式：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f = \frac{2^5}{3^{3/2}\pi} \frac{g_\mathrm{bb}}{l^5u^3} \left( \frac{1}{l^2} - \frac{1}{u^2} \right)^{-3}&lt;/script&gt;
-
-&lt;h4 id=&quot;自然致宽的阻尼常数&quot;&gt;自然致宽的阻尼常数&lt;/h4&gt;
-
-&lt;p&gt;知道了自然致宽是一个洛仑兹轮廓之后，只要知道阻尼常数&lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt;就可以确定轮廓了。Menzal (1961)给出了阻尼常数的方程：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dW}{dt} = -\frac{2}{3}\frac{e^2\omega^2}{mc^3}W = -\gamma W&lt;/script&gt;
-
-&lt;p&gt;所以可以得出&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gamma = \frac{2e^2\omega^2}{3mc^3} = \frac{0.22}{\lambda^2}&lt;/script&gt;
-
-&lt;p&gt;当然后面的等号需要&lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;的单位为厘米。把&lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt;和它的变式放回&lt;script type=&quot;math/tex&quot;&gt;(11.7)&lt;/script&gt;就可以算出不同自变量下的轮廓宽度了。可以看到在&lt;script type=&quot;math/tex&quot;&gt;\Delta \lambda&lt;/script&gt;下，所有谱线的宽度都是一样的，&lt;script type=&quot;math/tex&quot;&gt;0.59\times 10^{-4}&lt;/script&gt;埃。&lt;/p&gt;
-
-&lt;p&gt;同样也需要引入量子力学的修正。一个现象学的方法就是将能级的能量&lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt;看作很多个分立的小能级之和，&lt;script type=&quot;math/tex&quot;&gt;W = N_uh\nu&lt;/script&gt;，那么&lt;script type=&quot;math/tex&quot;&gt;(11.13)&lt;/script&gt;可以被写成&lt;script type=&quot;math/tex&quot;&gt;dN_u/dt = -\gamma N_u&lt;/script&gt;。同时能级占据数对时间的导数也是跃迁的概率，所以&lt;script type=&quot;math/tex&quot;&gt;dN_u/dt = -4\pi A_{ul} N_u&lt;/script&gt;。考虑所有可能的跃迁，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\gamma_u = 4\pi \sum_{l&lt;u} A_{ul} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;这个爱因斯坦系数可以和海森堡不确定原理联系起来。不确定原理告诉我们&lt;script type=&quot;math/tex&quot;&gt;\Delta W_u \Delta t \gtrsim h/2\pi&lt;/script&gt;，而&lt;script type=&quot;math/tex&quot;&gt;\Delta t = 1/\sum 4\pi A_{ul}&lt;/script&gt;，因为&lt;script type=&quot;math/tex&quot;&gt;A_{ul}&lt;/script&gt;代表着1秒内跃迁的概率。所以&lt;script type=&quot;math/tex&quot;&gt;\Delta W_u \gtrsim 2h \sum A_{ul}&lt;/script&gt;，也就是每个能级都有一个宽度。&lt;/p&gt;
-
-&lt;p&gt;那么跃迁总不是一个能级的事情，所以谱线的自然致宽阻尼常数是两个能级的轮廓卷积。从第二章我们知道&lt;script type=&quot;math/tex&quot;&gt;\gamma = \gamma_u + \gamma_l&lt;/script&gt;。如果辐射场很强的话，我们还要考虑受激辐射和吸收的问题：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gamma_u = 4\pi \sum A_{ul} + 4\pi \sum I_\nu B_{ul} + 4\pi \sum I_\nu B_{uk}&lt;/script&gt;
-
-&lt;p&gt;这样会更全面一点。&lt;/p&gt;
-
-&lt;h3 id=&quot;压力致宽&quot;&gt;压力致宽&lt;/h3&gt;
-
-&lt;p&gt;压力致宽其实挺好理解，原子被别人撞了（在别的粒子附近），能级就变了，会带来谱线移动、不对称性和致宽。因为是在别的粒子附近，所以实际上是粒子的电场使得原子的能级发生变化，一般指的是&lt;a href=&quot;https://en.wikipedia.org/wiki/Stark_effect&quot;&gt;斯塔克效应(Stark effect)&lt;/a&gt;；其实斯塔克效应就是电场下的赛曼效应。同时粒子离原子越近(&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;越小)，影响(&lt;script type=&quot;math/tex&quot;&gt;\Delta W&lt;/script&gt;)应该就越大；根据这个思想我们可以写出这样的一条式子：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta W = c/R^n \tag{11.16}&lt;/script&gt;
-
-&lt;p&gt;至于&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;是多少，就取决于粒子的种类了；一般的作用如下：&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;种类&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;影响的谱线&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;粒子&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;线性斯塔克效应&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;氢线&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;光子、电子&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;共振致宽&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;同种原子&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;二次斯塔克效应&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;高温恒星中的多数谱线&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;离子、电子&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;范德瓦尔斯效应&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;低温恒星中的多数谱线&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;中性氢&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;把上面的能级能量变化转为谱线频率的变化，可以得出&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \nu = C_n / R^n \tag{11.17}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;C_n&lt;/script&gt;需要被测出来。&lt;/p&gt;
-
-&lt;h4 id=&quot;简化the-impact-approximation&quot;&gt;简化！(The impact approximation)&lt;/h4&gt;
-
-&lt;p&gt;貌似到这里我们还没能给出谱线轮廓，怎么办？当然是简化了。假设碰撞是绝热的，也就是碰撞不会导致跃迁；同时因为恒星大气比较稀薄，我们认为碰撞的时间远远短于两次碰撞的时间(impact apprximation)。&lt;/p&gt;
-
-&lt;p&gt;我们把一个光子看成一个长为&lt;script type=&quot;math/tex&quot;&gt;W = \Delta t&lt;/script&gt;的方波，那么它的光谱就是&lt;script type=&quot;math/tex&quot;&gt;\mathrm{sinc}^2{\pi\Delta t (\nu - \nu_0)}&lt;/script&gt;，宽度为&lt;script type=&quot;math/tex&quot;&gt;\Delta \nu = 1 / \Delta t&lt;/script&gt;。现在吸收这个光子的原子被另外的粒子影响，而且影响的大小不断在变化，那么我们就将这个光子分成很多小份（小的方波&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;），每个小份之间的相位在受到碰撞之后不再一样，就需要独立地看待了。当然这个时候小份光的光谱就变宽了(&lt;script type=&quot;math/tex&quot;&gt;\Delta \nu_j = 1 / \Delta t_j&lt;/script&gt;)。&lt;/p&gt;
-
-&lt;p&gt;回到宏观的视角，每一次碰撞的&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;都是不一样的，那么最后中的谱线宽应该为&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;对应的sinc函数乘上它的概率再对所有的&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;积分。通过简单的推理可得&lt;script type=&quot;math/tex&quot;&gt;\Delta t_j&lt;/script&gt;的分布为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;dP(\Delta t_j) = e^{-\Delta t_j/\Delta t_0} d\Delta t_j/\Delta t_0&lt;/script&gt;
-
-&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;\Delta t_0&lt;/script&gt;是典型的碰撞间隔时间。所以原子吸收系数就是：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha = \int_0^\infty \Delta t^2 \left( \frac{\sin{\pi \Delta t (\nu-\nu_0)}}{\pi \Delta t (\nu-\nu_0)} \right)^2 e^{-\Delta t_j/\Delta t_0} d\Delta t_j/\Delta t_0&lt;/script&gt;
-
-&lt;p&gt;积分的结果（理所当然地）是一个洛仑兹轮廓：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha = \frac{\mathrm{constant}}{4\pi^2(\nu-\nu_0)^2 + (1/\Delta t_0)^2} = \mathrm{constant} \frac{\gamma_n/4\pi}{(\nu-\nu_0)^2 + (\gamma_n/4\pi)^2} \tag{11.19}&lt;/script&gt;
-
-&lt;h4 id=&quot;压力致宽的阻尼系数&quot;&gt;压力致宽的阻尼系数&lt;/h4&gt;
-
-&lt;p&gt;从上面可以看出来&lt;script type=&quot;math/tex&quot;&gt;\gamma_n = 2/\Delta t_0&lt;/script&gt;，那就是要算&lt;script type=&quot;math/tex&quot;&gt;\Delta t_0&lt;/script&gt;了；不过这里我们要绕一个圈子。&lt;/p&gt;
-
-&lt;p&gt;考虑谱线频率的累积变化：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi = 2\pi \int_0^\infty \Delta \nu dt = 2\pi \int_0^\infty C_n R^{-n} dt \tag{11.20}&lt;/script&gt;
-
-&lt;p&gt;先只考虑一个粒子，做直线运动，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi = 2\pi \int_0^\infty C_n \frac{cos^n{\theta}}{\rho^n} dt&lt;/script&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP11/01-collision-diagram.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;原子受影响的示意图&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;换元什么的，&lt;script type=&quot;math/tex&quot;&gt;v = dy/dt = (\rho/\cos{\theta})d\theta/dt, dt = (\rho/v)d\theta/\cos^2{\theta}&lt;/script&gt;，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi = \frac{2\pi C_n}{v\rho^{n-1}} \int_{-\pi/2}^{\pi/2} \cos^{n-2}{\theta} d\theta \tag{11.21}&lt;/script&gt;
-
-&lt;p&gt;这个积分在某些&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;的值如下：&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;n&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\int_{-\pi/2}^{\pi/2} \cos^{n-2}{\theta} d\theta&lt;/script&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\pi/2&lt;/script&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;4/3&lt;/script&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;3\pi/8&lt;/script&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;我们很随意地确定一个阈值，&lt;script type=&quot;math/tex&quot;&gt;\phi = 1 \mathrm{rad}&lt;/script&gt;，得到一个临界半径：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\rho_0 = \left[ \frac{2\pi C_n}{v} \int_{-\pi/2}^{\pi/2} \cos^{n-2}{\theta} d\theta \right]^{1/(n-1)} \tag{11.22}&lt;/script&gt;
-
-&lt;p&gt;然后我们只考虑那些相位差超过1个弧度，也就是距离小于临界半径的那些碰撞。在&lt;script type=&quot;math/tex&quot;&gt;\Delta t_1&lt;/script&gt;的时间内，这样的碰撞应该有&lt;script type=&quot;math/tex&quot;&gt;\pi \rho_0^2 v N \Delta t_1&lt;/script&gt;次。那么当我们让&lt;script type=&quot;math/tex&quot;&gt;\Delta t_1 = \Delta t_0&lt;/script&gt;时，应该只有1次碰撞。所以&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gamma_n = \frac{2}{\Delta t_0} = 2\pi \rho_0^2 v N \tag{11.23}&lt;/script&gt;
-
-&lt;p&gt;上式就剩一个平均相对速率&lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt;不知道。其实就是Maxwell-Boltzmann分布的结论：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;v = \left[ \frac{8kT}{\pi} \left( \frac{1}{m_A} + \frac{1}{m_p} \right) \right]^{1/2} \tag{11.24}&lt;/script&gt;
-
-&lt;p&gt;其实&lt;script type=&quot;math/tex&quot;&gt;\gamma_n&lt;/script&gt;更准确的形式可以表示为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\gamma_n = N \int_{-\infty}^\infty vf(v)\sigma_n(v)dv \tag{11.25}&lt;/script&gt;
-
-&lt;h4 id=&quot;两个例子&quot;&gt;两个例子&lt;/h4&gt;
-
-&lt;p&gt;请自行推导，对于二次斯塔克效应以及范德瓦尔斯效应，有：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\log{\gamma_4} \approx 19 + \frac{2}{3} \log{C_4} + \log{P_\mathrm{e}} - \frac{5}{6} \log{T} \tag{11.27}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\log{\gamma_6} \approx 20 + 0.4 \log{C_6} + \log{P_\mathrm{e}} - 0.7 \log{T} \tag{11.29}&lt;/script&gt;
-
-&lt;p&gt;画出来就像下面这样：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP11/02-damping-const.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;Na I D2线的damping constent&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;上面这两条式子在谱线计算里面经常会被用到。当然实际和理论还是有点区别，所以会加一个系数，随时修正。&lt;/p&gt;
-
-&lt;h3 id=&quot;氢线的致宽&quot;&gt;氢线的致宽&lt;/h3&gt;
-
-&lt;p&gt;见过谱线的同学们应该都知道，氢线的致宽和其他线的致宽根本不在一个量级上。这是因为氢线致宽的因素主要是线性斯塔克效应。那么应该怎么去计算氢线的致宽呢？&lt;/p&gt;
-
-&lt;p&gt;与压力致宽的想法类似，我们从下式开始：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \lambda_j = c_j E \tag{11.31}&lt;/script&gt;
-
-&lt;p&gt;最早我们只考虑了一次电离离子的影响(&lt;script type=&quot;math/tex&quot;&gt;E = e/R^2&lt;/script&gt;)，同时因为平方反比下降，我们只考虑距离氢原子最近的那个离子。此时在半径为&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;的球面上找到最近的离子的概率为不在球内的概率乘上在表面的概率：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(R)dR = P_N(R)4\pi R^2 N dR \tag{11.32}&lt;/script&gt;
-
-&lt;p&gt;那么再次通过简单的推理得到在半径为&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;的球内找不到最近的离子的概率为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_n(R) = P_n(0)e^{-4\pi R^3N/3}&lt;/script&gt;
-
-&lt;p&gt;考虑到&lt;script type=&quot;math/tex&quot;&gt;R = 0, P_n = 1&lt;/script&gt;以及定义&lt;script type=&quot;math/tex&quot;&gt;R_0 = (4\pi N/3)^{-1/3}&lt;/script&gt;，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_n(R) = e^{-(R/R_0)^3}&lt;/script&gt;
-
-&lt;p&gt;所以&lt;script type=&quot;math/tex&quot;&gt;(11.32)&lt;/script&gt;变为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(R)dR = 3 \frac{R^2}{R_0^3} e^{-(R/R_0)^3} dR&lt;/script&gt;
-
-&lt;p&gt;或者换元成场强&lt;script type=&quot;math/tex&quot;&gt;\beta = E/E_0&lt;/script&gt;的话，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(\beta)d\beta = \frac{3}{2} \beta^{-5/2} e^{-\beta^{-3/2}} d\beta \tag{11.34}&lt;/script&gt;
-
-&lt;p&gt;就差不多了。当然更准确&lt;script type=&quot;math/tex&quot;&gt;P(\beta)&lt;/script&gt;也是有的，式子&lt;script type=&quot;math/tex&quot;&gt;(11.35)&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;现在轮廓已经有了，然后就是加上量子力学修正（暂时略，还没有很好的理解）。最后画出来就像图11.9一样。当然还有一些没有考虑：电子带来的致宽，在线翼处会很明显；还有其他氢原子带来的致宽，在中低温恒星中比较明显。&lt;/p&gt;
-
-&lt;h3 id=&quot;热运动致宽&quot;&gt;热运动致宽&lt;/h3&gt;
-
-&lt;p&gt;这个就简单了，高中生都知道的东西。多普勒致宽是因为有视向速度&lt;script type=&quot;math/tex&quot;&gt;v_R&lt;/script&gt;：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\Delta\lambda}{\lambda} = \frac{\Delta\nu}{\nu} = \frac{v_R}{c} \tag{11.38}&lt;/script&gt;
-
-&lt;p&gt;由&lt;script type=&quot;math/tex&quot;&gt;(11.1)&lt;/script&gt;有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathrm{d}N(v_R)}{N} = \frac{1}{\pi^{1/2}v_0} e^{-(\frac{v_R}{v_0})^2} \mathrm{d}v_R&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;v_0^2 = 2kT/m&lt;/script&gt;，那么就有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \lambda_\mathrm{D} = \frac{v_0}{c}\lambda_0 = \frac{v_0}{c} \left( \frac{2kT}{m} \right) \tag{11.39}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \mu_\mathrm{D} = \frac{v_0}{c}\mu_0 = \frac{v_0}{c} \left( \frac{2kT}{m} \right) \tag{11.40}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\mathrm{d}N(\Delta\lambda)}{N} = \frac{1}{\pi^{1/2}\lambda_\mathrm{D}} e^{-(\frac{\Delta\lambda}{\lambda_\mathrm{D}})^2} \mathrm{d}\Delta\lambda \tag{11.41}&lt;/script&gt;
-
-&lt;p&gt;转成能量就有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha d\lambda = \frac{\pi^{1/2}e^2}{mc} f \frac{\lambda_0^2}{c} \frac{1}{\Delta\lambda_\mathrm{D}} e^{-(\frac{\Delta\lambda}{\lambda_\mathrm{D}})^2} d\lambda \tag{11.42}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha d\nu = \frac{\pi^{1/2}e^2}{mc} f \frac{1}{\Delta\nu_\mathrm{D}} e^{-(\frac{\Delta\mu}{\nu_\mathrm{D}})^2} d\nu \tag{11.43}&lt;/script&gt;
-
-&lt;p&gt;显然是个高斯轮廓。&lt;/p&gt;
-
-&lt;h3 id=&quot;microturbulence&quot;&gt;Microturbulence&lt;/h3&gt;
-
-&lt;p&gt;这东西我一直不知道怎么翻译比较好。这个东西指的是小尺度上的质量运动（谁的？），可以用宽度为&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;的高斯分布描述。具体会在第17章讨论。&lt;/p&gt;
-
-&lt;h3 id=&quot;将轮廓合起来&quot;&gt;将轮廓合起来&lt;/h3&gt;
-
-&lt;p&gt;这也好说，卷卷卷卷卷积起来就好了：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha(\mathrm{total}) = \alpha(\mathrm{natural}) * \alpha(\mathrm{Stark}) * \alpha(\mathrm{v.d. Waals}) * \alpha(\mathrm{thermal}) * \alpha(\mathrm{micro}) \tag{11.44}&lt;/script&gt;
-
-&lt;p&gt;前三个是一个宽为&lt;script type=&quot;math/tex&quot;&gt;\gamma = \gamma_\mathrm{natural} + \gamma_4 + \gamma_6&lt;/script&gt;的洛仑兹轮廓，后面两个的宽度是&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \lambda_\mathrm{D} = \frac{\lambda_0}{c} \left( \frac{2kT}{m} + \xi^2 \right) \tag{11.45}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta \nu_\mathrm{D} = \frac{\nu_0}{c} \left( \frac{2kT}{m} + \xi^2 \right) \tag{11.45}&lt;/script&gt;
-
-&lt;p&gt;最终&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-  \alpha &amp;= \frac{\pi e^2}{mc} f \frac{\gamma/4\pi^2}{\Delta\nu^2 + (\gamma/4\pi)^2} * \frac{1}{\pi^{1/2} \Delta\nu_\mathrm{D}} e^{-(\frac{\Delta\nu}{\nu_\mathrm{D}})^2} \\
-  &amp;= \frac{\pi^{1/2}e^2}{mc} \frac{f}{\Delta\nu_\mathrm{D}}H(u,a) \\
-  &amp;= \frac{\pi^{1/2}e^2}{mc} \frac{\lambda_0^2 f}{\Delta\lambda_\mathrm{D}}H(u,a) \tag{11.46}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;H(u,a)&lt;/script&gt;为Hjerting函数，自变量为&lt;script type=&quot;math/tex&quot;&gt;u = \Delta\nu/\Delta\nu_\mathrm{D} = \Delta\lambda/\Delta\lambda_\mathrm{D}&lt;/script&gt;，和&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-  a &amp;= \frac{\gamma}{4\pi} \frac{1}{\Delta\nu_\mathrm{D}} \\
-  &amp;= \frac{\gamma}{4\pi} \frac{\lambda_0^2}{c} \frac{1}{\Delta\lambda_\mathrm{D}} \tag{11.47}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;a = 0&lt;/script&gt;时，Hjerting函数就变回高斯了。我们也可以用Voigt函数来表示Hjerting函数，&lt;script type=&quot;math/tex&quot;&gt;V(u,a) = H(u,a)/(\pi^{1/2}\Delta\nu_\mathrm{D}&lt;/script&gt;)。&lt;/p&gt;
-
-&lt;p&gt;氢线的话，也是&lt;script type=&quot;math/tex&quot;&gt;(11.35)&lt;/script&gt;乘上Hjerting函数。&lt;/p&gt;
-
-&lt;h3 id=&quot;差不多就是这样&quot;&gt;差不多就是这样&lt;/h3&gt;
-
-&lt;p&gt;有些再多的就用到再来总结。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 16 May 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/05/16/OASP11/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/05/16/OASP11/</guid>
         
         <category>learning</category>
         
