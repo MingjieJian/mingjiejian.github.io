@@ -227,10 +227,9 @@
 
 <p>导入，使用：</p>
 
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tabula</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tabula</span>
 <span class="n">tabula</span><span class="o">.</span><span class="n">read_pdf</span><span class="p">(</span><span class="s">'xxx.pdf'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s">'--pages 4'</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p id="py-package"></p>
 <h4 id="自己写包">自己写包</h4>
@@ -239,7 +238,7 @@
 
 <p>首先描述文件结构：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>\ruler
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\ruler
   \ruler
     __init__.py
     convert.py
@@ -247,12 +246,11 @@
       __init__.py
       something.py
   setup.py
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>因为还没完全写好，就先把一个示例放上来。最外面的ruler是安装用的，不叫包名应该也可以（但是如果要上传到PyPi的话应该有要求），里面的setup.py需要有这样的内容：</p>
 
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
 <span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'ruler'</span><span class="p">,</span>
       <span class="n">version</span><span class="o">=</span><span class="s">'0.1'</span><span class="p">,</span>
@@ -263,18 +261,16 @@
       <span class="n">license</span><span class="o">=</span><span class="s">'MIT'</span><span class="p">,</span>
       <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s">'ruler'</span><span class="p">],</span>
       <span class="n">zip_safe</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>如果只有<code class="highlighter-rouge">name</code>和<code class="highlighter-rouge">version</code>的话可能也行。第二层的ruler是真正的包，它以及里面的每个文件夹都需要有一个<code class="highlighter-rouge">__init__.py</code>，表示这是包。从这一级开始里面就可以放module，也就是<code class="highlighter-rouge">.py</code>文件了。不过要达到之前的目的（仅import包名但自动提示模块）需要在每一个<code class="highlighter-rouge">__init__.py</code>里面将对应文件夹包含的module以及子文件夹们import掉；比如ruler里面的要这样写：</p>
 
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">convert</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">convert</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">subpackage</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>当然subpackage里面的也需要这样写才能把所有的module都带上。想要测试的话先import然后用<code class="highlighter-rouge">dir()</code>看看module和子文件夹在不在里面就行。</p>
 
-<p>这些搞定之后就可以跑回最外级的ruler里面打开终端，运行<code class="highlighter-rouge">pip install -e .</code>。暂时不知道为什么，但是这种方法可以直接在Jpynb里面用，把Jpynb重启一遍就行了。</p>
+<p>这些搞定之后就可以跑回最外级的ruler里面打开终端，运行<code class="highlighter-rouge">pip install -e .</code>。<code class="highlighter-rouge">-e</code>的意思是<code class="highlighter-rouge">--editable</code>，每次更新之后不用再<code class="highlighter-rouge">pip install</code>就可以直接用了；之后把Jpynb重启一遍就行了。</p>
 
 <p>参考资料：<br />
 <a href="https://docs.python.org/3/tutorial/modules.html#packages">Python Tutorial Chap. 6</a><br />
@@ -284,13 +280,21 @@
 <h4 id="pandas-1">Pandas</h4>
 
 <h5 id="读取固定宽度表格">读取固定宽度表格</h5>
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="s">'catalog/Kovtyukh/Kovtyukh04/table1.dat'</span><span class="p">,</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="s">'catalog/Kovtyukh/Kovtyukh04/table1.dat'</span><span class="p">,</span>
                            <span class="n">colspecs</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">41</span><span class="p">,</span><span class="mi">46</span><span class="p">),</span>
                                      <span class="p">(</span><span class="mi">47</span><span class="p">,</span><span class="mi">52</span><span class="p">),</span> <span class="p">(</span><span class="mi">53</span><span class="p">,</span><span class="mi">68</span><span class="p">)],</span>
                            <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">'Star'</span><span class="p">,</span> <span class="s">'Teff'</span><span class="p">,</span> <span class="s">'N'</span><span class="p">,</span> <span class="s">'e_Teff'</span><span class="p">,</span> <span class="s">'logg'</span><span class="p">,</span> <span class="s">'Vt'</span><span class="p">,</span> <span class="s">'[Fe/H]'</span><span class="p">,</span> <span class="s">'VMAG'</span><span class="p">,</span>
                                   <span class="s">'B-V'</span><span class="p">,</span> <span class="s">'Rem'</span><span class="p">])</span>
-</code></pre>
-</div>
+</code></pre></div></div>
+
+<h5 id="在已有的datafeame中添加列">在已有的DataFeame中添加列</h5>
+
+<p><code class="highlighter-rouge">df1 = df1.assign(e=p.Series(np.random.randn(sLength)).values)</code></p>
+
+<h5 id="有关settingwithcopy警告">有关SettingwithCopy警告</h5>
+
+<p><a href="https://zhuanlan.zhihu.com/p/41202576">这里</a></p>
+
 <h4 id="matplotlib">Matplotlib</h4>
 
 <h5 id="防止重叠或者出边界">防止重叠或者出边界</h5>
@@ -301,8 +305,8 @@
 
 <p>来自<a href="https://stackoverflow.com/questions/20105364/how-can-i-make-a-scatter-plot-colored-by-density-in-matplotlib?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">这里</a></p>
 
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
 
 <span class="c"># Generate fake data</span>
@@ -321,25 +325,30 @@
 <span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="subplot中加上总标题">subplot中加上总标题</h5>
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'This is a somewhat long figure title'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'This is a somewhat long figure title'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h5 id="subplot中加上总xylabel">subplot中加上总xylabel</h5>
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s">'LDR'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s">'LDR'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.93</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="subplot中加上编号子图相对位置统一">subplot中加上编号（子图相对位置统一）</h5>
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.89</span><span class="p">,</span> <span class="s">'(a)'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
+
+<h5 id="在一个数组中随机抽取元素的方法">在一个数组中随机抽取元素的方法</h5>
+
+<p>来自<a href="https://blog.csdn.net/amy_wumanfang/article/details/64483340">这里</a></p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="c">#使用python random模块的sample函数从列表中随机选择一组元素</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">slice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c">#从list中随机获取5个元素，作为一个片断返回  </span>
+</code></pre></div></div>
 
 
                 <hr style="visibility: hidden;">
@@ -397,7 +406,7 @@
                     <div class="tags">
         				
                             
-                				<a href="/tags/#random" title="random" rel="5">
+                				<a href="/tags/#random" title="random" rel="4">
                                     random
                                 </a>
                             
@@ -421,7 +430,7 @@
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="26">
+                				<a href="/tags/#learning" title="learning" rel="27">
                                     learning
                                 </a>
                             

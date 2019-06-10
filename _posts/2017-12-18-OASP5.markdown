@@ -12,7 +12,7 @@ tags:
 
 ### 辐射强度 (specific intensity)
 
-辐射强度描述的是穿过一个表面的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。
+辐射强度描述的是某一点的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。
 
 我们只能通过单位时间、单位频率下穿过单位面积面元的能量大小来描述光的强度。但是面元是有朝向的，一个只朝一个方向的辐射场和面元的法向量平行的时候会产生最大的通量；如果将辐射场（或者面元）旋转一个角度，除了方向外辐射场没有任何其他的变化，不过通量就小了。然而辐射强度是辐射场的性质，和面元的方向无关，所以除了$$ \mathrm{d}A\mathrm{d}t\mathrm{d}\nu $$需要和描述辐射场强度（其实就是辐射强度）的量相乘之外，我们还需要一个表示方向的立体角源和表示方向与面元法向夹角的余弦值将（可能倾斜的）面元“摆正”，去导出正确的能量。所以能量和辐射强度有这样的关系：
 
@@ -22,7 +22,11 @@ $$ \mathrm{d}E_\nu = I_\nu cos{\theta} \mathrm{d}\omega\mathrm{d}A\mathrm{d}t\ma
 
 $$ I_\nu = \frac{\mathrm{d}E_\nu}{cos{\theta}\mathrm{d}\omega\mathrm{d}A\mathrm{d}t\mathrm{d}\nu} \tag{5.1}$$
 
-它表达的是单位时间($$ \mathrm{d}t $$)单位频率($$ \mathrm{d}\nu $$)下穿过某一点($$ \mathrm{d}A $$)朝某个方向($$ cos{\theta}\mathrm{d}\omega $$)的光的能量。当然我们也可以用波长去表达，而从上式我们可以推出
+它表达的是单位时间($$ \mathrm{d}t $$)单位频率($$ \mathrm{d}\nu $$)下穿过某一点($$ \mathrm{d}A $$)朝某个方向($$ cos{\theta}\mathrm{d}\omega $$)的光的能量。
+自变量可以表达为$$ I_\nu(\vec{r}, \vec{l}, t)(\vec{l} \cdot \vec{n}) = I_\nu(x, y, z, \theta, \phi, t) $$，$$ \vec{r}, x, y, z $$为观测点的坐标，$$ \vec{l}, \theta, \phi $$为方向，$$ \vec{n} $$为面法向。
+辐射强度这个量将微观的光子和宏观的流量联系了起来。
+
+当然我们也可以用波长去表达，而从上式我们可以推出
 
 $$ I_\nu\mathrm{d}\nu = I_\lambda\mathrm{d}\lambda  \tag{5.2}$$
 
@@ -47,13 +51,13 @@ $$ F_\nu = \frac{\oint \mathrm{d}E_\nu}{\mathrm{d}A\mathrm{d}t\mathrm{d}\nu} = \
 
 $$ \begin{align} F_\nu & = \int_0^{2\pi}\mathrm{d}\phi\int_0^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta \\ & = \int_0^{2\pi}\mathrm{d}\phi (\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta + \int_\frac{2}{\pi}^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta) \\ & = F_\nu^\mathrm{out} + F_\nu^\mathrm{in} \end{align} $$
 
-实际上就是向里的和向外的之和。对于恒星来说，一般是没有向内的辐射的；同时如果在$$ \phi $$方向各向同性的话，上式可以简化为
+实际上就是向里的和向外的之和。对于恒星表面来说，一般是没有向内的辐射的；同时如果在$$ \phi $$方向各向同性的话，上式可以简化为
 
-$$ F_\nu  = 2\pi\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta  \tag{5.6}$$
+$$ F_\nu^\mathrm{surface}  = 2\pi\int_0^\frac{2}{\pi} (I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta)  \tag{5.6}$$
 
 再简化一下，如果向外的辐射在各个$$ \theta $$方向都相等的话，那么
 
-$$ F_\nu = \pi I_\nu  \tag{5.7}$$
+$$ F_\nu^\mathrm{surface} = \pi \bar{I_\nu}  \tag{5.7}$$
 
 对恒星来说这样的简化是可以接受的。
 

@@ -104,7 +104,7 @@ from . import subpackage
 
 当然subpackage里面的也需要这样写才能把所有的module都带上。想要测试的话先import然后用`dir()`看看module和子文件夹在不在里面就行。
 
-这些搞定之后就可以跑回最外级的ruler里面打开终端，运行`pip install -e .`。暂时不知道为什么，但是这种方法可以直接在Jpynb里面用，把Jpynb重启一遍就行了。
+这些搞定之后就可以跑回最外级的ruler里面打开终端，运行`pip install -e .`。`-e`的意思是`--editable`，每次更新之后不用再`pip install`就可以直接用了；之后把Jpynb重启一遍就行了。
 
 参考资料：<br>
 [Python Tutorial Chap. 6](https://docs.python.org/3/tutorial/modules.html#packages)<br>
@@ -121,6 +121,15 @@ pd.read_fwf('catalog/Kovtyukh/Kovtyukh04/table1.dat',
                            names=['Star', 'Teff', 'N', 'e_Teff', 'logg', 'Vt', '[Fe/H]', 'VMAG',
                                   'B-V', 'Rem'])
 ```
+
+##### 在已有的DataFeame中添加列
+
+`df1 = df1.assign(e=p.Series(np.random.randn(sLength)).values)`
+
+##### 有关SettingwithCopy警告
+
+[这里](https://zhuanlan.zhihu.com/p/41202576)
+
 #### Matplotlib
 
 ##### 防止重叠或者出边界
@@ -169,4 +178,14 @@ plt.subplots_adjust(left=0.07, right=0.93, top=0.85, bottom=0.15)
 ```py
 ax1 = plt.subplot(121)
 plt.text(0.86, 0.89, '(a)', fontsize=14, transform = ax1.transAxes)
+```
+
+##### 在一个数组中随机抽取元素的方法
+
+来自[这里](https://blog.csdn.net/amy_wumanfang/article/details/64483340)
+```py
+import random
+#使用python random模块的sample函数从列表中随机选择一组元素
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+slice = random.sample(list, 5)  #从list中随机获取5个元素，作为一个片断返回  
 ```

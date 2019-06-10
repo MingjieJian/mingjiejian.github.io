@@ -78,7 +78,7 @@ $$ \begin{align} \sum_{n_0+3}^\infty \frac{1}{n^3}e^{-\frac{\chi}{kT}} &= \frac{
 
 所以最终的吸收系数为：
 
-$$ \kappa(\mathrm{H_{bf}}) = \alpha_0\lambda^3[\sum_{n_0}^{n_0+2}\frac{g_\mathrm{bf}}{n^3}10^{-\theta\chi} + \frac{\log{e}}{2\theta I}(10^{-\chi_2\theta} - 10^{-I\theta})] $$
+$$ \kappa(\mathrm{H_{bf}}) = \alpha_0\lambda^3[\sum_{n_0}^{n_0+2}\frac{g_\mathrm{bf}}{n^3}10^{-\theta\chi} + \frac{\log{e}}{2\theta I}(10^{-\chi_2\theta} - 10^{-I\theta})] \tag{8.7} $$
 
 ##### 自由-自由跃迁
 
@@ -88,7 +88,7 @@ $$ d\alpha_\mathrm{ff}(\mathrm{H}) = \frac{2}{3^{3/2}}\frac{h^2e^2R}{\pi m_e^3} 
 
 那么要求$$ \alpha_\mathrm{ff}(\mathrm{H}) $$当然要将上式乘上Maxwell-Boltzmann分布再积分：
 
-$$ \begin{align} \alpha_\mathrm{ff}(\mathrm{H}) &= \frac{2}{3^{3/2}}\frac{h^2e^2R}{\pi m_e^3} \frac{1}{v} \int_0^\infty (\frac{2}{\pi})^{1/2} (\frac{m}{kT})^{3/2} v e^{-(mv^2/kT)} \\ &= \frac{2}{3^{3/2}}\frac{h^2e^2R}{\pi m_e^3} \frac{1}{v} (\frac{2m}{\pi kT})^{1/2} \end{align} $$
+$$ \begin{align} \alpha_\mathrm{ff}(\mathrm{H}) &= \frac{2}{3^{3/2}}\frac{h^2e^2R}{\pi m_e^3} \frac{1}{\nu^3} \int_0^\infty (\frac{2}{\pi})^{1/2} (\frac{m}{kT})^{3/2} v e^{-(mv^2/kT)} \\ &= \frac{2}{3^{3/2}}\frac{h^2e^2R}{\pi m_e^3} \frac{1}{\nu^3} (\frac{2m}{\pi kT})^{1/2} \end{align} \tag{8.9}$$
 
 同理，吸收系数就是吸收截面乘上Guant因子和归一化的粒子数量（在这里是质子和电子）就行了：
 

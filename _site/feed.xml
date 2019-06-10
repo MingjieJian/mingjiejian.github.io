@@ -5,73 +5,113 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 20 Feb 2019 19:41:14 +0900</pubDate>
-    <lastBuildDate>Wed, 20 Feb 2019 19:41:14 +0900</lastBuildDate>
-    <generator>Jekyll v3.4.3</generator>
+    <pubDate>Mon, 10 Jun 2019 22:18:48 +0900</pubDate>
+    <lastBuildDate>Mon, 10 Jun 2019 22:18:48 +0900</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>CZ3085</title>
-        <description>&lt;p&gt;我总觉得坐飞机是一件们奇妙的事情。人坐在一个位置上，过几个小时，身处的世界就天翻地覆。&lt;/p&gt;
+        <title>快过程和慢过程</title>
+        <description>&lt;h2 id=&quot;先来复习一下&quot;&gt;先来复习一下&lt;/h2&gt;
 
-&lt;p&gt;明明早上才从家里的床醒来，中午才刚刚吃过午饭；现在却来到了自己“熟悉”的家中。&lt;/p&gt;
+&lt;h3 id=&quot;alpha衰变&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;衰变&lt;/h3&gt;
 
-&lt;p&gt;一闭眼，广州家里的窗户、阳台的景色、前天中午自己出去吃的猪肝粥和猪肉拉肠都清晰可见。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-sr-process/01-Alpha_Decay.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;但是它们已经距离我将近三千公里。&lt;/p&gt;
+&lt;p&gt;原子喷出一个&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;粒子（或者说氦原子核）；质量数-4，原子序数-2。基本上只会在比较重的原子里面发生，由核力和电磁力主导。在恒星核合成中比较少见，因为需要重的原子。&lt;/p&gt;
 
-&lt;p&gt;有一瞬间觉得这三周似乎都是一场很长的梦。但是记忆却告诉我这一切都已经刻在了我的脑海中，它们是真实的，它们陪伴了我将近二十年。&lt;/p&gt;
+&lt;h3 id=&quot;beta衰变&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变&lt;/h3&gt;
 
-&lt;p&gt;这么一看似乎我现在身处的异乡反而才像一场梦了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-sr-process/02-Beta-minus_Decay.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;我为什么来这里？这是一个一直被我埋藏在心底又不敢问自己的问题。如果没有意义的话，这两年半就真的成为了一场梦，一场噩梦。&lt;/p&gt;
+&lt;p&gt;原子里面的某一个中子喷出一个电子，自己变成质子；原子质量数不变，原子序数+1，原子变得更稳定(&lt;script type=&quot;math/tex&quot;&gt;\beta^-&lt;/script&gt;衰变)。可以有反过程，原子里面的某一个质子喷出一个反电子，自己变成中子(&lt;script type=&quot;math/tex&quot;&gt;\beta^+&lt;/script&gt;衰变)。原子吸收一个电子使得里面的质子变成中子有的时候也包含在&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变里面。&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变在之后的r和s过程中充当很重要的角色。&lt;/p&gt;
 
-&lt;p&gt;所以这一年我尝试着去回答这个问题。有的时候我觉得我有了答案，有的时候又觉得我得到的答案我不满意。&lt;/p&gt;
+&lt;h3 id=&quot;gamma衰变&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt;衰变&lt;/h3&gt;
 
-&lt;p&gt;是为了到外面看看吗？两年半的时间有点太长。是为了让亲戚/老师/同学问起来、恭维自己吗？我又何必为了一年几乎都不到一次的虚话呆在这里呢。&lt;/p&gt;
+&lt;p&gt;就是普通的电子能级跃迁而已，不说了。&lt;/p&gt;
 
-&lt;p&gt;可怕的是最初的时候我来日本的原因真的是为了出国而出国。功利地为了到达一个更好的平台而不管不顾地出来了，而这样的后果我现在还在承受着。&lt;/p&gt;
+&lt;h2 id=&quot;然后来学习一下&quot;&gt;然后来学习一下&lt;/h2&gt;
 
-&lt;p&gt;出来之后呢？没有然后了。所以这两年有些浑浑噩噩地完成导师的任务、并且不断地在迷茫：然后呢？我已经没有目标了。已经没有目标了。&lt;/p&gt;
+&lt;h3 id=&quot;核素图&quot;&gt;核素图&lt;/h3&gt;
 
-&lt;p&gt;我究竟要做什么？我为什么要来到这里？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.sdss.org/wp-content/uploads/2017/01/periodic_table.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;因为我想战斗。与宇宙的未知战斗、与淡而无味的生活战斗。而这里，是我的战场。&lt;/p&gt;
+&lt;p&gt;元素周期表上只列出了同种类的原子；它通过横向和纵向两个方向表征元素化学性质的变化；但是它并不能标示出全部的原子（质子数、中子数不同的原子），所以我们需要如下的核素图：&lt;/p&gt;
 
-&lt;p&gt;我其实很害怕把这句话讲出来。讲出来意味着我没有了退路。一直以来我都为自己准备好退路之后再去尝试，而当没有退路的时候，我会退缩。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Table_isotopes_en.svg/800px-Table_isotopes_en.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;所以走到今天突然发现没有退路了，因此即使这是我喜欢做的事情，我也畏缩不前。是，这条路不好走，但是自己都没有尽力，又怎么能说无愧于心呢？&lt;/p&gt;
+&lt;p&gt;核素图以质子数为横轴，中子数为纵轴，元素周期表上的稳定元素一般在图中的黑色线上；图中竖线表示同一种元素的同位素。由此我们可以将所有可能形成的原子都标示在这张图上。&lt;/p&gt;
 
-&lt;p&gt;而且，我一直担心的事情，其实都是不必要的。所有我记忆中的一切，都在广州、都在我的家里。至少现在，我没有后顾之忧。何不趁着这段时间，再在这个异乡，努力一把？&lt;/p&gt;
+&lt;h4 id=&quot;beta稳定等高线&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;稳定等高线&lt;/h4&gt;
 
-&lt;p&gt;更何况，这一年，已经有了不少改变。健身坚持了下来、与父母的距离缩短了、发了论文、有了她。我比一年前的我变得更好了。&lt;/p&gt;
+&lt;p&gt;核素图中的核素大多数都不是稳定的；越靠近核素分布的中央它们的结合能越高，所以图中中央的黑色阶梯状分布核素就是稳定核素。其他所有的核素都会以各种方式向稳定核素衰变，这些各种方式（从图上能看出来）主要就是&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变，所以这条线也叫做&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;稳定等高线。顺便一提等高线的左上方为丰中子核素，右下方为丰质子核素。&lt;/p&gt;
 
-&lt;p&gt;我想变得更好。&lt;/p&gt;
+&lt;h4 id=&quot;原子核滴线nuclear-drip-line&quot;&gt;原子核滴线(Nuclear drip line)&lt;/h4&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;而我终于可出走。&lt;br /&gt;
-而我终于可出走。&lt;br /&gt;
-而我终于可出走。&lt;br /&gt;
-——《出走》林一峰&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;并不是任意的质子-中子数组合都能形成核素的；上面说的核素虽然不稳定，但还能存在一会；而核素图上白色的地方则根本不能形成核素；这个白色区域和有色区域的交界线就叫做原子核滴线（鬼知道这个名字是怎么滴出来的…）。丰质子一侧的滴线称为质子滴线，丰中子一侧的滴线称为中子滴线。&lt;/p&gt;
 
-&lt;p&gt;我现在还没有资格说出这三句话，但是我要在未来的两年中实现。这对我来说是一片未知的区域，但是我要朝着它出发。相信当我到达的时候，我会感受到前所未有的成就感。&lt;/p&gt;
+&lt;h2 id=&quot;正文元素是怎么来的&quot;&gt;正文：元素是怎么来的？&lt;/h2&gt;
 
-&lt;p&gt;我要变得更好。&lt;/p&gt;
+&lt;p&gt;大爆炸来的呗。乔治·伽莫夫就是这么想的。虽然他提出了大爆炸理论，但是他当时认为现在宇宙中所有的元素都是大爆炸时候的核反应产生的。然后被汉斯·贝特等人提出的质子-质子链和碳氮氧循环抽了一巴掌：氦也可以在恒星内部合成，恒星内部核聚变最重可以形成到铁。那其他元素还是大爆炸的残留呗？又被&lt;a href=&quot;https://en.wikipedia.org/wiki/B2FH_paper&quot;&gt;B2FH理论&lt;/a&gt;抽了一巴掌：比铁重的元素还是在恒星里面合成的！&lt;/p&gt;
 
-&lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;/img/in-post/post-cz3085/SL_MO_rain.mp4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;em&gt;风雨，兼程&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;那这些元素是怎么样合成的呢？&lt;/p&gt;
+
+&lt;h3 id=&quot;r过程&quot;&gt;R过程&lt;/h3&gt;
+
+&lt;p&gt;恒星总是会挂的；恒星挂掉的时候一般都会将里面合成的元素像三蹦子的排气管一样嘣出来（超新星爆发）。元素之间肯定会有碰撞，但是大家都是电中性的，里面又有电子又有核，不太容易凑到一起形成更重的元素；但是中子单纯地不带电（而且不大），可以方便地跑到原子核上和原子核纠缠在一起。正好超新星爆发的时候会在短时间内产生大量的中子流，正好让原子核吃个够。所以原子核在大量中子轰击下变成新元素的过程就是R（快）过程了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Fig3_nuclear_chart.jpg/1920px-Fig3_nuclear_chart.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如上图，原子核在短时间内接收了大量中子，会在核素图上向右移动（横纵轴反了）；但是它不能产生不稳定元素，所以只能沿着中子滴线走：往右几步，向上挪；再往右几步，又向上挪。在中子数达到50, 82, 186时因为中子壳层闭合，核素和中子的碰撞截面变小，所以主要发生&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变而不是接收中子。而因为中子很多，所以R过程最终形成的核素的原子序数会比较大（也就是比较重了）。当然了这个过程不是无限的，我认为主要是因为超新星爆发的时间很短，中子流很快就扩散到了宇宙空间，所以R过程只能在很短的时间内发生。&lt;/p&gt;
+
+&lt;p&gt;说白了R过程就是原子核被中子轰得一脸蒙蔽，还来不及&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变下一个就来了所以越吃越胖的故事。当然不能无限吃胖，太重了会有&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;衰变将中子和质子数降下来的。&lt;/p&gt;
+
+&lt;h3 id=&quot;s过程&quot;&gt;S过程&lt;/h3&gt;
+
+&lt;p&gt;反过来说，如果中子密度比较低，原子核反应过来了，吃一个中子&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变一下，不就是S（慢）过程了嘛。&lt;/p&gt;
+
+&lt;p&gt;具体来说就是原子核接收了一个中子之后停了下来，如果稳定就继续吃瓜等下一个中子，如果不稳定就&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变到稳定，然后吃瓜。这样使得生成的核素更容易达到最终的稳定态（核素图中的黑色元素），所以S过程生成的元素质量没有R过程的那么大。&lt;/p&gt;
+
+&lt;p&gt;那哪里才有这些稀疏中子流让S过程发生呢？答案在渐进巨星支(AGB)里。AGB星可以提供中子源：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{^{13}_6C + ^4_2He \rightarrow ^{16}_{8}O + n}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{^{22}_{10}Ne + ^4_2He \rightarrow ^{25}_{12}Mg + n}&lt;/script&gt;
+
+&lt;p&gt;然后核素就可以快乐地像下图一样奔跑了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/S-process-elem-Ag-to-Sb.svg/800px-S-process-elem-Ag-to-Sb.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/S-R-processes-atomic-mass-201-to-210.svg/500px-S-R-processes-atomic-mass-201-to-210.svg.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;这里的浅绿色箭头和深绿色箭头各是什么衰变呢？&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;还是因为S过程太慢，到达铋(83)之后会短暂生成钋(84)，但是钋接收中子之后会回到铅(82)，然后生成铋，如此循环。&lt;/p&gt;
+
+&lt;h3 id=&quot;谁多谁少&quot;&gt;谁多谁少？&lt;/h3&gt;
+
+&lt;p&gt;前面的元素周期表已经给出了模型的预测值：Dying low-mass stars的是S过程，其他的出除去Big bang fusion, cosmic ray fission和human synthesis剩下的都是R过程元素。另外其实还有P（质子）过程和Rp（快质子捕获）过程，对某些核素素也有贡献，但是不在本文范围内就略过了，&lt;/p&gt;
+
+&lt;h2 id=&quot;这俩过程有什么用&quot;&gt;这俩过程有什么用？&lt;/h2&gt;
+
+&lt;p&gt;这两个过程为银河系考古学提供了更多的选择；我们不仅仅可以选择铁元素丰度来表征不同population的恒星，也可以选择更重的元素。如果某个地方R过程元素特别高，我们可以猜测那里之前可能有过很多的超新星爆发，也就是很久以前有大量的恒星形成；如果银河系中心到边缘的S过程元素逐渐减少，那么……我还没有好的结论。这些元素也可以被用到河外星系的观测里面。&lt;/p&gt;
+
+&lt;h2 id=&quot;refs&quot;&gt;Refs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/S-process&quot;&gt;s过程&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/R-process&quot;&gt;r过程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
-        <pubDate>Tue, 19 Feb 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/02/19/cz3085/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/02/19/cz3085/</guid>
+        <pubDate>Mon, 10 Jun 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/06/10/sr-process/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/10/sr-process/</guid>
         
-        <category>random</category>
+        <category>learning</category>
         
         
       </item>
     
       <item>
-        <title>在阿智的14.5个小时</title>
+        <title>逃离东京的24小时</title>
         <description>&lt;h2 id=&quot;缘起&quot;&gt;缘起&lt;/h2&gt;
 
 &lt;p&gt;我印象中最早说起去看星星是在地铁解谜人齐之后，大家高兴地说着去看星星吧，就有了这个想法。当然实际上组织的时候大家都各种有事情、回家什么的（虽然是预料之中），结果群里7个人最后只去了4个。&lt;/p&gt;
@@ -102,7 +142,7 @@
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/02.jpg&quot; alt=&quot;&quot; /&gt;
 &lt;em&gt;其实就是穷&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;みんなのいえ从车站走十来分钟就到了，房东是个很亲切的日本人，会要求你提前告诉她到达时间然后在房子里迎接。意外的是这家是个正规民宿，Airbnb页面上附有注册号码，所以需要登记护照或者在留卡号（一个人的就行）。我估计Airbnb上的回复是房东用谷歌翻译看懂的，因为房东基本不会讲英语，看到我们都会日语之后超放心(……)。房间应该有4张床，所以4个人出行的话大概率会分到同一间房里面。同时房东似乎不会在Airbnb页面上开放床位，所以想订房的时候可以先问问房东还有没有空位，有的话她会开放的。&lt;/p&gt;
+&lt;p&gt;みんなのいえ从车站走十来分钟就到了，房东是个很亲切的日本人，会要求你提前告诉她到达时间然后在房子里迎接。这家是个Airbnb页面上附有注册号码的正规民宿，所以需要登记护照或者在留卡号（一个人的就行）。我估计Airbnb上的回复是房东用谷歌翻译看懂的，因为房东基本不会讲英语，看到我们都会日语之后超放心(……)。房间应该有4张床，所以4个人出行的话大概率会分到同一间房里面。同时房东似乎不会在Airbnb页面上开放床位，所以想订房的时候可以先问问房东还有没有空位，有的话她会开放的。&lt;/p&gt;
 
 &lt;p&gt;其实也可以提前告诉房东我们的目的是去看星，这样她可以推荐一些地方以及做好夜不归宿的准备。&lt;/p&gt;
 
@@ -122,15 +162,15 @@
 
 &lt;h2 id=&quot;观星之后&quot;&gt;观星之后&lt;/h2&gt;
 
-&lt;p&gt;第一件事当然是饿了！好在民宿出门左转那有一家24小时的罗森，那里基本上什么都有。当然可以坐的位置是没有的（就算有晚上也不会让你坐），所以买完东西之后就会民宿吧。&lt;/p&gt;
+&lt;p&gt;第一件事当然是饿了！好在民宿出门左转那有一家24小时的罗森，那里基本上什么都有。当然可以坐的位置是没有的（就算有晚上也不会让你坐），所以买完东西之后就回民宿吧。&lt;/p&gt;
 
 &lt;p&gt;房东会给留门或者告诉我们密码锁的密码，不过无论如何在回到民宿之后都要保持安静然后把门锁上，悄悄地回到房间里面睡觉。洗澡房晚上10点之后就不许用了，所以可以在之前洗完或者第二天再洗。记得把贴着的暖贴取下来。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/05.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;credit: ゆうめし&lt;/em&gt;&lt;/p&gt;
+&lt;em&gt;ゆうめし。credit: Rainy&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/06.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;合照&lt;/em&gt;&lt;/p&gt;
+&lt;em&gt;合照 credit: XT&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;番外1满蒙博物馆&quot;&gt;番外1：满蒙博物馆&lt;/h2&gt;
 
@@ -259,12 +299,11 @@
   &lt;li&gt;打开TAP窗口，搜索&lt;code class=&quot;highlighter-rouge&quot;&gt;gaia&lt;/code&gt;并选择&lt;strong&gt;GAIA&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;选择&lt;code class=&quot;highlighter-rouge&quot;&gt;gaiadr2_gata_source&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;在ADQL Text窗口输入：
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT ra, dec, pmra, pmdec, parallax, radial_velocity, bp_rp,
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT ra, dec, pmra, pmdec, parallax, radial_velocity, bp_rp,
 phot_g_mean_mag + 5*log10(parallax/100) as g_abs
 FROM gaiadr2.gaia_source WHERE parallax &amp;gt; 15 AND parallax_over_error &amp;gt; 5
 AND radial_velocity IS NOT NULL
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -287,25 +326,22 @@ AND radial_velocity IS NOT NULL
 
 &lt;h3 id=&quot;排序order-by&quot;&gt;排序：ORDER BY&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
   FROM gaiadr1.tgas_source
   ORDER BY parallax
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-topcat/T-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;降序的话可以这样写：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
   FROM gaiadr1.tgas_source
   ORDER BY parallax DESC
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, phot_g_mean_mag , parallax
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, phot_g_mean_mag , parallax
   FROM gaiadr1.tgas_source
   ORDER BY phot_g_mean_mag, parallax
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;第二个排序列名的作用暂未确定。噢顺便，首行不缩进是因为：好看。&lt;/p&gt;
 
@@ -335,13 +371,12 @@ AND radial_velocity IS NOT NULL
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10
   source_id,
   SQRT(POWER(pmdec_error,2)+POWER(pmra_error,2)) AS pm_errTot
   FROM gaiadr1.tgas_source
   ORDER BY pm_errTot
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;自己算出来的东西&lt;code class=&quot;highlighter-rouge&quot;&gt;pm_errTot&lt;/code&gt;马上就可以拿来排序。&lt;/p&gt;
 
@@ -351,13 +386,12 @@ AND radial_velocity IS NOT NULL
 
 &lt;h3 id=&quot;有条件选择where&quot;&gt;有条件选择：WHERE&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT source_id, ra, dec
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT source_id, ra, dec
   FROM gaiadr1.tgas_source
   WHERE
   phot_g_mean_flux &amp;gt; 13
   AND parallax &amp;lt; 0.2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;练习：Select the absolute magnitude, position and the source id for the 20 stars with the largest observed apparent magnitude in the g band from the table tgas_source (in case you don’t remember: The absolute magnitude is M= 5 + 5log π+ m with the parallax in arcsec π and the apparent magnitude m (check the units!). This will fail. Try to fix it.&lt;/p&gt;
 
@@ -365,18 +399,16 @@ AND radial_velocity IS NOT NULL
 
 &lt;h3 id=&quot;交叉证认join&quot;&gt;交叉证认：JOIN&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10 h1.ra, h1.dec, h1.hip, t1.hip
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10 h1.ra, h1.dec, h1.hip, t1.hip
   FROM hipparcos AS h1
   JOIN tycho2 AS t1
   USING (hip)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM hipparcos AS h1
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM hipparcos AS h1
   JOIN tycho2 AS t1
   USING (hip)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Don’t execute them.这俩是假例子。这俩的结果应该是内积。&lt;/p&gt;
 
@@ -384,11 +416,10 @@ AND radial_velocity IS NOT NULL
 
 &lt;h3 id=&quot;更复杂的交叉证认join-on&quot;&gt;更复杂的交叉证认：JOIN ON&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 20 source_id, h.hip
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 20 source_id, h.hip
   FROM gaiadr1.tgas_source AS tgas
   LEFT OUTER JOIN hipparcos as h ON (tgas.phot_g_mean_mag BETWEEN h.hpmag -0.05 AND h.hpmag+0.05)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;这里就不是内积了，是留左表，同时交叉条件改成了星等差在&lt;script type=&quot;math/tex&quot;&gt;\pm 0.05&lt;/script&gt;之内。
 （会出现1对n的情况吗？）&lt;/p&gt;
@@ -399,19 +430,18 @@ AND radial_velocity IS NOT NULL
 
 &lt;h3 id=&quot;令人头大的交叉证认基于位置&quot;&gt;令人头大的交叉证认：基于位置&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5
   source_id, tgas.ra, tgas.dec, tm.raj2000, tm.dej2000, hmag, e_hmag
   FROM gaiadr1.tgas_source as tgas
   JOIN twomass AS tm
   ON 1=CONTAINS (
      POINT('ICRS', tm.raj2000, tm.dej2000),
      CIRCLE('ICRS', tgas.ra, tgas.dec, 1.5/3600))
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;如果历元不同的话，最好不要在查询中转换历元（位置加减自行），而是将交叉半径扩大，然后用WHERE去解决历元的问题：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT
    TOP 30
    *
    FROM ppmxl AS m
@@ -422,17 +452,15 @@ AND radial_velocity IS NOT NULL
    m.raj2000+m.pmra*COS(RADIANS(m.dej2000))*15,
    m.dej2000+m.pmde*15),
    CIRCLE('ICRS', g.ra, g.dec, 0.5/3600.))
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;俄罗斯套娃查询中的查询&quot;&gt;俄罗斯套娃：查询中的查询&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT count(*) as n, round((hmag-jmag)*2) as bin
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT count(*) as n, round((hmag-jmag)*2) as bin
   FROM (SELECT TOP 4000 * FROM twomass) AS q
   GROUP BY bin
   ORDER BY bin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(SELECT TOP 4000 * FROM twomass)&lt;/code&gt;就是一个小的查询，用括号括起来就行了&lt;/p&gt;
 
@@ -973,6 +1001,8 @@ Eu、Pt、Au、Th、U：r过程；&lt;br /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;贫金属星和星族ii&quot;&gt;贫金属星和星族II&lt;/h3&gt;
 
 &lt;p&gt;金属丰度小于-2.5的恒星基本上认为只受过一次超新星爆发的污染，是很有用的目标。&lt;/p&gt;
+
+&lt;p&gt;（190610更新）：现在基本上已经不怎么用星族这个简略的概念了，因为星族实际上不止三个，而且不同人对星族有不同的定义。&lt;/p&gt;
 
 &lt;h4 id=&quot;alpha元素&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;元素&lt;/h4&gt;
 

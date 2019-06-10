@@ -292,7 +292,7 @@ L(\hat{y}, y) &= -[y \ln{\hat{y}} + (1-y) \ln{(1-\hat{y})}] \\
 
 <p>具体的计算过程就是一个正向+反向传递的过程：</p>
 
-<div class="language-py highlighter-rouge"><pre class="highlight"><code><span class="c"># 设置初值</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 设置初值</span>
 <span class="n">J</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">dw1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">...</span><span class="p">;</span> <span class="n">db</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
   <span class="c"># Forward propagation</span>
@@ -308,8 +308,7 @@ L(\hat{y}, y) &= -[y \ln{\hat{y}} + (1-y) \ln{(1-\hat{y})}] \\
 <span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">dw1</span>
 <span class="o">...</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">db</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>然后继续迭代。所以“正常”情况下要用两个循环嵌套，显然是不现实的，所以要用到python的向量来做。</p>
 
@@ -568,7 +567,7 @@ Z^{[i]} &=
                     <div class="tags">
         				
                             
-                				<a href="/tags/#random" title="random" rel="5">
+                				<a href="/tags/#random" title="random" rel="4">
                                     random
                                 </a>
                             
@@ -592,7 +591,7 @@ Z^{[i]} &=
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="26">
+                				<a href="/tags/#learning" title="learning" rel="27">
                                     learning
                                 </a>
                             

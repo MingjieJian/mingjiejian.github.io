@@ -1,0 +1,31 @@
+---
+layout:     post
+title:      "Vizier星表上传"
+subtitle:   ""
+date:       2019-06-04
+author:     "mingjie"
+header-img: "img/post-bg-cz3085.jpg"
+tags:
+    - learning
+
+---
+
+Vizier星表要自己上传的；需要是论文的数据
+
+1. 要有一个ReadMe文件提供描述
+2. 文件为特定格式，ascii最好
+
+表格：ascii格式；其它格式（latex、FITS、csv/tsv）将会被转成ascii格式
+光谱：FITS或者两列的ascii表格
+图片：FITS
+
+文件命名，8+3原则：8个（或以内的）[a-z0-9_-]加上一个点[.]加上[dat/fit/tex/csv]
+
+[Vizier表格提交页面](http://cdsarc.u-strasbg.fr/vizier.submit/)
+
+## References
+
+[Vizier表格数据准备指南](http://cdsarc.u-strasbg.fr/vizier/submit.htx)
+[Vizier表格格式](http://vizier.u-strasbg.fr/vizier/doc/catstd.htx)
+[Upload help](http://cdsarc.u-strasbg.fr/vizier.submit/publication-notes.html)
+[Upload help (detail)](http://cdsarc.u-strasbg.fr/vizier.submit/help.html)

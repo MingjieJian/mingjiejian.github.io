@@ -51,3 +51,7 @@ $$
 我们要求的是使得$$ \chi^2 $$最小的$$ A $$。因为$$ Y = XA $$，我们先乘上一个$$ C^{-1} $$（加权平均），再乘一个$$ X^T $$（减小维数），就得到了：
 
 $$ A = [X^TC^{-1}X]^{-1} [X^TC^{1}Y] $$
+
+## 预测值的置信区间以及预测区间
+
+[请看这里](https://www.youtube.com/watch?feature=player_embedded&v=qVCQi0KPR0s)

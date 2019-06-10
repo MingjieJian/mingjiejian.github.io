@@ -81,3 +81,17 @@ Sagan workshop是个好东西。
 天文领域里面有什么例子？
 
 https://arxiv.org/abs/1008.4686 某个人的model fitting介绍。他还有有关MCMC的。
+
+
+## 如何判断两个样本的平均数是否一致？
+
+[看这里](https://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm)
+
+## 如何判断两个模型哪个更好？
+
+用AIC或者[F-test](http://people.reed.edu/~jones/Courses/P24.pdf)
+
+## 如何通过平均分布产生任意的分布？
+
+[看这里](http://blog.codinglabs.org/articles/methods-for-generating-random-number-distributions.html)
+CDF和PDF的关系在[这里](https://zh.wikipedia.org/wiki/%E7%B4%AF%E7%A7%AF%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0)

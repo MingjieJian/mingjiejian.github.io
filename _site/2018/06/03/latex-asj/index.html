@@ -182,17 +182,15 @@
 
 <p>这个是最麻烦的，但是给钱。重点在于它不能用平常的命令去编译，而是必须用<code class="highlighter-rouge">platex</code>。如果使用TeXstudio的话需要将设置-命令里面的latex改成</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>  platex -src -interaction<span class="o">=</span>nonstopmode %.tex
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  platex <span class="nt">-src</span> <span class="nt">-interaction</span><span class="o">=</span>nonstopmode %.tex
+</code></pre></div></div>
 
 <p>然后在<code class="highlighter-rouge">Build-Build &amp; View</code>里面改成<code class="highlighter-rouge">DVI-&gt;PDF Chain</code>，这样应该就可以了。</p>
 
 <p>顺便原来的命令是</p>
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>  latex  -synctex<span class="o">=</span>1 -interaction<span class="o">=</span>nonstopmode %.tex
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  latex  <span class="nt">-synctex</span><span class="o">=</span>1 <span class="nt">-interaction</span><span class="o">=</span>nonstopmode %.tex
+</code></pre></div></div>
 <p>以及<code class="highlighter-rouge">PDF Chain</code>。</p>
 
 <h3 id="若手">若手</h3>
@@ -257,7 +255,7 @@
                     <div class="tags">
         				
                             
-                				<a href="/tags/#random" title="random" rel="5">
+                				<a href="/tags/#random" title="random" rel="4">
                                     random
                                 </a>
                             
@@ -281,7 +279,7 @@
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="26">
+                				<a href="/tags/#learning" title="learning" rel="27">
                                     learning
                                 </a>
                             

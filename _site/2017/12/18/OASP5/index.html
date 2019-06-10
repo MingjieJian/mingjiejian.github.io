@@ -172,7 +172,7 @@
 
 				<h3 id="辐射强度-specific-intensity">辐射强度 (specific intensity)</h3>
 
-<p>辐射强度描述的是穿过一个表面的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。</p>
+<p>辐射强度描述的是某一点的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。</p>
 
 <p>我们只能通过单位时间、单位频率下穿过单位面积面元的能量大小来描述光的强度。但是面元是有朝向的，一个只朝一个方向的辐射场和面元的法向量平行的时候会产生最大的通量；如果将辐射场（或者面元）旋转一个角度，除了方向外辐射场没有任何其他的变化，不过通量就小了。然而辐射强度是辐射场的性质，和面元的方向无关，所以除了<script type="math/tex">\mathrm{d}A\mathrm{d}t\mathrm{d}\nu</script>需要和描述辐射场强度（其实就是辐射强度）的量相乘之外，我们还需要一个表示方向的立体角源和表示方向与面元法向夹角的余弦值将（可能倾斜的）面元“摆正”，去导出正确的能量。所以能量和辐射强度有这样的关系：</p>
 
@@ -182,7 +182,11 @@
 
 <script type="math/tex; mode=display">I_\nu = \frac{\mathrm{d}E_\nu}{cos{\theta}\mathrm{d}\omega\mathrm{d}A\mathrm{d}t\mathrm{d}\nu} \tag{5.1}</script>
 
-<p>它表达的是单位时间(<script type="math/tex">\mathrm{d}t</script>)单位频率(<script type="math/tex">\mathrm{d}\nu</script>)下穿过某一点(<script type="math/tex">\mathrm{d}A</script>)朝某个方向(<script type="math/tex">cos{\theta}\mathrm{d}\omega</script>)的光的能量。当然我们也可以用波长去表达，而从上式我们可以推出</p>
+<p>它表达的是单位时间(<script type="math/tex">\mathrm{d}t</script>)单位频率(<script type="math/tex">\mathrm{d}\nu</script>)下穿过某一点(<script type="math/tex">\mathrm{d}A</script>)朝某个方向(<script type="math/tex">cos{\theta}\mathrm{d}\omega</script>)的光的能量。
+自变量可以表达为<script type="math/tex">I_\nu(\vec{r}, \vec{l}, t)(\vec{l} \cdot \vec{n}) = I_\nu(x, y, z, \theta, \phi, t)</script>，<script type="math/tex">\vec{r}, x, y, z</script>为观测点的坐标，<script type="math/tex">\vec{l}, \theta, \phi</script>为方向，<script type="math/tex">\vec{n}</script>为面法向。
+辐射强度这个量将微观的光子和宏观的流量联系了起来。</p>
+
+<p>当然我们也可以用波长去表达，而从上式我们可以推出</p>
 
 <script type="math/tex; mode=display">I_\nu\mathrm{d}\nu = I_\lambda\mathrm{d}\lambda  \tag{5.2}</script>
 
@@ -208,13 +212,13 @@
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{align} F_\nu & = \int_0^{2\pi}\mathrm{d}\phi\int_0^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta \\ & = \int_0^{2\pi}\mathrm{d}\phi (\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta + \int_\frac{2}{\pi}^\pi I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta) \\ & = F_\nu^\mathrm{out} + F_\nu^\mathrm{in} \end{align} %]]></script>
 
-<p>实际上就是向里的和向外的之和。对于恒星来说，一般是没有向内的辐射的；同时如果在<script type="math/tex">\phi</script>方向各向同性的话，上式可以简化为</p>
+<p>实际上就是向里的和向外的之和。对于恒星表面来说，一般是没有向内的辐射的；同时如果在<script type="math/tex">\phi</script>方向各向同性的话，上式可以简化为</p>
 
-<script type="math/tex; mode=display">F_\nu  = 2\pi\int_0^\frac{2}{\pi} I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta  \tag{5.6}</script>
+<script type="math/tex; mode=display">F_\nu^\mathrm{surface}  = 2\pi\int_0^\frac{2}{\pi} (I_\nu\sin{\theta}\cos{\theta}\mathrm{d}\theta)  \tag{5.6}</script>
 
 <p>再简化一下，如果向外的辐射在各个<script type="math/tex">\theta</script>方向都相等的话，那么</p>
 
-<script type="math/tex; mode=display">F_\nu = \pi I_\nu  \tag{5.7}</script>
+<script type="math/tex; mode=display">F_\nu^\mathrm{surface} = \pi \bar{I_\nu}  \tag{5.7}</script>
 
 <p>对恒星来说这样的简化是可以接受的。</p>
 
@@ -393,7 +397,7 @@
                     <div class="tags">
         				
                             
-                				<a href="/tags/#random" title="random" rel="5">
+                				<a href="/tags/#random" title="random" rel="4">
                                     random
                                 </a>
                             
@@ -417,7 +421,7 @@
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="26">
+                				<a href="/tags/#learning" title="learning" rel="27">
                                     learning
                                 </a>
                             
