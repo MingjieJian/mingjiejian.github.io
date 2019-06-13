@@ -1,0 +1,155 @@
+---
+layout:     post
+title:      "PANDORA使用记录"
+subtitle:   "高级的MOOG"
+date:       2019-04-12
+author:     "mingjie"
+header-img: "img/post-bg-cz3085.jpg"
+tags:
+    - learning
+
+---
+
+## Fortran 编译器选择
+
+可以从pgfortran、ifort和pgf77中选一个。我选的是ifort；关于ifort的安装可以参照[这里](https://www.jianshu.com/p/c6fec68966f7)。实际上安装的是Intel® Parallel Studio XE Cluster Edition for Linux*里面的Fortran编译器。装之前或者之后记得将这些32位的包装上：
+```sh
+apt-get install ia32-libs
+apt-get install libstdc++5
+apt-get install lib32stdc++6
+apt-get install libc6-dev-i386
+apt-get install gcc-multilib
+apt-get install g++-multilib
+```
+
+要不然一会PANDORA是装不上的hhh。
+
+会有`Unsupported OS`的提示，跳过即可。
+如果位置不够的话可以将其他不需要的软件包取消掉，和Fortran有关的只有3个G左右的东西。
+
+## 文件准备
+
+- 文件分为9个部分，其中6个是有内容的，三个是单纯用来分割的(GO部分)
+- 可以将输入放在别的文件里面，用`USE (ATOM/MODEL/RESTART/INPUT/GENERAL)`跑到对应文件(`.atm`, `.mod`, `.res`)那里去读取；在对应文件中使用`USE (INPUT)`退回到主控制文件；下一次对于该辅助文件的的读取将会在该位置继续进行。如果定义了`FILE ( 0 FILESPEC )`（wup105页），则`USE (GENERAL)`会去那个文件那里读。
+
+### 元素数据输入(WUP Section 10)
+
+需要有元素才能计算电子密度等量。程序中有一个`NMT`行（就是有多少种元素，默认为38）9列的一个表。9列的内容分别为：元素符号(M)、原子序数(atno)、相对氢的丰度(AB)，电离能(CHI)，配分方程U-I和U-II(UI, UII)，以氢为12的对数丰度(LAB)，对数丰度的默认值(DEF)，表示默认值ref的整数(k)。当然并不是所有的内容都要手动指名。
+
+和默认值不一样的数据需要手动输入；如果是默认表里没有的元素需要用`NEWELE`命令：
+
+`NEWELE ( j M atno AB CHI UI UII LAB DEF k )`
+
+这里的`j`代表着程序内建表的第j行，我们可以通过不同的j将表中的某一行覆盖掉。。
+
+如果是更改某个已有元素的丰度，则可以用`ELEMENT` 命令：
+
+`ELEMENT ( M I1 I2 ... In )`
+
+其中M当然是要改变的元素符号了，而后面的I是成对出现的，第一个I指名要改变的数字名称（ATNO, AB, CHI, UI, UII, LAB），第二个I指名要改成的数字。举个例子，
+
+`ELEMENT ( FE AB 3.5E-5 CHI 7.87 UI 24 )`
+
+会将铁元素的丰度改为0.000035，电离能改为7.87，配分函数U-I改为24。
+
+在选择上，可以用`ELEMENT`的就不要用`NEWELE`了。
+
+元素表可以被增减；比如`NMT ( 5 )`只取元素表的前5个，`NMT ( 39 )`取整个元素表并且最后一行全为0。注意`NMT`不能大于50。如果不改变元素表行数的话可以省略这个语句。`NMT`语句要在part B，`ELEMENT`和`NEWELE`要在part D。
+
+如果要新加元素，建议用`NMT ( 39 )`加一行，再用`ELEMENT`语句加元素。只要表里没有`ELEMENT`中的元素并且有空行，程序就会添加新的元素；否则程序会停止。
+
+默认的元素为原子序数1-32, 37-40, 56加上$$ \mathrm{H_2} $$。
+
+在这里我们有两个丰度：AB和LAB。在计算上AB优先于LAB，即只要AB不为0，LAB就会跟据AB的值改变（不管有没有被指定）；只有当AB为0时AB才会根据LAB的值被算出来。同时如果AB小于0，则将AB和LAB都设为0。总之就是不要同时指定AB和LAB就好了。
+
+参数`FABD`可以将除氢氦外所有元素的AB同时扩大FABD倍。
+
+最终AB=0的元素将被排除。
+
+## PANDORA运行种类
+
+1. 氢的占据数更新
+2. 除了氢外的其他占据数更新
+3. 一般运行（应该是输出谱线的）
+4. 无离子运行
+5. 仅连续谱运行
+6. 仅输入运行
+
+第1、2和第3种的区别在于，在计算谱线和连续谱吸收的时候，我们需要各个元素原子(H, HeI, HeII, CI, SiI, AlI, MgI, FeI, NaI, CaI, OI)以位置/深度为自变量的数密度以及偏离系数。这两者可以为默认的LTE/LTE计算出来的值或者是输入量。而在每次运行结束后，程序会提供对应本次运行主元素（比如SiI）的新的数密度以及偏离系数，而它们可以在下次中用作输入参数。所以当`POPUP`打开时，PANDORA会将这些结果写到restart文件里面，这对应一次更新运行；而当`POPUP`关闭时则为一般运行。这些数据可以通过`SILPRNT`打印出来。参数`RUNTOPOP`比较重要，它应该指定了用哪些参数。
+
+第1种(?)无离子运行意味着PANDORA只将氢作为运行对象。这个时候会重新计算`Z`（几何深度）、`NH`（总的氢原子数密度）、`NE`（电子数密度）等；这些基本上是之后的运行所需要的。其他种类的运行并不会重新计算这些东西。
+
+第5种仅连续谱运行和实际情况相去甚远。第4种运行做的事情比第5种多，但是性质类似。
+
+第6种单纯检查输入参数是否足够以及正确。检查完，输出Phase0部分，就停下了。
+
+有几个参数控制程序为哪一种运行：
+- `JSTCN`控制是否进行“连续谱运行”：>0为连续谱运行，=0不是；具体数字可以控制输入参数，请参阅wup的86页。
+- `JSTIN`控制是否进行“仅输入运行”：>0为仅输入运行，=0不是
+- `NOION`控制是否进行“无离子运行”：=1为无离子运行，=0不是
+- `JSTCN`与`JSTIN`、`JSTCN`与`NOION`不可同时大于0
+
+另外的运行选项：
+- `ISCRS`：如果打开则占用很多内存
+
+这里提到的所有选项都为数字(`JSTCN`, `JSTIN`, `NOION`, `ISCRS`)，后边三个也可以分别用`JSTIN`, `DOION`, `ISCRS`选项来控制。
+
+## 运行
+
+把所有文件准备好之后，在同一个目录下运行`bin/pandora`就可以了；当然后面要加上一些参数，比如：
+
+`bin/pandora [options] <atm-model-name> <atom-name> <atom-n-levels> <run-id>`
+```
+    -inp   <input-dir>,       def.: .
+    -out   <output-dir>,      def.: .
+    -io    <dir>, equivalent to -inp <dir> -out <dir>
+    -stats <stats-dir>,       def.: stats
+    -atoms <atoms-dir>,       def.: atoms
+    -opac  <opacities-dir>,   def.: opacities
+    -bin   <executable-dir>,  def.: bin
+```
+
+`bin/pandora -io 1/ -atoms 1/ demo1 none '' 001 >& 1/demo1.log`
+
+`-io`指定文件所在的位置，`-atmos`指定原子模型文件所在的位置。后面接着的是主控制文件的名称(`demo1`)，pandora会在`-io`文件夹里面寻找`demo1.dat`。之后是本次运行的原子名称，虽然这里没有(`none`)但是一般可以是氢(`h`)、氦原子(`he1`)、硅(`si`)等；再后面是本次运行的原子的模型，为`l`加上能级数，如`l15`、`l13`等等，具体可查阅`atoms/`里面的文件名。再接着是本次运行的名字，如果不想每次重新运行都删文件的话改这个数字（或者字母）就可以了。最后将运行情况输出到指定的`.log`文件里。
+
+这部分wup里面没有明确说出来，但是我觉得应该是这样的。
+
+另外在准备文件里面也要写明本次运行的原子名称：比如`NAME ( HYDROGEN )`这样。
+
+## 输出
+
+主要的输出结果在`.aaa`文件里面。但是它太大了（如果输出多的话），所以一般会有`.aix`文件作为它的目录。只要是目录里面有的部分都可以用`bin/extract 'XXX' SPh.aaa.001 SPh.out.001`来提取，使得世界更美好。
+
+## 示例文件
+
+这里给出了7个示例，前4个有详细说明。
+
+- 示例一是单文件作为输入的第1种运行（氢的占据数更新）
+- 示例二和示例一是一样的，只不过用了多个输入文件
+- 示例三是示例二的重启运行
+- 示例四是从0开始的第3种运行
+
+### 示例一
+
+有几个地方是需要看看运行效果的：
+- "Plot of log10s of ST..."中$$ S(n) $$和$$ S $$应该要接近
+- 在RHO AND RBD中的"Consistency CHECKS"的数字如果接近1，则说明可以（但是不代表迭代完成了）
+- LEVEL 1 TO K中RK-1的"Old/New"数字应该靠近1
+- 最后的"Iterative Ratio"不应该有大的波动
+- NE不应该有大的波动（在哪里？）
+
+### 示例二
+
+`.dat`文件可以分为`.mod`, `.atm`, `.res`, `.dat`文件，对应wup361页示例一中提到四个Group。
+
+- `.atm`：原子/离子的模型数据
+- `.mod`：大气模型的数据
+- `.res`：`.rst`文件提供的数据以及Lyman计算
+- `.dat`：文件头、控制选项、文件结构(`GO`)
+
+具体内容其实没什么所谓，是用`USE`语句控制的。不过这么划分对批处理有好处。
+
+### 示例三
+
+示例三是示例二的重启运行（人类的本质是复读机，对吧）。这个时候示例二中提到的`.res`文件实际上就是输出的`.rst`文件。如果不改名字的话，可以先将旧的`.res`文件删掉，再将`.rst`改成`.res`。
