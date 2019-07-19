@@ -62,7 +62,8 @@ $$ S_l = \frac{2h\nu^3}{c^2} \frac{1}{e^{h\nu/kT}-1} = B_\nu(T) \tag{13.10} $$
 
 就比较简单了。
 
-LTE的东西当然比较好用，不过最近在华沙的一个Gaia Workshop里面Maria Bergermann把LTE批判了一番，说nLTE对于元素丰度确定来说很重要。
+[2018.9] LTE的东西当然比较好用，不过最近在华沙的一个Gaia Workshop里面Maria Bergermann把LTE批判了一番，说nLTE对于元素丰度确定来说很重要。<br>
+[2019.6] 天可怜见我现在也开始搞nLTE啦....
 
 #### nLTE下的源函数
 

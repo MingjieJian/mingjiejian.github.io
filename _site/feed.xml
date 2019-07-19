@@ -5,9 +5,206 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 13 Jun 2019 21:26:45 +0900</pubDate>
-    <lastBuildDate>Thu, 13 Jun 2019 21:26:45 +0900</lastBuildDate>
+    <pubDate>Fri, 19 Jul 2019 18:44:08 +0900</pubDate>
+    <lastBuildDate>Fri, 19 Jul 2019 18:44:08 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>利用星震学方法测量恒星的氦丰度</title>
+        <description>&lt;p&gt;这里作为星震学测量氦丰度方法的补充说明，估计会比较散。主要是看Verma+19得出的问题以及查询得到的答案。&lt;/p&gt;
+
+&lt;h2 id=&quot;原理&quot;&gt;原理&lt;/h2&gt;
+
+&lt;p&gt;恒星内部的温度是越来越高的，而温度高到一定程度之后就会将原子电离；比如说氢原子会逐渐被剥成质子和电子，氦原子(HeI)会变成&lt;script type=&quot;math/tex&quot;&gt;\mathrm{He^+}&lt;/script&gt;(HeII)和&lt;script type=&quot;math/tex&quot;&gt;\mathrm{He^++}&lt;/script&gt;(HeIII)。原子电离情况和温度的关系请参照OASP1, Fig. 1.10。在这里我们主要讨论恒星内部的情况，Kippenhahn的恒星结构与演化给出了电离情况与压强的关系：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-astero-he/01-ionization.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Kippenhahn 恒星结构与演化 Fig. 14.1&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;有趣的是当HeIII开始出现的时候&lt;script type=&quot;math/tex&quot;&gt;\Delta_\mathrm{ab}&lt;/script&gt;出现了一个dip；这里的&lt;script type=&quot;math/tex&quot;&gt;\Delta_\mathrm{ab} = \frac{P\delta}{T\rho c_P}&lt;/script&gt;，而电离情况的变化改变了&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;，使得&lt;script type=&quot;math/tex&quot;&gt;\Delta_\mathrm{ab}&lt;/script&gt;发生了变化。&lt;/p&gt;
+
+&lt;p&gt;不过这里我们的重点不在&lt;script type=&quot;math/tex&quot;&gt;\Delta_\mathrm{ab}&lt;/script&gt;，而在绝热指数&lt;script type=&quot;math/tex&quot;&gt;\Gamma_1 = \left( \frac{\partial \ln{P}}{\partial \ln{\rho}} \right)_s&lt;/script&gt;上，它和&lt;script type=&quot;math/tex&quot;&gt;\Delta_\mathrm{ab}&lt;/script&gt;有类似的行为：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-astero-he/02-gamma1.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Basu+04 Fig. 1&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;这个dip的深度和氦丰度&lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;是有关的，而且会对恒星的振动产生影响。具体的影响是这样的：原有的功率谱的峰的位置被稍微移动了一点，移动的频率&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta \nu_\mathrm{He} = A_\mathrm{He}\nu e^{-8\pi^2\Delta_\mathrm{He}^2\nu^2} \sin{(4\pi\tau_\mathrm{He}\nu + \psi_\mathrm{He})}&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;A_\mathrm{He}&lt;/script&gt;为&lt;script type=&quot;math/tex&quot;&gt;\Gamma_1&lt;/script&gt;峰的面积（和氦丰度有关）、&lt;script type=&quot;math/tex&quot;&gt;\Delta_\mathrm{He}&lt;/script&gt;为&lt;script type=&quot;math/tex&quot;&gt;\Gamma_1&lt;/script&gt;峰的宽度、&lt;script type=&quot;math/tex&quot;&gt;\tau_\mathrm{He} = \int_{r_m}^R \frac{1}{c} dr&lt;/script&gt;，为声学深度（&lt;script type=&quot;math/tex&quot;&gt;c&lt;/script&gt;为声速）。&lt;/p&gt;
+
+&lt;p&gt;所以只要画出了频率的偏移和频率的关系，再对它进行拟合，就可以得出氦丰度和HeIII区域开始的深度。可以用直接的&lt;script type=&quot;math/tex&quot;&gt;\delta \nu_\mathrm{He}&lt;/script&gt;或者second difference frequencies&lt;script type=&quot;math/tex&quot;&gt;\delta^2 \nu_{n,l} = \nu_{n+1,l} - 2\nu_{n,l} + \nu_{n-1,l}&lt;/script&gt;进行拟合，结果相差不大。&lt;/p&gt;
+
+&lt;p&gt;这两个频率差都会有一个长周期的量（大概是由其他原因引起的）、氦电离带来的项和对流层顶端带来的项，所以可以通过&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\delta^2 \nu_{n,l} &amp;= (a_1 + a_2\nu + \frac{a_3}{\nu^2}) + (b_1 + \frac{b_2}{\nu^2}) \sin{(4\pi\nu\tau_\mathrm{He}+ \phi_\mathrm{He})} + (c_1 + \frac{c_2}{\nu^2}) \sin{(4\pi\nu\tau_\mathrm{CZ}+ \phi_\mathrm{CZ})} \\
+&amp;= (a_1 + a_2\nu + a_3\nu^2) + (b_1 + \frac{\sin^2{(2\pi\nu\beta)}}{\nu\beta}) \sin{(4\pi\nu\tau_\mathrm{He}+ \phi_\mathrm{He})} + (c_1 + + c_2\nu + c_3\nu^2) \sin{(4\pi\nu\tau_\mathrm{CZ}+ \phi_\mathrm{CZ})}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;来拟合里面的各种系数。&lt;/p&gt;
+
+&lt;h2 id=&quot;对模型的拟合&quot;&gt;对模型的拟合&lt;/h2&gt;
+
+&lt;p&gt;最容易尝试的当然是造一个模型和星震数据然后拟合看看是什么样子的。&lt;/p&gt;
+
+&lt;h3 id=&quot;dwarf拟合结果&quot;&gt;dwarf拟合结果&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-astero-he/03-dwarf.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Basu+04 Fig. 2&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;要注意的是恒星的密度（也就是&lt;script type=&quot;math/tex&quot;&gt;M/R^3&lt;/script&gt;）对振动频率有scale，平均large frequency seperation对&lt;script type=&quot;math/tex&quot;&gt;\delta^2 \nu_{n,l}&lt;/script&gt;的振幅有影响，需要改正（详见Basu+04, Section 2）。我们可以建立平均振幅(&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+&lt;A_\nu&gt; = \frac{\int_{\nu_1}^{\nu_2} A_\mathrm{He}\nu e^{-8\pi^2\Delta_\mathrm{He}^2\nu^2} d\nu}{\int_{\nu_1}^{\nu_2}dv} %]]&gt;&lt;/script&gt;)和&lt;script type=&quot;math/tex&quot;&gt;\tau_\mathrm{He}&lt;/script&gt;与&lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;的关系：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-astero-he/04-Y-dwarf.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Basu+04 Fig. 3&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;这俩都和氦丰度以及恒星质量有关。加上之前和密度的scale关系，如果我们知道质量或者半径的其中一个，那么拟合会准确很多，因为我们可以通过星震学数据得到它们的比例。其他的参数对振幅影响不大。&lt;/p&gt;
+
+&lt;h3 id=&quot;giant拟合结果&quot;&gt;giant拟合结果&lt;/h3&gt;
+
+&lt;p&gt;巨星的拟合结果比矮星的要差，因为很多矮星的p模在巨星中是混合模，所以用不了，能拟合的点就少了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-astero-he/05-giant.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Basu+04 Fig. 9&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;同时平均振幅还受金属丰度Z的影响很大。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-astero-he/06-Y-giant.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Basu+04 Fig. 10&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;对巨星数据的拟合verma19&quot;&gt;对巨星数据的拟合(Verma+19)&lt;/h2&gt;
+
+&lt;p&gt;然后我们看看对数据的拟合是什么样子的。我们需要两个东西：类似于Basu+04 Fig. 10从模型中来的点以及关系、和实际测量的&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+&lt;A_\nu&gt; %]]&gt;&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;对于第一个，我们可以用不同的质量、氦丰度、金属丰度、对流长、diffusion等参数产生一系列模型，再通过别的信息或者星震学信息限制其他的参数以得到只随氦丰度变化的模型，然后建立关系。第二个就测就是了。&lt;/p&gt;
+
+&lt;p&gt;结果证明，当质量小的时候测到的模数少，质量大的时候模的宽度太大，质量限制不好，所以只有1.0-1.3个太阳质量的星是不错的。同时对流是有必要的，但是大质量恒星的对流模型不好，所以它们的结果没有非对流模型好。大概就是质量适中的或者初始/表面氦丰度差小的可以用对流模型，其他的用非对流模型或者干脆别用比较好。模型的话还是用同一个模型去测同一个scale下的丰度比较好。&lt;/p&gt;
+
+&lt;p&gt;Verma+19给出了38颗Kepler矮星的氦丰度。McKeever+19给出了大概20颗疏散星团巨星的氦丰度。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Jul 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/07/18/astero-he/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/18/astero-he/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>原子的光谱项</title>
+        <description>&lt;p&gt;这玩意我从本科开始就没怎么搞懂（这数字哪来的？LPS这些又是什么鬼东西？）；还以为做光谱只需要用到别人做好的表格（拿来主义hhh），结果还是要搞懂。不然别人问起为什么这是三重态那是单重态我都说不出来。&lt;/p&gt;
+
+&lt;h2 id=&quot;复习一下电子态&quot;&gt;复习一下：电子态&lt;/h2&gt;
+
+&lt;p&gt;光谱项是描述原子的标识。而原子之间的区别实际上只在于电子所处的能级不同，所以光谱项说白了还是电子量子数的反映。&lt;/p&gt;
+
+&lt;p&gt;我们只需要四个量子数来描述电子，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}, \boldsymbol{l}, \boldsymbol{m}, \boldsymbol{s} \in \mathbb{Z}&lt;/script&gt;；主量子数、角量子数、磁量子数和自选量子数。&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n} \in [0, ...]&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l} \in [0, ..., \boldsymbol{n}-1]&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{m} \in [-\boldsymbol{l}, ..., \boldsymbol{l}]&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{s} = \pm \frac{1}{2}&lt;/script&gt;。一个&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}&lt;/script&gt;叫一个壳层，一个&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l}&lt;/script&gt;叫一个轨道，一个壳层一共可以容纳&lt;script type=&quot;math/tex&quot;&gt;2n^2&lt;/script&gt;个电子。&lt;/p&gt;
+
+&lt;p&gt;麻烦的事情来了：我们用不同（但是会重复！）的字母来表示轨道和壳层。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;主量子数&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}&lt;/script&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;壳层名称&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;K&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;L&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;M&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;P&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;角量子数&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l}&lt;/script&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;0&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;轨道名称&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;s&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;p&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;d&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;f&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;g&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;h&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;i&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;轨道鸣名称的前几个还是有来头的，其他的我不知道是怎么来的；总之这些名字增加了记忆的难度，好在它们大小写不同以及后面只会用到轨道名称，所以记住spd是012就可以了。&lt;/p&gt;
+
+&lt;h2 id=&quot;电子组态&quot;&gt;电子组态&lt;/h2&gt;
+
+&lt;p&gt;原子里面可能不止有一个电子，那如何表示原子里面电子的状态呢？我们用电子组态来表示，也就是&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}&lt;/script&gt;加上轨道名称。&lt;/p&gt;
+
+&lt;p&gt;比如说处于基态的氢原子电子为&lt;script type=&quot;math/tex&quot;&gt;1s&lt;/script&gt;，被激发的氦原子可以为&lt;script type=&quot;math/tex&quot;&gt;1s3p&lt;/script&gt;，某个处于激发态的氧原子电子组态为&lt;script type=&quot;math/tex&quot;&gt;2s^22p^4&lt;/script&gt;；平方意味着有多少个电子处于这个态。我们能看出来电子组态只用了电子前两个量子数（我也不知道为什么不全部指明），所以一个电子组态有不止一种可能；比如&lt;script type=&quot;math/tex&quot;&gt;sp^2&lt;/script&gt;有15种可能。这些可能性由泡利不相容原理，能量最低原则和Hund定则决定（所以不是20个）。&lt;/p&gt;
+
+&lt;h2 id=&quot;原子光谱项&quot;&gt;原子光谱项&lt;/h2&gt;
+
+&lt;p&gt;只考虑LS耦合（因为研究的原子比较轻，原子序数小于40；如果重的话就要用jj耦合了），这个时候的好量子数是总轨道角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{L} = \sum{\boldsymbol{l}}_i&lt;/script&gt;、总自旋角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{S} = \sum{\boldsymbol{s}}_i&lt;/script&gt;和总角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{J} = \boldsymbol{L} + \boldsymbol{S}&lt;/script&gt;。
+所以只要给定了原子中每个电子的&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l}, \boldsymbol{s}&lt;/script&gt;，就可以将这三个值定下来了。
+前面两个都好说，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{S}&lt;/script&gt;的取值为&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{J} \in [\boldsymbol{L}+\boldsymbol{S}, ..., |\boldsymbol{L}-\boldsymbol{S}|]&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;有了这三个角动量量子数之后，我们就可以可以区分不同的原子状态了；定义如下的光谱支项：&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;^{2\boldsymbol{S}+1}L_\boldsymbol{J}&lt;/script&gt;,  &lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n} ^{2\boldsymbol{S}+1}L_\boldsymbol{J}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n} \boldsymbol{l}^x&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;^{2\boldsymbol{S}+1}L_\boldsymbol{J}&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;三种写法都有，信息量依次增大；当然只有后两种才能完全区分光谱项。因为在原子物理里面多数时候是讨论原子最外层电子的激发，还有一种写法是只写出被激发电子的电子态。把&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{J}&lt;/script&gt;省略掉的话就是光谱项了（求你写全好不好）。
+这里的&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;是角动量量子数&lt;strong&gt;对应的轨道名称&lt;/strong&gt;，也就是前面第二个表格的名称&lt;strong&gt;的大写&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;实际上光谱项就是我们在能级图上看到的一条条横线，也是我们这么大费周章搞出这个东西的原因。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.mdpi.com/atoms/atoms-04-00026/article_deploy/html/images/atoms-04-00026-g001.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;credit:&lt;a href=&quot;https://www.mdpi.com/2218-2004/4/4/26/htm&quot;&gt;here&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;就我关心的He &lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{S} \rightarrow 2^3\mathrm{P}&lt;/script&gt;跃迁来说，&lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{S}&lt;/script&gt;的三个量子数分别为0, 1, 0，所以只有一个态（单重态），但是&lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{P}&lt;/script&gt;可以有三个，&lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{P}_0, 2^3\mathrm{P}_1, 2^3\mathrm{P}_2&lt;/script&gt;，所以这个跃迁有三条靠得很近的线。&lt;/p&gt;
+
+&lt;p&gt;至于它们具体怎么分布，那就不是我的事情了；找到了一个不错的网站，可以查询很多原子的能级分布，&lt;a href=&quot;https://physics.nist.gov/PhysRefData/Handbook/element_name.htm&quot;&gt;在这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ref&quot;&gt;Ref&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;http://www.astro.sunysb.edu/fwalter/AST341/qn.html&lt;/li&gt;
+  &lt;li&gt;https://www.nist.gov/pml/handbook-basic-atomic-spectroscopic-data&lt;/li&gt;
+  &lt;li&gt;https://www.gemini.edu/sciops/instruments/nearir-resources/&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 19 Jun 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/06/19/spec-term/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/19/spec-term/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>快过程和慢过程</title>
@@ -112,7 +309,55 @@
     
       <item>
         <title>PANDORA使用记录</title>
-        <description>&lt;h2 id=&quot;fortran-编译器选择&quot;&gt;Fortran 编译器选择&lt;/h2&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#fortran-编译器选择&quot; id=&quot;markdown-toc-fortran-编译器选择&quot;&gt;Fortran 编译器选择&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#文件准备&quot; id=&quot;markdown-toc-文件准备&quot;&gt;文件准备&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#格式大坑&quot; id=&quot;markdown-toc-格式大坑&quot;&gt;格式大坑&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#元素数据输入wup-section-10&quot; id=&quot;markdown-toc-元素数据输入wup-section-10&quot;&gt;元素数据输入(WUP Section 10)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#原子结构文件以及原子数密度&quot; id=&quot;markdown-toc-原子结构文件以及原子数密度&quot;&gt;原子结构文件以及原子数密度&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#一般信息&quot; id=&quot;markdown-toc-一般信息&quot;&gt;一般信息&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#原子能级&quot; id=&quot;markdown-toc-原子能级&quot;&gt;原子能级&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#能级之间的跃迁&quot; id=&quot;markdown-toc-能级之间的跃迁&quot;&gt;能级之间的跃迁&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#致宽与mass-motion&quot; id=&quot;markdown-toc-致宽与mass-motion&quot;&gt;致宽与mass motion&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#选项选择&quot; id=&quot;markdown-toc-选项选择&quot;&gt;选项选择&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#需要注意的选项&quot; id=&quot;markdown-toc-需要注意的选项&quot;&gt;需要注意的选项&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#计算氢时需要注意的选项&quot; id=&quot;markdown-toc-计算氢时需要注意的选项&quot;&gt;计算氢时需要注意的选项&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#计算氦时需要注意的选项&quot; id=&quot;markdown-toc-计算氦时需要注意的选项&quot;&gt;计算氦时需要注意的选项&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#其他需要注意的选项&quot; id=&quot;markdown-toc-其他需要注意的选项&quot;&gt;其他需要注意的选项&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#pandora运行种类&quot; id=&quot;markdown-toc-pandora运行种类&quot;&gt;PANDORA运行种类&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#平面平行层大气与球面大气&quot; id=&quot;markdown-toc-平面平行层大气与球面大气&quot;&gt;平面平行层大气与球面大气&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#运行&quot; id=&quot;markdown-toc-运行&quot;&gt;运行&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#输出&quot; id=&quot;markdown-toc-输出&quot;&gt;输出&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#错误处理&quot; id=&quot;markdown-toc-错误处理&quot;&gt;错误处理&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#迭代中的错误处理&quot; id=&quot;markdown-toc-迭代中的错误处理&quot;&gt;迭代中的错误处理&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#输出结果阅读理解&quot; id=&quot;markdown-toc-输出结果阅读理解&quot;&gt;输出结果阅读理解&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#options&quot; id=&quot;markdown-toc-options&quot;&gt;OPTIONS&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tables&quot; id=&quot;markdown-toc-tables&quot;&gt;TABLES&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#iterates&quot; id=&quot;markdown-toc-iterates&quot;&gt;ITERATES&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#示例文件&quot; id=&quot;markdown-toc-示例文件&quot;&gt;示例文件&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#示例一&quot; id=&quot;markdown-toc-示例一&quot;&gt;示例一&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#示例二&quot; id=&quot;markdown-toc-示例二&quot;&gt;示例二&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#示例三&quot; id=&quot;markdown-toc-示例三&quot;&gt;示例三&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#示例四&quot; id=&quot;markdown-toc-示例四&quot;&gt;示例四&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fortran-编译器选择&quot;&gt;Fortran 编译器选择&lt;/h2&gt;
 
 &lt;p&gt;可以从pgfortran、ifort和pgf77中选一个。我选的是ifort；关于ifort的安装可以参照&lt;a href=&quot;https://www.jianshu.com/p/c6fec68966f7&quot;&gt;这里&lt;/a&gt;。实际上安装的是Intel® Parallel Studio XE Cluster Edition for Linux*里面的Fortran编译器。装之前或者之后记得将这些32位的包装上：&lt;/p&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install ia32-libs
@@ -135,9 +380,67 @@ apt-get install g++-multilib
   &lt;li&gt;可以将输入放在别的文件里面，用&lt;code class=&quot;highlighter-rouge&quot;&gt;USE (ATOM/MODEL/RESTART/INPUT/GENERAL)&lt;/code&gt;跑到对应文件(&lt;code class=&quot;highlighter-rouge&quot;&gt;.atm&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.mod&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;)那里去读取；在对应文件中使用&lt;code class=&quot;highlighter-rouge&quot;&gt;USE (INPUT)&lt;/code&gt;退回到主控制文件；下一次对于该辅助文件的的读取将会在该位置继续进行。如果定义了&lt;code class=&quot;highlighter-rouge&quot;&gt;FILE ( 0 FILESPEC )&lt;/code&gt;（wup105页），则&lt;code class=&quot;highlighter-rouge&quot;&gt;USE (GENERAL)&lt;/code&gt;会去那个文件那里读。&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;除了这几个部分之外，我们还有几个Group（组）：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;恒星大气模型&lt;/li&gt;
+  &lt;li&gt;原子/离子模型&lt;/li&gt;
+  &lt;li&gt;能级/跃迁相关的重启数据&lt;/li&gt;
+  &lt;li&gt;与运行相关的数字和控制选项&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;第1、第2组数据必须提供；从0开始的运行的话第3组可以不提供；第4组基本上不用提供。&lt;/p&gt;
+
+&lt;h3 id=&quot;格式大坑&quot;&gt;格式大坑&lt;/h3&gt;
+
+&lt;p&gt;在写&lt;code class=&quot;highlighter-rouge&quot;&gt;Z&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;TE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;NH&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;NE&lt;/code&gt;等比较大的表格的时候需要按如下格式写：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Z  ( &amp;gt;
+-8.53000000E+05 -6.53000000E+05 -4.66000000E+05 -2.25000000E+05  0.00000000E+00
+) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;不可以写成一行！虽然我也不知道为什么但是写成一行的话log文件会报类似这样的错：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 2019-Jun-20 20:18:24  #                Read input, part 2              
+ Current contents of the caller stack:
+   1 YARTY                           
+   2  TRENT                           
+   3   TAY                             
+   4    BUSY                            
+   5     NADINE                          
+   6      VANILLA                         
+   7       MOCHA                           
+   8        BASIL                           
+   9         ARRAN                           
+  10          ABORT                           
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后aaa文件的&lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT NOTES&lt;/code&gt;会有这样的错误提示：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; Error reading FLTPT array: Z       
+
+ List of valid control fields:
+
+              R         r         I         i         S         s         M         m         F         f
+       )       
+
+ Current input field: &quot;Z       &quot;
+
+
+
+         10        20        30        40        50        60        70        80
+ ....-....+....-....+....-....+....-....+....-....+....-....+....-....+....-....+
+ TE (  &amp;gt;                                                                         
+   *
+
+ Unrecognizable control field. See list above.               
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;并在&lt;code class=&quot;highlighter-rouge&quot;&gt;CONSTRAIN&lt;/code&gt;之后停下来。&lt;/p&gt;
+
 &lt;h3 id=&quot;元素数据输入wup-section-10&quot;&gt;元素数据输入(WUP Section 10)&lt;/h3&gt;
 
-&lt;p&gt;需要有元素才能计算电子密度等量。程序中有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;NMT&lt;/code&gt;行（就是有多少种元素，默认为38）9列的一个表。9列的内容分别为：元素符号(M)、原子序数(atno)、相对氢的丰度(AB)，电离能(CHI)，配分方程U-I和U-II(UI, UII)，以氢为12的对数丰度(LAB)，对数丰度的默认值(DEF)，表示默认值ref的整数(k)。当然并不是所有的内容都要手动指名。&lt;/p&gt;
+&lt;p&gt;需要有元素才能计算电子密度等量。程序中有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;NMT&lt;/code&gt;行（就是有多少种元素，默认为38）9列的一个表。9列的内容分别为：元素符号(M)、原子序数(atno)、相对氢的丰度(AB)，电离能(CHI)，配分方程U-I和U-II(UI, UII)，以氢为12的对数丰度(LAB)，对数丰度的默认值(DEF)，表示默认值ref的整数(k)。当然并不是所有的内容都要手动指明。&lt;/p&gt;
 
 &lt;p&gt;和默认值不一样的数据需要手动输入；如果是默认表里没有的元素需要用&lt;code class=&quot;highlighter-rouge&quot;&gt;NEWELE&lt;/code&gt;命令：&lt;/p&gt;
 
@@ -153,7 +456,7 @@ apt-get install g++-multilib
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ELEMENT ( FE AB 3.5E-5 CHI 7.87 UI 24 )&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;会将铁元素的丰度改为0.000035，电离能改为7.87，配分函数U-I改为24。&lt;/p&gt;
+&lt;p&gt;会将铁元素的丰度改为0.000035，电离能改为7.87，配分函数U-I改为24。如果有离子的话（比如HeI和HeII）记得一起都改，要不然程序会报错。&lt;/p&gt;
 
 &lt;p&gt;在选择上，可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;ELEMENT&lt;/code&gt;的就不要用&lt;code class=&quot;highlighter-rouge&quot;&gt;NEWELE&lt;/code&gt;了。&lt;/p&gt;
 
@@ -168,6 +471,722 @@ apt-get install g++-multilib
 &lt;p&gt;参数&lt;code class=&quot;highlighter-rouge&quot;&gt;FABD&lt;/code&gt;可以将除氢氦外所有元素的AB同时扩大FABD倍。&lt;/p&gt;
 
 &lt;p&gt;最终AB=0的元素将被排除。&lt;/p&gt;
+
+&lt;h3 id=&quot;原子结构文件以及原子数密度&quot;&gt;原子结构文件以及原子数密度&lt;/h3&gt;
+
+&lt;p&gt;只需要提供主运行原子的原子结构文件，可以在&lt;code class=&quot;highlighter-rouge&quot;&gt;atom/&lt;/code&gt;文件夹里面找，或者自己写。原子数密度也是需要的，而且和主运行原子不同，我们考虑多少原子就要多少原子的数密度；这个可以由从0开始的PANDORA计算得出。&lt;/p&gt;
+
+&lt;h4 id=&quot;一般信息&quot;&gt;一般信息&lt;/h4&gt;
+
+&lt;p&gt;原子结构文件包含：原子的能级、连续谱、能级的性质、原子能级之间的跃迁性质以及原子能级-连续谱之间的跃迁性质。&lt;/p&gt;
+
+&lt;h5 id=&quot;原子能级&quot;&gt;原子能级&lt;/h5&gt;
+
+&lt;p&gt;原子能级的数量为&lt;code class=&quot;highlighter-rouge&quot;&gt;NL&lt;/code&gt;，必须大于等于2。能级的量子数&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;l&lt;/script&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;NLPAIR&lt;/code&gt;中指定（这意味着&lt;code class=&quot;highlighter-rouge&quot;&gt;NLPAIR&lt;/code&gt;的长度为&lt;script type=&quot;math/tex&quot;&gt;\mathrm{NL}\times 2&lt;/script&gt;）。某能级的角量子数&lt;script type=&quot;math/tex&quot;&gt;l_i&lt;/script&gt;可以为-1，这个时候这个能级代表着将主量子数为&lt;script type=&quot;math/tex&quot;&gt;n_i&lt;/script&gt;的所有能级合并在一起的一个合成能级；此时&lt;script type=&quot;math/tex&quot;&gt;n_i&lt;/script&gt;必须大于0。氢原子的默认能级就是&lt;script type=&quot;math/tex&quot;&gt;n_i = i, l_i = -1&lt;/script&gt;。在具体的各个原子能级文件中应该都细化了&lt;script type=&quot;math/tex&quot;&gt;l&lt;/script&gt;值。&lt;/p&gt;
+
+&lt;p&gt;实际运行下来的感觉是，&lt;code class=&quot;highlighter-rouge&quot;&gt;NLPAIR&lt;/code&gt;中的数字应该只起到标示的作用，&lt;code class=&quot;highlighter-rouge&quot;&gt;/atom&lt;/code&gt;里面的&lt;code class=&quot;highlighter-rouge&quot;&gt;NLPAIR&lt;/code&gt;基本上都和内置的能级没有关系；实际上还是按照内置的能级来填写各个参数的。&lt;code class=&quot;highlighter-rouge&quot;&gt;RUNTOPOP&lt;/code&gt;标明了设定能级和内置能级的对应关系，写出来的12345是内置能级名称，这个数组的位置（坑）是设定能级的名称。&lt;/p&gt;
+
+&lt;p&gt;在多重线的情况下，只需指定其中一条，然后在后面用blend line等参数分裂成几条即可：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LDL 4 2 ( 3 ) &amp;gt;
+DDL 4 2 ( -1.249 -.0898 0. ) &amp;gt;
+CDL 4 2 ( .1111 .3333 .5556 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果碰撞电离系数&lt;code class=&quot;highlighter-rouge&quot;&gt;CI&lt;/code&gt;为默认的话，需要指定每个能级的电子数（这是啥？）&lt;code class=&quot;highlighter-rouge&quot;&gt;QNL&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NU&lt;/code&gt;指定了每个能级的能量，以频率&lt;script type=&quot;math/tex&quot;&gt;10^15 \mathrm{Hz}&lt;/script&gt;作为单位。能量的0点在第一个输入的能级&lt;script type=&quot;math/tex&quot;&gt;\mathrm{NU}^1&lt;/script&gt;处。类似地，&lt;code class=&quot;highlighter-rouge&quot;&gt;NUK&lt;/code&gt;是联系普的能量。&lt;/p&gt;
+
+&lt;p&gt;其他需要的参数为：&lt;code class=&quot;highlighter-rouge&quot;&gt;P&lt;/code&gt;，统计权重；&lt;code class=&quot;highlighter-rouge&quot;&gt;CP&lt;/code&gt;：光致电离截面；&lt;code class=&quot;highlighter-rouge&quot;&gt;ELSYM&lt;/code&gt;，元素符号；以及&lt;code class=&quot;highlighter-rouge&quot;&gt;IONSTAGE&lt;/code&gt;，目标原子电离能级（比如目标是HeI那就是1）。&lt;/p&gt;
+
+&lt;h5 id=&quot;能级之间的跃迁&quot;&gt;能级之间的跃迁&lt;/h5&gt;
+
+&lt;h3 id=&quot;致宽与mass-motion&quot;&gt;致宽与mass motion&lt;/h3&gt;
+
+&lt;h2 id=&quot;选项选择&quot;&gt;选项选择&lt;/h2&gt;
+
+&lt;p&gt;这里先仅介绍&lt;code class=&quot;highlighter-rouge&quot;&gt;CALCULATION&lt;/code&gt;部分的选项、它们的默认值以及建议开启的情况。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;default&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Comment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;346 ALLCICE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compute complete set of CI and CE samples.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;由程序控制吧；有的时候没有出现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;219 AMDIFF&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Include ambipolar diffusion.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;在计算氢/氦时建议开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;272 AMDN1&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use “special N1-calculation” for ambipolar diffusion, (used only if AMDIFF=ON) (NOT to be turned off).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;只有当&lt;code class=&quot;highlighter-rouge&quot;&gt;AMDIFF&lt;/code&gt;开启时才有用，永不关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;303 AVCON&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate the average of the continuum intensities I/Hz.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;307 AVELOP&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use Averaged Line Opacity.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;245 BDCALC&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Departure Coefficients calculated from all level equations, rather than from the continuum equation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;在计算氢/氦时建议开启。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;161 BEDIT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit calculated departure coefficients, to prevent negative CSF values.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;271 BSMOOTH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Do sequential smoothing of departure coefficients.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;在计算氢时建议开启。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;133 CALCOOL &lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate net cooling rates.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;我认为对计算结果无影响。有需要看数据时建议开启。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;231 CALHEAT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate net heating rates.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;我认为对计算结果无影响。有需要看数据时建议开启。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;328 CEFACTS&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use and update CE-enhancement factors when possible and needed.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;330 CHEXLO&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use lower-level charge exchange.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;333 CHEXLOL&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use LTE hydrogen number densities in lower-level charge exchange calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;331 CHEXUP&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use upper-level charge exchange.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;339 CLNORM&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compute H Lyman lines normalizing factors (see also option ULNORM).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;305 COCLIPSE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Do Continuum Eclipse calculations for CO-lines wavelengths.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;84 COLTEMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Color Temperatures.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;80 CONFLUX&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Continuum Flux.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;有需要时开启。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;225 COOLCO&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate CO-lines cooling rate.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;194 COOLCOM&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Composite Lines cooling rate (only if only one band).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;140 COOLINT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate integrated net cooling and heating rates.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;196 COOLXRAY&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate X-rays cooling rate.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;184 CPSW&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Adjust total Hydrogen density to give constant pressure, (used only if HSE=OFF).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;46 CSF&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use computed Continuum Source Function when calculating Line Source function.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;166 CSFB&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;In line source function calculation: set BC = min(CSF, B), (if =OFF then BC = CSF); (used only if CSF=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;14 CSWITCH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*OFF&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use level-1 TR in calculation of Stimulated Emission factors for BC; (if =OFF then use TE).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;233 DOION&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Do all the normal calculations related to the ion-of-the-run.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;266 DSMOOTH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Do sequential smoothing in diffusion calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;与diffsuion有关，在计算氢/氦时开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;212 DUSTEMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate new Type-2 Dust Temperature table; (used only if DUSTYPE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;99 DUSTYPE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use Type-2 method to calculate dust opacity.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;6 ECLIPSE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Continuum Eclipse Intensity (for negative “Additional Wavelengths” only).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;不明，可能需要和WAVES配合使用；一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;208 EMERBACK&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Intensity and Flux emerging from back face of finite atmosphere.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;对氦线可能有用，不过与外部光源不一样；demo中没有开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;55 EMERINT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate emergent continuous intensities.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;氢氦时开启，应该对计算贡献函数有用&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;38 ENHANCE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use R**2 enhancement factor in the calculation of emergent intensities; (will be switched OFF if SPHERE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;71 ENL&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit negative values out of EP1, by interpolation using neighboring values.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;72 ENL2&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit negative values out of EP1, by shifting the whole set of values.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;122 EPSNEDC&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit out negative values of “Lyman” EP1, when the “CHAIN” method (i.e. METEP=3) is used.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;185 EPSW&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Replace any Source Function Epsilons less than -0.9999 by -0.9999.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;169 EXPAND&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;This run is for an expanding atmosphere.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;重要；大气有运动的时候需要打开&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;178 FELE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate rates due to fast electrons.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;存疑；一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;177 FELEC&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use results of fast electrons calculation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;存疑；一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;49 FINITE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;In this calculation the medium is of finite extent.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;335 FLWBROAD&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compute flow-broadened profiles.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;60 GDS&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use geometrical dilution terms; (will be switched OFF if SPHERE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;244 GNVCALC&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Determine the diffusion term GNV-1 from the non-local N-1 calculation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;332 GTNSMTH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smooth STIM when calculating GTN(u,l).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;275 GTNSTIM&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use departure coefficients, instead of number densities, in STIM for GTN(u,l).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;273 HBROAD&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;In a Hydrogen run, include collisional broadening for transitions above level 5.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;281 HEABD&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate depth dependence of helium abundance (used only if AMDIFF=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭，但可能有用&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;230 HENORM&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Renormalize helium number densities in the diffusion calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;存疑；默认即可？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;68 HMS&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate a non-LTE H- source function.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;氢时可开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;16 HSE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate hydrostatic equilibrium; (will be switched OFF if SPHERE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;氢时可开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;270 HSEV&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Include expansion velocity in the hydrostatic equilibrium equation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;61 ILRT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Incident Line Radiation term, (used only if INCIDNT=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;78 INBED&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit negative values out of initial values of BD-ratios, (used only if RHOFUDGE=OFF).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;51 INCIDNT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*OFF&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;The external radiation field is incident upon the back face of the finite medium; (unless INCIFRONT=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;加外部光源的时候有用，一般和INCIFRNT一起&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;141 INCIFRNT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Radiation incident upon the front face of the medium, finite or semi-infinite (used only if INCIDNT=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;加外部光源的时候有用&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;312 IRHWED&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit input values of RHOWT.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;237 JBDNC&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bypass the comparative calculation of b-ratios that are not used.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;9 LIGHT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Line spectra.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;313 LINECOMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compare results from line source function and composite line calculations (see also LINECDMP).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;33 LTE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate LTE line intensity and flux profiles.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭；可能在计算光球层线的时候有用？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;13 LYMAN&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Calculate Level-N-to-Continuum (“Lyman”) transfer.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;存疑；氢时可开启？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;54 MONOTAU&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Force the calculated TAU values to increase monotonically.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;306 NEDIT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit number densities (for positive source functions).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;56 NESWICH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compute NE in detail, (if OFF then set NE = NP).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;35 NHADJ&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Adjust recomputed total hydrogen density so that TAU5000 = 1 at Z = 0, (used only if HSE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启；重要，确定了Z与&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;的关系&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;319 NRSMOOTH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smooth the nl/n1 ratios in the diffusion calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;262 OPANEG&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit negative line opacity only to keep total opacity positive.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;344 OPTHINL&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use the optically-thin-limit approximation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;135 ORT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;The internal radiation travels in the outward direction only.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;165 PARTVAR&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Let Partition Functions vary with depth.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;5 PHASE2&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Spectrum calculations, and spectrum summary analyses.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;158 POPBSW&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Set higher departure coefficients of population ions equal to highest computed non-LTE values.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;337 PRDMETH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use the Hubeny-Lites, instead of the Kneer-Heasley, formulation for PRD.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;79 PTN&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit negative values out of integrands used to compute TAU.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;168 QSFEDIT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit QSF (i.e. P.R.D. modified source function).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;50 REFLECT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*OFF&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;The finite medium is symmetric about the last specified depth, (used only if FINITE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;150 RHEDIT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit calculated net radiative bracket.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;氢氦时开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;106 RHOFUDGE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Fudge RHO values as necessary, to obtain acceptable values from the BD-ratio calculation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;204 RHOWOPT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use “Artificial TAU” in RHO/W calculation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;334 RKINCR&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Enhance RK artificially (factors RKMULT).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;147 RSMOOTH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Do sequential smoothing of RHO values.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;氢氦时开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;62 RSQUARE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Let the Dilution Factor vary with depth.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;263 SDIRECT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Replace negative line source function values in “DIRECT” calculations by interpolated values.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;149 SEDIT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Edit calculated line source function.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;145 SEDITIF&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Remove negatives from frequency-dependent line source functions used for intensity and flux profiles.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;83 SLYR&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smooth out the computed “Lyman” RK1 values.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;氢氦时关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;172 SNUSHFT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Apply frequency shift to P.R.D. Snu used in emergent line profile calculation.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;31 SPHERE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use spherical coordinates for source function calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;重要；控制模型几何性质&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;156 SPHETAU&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compute TAU(ray) by quadratic integration, (if =OFF then use trapezoidal rule); (used only if SPHERE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;8 SPHOUT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use spherical coordinates to calculate Line and Continuum fluxes; (will be switched ON if SPHERE=ON).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;会随着SPHERE开关，不用自己控制&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;310 SSMOOTH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Do sequential smoothing for S-from-number densities.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;存疑；多数时候关闭？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;304 STKWATT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Attenuate Hydrogen Stark components outside the Doppler core at each depth.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;存疑；默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;163 TANG&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Include the ray tangent to each depth in angle integrations for spherical coordinates, (used only if NTAN=1).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;299 TRUECONT&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compute line-free continuum as needed for exhibiting residual line profiles.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;340 ULNORM&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use H Lyman lines normalizing factors (see also option CLNORM).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认开启&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;154 USENCJ&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Compute Jnu directly, rather than from source function.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;53 USETRIN&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use the specified input values of TR to calculate RK and RL.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;取决于具体情况；一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;321 USETSM&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Eliminate TAU less than TSM from emergent intensity and from continuum JNU calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;221 VELGRAD&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Include velocity gradient terms in statistical equilibrium calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;265 VELS&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use calculated diffusion velocity in source function calculations.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;214 VESCAPE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use Voigt expression for the escape probability.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;173 VSWITCH&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use two broadening velocities, (if =OFF then use a single broadening velocity).&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;124 WATESTE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use logarithmic style of weighting for “Lyman” EP1,EP2.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认打开&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;123 WATESTR&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*on&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Use logarithmic style of weighting for RHO.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;默认打开&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;326 ZCOMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;*off&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;When mass is prescribed, adjust Z so that computed mass matches input mass table.&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;一般关闭&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;需要注意的选项&quot;&gt;需要注意的选项&lt;/h3&gt;
+
+&lt;h4 id=&quot;计算氢时需要注意的选项&quot;&gt;计算氢时需要注意的选项&lt;/h4&gt;
+
+&lt;p&gt;开：&lt;code class=&quot;highlighter-rouge&quot;&gt;AMDIFF, BDCALC, BSMOOTH, DSMOOTH, EMERINT, HMS, HSE (SPHERE打开时关闭), RHEDIT, RSMOOTH&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;关：&lt;code class=&quot;highlighter-rouge&quot;&gt;SLYR&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;打开&lt;code class=&quot;highlighter-rouge&quot;&gt;AMDIFF, HSE&lt;/code&gt;时可能需要指定其他参数，否则会报错；&lt;code class=&quot;highlighter-rouge&quot;&gt;BDCALC, EMERINT, RHEDIT&lt;/code&gt;打开之后谱线形状不错；所有带&lt;code class=&quot;highlighter-rouge&quot;&gt;SMOOTH&lt;/code&gt;的参数打开之后会报错。&lt;/p&gt;
+
+&lt;h4 id=&quot;计算氦时需要注意的选项&quot;&gt;计算氦时需要注意的选项&lt;/h4&gt;
+
+&lt;p&gt;开：&lt;code class=&quot;highlighter-rouge&quot;&gt;AMDIFF, BDCALC, DSMOOTH, EMERINT, RHEDIT, RSMOOTH&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;关：&lt;code class=&quot;highlighter-rouge&quot;&gt;SLYR&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;实验证明球面下打开以及关闭上述选项对He 10830线没有影响。&lt;/p&gt;
+
+&lt;h4 id=&quot;其他需要注意的选项&quot;&gt;其他需要注意的选项&lt;/h4&gt;
+
+&lt;p&gt;CONFLUX：有需要时开启。
+EXPAND：大气速度
+INCIDNT, INCIFRNT：外部光源
+SPHERE：平面平行层或球面
+RHEDIT：打开它的话需要指定另外的变量，暂不知道&lt;/p&gt;
 
 &lt;h2 id=&quot;pandora运行种类&quot;&gt;PANDORA运行种类&lt;/h2&gt;
 
@@ -203,6 +1222,10 @@ apt-get install g++-multilib
 
 &lt;p&gt;这里提到的所有选项都为数字(&lt;code class=&quot;highlighter-rouge&quot;&gt;JSTCN&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;JSTIN&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;NOION&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ISCRS&lt;/code&gt;)，后边三个也可以分别用&lt;code class=&quot;highlighter-rouge&quot;&gt;JSTIN&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DOION&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ISCRS&lt;/code&gt;选项来控制。&lt;/p&gt;
 
+&lt;h2 id=&quot;平面平行层大气与球面大气&quot;&gt;平面平行层大气与球面大气&lt;/h2&gt;
+
+&lt;p&gt;如果用球面大气的话需要打开&lt;code class=&quot;highlighter-rouge&quot;&gt;DO ( SPHERE )&lt;/code&gt;，并且需要指定&lt;code class=&quot;highlighter-rouge&quot;&gt;R1N&lt;/code&gt;.暂时不知道为什么要加上R1N.&lt;/p&gt;
+
 &lt;h2 id=&quot;运行&quot;&gt;运行&lt;/h2&gt;
 
 &lt;p&gt;把所有文件准备好之后，在同一个目录下运行&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/pandora&lt;/code&gt;就可以了；当然后面要加上一些参数，比如：&lt;/p&gt;
@@ -217,9 +1240,9 @@ apt-get install g++-multilib
     -bin   &amp;lt;executable-dir&amp;gt;,  def.: bin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/pandora -io 1/ -atoms 1/ demo1 none '' 001 &amp;gt;&amp;amp; 1/demo1.log&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/pandora -io 2/ -atoms 2/ demo2 h    l3 001 &amp;gt;&amp;amp; 2/demo2.log&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-io&lt;/code&gt;指定文件所在的位置，&lt;code class=&quot;highlighter-rouge&quot;&gt;-atmos&lt;/code&gt;指定原子模型文件所在的位置。后面接着的是主控制文件的名称(&lt;code class=&quot;highlighter-rouge&quot;&gt;demo1&lt;/code&gt;)，pandora会在&lt;code class=&quot;highlighter-rouge&quot;&gt;-io&lt;/code&gt;文件夹里面寻找&lt;code class=&quot;highlighter-rouge&quot;&gt;demo1.dat&lt;/code&gt;。之后是本次运行的原子名称，虽然这里没有(&lt;code class=&quot;highlighter-rouge&quot;&gt;none&lt;/code&gt;)但是一般可以是氢(&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;)、氦原子(&lt;code class=&quot;highlighter-rouge&quot;&gt;he1&lt;/code&gt;)、硅(&lt;code class=&quot;highlighter-rouge&quot;&gt;si&lt;/code&gt;)等；再后面是本次运行的原子的模型，为&lt;code class=&quot;highlighter-rouge&quot;&gt;l&lt;/code&gt;加上能级数，如&lt;code class=&quot;highlighter-rouge&quot;&gt;l15&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;l13&lt;/code&gt;等等，具体可查阅&lt;code class=&quot;highlighter-rouge&quot;&gt;atoms/&lt;/code&gt;里面的文件名。再接着是本次运行的名字，如果不想每次重新运行都删文件的话改这个数字（或者字母）就可以了。最后将运行情况输出到指定的&lt;code class=&quot;highlighter-rouge&quot;&gt;.log&lt;/code&gt;文件里。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-io&lt;/code&gt;指定文件所在的位置，&lt;code class=&quot;highlighter-rouge&quot;&gt;-atmos&lt;/code&gt;指定原子模型文件所在的位置。后面接着的是主控制文件的名称(&lt;code class=&quot;highlighter-rouge&quot;&gt;demo1&lt;/code&gt;)，pandora会在&lt;code class=&quot;highlighter-rouge&quot;&gt;-io&lt;/code&gt;文件夹里面寻找&lt;code class=&quot;highlighter-rouge&quot;&gt;demo1.dat&lt;/code&gt;。之后是本次运行的原子名称，虽然这里没有(&lt;code class=&quot;highlighter-rouge&quot;&gt;none&lt;/code&gt;)但是一般可以是氢(&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;)、氦原子(&lt;code class=&quot;highlighter-rouge&quot;&gt;he1&lt;/code&gt;)、硅(&lt;code class=&quot;highlighter-rouge&quot;&gt;si&lt;/code&gt;)等；为了避免理解偏差我建议通通写明运行原子名称。再后面是本次运行的原子的模型，为&lt;code class=&quot;highlighter-rouge&quot;&gt;l&lt;/code&gt;加上能级数，如&lt;code class=&quot;highlighter-rouge&quot;&gt;l15&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;l13&lt;/code&gt;等等，具体可查阅&lt;code class=&quot;highlighter-rouge&quot;&gt;atoms/&lt;/code&gt;里面的文件名；要注意原子结构文件名是&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;atom-name&amp;gt;&amp;lt;atom-n-levels&amp;gt;&lt;/code&gt;，在写命令的时候要对应。再接着是本次运行的名字，如果不想每次重新运行都删文件的话改这个数字（或者字母）就可以了。最后将运行情况输出到指定的&lt;code class=&quot;highlighter-rouge&quot;&gt;.log&lt;/code&gt;文件里。&lt;/p&gt;
 
 &lt;p&gt;这部分wup里面没有明确说出来，但是我觉得应该是这样的。&lt;/p&gt;
 
@@ -228,6 +1251,52 @@ apt-get install g++-multilib
 &lt;h2 id=&quot;输出&quot;&gt;输出&lt;/h2&gt;
 
 &lt;p&gt;主要的输出结果在&lt;code class=&quot;highlighter-rouge&quot;&gt;.aaa&lt;/code&gt;文件里面。但是它太大了（如果输出多的话），所以一般会有&lt;code class=&quot;highlighter-rouge&quot;&gt;.aix&lt;/code&gt;文件作为它的目录。只要是目录里面有的部分都可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/extract 'XXX' SPh.aaa.001 SPh.out.001&lt;/code&gt;来提取，使得世界更美好。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出提取&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/extract 'LINE (5/1)' SPh.aaa.001 SPh.line_5-1.out.001&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;PANDORA有自带的输出部分提取程序（作者也知道输出文件巨长…..），看了上面的例子就懂了。提取的部分名称可以到&lt;code class=&quot;highlighter-rouge&quot;&gt;.aix&lt;/code&gt;文件里面去看，它相当于一个目录。&lt;code class=&quot;highlighter-rouge&quot;&gt;.aix&lt;/code&gt;文件的第一列是一个各个部分的唯一标识码（如&lt;code class=&quot;highlighter-rouge&quot;&gt;PSN144705&lt;/code&gt;），可以通过这个码来提取各个部分。&lt;/p&gt;
+
+&lt;h2 id=&quot;错误处理&quot;&gt;错误处理&lt;/h2&gt;
+
+&lt;p&gt;我不会告诉你我是突然间顿悟这个东西的…..&lt;/p&gt;
+
+&lt;p&gt;还记得在格式大坑里面我提到的log文件中报的错误么？从1到10有一堆不明所以的名字。那其实是用来在aaa文件里面定位错误的，在&lt;code class=&quot;highlighter-rouge&quot;&gt;ABORT&lt;/code&gt;上一行的名字就是aaa文件中报错的地方，复制然后到aaa文件中去找就好了。&lt;/p&gt;
+
+&lt;h3 id=&quot;迭代中的错误处理&quot;&gt;迭代中的错误处理&lt;/h3&gt;
+
+&lt;p&gt;如果pandora能够运行，但是跑着跑着停了，在terminal中&lt;code class=&quot;highlighter-rouge&quot;&gt;ABORT: run stopped because of an error.&lt;/code&gt;以及在aaa文件中的ITERATION后面有一大堆这样的错误：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$%&amp;amp;:     MOTOR               Message
+-------------------------------------------------------------------------------------------------------------------------------
+
+Matrix inversion failed:                     Script-M matrix for CSF, lambda =  1.250000000000E+02 (SUB  0, OVR  1)          
+
+%&amp;amp;$:     MOTOR               End of Output                                     ................................................
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;就意味着有某个或者某些需要指定的变量未指定，需要看看是哪个；具体是哪个我也不知道hhhh。&lt;/p&gt;
+
+&lt;h2 id=&quot;输出结果阅读理解&quot;&gt;输出结果阅读理解&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/lookat.x&lt;/code&gt;提供了一个在命令行里面阅读的程序，里面有解释；不过这都是老黄历的东西了，还是用extract出来用编辑器看方便。&lt;/p&gt;
+
+&lt;p&gt;这里就顺着&lt;code class=&quot;highlighter-rouge&quot;&gt;.aix&lt;/code&gt;文件提供的目录去看看输出文件&lt;code class=&quot;highlighter-rouge&quot;&gt;.aaa&lt;/code&gt;里面有些什么东西，哪些东西比较重要。&lt;/p&gt;
+
+&lt;h3 id=&quot;options&quot;&gt;OPTIONS&lt;/h3&gt;
+
+&lt;p&gt;顾名思义就是控制程序的所有选项（看这个长度我觉得可以认为是所有的），分为&lt;code class=&quot;highlighter-rouge&quot;&gt;PRINTOUT&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;CALCULATION&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;MISCELLNEOUS&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;TEST/DEBUG&lt;/code&gt;。所有的选项名称都和wup里面的选项名称对应，输出中也包含了选项的开关以及解释。&lt;/p&gt;
+
+&lt;h3 id=&quot;tables&quot;&gt;TABLES&lt;/h3&gt;
+
+&lt;p&gt;这里主要是谱线计算的一些事先算好的表格，有用信息似乎不多。&lt;/p&gt;
+
+&lt;h3 id=&quot;iterates&quot;&gt;ITERATES&lt;/h3&gt;
+
+&lt;p&gt;呈现的是各个参数（不是全部）各次迭代除以最后一次的比例。&lt;/p&gt;
 
 &lt;h2 id=&quot;示例文件&quot;&gt;示例文件&lt;/h2&gt;
 
@@ -242,6 +1311,8 @@ apt-get install g++-multilib
 
 &lt;h3 id=&quot;示例一&quot;&gt;示例一&lt;/h3&gt;
 
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/pandora -io 1/ -atoms 1/ demo1 none '' 001 &amp;gt;&amp;amp; 1/demo1.log&lt;/code&gt;&lt;/p&gt;
+
 &lt;p&gt;有几个地方是需要看看运行效果的：&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;“Plot of log10s of ST…“中&lt;script type=&quot;math/tex&quot;&gt;S(n)&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;应该要接近&lt;/li&gt;
@@ -251,7 +1322,13 @@ apt-get install g++-multilib
   &lt;li&gt;NE不应该有大的波动（在哪里？）&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.atm&lt;/code&gt;文件和主控制文件必须分开，这里只是简单地将主控制文件复制了一份。&lt;/p&gt;
+
 &lt;h3 id=&quot;示例二&quot;&gt;示例二&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/pandora -io 2/ -atoms 2/ demo2 h    l3 001 &amp;gt;&amp;amp; 2/demo2.log&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;之前说了示例二和示例一是完全一样的，只是将文件分开了，那么为什么命令也不一样了呢？实际上有本质区别的只有&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;l3&lt;/code&gt;两个地方,&lt;code class=&quot;highlighter-rouge&quot;&gt;l3&lt;/code&gt;指明了原子结构文件的文件名为&lt;code class=&quot;highlighter-rouge&quot;&gt;hl3.atm&lt;/code&gt;，而&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;指明了主控制文件的文件名为&lt;code class=&quot;highlighter-rouge&quot;&gt;demo2h.dat&lt;/code&gt;。&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.dat&lt;/code&gt;文件可以分为&lt;code class=&quot;highlighter-rouge&quot;&gt;.mod&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.atm&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.dat&lt;/code&gt;文件，对应wup361页示例一中提到四个Group。&lt;/p&gt;
 
@@ -266,7 +1343,25 @@ apt-get install g++-multilib
 
 &lt;h3 id=&quot;示例三&quot;&gt;示例三&lt;/h3&gt;
 
-&lt;p&gt;示例三是示例二的重启运行（人类的本质是复读机，对吧）。这个时候示例二中提到的&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;文件实际上就是输出的&lt;code class=&quot;highlighter-rouge&quot;&gt;.rst&lt;/code&gt;文件。如果不改名字的话，可以先将旧的&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;文件删掉，再将&lt;code class=&quot;highlighter-rouge&quot;&gt;.rst&lt;/code&gt;改成&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/pandora -io 3/ -atoms 3/ demo3 h    l3 001 &amp;gt;&amp;amp; 3/demo3.log&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;示例三是示例二的重启运行（人类的本质是复读机，对吧）。这个时候示例二中提到的&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;文件实际上就是输出的&lt;code class=&quot;highlighter-rouge&quot;&gt;.rst&lt;/code&gt;文件。如果不改名字的话，可以先将旧的&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;文件删掉，再将&lt;code class=&quot;highlighter-rouge&quot;&gt;.rst&lt;/code&gt;改成&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;。其次是恒星大气模型中从0(或LDR)开始计算的一些值：&lt;code class=&quot;highlighter-rouge&quot;&gt;NE&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;NP&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;HN 1&lt;/code&gt;, …, &lt;code class=&quot;highlighter-rouge&quot;&gt;HN 15&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;BDH 1&lt;/code&gt;, …, &lt;code class=&quot;highlighter-rouge&quot;&gt;BDH 15&lt;/code&gt;现在是从&lt;code class=&quot;highlighter-rouge&quot;&gt;.pop&lt;/code&gt;文件中复制过来的。&lt;code class=&quot;highlighter-rouge&quot;&gt;.msc&lt;/code&gt;中也会有一些更新了的参数，比如说&lt;code class=&quot;highlighter-rouge&quot;&gt;FNRMLA&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FNRMLB&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;示例二中的&lt;code class=&quot;highlighter-rouge&quot;&gt;hl2.atm&lt;/code&gt;可以直接拿到示例三中使用（我估计以后我也是这么做），但是作者这里还加了点东西。有一些东西是&lt;code class=&quot;highlighter-rouge&quot;&gt;atom/&lt;/code&gt;的文件里面没有的，所以还是要具体看看加了什么。&lt;/p&gt;
+
+&lt;p&gt;示例三的&lt;code class=&quot;highlighter-rouge&quot;&gt;.dat&lt;/code&gt;也被改变了。&lt;/p&gt;
+
+&lt;h3 id=&quot;示例四&quot;&gt;示例四&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/pandora -io 4/ -atoms 4/ demo4 mg2  l2 001 &amp;gt;&amp;amp; 4/demo4.log&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一个Mg-II的从0开始的运行；&lt;code class=&quot;highlighter-rouge&quot;&gt;.atm&lt;/code&gt;里面是Mg的一个二能级模型，用的是PRD。但是PRD参数并不储存在&lt;code class=&quot;highlighter-rouge&quot;&gt;.atm&lt;/code&gt;里面（因为RD信息和原子模型没有关系）。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GMMA&lt;/code&gt;似乎是PRD的一个好坏目标？越接近-1越好的样子。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.mod&lt;/code&gt;文件里面包含了H, He-I, He-II, C-I, Si-I的密度信息(&lt;code class=&quot;highlighter-rouge&quot;&gt;XXK&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;XXN&lt;/code&gt;等)；这些是之前占据数更新运行的结果。&lt;/p&gt;
+
+&lt;p&gt;重启这个示例的运行也是很简单的，删掉&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;文件，将&lt;code class=&quot;highlighter-rouge&quot;&gt;.rst&lt;/code&gt;改成&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;；同理将&lt;code class=&quot;highlighter-rouge&quot;&gt;.jnr&lt;/code&gt;改成&lt;code class=&quot;highlighter-rouge&quot;&gt;.jnu&lt;/code&gt;，把&lt;code class=&quot;highlighter-rouge&quot;&gt;.dat&lt;/code&gt;文件里面该改的改掉。注意&lt;code class=&quot;highlighter-rouge&quot;&gt;JNUNC&lt;/code&gt;需要大于0。&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Apr 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/04/12/pandora/</link>
@@ -1758,162 +2853,6 @@ Eu、Pt、Au、Th、U：r过程；&lt;br /&gt;&lt;/p&gt;
         <pubDate>Fri, 26 Oct 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/10/26/GA-S/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/10/26/GA-S/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 15</title>
-        <description>&lt;p&gt;恒星大气压强变化的一个明显结果就是，光度变大了。这是因为压强变小之后整个恒星膨胀。所以压强和光度是联系在一起的。一般来说，压强引起的光谱特征变化没有温度变化那么敏感，但是在赫罗图上，温度的变化只有几千K，但是压强的变化可以到10的五/六次方，所以光谱特征还是可以有很大变化的。&lt;/p&gt;
-
-&lt;p&gt;大体来说我们可以通过测量连续谱、中性/电离谱线以及强线的线翼来确定电子压强。不幸的是这些东西都对温度敏感，所以我们需要先确定温度或者将温度和压强同时确定。第九章我们确定了电子以及气体压强与&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;的关系，所以这两个参数也是连在一起的。当然恒星内部除了这两种压强之外还有别的，所以从光谱中测出来的压强是这些压强的总和。&lt;/p&gt;
-
-&lt;p&gt;下面的方法是确定&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;的方法。&lt;/p&gt;
-
-&lt;h2 id=&quot;连续谱&quot;&gt;连续谱&lt;/h2&gt;
-
-&lt;p&gt;图10.8展示了连续谱随&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;的变化。很明显只有巴尔末跳跃的大小是一个比较好的光谱特征。虽说好，但是也好不到哪去，毕竟Sensitivity不大。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;图&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;最大也不过-0.1，再加上一些杂七杂八的因素（金属线的影响等等），使得这个方法的准确度并不高。如果我们放宽一点，会发现某些色指数(&lt;script type=&quot;math/tex&quot;&gt;U-B, u-y&lt;/script&gt;)可以用来确定&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;，但是需要校准。&lt;/p&gt;
-
-&lt;h2 id=&quot;氢线&quot;&gt;氢线&lt;/h2&gt;
-
-&lt;p&gt;虽然&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;越大，氢线越胖，但是到了10000K以下基本上就没用了。类似的我们可以造一个叫&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;指数的东西，也是从测光来的。&lt;/p&gt;
-
-&lt;h2 id=&quot;其他的强线&quot;&gt;其他的强线&lt;/h2&gt;
-
-&lt;p&gt;还有一些强线，比如Ca II H,K线、Ca I &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt;4227、Na I D和Mg I b线和氢线类似，线翼对&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;的变化敏感。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 20 Oct 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/10/20/OASP15/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/20/OASP15/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 14</title>
-        <description>&lt;p&gt;这俩参数是恒星的基本参数。假设有俩以某恒星为中心的同心球，一个半径万为恒星半径&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;，另一个的半径为恒星到观测者的距离&lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt;；在这两个球面上接收到的辐射量为&lt;script type=&quot;math/tex&quot;&gt;\mathscr{F}_\nu, F_\nu&lt;/script&gt;，则有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;4\pi d^2 F_\nu =  4\pi R^2 \mathscr{F}_\nu \tag{14.1}&lt;/script&gt;
-
-&lt;p&gt;将有效温度的定义&lt;script type=&quot;math/tex&quot;&gt;(1.2)&lt;/script&gt;代入并积分，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int_0^\infty F_\nu d\nu = (R/d)^2 \int_0^\infty \mathscr{F}_\nu d\nu = \theta_\mathrm{R}^2 \sigma T_\mathrm{eff}^4 \tag{14.2}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_\mathrm{R}&lt;/script&gt;自然是角半径了。测量得到&lt;script type=&quot;math/tex&quot;&gt;\int_0^\infty F_\nu d\nu&lt;/script&gt;和角直径和距离之后就可以算出恒星半径以及有效温度了。例外是食双星，可以直接得出线直径。&lt;/p&gt;
-
-&lt;p&gt;不同波段是有不同的半径的，毕竟光深和几何深度的关系随着频率而变化。同时有效温度实际上在恒星不同的表面上是不一样的（有米粒组织等），而且决定恒星大气更根本的参数是温度随着光深的分布。但是这一章我们先忽略这些东西，就看这两个参数。&lt;/p&gt;
-
-&lt;h2 id=&quot;半径测量&quot;&gt;半径测量&lt;/h2&gt;
-
-&lt;p&gt;半径测量分为直接和间接的方法。&lt;/p&gt;
-
-&lt;h3 id=&quot;直接方法&quot;&gt;直接方法&lt;/h3&gt;
-
-&lt;h5 id=&quot;干涉法&quot;&gt;干涉法&lt;/h5&gt;
-
-&lt;p&gt;干涉法好说，测量一个方波傅立叶变换之后的零点位置可以得出这个方波的大小，而干涉仪可以测出这个零点。现在(2003年)的精度已经达到了0.05毫角秒，有几百颗星的角直径被测出来了。&lt;/p&gt;
-
-&lt;h5 id=&quot;月掩星法&quot;&gt;月掩星法&lt;/h5&gt;
-
-&lt;p&gt;也好说，测量恒星被掩食的时候的光变然后建模拟合就行。局限在于不同波度的光变幅度不一样，所以需要用比较窄的滤光片；类似的，月球边缘的起伏也会造成不同次掩食时光变和时标的不一样。当然最大的问题是白道和月球的运动是固定的，这个方法只对少部分恒星适用。通过这个方法测出来角直径的恒星也在100颗左右。&lt;/p&gt;
-
-&lt;h5 id=&quot;食双星&quot;&gt;食双星&lt;/h5&gt;
-
-&lt;p&gt;对于食双星，我们知道掩食时间与视向速度，那就知道线直径了。不过密近双星经常会偏离球形，同时物质交换会使得两颗恒星的光谱趋同，加大掩食时间与视向速度的测量难度。远距离双星的难度主要在于视向速度的测量方面。&lt;/p&gt;
-
-&lt;h5 id=&quot;热流量法&quot;&gt;热流量法&lt;/h5&gt;
-
-&lt;p&gt;对&lt;script type=&quot;math/tex&quot;&gt;(14.2)&lt;/script&gt;稍作变形：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{R}{d} = \theta_\mathrm{R} = \sqrt{\frac{\int_0^\infty F_\nu d\nu}{\sigma T_\mathrm{eff}^4}} \tag{14.4}&lt;/script&gt;
-
-&lt;p&gt;不过同样需要知道距离、有效温度以及恒星的热辐射。&lt;/p&gt;
-
-&lt;p&gt;热辐射可以通过恒星的光谱来估计，或者与太阳的数据作差转换成热星等，利用第十章的热改正来得到恒星的热星等。有效温度大致是从恒星模型来，也就是之后说的一些方法，直接或间接地得到。&lt;/p&gt;
-
-&lt;h5 id=&quot;测光半径&quot;&gt;测光半径&lt;/h5&gt;
-
-&lt;p&gt;热流量法要求我们知道整个光谱范围的流量，而测光半径法则走向了另一个极端。从&lt;script type=&quot;math/tex&quot;&gt;(14.1)&lt;/script&gt;我们可得：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_\mathrm{R} = R/d = (F_\nu/\mathscr{F}_\nu)^{1/2} \tag{14.7}&lt;/script&gt;
-
-&lt;p&gt;那如果我们能够准确知道某一个波长下的&lt;script type=&quot;math/tex&quot;&gt;F_\nu, \mathscr{F}_\nu&lt;/script&gt;，我们就能算出角直径来了。&lt;script type=&quot;math/tex&quot;&gt;F_\nu&lt;/script&gt;好测，而&lt;script type=&quot;math/tex&quot;&gt;\mathscr{F}_\nu&lt;/script&gt;可以从模型来。只要在几个不同的波长上有测光，我们就可以将不同参数的模型与之匹配，找到最合适的那个。当然这些测光点是越多越好，有利于选择正确的模型。&lt;/p&gt;
-
-&lt;p&gt;这个方法依赖绝对定标，对测光以及模型的流量绝对定标要求不低。还有一个红外流量法，介于这两个方法之间：假设一个&lt;script type=&quot;math/tex&quot;&gt;T_\mathrm{eff}&lt;/script&gt;，得到一个&lt;script type=&quot;math/tex&quot;&gt;\theta_\mathrm{R}&lt;/script&gt;，又得到一个新的&lt;script type=&quot;math/tex&quot;&gt;T_\mathrm{eff}&lt;/script&gt;，如此循环。不过这个方法又和有效温度以及模型扯上了关系，同时红外的模型准确度也是要考虑的问题。&lt;/p&gt;
-
-&lt;h3 id=&quot;间接方法&quot;&gt;间接方法&lt;/h3&gt;
-
-&lt;h5 id=&quot;表面亮度法&quot;&gt;表面亮度法&lt;/h5&gt;
-
-&lt;p&gt;还是从热流量法出发，将&lt;script type=&quot;math/tex&quot;&gt;(14.4)&lt;/script&gt;取对数并将流量转成星等，有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lg{\theta_\mathrm{R}} = - 0.2 (m_\mathrm{V} - BC) - 2\lg{T_\mathrm{eff}} + \text{constant} \tag{14.5}&lt;/script&gt;
-
-&lt;p&gt;于太阳的参数作差，把不好测量的项移到一边并定义一个新变量：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbb{P}_\mathrm{V} = \lg{\frac{T_\mathrm{eff}}{T_\mathrm{eff}^\odot}} - 0.1 (BC-BC^\odot) = -0.1 (m_\mathrm{V}-m_\mathrm{V}^\odot) - 0.5 \lg{\frac{\theta_\mathrm{R}}{\theta_\mathrm{R}^\odot}} \tag{14.10}&lt;/script&gt;
-
-&lt;p&gt;当我们有一批通过直接方法测出来的&lt;script type=&quot;math/tex&quot;&gt;\theta_\mathrm{R}&lt;/script&gt;以及它们的&lt;script type=&quot;math/tex&quot;&gt;m_\mathrm{V}&lt;/script&gt;时，就可以很容易地算出&lt;script type=&quot;math/tex&quot;&gt;\mathbb{P}_\mathrm{V}&lt;/script&gt;；再用公式拟合&lt;script type=&quot;math/tex&quot;&gt;\mathbb{P}_\mathrm{V}&lt;/script&gt;和某些观测量（比如色指数）的关系后，就可以通过测量色指数来得到角半径了。&lt;/p&gt;
-
-&lt;h5 id=&quot;把这些结果-放到一张-图上&quot;&gt;把这些结果 放到一张 图上&lt;/h5&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP14/01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我们能从这张图上看出不少信息。&lt;/p&gt;
-
-&lt;p&gt;首先不同方法测出来的结果是一致的，没有哪种结果有很大偏离。对于矮星来说半径的弥散比较小，而且有一个下限零龄主序(ZAMS)在。&lt;script type=&quot;math/tex&quot;&gt;B-V &gt; 0.5&lt;/script&gt;的恒星演化时标比较长，所以没怎么演化，都堆在了一起；反之高温恒星的弥散就大一点了。在0.4到0.6左右矮星半径有一个快速的下降，这是因为对流传能开始占据一定比例，帮助恒星更快地收缩（但是为什么之后又慢了？）。&lt;/p&gt;
-
-&lt;p&gt;对巨星的分布书中没有详细的描述。&lt;/p&gt;
-
-&lt;h2 id=&quot;有效温度测量&quot;&gt;有效温度测量&lt;/h2&gt;
-
-&lt;p&gt;仍然从&lt;script type=&quot;math/tex&quot;&gt;(14.2)&lt;/script&gt;出发：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;T_\mathrm{eff} = \frac{\left( \int_0^\infty F_\nu d\nu / \sigma \right)^{1/4}}{(R/d)^{1/2}} \tag{14.14}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;T_\mathrm{eff} = \frac{T_\mathrm{eff}^\odot \left( \int_0^\infty F_\nu d\nu / \int_0^\infty F_\nu^\odot d\nu \right)^{1/4}}{(\theta_\mathrm{R}/\theta_\mathrm{R}^\odot)^{1/2}} \tag{14.15}&lt;/script&gt;
-
-&lt;p&gt;前者需要流量的绝对定标、后者和太阳作比；现在的话这俩都可以用。只不过恒星的热辐射不能完全被测出来，里面就涉及到恒星模型的帮助；那么用恒型模型也可以测出有效温度。&lt;/p&gt;
-
-&lt;h3 id=&quot;光球层模型法&quot;&gt;光球层模型法&lt;/h3&gt;
-
-&lt;p&gt;也就是算出一个模型来（温度分布），然后加上各个波段上的吸收系数就有辐射了。当然它的好坏取决于模型有多合适。&lt;/p&gt;
-
-&lt;h3 id=&quot;有效温度关系校准&quot;&gt;有效温度关系校准&lt;/h3&gt;
-
-&lt;p&gt;有效温度和很多的参数有关系，比如色指数和光谱型。当然误差会来自色指数的测量、星周包层带来的红化等等。既然说到了校准，我们之后就介绍一些校准有效温度的方法。毕竟多数时候有效温度只是区分恒星的一个数字，所以拿什么来校准问题都不大。&lt;/p&gt;
-
-&lt;h5 id=&quot;帕邢连续谱&quot;&gt;帕邢连续谱&lt;/h5&gt;
-
-&lt;p&gt;实际上指的是帕邢连续谱的斜率。连续谱受谱线以及&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;的影响不大，基本上是LTE，还对有效温度比较敏感。当然对于高温和低温恒星不一定有用，因为它们的主要辐射不在可见光了。还有一点就是连续谱形成于比较深的地方，所以从斜率转化到有效温度的时候要注意匹配。&lt;/p&gt;
-
-&lt;h5 id=&quot;模型色指数&quot;&gt;模型色指数&lt;/h5&gt;
-
-&lt;p&gt;当合成光谱质量很高的时候，我们可以去计算模型的色指数。这包括连续谱和谱线的计算，以及模型与观测星等的零点校正，还有观测波段的透过率。&lt;/p&gt;
-
-&lt;h5 id=&quot;巴尔末跳跃&quot;&gt;巴尔末跳跃&lt;/h5&gt;
-
-&lt;p&gt;用于高温恒星，类似于帕邢连续谱，但是是测量巴尔末线系限左右的流量差。不过也受&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;和元素丰度影响，需要进行改正。同时在线系限附近有很多的巴尔末线，连续谱不好确定。帕邢和巴尔末附近的恒星模型有的时候也给出不同的结果。&lt;/p&gt;
-
-&lt;h5 id=&quot;氢线&quot;&gt;氢线&lt;/h5&gt;
-
-&lt;p&gt;氢线的强度对有效温度很敏感。但是氢线太胖了不好测量，以及高温之后它也会和&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;有关系。&lt;/p&gt;
-
-&lt;h5 id=&quot;原子谱线的ldr&quot;&gt;原子谱线的LDR&lt;/h5&gt;
-
-&lt;p&gt;这就是我的硕士毕业论文，不多说了。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 14 Oct 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/10/14/OASP14/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/14/OASP14/</guid>
         
         <category>learning</category>
         

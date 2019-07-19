@@ -154,6 +154,56 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2019/07/18/astero-he/">
+        <h2 class="post-title">
+            利用星震学方法测量恒星的氦丰度
+        </h2>
+        
+        <h3 class="post-subtitle">
+            It should solve all the problem
+        </h3>
+        
+        <div class="post-content-preview">
+            这里作为星震学测量氦丰度方法的补充说明，估计会比较散。主要是看Verma+19得出的问题以及查询得到的答案。
+
+原理
+
+恒星内部的温度是越来越高的，而温度高到一定程度之后就会将原子电离；比如说氢原子会逐渐被剥成质子和电子，氦原子(HeI)会变成(HeII)和(HeIII)。原子电离情况和温度的关系请参照OASP1, Fig. 1.10。在这里我们主要讨论恒星内部的情况，Kippenhahn的...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on July 18, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/06/19/spec-term/">
+        <h2 class="post-title">
+            原子的光谱项
+        </h2>
+        
+        <h3 class="post-subtitle">
+            本科原子物理的内容
+        </h3>
+        
+        <div class="post-content-preview">
+            这玩意我从本科开始就没怎么搞懂（这数字哪来的？LPS这些又是什么鬼东西？）；还以为做光谱只需要用到别人做好的表格（拿来主义hhh），结果还是要搞懂。不然别人问起为什么这是三重态那是单重态我都说不出来。
+
+复习一下：电子态
+
+光谱项是描述原子的标识。而原子之间的区别实际上只在于电子所处的能级不同，所以光谱项说白了还是电子量子数的反映。
+
+我们只需要四个量子数来描述电子，；主量子数、角量子数、磁...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on June 19, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2019/06/10/sr-process/">
         <h2 class="post-title">
             快过程和慢过程
@@ -196,11 +246,19 @@
         </h3>
         
         <div class="post-content-preview">
-            Fortran 编译器选择
-
-可以从pgfortran、ifort和pgf77中选一个。我选的是ifort；关于ifort的安装可以参照这里。实际上安装的是Intel® Parallel Studio XE Cluster Edition for Linux*里面的Fortran编译器。装之前或者之后记得将这些32位的包装上：
-apt-get install ia32-libs
-apt-ge...
+            
+  Fortran 编译器选择
+  文件准备    
+      格式大坑
+      元素数据输入(WUP Section 10)
+      原子结构文件以及原子数密度        
+          一般信息            
+              原子能级
+              能级之间的跃迁
+            
+          
+        
+...
         </div>
     </a>
     <p class="post-meta">
@@ -385,58 +443,6 @@ Hopkins &amp; Beacom 2006中的Fig. 1
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2018/10/20/OASP15/">
-        <h2 class="post-title">
-            OASP笔记 - 15
-        </h2>
-        
-        <h3 class="post-subtitle">
-            压强的确定
-        </h3>
-        
-        <div class="post-content-preview">
-            恒星大气压强变化的一个明显结果就是，光度变大了。这是因为压强变小之后整个恒星膨胀。所以压强和光度是联系在一起的。一般来说，压强引起的光谱特征变化没有温度变化那么敏感，但是在赫罗图上，温度的变化只有几千K，但是压强的变化可以到10的五/六次方，所以光谱特征还是可以有很大变化的。
-
-大体来说我们可以通过测量连续谱、中性/电离谱线以及强线的线翼来确定电子压强。不幸的是这些东西都对温度敏感，所以我们...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on October 20, 2018
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2018/10/14/OASP14/">
-        <h2 class="post-title">
-            OASP笔记 - 14
-        </h2>
-        
-        <h3 class="post-subtitle">
-            半径与有效温度的确定
-        </h3>
-        
-        <div class="post-content-preview">
-            这俩参数是恒星的基本参数。假设有俩以某恒星为中心的同心球，一个半径万为恒星半径，另一个的半径为恒星到观测者的距离；在这两个球面上接收到的辐射量为，则有
-
-
-
-将有效温度的定义代入并积分，有
-
-
-
-自然是角半径了。测量得到和角直径和距离之后就可以算出恒星半径以及有效温度了。例外是食双星，可以直接得出线直径。
-
-不同波段是有不同的半径的，毕竟光深和几何深度的关系随着频率而变化。同时有效温度实际上...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on October 14, 2018
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -491,7 +497,7 @@ Hopkins &amp; Beacom 2006中的Fig. 1
                             
                         
                             
-                                <a href="/tags/#learning" title="learning" rel="28">
+                                <a href="/tags/#learning" title="learning" rel="30">
                                     learning
                                 </a>
                             
