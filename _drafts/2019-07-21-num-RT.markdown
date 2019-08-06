@@ -1,0 +1,161 @@
+---
+layout:     post
+title:      "辐射转移的数学方法"
+subtitle:   "Numerical Methods in Astrophysics, 1.6 & 9"
+date:       2019-07-21
+author:     "mingjie"
+header-img: "img/post-bg-achi.jpg"
+tags:
+    - learning
+
+---
+
+* any words
+{:toc}
+
+又开新坑了；这是手把手教你怎么算出恒星光谱的内容，毕竟是数学方法嘛；但是它局限在LTE下。这里只涉及到这本书关于辐射转移的内容，也就是1.6节和第9章。
+
+## 1.6 辐射转移
+
+来先看这张图：
+
+![](/img/in-post/post-num-RT/01-rt-process.png)
+
+这张图可以说既是一切的基础，又是一切的一切。在一个小体积元中，光从左边射入，和里面的物质相互作用。有的光被原子吸收，原子被激发或者电离；有的光被原子散射，射向了别的地方。有的原子受刺激或者自发辐射，回到低激发态并发出光子；别的地方射过来的光子被原子散射改变方向射向了右边。由此，向右出射的光量发生了变化。这三句话已经概括了辐射转移的所有内容，而之后的所有计算都是从这个模型（或者说现实）中来的。
+
+同时这张图也将模型和可观测量联系了起来。我们肯定不能摸到这个体积元，但是我们能观测到向右出射的光线。所以我们可以假设这个体积元的性质（温度、压强等等），看看出射的光线是多少；不对的话我们就微调，调到和观测匹配为止。这就是我们计算辐射转移过程的目的以及具体手法。你看整个内容实际上一张图几句话就讲完了。
+
+再多说两句：我学辐射转移的目的是探测恒星大气的性质，但是辐射转移本身的应用很广泛。在恒星（应该说是光球层）中，密度比较高，辐射和物质是高度耦合的。这意味着物质的动力学温度和辐射的温度是一致的。而在星际介质里面，物质温度和辐射温度可以相差很大。
+
+### 1.6.0 基本概念
+
+惯例的一句话，具体定义参看OASP。我们有光强：
+
+$$ I_\nu = I_\nu(\mathbf{x}, \hat{\mathbf{s}}, \nu, t) $$
+
+我们需要计算每个$$ I_\nu $$的值，然后合起来得出观测到的流量；但是要表征$$ I_\nu $$一共需要7个维度，如果每个维度都放100个点，那么每一个瞬间我么需要存储$$ 10^{12} $$个数字，显然太大了，所以我们需要进行简化：
+
+$$ I_\nu = I_\nu^\mathrm{1d}(r, \theta', \nu), I_\nu = I_\nu^\mathrm{2d}(r, \theta, \theta', \phi', \nu), I_\nu = I_\nu^\mathrm{3d}(r, \theta, \phi, \theta', \phi', \nu) \tag{1.81} $$
+
+带撇的是辐射的传播方向，也就是视线方向。这就是1维、2维和3维的辐射转移（以及恒星大气模型）。
+
+现在加上光强的定义式：
+
+$$ dE_\nu = I_\nu(\mathbf{x}, \hat{\mathbf{s}}, \nu, t) \hat{\mathbf{n}} \cdot \hat{\mathbf{s}} dA d\Omega d\nu dt \tag{1.80} $$
+
+然后我们推导一般的辐射转移方程。
+
+将光子用位置($$ \mathbf{x} $$)和相空间($$ \mathbf{q} $$，包括方向和频率)的密度函数$$ f_R(\mathbf{x}, \mathbf{q}, t) $$表示；它们有能量$$ h\nu $$，动量$$ \frac{h\nu}{c} \hat{\mathbf{s}} $$；所以能量的变化也可以表现为
+
+$$ dE_\nu = h\nu f_R(\mathbf{x}, \mathbf{q}, t) \mathbf{dx} \mathbf{dq} \tag{1.82} $$
+
+其中
+
+$$ \mathbf{dx} = cdt (\hat{\mathbf{n}} \cdot \hat{\mathbf{s}}) dA, \mathbf{dq} = q^2 dq d\Omega $$
+
+$$ \Rightarrow \mathbf{dq} = \frac{h^3\nu^2}{c^3} d\nu d\Omega $$
+
+$$ \begin{align}
+dE_\nu &= \frac{h^4\nu^3}{c^2} f_R (\hat{\mathbf{n}} \cdot \hat{\mathbf{s}}) dtdAd\nu d\Omega \tag{1.83} \\
+I_\nu &= \frac{h^4\nu^3}{c^2} f_R = C_1 f_R \tag{1.84}
+\end{align}$$
+
+Boltzmann方程为：
+
+$$ \frac{\partial f}{\partial t} = \left(\frac{\partial f}{\partial t}\right)_\mathrm{force} + \left(\frac{\partial f}{\partial t}\right)_\mathrm{diff} + \left(\frac{\partial f}{\partial t}\right)_\mathrm{coll} $$
+
+也就是外力+扩散+碰撞（相互作用）引起的粒子数变化。对光子来说，没有外力，而且扩散项就是在单位时间内穿过$$ dA $$的量($$ f_R $$在$$ \hat{\mathbf{s}} $$方向的散度)，所以
+
+$$ \frac{\partial f_R}{\partial t} = -c(\hat{\mathbf{s}} \cdot \nabla)f_R + \left(\frac{\partial f}{\partial t}\right)_\mathrm{coll}$$
+
+$$ \Rightarrow \frac{1}{C_1} \left[\frac{\partial I_\nu}{\partial t} + c(\hat{\mathbf{s}} \cdot \nabla) I_\nu \right] = \frac{1}{C_1}
+\left(\frac{\partial f}{\partial t}\right)_\mathrm{coll} \tag{1.85}$$
+
+至于coll项是什么，下一节解决。
+
+### 1.6.1 吸收、发射、散射
+
+第一张图实际上是在这里被引入的。我们考虑吸收、散射和发射，它们所导致的能量变化分别为：
+
+$$ \Delta E_\nu^\mathrm{abs} = \kappa_\nu \rho I_\nu d\Omega d\nu dA dt ds \tag{1.86} $$
+
+$$ \Delta E_\nu^\mathrm{scatt} = \sigma_\nu \rho I_\nu d\Omega d\nu dA dt ds \tag{1.87} $$
+
+$$ \Delta E_\nu^\mathrm{em} = j_\nu \rho d\Omega d\nu dA dt ds \tag{1.89} $$
+
+这里出现的系数为单位质量的系数；吸收和散射系数合起来被称为消光系数，$$ \epsilon_\nu = \kappa_\nu + \sigma_\nu $$。这三种过程的总和就是相互作用项，从这里可以推出：
+
+$$ dI_\nu = -\epsilon_\nu \rho I_\nu ds, dI_\nu = j_\nu \rho ds, \frac{ds}{dt} = c $$
+
+所以Boltzmann方程为：
+
+$$ \frac{1}{c}\frac{\partial I_\nu}{\partial t} + (\hat{\mathbf{s}} \cdot \nabla) I_\nu = -\epsilon_\nu \rho I_\nu + j_\nu \rho \tag{1.90}$$
+
+如果$$ I_\nu $$和时间无关并引入源函数$$ S_\nu = j_\nu / \epsilon_\nu $$，则有：
+
+$$ \frac{\partial I_\nu}{\partial s} = -\epsilon_\nu \rho (I_\nu - S_\nu) \tag{1.91}$$
+
+以及在平面平行层$$ dz = -ds \cos{\theta} $$和光深的定义$$ d\tau_\nu = \epsilon_\nu \rho dz $$下：
+
+$$ \cos{\theta} \frac{\partial I_\nu}{\partial \tau_\nu} = I_\nu - S_\nu \tag{1.92}$$
+
+就是我们熟悉的辐射转移方程的形式了。
+
+如果在球坐标下，我们有：
+
+$$ \frac{1}{c}\frac{\partial I_\nu}{\partial t} + \mu \frac{\partial I_\nu}{\partial r} + \frac{1-\mu^2}{r} \frac{\partial I_\nu}{\partial \mu} = -\epsilon_\nu \rho (I_\nu - S_\nu) \tag{1.94} $$
+
+### 1.6.2 Boltzmann方程的矩
+
+其实就是那几个立体角积分。令$$ s_i $$为$$ \hat{\bf{s}} $$在某个基上的分量(cos值)，有：
+
+$$ \frac{d}{ds} = \hat{\bf{s}} \cdot \nabla = s_1 \frac{\partial}{\partial x_1} + s_2 \frac{\partial}{\partial x_2} + s_3 \frac{\partial}{\partial x_3} \tag{1.95}$$
+
+定义$$ J, H, K $$：
+
+$$ J_\nu = \frac{1}{4\pi} \int_{4\pi} I_\nu d\Omega \tag{1.96} $$
+$$ H_\nu^i = \frac{1}{4\pi} \int_{4\pi} I_\nu s_i d\Omega \tag{1.97} $$
+$$ K_\nu^{ij} = \frac{1}{4\pi} \int_{4\pi} I_\nu s_i s_j d\Omega \tag{1.99} $$
+
+以及流量$$ F_\nu $$就是$$ 4\pi H_\nu $$。由此可以对Boltzmann方程进行立体角积分，化为：
+
+$$ \frac{1}{c}\frac{\partial J_\nu}{\partial t} + \nabla \mathbf{H}_\nu + \frac{1}{4\pi} \int_{4\pi} \epsilon_\nu \rho (I_\nu - S_\nu) d\Omega = 0 \tag{1.100}$$
+
+这里$$ \hat{\mathbf{s}} $$不见了是因为$它被吸收进了$$ \mathbf{H}_\nu $$里面。
+
+乘上一个或者两个$$ s_i $$再做立体角积分：
+
+$$ \frac{1}{c}\frac{\partial H_\nu^i}{\partial t} +  \sum_j \frac{\partial K_\nu^{ij}}{\partial x_j} + \frac{1}{4\pi} \int_{4\pi} s_i \epsilon_\nu \rho (I_\nu - S_\nu) d\Omega = 0 \tag{1.101} $$
+
+如果散射和吸收各向同性，则有：
+
+$$ S_\nu = \frac{\kappa_\nu B_\nu + \sigma_\nu J_\nu}{\kappa_\nu + \sigma_\nu} \tag{1.102}$$
+
+其中$$ B_\nu $$为普朗克函数。那么$$ (1.100), (1.101) $$可以简化为：
+
+$$ \frac{1}{c}\frac{\partial J_\nu}{\partial t} + \nabla \mathbf{H}_\nu + \kappa_\nu \rho (J_\nu - B_\nu) = 0 \tag{1.104}$$
+
+$$ \frac{1}{c}\frac{\partial H_\nu^i}{\partial t} +  \sum_j \frac{\partial K_\nu^{ij}}{\partial x_j} + \epsilon_\nu \rho H_\nu^i = 0 \tag{1.105} $$
+
+因为流量$$ F_\nu $$就是$$ 4\pi H_\nu $$，辐射密度$$ u_\nu = \frac{4\pi}{c} J_\nu $$，$$ (1.104) $$可以化为：
+
+$$ \frac{\partial u_\nu}{\partial t} + \nabla \mathbf{F}_\nu - 4\pi \kappa_\nu \rho B_\nu + c \kappa_\nu \rho u_\nu = 0 \tag{1.107} $$
+
+方程$$ (1.104), (1.105) $$共有四条，但是$$ J, H, K $$加起来一共有9个未知数。为了解出这些未知数，我们加上一些关系(closure relations)：
+
+$$ K_\nu^{ij} = f_\nu^{ij} J_\nu \tag{1.108} $$
+
+$$ f_\nu^{ij} = f_\nu^{ji}, \sum_i f_\nu^{ii} = 1 $$。但是这几条公式并没有加上新的信息，姑且可以当成假设。其中一个是爱丁顿假设：
+
+$$ \mathbf{f} = \left[ \begin{array}{ccc}
+\frac{1}{3} & 0 & 0\\
+0 & \frac{1}{3} & 0\\
+0 & 0 & \frac{1}{3}
+\end{array}
+\right] \tag{1.109}$$
+
+另外球对称时有球坐标下的方程（此时$$ \mathbf{H} $$只有$$ r $$分量，$$ \mathbf{K} $$只有$$ rr $$分量）：
+
+$$ \frac{1}{c}\frac{\partial J_\nu}{\partial t} + \frac{1}{r^2} \frac{\partial}{\partial r}(r^2 H_\nu) + \kappa_\nu \rho (J_\nu - B_\nu) = 0 \tag{1.110}$$
+
+$$ \frac{1}{c}\frac{\partial H_\nu}{\partial t} +   \frac{\partial }{\partial r} (f_\nu J_\nu) + \frac{3f_\nu -1}{r} J_\nu + \epsilon_\nu \rho H_\nu = 0 \tag{1.111} $$

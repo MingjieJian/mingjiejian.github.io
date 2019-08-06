@@ -4,7 +4,7 @@ title:      "利用星震学方法测量恒星的氦丰度"
 subtitle:   "It should solve all the problem"
 date:       2019-07-18
 author:     "mingjie"
-header-img: "img/post-bg-achi.jpg"
+header-img: "img/post-astero-he.png"
 tags:
     - learning
 

@@ -5,9 +5,262 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 19 Jul 2019 18:44:08 +0900</pubDate>
-    <lastBuildDate>Fri, 19 Jul 2019 18:44:08 +0900</lastBuildDate>
+    <pubDate>Tue, 06 Aug 2019 18:26:16 +0900</pubDate>
+    <lastBuildDate>Tue, 06 Aug 2019 18:26:16 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>谱线是在哪里形成的？</title>
+        <description>&lt;p&gt;题图Credit：Kravchenko+2018.&lt;/p&gt;
+
+&lt;p&gt;谱线是在哪里形成的？搜了一些看了一些论文之后这个问题变成了谱线究竟是在哪里形成的？&lt;/p&gt;
+
+&lt;p&gt;其实这不是一个很复杂的问题，不过不同人有不同的解决方式，所以哪种是最好的，以及在什么情况下适用是需要总结一下的。看完这篇之后很多论文就不用看了。&lt;/p&gt;
+
+&lt;h2 id=&quot;我们要解决什么问题&quot;&gt;我们要解决什么问题？&lt;/h2&gt;
+
+&lt;p&gt;这不是废话嘛，谱线在哪里形成的。那么这个问题应该如何放入在我们的恒星大气模型中呢？又回到干啥都能拿出来讲的这张图了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-num-RT/01-rt-process.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;啊你看左边来的星光在中间被吸收和散射然后往右边射出，在这个过程中光的总量发生了变化，不就产生了吸收了么。所以将左边入射的星光看作外部光源、中间的管子看作恒星大气、右边出射的光看作我们观测到的光，那么谱线就是在这根管子里形成的。当然啦并不是管子的每一处都会形成谱线的，靠近内部的一侧（左侧）温度很高，这里辐射和吸收达到平衡，所以没有谱线形成（吃多少吐多少当然没有光强变化）；外部一侧（右侧）密度太低，吸收光的原子就很少了，自然也不属于谱线形成的区域。&lt;/p&gt;
+
+&lt;p&gt;澄清以及延伸：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;星光怎么是外部光源：这里的模型是恒星的连续谱是从一个内部的球面发出来的，然后打到球面外面的大气层里面；这个模型肯定不怎么准确（并且不同的波长上连续谱的位置也不一样），但是理解来说够用了。&lt;/li&gt;
+  &lt;li&gt;管子一定处于恒星大气中吗：不一定。最极端的例子是telluric线，它的连续谱是恒星，但是吸收（也就是形成）的区域是在地球大气上，一个天一个地。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所以要解决这个问题，我们要找到一个东西，它以恒星大气的位置坐标（高度或者光深）为自变量，它的值代表着在这个地方上对某个量的贡献是多少。这其实就是找到一个对光深的积分，积分之后的值就是我们的目标参数。这就好办了。&lt;/p&gt;
+
+&lt;h2 id=&quot;光强的贡献函数&quot;&gt;光强的贡献函数&lt;/h2&gt;
+
+&lt;p&gt;正巧，我们在解辐射转移方程的时候有过这个东西。参考&lt;a href=&quot;https://mingjiejian.github.io/2017/12/27/OASP7/&quot;&gt;OASP7&lt;/a&gt;，我们有辐射转移方程:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI_\nu}{d\tau_\nu} = -I_\nu + S_\nu&lt;/script&gt;
+
+&lt;p&gt;以及&lt;script type=&quot;math/tex&quot;&gt;(7.8)&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu(0) = \int_0^{\infty} S_\nu e^{-\frac{\tau_\nu}{\mu}} \frac{d\tau_\nu}{\mu}&lt;/script&gt;
+
+&lt;p&gt;这就可以了，&lt;script type=&quot;math/tex&quot;&gt;(7.8)&lt;/script&gt;是符合我们上一节对贡献函数的要求的，所以它在积分号和&lt;script type=&quot;math/tex&quot;&gt;d\tau_\nu&lt;/script&gt;之间的东西就是贡献函数：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_I = \frac{1}{\mu} S_\nu e^{-\frac{\tau_\nu}{\mu}}&lt;/script&gt;
+
+&lt;p&gt;它代表的是在&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;处的辐射对光强的贡献；其实也很好理解，因为源函数就是发射相对于吸收的归一化量，在&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu&lt;/script&gt;处的发射往外跑的时候被吸收，到最后打了个&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{\mu} e^{-\frac{\tau_\nu}{\mu}}&lt;/script&gt;的折扣，就完了。&lt;/p&gt;
+
+&lt;p&gt;再稍微强调一下，贡献函数的形式就和&lt;script type=&quot;math/tex&quot;&gt;C_I&lt;/script&gt;差不多，需要符合目标参数&lt;script type=&quot;math/tex&quot;&gt;q_\nu(0) = \int_0^{\infty} C_q \frac{d\tau_\nu}{\mu}&lt;/script&gt;的形式；而一旦有了目标参数的辐射转移方程&lt;script type=&quot;math/tex&quot;&gt;\frac{dq_\nu}{d\tau_\nu} = -q_\nu + S_\nu&lt;/script&gt;，我们就可以仿照光强的贡献函数写出相应的&lt;script type=&quot;math/tex&quot;&gt;C_q&lt;/script&gt;来了。当然仿照的过程中需要相应地改&lt;script type=&quot;math/tex&quot;&gt;\tau_\nu, S_\nu&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;例子：PANDORA或者MOOG&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;光强减少的贡献函数&quot;&gt;光强减少的贡献函数&lt;/h2&gt;
+
+&lt;p&gt;上面光强的源函数只为我们计算谱线形成范围提供了一个范本，并没有给出最终的解决方案；因为光强的产生并不代表着谱线的形成。我们平常看到的谱线是吸收线，也就是说光强减少的贡献函数才和谱线形成区域相关联。那怎么办呢？&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1986A%26A...163..135M/abstract&quot;&gt;Magain 1986&lt;/a&gt;给出了答案：对着上一节照板煮糊。&lt;/p&gt;
+
+&lt;p&gt;我们现在关心的参量是光强的减少：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_I = \frac{I_c-I_t}{I_c}&lt;/script&gt;
+
+&lt;p&gt;原文的&lt;script type=&quot;math/tex&quot;&gt;I_t&lt;/script&gt;用的是&lt;script type=&quot;math/tex&quot;&gt;I_l&lt;/script&gt;，不过为了统一我都用&lt;script type=&quot;math/tex&quot;&gt;I_t&lt;/script&gt;。顾名思义&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;是谱线不存在时的光强，&lt;script type=&quot;math/tex&quot;&gt;I_t&lt;/script&gt;是谱线存在时的光强。用&lt;script type=&quot;math/tex&quot;&gt;I_t&lt;/script&gt;表示的好处在于这个量不单纯表示谱线吸收之后的光强，它是连续谱和谱线共同作用下的光强。不过看不懂不要紧，后面会把这个问题说清楚的。&lt;/p&gt;
+
+&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;R_I&lt;/script&gt;对&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;求导，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dR_I}{dz} = \frac{I_t}{I_c^2} \frac{dI_t}{dz} - \frac{1}{I_c} \frac{dI_t}{dz}&lt;/script&gt;
+
+&lt;p&gt;而对着&lt;script type=&quot;math/tex&quot;&gt;I_c, I_t&lt;/script&gt;可以分别写出各自的辐射转移方程：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}  
+  \mu \frac{dI_t}{dz} &amp;= -\kappa_c \rho (I_c - S_c) \\
+  \mu \frac{dI_c}{dz} &amp;= -(\kappa_c + \kappa_l) \rho (I_t - S_t) \\
+  S_t &amp;= \frac{\kappa_c S_c + \kappa_l S_l}{\kappa_c + \kappa_l} \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;这里出现了下标为&lt;script type=&quot;math/tex&quot;&gt;l&lt;/script&gt;的量，不过是没有错的。把后面两条式子代进第一条里面去，可得：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}  
+  \frac{\mu}{\rho} \frac{dR_I}{dz} &amp;= -\kappa_{R_I} (R_I - S_{R_I}) \\
+  \kappa_{R_I} &amp;= \kappa_l + \kappa_c \frac{S_c}{I_c} \\
+  S_{R_I} &amp;= \frac{1-\frac{S_l}{I_c}}{1+\frac{\kappa_c S_c}{\kappa_l I_c}} \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;然后就可以写出&lt;script type=&quot;math/tex&quot;&gt;R_I&lt;/script&gt;的表达式以及贡献函数了：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_I(0) = \int_0^\infty \frac{1}{\mu} S_{R_I} e^{-\frac{\tau_{R_I}}{\mu}} d\tau_{R_I}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_{R_I} = \frac{1}{\mu} S_{R_I} e^{-\frac{\tau_{R_I}}{\mu}}&lt;/script&gt;
+
+&lt;h2 id=&quot;流量减少的贡献函数&quot;&gt;流量减少的贡献函数？&lt;/h2&gt;
+
+&lt;p&gt;我们还没完。光强的减少虽然是可观测量，但是那是太阳的可观测量；对于恒星来说，我们只能观测到流量。那流量减少的贡献函数可不可以通过类似的方法给出呢？不好说；&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1992SoPh..138..411A/abstract&quot;&gt;Achmad 1991&lt;/a&gt;给出了一些讨论以及另一个解决方案。&lt;/p&gt;
+
+&lt;p&gt;如果我们类似定义&lt;script type=&quot;math/tex&quot;&gt;R_F = 1- F_t / F_c&lt;/script&gt;的话，我们的确可以给出相应的&lt;script type=&quot;math/tex&quot;&gt;\kappa_{R_I}, S_{R_I}&lt;/script&gt;。但是它们不是唯一的，只要符合条件的&lt;script type=&quot;math/tex&quot;&gt;\kappa_{R_I}, S_{R_I}&lt;/script&gt;们都可以用；更要命的是不同&lt;script type=&quot;math/tex&quot;&gt;\kappa_{R_I}, S_{R_I}&lt;/script&gt;的贡献函数很不一样，有的在-1那有峰，有的在-2那。Magain 1986规定的是&lt;script type=&quot;math/tex&quot;&gt;S_R&lt;/script&gt;中不可以显含和总量有关（也就是带下标&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;）的量；这个也能理解，不过在&lt;script type=&quot;math/tex&quot;&gt;R_F&lt;/script&gt;中就不好做了。&lt;/p&gt;
+
+&lt;p&gt;那怎么办？数学走不通的这个时候就要回到我们的物理图景去找新的路子了。谱线是在第一节图中的管子里形成的，谱线形成的具体过程包括吸收和发射；我们想把谱线吸收+发射对连续谱的影响作为目标参量但是失败了，那么可不可以退而求其次，把谱线的吸收或者发射作为目标参量呢？吸收可能不好做，那谱线发射总可以吧？思路就是这样的了。恒星发出的流量如下：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi F_t(0) = \int I_t \cos{\theta} d\omega&lt;/script&gt;
+
+&lt;p&gt;这当然没啥用处，又不是对光深积分；但是我们正好也有个光深积分积出来是流量的玩意儿：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+  F_t(0) &amp;= \int_0^\infty S_t(\tau_\nu) E_2(\tau_\nu) d\tau_\nu \\
+  E_2(\tau_\nu) &amp;= \int_1^\infty \frac{e^{x\tau_\nu}}{x^2} dx \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;就是OASP7中&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;的E积分。这就好了，我们可以马上高兴地写出&lt;script type=&quot;math/tex&quot;&gt;F_t&lt;/script&gt;的贡献函数：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_{F_t} = S_t(\tau_\nu) E_2(\tau_\nu)&lt;/script&gt;
+
+&lt;p&gt;不过是不是高兴得太早了一点？说好的谱线发射的流量呢？此时只需简单地将源函数&lt;script type=&quot;math/tex&quot;&gt;S_t&lt;/script&gt;拆成谱线的和连续谱的两部分：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_t = \frac{\sum j_i}{\kappa_t} = \frac{\kappa_l}{\kappa_t}S_l + \frac{\kappa_c}{\kappa_t}S_c&lt;/script&gt;
+
+&lt;p&gt;就可以写出连续谱和谱线发射的贡献函数：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
+  C_{F_l} = \frac{\kappa_l}{\kappa_t} S_l(\tau_\nu) E_2(\tau_\nu) \\
+  C_{F_c} = \frac{\kappa_c}{\kappa_t} S_c(\tau_\nu) E_2(\tau_\nu) \\
+\end{align}&lt;/script&gt;
+
+&lt;p&gt;谱线的发射和谱线的吸收仍然不是同一个东西，但是只要我们认为它们发生在同一个地方就可以了。还是下一节会详细讨论这个问题。&lt;/p&gt;
+
+&lt;p&gt;有了这三个贡献函数之后，我们就可以看一下它们的关系了。我们预期的是连续谱提供了光子给谱线吸收，所以谱线的吸收位置不能比连续谱的位置更靠里。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Achmad91-2.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Achmad 1991 图2&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;还是符合我们预期的；而强线因为吸收太多，基本上所有的流量都是从谱线那来的，就没有连续谱了。&lt;/p&gt;
+
+&lt;p&gt;那这个贡献函数和Magain 1986的贡献函数一样吗？请看下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Achmad91-3.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Achmad 1991 图3&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;基本上是一样的。&lt;/p&gt;
+
+&lt;h2 id=&quot;究竟哪些能用哪些不能用&quot;&gt;究竟哪些能用哪些不能用？&lt;/h2&gt;
+
+&lt;p&gt;我们把这个问题说清楚吧；在前面我们稍微将某些量区别对待，有些是我们想要的有些则不能包含在参量内。那么究竟哪些是我们要留下的哪些不是呢？&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1991SoPh..136..239G/abstract&quot;&gt;Gurtovenko+1991&lt;/a&gt;讨论了这个问题。&lt;/p&gt;
+
+&lt;p&gt;我们将连续谱和谱线的过程拆开，如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Gur91-1.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Gurtovenko+1991 图1&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;是连续谱的发射，代表着谱线不存在时的出射光强&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;D_l^p&lt;/script&gt;是连续谱发射通过谱线区域时被谱线吸收的量（纯吸收，谱线的发射不计算在内）&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;I_l^c&lt;/script&gt;是连续谱发射通过谱线区域时没有被吸收的量，也就是最终谱线轮廓处连续谱光强占的比例&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;I_l^p&lt;/script&gt;是谱线发射光强占的比例（谱线发射在这里被count了）&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;D_l = D_l^p - I_l^p&lt;/script&gt;是最终观测到的谱线总吸收&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;I_l = I_l^c + I_l^p&lt;/script&gt;是最终观测到的谱线总发射光强&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;顺便，&lt;script type=&quot;math/tex&quot;&gt;D&lt;/script&gt;的意思是depression。然后我们可以写出这六个量的表达式和贡献函数了。顺便为了简化，这里只介绍solar disk center的情况，&lt;script type=&quot;math/tex&quot;&gt;\mu = 1&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;i_c&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_c(0) = \int_0^{\infty} S_c e^{\tau_c} d\tau_c&lt;/script&gt;
+
+&lt;p&gt;抄OASP7就完了。&lt;/p&gt;
+
+&lt;h3 id=&quot;d_lp&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;D_l^p&lt;/script&gt;&lt;/h3&gt;
+
+&lt;p&gt;连续谱发射通过谱线区域时被谱线吸收的量就是&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;在某一点&lt;script type=&quot;math/tex&quot;&gt;\tau_c&lt;/script&gt;处乘上该处的吸收系数&lt;script type=&quot;math/tex&quot;&gt;\kappa_l(\tau_c)&lt;/script&gt;再乘上这段的长度元&lt;script type=&quot;math/tex&quot;&gt;\Delta h(\tau_c)&lt;/script&gt;。但是这里有一个问题，&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;是只考虑连续谱吸收发射是的光强，但是入射的时候因为&lt;script type=&quot;math/tex&quot;&gt;\tau_c&lt;/script&gt;前面可能也有谱线的吸收，所以实际上入射的光强没有那么多，而是被连续谱和谱线消光之后的光强，所以要借用&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;定义中的&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;指数项（&lt;strong&gt;正当性需要讨论&lt;/strong&gt;），再乘上一个&lt;script type=&quot;math/tex&quot;&gt;e^{-(\tau_c+\tau_l)}&lt;/script&gt;，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D_l^p = \sum I_c(\tau_c) e^{-(\tau_c+\tau_l)} \kappa_l(\tau_c) \Delta h(\tau_c)&lt;/script&gt;
+
+&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;的定义代入并定义&lt;script type=&quot;math/tex&quot;&gt;\eta = \kappa_l / \kappa_c&lt;/script&gt;以及&lt;script type=&quot;math/tex&quot;&gt;\kappa_l(\tau_c) \Delta h(\tau_c) = \eta(\tau_c) \Delta\tau_c&lt;/script&gt;，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D_l^p = \int_0^\infty \left[ \int_{\tau_c}^\infty S_c(\tau_c) e^{-\tau_c} d\tau_c \right] e^{-\tau_l} \eta d\tau_c&lt;/script&gt;
+
+&lt;h3 id=&quot;i_lp&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;I_l^p&lt;/script&gt;&lt;/h3&gt;
+
+&lt;p&gt;谱线发射光强占的比例的定义和&lt;script type=&quot;math/tex&quot;&gt;D_l^p&lt;/script&gt;差不多，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_l^p = \sum e^{-(\tau_c+\tau_l)} \epsilon_l(\tau_c) \Delta h(\tau_c) = \sum S_l(\tau_c) e^{-(\tau_c+\tau_l)} \eta(\tau_c) \kappa_c(\tau_c) \Delta h(\tau_c)&lt;/script&gt;
+
+&lt;p&gt;以防万一还是写明&lt;script type=&quot;math/tex&quot;&gt;\epsilon_l = S_l \kappa_l = S_l \kappa_c \eta&lt;/script&gt;。将&lt;script type=&quot;math/tex&quot;&gt;\Delta h(\tau_c)&lt;/script&gt;换成&lt;script type=&quot;math/tex&quot;&gt;\Delta \tau_c&lt;/script&gt;并改成积分号，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_l^p = \int_0^\infty S_l e^{-(\tau_c+\tau_l)} \eta d\tau_c&lt;/script&gt;
+
+&lt;h3 id=&quot;d_l&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;D_l&lt;/script&gt;&lt;/h3&gt;
+
+&lt;p&gt;上面已经写了&lt;script type=&quot;math/tex&quot;&gt;D_l = D_l^p - I_l^p&lt;/script&gt;，两式相减就完了：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;D_l = \int_0^\infty \left[ \int_{\tau_c}^\infty S_c(\tau_c) e^{-\tau_c} d\tau_c - S_l(\tau_c) e^{-\tau_c} \right] e^{-\tau_l} \eta d\tau_c&lt;/script&gt;
+
+&lt;h3 id=&quot;i_lc&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;I_l^c&lt;/script&gt;&lt;/h3&gt;
+
+&lt;p&gt;这玩意跟&lt;script type=&quot;math/tex&quot;&gt;I_l^p&lt;/script&gt;差不多，&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_l^c = \sum e^{-(\tau_c+\tau_l)} \epsilon_c(\tau_c) \Delta h(\tau_c) = \sum S_c(\tau_c) e^{-(\tau_c+\tau_l)}  \kappa_c(\tau_c) \Delta h(\tau_c)&lt;/script&gt;
+
+&lt;p&gt;所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_l^c = \int_0^\infty S_c e^{-(\tau_c+\tau_l)} d\tau_c&lt;/script&gt;
+
+&lt;h3 id=&quot;i_l&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;I_l&lt;/script&gt;&lt;/h3&gt;
+
+&lt;p&gt;由&lt;script type=&quot;math/tex&quot;&gt;I_l = I_l^c + I_l^p&lt;/script&gt;，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_l = \int_0^\infty (S_c + \eta S_l) e^{-(\tau_c+\tau_l)} d\tau_c&lt;/script&gt;
+
+&lt;p&gt;它们的贡献函数就不单独列了。这些式子比较基础，即使是NLTE下也能使用；顺带一提这里的吸收/发射系数是包含了密度的，但是前面几节的没有。&lt;/p&gt;
+
+&lt;p&gt;搞定了这些表达式我们就可以看看这六个贡献函数线具体长什么样子了，这里仅举两例：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Gur91-2.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Gurtovenko+1991 图2&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Gur91-4.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Gurtovenko+1991 图4&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到结论是类似的，连续谱在大气底层形成，然后在上部被谱线吸收；如果吸收不多那&lt;script type=&quot;math/tex&quot;&gt;CF(I_l)&lt;/script&gt;会有双峰，吸收很强的时候&lt;script type=&quot;math/tex&quot;&gt;CF(I_l)&lt;/script&gt;就和谱线的贡献函数一致了。从这里也可以看出想要讨论谱线的形成区域的话，我们应该选用和谱线的贡献函数（吸收/发射都可以，&lt;script type=&quot;math/tex&quot;&gt;D_l^p, I_l^p&lt;/script&gt;）或者总的吸收贡献函数&lt;script type=&quot;math/tex&quot;&gt;D_l&lt;/script&gt;（因为它只算了谱线的吸收）；连续谱的贡献函数当然只对连续谱有用，而最方便能得到的&lt;script type=&quot;math/tex&quot;&gt;I_l&lt;/script&gt;的贡献函数实际上受连续谱和谱线共同影响，是不能用的。&lt;/p&gt;
+
+&lt;p&gt;这里留下了一个坑，Gurtovenko+1991光强到流量的转换没有做；如果巨星/超巨星的临边昏暗很小的话那没问题。我估计我就直接用上面的式子了。&lt;/p&gt;
+
+&lt;h2 id=&quot;贡献函数和恒星参数的关系&quot;&gt;贡献函数和恒星参数的关系&lt;/h2&gt;
+
+&lt;p&gt;我们重于定义好了贡献函数，可以看看它们和恒星参数的关系了。&lt;/p&gt;
+
+&lt;h3 id=&quot;速度场&quot;&gt;速度场&lt;/h3&gt;
+
+&lt;p&gt;这个其实挺复杂的。直接看图吧：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Albow96.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Albow+1996&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看出线翼形成于大气更深处。加上整体速度场之后因为disk center的谱线偏离了静止波长，在静止波长处我们只能看到恒星边缘（只有切向速度）的大气的谱线；而恒星边缘的连续谱形成位置更高，所以静止波长处谱线的形成位置也被相应抬高了。&lt;/p&gt;
+
+&lt;h3 id=&quot;激发能&quot;&gt;激发能&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Achmad92-2.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Achmad 1992 图2&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;很好理解，激发能越高谱线越需要高温激发，就越往大气内部跑。&lt;/p&gt;
+
+&lt;h3 id=&quot;3d-nlte下&quot;&gt;3D-NLTE下&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/post-contri_func/Amarsi15-3.png&quot; alt=&quot;&quot; /&gt;
+&lt;em&gt;Amarsi 2015 图3&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;这个就比较前沿了，感觉有得做。&lt;/p&gt;
+
+&lt;h3 id=&quot;恒星大气切片&quot;&gt;恒星大气切片&lt;/h3&gt;
+
+&lt;p&gt;这也是很好玩的，例子是&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/2018A%26A...610A..29K/abstract&quot;&gt;Kravchenko+2018&lt;/a&gt;。反正就是挑出在不同地方形成的谱线然后测它们的波长偏离，就可以得到不同地方的RV了，对Mira什么的有用。&lt;/p&gt;
+</description>
+        <pubDate>Sun, 04 Aug 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/08/04/contri_func/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/04/contri_func/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>利用星震学方法测量恒星的氦丰度</title>
@@ -311,6 +564,7 @@
         <title>PANDORA使用记录</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#fortran-编译器选择&quot; id=&quot;markdown-toc-fortran-编译器选择&quot;&gt;Fortran 编译器选择&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#安装perl&quot; id=&quot;markdown-toc-安装perl&quot;&gt;安装Perl&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#文件准备&quot; id=&quot;markdown-toc-文件准备&quot;&gt;文件准备&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#格式大坑&quot; id=&quot;markdown-toc-格式大坑&quot;&gt;格式大坑&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#元素数据输入wup-section-10&quot; id=&quot;markdown-toc-元素数据输入wup-section-10&quot;&gt;元素数据输入(WUP Section 10)&lt;/a&gt;&lt;/li&gt;
@@ -372,6 +626,10 @@ apt-get install g++-multilib
 
 &lt;p&gt;会有&lt;code class=&quot;highlighter-rouge&quot;&gt;Unsupported OS&lt;/code&gt;的提示，跳过即可。
 如果位置不够的话可以将其他不需要的软件包取消掉，和Fortran有关的只有3个G左右的东西。&lt;/p&gt;
+
+&lt;h2 id=&quot;安装perl&quot;&gt;安装Perl&lt;/h2&gt;
+
+&lt;p&gt;这个算是半必须的，在后面更新文件的时候作者写了个方便的perl脚本来更新，所以不装的话就得手动了。Ubuntu的具体安装方法参见&lt;a href=&quot;https://blog.csdn.net/JohnwayChan/article/details/79066960&quot;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h2 id=&quot;文件准备&quot;&gt;文件准备&lt;/h2&gt;
 
@@ -2789,70 +3047,6 @@ Eu、Pt、Au、Th、U：r过程；&lt;br /&gt;&lt;/p&gt;
         <pubDate>Fri, 26 Oct 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/10/26/GA/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/10/26/GA/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>銀河考古学总结 - 附录</title>
-        <description>&lt;p&gt;这里主要讲讲銀河考古学总结用到的论文图片背后的故事。论文不一定细读，但是至少要到能解释图片怎么来的、结果意味着什么的地步。&lt;/p&gt;
-
-&lt;h2 id=&quot;1-序章&quot;&gt;1 序章&lt;/h2&gt;
-
-&lt;h3 id=&quot;hopkins--beacom-2006中的fig-1&quot;&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2006ApJ...651..142H&quot;&gt;Hopkins &amp;amp; Beacom 2006&lt;/a&gt;中的Fig. 1&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/1-hb06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;不同来源的数据给出了一致的结果&lt;/li&gt;
-  &lt;li&gt;SFR(Stellar Forming Rate)：一个点；SFH(Stellar Forming History)：一条线&lt;/li&gt;
-  &lt;li&gt;通过不同方法可以探测星系的光度（不同波段），或者通过一些特征线等可以推断出星系的恒星形成率&lt;/li&gt;
-  &lt;li&gt;观测到的SN II数量为SFH提供了一个下限（因为有被挡住的）&lt;/li&gt;
-  &lt;li&gt;超级神冈探测器可以探测到弥散的超新星中微子背景，这提供了一个上限（大概是有多少恒星才能有多少超新星？）&lt;/li&gt;
-  &lt;li&gt;SFH应该与同时间的恒星质量密度(stellar mass density)匹配，但是在高红移处恒星质量密度显著低于SFH；这可能是我们的假设以及遮挡引起的。如果低红移处也有问题的话可能是因为IMF：SFR是从大质量恒星的光度得到的，而恒星质量密度主要是从小质量恒星处的到的，所以将这两个联系在一起的IMF的正确性就很重要了。当然从下图来说(b)使用的IMF更好一点，至少低红移处一致了。
-&lt;img src=&quot;/img/in-post/post-GA/1s-1-hb06.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;HB06, Fig.5. (a)、(b)使用的是&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003ApJ...593..258B&quot;&gt;SalA和BG IMF&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;金属的质量密度就更难观测了&lt;/li&gt;
-  &lt;li&gt;模型和观测的超新星出现率还是挺一致的，而且观测到的有阻挡，所以比模型低是正常的。&lt;/li&gt;
-  &lt;li&gt;delay time控制的是SN Ia的拐点。
-&lt;img src=&quot;/img/in-post/post-GA/1s-2-hb06.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;HB06, Fig.7. 上面是SN II、下面是SN Ia的出现率。(a)、(b)使用的是&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003ApJ...593..258B&quot;&gt;SalA和BG IMF&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;什么是SFH的归一化？为什么要归一化？是指Fig. 1的那条曲线吗？&lt;br /&gt;
-我认为这里的归一化指的是对SFH的限制，比如上下限；当然给出具体曲线也是归一化的一种。&lt;/li&gt;
-  &lt;li&gt;Salpeter IMF是什么样子的基于什么假设？&lt;br /&gt;
-未查，参考&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003ApJ...593..258B&quot;&gt;论文&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;buonanno1994中的fig-11&quot;&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1994A%26A...290...69B&quot;&gt;Buonanno+1994&lt;/a&gt;中的Fig. 11&lt;/h3&gt;
-&lt;p&gt;M3的CMD有不少版本，挺不一样的，比较一下应该会有意思。
-&lt;img src=&quot;/img/in-post/post-GA/1-b94.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;完整性：文中给出了一个计算完整性的方法(section 2.4)；限于时间问题没有细看。我自己的想法是可以模拟一个恒星数密度关系然后看投影之后能看到多少恒星。操作层面来说，我们只能观测一个甜甜圈的范围，太里面的因为不完整其实不能拿来画图。&lt;/li&gt;
-  &lt;li&gt;CMD示意图给出了对图中各部分的解释:
-&lt;img src=&quot;/img/in-post/post-GA/1s-3.png&quot; alt=&quot;&quot; /&gt;
-&lt;a href=&quot;http://www.astro.caltech.edu/~george/ay20/eaa-globcl.pdf&quot;&gt;来源&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;演化顺序：MS-&amp;gt;TO-&amp;gt;RGB-&amp;gt;HB-&amp;gt;AGB&lt;/li&gt;
-  &lt;li&gt;RC其实是HB&lt;/li&gt;
-  &lt;li&gt;MS、RGB的位置以及宽度可以推断金属丰度（大小以及弥散）&lt;/li&gt;
-  &lt;li&gt;和我的印象不一样的是，AGB是这些成分里面演化到最晚期的&lt;/li&gt;
-  &lt;li&gt;TO可以用来测量年龄，是星团里面最准确的年龄推断&lt;/li&gt;
-  &lt;li&gt;HB的位置由元素丰度（主要）、氦闪时He核质量以及包层质量决定；所以恒星在RGB阶段经历的质量流失是不一样的。次要原因还没有明确定论&lt;/li&gt;
-  &lt;li&gt;金属丰度越高、包层质量越大、He核质量越小，HB越红（参见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1987ApJS...65...95S&quot;&gt;这里&lt;/a&gt;、&lt;a href=&quot;http://adsabs.harvard.edu/abs/1990ApJ...350..155L&quot;&gt;这里&lt;/a&gt;）&lt;/li&gt;
-  &lt;li&gt;由上，RHB和BHB也可以用来推断年龄&lt;/li&gt;
-  &lt;li&gt;HB中间是不稳定gap，是RR Lyrae（参见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1996ARA&amp;amp;A..34..551G&quot;&gt;这里&lt;/a&gt;）&lt;/li&gt;
-  &lt;li&gt;BSS可能是两恒星的合并或者质量交换得来的，它们基本上处于星团的核心部位&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 26 Oct 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/10/26/GA-S/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/26/GA-S/</guid>
         
         <category>learning</category>
         

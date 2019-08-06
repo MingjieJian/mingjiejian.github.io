@@ -30,6 +30,10 @@ apt-get install g++-multilib
 会有`Unsupported OS`的提示，跳过即可。
 如果位置不够的话可以将其他不需要的软件包取消掉，和Fortran有关的只有3个G左右的东西。
 
+## 安装Perl
+
+这个算是半必须的，在后面更新文件的时候作者写了个方便的perl脚本来更新，所以不装的话就得手动了。Ubuntu的具体安装方法参见[这里](https://blog.csdn.net/JohnwayChan/article/details/79066960)。
+
 ## 文件准备
 
 - 文件分为9个部分，其中6个是有内容的，三个是单纯用来分割的(GO部分)
