@@ -39,6 +39,13 @@ tags:
 这是因为`\t`在字符串中会被转义为Tab，所以要在字符串前加上一个`r`。
 
 <p id = "py"></p>
+
+#### 更新markdown中的图像
+
+在路径后面加上一个`?1`，数字可以改变。
+
+[来源](https://stackoverflow.com/questions/37023166/how-to-reload-image-in-ipython-notebook)
+
 ### Python备忘
 
 <p id = "py-array_stack"></p>

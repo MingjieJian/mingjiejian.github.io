@@ -5,9 +5,333 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 06 Aug 2019 18:26:16 +0900</pubDate>
-    <lastBuildDate>Tue, 06 Aug 2019 18:26:16 +0900</lastBuildDate>
-    <generator>Jekyll v3.8.5</generator>
+    <pubDate>Sat, 21 Sep 2019 18:10:24 +0900</pubDate>
+    <lastBuildDate>Sat, 21 Sep 2019 18:10:24 +0900</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>我所知道的关于红外氦线的一切</title>
+        <description>&lt;p&gt;直接上表格。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;论文&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;内容&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;结论&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;要点&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;我可以做的&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Zirin 1982&lt;br /&gt;底片&lt;br /&gt;0.8A&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 用&lt;strong&gt;底片&lt;/strong&gt;测量了455颗恒星（包括月亮）的氦线等值宽度(EW)以及半高全宽&lt;br /&gt;2. 有很多星有不止一次测量&lt;br /&gt; 3. 给出了表格&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. EW与软X射线辐射有正相关&lt;br /&gt;2. 周期短的双星EW稍微大一点&lt;br /&gt;3. O-A星EW很小&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 选源可能会偏向活跃的星&lt;br /&gt;2. 小于100mA的测量可能不准&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;不要了&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith 1983&lt;br /&gt;用Zirin 1982的数据&lt;br /&gt;无表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;比较了EW和X射线光度的相关性&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 矮星没有相关性，但是巨星有&lt;br /&gt;2. 巨星中的谱线形成EUV光子主导，矮星和碰撞激发评分秋色&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 形成机制：1)PR、2)CE、3)激发态He原子的向下扩散&lt;br /&gt;2. 耀斑和纤维状结构中一般为发射线&lt;br /&gt;3. 简介中提及了He线的形成位置&lt;br /&gt;4. Zirin 1982中的EW-X射线光度关系不好可能是因为将dwarf和giant混在一起了&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf的EW整体比giant大吗？这个问题可以确定形成机制&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O’Brian+1986&lt;br /&gt;R=27000-54000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 测量了60颗F-K巨星的氦线&lt;br /&gt;2. 有很多星有不止一次测量&lt;br /&gt; 3. 给出了表格&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. EW结果和Zirin 1982的相似&lt;br /&gt;2. supergiant的谱线有时序变化&lt;br /&gt;3. CDL和两个线左右的恒星氢线表现不同&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 紫外发射线可以确定色球层模型&lt;br /&gt;2. 是在早上观测的(?)&lt;br /&gt;3. 列出了氦线附近的其他谱线特征，特别提到了10829.27的CaI线和10831.3的未知谱线&lt;br /&gt;4. K巨星的吸收很弱，Zirin 1982观测不到；有一部分的谱线形状改变很小（bet Gem type，短周期内），另一部分有很快的变化&lt;br /&gt;5. Zirin 1982小于100mA的不可用&lt;br /&gt; 6. spg的EW变化应该是由物质抛射引起的&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 我们观测到了氦线左边和右边的线，要确定左边的是不是氦线，右边的究竟是什么；计算EW的时候要考虑它们&lt;br /&gt;2. 这里面有bet Dra的光谱！和我们观测的一致但是没有解释&lt;br /&gt;3. 可以做He线的时序观测（已有光谱）&lt;br /&gt;4. 他们认为bet Gem type只在early K，这和我们的观测符合吗？&lt;br /&gt;5. 在我们的HR图上画coronal dividing line和另外的两条线（都有引用的）&lt;br /&gt;6. 回答P15、P16的两个问题&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Zarro+1986&lt;br /&gt;R=10000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;EW与X射线光度的关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. dwarf温度大于6000K的没有关系（可能是CE机制主导），小于的有关系（PR机制）&lt;br /&gt;2. giant和spg与Smith 1983一致，认为是PR主导&lt;br /&gt;3. PR机制导致线性关系，但是找到的是指数关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. dwarf 6000K对应着对流区由浅（高温）到深（低温）&lt;br /&gt;2. 线性和指数的关系可能是因为局部大气活动（可能可以用来做活动区大小的指示）&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;我们也做个这个吧&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Lambart 1987&lt;br /&gt;和O’Brian+1986设置一样&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19个F-M星的氦线观测&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 和O’Brian+1986关于CDL的结论一致&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 模型EW太大的问题可以通过减少色球层高温部分来解决&lt;br /&gt;2. giant的变化应为活动区域的变化，spg的是物质抛射&lt;br /&gt;3. 对bet Dra有更多的描述，但是还是没有原因&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dupree+1992&lt;br /&gt;R=18500&lt;br /&gt;无表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;在球状星团中通过氦线发现了一个星风速度很快的星&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;氦线延展到了Si线处，意味着和物质的逃逸速度差不多&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;给出了一些色球层线的形成区域&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;这个结论可以仅仅通过He线的最短波长来确定么？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Avrett+1994&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;色球层模型的事情，略&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Sasselov+1994&lt;br /&gt;R=28000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;造父变星中的He线&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. He线基本上是蓝移&lt;br /&gt;2. 速度移动比光球层星慢(phase lag)，幅度比光球层线大&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;造父变星一直都有光球层&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Sasselov+1994&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;造父变星中He线的形成&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 造父变星有一些好处：phase lag提供了谱线形成的位置；可以看看温度变化给He线造成的影响&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;比较Fig. 2和我们的PANDORA结果；模型部分值得细看&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Rueddi+1995&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;磁场的，略&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Andretta+1997&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;太阳光球层模型和He线&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;证明了主要是CE机制&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith+2004&lt;br /&gt;R=23600&lt;br /&gt;无表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10个贫金属星的He导出的星风速度&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;有两个星风速度大于星团逃逸速度&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;T&amp;gt;4600, Mv&amp;gt;-1.5才有He线的吸收&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 我们可以证明或证伪这个要点&lt;br /&gt;2. 我们可以找他要这个表吗？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Sanz-Forcada+2008&lt;br /&gt;R=170000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;He线和短波辐射的关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;RSCVn没有关系，giants有关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;短波数据来自Extreme Ultraviolet Explorer (MAST Archive)，X射线数据来自ROSAT all sky survey&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;从里面找短波数据；和Einstein data bank比哪个好？&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dupree+2009&lt;br /&gt;R=23600&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;EW和各种恒星参数的关系（41颗贫金属场星giant）&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;很多星有快速的outflow&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;T&amp;gt;4500, Mv&amp;gt;-1.5才有He线的吸收&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;可以把这个数据库和我们的合在一起&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dupree+2011&lt;br /&gt;R=50000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12颗Omega Cen里面类似的恒星的EW和恒星参数的关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. profile算是bet Gem profile&lt;br /&gt;2. 它们分成了两拨，暗示可能是He enhance造成的&lt;br /&gt;3. 作者认为H alpha和Ca线弱所以vairation小&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;将它们和CDL作对比看看是不是稳定的&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Pasquini+2011&lt;br /&gt;无表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;对NGC2808两颗giant的详细模型模拟&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;其他色球层线很相似并且稳定，但是He线很不同&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 这俩星在CDL之下&lt;br /&gt;2. 这俩星的有效温度远低于4500K&lt;br /&gt;3. 作者认为它们的He线是PR主导的&lt;br /&gt;4. T&amp;gt;9000K的区域对He线的轮廓没有影响&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;要点4存疑，要看citation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Takeda+2011&lt;br /&gt;R=20000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;33颗贫金属矮星的EW&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;绝大多数都有吸收，和金属丰度无关&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. 有短波辐射的来源（应该也是ROSAT）&lt;br /&gt;2. 因为是贫金属星所以自转不快，自转带来的活动性不强&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;看看EW和自转的关系是什么样子的&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith+2012&lt;br /&gt;R=25000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23颗贫金属矮星的EW&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;绝大多数都有吸收，都不强&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dupree+2013&lt;br /&gt;来自Dupree+2011&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;两颗有具体Y值的Omega Cen giants&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;重要但是很熟悉了&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith+2013&lt;br /&gt;R=23600&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;M13中7颗巨星的EW等&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;没有发现和Na丰度的关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;要细读，但是可能是因为有效温度太低了&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Navarrete+2015&lt;br /&gt;R=65000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Kapteyn Group中14颗恒星的EW&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;EW分布和Omega Cen不一样&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Strader+2015&lt;br /&gt;R=50000&lt;br /&gt;有表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;M4中的16颗giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;没有找到和Na丰度有好的关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;T&amp;gt;4450才有He线的吸收&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;还没细看&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith 2016&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;基于以前的EW数据和活动性指标做对比&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1. Zarro+1986的误差在30mA&lt;br /&gt;2. 有很多的高能数据来源&lt;br /&gt;3. 对关系有比较详细的解读，有结果之后可以再来看&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;延长图2的观测到更高的Lx处，以及看看高温恒星的scatter&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;古代数据库&quot;&gt;古代数据库&lt;/h2&gt;
+
+&lt;p&gt;Zirin 1982&lt;/p&gt;
+
+&lt;h2 id=&quot;现代数据库&quot;&gt;现代数据库&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;名称&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;恒星类型&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;EW测量方法&lt;/th&gt;
+      &lt;th&gt;数据表格&lt;/th&gt;
+      &lt;th&gt;备注&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O’Brian+1986&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;F-K giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;没讲，数据质量flag中有blend，猜测是直接积分&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Zarro+1986&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf, giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;by planimetry，猜测为积分&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt;dwarf部分归于Smith 2016&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Lambart 1987&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;没讲&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Sasselov+1994&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Cepheid&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;猜测为直接积分，作者认为telluric弱所以不用减去telluric&lt;/td&gt;
+      &lt;td&gt;无&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Sanz-Forcada+2008&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;RSCVn, giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;直接积分然后减去blend的gaussian拟合&lt;/td&gt;
+      &lt;td&gt;有，已入总表&lt;/td&gt;
+      &lt;td&gt;dwarf部分归于Smith 2016&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dupree+2009&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;IRAF splot然后测量；如果blend了就去除&lt;/td&gt;
+      &lt;td&gt;有，已入总表&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dupree+2011&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;没说，猜测同上&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Takeda+2011&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用Gaussian去拟合He线&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt;归于Smith 2016&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith+2012&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;无blend则直接积分，有blend则分开所有成分&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt;归于Smith 2016&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith+2013&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;同 上，并且都给了表&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Navarrete+2015&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf, giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;splot以及deblend&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Strader+2015&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;splot&lt;/td&gt;
+      &lt;td&gt;已入总表&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Smith 2016&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+      &lt;td&gt;数据来自Zarro+1986, Sanz-Forcada+2008, Takeda+2011, Smith+2012&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;KOV sample&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf, giant, spg&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;APO sample&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;dwarf, giant&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;它们测量EW的方法可以直接比较吗？&lt;/p&gt;
+
+&lt;h2 id=&quot;large-to-do-points&quot;&gt;Large To Do points&lt;/h2&gt;
+&lt;p&gt;再后面的也没细看&lt;/p&gt;
+
+&lt;p&gt;O’Brian+1986的分析很详细，而且有模型的构建过程，需要另开位置仔细阅读。&lt;/p&gt;
+
+&lt;p&gt;星震学和He线的相关性&lt;/p&gt;
+
+&lt;p&gt;这些恒星和Gaia的交叉&lt;/p&gt;
+</description>
+        <pubDate>Mon, 16 Sep 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/09/16/he-paper/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/09/16/he-paper/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>谱线是在哪里形成的？</title>
@@ -162,13 +486,13 @@
 
 &lt;h3 id=&quot;i_c&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;&lt;/h3&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_c(0) = \int_0^{\infty} S_c e^{\tau_c} d\tau_c&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_c(0) = \int_0^{\infty} S_c e^{-\tau_c} d\tau_c&lt;/script&gt;
 
 &lt;p&gt;抄OASP7就完了。&lt;/p&gt;
 
 &lt;h3 id=&quot;d_lp&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;D_l^p&lt;/script&gt;&lt;/h3&gt;
 
-&lt;p&gt;连续谱发射通过谱线区域时被谱线吸收的量就是&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;在某一点&lt;script type=&quot;math/tex&quot;&gt;\tau_c&lt;/script&gt;处乘上该处的吸收系数&lt;script type=&quot;math/tex&quot;&gt;\kappa_l(\tau_c)&lt;/script&gt;再乘上这段的长度元&lt;script type=&quot;math/tex&quot;&gt;\Delta h(\tau_c)&lt;/script&gt;。但是这里有一个问题，&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;是只考虑连续谱吸收发射是的光强，但是入射的时候因为&lt;script type=&quot;math/tex&quot;&gt;\tau_c&lt;/script&gt;前面可能也有谱线的吸收，所以实际上入射的光强没有那么多，而是被连续谱和谱线消光之后的光强，所以要借用&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;定义中的&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;指数项（&lt;strong&gt;正当性需要讨论&lt;/strong&gt;），再乘上一个&lt;script type=&quot;math/tex&quot;&gt;e^{-(\tau_c+\tau_l)}&lt;/script&gt;，有：&lt;/p&gt;
+&lt;p&gt;连续谱发射通过谱线区域时被谱线吸收的量就是&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;在某一点&lt;script type=&quot;math/tex&quot;&gt;\tau_c&lt;/script&gt;处乘上该处的吸收系数&lt;script type=&quot;math/tex&quot;&gt;\kappa_l(\tau_c)&lt;/script&gt;再乘上这段的长度元&lt;script type=&quot;math/tex&quot;&gt;\Delta h(\tau_c)&lt;/script&gt;。但是这里有一个问题，&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;是只考虑连续谱吸收发射是的光强，但是入射的时候因为&lt;script type=&quot;math/tex&quot;&gt;\tau_c&lt;/script&gt;前面有谱线和连续谱的吸收，这层上面的光强和吸收量都会被它之外的大气进行消光，所以要借用&lt;script type=&quot;math/tex&quot;&gt;I_c&lt;/script&gt;定义中的&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;指数项，再乘上一个&lt;script type=&quot;math/tex&quot;&gt;e^{-(\tau_c+\tau_l)}&lt;/script&gt;，有：&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;D_l^p = \sum I_c(\tau_c) e^{-(\tau_c+\tau_l)} \kappa_l(\tau_c) \Delta h(\tau_c)&lt;/script&gt;
 
@@ -220,7 +544,27 @@
 
 &lt;p&gt;可以看到结论是类似的，连续谱在大气底层形成，然后在上部被谱线吸收；如果吸收不多那&lt;script type=&quot;math/tex&quot;&gt;CF(I_l)&lt;/script&gt;会有双峰，吸收很强的时候&lt;script type=&quot;math/tex&quot;&gt;CF(I_l)&lt;/script&gt;就和谱线的贡献函数一致了。从这里也可以看出想要讨论谱线的形成区域的话，我们应该选用和谱线的贡献函数（吸收/发射都可以，&lt;script type=&quot;math/tex&quot;&gt;D_l^p, I_l^p&lt;/script&gt;）或者总的吸收贡献函数&lt;script type=&quot;math/tex&quot;&gt;D_l&lt;/script&gt;（因为它只算了谱线的吸收）；连续谱的贡献函数当然只对连续谱有用，而最方便能得到的&lt;script type=&quot;math/tex&quot;&gt;I_l&lt;/script&gt;的贡献函数实际上受连续谱和谱线共同影响，是不能用的。&lt;/p&gt;
 
-&lt;p&gt;这里留下了一个坑，Gurtovenko+1991光强到流量的转换没有做；如果巨星/超巨星的临边昏暗很小的话那没问题。我估计我就直接用上面的式子了。&lt;/p&gt;
+&lt;p&gt;这里有一个坑，就是每个式子最后的微分变量和画图的横坐标必须要完全一致。以&lt;script type=&quot;math/tex&quot;&gt;I_c(0) = \int_0^{\infty} S_c e^{-\tau_c} d\tau_c&lt;/script&gt;为例，如果横坐标为&lt;script type=&quot;math/tex&quot;&gt;\tau_c&lt;/script&gt;那么这条式子即为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_c(0) = \int_0^{\infty} S_c(\tau_c) e^{-\tau_c} d\tau_c&lt;/script&gt;
+
+&lt;p&gt;可以直接进行计算；但是我们有的时候不知道&lt;script type=&quot;math/tex&quot;&gt;S_c(\tau_c)&lt;/script&gt;或者想用别的自变量，那么就需要换算了。以几何深度&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;为例（PANDORA里面用的），这时的式子实际上是&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_c(0) = \int_0^{\infty} S_c(z) e^{-\tau_c(z)} d\tau_c(z)&lt;/script&gt;
+
+&lt;p&gt;要记住&lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt;后面的微分变量必须和横坐标完全一致，所以这里需要用光深的定义&lt;script type=&quot;math/tex&quot;&gt;d\tau_c(z) = \kappa_c dz&lt;/script&gt;代到式子里面去，&lt;script type=&quot;math/tex&quot;&gt;S_c(z) e^{-\tau_c(z)} \kappa_c&lt;/script&gt;这个玩意儿才是贡献函数。&lt;/p&gt;
+
+&lt;p&gt;再举一个例子（都是自己踩过的坑…），当我们用一个参考的光深的对数&lt;script type=&quot;math/tex&quot;&gt;\log{\tau_\mathrm{ref}}&lt;/script&gt;做横坐标的时候（这是MOOG用的），式子变为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_c(0) = \int_0^{\infty} S_c(\tau_\mathrm{ref}) e^{-\tau_c(\tau_\mathrm{ref})} d\tau_c(\tau_\mathrm{ref})&lt;/script&gt;
+
+&lt;p&gt;在这里我们要将&lt;script type=&quot;math/tex&quot;&gt;d\tau_c(\tau_\mathrm{ref})&lt;/script&gt;变成&lt;script type=&quot;math/tex&quot;&gt;d\log{\tau_\mathrm{ref}}&lt;/script&gt;，转换关系为&lt;script type=&quot;math/tex&quot;&gt;d\tau_c(\tau_\mathrm{ref}) = \ln{(10)} \tau_\mathrm{ref} \frac{\kappa_c}{\kappa_\mathrm{ref}} d \log{\tau_\mathrm{ref}}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;那有人可能会疑惑前面源函数和&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;指数项需要把自变量换成对数的吗？其实不用直接换，因为我们之后会把横坐标取对数，这个时候就相当于把这两个项的自变量换成对数的了。&lt;/p&gt;
+
+&lt;p&gt;总结一下就是积分变量的源函数一般可以随便换成横坐标的量，但是剩下的特别是后面的&lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt;要换过去，对数坐标的话还要加点东西。&lt;/p&gt;
+
+&lt;p&gt;这里还留下了一个坑，Gurtovenko+1991光强到流量的转换没有做；如果巨星/超巨星的临边昏暗很小的话那没问题。我估计我就直接用上面的式子了。&lt;/p&gt;
 
 &lt;h2 id=&quot;贡献函数和恒星参数的关系&quot;&gt;贡献函数和恒星参数的关系&lt;/h2&gt;
 
@@ -591,7 +935,10 @@
   &lt;li&gt;&lt;a href=&quot;#pandora运行种类&quot; id=&quot;markdown-toc-pandora运行种类&quot;&gt;PANDORA运行种类&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#平面平行层大气与球面大气&quot; id=&quot;markdown-toc-平面平行层大气与球面大气&quot;&gt;平面平行层大气与球面大气&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#运行&quot; id=&quot;markdown-toc-运行&quot;&gt;运行&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#输出&quot; id=&quot;markdown-toc-输出&quot;&gt;输出&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#输出&quot; id=&quot;markdown-toc-输出&quot;&gt;输出&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#输出文件里面的坑&quot; id=&quot;markdown-toc-输出文件里面的坑&quot;&gt;输出文件里面的坑&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#错误处理&quot; id=&quot;markdown-toc-错误处理&quot;&gt;错误处理&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#迭代中的错误处理&quot; id=&quot;markdown-toc-迭代中的错误处理&quot;&gt;迭代中的错误处理&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
@@ -614,12 +961,12 @@
 &lt;h2 id=&quot;fortran-编译器选择&quot;&gt;Fortran 编译器选择&lt;/h2&gt;
 
 &lt;p&gt;可以从pgfortran、ifort和pgf77中选一个。我选的是ifort；关于ifort的安装可以参照&lt;a href=&quot;https://www.jianshu.com/p/c6fec68966f7&quot;&gt;这里&lt;/a&gt;。实际上安装的是Intel® Parallel Studio XE Cluster Edition for Linux*里面的Fortran编译器。装之前或者之后记得将这些32位的包装上：&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install ia32-libs
-apt-get install libstdc++5
-apt-get install lib32stdc++6
-apt-get install libc6-dev-i386
-apt-get install gcc-multilib
-apt-get install g++-multilib
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ia32-libs
+apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;libstdc++5
+apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;lib32stdc++6
+apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;libc6-dev-i386
+apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gcc-multilib
+apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;g++-multilib
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;要不然一会PANDORA是装不上的hhh。&lt;/p&gt;
@@ -1518,6 +1865,14 @@ RHEDIT：打开它的话需要指定另外的变量，暂不知道&lt;/p&gt;
 
 &lt;p&gt;PANDORA有自带的输出部分提取程序（作者也知道输出文件巨长…..），看了上面的例子就懂了。提取的部分名称可以到&lt;code class=&quot;highlighter-rouge&quot;&gt;.aix&lt;/code&gt;文件里面去看，它相当于一个目录。&lt;code class=&quot;highlighter-rouge&quot;&gt;.aix&lt;/code&gt;文件的第一列是一个各个部分的唯一标识码（如&lt;code class=&quot;highlighter-rouge&quot;&gt;PSN144705&lt;/code&gt;），可以通过这个码来提取各个部分。&lt;/p&gt;
 
+&lt;h3 id=&quot;输出文件里面的坑&quot;&gt;输出文件里面的坑&lt;/h3&gt;
+
+&lt;p&gt;这里会记录得比较散。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LINE (X/Y)&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;KPC&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;KL&lt;/code&gt;（还有其他的吸收系数）都是已经乘上了密度的&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;错误处理&quot;&gt;错误处理&lt;/h2&gt;
 
 &lt;p&gt;我不会告诉你我是突然间顿悟这个东西的…..&lt;/p&gt;
@@ -2247,806 +2602,6 @@ AND radial_velocity IS NOT NULL
         <pubDate>Fri, 02 Nov 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/11/02/bulge-conf/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/11/02/bulge-conf/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>銀河考古学总结</title>
-        <description>&lt;p&gt;千叶征司老师的银河考古学是我看见的对银河系近年研究成果叙述最清晰的书。毕竟是日语的，就在这总结一下。&lt;/p&gt;
-
-&lt;h2 id=&quot;中日词语对比&quot;&gt;中日词语对比&lt;/h2&gt;
-
-&lt;p&gt;先看看一些好玩的，下面列出中日之间的一些词语对比，也是我一眼看过去猜不到意思的；按照日常用语、数学、物理/天文用语的顺序排列。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;日语&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;中文&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;丁度&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;刚刚好&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;提唱&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;提倡&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;大雑把&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;大概地&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;寄与&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;贡献&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;べき指数&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;幂指数&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;勾配（こうばい）&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;梯度&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;静水圧平衡（せいすいあつへいこう）&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;流体静力学平衡&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;散乱&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;散射&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;陽子&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;质子&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;縮退圧&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;简并压&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;ベータ崩壊&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;β衰变&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;等方性&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;各向同性&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;非等方性&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;各向异性&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;実視等級、写真等級、絶対等級&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;视星等、照相星等、绝对星等&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;掃天観測&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;巡天观测&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;固有運動&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;自行&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;渦状腕&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;旋臂&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;渦巻銀河&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;旋涡星系&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;棒渦巻銀河&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;棒旋星系&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;局部銀河群&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;本星系群&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;1-序章&quot;&gt;1 序章&lt;/h2&gt;
-
-&lt;h3 id=&quot;银河系的构造&quot;&gt;银河系的构造&lt;/h3&gt;
-
-&lt;p&gt;历史留给扯淡的时候说吧；现在我们对于银河系的认识是这样的：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3iom3142cnb81rlnt6w4mtlr-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/fig2-3.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;银盘的半径大约为5万光年，而银晕的半径约为75万，实际上银晕比银盘大很多。比较好奇的是书里面没有提及核球的大小，大约是&lt;a href=&quot;http://astronomy.swin.edu.au/cosmos/B/Bulges&quot;&gt;2kpc&lt;/a&gt;。银晕里面有暗物质存在，而且很多，所以叫做暗物质晕也可以。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;问题：核球有多大？它的边界是怎么定义的？&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;银河系和M31，加上一堆杂七杂八的小星系，构成了本星系群，分布如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://atlasoftheuniverse.com/localgrp.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这些矮星系都被银河系-M31系统引力束缚着，同时它们也是我们了解本星系群中暗物质分布以及银河系形成历史的示踪者。当然了解银河系的历史不仅仅可以看银河系和本星系群，还可以看高红移星系，看看别人家的历史是什么样的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/1-hb06.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;恒星形成率密度与红移的关系；&lt;a href=&quot;http://adsabs.harvard.edu/abs/2006ApJ...651..142H&quot;&gt;HB06&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;从图上我们可以得出，恒星形成率从红移6到2逐渐上升，然后开始下降。当然越靠近现在测量精度越高。宇宙和恒星就在不断的形成与死亡中交换物质、产生元素，向前演化。&lt;/p&gt;
-
-&lt;h3 id=&quot;什么是银河考古学&quot;&gt;什么是银河考古学&lt;/h3&gt;
-
-&lt;p&gt;我们想知道银河是怎么形成和演化的。要达到这么目标我们有两条路，第一条就是观测高红移星系。我们现在已经从观测中知道了星系的形成是从小到大的。第二条路就是观测银河系以及M31中的恒星，从它们的性质中得到银河系的信息。这条路就是银河考古学。&lt;/p&gt;
-
-&lt;p&gt;举个栗子，这里有一张球状星团M3的颜色星等图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/1-b94.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1994A%26A...290...69B&quot;&gt;Buonanno+1994&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;上面的星分为MS、MSTO、RGB和HB几个区域；我们可以通过这幅图推测出M3的年龄以及金属丰度，也就知道了它是什么时候形成的、是一次性形成还是分多次形成的，或者说知道了它的历史。详细的方法会在第三章讲。&lt;/p&gt;
-
-&lt;p&gt;概括地来说，银河考古学就是研究恒星动力学与元素丰度的领域。这两方面的信息就决定了银河系的历史以及演化。&lt;/p&gt;
-
-&lt;h2 id=&quot;2-星系运动学与银河系动力学&quot;&gt;2 星系运动学与银河系动力学&lt;/h2&gt;
-
-&lt;h3 id=&quot;恒星的轨道运动&quot;&gt;恒星的轨道运动&lt;/h3&gt;
-
-&lt;p&gt;星系很大、恒星很小。所以我们可以忽略每个恒星自身附近引力场的凹陷，以及假设恒星和恒星之间不会有相互作用，简化一下这个世界。简化之后的重点就在于重力势了，重力势决定了在里面的恒星会有什么样的轨道，又有什么样的轨道是不被允许的。下面举几个典型的粒例子：&lt;/p&gt;
-
-&lt;h4 id=&quot;球对称引力势下的轨道&quot;&gt;球对称引力势下的轨道&lt;/h4&gt;
-
-&lt;p&gt;球对称引力势下的引力永远指向球心，所以角动量守恒。当质量集中在一点下的时候，恒星做椭圆轨道运动；而当质量均匀分布的时候，各个方向相当于一个谐振子，所以恒星围绕质心做椭圆运动。实际上银河系的引力势大概介于这俩之间，这么来看的话恒星的轨道是花形的，不闭合。&lt;/p&gt;
-
-&lt;h5 id=&quot;运动积分&quot;&gt;运动积分&lt;/h5&gt;
-
-&lt;p&gt;我们想找不变量。&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{r},\boldsymbol{v}&lt;/script&gt;自然随时间变化，但是还有其他的不变量。如果系孤立，那么能量&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;是守恒的；如果引力势轴对称，那么角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{L}&lt;/script&gt;也是守恒的。&lt;/p&gt;
-
-&lt;p&gt;具体的推导什么的我认为不是太重要，如果用到的时候我再在这里补充，同时请参阅&lt;a href=&quot;https://opac.dl.itc.u-tokyo.ac.jp/opac/opac_details/?reqCode=fromlist&amp;amp;lang=0&amp;amp;amode=11&amp;amp;bibid=2002551617&amp;amp;opkey=B154063368720919&amp;amp;start=1&amp;amp;totalnum=21&amp;amp;listnum=7&amp;amp;place=&amp;amp;list_disp=20&amp;amp;list_sort=6&quot;&gt;Galactic dynamics&lt;/a&gt;。广义的运动积分&lt;script type=&quot;math/tex&quot;&gt;J_i&lt;/script&gt;有如下的性质：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;被引力场束缚的轨道的运动积分&lt;script type=&quot;math/tex&quot;&gt;\ge 0&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;当引力势的变化时标与系统的动力学时标相比很大的时候，&lt;script type=&quot;math/tex&quot;&gt;J_i&lt;/script&gt;是绝热不变量&lt;/li&gt;
-  &lt;li&gt;一个轨道群在相空间&lt;script type=&quot;math/tex&quot;&gt;(\boldsymbol{r},\boldsymbol{v})&lt;/script&gt;所占的体积与它们在运动积分空间&lt;script type=&quot;math/tex&quot;&gt;J_i&lt;/script&gt;所占的体积成比例&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;重点说说第二点，比如说如果太阳的质量在缓慢增加的时候，地球的偏心率是不变的，但是轨道总体会向太阳靠近；但是要是变化很快的话，偏心率也会变。这个时间的临界点大概在1年左右。&lt;/p&gt;
-
-&lt;h4 id=&quot;非球对称引力势下的轨道&quot;&gt;非球对称引力势下的轨道&lt;/h4&gt;
-
-&lt;p&gt;实际的银河系引力势肯定不是球对称的。稍微放宽一点，轴对称的引力势下恒星的轨道是一个tube，非轴对称下的可能是一个箱形轨道。这里的箱形轨道与核球的形状可能有一定联系。&lt;/p&gt;
-
-&lt;h3 id=&quot;恒星运动学和银河系的自转&quot;&gt;恒星运动学和银河系的自转&lt;/h3&gt;
-
-&lt;p&gt;在不同区域内的恒星有不同的运动状态，同时恒星还能追踪暗物质的情况。&lt;/p&gt;
-
-&lt;h4 id=&quot;恒星的速度成分&quot;&gt;恒星的速度成分&lt;/h4&gt;
-
-&lt;p&gt;想知道恒星的运动状况就要知道它的位置与速度。这里我们引入本地静止坐标系LSR，并定义从LSR向外、顺太阳公转方向以及向上的速度为&lt;script type=&quot;math/tex&quot;&gt;U, V, W&lt;/script&gt;；那么在知道太阳的位置&lt;script type=&quot;math/tex&quot;&gt;(R_0, \Theta_0)&lt;/script&gt;以及速度&lt;script type=&quot;math/tex&quot;&gt;(U_\odot, V_\odot, W_\odot)&lt;/script&gt;之后，只要测出恒星的日心速度&lt;script type=&quot;math/tex&quot;&gt;(u,v,w) = (U-U_\odot, V-V_\odot, W-W_\odot)&lt;/script&gt;就可以知道恒星的运动速度了。&lt;/p&gt;
-
-&lt;h4 id=&quot;太阳的信息怎么测&quot;&gt;太阳的信息怎么测？&lt;/h4&gt;
-
-&lt;p&gt;太阳的速度可以通过测量太阳邻域的恒星的速度弥散来确定（具体推导过程忽略）；位置的话可以用银晕球状星团中的RR Lyras变星的公转、Oort常数或者VLBI确定的银河系中心SgrA*的自行来确定公转速度，用银晕球状星团中的RR Lyras变星的距离、银心附近水脉泽天体的大小或者围绕银心附近天体的运动学信息求得距离。结果如下：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;U_\odot = -11.10 \mathrm{km/s}, V_\odot = 12.24 \mathrm{km/s}, W_\odot = 7.25 \mathrm{km/s}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_0 = 8.3 \mathrm{kpc}, \Theta_0 = 239 \mathrm{km/s}&lt;/script&gt;
-
-&lt;h4 id=&quot;银河系自转曲线&quot;&gt;银河系自转曲线&lt;/h4&gt;
-
-&lt;p&gt;太阳系内部的自转曲线不多说了，外部的除了视向速度之外还要确定距离；最后得出来的就是那个人尽皆知的平坦形状。&lt;/p&gt;
-
-&lt;h3 id=&quot;银河系引力势模型&quot;&gt;银河系引力势模型&lt;/h3&gt;
-
-&lt;p&gt;既然我们有了自转曲线，那么什么样的引力势模型才能提供这样一马平川的曲线呢？&lt;/p&gt;
-
-&lt;p&gt;最简单的想法是在&lt;script type=&quot;math/tex&quot;&gt;R,z&lt;/script&gt;两个方向上的指数递减，&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\rho(R,z) = \rho_0 e^{-R/h}e^{-|z|/z_0}&lt;/script&gt;
-
-&lt;p&gt;但是仅靠这个造出来的自转曲线不平，要加上核球以及银晕的引力势，才能再现；其中一个例子是&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:astro-ph/9502005&quot;&gt;Johnston+95&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;如果想排除不规则轨道，让模型与初始条件无关的话，可以用Stackel模型（比如&lt;a href=&quot;http://adsabs.harvard.edu/abs/1985MNRAS.216..273D&quot;&gt;这个&lt;/a&gt;）。&lt;/p&gt;
-
-&lt;h3 id=&quot;恒星的理论力学和动力学&quot;&gt;恒星的理论力学和动力学&lt;/h3&gt;
-
-&lt;p&gt;提及了恒星系统在相空间占据的位置随时间的变化、玻尔兹曼以及金斯方程、位力定理（位力半径）、金斯定理。&lt;/p&gt;
-
-&lt;h4 id=&quot;太阳邻域的恒星速度&quot;&gt;太阳邻域的恒星速度&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;富金属星（银盘）的速度集中在&lt;script type=&quot;math/tex&quot;&gt;(U,V)=0&lt;/script&gt;附近&lt;/li&gt;
-  &lt;li&gt;贫金属星的&lt;script type=&quot;math/tex&quot;&gt;V&lt;/script&gt;速度为负，且弥散比较大&lt;/li&gt;
-  &lt;li&gt;极贫金属星（银晕）的速度集中在&lt;script type=&quot;math/tex&quot;&gt;-\Theta_0&lt;/script&gt;附近且弥散大&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;从富金属星到贫金属星的变化可以理解为年龄比较大的恒星从圆轨道渐渐被各种拉扯，出现偏离。&lt;/p&gt;
-
-&lt;h2 id=&quot;恒星分类与演化&quot;&gt;恒星分类与演化&lt;/h2&gt;
-
-&lt;h3 id=&quot;颜色星等图cmd&quot;&gt;颜色星等图(CMD)&lt;/h3&gt;
-
-&lt;p&gt;这里主要比较一下太阳邻域的CMD和星团的CMD。书里面给出的是&lt;a href=&quot;http://adsabs.harvard.edu/abs/1997A%26A...323L..49P&quot;&gt;Perryman+97&lt;/a&gt;的CMD，但是这都8102年了我们当然看看Gaia的结果啦：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-GC18.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;太阳邻域(&amp;lt;100pc)内的恒星CMD；&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1804.09378&quot;&gt;Gaia Collaboration+18&lt;/a&gt;, Fig. 6&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;我们能看到和M3的CMD不同的是这个CMD的主序是很完整的，表明太阳邻域的恒星比较年轻，或者说知道最近为止仍然有恒星形成。Gaia的结果多了很多白矮星，这自然是以前恒星的骨灰以及现在观测技术先进的原因了。&lt;/p&gt;
-
-&lt;p&gt;其他详细的各成分解释请见&lt;a href=&quot;https://mingjiejian.github.io/2018/10/26/GA-S/&quot;&gt;附录&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;恒星演化&quot;&gt;恒星演化&lt;/h3&gt;
-
-&lt;p&gt;恒星演化路径如下图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-i67.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;主序星的能量来源是氢的聚变，分为p-p链和CNO循环两种。CNO循环的效率更高，一般在更高温的恒星中出现。当氢的核聚变开始时，恒星位于位置1处，为ZAMS；而1-2为主序阶段，很长很长。2-3是中心氢烧完了开始往壳层烧但是中心的氦还没开始燃烧的过程，虽然中心收缩，但是壳层没有（因为烧起来了）。3-4-5是由于壳层的燃烧放热导致恒星迅速膨胀，开始发生对流，所以温度迅速下降，进入RGB阶段。&lt;/p&gt;
-
-&lt;p&gt;中心温度继续升高，氦开始燃烧之后，质量大于&lt;script type=&quot;math/tex&quot;&gt;2.2M_\odot&lt;/script&gt;的恒星的内部并没有进入简并状态，所以可以像主序一样继续稳定燃烧，并通过热压力与引力平衡来收缩膨胀。而小质量恒星的核则在氦开始燃烧之前就进入了简并状态，所以升温并不会导致密度下降，而简并物质又是热的良导体，所以一旦温度足够触发氦的燃烧，核心会进行短暂的失控核聚变，称为氦闪，并迅速重组恒星内部结构。在HR图上就会看到恒星在氦闪之后从RGB突然闪现到了HB上。&lt;/p&gt;
-
-&lt;p&gt;再之后的话大家都跑到了AGB上（问题：小质量恒星似乎还有一次闪现？），然后该白矮星白矮星，该黑洞黑洞之类的。&lt;/p&gt;
-
-&lt;h3 id=&quot;星族合成&quot;&gt;星族合成&lt;/h3&gt;
-
-&lt;p&gt;我们的主要目标是银河系，所以将银河系的所有恒星的光合起来应该就能得到银河系的SED了。当然主要的光源是小质量恒星，所以就来看看小质量恒星的性质。&lt;/p&gt;
-
-&lt;p&gt;小质量恒星不同年龄的isochrone其实和不同金属丰度的isochrone很像，参见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1994ApJS...95..107W&quot;&gt;这里&lt;/a&gt;的Fig.2, 3。年龄越大或者金属丰度越大，isochrone就越靠右；这就是年龄和金属丰度的简并。同时这个简并也会在SED上反映出来，年龄越大或者金属丰度越大，短波辐射就越少(Fig. 38)。所以我们需要先确定金属丰度，或者两个同时确定。&lt;/p&gt;
-
-&lt;h3 id=&quot;元素的起源&quot;&gt;元素的起源&lt;/h3&gt;
-
-&lt;p&gt;宇宙中除了大爆炸的时候产生的元素之外，其他的元素当然是从恒星里面来，特别是恒星死亡之后会将里面的元素再进行一次合成然后抛回星际介质中。&lt;/p&gt;
-
-&lt;p&gt;我们主要关心两种：Ia型和II型超新星。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-t95-1.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;/img/in-post/post-GA/2-t95-2.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1995MNRAS.277..945T&quot;&gt;Tsujimoto+95&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;很明显Ia型超新星主要形成铁族元素，而II型主要形成&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;元素。而因为II型超新星主要是大质量恒星，我们可以预期银河系早期的元素丰度是&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;为主，后期铁族渐渐赶上来。&lt;/p&gt;
-
-&lt;h4 id=&quot;比铁更重的元素&quot;&gt;比铁更重的元素&lt;/h4&gt;
-
-&lt;p&gt;这得靠&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变。比铁重的元素含量不多，但是可以看到有几个地方是有个峰值的，这就是元素经过了s过程和/或r过程之后到达的稳态。r过程给出的元素一般比s过程的原子序数要小，因为它先到达了&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%B9%BB%E6%95%B8&quot;&gt;幻数&lt;/a&gt;，之后在衰变；而s过程因为比较慢所以可以比较接近幻数。&lt;/p&gt;
-
-&lt;p&gt;问题：图3.13中为什么峰值和幻数不匹配？&lt;/p&gt;
-
-&lt;p&gt;Na、Al： 在恒星内部生成，与恒星初始质量、金属丰度有关；&lt;br /&gt;
-Mg：在大质量恒星内部生成，与恒星初始质量有关，SN Ia基本不生成；&lt;br /&gt;
-其他&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;元素：恒星内部以及SN II；&lt;br /&gt;
-铁族元素：除铜和铅之外SN Ia、II都能生成；&lt;br /&gt;
-Ba、Pb：s过程；&lt;br /&gt;
-Eu、Pt、Au、Th、U：r过程；&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;贫金属星和星族ii&quot;&gt;贫金属星和星族II&lt;/h3&gt;
-
-&lt;p&gt;金属丰度小于-2.5的恒星基本上认为只受过一次超新星爆发的污染，是很有用的目标。&lt;/p&gt;
-
-&lt;p&gt;（190610更新）：现在基本上已经不怎么用星族这个简略的概念了，因为星族实际上不止三个，而且不同人对星族有不同的定义。&lt;/p&gt;
-
-&lt;h4 id=&quot;alpha元素&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;元素&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-a02.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2002ApJ...576L.141A&quot;&gt;Aoki+02&lt;/a&gt;, Fig. 2&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;金属丰度小于-1的恒星有正的[Mg/Fe]，说明是从早期的SN II中来的&lt;/li&gt;
-  &lt;li&gt;金属丰度小于-2.5的恒星的[Mg/Fe]弥散大，这是由于早期SN II质量能量有弥散导致的，并没有经历多次的超新星爆发。&lt;/li&gt;
-  &lt;li&gt;富金属端[Mg/Fe]接近0，说明新近的恒星遭受了SN Ia的污染&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;rs过程元素&quot;&gt;r、s过程元素&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-s00.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;贫金属星的r过程元素（点）与太阳的r过程元素（实线）比较；&lt;a href=&quot;http://iopscience.iop.org/article/10.1086/312631&quot;&gt;Sneden+00&lt;/a&gt;, Fig. 2&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;r过程是普遍的，不论是在贫金属星还是富金属星上&lt;/li&gt;
-  &lt;li&gt;这样的元素丰度应该来自于SN II&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/2-a00.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;贫金属星的s过程元素（点）与太阳的s过程元素（实线）比较；&lt;a href=&quot;http://adsabs.harvard.edu/abs/2000ApJ...536L..97A&quot;&gt;Aoki+00&lt;/a&gt;, Fig. 3&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;s过程不是普遍的&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;超贫金属星&quot;&gt;超贫金属星&lt;/h4&gt;
-
-&lt;p&gt;金属丰度小于-2.5的超贫金属星的特点之一是碳过程；它们被称作CEMP星，s过程元素比较多。这个主要是因为它们在AGB阶段的对流层将恒星内部的碳搬了上来；一些对流层很薄的恒星则可能是它们的伴星将碳丢到了它们头上。&lt;/p&gt;
-
-&lt;p&gt;问题：正常恒星到AGB也有对流，碳含量也应该上升，为何单单关注超贫金属星的碳？&lt;/p&gt;
-
-&lt;p&gt;还有一些CEMP星s过程元素很少；这可能是因为它们不一定受SN II而是受极新星污染，亦或是超新星爆发的时候某些元素只沿轴向抛射，并不是球对称的。&lt;/p&gt;
-
-&lt;h4 id=&quot;星族iii&quot;&gt;星族III&lt;/h4&gt;
-
-&lt;p&gt;星族III的星还有没有呢？现在认为很有可能多数都是大质量恒星，寿命短，已经挂掉了。&lt;/p&gt;
-
-&lt;h2 id=&quot;银河系的化学演化&quot;&gt;银河系的化学演化&lt;/h2&gt;
-
-&lt;h3 id=&quot;基本量&quot;&gt;基本量&lt;/h3&gt;
-
-&lt;p&gt;恒星形成率SFR，可认为只和时间有关：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\psi(t) \propto \rho_\mathrm{gas}^n&lt;/script&gt;
-
-&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;n=1&lt;/script&gt;时，恒星质量的增加率就是一个简单的e指数衰减。对高红移星系的观测认为&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;的取值在1.4左右。&lt;/p&gt;
-
-&lt;p&gt;初始质量函数IMF&lt;script type=&quot;math/tex&quot;&gt;\phi(m)&lt;/script&gt;，只与质量有关：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi(m) \propto m^{-\alpha}&lt;/script&gt;
-
-&lt;p&gt;简单的话就一个&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;搞定，复杂一点就可以两个什么的。&lt;/p&gt;
-
-&lt;h3 id=&quot;基本公式&quot;&gt;基本公式&lt;/h3&gt;
-
-&lt;p&gt;SFR实际上是从星际介质到恒星中的质量的比例，那么定义&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;为从恒星到星际介质中的质量比例，&lt;script type=&quot;math/tex&quot;&gt;F, E&lt;/script&gt;为星系星际介质从外界的流入的以及流出的比例，则恒星和星际介质的质量变化为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{s}}{dt} = \psi - e&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{g}}{dt} = -\psi + e + F - E&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;可以表述为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;e = \int_{m_\mathrm{t}}^\infty (m-m_\mathrm{rem})\psi(t-\tau_m)\phi(m)dm&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\tau_m, m_\mathrm{t}&lt;/script&gt;是质量为&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;的恒星寿命以及在时刻&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;下可以死亡的恒星的最小质量，&lt;script type=&quot;math/tex&quot;&gt;m_\mathrm{rem}&lt;/script&gt;是恒星残骸的质量。&lt;script type=&quot;math/tex&quot;&gt;e&lt;/script&gt;意思就是在时刻&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;下所有死亡恒星抛出的质量，所以这个积分有下限，同时还涉及到&lt;script type=&quot;math/tex&quot;&gt;t-\tau_m&lt;/script&gt;这个时刻上产生的质量为&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;的恒星的比例&lt;script type=&quot;math/tex&quot;&gt;\psi(t-\tau_m)\phi(m)&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;我们关心的是金属的变化，那么气体中金属质量的变化率为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{ZM_\mathrm{g}}{dt} = -Z\psi + e_Z +Z_F F - Z_E E&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;Z_F, Z_E&lt;/script&gt;为流入流出的气体的金属丰度，&lt;script type=&quot;math/tex&quot;&gt;e_Z&lt;/script&gt;可以表达为&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;e_Z(t) = \int_{m_\mathrm{t}}^\infty [(m-m_\mathrm{rem})Z(t-\tau_m) + mp_\mathrm{zm}]\psi(t-\tau_m)\phi(m)dm&lt;/script&gt;
-
-&lt;p&gt;也就是恒星形成时所拥有的金属质量&lt;script type=&quot;math/tex&quot;&gt;(m-m_\mathrm{rem})Z(t-\tau_m)&lt;/script&gt;加上恒星演化过程中造出来而且释放了的金属质量&lt;script type=&quot;math/tex&quot;&gt;mp_\mathrm{zm}&lt;/script&gt;乘上时刻&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;下挂掉的恒星比例。&lt;/p&gt;
-
-&lt;p&gt;再定义两个量，一个叫return function，是恒星抛出物的比例：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;R = \int_{m_\mathrm{t}}^\infty (m-m_\mathrm{rem})\phi(m)dm&lt;/script&gt;
-
-&lt;p&gt;以及我们最终关心的量：星际介质经过恒星加工之后，产生金属的效率yield：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;y = \frac{1}{1-R} \int_{m_\mathrm{t}}^\infty mp_\mathrm{zm}\phi(m)dm&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;y=0&lt;/script&gt;意味着恒星对星际介质的金属丰度没有任何变化。&lt;/p&gt;
-
-&lt;h4 id=&quot;瞬间循环近似instantaneous-recycling-approximation&quot;&gt;瞬间循环近似(instantaneous recycling approximation)&lt;/h4&gt;
-
-&lt;p&gt;继续简化，我们假设大于一个太阳质量的恒星因为寿命比较短，诞生之后马上挂掉，而小于一个太阳质量的恒星一直存活；那么对于上面涉及积分的式子来讲，&lt;script type=&quot;math/tex&quot;&gt;\tau_m = 0&lt;/script&gt;，可以简化为&lt;script type=&quot;math/tex&quot;&gt;e(t)=R\psi(t), e_z(t)=RZ\psi(t)+y(1-R)\psi(t)&lt;/script&gt;，以及：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{s}}{dt} = (1-R)\psi&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dM_\mathrm{g}}{dt} = -(1-R)\psi + F - E&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{ZM_\mathrm{g}}{dt} = -Z(1-R)\psi + y(1-R)e_Z +Z_F F - Z_E E \tag{3.25}&lt;/script&gt;
-
-&lt;h3 id=&quot;简单模型&quot;&gt;简单模型&lt;/h3&gt;
-
-&lt;p&gt;我们用上面这三条式子，再加上以下假设：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;没有星际介质的流入流出；&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;Z(0) = 0&lt;/script&gt;；&lt;/li&gt;
-  &lt;li&gt;IMF与时间无关&lt;/li&gt;
-  &lt;li&gt;气体中的金属的空间分布是均匀的&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;那么可以从&lt;script type=&quot;math/tex&quot;&gt;(3.25)&lt;/script&gt;得到：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;M_\mathrm{g}\frac{dZ}{dM_\mathrm{g}} = -y \Rightarrow Z = y \ln{\frac{M_\mathrm{g}(0)}{M_\mathrm{g}(t)}} = y \frac{1}{\ln{\mu}}&lt;/script&gt;
-
-&lt;p&gt;也就是说星际介质中的金属随着星际介质被消耗单调增加，同时不依赖于SFR。&lt;/p&gt;
-
-&lt;p&gt;但是我们并不能观测星际介质中的金属，只能观测恒星中的金属丰度，所以我们要将这个结果转成某个金属丰度下恒星的数量&lt;script type=&quot;math/tex&quot;&gt;dS/d\mathrm{[Fe/H]}&lt;/script&gt;。以现在的恒星质量为归一化的恒星质量为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S = \frac{M_\mathrm{s}}{M_\mathrm{s1}} = \frac{1-\mu_1^{Z/Z_1}}{1-\mu_1}&lt;/script&gt;
-
-&lt;p&gt;换元成&lt;script type=&quot;math/tex&quot;&gt;dS/d\mathrm{[Fe/H]}&lt;/script&gt;，就有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dS}{d\mathrm{[Fe/H]}} = \frac{\ln{10}/y}{1-e^{-Z_1/y}} 10^{\mathrm{[Fe/H]}} e^{-10^{\mathrm{[Fe/H]}}/y}&lt;/script&gt;
-
-&lt;p&gt;但是将它和实际上的G型矮星数量比较的话，这个分布会给出过多的贫金属星，这就是G型矮星问题。当然实际上的银河系没有这么简单。&lt;/p&gt;
-
-&lt;p&gt;不过这个模型对描述星际气体的金属丰度还是不错的；详见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1987ApJ...317...82G&quot;&gt;Garnett &amp;amp; Shields 1987&lt;/a&gt;的Fig. 9, 10c。&lt;/p&gt;
-
-&lt;h4 id=&quot;有气体流入流出的银河系&quot;&gt;有气体流入流出的银河系&lt;/h4&gt;
-
-&lt;h5 id=&quot;仅有流出&quot;&gt;仅有流出&lt;/h5&gt;
-
-&lt;p&gt;我们可以认为流出的量与恒星形成率有关：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;E = c\psi(t)&lt;/script&gt;
-
-&lt;p&gt;比如说恒星变成超新星爆发之后会把气体吹飞。这个时候的结果变为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z = y \frac{1-R}{1-R+c} \frac{1}{\ln{\mu}}&lt;/script&gt;
-
-&lt;p&gt;也就是说流出使得金属丰度的增加变慢了；这样会增加贫金属星的量，和观测也不符。&lt;/p&gt;
-
-&lt;h5 id=&quot;仅有流入&quot;&gt;仅有流入&lt;/h5&gt;
-
-&lt;p&gt;简单起见，认为无金属气体流入使得星际介质质量不变：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F = (1-R) \psi&lt;/script&gt;
-
-&lt;p&gt;这个时候有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Z = y(1-e^{-M_\mathrm{s}/M_\mathrm{g}})&lt;/script&gt;
-
-&lt;p&gt;就可以造出更多富金属星了。&lt;/p&gt;
-
-&lt;h5 id=&quot;解决g型矮星问题&quot;&gt;解决G型矮星问题&lt;/h5&gt;
-
-&lt;p&gt;我们需要气体流入，那么一个来源自然就是银晕了。当然要解释观测结果的话，需要落下的时标很长才行。&lt;/p&gt;
-
-&lt;h4 id=&quot;abundance随时间的演化&quot;&gt;abundance随时间的演化&lt;/h4&gt;
-
-&lt;p&gt;这里我们不一定要看时间，可以看abundace随metallicity的变化；这里的结论是SN Ia应在SN II的1.5Gyr之后出现，也就是说瞬间循环近似不适用了。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;缺图&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;不均匀的化学演化&quot;&gt;不均匀的化学演化&lt;/h4&gt;
-
-&lt;p&gt;第一次SN II的时候我们可以预见银河系金属的污染是不均匀的；这或许可以解释贫金属星abundance的弥散。&lt;/p&gt;
-
-&lt;h2 id=&quot;4-银河系的构造&quot;&gt;4 银河系的构造&lt;/h2&gt;
-
-&lt;h3 id=&quot;核球&quot;&gt;核球&lt;/h3&gt;
-
-&lt;p&gt;核球处在银心方向，所以星际消光是很严重的。想要观测主要在JHK的近红外波段以及消光小的巴纳德之窗。&lt;/p&gt;
-
-&lt;h4 id=&quot;cmd&quot;&gt;CMD&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/3-z03.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2003A%26A...399..931Z&quot;&gt;Zoccali+03&lt;/a&gt;, Fig. 24&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;乍一看核球的年龄在100Gyr左右（isochrone的年龄），有一定的金属丰度。不过由于简并所以不好明确确定。&lt;/p&gt;
-
-&lt;h4 id=&quot;金属丰度和元素丰度&quot;&gt;金属丰度和元素丰度&lt;/h4&gt;
-
-&lt;p&gt;这两个量基本上需要光谱观测。核球中比较明亮的是K巨星，但是因为温度比较低所以误差比较大；而另一个机会是趁引力透镜的时候来观测矮星的光谱。&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/2013A%26A...549A.147B&quot;&gt;Bensby+13&lt;/a&gt;用各种方法得到了核球金属丰度的直方图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/3-b13-1.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/2013A%26A...549A.147B&quot;&gt;Bensby+13&lt;/a&gt;, Fig. 14&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看到核球中心部分的金属丰度在0.5到-0.5之间，呈双峰分布，富金属峰更高；而在核球外部，贫金属峰更高。&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1807.06377&quot;&gt;这篇文章&lt;/a&gt;进一步明确了这两种恒星的比例，接近一半。&lt;/p&gt;
-
-&lt;p&gt;问题：这个比例和银心的距离有关吗？这样的分布对核球的形成有什么启示？&lt;/p&gt;
-
-&lt;p&gt;至于元素丰度，也有不错的结果：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/3-a10.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1001.2521&quot;&gt;Alves-Brito+10&lt;/a&gt;, Fig. 6&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;这里的恒星都是红巨星，可以看到Mg的丰度比其他组分高或者一样，所以形成时间比其他组分早。有趣的是富金属端的Mg丰度也比其他组分高，我对此还没有好的解释。&lt;/p&gt;
-
-&lt;p&gt;问题：有没有矮星的元素丰度？富金属端的Mg丰度也比其他组分高是为什么？银河系的核球和其他星系的核球相比有什么异同？&lt;/p&gt;
-
-&lt;p&gt;问题：这些结果完整吗？如此小的样本能不能将核球的性质反映出来？巴纳德之窗的代表性几何？&lt;/p&gt;
-
-&lt;p&gt;核球恒星年龄和金属丰度的分布也说明了一些信息：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/3-b13-2.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/2013A%26A...549A.147B&quot;&gt;Bensby+13&lt;/a&gt;, Fig. 15&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;贫金属星的年龄比较大，但是富金属星既有年老的又有年轻的。这可能是因为有些恒星是从银盘迁移到核球里面的。&lt;/p&gt;
-
-&lt;p&gt;问题：这篇文章是怎么确定恒星年龄的？有没有后续研究？如何减小年龄的误差？如果核球里面不止一个成分如何去区分它们？北半核球的结果如何？可以试试在盘中找halo的恒星。&lt;/p&gt;
-
-&lt;h4 id=&quot;动力学构造&quot;&gt;动力学构造&lt;/h4&gt;
-
-&lt;p&gt;以前我们认为核球的形状是一个旋转椭球体，但是现在的观测表明更可能棒状。这个观测证据有两个：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-h09-1.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/2009ApJ...702L.153H/abstract&quot;&gt;Howard+09&lt;/a&gt;, Fig. 1&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;首先COBE的红外观测表明核球的光度不是对称分布的，所以可能是一个侧着放的bar。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-h09-2.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/2009ApJ...702L.153H/abstract&quot;&gt;Howard+09&lt;/a&gt;, Fig. 5&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;第二看到虽然速度随银经方向都是逐渐增加的（bar和椭球都是），高银纬处的速度弥散很小，暗示了这是个bar。&lt;/p&gt;
-
-&lt;p&gt;问题：WINERED能不能做类似的东西？bar和long bar是什么？&lt;/p&gt;
-
-&lt;h3 id=&quot;银盘&quot;&gt;银盘&lt;/h3&gt;
-
-&lt;p&gt;银盘是一个盘，里面有很多的恒星和星际介质，是我们观察星系的时候最明显的一个部分。它分成厚盘和薄盘。&lt;/p&gt;
-
-&lt;h4 id=&quot;厚盘的发现&quot;&gt;厚盘的发现&lt;/h4&gt;
-
-&lt;p&gt;厚盘最早是1982年当时在东北大学的吉井譲老师对北银极附近的天体进行恒星计数发现的，83年&lt;a href=&quot;http://adsabs.harvard.edu/abs/1983MNRAS.202.1025G&quot;&gt;Gilmore &amp;amp; Reid&lt;/a&gt;通过对南银极附近的恒星计数也发现了类似的规律，并取名为厚盘：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-gr83.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;上图实际上是对&lt;script type=&quot;math/tex&quot;&gt;4 \le M_V \lt 5&lt;/script&gt;的恒星的计数，更暗的恒星也有类似的分布，但是到1kpc就没了。可以很明显看出来这个分布可以被两个e指数分布很好地描述，标长分别为300与1350pc。我相信到现在这两个数应该会有所变化，也会有新版本的这个图出来。薄厚盘的恒星数目比比较悬殊，在0.02也就是百分之二左右。&lt;/p&gt;
-
-&lt;h4 id=&quot;银盘的动力学构造&quot;&gt;银盘的动力学构造&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1993A%26A...275..101E&quot;&gt;Edvardsson+93&lt;/a&gt;有一篇引用超多的论文讨论太阳邻域恒星的位置元素丰度年龄等等的关系。元素丰度与W速度的关系或许能说明一些情况：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-e93.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;元素丰度小于-0.4的恒星有相对恒定的速度弥散，所以它们可以认为是厚盘的恒星；也就是说厚盘的速度弥散那比较大。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;成分&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\sigma_U \mathrm{(km/s)}&lt;/script&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\sigma_V \mathrm{(km/s)}&lt;/script&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\sigma_W \mathrm{(km/s)}&lt;/script&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-&lt;V&gt; \mathrm{(km/s)} %]]&gt;&lt;/script&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;薄盘&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;-6&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;厚盘&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;35&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;-20&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;银晕&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;141&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;106&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;94&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;-187&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;这个表挺好理解的，厚盘的速度弥散大一点，但是平均的旋转速度和LSR差不多；而银晕因为整体没有旋转，平均旋转速度相对LDR就很大了，同时速度弥散也很大。至于厚盘在&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;方向的标长的话可以通过太阳邻域的速度弥散套用上比较简单的银河系模型估计，在2.2到4.5kpc之间。实际的观测结果还不明确，因为可见光下银盘的消光比较严重，需要红外观测。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;从最近的结果，&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1309.0809&quot;&gt;Bovy+13&lt;/a&gt;来看标长似乎已经能被比较好地确定了。&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;金属丰度以及化学元素组成&quot;&gt;金属丰度以及化学元素组成&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1993A%26A...275..101E&quot;&gt;Edvardsson+93&lt;/a&gt;虽然得出了太阳邻域厚盘以及薄盘恒星的金属丰度，但是它们是混在一起的。&lt;a href=&quot;http://adsabs.harvard.edu/abs/1995AJ....110.2771W&quot;&gt;Wyse &amp;amp; Gilmore 1995&lt;/a&gt;用太阳邻域样本和远处样本比较的方法将两者分离，并得出了银河系各成分的金属丰度分布：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-wg95.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看出来薄盘星有一条贫金属尾巴，使得它和厚盘星混在了一起。同时&lt;a href=&quot;http://adsabs.harvard.edu/abs/2005A%26A...433..185B&quot;&gt;Bensby+2005&lt;/a&gt;也说明了虽然厚盘的年龄整体比薄盘年老，它们的年龄和金属丰度分布是相仿的。这使得从金属丰度上区分它们比较困难。同时Toomore图虽然在以前能比较好的区分厚薄盘星，但是Gaia DR2的Toomore图已经连成了一片，也没有用了。&lt;/p&gt;
-
-&lt;p&gt;现在比较有用的区分方法是利用&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;丰度。在很多的&lt;script type=&quot;math/tex&quot;&gt;\mathrm{[\alpha/Fe]-[Fe/H]}&lt;/script&gt;图上都可以看到两坨分立的星，Mg上面特为尤甚：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-m18.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这是Majewski在18年SDSS Collaboration Meeting上面用的一张图。如果厚盘形成得早，那么厚盘恒星受Ia型超新星的污染就比较少，应该有更高的&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;丰度，那么就可以从图上将它们分出来了。如果这么区分的话，这两个样本在动力学上就有很好的区分度。另外一些点在于厚盘在&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;方向上有正的丰度梯度，而薄盘是负的；同时厚盘在&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;方向上没有丰度梯度。这都说明这俩应该有不同的化学动力学构造。这张图可以和前面Alves-Brito+10那张对比一下。&lt;/p&gt;
-
-&lt;p&gt;厚盘还有一个问题是贫金属恒星的运动学。金属丰度&amp;lt;-1的恒星们的旋转速度非常地快（或者说慢，看相对于谁）：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-cb00.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2000AJ....119.2843C&quot;&gt;Chiba &amp;amp; Beers 2000&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;所以它是不是另一个新的成分呢？它又是怎么形成（长时标形成/矮星系吸积）的呢？这有待我多读点之后的文献。&lt;/p&gt;
-
-&lt;h4 id=&quot;其他星系的盘&quot;&gt;其他星系的盘&lt;/h4&gt;
-
-&lt;p&gt;其他的星系也有厚薄盘，大概有这样的关系：厚盘标高大概是薄盘的2倍、厚盘标长比薄盘大、小质量星系厚盘占比高、厚盘占星系重子物质的5%-40.&lt;/p&gt;
-
-&lt;h4 id=&quot;碎碎念&quot;&gt;碎碎念&lt;/h4&gt;
-
-&lt;p&gt;对于厚盘和薄盘的问题，&lt;a href=&quot;http://adsabs.harvard.edu/abs/2012ApJ...753..148B&quot;&gt;Bovy+2012&lt;/a&gt;提出了另外一种想法：它们不一定是两个不同的成分。它们有可能是选择偏差下的样本导致了这样的分布，也有可能是一个星族的星连续的化学演化造成的；这让我想起来SDSS会议上似乎也有人提到了连续的化学演化，可以关注一下。&lt;/p&gt;
-
-&lt;h3 id=&quot;银晕&quot;&gt;银晕&lt;/h3&gt;
-
-&lt;p&gt;银晕的恒星和其他部分相比有不同的动力学性质，同时金属丰度很小。它们相对太阳转得挺快，或者说相对银心的旋转速度比较小。1922和1926年Oort研究了太阳邻域的恒星，发现了速度小的恒星的速度方向不定，所有方向都有；但是速度大的恒星基本都指向银经90-270这个范围。&lt;/p&gt;
-
-&lt;h4 id=&quot;金属丰度与年龄分布&quot;&gt;金属丰度与年龄分布&lt;/h4&gt;
-
-&lt;p&gt;银晕恒星的选源可以从上述的运动学性质来选出。金属丰度分布在-2附近有一个峰，这可以在Wyse &amp;amp; Gilmore 1995的图中看到。不过
-&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1512.03064&quot;&gt;Monachasi+16&lt;/a&gt;里面说这样的分布可能是因为视线方向的选择效应造成的，有的星系的银晕金属丰度分布挺平。&lt;/p&gt;
-
-&lt;p&gt;银晕的年龄比较老，基本上在12Gyr左右；&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1105.2022&quot;&gt;MSTO&lt;/a&gt;和&lt;a href=&quot;https://www.nature.com/articles/nphys3874&quot;&gt;BHB&lt;/a&gt;的结果基本给出了类似的估计。&lt;/p&gt;
-
-&lt;h4 id=&quot;速度分布和空间构造&quot;&gt;速度分布和空间构造&lt;/h4&gt;
-
-&lt;p&gt;有了Gaia之后我觉得就不用再看这些以前的结果了，毕竟很多是在太阳邻域里说话的。一般我们用RR Lyrae星来示踪银晕（因为它比较老而且光度恒定，可以定距离），也有尝试用MSTO的。&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1707.03833&quot;&gt;Iorio+18&lt;/a&gt;用Gaia和2MASS和RR Lyraes给出了对银晕的不错的结果。&lt;/p&gt;
-
-&lt;h4 id=&quot;元素丰度&quot;&gt;元素丰度&lt;/h4&gt;
-
-&lt;p&gt;我们捡最典型的讲。Mg丰度-金属丰度贫金属一端基本是银晕的天下，但是实际上也不只是单纯的一个成分：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-h17.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1711.05781&quot;&gt;Hayes+2017&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;可以认为高Mg丰度的那坨是和厚盘有关，低Mg丰度的是和银晕有关的，毕竟它们也表现出了相对应的运动学特征（自转/不自转）。但是这篇文章认为银晕是银河系吸积其他矮星系而来的（里面也有两者金属丰度的比较），这令我有点意外。&lt;/p&gt;
-
-&lt;p&gt;问题：为什么银晕的恒星的Mg丰度比厚盘的要低？&lt;/p&gt;
-
-&lt;h3 id=&quot;球状星团&quot;&gt;球状星团&lt;/h3&gt;
-
-&lt;h4 id=&quot;金属丰度空间分布以及运动&quot;&gt;金属丰度、空间分布以及运动&lt;/h4&gt;
-
-&lt;p&gt;球状星团的金属丰度和空间分布是有关联的。&lt;a href=&quot;http://adsabs.harvard.edu/abs/1985ApJ...293..424Z&quot;&gt;Zinn 1985&lt;/a&gt;发现球状星团的金属丰度有两个峰，一个在-1.8，一个在-0.8。基本上来说贫金属的球状星团空间分布更大，和银晕类似，但是富金属的球状星团基本上在核球附近。同时富金属球状星团公转速度在100km/s左右，贫金属球状星团基本上不公转（整体）；但是极贫金属的球状星团的公转速度又大了起来，80km/s左右。这说明贫金属球状星团可能不止一个成分。&lt;/p&gt;
-
-&lt;h4 id=&quot;水平分支&quot;&gt;水平分支&lt;/h4&gt;
-
-&lt;p&gt;不止一个成分一般说明不能被单一的恒星形成过程所解释。水平分支同样揭示了这个特点：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-mg04.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2004MNRAS.355..504M&quot;&gt;Mackey &amp;amp; Gilmore 2004&lt;/a&gt;，x轴数值越大越蓝，图中的等年龄线之间最大相差2.2Gyr&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看出来金属丰度和红蓝有关，但是有很年轻的球状星团。而且这些年轻星团主要分布在银河系外侧，所以可能是从别的矮星系那吸积过来的。不过这是14年前的结果，到现在来说可能会有不一样的解释。&lt;/p&gt;
-
-&lt;h4 id=&quot;多星族性&quot;&gt;多星族性&lt;/h4&gt;
-
-&lt;p&gt;就算是在一个球状星团里面，有的时候恒星也不止一个成分。这个现象可以在CMD中看出来：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-b04.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2004ApJ...605L.125B&quot;&gt;Bedin+2004&lt;/a&gt;，&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; Cen的CMD&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;我觉得图(b)的多星族性是最明显的，不止一条SGB和RGB。后来哈勃的观测可以将它们分得更开。同时很多星团的[Na/Fe]和[O/Fe]有显著的负相关，这也是多次恒星形成的证据。&lt;/p&gt;
-
-&lt;h3 id=&quot;矮星系&quot;&gt;矮星系&lt;/h3&gt;
-
-&lt;p&gt;分类：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;dE，矮椭圆星系&lt;/li&gt;
-  &lt;li&gt;dSph，矮椭球星系&lt;/li&gt;
-  &lt;li&gt;dIrr，矮不规则星系&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;矮星系是银河系外的宇宙环境很好的示踪体，比如那里有没有暗物质：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/4-g07.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/2007ApJ...663..948G&quot;&gt;Gilmore+2007&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看到无论什么亮度的星系里面都有暗物质，只是多少不一样而已。&lt;/p&gt;
-
-&lt;h2 id=&quot;5-暗物质&quot;&gt;5 暗物质&lt;/h2&gt;
-
-&lt;p&gt;这就不多说了，和我现在的方向关系不大。&lt;/p&gt;
-
-&lt;p&gt;暗物质的存在证据当然就是那一堆动力学结果了。polar-ring星系好像挺好玩的，我还不知道它们形成的原因。它的候选体是重子物质的看不见物质(MACHOs)、非重子物质的冷暗物质、热暗物质以及温暗物质。探测方法可以用引力透镜去做。一个问题是missing satelite，就是暗物质成团数量很多，但是实际上的小星系就很少。这个或者是因为背景紫外辐射阻止了星际介质的冷却，或者我们还没探测到。&lt;/p&gt;
-
-&lt;h2 id=&quot;6-银河系的形成与演化&quot;&gt;6 银河系的形成与演化&lt;/h2&gt;
-
-&lt;h3 id=&quot;古典理论&quot;&gt;古典理论&lt;/h3&gt;
-
-&lt;h4 id=&quot;快收缩理论&quot;&gt;快收缩理论&lt;/h4&gt;
-
-&lt;p&gt;最早的理论肯定是比较简单的。1962年Eggen, Lynden-Bell和Sandage发现了太阳邻域高速星恒星金属丰度与轨道偏心率的关系：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/6-e62.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1962ApJ...136..748E&quot;&gt;Eggen+1962&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;由此，他们提出的ELS模型认为银河系是在0.1Gyr内由星际介质收缩形成的。这是因为星云在收缩的时候形成的恒星会有比较大的偏心率（气体在往中心落）；即使形成的时候偏心率很小，因为气体还在往中心吸积（而且很快），这也会使得偏心率增加。而当收缩结束之后，自然就没有形成偏心率小的恒星的条件了。这可以解释上图。&lt;/p&gt;
-
-&lt;h4 id=&quot;多部分合并理论&quot;&gt;多部分合并理论&lt;/h4&gt;
-
-&lt;p&gt;快收缩理论有个问题：这样形成的银河系会在&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;方向有个金属丰度的梯度，但是球状星团没有这个特点。所以1978年&lt;a href=&quot;http://adsabs.harvard.edu/abs/1978ApJ...225..357S&quot;&gt;Searle &amp;amp; Zinn&lt;/a&gt;考虑了银河系可能是多个部分合并而成的理论。SZ理论的收缩时标比ELS长很多，所以也被叫做慢收缩理论。&lt;/p&gt;
-
-&lt;h4 id=&quot;来批判一番&quot;&gt;来，批判一番&lt;/h4&gt;
-
-&lt;p&gt;ELS理论在后来受到了比较大的质疑。Yoshii &amp;amp; Saio 1979与&lt;a href=&quot;http://adsabs.harvard.edu/abs/1985ApJS...58..463N&quot;&gt;Norris+1985&lt;/a&gt;得出了这样的图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/6-n85.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1985ApJS...58..463N&quot;&gt;Norris+1985&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;很明显偏心率与金属丰度的关系没了。这是因为ELS并没有考虑近似圆运动的贫金属星，也没有正确地考虑&lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt;方向的运动，使得样本出现了偏差，或者说慢收缩理论更加贴近实际。不过这些结果的金属丰度都是从测光来的，准确性有待提高。&lt;/p&gt;
-
-&lt;h3 id=&quot;现代理论有关银晕的研究&quot;&gt;现代理论：有关银晕的研究&lt;/h3&gt;
-
-&lt;h4 id=&quot;运动学研究进展&quot;&gt;运动学研究进展&lt;/h4&gt;
-
-&lt;p&gt;现在我们有了依巴谷，恒星的距离以及自行就能更好地被确定了。加上SDSS/SEGUE，我们就有了非常多的样本去画图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-GA/6-c07.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:0706.3005&quot;&gt;Carollo+2007&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;就可以确定没有关系了。&lt;/p&gt;
-
-&lt;h4 id=&quot;多部分合并理论的证据&quot;&gt;多部分合并理论的证据&lt;/h4&gt;
-
-&lt;p&gt;SZ模型被提出之后，人们就开始寻找合并的证据。在有了大规模巡天之后，首先我们可以从恒星的空间分布中找出一些还存在的遗留物。&lt;a href=&quot;http://adsabs.harvard.edu/abs/2006ApJ...642L.137B&quot;&gt;Belokurov+2006&lt;/a&gt;就通过SEGUE找到了不少星流，它们就是被并合的矮星系残留的证据。这也从一个侧面证明了合并的力学时标很长，一直到现在。&lt;/p&gt;
-
-&lt;p&gt;同时我们也可以从相空间寻找证据（其实更好找）。加上第四章说过的&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; Cen，它也可能是原来在矮星系中的球状星团，在并合过程中被丢了出来，所以才有不止一次的恒星形成。&lt;/p&gt;
-
-&lt;p&gt;另一方面，很多的数值模拟也证明了要达到现在的状况，合体/吸积是有必要的。&lt;/p&gt;
-
-&lt;h3 id=&quot;厚盘的形成&quot;&gt;厚盘的形成&lt;/h3&gt;
-
-&lt;p&gt;和银晕对比，厚盘的形成就不那么明确了。主要有如下的说法：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ELS理论的厚盘形成&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;跟着ELS的理论，当银晕形成之后星云继续收缩，恒星形成非常剧烈，大量的超新星爆发使得盘停止收缩，形成厚盘。但是这个理论不能解释&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;方向的金属丰度梯度基本没有的事实。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;SZ理论的厚盘形成&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;那合并的怎么样呢？应该比ELS更好，但是并不能说明厚盘的动力学性质随&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;有系统的变化，是一个要解决的问题。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;下落到银盘的矮星系残骸&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;厚盘的动力学性质可以还原，但是从矮星系的金属丰度(&amp;lt;-1,&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;小)来看和厚盘的金属丰度(&amp;gt;-1,&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;大)不一致。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;先有一个盘，被下落到银盘的矮星系残骸之类的加热&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这样的话&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;方向没有金属丰度梯度，同时动力学性质随&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;也有系统的变化；但是我们应该能看到在盘上的矮星系残骸，实际上还没有确认到。也有说法是暗物质块的下落，这样就没有残骸了。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;盘星的radial migration&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;银河系毕竟不是轴对称的，因为旋臂或者分子云什么的有radial migration不奇怪。不过问题在于它的效率是否足够，或者我认为&lt;script type=&quot;math/tex&quot;&gt;W&lt;/script&gt;方向的弥散怎么解决等都是问题。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;盘上有分子云clump&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;有待研究&lt;/p&gt;
-
-&lt;h3 id=&quot;薄盘的形成&quot;&gt;薄盘的形成&lt;/h3&gt;
-
-&lt;p&gt;对于银河系来说薄盘的理论需要满足这么几条：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;方向的光度指数下降&lt;/li&gt;
-  &lt;li&gt;平坦的自转曲线&lt;/li&gt;
-  &lt;li&gt;金属丰度约为0，&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;比铁比较低&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;方向有负的金属丰度梯度&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;光度的指数下降&quot;&gt;光度的指数下降&lt;/h4&gt;
-
-&lt;p&gt;1963年Mestel考虑了一个匀质的刚体旋转的气体球，从这开始收缩成一个无限薄的盘，满足了第12条。但是有些细节对不上；在&lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt;方向加上粘性对流可能可以满足。&lt;/p&gt;
-
-&lt;h4 id=&quot;自转曲线&quot;&gt;自转曲线&lt;/h4&gt;
-
-&lt;p&gt;通过银河系的自转曲线的分析我们发现在盘的内部的贡献特别大。这点或许可以用重子物质与暗物质的相互引力作用来解释(disk-halo conspiracy)。但是这需要气体的收缩时间很长。&lt;/p&gt;
-
-&lt;h4 id=&quot;金属丰度&quot;&gt;金属丰度&lt;/h4&gt;
-
-&lt;p&gt;这个主要需要长的形成时标。&lt;/p&gt;
-
-&lt;h4 id=&quot;金属丰度梯度&quot;&gt;金属丰度梯度&lt;/h4&gt;
-
-&lt;p&gt;inside-out的形成。可能是因为内部物质比较丰富，就形成得快一点。&lt;/p&gt;
-
-&lt;h3 id=&quot;遥远星系的观测&quot;&gt;遥远星系的观测&lt;/h3&gt;
-
-&lt;p&gt;对遥远星系的观测表明&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;在2-3左右的星系是一坨一坨的，这说明它们可能能形成银河系这样的星系。如果从这开始进行数值模拟，会有这样的一些问题：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;气体冷却太快，核球太重&lt;/li&gt;
-  &lt;li&gt;气体冷却太快，恒星形成太多&lt;/li&gt;
-  &lt;li&gt;有cold accretion，形成了纤维状的结构&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;以及&lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt;在1左右的演化还不明确。&lt;/p&gt;
-
-&lt;h3 id=&quot;核球的形成&quot;&gt;核球的形成&lt;/h3&gt;
-
-&lt;p&gt;classic bulge就是在银河系形成的时候形成的一个核，而pseudo bulge是bar-盘的相互作用而形成的一个长形的核。现在认为银河系的核主要是pseudo bulge。&lt;/p&gt;
-
-&lt;h1 id=&quot;后面的内容就略过了&quot;&gt;后面的内容就略过了&lt;/h1&gt;
-</description>
-        <pubDate>Fri, 26 Oct 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/10/26/GA/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/26/GA/</guid>
         
         <category>learning</category>
         

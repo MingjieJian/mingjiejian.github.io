@@ -1,0 +1,74 @@
+---
+layout:     post
+title:      "我所知道的关于红外氦线的一切"
+subtitle:   "过去论文的总结"
+date:       2019-09-16
+author:     "mingjie"
+header-img: "img/post-contri_func.png"
+tags:
+    - learning
+
+---
+
+直接上表格。
+
+|论文| 内容 | 结论 | 要点 | 我可以做的 |
+|:--:|:--:|:--:|:--:|:--:|
+|Zirin 1982<br>底片<br>0.8A<br>有表|1. 用**底片**测量了455颗恒星（包括月亮）的氦线等值宽度(EW)以及半高全宽<br>2. 有很多星有不止一次测量<br> 3. 给出了表格|1. EW与软X射线辐射有正相关<br>2. 周期短的双星EW稍微大一点<br>3. O-A星EW很小|1. 选源可能会偏向活跃的星<br>2. 小于100mA的测量可能不准|不要了|
+|Smith 1983<br>用Zirin 1982的数据<br>无表|比较了EW和X射线光度的相关性|1. 矮星没有相关性，但是巨星有<br>2. 巨星中的谱线形成EUV光子主导，矮星和碰撞激发评分秋色|1. 形成机制：1)PR、2)CE、3)激发态He原子的向下扩散<br>2. 耀斑和纤维状结构中一般为发射线<br>3. 简介中提及了He线的形成位置<br>4. Zirin 1982中的EW-X射线光度关系不好可能是因为将dwarf和giant混在一起了|dwarf的EW整体比giant大吗？这个问题可以确定形成机制|
+|O'Brian+1986<br>R=27000-54000<br>有表|1. 测量了60颗F-K巨星的氦线<br>2. 有很多星有不止一次测量<br> 3. 给出了表格|1. EW结果和Zirin 1982的相似<br>2. supergiant的谱线有时序变化<br>3. CDL和两个线左右的恒星氢线表现不同|1. 紫外发射线可以确定色球层模型<br>2. 是在早上观测的(?)<br>3. 列出了氦线附近的其他谱线特征，特别提到了10829.27的CaI线和10831.3的未知谱线<br>4. K巨星的吸收很弱，Zirin 1982观测不到；有一部分的谱线形状改变很小（bet Gem type，短周期内），另一部分有很快的变化<br>5. Zirin 1982小于100mA的不可用<br> 6. spg的EW变化应该是由物质抛射引起的|1. 我们观测到了氦线左边和右边的线，要确定左边的是不是氦线，右边的究竟是什么；计算EW的时候要考虑它们<br>2. 这里面有bet Dra的光谱！和我们观测的一致但是没有解释<br>3. 可以做He线的时序观测（已有光谱）<br>4. 他们认为bet Gem type只在early K，这和我们的观测符合吗？<br>5. 在我们的HR图上画coronal dividing line和另外的两条线（都有引用的）<br>6. 回答P15、P16的两个问题|
+|Zarro+1986<br>R=10000<br>有表|EW与X射线光度的关系|1. dwarf温度大于6000K的没有关系（可能是CE机制主导），小于的有关系（PR机制）<br>2. giant和spg与Smith 1983一致，认为是PR主导<br>3. PR机制导致线性关系，但是找到的是指数关系|1. dwarf 6000K对应着对流区由浅（高温）到深（低温）<br>2. 线性和指数的关系可能是因为局部大气活动（可能可以用来做活动区大小的指示）|我们也做个这个吧|
+|Lambart 1987<br>和O'Brian+1986设置一样<br>有表|19个F-M星的氦线观测|1. 和O'Brian+1986关于CDL的结论一致|1. 模型EW太大的问题可以通过减少色球层高温部分来解决<br>2. giant的变化应为活动区域的变化，spg的是物质抛射<br>3. 对bet Dra有更多的描述，但是还是没有原因||
+|Dupree+1992<br>R=18500<br>无表|在球状星团中通过氦线发现了一个星风速度很快的星|氦线延展到了Si线处，意味着和物质的逃逸速度差不多|给出了一些色球层线的形成区域|这个结论可以仅仅通过He线的最短波长来确定么？|
+Avrett+1994|色球层模型的事情，略|
+Sasselov+1994<br>R=28000<br>有表|造父变星中的He线|1. He线基本上是蓝移<br>2. 速度移动比光球层星慢(phase lag)，幅度比光球层线大|造父变星一直都有光球层|
+Sasselov+1994|造父变星中He线的形成||1. 造父变星有一些好处：phase lag提供了谱线形成的位置；可以看看温度变化给He线造成的影响|比较Fig. 2和我们的PANDORA结果；模型部分值得细看|
+|Rueddi+1995|磁场的，略||||
+|Andretta+1997|太阳光球层模型和He线|证明了主要是CE机制|||
+|Smith+2004<br>R=23600<br>无表|10个贫金属星的He导出的星风速度|有两个星风速度大于星团逃逸速度|T>4600, Mv>-1.5才有He线的吸收|1. 我们可以证明或证伪这个要点<br>2. 我们可以找他要这个表吗？|
+|Sanz-Forcada+2008<br>R=170000<br>有表|He线和短波辐射的关系|RSCVn没有关系，giants有关系|短波数据来自Extreme Ultraviolet Explorer (MAST Archive)，X射线数据来自ROSAT all sky survey|从里面找短波数据；和Einstein data bank比哪个好？|
+|Dupree+2009<br>R=23600<br>有表|EW和各种恒星参数的关系（41颗贫金属场星giant）|很多星有快速的outflow|T>4500, Mv>-1.5才有He线的吸收|可以把这个数据库和我们的合在一起|
+|Dupree+2011<br>R=50000<br>有表|12颗Omega Cen里面类似的恒星的EW和恒星参数的关系|1. profile算是bet Gem profile<br>2. 它们分成了两拨，暗示可能是He enhance造成的<br>3. 作者认为H alpha和Ca线弱所以vairation小|将它们和CDL作对比看看是不是稳定的|
+|Pasquini+2011<br>无表|对NGC2808两颗giant的详细模型模拟|其他色球层线很相似并且稳定，但是He线很不同|1. 这俩星在CDL之下<br>2. 这俩星的有效温度远低于4500K<br>3. 作者认为它们的He线是PR主导的<br>4. T>9000K的区域对He线的轮廓没有影响|要点4存疑，要看citation|
+|Takeda+2011<br>R=20000<br>有表|33颗贫金属矮星的EW|绝大多数都有吸收，和金属丰度无关|1. 有短波辐射的来源（应该也是ROSAT）<Br>2. 因为是贫金属星所以自转不快，自转带来的活动性不强|看看EW和自转的关系是什么样子的|
+|Smith+2012<br>R=25000<br>有表|23颗贫金属矮星的EW|绝大多数都有吸收，都不强|||
+|Dupree+2013<br>来自Dupree+2011|两颗有具体Y值的Omega Cen giants||重要但是很熟悉了||
+|Smith+2013<br>R=23600<br>有表|M13中7颗巨星的EW等|没有发现和Na丰度的关系||要细读，但是可能是因为有效温度太低了|
+|Navarrete+2015<br>R=65000<br>有表|Kapteyn Group中14颗恒星的EW|EW分布和Omega Cen不一样|||
+|Strader+2015<br>R=50000<br>有表|M4中的16颗giant|没有找到和Na丰度有好的关系|T>4450才有He线的吸收|还没细看|
+|Smith 2016|基于以前的EW数据和活动性指标做对比||1. Zarro+1986的误差在30mA<br>2. 有很多的高能数据来源<br>3. 对关系有比较详细的解读，有结果之后可以再来看|延长图2的观测到更高的Lx处，以及看看高温恒星的scatter|
+
+## 古代数据库
+
+Zirin 1982
+
+## 现代数据库
+
+|名称|恒星类型|EW测量方法|数据表格|备注|
+|:--:|:--:|:--:|
+|O’Brian+1986|F-K giant|没讲，数据质量flag中有blend，猜测是直接积分|已入总表||
+|Zarro+1986|dwarf, giant|by planimetry，猜测为积分|已入总表|dwarf部分归于Smith 2016|
+|Lambart 1987|giant|没讲|已入总表||
+|Sasselov+1994|Cepheid|猜测为直接积分，作者认为telluric弱所以不用减去telluric|无||
+|Sanz-Forcada+2008|RSCVn, giant|直接积分然后减去blend的gaussian拟合|有，已入总表|dwarf部分归于Smith 2016|
+|Dupree+2009|giant|IRAF splot然后测量；如果blend了就去除|有，已入总表||
+|Dupree+2011|giant|没说，猜测同上|已入总表||
+|Takeda+2011|dwarf|用Gaussian去拟合He线|已入总表|归于Smith 2016|
+|Smith+2012|dwarf|无blend则直接积分，有blend则分开所有成分|已入总表|归于Smith 2016|
+|Smith+2013|giant|同 上，并且都给了表|已入总表||
+|Navarrete+2015|dwarf, giant|splot以及deblend|已入总表||
+|Strader+2015|giant|splot|已入总表||
+|Smith 2016|dwarf|-|数据来自Zarro+1986, Sanz-Forcada+2008, Takeda+2011, Smith+2012|
+|KOV sample|dwarf, giant, spg|||
+|APO sample|dwarf, giant|||
+
+它们测量EW的方法可以直接比较吗？
+
+## Large To Do points
+再后面的也没细看
+
+O'Brian+1986的分析很详细，而且有模型的构建过程，需要另开位置仔细阅读。
+
+星震学和He线的相关性
+
+这些恒星和Gaia的交叉

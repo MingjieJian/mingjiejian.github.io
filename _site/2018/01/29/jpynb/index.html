@@ -207,6 +207,13 @@
 <p>这是因为<code class="highlighter-rouge">\t</code>在字符串中会被转义为Tab，所以要在字符串前加上一个<code class="highlighter-rouge">r</code>。</p>
 
 <p id="py"></p>
+
+<h4 id="更新markdown中的图像">更新markdown中的图像</h4>
+
+<p>在路径后面加上一个<code class="highlighter-rouge">?1</code>，数字可以改变。</p>
+
+<p><a href="https://stackoverflow.com/questions/37023166/how-to-reload-image-in-ipython-notebook">来源</a></p>
+
 <h3 id="python备忘">Python备忘</h3>
 
 <p id="py-array_stack"></p>
@@ -309,16 +316,16 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
 
-<span class="c"># Generate fake data</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="c1"># Generate fake data
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="c"># Calculate the point density</span>
-<span class="n">xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+<span class="c1"># Calculate the point density
+</span><span class="n">xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">xy</span><span class="p">)(</span><span class="n">xy</span><span class="p">)</span>
 
-<span class="c"># Sort the points by density, so that the densest points are plotted last</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+<span class="c1"># Sort the points by density, so that the densest points are plotted last
+</span><span class="n">idx</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -345,10 +352,10 @@
 
 <p>来自<a href="https://blog.csdn.net/amy_wumanfang/article/details/64483340">这里</a></p>
 <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
-<span class="c">#使用python random模块的sample函数从列表中随机选择一组元素</span>
-<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-<span class="nb">slice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c">#从list中随机获取5个元素，作为一个片断返回  </span>
-</code></pre></div></div>
+<span class="c1">#使用python random模块的sample函数从列表中随机选择一组元素
+</span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">slice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1">#从list中随机获取5个元素，作为一个片断返回  
+</span></code></pre></div></div>
 
 
                 <hr style="visibility: hidden;">
@@ -430,7 +437,7 @@
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="31">
+                				<a href="/tags/#learning" title="learning" rel="32">
                                     learning
                                 </a>
                             

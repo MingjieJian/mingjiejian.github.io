@@ -154,6 +154,44 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2018/03/14/DL-2/">
+        <h2 class="post-title">
+            Deep Learning笔记2
+        </h2>
+        
+        <h3 class="post-subtitle">
+            调参
+        </h3>
+        
+        <div class="post-content-preview">
+            数据集
+
+以前是分成两个的，训练和测试。现在分成3个，训练、发展和测试集。用发展去测试训练，最后再用测试去测试表现；甚至没有测试集都行。这里的区别是发展集是用来overfitting的，测试集不是。
+
+要注意不同数据集的数据要同质，质量相同
+
+
+
+bias和variance
+
+训练集的错误率比与预期的高：高bias；发展集的错误率比训练集的高：高variance
+
+
+
+
+
+正则化
+
+在代价函...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on March 14, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2018/03/14/DL-1/">
         <h2 class="post-title">
             Deep Learning笔记1
@@ -435,30 +473,6 @@ ht...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2017/12/18/OASP5/">
-        <h2 class="post-title">
-            OASP笔记 - 5
-        </h2>
-        
-        <h3 class="post-subtitle">
-            有关辐射的各种定义
-        </h3>
-        
-        <div class="post-content-preview">
-            辐射强度 (specific intensity)
-
-辐射强度描述的是某一点的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。
-
-我们只能通过单位时间、单位频率下穿过单位面积面元的能量大小来描述光的强度。但是面元是有朝向的，一个...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 18, 2017
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -517,7 +531,7 @@ ht...
                             
                         
                             
-                                <a href="/tags/#learning" title="learning" rel="31">
+                                <a href="/tags/#learning" title="learning" rel="32">
                                     learning
                                 </a>
                             
