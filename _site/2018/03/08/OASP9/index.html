@@ -225,6 +225,20 @@
 
 <p>第一行是指明模型类型（MOOG也接受其他的一些模型），第二行是注释（有效温度和logg），第三行指名接下来的72行都是模型的内容。计算光谱的时候用到的物理量是光深、温度、气体压强、电子数密度或者是压强、Rossland不透明度。这里没有用到源函数的原因应该是认为热动平衡下每层的源函数都是普朗克函数，所以有温度就可以算出源函数了。所以有了模型之后就可以根据<script type="math/tex">(7.15)</script>来算流量了。</p>
 
+<p>From the left to right column:</p>
+<ul>
+  <li>Mass per square centimeter <script type="math/tex">\mathrm{RHOX} = \int_0^x \rho(x) dx \mathrm{[g~cm^{-2}]}</script> at the depth x</li>
+  <li>Temperature <script type="math/tex">T~\mathrm{[K]}</script></li>
+  <li>Gas pressure <script type="math/tex">P_g~\mathrm{[dyne~cm^{−2}]}</script></li>
+  <li>electron number density <script type="math/tex">\mathrm{XNE}~\mathrm{[cm^{-3}]}</script></li>
+  <li>Rosseland mass absorption coefficient <script type="math/tex">\mathrm{ABROSS} = \kappa_\mathrm{Ross}~\mathrm{[cm2~g^{−1}]}</script></li>
+  <li>acceleration due to the absorption of radiation <script type="math/tex">\mathrm{ACCRAD}~\mathrm{[cm~s^{−2}]}</script></li>
+  <li>microturbulent velocity <script type="math/tex">\mathrm{VTURB}~\mathrm{[km~s^{−1}]}</script></li>
+  <li>energy flux that bear a convection <script type="math/tex">\mathrm{FLXCNV}~\mathrm{[erg~cm^2~s^{−1}]}</script></li>
+  <li>convective velocity <script type="math/tex">\mathrm{VCONV}~\mathrm{[km~s^{−1}]}</script></li>
+  <li>sound velocity <script type="math/tex">\mathrm{VELSND}~\mathrm{[cm~s^{−1}]}</script>.</li>
+</ul>
+
 <p>这本书的主旨是“读完某一章之后就可以拿这一章的内容来做计算”，所以这里提到的模型肯定有很多假设，距离真实情况有一定距离。但是这不代表着它们没有用，它们仍然是不错的工具和真实模型的起点。这里的假设和简化包括：</p>
 
 <ol>
@@ -642,7 +656,7 @@
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="32">
+                				<a href="/tags/#learning" title="learning" rel="33">
                                     learning
                                 </a>
                             

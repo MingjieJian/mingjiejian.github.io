@@ -5,9 +5,39 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 Sep 2019 18:10:24 +0900</pubDate>
-    <lastBuildDate>Sat, 21 Sep 2019 18:10:24 +0900</lastBuildDate>
+    <pubDate>Fri, 11 Oct 2019 14:40:20 +0900</pubDate>
+    <lastBuildDate>Fri, 11 Oct 2019 14:40:20 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>我所知道的关于系外行星红外氦线的一切</title>
+        <description>&lt;p&gt;Salz+18：对HD189733在系外行星transit过程中的观测&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1个木星质量的行星围绕着活跃的K dwarf&lt;/li&gt;
+  &lt;li&gt;行星的信号遮挡可能不足以解释全部的吸收变化&lt;/li&gt;
+  &lt;li&gt;中心线:蓝线线深比是2.8，和恒星大气模型不符；从这一点里面我们可以推断出行星大气的厚度以及柱密度&lt;/li&gt;
+  &lt;li&gt;transit前后的信号（虽然这个星没有）可以表征行星的蒸发&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Points：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;因为He线在恒星表面是不均匀的，没有大气时行星挡住了吸收弱的部分的时候，总体吸收增强；反之变弱。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Questions：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;中心线:蓝线线深比有一个标准值吗？&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 01 Oct 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/10/01/he-exop-paper/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/10/01/he-exop-paper/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>我所知道的关于红外氦线的一切</title>
@@ -2085,6 +2115,7 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#tap教程&quot; id=&quot;markdown-toc-tap教程&quot;&gt;TAP教程&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#下载整个星表&quot; id=&quot;markdown-toc-下载整个星表&quot;&gt;下载整个星表&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#选择星表的前n行select&quot; id=&quot;markdown-toc-选择星表的前n行select&quot;&gt;选择星表的前n行：SELECT&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#排序order-by&quot; id=&quot;markdown-toc-排序order-by&quot;&gt;排序：ORDER BY&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#表达式的一些内容&quot; id=&quot;markdown-toc-表达式的一些内容&quot;&gt;表达式的一些内容&lt;/a&gt;&lt;/li&gt;
@@ -2183,6 +2214,12 @@ AND radial_velocity IS NOT NULL
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;tap教程&quot;&gt;TAP教程&lt;/h2&gt;
+
+&lt;h3 id=&quot;下载整个星表&quot;&gt;下载整个星表&lt;/h3&gt;
+
+&lt;p&gt;SELECT * FROM table_name&lt;/p&gt;
+
+&lt;p&gt;星表的名字可以先去Vizier搜链接，然后在TAP上找，就有了。&lt;/p&gt;
 
 &lt;h3 id=&quot;选择星表的前n行select&quot;&gt;选择星表的前n行：SELECT&lt;/h3&gt;
 
@@ -2534,74 +2571,6 @@ AND radial_velocity IS NOT NULL
         <pubDate>Tue, 27 Nov 2018 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2018/11/27/OASP16/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/11/27/OASP16/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ASP491-Bulge会议总结</title>
-        <description>&lt;p&gt;这个会议是2015年开的。&lt;/p&gt;
-
-&lt;h2 id=&quot;bulge研究的概况rmrich&quot;&gt;Bulge研究的概况：R.M.Rich&lt;/h2&gt;
-
-&lt;p&gt;20世纪对于银河系核球的研究最早可以追溯到Shapley用球状星团和Baade用核球的RR Lyraes来确定太阳的距离。因为多数的望远镜都在北半球，所以并不能很好地观测核球。而CTIO的望远镜们很好地发挥了台址的这个优势，做出了很多的成果。&lt;/p&gt;
-
-&lt;p&gt;最早是CTIO的1.5米望远镜，&lt;a href=&quot;http://adsabs.harvard.edu/abs/1978ApJ...226..777W&quot;&gt;Whitford+1978&lt;/a&gt;用它来观测了整个核球的（低分辨率、消光改正后的）光谱并与其他星系比较，发现它们是相似的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-bulge-conf/1-r-1.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;&lt;a href=&quot;http://adsabs.harvard.edu/abs/1978ApJ...226..777W&quot;&gt;Whitford+1978&lt;/a&gt;, Fig. 3&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;1976年之后CTIO的4米望远镜开始投入使用，为核球研究提供了更强力的工具。&lt;a href=&quot;http://adsabs.harvard.edu/abs/1984AJ.....89..636B&quot;&gt;Blanco+1984&lt;/a&gt;用棱镜光谱发现了核球中的306颗红巨星。这个结果提供了精确的位置信息，为以后的研究打下了基础。这项研究同时发现了核球中没有富碳的星，这一点和麦哲伦云是不一样的。&lt;/p&gt;
-
-&lt;p&gt;后来&lt;a href=&quot;http://adsabs.harvard.edu/abs/1987ApJ...320..199F&quot;&gt;Frogel &amp;amp; Whitford 1987&lt;/a&gt;通过这个星表进行了多色测光，比较了这些巨星与太阳邻域以及临近星系的情况，如光度函数。得出的结论是核球的年龄与银河系球状星团的相仿，核球的巨星比太阳邻域的更蓝；有更高的金属丰度。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/#abs/1988AJ.....96..884T/abstract&quot;&gt;Terndrup 1988&lt;/a&gt;观测了这批恒星的CMD，并且发现在红外的CMD弥散更小，当然这是因为红外的红化更小。再后来的研究就更细致了，测量了巨星的金属丰度。&lt;/p&gt;
-
-&lt;p&gt;有关核球的早期运动学成果请参见&lt;a href=&quot;http://adsabs.harvard.edu/abs/1983ApJ...266..255M&quot;&gt;Mould 1983&lt;/a&gt;、&lt;a href=&quot;http://adsabs.harvard.edu/abs/2007ApJ...665L..31S&quot;&gt;Soto+2007&lt;/a&gt;，其中后者成功探测到了核球速度椭球的顶点偏移(Vertex deviation)。&lt;/p&gt;
-
-&lt;h3 id=&quot;有关顶点偏移vertex-deviation&quot;&gt;有关顶点偏移(Vertex deviation)&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://books.google.co.jp/books/about/Galactic_Astronomy.html?id=arYYRoYjKacC&amp;amp;redir_esc=y&quot;&gt;Galactic Astronomy/Mihalas &amp;amp; Binney P418&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;剩余速度椭球&quot;&gt;剩余速度椭球&lt;/h4&gt;
-
-&lt;p&gt;太阳附近的恒星除了整体的公转外，还应该有速度弥散，比如&lt;a href=&quot;http://adsabs.harvard.edu/abs/1955PASP...67..328B&quot;&gt;Baum 1955&lt;/a&gt;中的图。它们的分布很像高斯，所以我们用三维的联合高斯分布来描述它们。而三维联合高斯分布的等高线是一个旋转椭球体，就是剩余速度椭球了。&lt;/p&gt;
-
-&lt;p&gt;但是我们不知道我们选择的&lt;script type=&quot;math/tex&quot;&gt;(u,v,w)&lt;/script&gt;是不是正好在剩余速度椭球的轴上，所以我们可能需要引入一个坐标变换&lt;script type=&quot;math/tex&quot;&gt;(u,v,w) \rightarrow (u_1,v_1,w_1)&lt;/script&gt;，新的坐标就在这些轴上了。&lt;/p&gt;
-
-&lt;p&gt;对于银河系我们有这样的经验：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;椭球的两个轴必在银道面上，剩下的那个轴垂直银道面&lt;/li&gt;
-  &lt;li&gt;长轴大致指向圆心&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;所以我们只要确定&lt;script type=&quot;math/tex&quot;&gt;(u_1,v_1,w_1)&lt;/script&gt;的长轴与银心的夹角，就能完全确定剩余速度椭球的摆放方式了，而这个夹角就是顶点偏移。&lt;/p&gt;
-
-&lt;p&gt;从观测结果来看，剩余速度椭球&lt;script type=&quot;math/tex&quot;&gt;u&lt;/script&gt;方向最大，另外两个比较小；早型星的椭球更球形，晚型星的更椭；而早型星的顶点偏移比较大，晚型星的比较小。太阳邻域的星际介质更能被早型星的情况所示踪，而晚型星经历了长时间的动力学演化，更多的是受银盘中质量分布的影响。&lt;/p&gt;
-
-&lt;h4 id=&quot;顶点偏移&quot;&gt;顶点偏移&lt;/h4&gt;
-
-&lt;p&gt;那么顶点偏移比较大说明了什么呢？如果银盘是完全随机运动而且处于平衡状态的话，速度椭球的长轴应该指向银心。我的理解是径向的迁移是最容易的别的方向因为已经平衡了所以只有比较小的跑动。所以顶点偏移不为0的话说明不处于这种情况，有其他的结构存在，比如旋臂，或者bar。再排除了moving group的影响之后我们就能确定是不是这样了。&lt;/p&gt;
-
-&lt;p&gt;当然还有另外一种看顶点偏移的方法：画二维的速度分布图。当我们的坐标系和剩余速度椭球的轴平行的时候，垂直某个坐标轴的切面总是切出一个正放的椭圆；而坐标轴没有摆好的时候，切出来的是斜着的椭圆。&lt;/p&gt;
-
-&lt;h3 id=&quot;brava&quot;&gt;BRAVA&lt;/h3&gt;
-
-&lt;p&gt;略，参照GA的总结。&lt;/p&gt;
-
-&lt;h3 id=&quot;金属丰度&quot;&gt;金属丰度&lt;/h3&gt;
-
-&lt;p&gt;我们在核球附近发现了alpha元素的增加，应该是与银盘有关。金属丰度小于0的恒星有r过程的痕迹，而大于0的恒星中s过程的痕迹增加。&lt;/p&gt;
-
-&lt;h3 id=&quot;未来问题&quot;&gt;未来问题&lt;/h3&gt;
-
-&lt;p&gt;年龄的不consistent，以及X-型带来的核球的质量比值偏高。&lt;/p&gt;
-</description>
-        <pubDate>Fri, 02 Nov 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/11/02/bulge-conf/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/02/bulge-conf/</guid>
         
         <category>learning</category>
         
