@@ -166,6 +166,10 @@ CDL 4 2 ( .1111 .3333 .5556 ) >
 
 ### 致宽与mass motion
 
+## 输入参数介绍
+
+`XI`：输出光谱的数据点位置，数值代表距离线心的频率。这玩意必须从0开始，单调递增，以此表示半个轮廓的采样。如果不是默认的话它的长度必须由`KS`指定。
+
 ## 选项选择
 
 这里先仅介绍`CALCULATION`部分的选项、它们的默认值以及建议开启的情况。
@@ -398,6 +402,12 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 
 就意味着有某个或者某些需要指定的变量未指定，需要看看是哪个；具体是哪个我也不知道hhhh。
 
+### 其他错误处理
+
+- `Error in LUCK : trying to Open/formatted for read on unit   8; IOSTAT =        29`
+
+这个具体是指没有找到`.res`文件，加上就好了；其他的话去说明文档里面看看`unit`对应的文件，检查一下有没有。
+
 ## 输出结果阅读理解
 
 `bin/lookat.x`提供了一个在命令行里面阅读的程序，里面有解释；不过这都是老黄历的东西了，还是用extract出来用编辑器看方便。
@@ -474,3 +484,658 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 `.mod`文件里面包含了H, He-I, He-II, C-I, Si-I的密度信息(`XXK`, `XXN`等)；这些是之前占据数更新运行的结果。
 
 重启这个示例的运行也是很简单的，删掉`.res`文件，将`.rst`改成`.res`；同理将`.jnr`改成`.jnu`，把`.dat`文件里面该改的改掉。注意`JNUNC`需要大于0。
+
+### 示例六
+
+示例六是一个很重要的例子。这里面的模型实际上就是Dupree+2013中的巨星模型。由于它比较重要，在这里我们逐行解释模型和输入文件的意思。
+
+我们要解决的问题：
+- 为什么简单模型里面提高TR温度会使得H-alpha线变成发射而Dupree+13中的不会？是因为有些选项不是默认了吗？
+
+我们从leidh.dat以及leid.mod开始。
+
+```
+> LEID       MODEL LEID   5 L H        ITER 07-17     13-Oct-24
+>  ---------1------------1------------1------------1------------1
+>
+USE ( MODEL ) >
+```
+
+一开始我们就从leid.dat跳到了leid.mod中，读取leid.mod中的行直到遇上`USE ( INPUT ) > `。
+
+```
+>
+>   M O D E L   LEID
+>
+omit ( AVELOP ) >
+OMIT ( AVOPRNT ) >
+omit ( INCIDNT ) >
+do ( INCIFRNT ) >
+DO   ( INTEDIT ) >
+omit ( VTV ) >
+omit ( SPHERE ) >
+```
+
+`AVELOP`默认是关闭的，这里写不写都可以。`INCIDNT`也应该关闭，除非我们明确有额外的光源从高处照下来。`INCIFRNT`虽然开启，但是因为`INCIDNT`所以应该是没用的（需要确认）。`INTEDIT`应该会改变了输入的温度，但是我觉得不需要开。`VTV`会使得`VT`(turbulent pressure velocity)和`V`(broadening velocity=microturbulent velocity)相等，默认是开启的。不知道为什么要关闭。`SPHERE`是最奇怪的一点，论文里面说是球面的，但是这里却关闭了。
+
+```
+NKA (  9 ) >
+NVH ( 23 ) > number of HNDV, VNH values
+NGM (  0 ) >
+NCQ (  5 ) >
+INK (  6 ) > number of XINK, FINK values
+LLY (  0 ) >
+>
+NAB   ( 1 ) > length of BANDL (number of bands)
+BANDL ( 3000. )  BANDU ( 8000. ) >
+```
+
+`NKA`是`ZALBK`的长度，默认为2；`ZALBK`是背景谱线不透明度的散射反照律常数。不知道为什么后面没有指定这个值。`NVH`指定的是前多少个`V`的值是从太阳里面来的。`NGM`操作和`NVH`一致，控制的是G multiplier的值，不要指定为好。`NCQ`、`INK`、`LLY`、`NAB`同理。
+
+```
+N   ( 72 ) >
+>
+NLH (  15 ) >
+NLZ (  13 ) >
+NZ2 (  8 ) >
+> NLC (  0 ) >
+> NLS (  0 ) >
+> NAL (  0 ) >
+> NMG (  0 ) >
+> NFE (  0 ) >
+NNA (  8 ) >
+> NCA (  8 ) >
+> NLO (  14 ) >
+> NO2 (  0 ) >
+> NO3 (  0 ) >
+> NLU (  0 ) >
+>
+USE ( INPUT ) >
+```
+
+这一堆`NXX`说明的是输入文件中元素能级population被指定的数量，比如`NLZ ( 13 )`指的是He-I有13个能级的population被指定，后面肯定有`HEN 1-13`这堆东西。
+
+然后我们就回到leid.dat里面了。
+
+```
+>
+USE ( ATOM ) >
+```
+
+使用默认的原子能级数据，不多说了。
+
+```
+K      ( 55 ) >
+kmmax  ( 700 ) >
+> kstmax (  35 ) >
+NWV ( 11 ) >
+> nvx ( 1 ) >
+```
+
+`K`就是`KS`，`XISYM`的长度；这个玩意儿决定了合成光谱覆盖的长度；这个设置意味着合成光谱还是挺宽的。`kmmax`是`XIFUL`的长度限制，防止占用内存太大，我觉得可以不设定。`kstmax`是`kst`的最大值，`kst`是`XISYMT`的长度。`NWV`是`WAVES`的长度，`WAVES`是连续谱计算的额外的波长点，设定之后会在输出里面多出一个`XX.XX  NANOM`的章节，`XX`是设定的波长。**这个设定非常有用，这一节提供了不透明度、光深、连续谱源函数、吸收源函数等对计算形成位置很有用的信息（特别是线翼的形成位置）**。`NVX`是`VX`表格的数量，`VX`设定了计算谱线时候大气额外的膨胀速度；`VXS`是计算源函数时候的膨胀速度，它比`VX`更基本。
+
+```
+L   ( 6 ) > length of MU (not needed when sphere=on)
+LF  ( 6 )  > length of MUF (not needed when sphere=on)
+```
+
+这俩是视线方向的位置（`MU`、`MUF`）的数量，`MU`为1是圆面中心，越小越往边缘走。在`SPHERE`打开之后不用管。
+
+```
+do ( addcopr ) >
+do ( adn1dmp ) >
+omit ( all ) >
+omit ( bdprnt ) >
+omit ( bdgraf ) >
+omit ( bdqprdt ) >
+omit ( cijprnt ) >
+omit ( comprk ) >
+do ( conflux ) >
+omit ( didhc ) >
+do ( dpdwprnt ) >
+do ( elecprnt ) >
+do ( emigraf ) >
+DO ( EMIPRNT ) >
+do ( emisum ) >
+do ( EPCOMP ) >
+omit ( every ) >
+omit ( fdbcopr ) >
+omit ( flwbroad ) >
+DO ( HELPRNT HEL2PRNT ) >
+DO ( HMS ) >
+omit ( indprnt ) >
+do ( komprnt ) >
+omit ( lbdprnt ) >
+omit ( linecopr ) >
+omit ( LSFGRAF ) >
+omit ( LSFPRNT ) >
+omit ( LYMAN ) >
+DO ( OPAPRNT ) >
+omit ( origin ) >
+omit ( orshort ) >
+do ( phase2 ) >
+omit ( PIJPRNT ) >
+omit ( prdprnt ) >
+omit ( procprnt ) >
+DO ( PROSAV ) >
+omit ( rateall ) >
+omit ( ratecopr ) >
+omit ( RATEFULL ) >
+OMIT ( RATEGRAF ) >
+do ( rateprnt ) >
+omit ( ratesumm ) >
+do ( rhbprdt ) >
+do ( RIJPRNT ) >
+omit ( sebug ) >
+omit ( secomp ) >
+do ( seprnt ) >
+do ( SPECSAV ) >
+do ( stimprnt ) >
+do ( tauprnt ) >
+OMIT ( TEGRAF ) >
+omit ( waveprnt ) >
+omit ( wtabprnt ) >
+DO ( ZPRNT ) >
+```
+
+```
+omit ( amdiff ) > -
+do ( bdcalc ) > *
+do ( bsmooth ) > *
+omit ( calcool ) > -
+omit ( cefacts ) > -
+omit ( clnorm ) > *
+omit ( diffana ) > *
+do ( dsmooth ) > *
+do ( emerint ) > -
+omit ( expand ) > -
+omit ( henorm ) > *
+do ( HSE ) > *
+omit ( nedit ) > -
+do ( prdmeth ) > -
+do ( rhedit ) > *
+do ( rsmooth  ) > *
+omit ( sedit ) > *
+OMIT ( SLYR ) > *
+omit ( sphere ) > **
+omit ( SSMOOTH ) > -
+omit ( ulnorm ) > *
+omit ( zcomp ) > -
+>
+GO >
+```
+
+这里的各种选项我把它们分成了输出组和计算组，输出组（第一组）应该对结果没有影响，计算组（第二组）后面如果带减号则和默认一致，星号则和默认不同。
+有个特点是和Lyman有关的基本上都是关闭的，这可能是导致Lyman线Ratio错误的原因，但是我们这里不关心它们。另外是一些细致的计算和smooth被打开了。
+打开以及关闭`SPHERE`对结果稍有影响（废话），但是是一致的。到这里B部分结束。
+
+我尝试了将和默认一致的选项全部删去时结果是不是一样的。结果是一样的（那你这个模型还写这么多！）
+
+```
+>
+> jstin ( 1 ) >
+>
+USE ( MODEL ) >
+>
+```
+
+`jstin`控制是否仅进行输入运行，1为仅输入运行但是这里被注释掉了。然后我们继续跑到模型文件里面。
+
+```
+>
+>   M O D E L   LEID
+>
+MODLAB ( LEID ) >
+>
+ELEMENT ( HE LAB 11.3 ) > was 10.60, 11.22, 10.923, 10.85, 10.75, 11.3, 11.1
+ELEMENT ( HE2 LAB 11.3 ) > was 10.60, 11.22, 10.923, 10.85, 10.75, 11.3, 11.1
+ELEMENT ( LI LAB 1.1 ) >
+ELEMENT ( BE LAB -1.01 ) >
+ELEMENT ( B LAB .51 ) >
+ELEMENT ( C LAB 5.82 ) >
+ELEMENT ( N LAB 7.76 ) >
+ELEMENT ( O LAB 7.219 ) >
+ELEMENT ( O2 LAB 7.219 ) >
+ELEMENT ( O3 LAB 7.219 ) >
+ELEMENT ( F LAB 2.37 ) >
+ELEMENT ( NE LAB 6.14 ) >
+ELEMENT ( NA LAB 3.91 ) >
+ELEMENT ( MG LAB 5.6 ) >
+ELEMENT ( AL LAB 3.18 ) >
+ELEMENT ( SI LAB 5.77 ) >
+ELEMENT ( P LAB 3.22 ) >
+ELEMENT ( S LAB 5.33 ) >
+ELEMENT ( CL LAB 3.31 ) >
+ELEMENT ( AR LAB 4.61 ) >
+ELEMENT ( K LAB 3.13 ) >
+ELEMENT ( CA LAB 4.76 ) >
+ELEMENT ( SC LAB .69 ) >
+ELEMENT ( TI LAB 2.65 ) >
+ELEMENT ( V LAB 1.56 ) >
+ELEMENT ( CR LAB 3.52 ) >
+ELEMENT ( MN LAB 2.74 ) >
+ELEMENT ( FE LAB 5.73 ) >
+ELEMENT ( CO LAB 2.48 ) >
+ELEMENT ( NI LAB 3.88 ) >
+ELEMENT ( CU LAB 2.0 ) >
+ELEMENT ( ZN LAB 2.26 ) >
+ELEMENT ( GA LAB .85 ) >
+ELEMENT ( GE LAB 1.46 ) >
+ELEMENT ( RB LAB 2.68 ) >
+ELEMENT ( SR LAB .79 ) >
+ELEMENT ( Y LAB -.41 ) >
+ELEMENT ( ZR LAB -.25 ) >
+ELEMENT ( BA LAB -.20 ) >
+
+```
+
+`MODLAB`定义了这个大气模型的名字，你喜欢的话叫村花也没人会抗议的。后面的一堆`ELEMENT`请参阅前面章节。
+
+```
+KURIN ( 6 ) >  
+>
+NABS ( 22 23 39 42 43 44 45 ) >
+>      
+ndwm ( 36 ) >
+KOELS ( 0 ) >
+>
+HNDV ( >
+1.E+05 3.E05 1.E+06 3.E+06 1.E+07 3.E+07 1.E+08 3.E+08 1.E+09 3.E+09 >
+1.E+10 3.E+10 1.E+11 3.E+11 1.E+12 3.E+12 1.E+13 3.E+13 1.E+14 3.E+14 >
+1.E+15 3.E+15 1.E+16 >
+) >
+VNH ( >
+30. 30. 29.5 26. 27. 25. 23.7 22.5  21. 5.3 >
+5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 >
+5.3 5. 5. ) >
+```
+
+`KURIN`指定程序使用Kurucz中的谱线不透明度中的哪个。它们被储存在了`opacities/statistical.dat`中，**需要换不同的值去测试有什么影响**。[尝试从6换到了1，没有影响。]
+`NABS`可以删除背景不透明度中包含的absorber/emitter，数字可以在输出的ATMOSPHERE中的'List of potential contributors to "continuum" or "background" absorbtion and emission'部分查到。**注释掉它的话H-alpha和H-beta线就变成了发射线，所以应该是其中的某个东西发射了。**
+`ndwm`指明了多普勒致宽的基准位置，可能是没有致宽和有致宽之间的那几个点。在这里它和默认值是一样的。
+`KOELS`是`ORIGIN`（光强形成位置）中每条线的输出开关，打开之后可能输出更多的东西。
+`HNDV`是与`VNH`对应的氢密度表格，`VNH`是`V`的标准表格，`V`是致宽速度，也就是文章中的turbulent。这是因为turbulent或者说`V`并不需要和Z
+`Z`一样，可以短一点，这个时候`HNDV`就起到一个定位的作用了。**需要改变V的取值看看谱线宽度怎么变化**。[将V全部改成0之后发现线翼稍微窄了一点，线心深了一点，和预期类似；但是幅度不大，可能因为是在高处才有大的速度。结论是影响不大。]
+
+```
+> IRTIS ( 1 ) > default = 2, which uses log(FINK)
+> XINK ( 9.5 10. 500. 501. ) >
+> XINK ( 5.94 5.95 9.83 9.84 ) >
+> FINK ( M 1.E-15 0. 0. 0. 0. ) >
+XINK ( 5.948 5.949 7.48 7.51 13.16 13.17 ) >
+FINK ( M 5.E-11 0. 3. 3. 0. 0. 0. ) >
+IRTIS ( 1 ) >
+
+```
+
+这堆命令控制的是入射的辐射（可能是在模型之外入射的辐射？）。`XINK`指定入射光的频率，`FINK`指定入射光的强度，`IRTIS`控制`XINK`和`FINK`的内插/外推方式，究竟是在`XINK`中线性还是`log(XINK)`中线性这样。上面使用的是默认的设置。**需要注释掉看看有什么变化**。[全部改成0之后谱线似乎没什么很大的改变，应该可以保持默认。]
+
+```
+
+> R1N ( 1.39E7 ) > = 20 solar radii
+> R1N ( 2.09E7 ) > = 30 solar radii
+R1N ( 5.88E7 ) > = 84 solar radii
+FABD ( 1. ) >
+CLOGG ( 1.74 ) >
+WZM ( .8 ) >
+
+```
+
+`R1N`的字面意思是距光源的距离，实际上基本上是作为恒星半径使用。大概是把色球层开始的地方作为一个恒星半径。[改变R1N的值对最后的谱线轮廓影响不大。]
+`FABD`是元素丰度的乘数，所有的元素丰度都会乘上这个值，默认是1（奇怪的乘数真多啊）。
+`CLOGG`是$$ \log{\mathrm{surface gravity}} $$，就是平常的logg。不指定的话就会用`CGR`，和太阳的logg比值。**所以之前我一直用的是太阳的logg值......**[但是将`CLOGG`增加到2.74谱线也没什么变化？为什么？]
+`WZM`是`Z`的权重，默认是0.8。当我们要求`Z`表要和别的表相匹配的时候（MASS什么的）它会参与计算。
+
+```
+Z                 ( >
+-1.34498000E+07 -1.21944000E+07 -1.12022000E+07 -1.02707000E+07 -9.37975000E+06
+...
+ 2.62733008E+04  2.90250000E+04
+) >
+TE                ( >
+ 1.32412000E+05  1.22873000E+05  1.14001000E+05  1.05571000E+05  9.73640000E+04
+...
+ 9.06100000E+03  9.29800000E+03
+) >
+> UPDATE
+> LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+NE                ( >
+ 1.15703990E+04  1.93011710E+04  3.01664670E+04  4.74718253E+04  7.59880490E+04
+ ...
+ 7.09270054E+14  8.86317471E+14  ) >                                            
+> LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+ZME               ( >
+ 1.11121707E-04  1.11121707E-04  1.11121707E-04  1.11121707E-04  1.11121707E-04
+ ...
+ 7.81938802E-06  9.47751718E-06  ) >                                            
+> LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+NC                ( >
+ 2.17200027E+04  3.62503735E+04  5.67030110E+04  8.93539750E+04  1.43384253E+05
+ ...
+ 1.41854011E+15  1.77263494E+15  ) >                                            
+> LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+BDHM              ( >
+ 4.49889182E+03  3.97155540E+03  3.54675044E+03  3.15856061E+03  2.79582013E+03
+ ...
+ 1.00172011E+00  1.00163211E+00  ) >                                          
+> LEID       MODEL LEID   5 L H        ITER 32-39     12-Aug-06                 
+NH                ( >
+ 8.70412526E+03  1.45353581E+04  2.27573370E+04  3.59175776E+04  5.77983267E+04
+ ...
+ 9.55204350E+15  9.40788717E+15  ) >   
+ USE ( INPUT ) >
+```
+
+这堆就是正常操作了，模型中最重要的温度密度等参数。要留意除了`Z`和`TE`之外其他都是经过更新的，以及`NC`在手册上标的是在H部分，但是这里是在D部分，所以实际上可能是需要在D部分的。这些读完之后又回到了主控制文件。
+
+```
+lwnt ( 10 ) >   for KOMPRNT
+>
+> idfsw ( 1 ) >   for dI/dh at every line wavelength
+>
+iwsmd ( 1 ) >
+ibnview ( 50 ) >
+iprdd ( 10 )  iprdf ( 20 ) >
+
+```
+
+`LWNT`是控制`KOMPRNT`里面输出的命令，控制输出（谁的？）不透明度的波长间隔，默认是1。
+`idfsw`就和注释说的一样，控制输出`dI/dh`。
+`IWSMD`应该是控制WAVE SUM输出的内容。
+`ibnview`是决定用哪个depth index去呈现BD和ND计算的值。
+`IPRDD`控制输出PRD结果的depth index间隔，比如每隔10个；默认是1。
+`IPRDF`控制输出PRD结果的频率间隔，比如每隔20个；默认是1。
+
+```
+ZXMIN ( 40. )  MNG1 ( 77 ) >   MN1 ( 38 )  >
+kdiag ( 5 )  kdifd1 ( 2 )  kdamp ( 0 )  n1nup ( 1 )  mdfg ( 0 )  >
+kdifgs ( 2 )  ipdij ( 0 )  nefdf ( 2 )  kbnds ( 0 )  kb1ws ( 2 )  >
+kb1wa ( 52 )  kb1wb ( 54 )  ldfd1 ( 1 )  >
+>
+KOOLSUM ( 5 ) >
+>
+USE ( ATOM ) >
+>
+```
+
+`ZXMIN`、`MNG1`和`MN1`是双极扩散的计算数值，不知道为什么这里要指定（因为`amdiff`没有打开）。
+下面三行的东西应该都是扩散的计算细节，**之后整体注释掉看看有没有很大的变化**。[没有任何变化，应该是因为双击扩散没有打开。]
+`KOOLSUM`控制哪些成分在计算Total Cooling Rate中被加进了Total Hydrogen里面；具体见Note*41。**也需要改变它的值看看有没有变化**[没有任何变化]
+
+然后又跑到ATOM里面去了，这就不说了，继续看主控制文件的内容。
+
+```
+>
+cimethod ( -clark shah johnson onthefly ) >
+cemethod ( -scholz pb -aggrwl johnson onthefly ) >
+```
+
+`CIMETHOD`和`CEMETHOD`是计算CI的方法选择器，分别接受`CLARK, AR, VORONOV, JOHNSON, VS, SHAH, ONTHEFLY`和`SEATON, VREGE, SCHOLZ, PB, VS, JOHNSON, AGGRWL, ONTHEFLY`这些参数。想打开的话将参数放到括号里面即可，关闭的话在前面加个减号（注意它们有默认打开的参数）。
+
+```
+CSDW ( 1. )  FSTKM ( 1. )  ISTARK ( 89 ) >
+IHSSW ( 1 )  >
+
+```
+
+这些参数和Stark致宽有关，都是默认值。
+
+```
+jedit ( 1 )  jnedp ( 1 )  >
+```
+
+这两个和N-editing有关，暂时不知道是什么意思。
+
+```
+LSFPRINT  2  1 ( 1 )  LSFFDB  2  1 ( 1 )  PROF  2  1 ( 1 ) >
+LSFPRINT  3  1 ( 1 )  LSFFDB  3  1 ( 1 )  PROF  3  1 ( 1 ) >
+LSFPRINT  3  2 ( 1 )  lsffdb  3  2 ( 1 )  prof  3  2 ( 1 ) >
+LSFPRINT  4  2 ( 1 )  lsffdb  4  2 ( 1 )  prof  4  2 ( 1 ) >
+LSFPRINT  5  2 ( 1 )  lsffdb  5  2 ( 1 )  prof  5  2 ( 1 ) >
+>
+LSFTYP  4  2 ( 1 ) >
+LSFTYP  4  3 ( 1 ) >
+LSFTYP  5  2 ( 1 ) >
+LSFTYP  5  3 ( 1 ) >
+LSFTYP  5  4 ( 1 ) >
+
+```
+
+`LSFPRINT`控制输出的line source function详细程度，默认是1；`LSFFDB`是LSF背景选择，用1应该好一点。`PROF`就不用说了，有它才有谱线出来。
+`LSFTYP`是解LSF方法的选择器，一般是1（参见Note*48）。
+
+```
+KRATE  3  2 ( 2 ) >
+KRATE  4  2 ( 2 ) >
+KRATE  4  3 ( 2 ) >
+KRATE  5  2 ( 2 ) >
+KRATE  5  3 ( 2 ) >
+KRATE  5  4 ( 2 ) >
+>
+BLCSW  2 1 ( 15 )  BLCSW  3 1 ( 15 )  BLCSW  3 2 ( 15 ) >
+>
+USE ( RESTART ) >
+>
+```
+
+`KRATE`控制统计平衡方程里面某些项的建立。1是从密度计算，2是从Jbar计算（可能2比较好？）
+`BLCSW`是damping constent选择器，决定有无辐射, van der Waals, Stark, resonance, ion collision致宽。**应该是重要的参数**[改变的话对线心轮廓有比较大的影响。]
+
+然后RESTART文件里面有一大堆参数，需要参考restart过程从rst文件中搞过来。
+
+继续看主控制文件。
+
+```
+metse 2 1 ( 1 ) >
+metse 3 1 ( 0 ) >
+metse 3 2 ( 1 ) >
+metse 4 1 ( 0 ) >
+metse 4 2 ( 1 ) >
+metse 4 3 ( 1 ) >
+metse 5 1 ( 0 ) >
+metse 5 2 ( 1 ) >
+metse 5 3 ( 1 ) >
+metse 5 4 ( 1 ) >
+
+```
+
+`metse`决定了怎么去计算统计平衡方程。输出的LINE (U/L)中有推荐方法，可以去那里看。
+
+```
+smooth 2 1 ( IFS 25 ILS 40 WSM .5 ) >
+```
+
+RHO的平滑方法。`WSM`是平滑强度，其他两个控制平滑的范围。
+
+```
+IOMX ( 11 ) >
+```
+
+迭代的次数。
+
+```
+bdopt ( bdr )  rhopt ( rhos ) >
+wrmn ( 0.4 )  wrmx ( 0.9 ) >
+```
+
+`bdopt`是选择计算b-ratio的方法，在输出文件的RHO AND RBD中有讲。`rhopt`类似。**可能要调试一下**。[谱线整体稍微变浅了一丢丢。]
+`wrmn`和`wrmx`是调整RHO的权重的系数，不知道有什么用（Note*131）
+
+```
+TMS ( 1.E+10 ) >  quadratic for larger tau
+TLARGE ( 500. )  TSMALL ( 1.E-10 )  >
+TSM ( 1.E-10 ) >
+```
+
+不知道，**调试吧**。[谱线整体稍微变浅了一丢丢。]
+
+```
+> WAVES ( 1025.6 150.0 60.0 ) >
+> WAVES ( 911.7 ) >
+WAVES ( 227.5 227.9 399. 399.2 400.6 400.8 503.8 504.1 >
+911.75 5000.0 6565. ) >
+```
+
+额外算的连续谱不透明度。
+
+```
+> NABS moved to .mod file
+>
+CWJ ( 0.4 ) CWR ( .05 ) >
+HSEC ( .9 )  HEL ( .9 ) >
+```
+
+不知道，**调试吧**。[没有区别]
+
+```
+WEP ( .9 ) >
+LMT ( 5. )  LMF ( 0. )  LME ( .001 ) >
+WSM ( .3 )  INFSM ( 60 )  INLSM ( 70 ) >
+LMB ( 500. ) >
+> YL ( -3. )  YLYM ( F -3. ) > ***************omit when lyman=off
+> EXLYM ( 1.E6 )  TGLYM ( 1.E6 ) > ***********omit when lyman=off
+> METEP ( 1 ) > method in LYMAN
+> kxlym ( 0 ) >
+```
+
+有关Lyman线的东西，**调试**。[没有区别，和预期一样]
+
+```
+POPUP ( HYDROGEN ) >
+```
+需要更新的元素
+```
+WPOP ( .9 ) >
+WBD ( .9 ) >
+```
+数密度和departure coefficient更新权重。
+```
+NDW ( 60 ) >
+```
+和`ND`差不多的玩意儿。
+```
+WZM ( 0. ) > weight for newly calculated Z
+FZLIM ( 1.1 ) >  Z from MASS limiting parameter
+```
+如注释所说。
+```
+> CVW 3 2 ( .0 ) >
+> CSK 3 2 ( .0 ) >
+> CRS 3 2 ( .0 ) >
+```
+van de Waals, Stark, resonance致宽宽度。Section 19。
+```
+> XI ( 0. 0.1 0.2  0.3  0.4 0.5 >
+...
+> 48. 48.5 49. 49.5 50. ) >
+XI ( 0. .1 .2 .3 .4 .5 .6 .7 .8 .9 1. 1.1 1.2 1.3 1.4 1.5 >
+     1.6 1.7 1.8 1.9 2. 2.2 2.4 2.6 2.8 3. 3.2 >
+     3.4 3.6 3.8 4. 4.25 4.5 4.75 5. 5.25 5.5 5.75 >
+     6. 7. 8. 9. 10. 11. 12. 14. 16. 18. 20. >
+     25. 30. 35. 40. 45. 50. >
+) >
+> KST    2 1 ( 44 ) >
+> XISYMT 2 1 ( 0. .2 .4 .6 .8 1. 1.2 1.4 1.6 1.8 2. 2.2 2.4 2.6 2.6 2.8 >
+>             3.6 4. 4.5 5. 6. 8. 10. 12. 15. 20. 30. 40. 60. >
+>             80. 100. 150. 200. 250. 300. 350. 400. 450. 500. >
+>             550. 600. 650. 700. 750. 800. ) >
+>
+> KST    3 1 ( 33 ) >
+> XISYMT 3 1 ( 0. .2 .4 .6 .8 1. 1.3 1.6 2. 2.5 3. 3.5 4. 4.5 5. 6. >
+>             8. 10. 12. 15. 20. 30. 40. 60. 80. 100. 120. 140. >
+>             180. 230. 280. 350. 400. ) >
+```
+谱线覆盖的频率点/单条谱线覆盖的频率点。
+```
+JNUNC ( 1 ) >
+```
+如果有`JNU`的话，`JNUNC`设为1可以读入`JNU`。
+```
+idex ( 50 ) >
+```
+控制输出的东西。
+```
+> SCH 2 1 ( 1 )  GMMA 2 1 ( -0.99 )  XC 2 1 ( 2. )  XR 2 1 ( 0.005 ) >
+> SCH 3 1 ( 1 )  GMMA 3 1 ( -0.99 )  XC 3 1 ( 2. )  XR 3 1 ( 0.010 ) >
+> drlim ( 0.005 ) >
+>
+> YFLUX ( .1 ) >
+>
+```
+被注释了，先不管。应该是PRD的东西。
+```
+VXS              ( >
+ 1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02
+ 1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02
+ 1.00000000E+02  1.00000000E+02  9.95000000E+01  9.80000000E+01  9.60000000E+01
+ 9.30000000E+01  8.90000000E+01  8.20000000E+01  7.50000000E+01  6.70000000E+01
+ 6.00000000E+01  5.40000000E+01  4.95000000E+01  4.60000000E+01  4.30000000E+01
+ 4.00000000E+01  3.70000000E+01  3.40000000E+01  3.10000000E+01  2.70000000E+01
+ 2.25000000E+01  1.80000000E+01  1.20000000E+01  0.60000000E+01  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00
+) >
+GO >
+```
+turbulence速度。part D结束。
+```
+> cvx ( 20. ) >
+```
+见Section 16.
+```
+MUF ( 1.0 .9 .7 .5 .3 .1 ) >
+MU ( 1.0 .9 .7 .5 .3 .1 ) >
+```
+视线方向指定。开了SPHERE就没有用了。
+```
+lpmlr ( 1 ) >
+```
+mass loss rate输出的开关。
+```
+CORMIN ( 6500. ) >
+CORMAX ( 6700. ) >
+```
+ORIGINS和CONTRIBUTORS的输出控制。
+```
+cvxf ( 300. )  wfb ( 0. )  fbvmx ( 100. )  >
+```
+flow broadening的东西，**调试**。[没有变化]
+```
+GO >
+>
+USE ( MODEL ) >
+```
+结束了！
+
+#### 需要留意的参数们
+
+- `NABS`
+
+这个会对谱线轮廓产生巨大变化，而且暂无对应关系，需要问Dupree。
+
+- `V`
+
+V的重要性应该不用说了，反正是需要考虑以及修改的。
+
+
+- `CLOGG`和`R1N`
+
+我还以为logg可以通过具体的高度密度安排来体现，结果也是需要指定的。
+
+- `KRATE`
+
+改变这个会对线心部分的轮廓有比较大的影响.
+
+- `XINK`和`FINK`
+
+这俩倒是对结果没什么很大的影响，不过我还没测试将`FINK`调到一个很高的值会怎么样，以及对于He线来说有了高温层之后还需不需要外加的辐射。
+
+- `BLCSW`
+
+改变的话对线心轮廓有比较大的影响。

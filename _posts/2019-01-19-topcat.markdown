@@ -88,7 +88,7 @@ AND radial_velocity IS NOT NULL
 
 ### 下载整个星表
 
-SELECT * FROM table_name
+SELECT * FROM "table_name"
 
 星表的名字可以先去Vizier搜链接，然后在TAP上找，就有了。
 

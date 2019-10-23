@@ -5,9 +5,36 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 11 Oct 2019 14:40:20 +0900</pubDate>
-    <lastBuildDate>Fri, 11 Oct 2019 14:40:20 +0900</lastBuildDate>
+    <pubDate>Wed, 23 Oct 2019 17:25:16 +0900</pubDate>
+    <lastBuildDate>Wed, 23 Oct 2019 17:25:16 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>PANDORA说明书</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-9背景谱线不透明度&quot; id=&quot;markdown-toc-section-9背景谱线不透明度&quot;&gt;Section 9：背景谱线不透明度&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-18合成频率表&quot; id=&quot;markdown-toc-section-18合成频率表&quot;&gt;Section 18：合成频率表&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-9背景谱线不透明度&quot;&gt;Section 9：背景谱线不透明度&lt;/h2&gt;
+
+&lt;p&gt;PANDORA在计算谱线源函数的时候需要知道bakcground opacity，或者说是background continuum。这应该指的是OASP中的连续吸收系数。这一节主要讲的是连续吸收系数中其他谱线的贡献以及计算方式。&lt;/p&gt;
+
+&lt;p&gt;如果是同种元素的谱线，那么PANDORA中的”blended line”机制可以搞定；对于其他的谱线，一般PANDORA会考虑H，He-II，CO的谱线（可以在输出的ATMOSPHERE中进行确认）。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-18合成频率表&quot;&gt;Section 18：合成频率表&lt;/h2&gt;
+
+&lt;p&gt;这其实就是合成光谱的频率点；PANDORA有内置的一个表，或者通过指定某些频率，我们可以控制合成光谱的采样点分布。这对于一些宽线（比如CaII H&amp;amp;K）有用。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;XISYM&lt;/code&gt;（长度为&lt;code class=&quot;highlighter-rouge&quot;&gt;KS&lt;/code&gt;）指定一个通用的轮廓，对所有线都生效；&lt;code class=&quot;highlighter-rouge&quot;&gt;XIBLU&lt;/code&gt;（长度&lt;code class=&quot;highlighter-rouge&quot;&gt;KB&lt;/code&gt;）指定蓝半边，&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Oct 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/10/21/pandora-manual/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/10/21/pandora-manual/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>我所知道的关于系外行星红外氦线的一切</title>
@@ -953,6 +980,7 @@
       &lt;li&gt;&lt;a href=&quot;#致宽与mass-motion&quot; id=&quot;markdown-toc-致宽与mass-motion&quot;&gt;致宽与mass motion&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#输入参数介绍&quot; id=&quot;markdown-toc-输入参数介绍&quot;&gt;输入参数介绍&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#选项选择&quot; id=&quot;markdown-toc-选项选择&quot;&gt;选项选择&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#需要注意的选项&quot; id=&quot;markdown-toc-需要注意的选项&quot;&gt;需要注意的选项&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#计算氢时需要注意的选项&quot; id=&quot;markdown-toc-计算氢时需要注意的选项&quot;&gt;计算氢时需要注意的选项&lt;/a&gt;&lt;/li&gt;
@@ -971,6 +999,7 @@
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#错误处理&quot; id=&quot;markdown-toc-错误处理&quot;&gt;错误处理&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#迭代中的错误处理&quot; id=&quot;markdown-toc-迭代中的错误处理&quot;&gt;迭代中的错误处理&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#其他错误处理&quot; id=&quot;markdown-toc-其他错误处理&quot;&gt;其他错误处理&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#输出结果阅读理解&quot; id=&quot;markdown-toc-输出结果阅读理解&quot;&gt;输出结果阅读理解&lt;/a&gt;    &lt;ul&gt;
@@ -984,6 +1013,10 @@
       &lt;li&gt;&lt;a href=&quot;#示例二&quot; id=&quot;markdown-toc-示例二&quot;&gt;示例二&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#示例三&quot; id=&quot;markdown-toc-示例三&quot;&gt;示例三&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#示例四&quot; id=&quot;markdown-toc-示例四&quot;&gt;示例四&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#示例六&quot; id=&quot;markdown-toc-示例六&quot;&gt;示例六&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#需要留意的参数们&quot; id=&quot;markdown-toc-需要留意的参数们&quot;&gt;需要留意的参数们&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -1137,6 +1170,10 @@ CDL 4 2 ( .1111 .3333 .5556 ) &amp;gt;
 &lt;h5 id=&quot;能级之间的跃迁&quot;&gt;能级之间的跃迁&lt;/h5&gt;
 
 &lt;h3 id=&quot;致宽与mass-motion&quot;&gt;致宽与mass motion&lt;/h3&gt;
+
+&lt;h2 id=&quot;输入参数介绍&quot;&gt;输入参数介绍&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;XI&lt;/code&gt;：输出光谱的数据点位置，数值代表距离线心的频率。这玩意必须从0开始，单调递增，以此表示半个轮廓的采样。如果不是默认的话它的长度必须由&lt;code class=&quot;highlighter-rouge&quot;&gt;KS&lt;/code&gt;指定。&lt;/p&gt;
 
 &lt;h2 id=&quot;选项选择&quot;&gt;选项选择&lt;/h2&gt;
 
@@ -1923,6 +1960,14 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 
 &lt;p&gt;就意味着有某个或者某些需要指定的变量未指定，需要看看是哪个；具体是哪个我也不知道hhhh。&lt;/p&gt;
 
+&lt;h3 id=&quot;其他错误处理&quot;&gt;其他错误处理&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Error in LUCK : trying to Open/formatted for read on unit   8; IOSTAT =        29&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这个具体是指没有找到&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;文件，加上就好了；其他的话去说明文档里面看看&lt;code class=&quot;highlighter-rouge&quot;&gt;unit&lt;/code&gt;对应的文件，检查一下有没有。&lt;/p&gt;
+
 &lt;h2 id=&quot;输出结果阅读理解&quot;&gt;输出结果阅读理解&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/lookat.x&lt;/code&gt;提供了一个在命令行里面阅读的程序，里面有解释；不过这都是老黄历的东西了，还是用extract出来用编辑器看方便。&lt;/p&gt;
@@ -2005,6 +2050,628 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.mod&lt;/code&gt;文件里面包含了H, He-I, He-II, C-I, Si-I的密度信息(&lt;code class=&quot;highlighter-rouge&quot;&gt;XXK&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;XXN&lt;/code&gt;等)；这些是之前占据数更新运行的结果。&lt;/p&gt;
 
 &lt;p&gt;重启这个示例的运行也是很简单的，删掉&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;文件，将&lt;code class=&quot;highlighter-rouge&quot;&gt;.rst&lt;/code&gt;改成&lt;code class=&quot;highlighter-rouge&quot;&gt;.res&lt;/code&gt;；同理将&lt;code class=&quot;highlighter-rouge&quot;&gt;.jnr&lt;/code&gt;改成&lt;code class=&quot;highlighter-rouge&quot;&gt;.jnu&lt;/code&gt;，把&lt;code class=&quot;highlighter-rouge&quot;&gt;.dat&lt;/code&gt;文件里面该改的改掉。注意&lt;code class=&quot;highlighter-rouge&quot;&gt;JNUNC&lt;/code&gt;需要大于0。&lt;/p&gt;
+
+&lt;h3 id=&quot;示例六&quot;&gt;示例六&lt;/h3&gt;
+
+&lt;p&gt;示例六是一个很重要的例子。这里面的模型实际上就是Dupree+2013中的巨星模型。由于它比较重要，在这里我们逐行解释模型和输入文件的意思。&lt;/p&gt;
+
+&lt;p&gt;我们要解决的问题：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;为什么简单模型里面提高TR温度会使得H-alpha线变成发射而Dupree+13中的不会？是因为有些选项不是默认了吗？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们从leidh.dat以及leid.mod开始。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; LEID       MODEL LEID   5 L H        ITER 07-17     13-Oct-24
+&amp;gt;  ---------1------------1------------1------------1------------1
+&amp;gt;
+USE ( MODEL ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;一开始我们就从leid.dat跳到了leid.mod中，读取leid.mod中的行直到遇上&lt;code class=&quot;highlighter-rouge&quot;&gt;USE ( INPUT ) &amp;gt; &lt;/code&gt;。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;
+&amp;gt;   M O D E L   LEID
+&amp;gt;
+omit ( AVELOP ) &amp;gt;
+OMIT ( AVOPRNT ) &amp;gt;
+omit ( INCIDNT ) &amp;gt;
+do ( INCIFRNT ) &amp;gt;
+DO   ( INTEDIT ) &amp;gt;
+omit ( VTV ) &amp;gt;
+omit ( SPHERE ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AVELOP&lt;/code&gt;默认是关闭的，这里写不写都可以。&lt;code class=&quot;highlighter-rouge&quot;&gt;INCIDNT&lt;/code&gt;也应该关闭，除非我们明确有额外的光源从高处照下来。&lt;code class=&quot;highlighter-rouge&quot;&gt;INCIFRNT&lt;/code&gt;虽然开启，但是因为&lt;code class=&quot;highlighter-rouge&quot;&gt;INCIDNT&lt;/code&gt;所以应该是没用的（需要确认）。&lt;code class=&quot;highlighter-rouge&quot;&gt;INTEDIT&lt;/code&gt;应该会改变了输入的温度，但是我觉得不需要开。&lt;code class=&quot;highlighter-rouge&quot;&gt;VTV&lt;/code&gt;会使得&lt;code class=&quot;highlighter-rouge&quot;&gt;VT&lt;/code&gt;(turbulent pressure velocity)和&lt;code class=&quot;highlighter-rouge&quot;&gt;V&lt;/code&gt;(broadening velocity=microturbulent velocity)相等，默认是开启的。不知道为什么要关闭。&lt;code class=&quot;highlighter-rouge&quot;&gt;SPHERE&lt;/code&gt;是最奇怪的一点，论文里面说是球面的，但是这里却关闭了。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NKA (  9 ) &amp;gt;
+NVH ( 23 ) &amp;gt; number of HNDV, VNH values
+NGM (  0 ) &amp;gt;
+NCQ (  5 ) &amp;gt;
+INK (  6 ) &amp;gt; number of XINK, FINK values
+LLY (  0 ) &amp;gt;
+&amp;gt;
+NAB   ( 1 ) &amp;gt; length of BANDL (number of bands)
+BANDL ( 3000. )  BANDU ( 8000. ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NKA&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;ZALBK&lt;/code&gt;的长度，默认为2；&lt;code class=&quot;highlighter-rouge&quot;&gt;ZALBK&lt;/code&gt;是背景谱线不透明度的散射反照律常数。不知道为什么后面没有指定这个值。&lt;code class=&quot;highlighter-rouge&quot;&gt;NVH&lt;/code&gt;指定的是前多少个&lt;code class=&quot;highlighter-rouge&quot;&gt;V&lt;/code&gt;的值是从太阳里面来的。&lt;code class=&quot;highlighter-rouge&quot;&gt;NGM&lt;/code&gt;操作和&lt;code class=&quot;highlighter-rouge&quot;&gt;NVH&lt;/code&gt;一致，控制的是G multiplier的值，不要指定为好。&lt;code class=&quot;highlighter-rouge&quot;&gt;NCQ&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;INK&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;LLY&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;NAB&lt;/code&gt;同理。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;N   ( 72 ) &amp;gt;
+&amp;gt;
+NLH (  15 ) &amp;gt;
+NLZ (  13 ) &amp;gt;
+NZ2 (  8 ) &amp;gt;
+&amp;gt; NLC (  0 ) &amp;gt;
+&amp;gt; NLS (  0 ) &amp;gt;
+&amp;gt; NAL (  0 ) &amp;gt;
+&amp;gt; NMG (  0 ) &amp;gt;
+&amp;gt; NFE (  0 ) &amp;gt;
+NNA (  8 ) &amp;gt;
+&amp;gt; NCA (  8 ) &amp;gt;
+&amp;gt; NLO (  14 ) &amp;gt;
+&amp;gt; NO2 (  0 ) &amp;gt;
+&amp;gt; NO3 (  0 ) &amp;gt;
+&amp;gt; NLU (  0 ) &amp;gt;
+&amp;gt;
+USE ( INPUT ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这一堆&lt;code class=&quot;highlighter-rouge&quot;&gt;NXX&lt;/code&gt;说明的是输入文件中元素能级population被指定的数量，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;NLZ ( 13 )&lt;/code&gt;指的是He-I有13个能级的population被指定，后面肯定有&lt;code class=&quot;highlighter-rouge&quot;&gt;HEN 1-13&lt;/code&gt;这堆东西。&lt;/p&gt;
+
+&lt;p&gt;然后我们就回到leid.dat里面了。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;
+USE ( ATOM ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;使用默认的原子能级数据，不多说了。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;K      ( 55 ) &amp;gt;
+kmmax  ( 700 ) &amp;gt;
+&amp;gt; kstmax (  35 ) &amp;gt;
+NWV ( 11 ) &amp;gt;
+&amp;gt; nvx ( 1 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;K&lt;/code&gt;就是&lt;code class=&quot;highlighter-rouge&quot;&gt;KS&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;XISYM&lt;/code&gt;的长度；这个玩意儿决定了合成光谱覆盖的长度；这个设置意味着合成光谱还是挺宽的。&lt;code class=&quot;highlighter-rouge&quot;&gt;kmmax&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;XIFUL&lt;/code&gt;的长度限制，防止占用内存太大，我觉得可以不设定。&lt;code class=&quot;highlighter-rouge&quot;&gt;kstmax&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;kst&lt;/code&gt;的最大值，&lt;code class=&quot;highlighter-rouge&quot;&gt;kst&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;XISYMT&lt;/code&gt;的长度。&lt;code class=&quot;highlighter-rouge&quot;&gt;NWV&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;WAVES&lt;/code&gt;的长度，&lt;code class=&quot;highlighter-rouge&quot;&gt;WAVES&lt;/code&gt;是连续谱计算的额外的波长点，设定之后会在输出里面多出一个&lt;code class=&quot;highlighter-rouge&quot;&gt;XX.XX  NANOM&lt;/code&gt;的章节，&lt;code class=&quot;highlighter-rouge&quot;&gt;XX&lt;/code&gt;是设定的波长。&lt;strong&gt;这个设定非常有用，这一节提供了不透明度、光深、连续谱源函数、吸收源函数等对计算形成位置很有用的信息（特别是线翼的形成位置）&lt;/strong&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;NVX&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;VX&lt;/code&gt;表格的数量，&lt;code class=&quot;highlighter-rouge&quot;&gt;VX&lt;/code&gt;设定了计算谱线时候大气额外的膨胀速度；&lt;code class=&quot;highlighter-rouge&quot;&gt;VXS&lt;/code&gt;是计算源函数时候的膨胀速度，它比&lt;code class=&quot;highlighter-rouge&quot;&gt;VX&lt;/code&gt;更基本。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;L   ( 6 ) &amp;gt; length of MU (not needed when sphere=on)
+LF  ( 6 )  &amp;gt; length of MUF (not needed when sphere=on)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这俩是视线方向的位置（&lt;code class=&quot;highlighter-rouge&quot;&gt;MU&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;MUF&lt;/code&gt;）的数量，&lt;code class=&quot;highlighter-rouge&quot;&gt;MU&lt;/code&gt;为1是圆面中心，越小越往边缘走。在&lt;code class=&quot;highlighter-rouge&quot;&gt;SPHERE&lt;/code&gt;打开之后不用管。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;do ( addcopr ) &amp;gt;
+do ( adn1dmp ) &amp;gt;
+omit ( all ) &amp;gt;
+omit ( bdprnt ) &amp;gt;
+omit ( bdgraf ) &amp;gt;
+omit ( bdqprdt ) &amp;gt;
+omit ( cijprnt ) &amp;gt;
+omit ( comprk ) &amp;gt;
+do ( conflux ) &amp;gt;
+omit ( didhc ) &amp;gt;
+do ( dpdwprnt ) &amp;gt;
+do ( elecprnt ) &amp;gt;
+do ( emigraf ) &amp;gt;
+DO ( EMIPRNT ) &amp;gt;
+do ( emisum ) &amp;gt;
+do ( EPCOMP ) &amp;gt;
+omit ( every ) &amp;gt;
+omit ( fdbcopr ) &amp;gt;
+omit ( flwbroad ) &amp;gt;
+DO ( HELPRNT HEL2PRNT ) &amp;gt;
+DO ( HMS ) &amp;gt;
+omit ( indprnt ) &amp;gt;
+do ( komprnt ) &amp;gt;
+omit ( lbdprnt ) &amp;gt;
+omit ( linecopr ) &amp;gt;
+omit ( LSFGRAF ) &amp;gt;
+omit ( LSFPRNT ) &amp;gt;
+omit ( LYMAN ) &amp;gt;
+DO ( OPAPRNT ) &amp;gt;
+omit ( origin ) &amp;gt;
+omit ( orshort ) &amp;gt;
+do ( phase2 ) &amp;gt;
+omit ( PIJPRNT ) &amp;gt;
+omit ( prdprnt ) &amp;gt;
+omit ( procprnt ) &amp;gt;
+DO ( PROSAV ) &amp;gt;
+omit ( rateall ) &amp;gt;
+omit ( ratecopr ) &amp;gt;
+omit ( RATEFULL ) &amp;gt;
+OMIT ( RATEGRAF ) &amp;gt;
+do ( rateprnt ) &amp;gt;
+omit ( ratesumm ) &amp;gt;
+do ( rhbprdt ) &amp;gt;
+do ( RIJPRNT ) &amp;gt;
+omit ( sebug ) &amp;gt;
+omit ( secomp ) &amp;gt;
+do ( seprnt ) &amp;gt;
+do ( SPECSAV ) &amp;gt;
+do ( stimprnt ) &amp;gt;
+do ( tauprnt ) &amp;gt;
+OMIT ( TEGRAF ) &amp;gt;
+omit ( waveprnt ) &amp;gt;
+omit ( wtabprnt ) &amp;gt;
+DO ( ZPRNT ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;omit ( amdiff ) &amp;gt; -
+do ( bdcalc ) &amp;gt; *
+do ( bsmooth ) &amp;gt; *
+omit ( calcool ) &amp;gt; -
+omit ( cefacts ) &amp;gt; -
+omit ( clnorm ) &amp;gt; *
+omit ( diffana ) &amp;gt; *
+do ( dsmooth ) &amp;gt; *
+do ( emerint ) &amp;gt; -
+omit ( expand ) &amp;gt; -
+omit ( henorm ) &amp;gt; *
+do ( HSE ) &amp;gt; *
+omit ( nedit ) &amp;gt; -
+do ( prdmeth ) &amp;gt; -
+do ( rhedit ) &amp;gt; *
+do ( rsmooth  ) &amp;gt; *
+omit ( sedit ) &amp;gt; *
+OMIT ( SLYR ) &amp;gt; *
+omit ( sphere ) &amp;gt; **
+omit ( SSMOOTH ) &amp;gt; -
+omit ( ulnorm ) &amp;gt; *
+omit ( zcomp ) &amp;gt; -
+&amp;gt;
+GO &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这里的各种选项我把它们分成了输出组和计算组，输出组（第一组）应该对结果没有影响，计算组（第二组）后面如果带减号则和默认一致，星号则和默认不同。
+有个特点是和Lyman有关的基本上都是关闭的，这可能是导致Lyman线Ratio错误的原因，但是我们这里不关心它们。另外是一些细致的计算和smooth被打开了。
+打开以及关闭&lt;code class=&quot;highlighter-rouge&quot;&gt;SPHERE&lt;/code&gt;对结果稍有影响（废话），但是是一致的。到这里B部分结束。&lt;/p&gt;
+
+&lt;p&gt;我尝试了将和默认一致的选项全部删去时结果是不是一样的。结果是一样的（那你这个模型还写这么多！）&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;
+&amp;gt; jstin ( 1 ) &amp;gt;
+&amp;gt;
+USE ( MODEL ) &amp;gt;
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jstin&lt;/code&gt;控制是否仅进行输入运行，1为仅输入运行但是这里被注释掉了。然后我们继续跑到模型文件里面。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;
+&amp;gt;   M O D E L   LEID
+&amp;gt;
+MODLAB ( LEID ) &amp;gt;
+&amp;gt;
+ELEMENT ( HE LAB 11.3 ) &amp;gt; was 10.60, 11.22, 10.923, 10.85, 10.75, 11.3, 11.1
+ELEMENT ( HE2 LAB 11.3 ) &amp;gt; was 10.60, 11.22, 10.923, 10.85, 10.75, 11.3, 11.1
+ELEMENT ( LI LAB 1.1 ) &amp;gt;
+ELEMENT ( BE LAB -1.01 ) &amp;gt;
+ELEMENT ( B LAB .51 ) &amp;gt;
+ELEMENT ( C LAB 5.82 ) &amp;gt;
+ELEMENT ( N LAB 7.76 ) &amp;gt;
+ELEMENT ( O LAB 7.219 ) &amp;gt;
+ELEMENT ( O2 LAB 7.219 ) &amp;gt;
+ELEMENT ( O3 LAB 7.219 ) &amp;gt;
+ELEMENT ( F LAB 2.37 ) &amp;gt;
+ELEMENT ( NE LAB 6.14 ) &amp;gt;
+ELEMENT ( NA LAB 3.91 ) &amp;gt;
+ELEMENT ( MG LAB 5.6 ) &amp;gt;
+ELEMENT ( AL LAB 3.18 ) &amp;gt;
+ELEMENT ( SI LAB 5.77 ) &amp;gt;
+ELEMENT ( P LAB 3.22 ) &amp;gt;
+ELEMENT ( S LAB 5.33 ) &amp;gt;
+ELEMENT ( CL LAB 3.31 ) &amp;gt;
+ELEMENT ( AR LAB 4.61 ) &amp;gt;
+ELEMENT ( K LAB 3.13 ) &amp;gt;
+ELEMENT ( CA LAB 4.76 ) &amp;gt;
+ELEMENT ( SC LAB .69 ) &amp;gt;
+ELEMENT ( TI LAB 2.65 ) &amp;gt;
+ELEMENT ( V LAB 1.56 ) &amp;gt;
+ELEMENT ( CR LAB 3.52 ) &amp;gt;
+ELEMENT ( MN LAB 2.74 ) &amp;gt;
+ELEMENT ( FE LAB 5.73 ) &amp;gt;
+ELEMENT ( CO LAB 2.48 ) &amp;gt;
+ELEMENT ( NI LAB 3.88 ) &amp;gt;
+ELEMENT ( CU LAB 2.0 ) &amp;gt;
+ELEMENT ( ZN LAB 2.26 ) &amp;gt;
+ELEMENT ( GA LAB .85 ) &amp;gt;
+ELEMENT ( GE LAB 1.46 ) &amp;gt;
+ELEMENT ( RB LAB 2.68 ) &amp;gt;
+ELEMENT ( SR LAB .79 ) &amp;gt;
+ELEMENT ( Y LAB -.41 ) &amp;gt;
+ELEMENT ( ZR LAB -.25 ) &amp;gt;
+ELEMENT ( BA LAB -.20 ) &amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MODLAB&lt;/code&gt;定义了这个大气模型的名字，你喜欢的话叫村花也没人会抗议的。后面的一堆&lt;code class=&quot;highlighter-rouge&quot;&gt;ELEMENT&lt;/code&gt;请参阅前面章节。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KURIN ( 6 ) &amp;gt;  
+&amp;gt;
+NABS ( 22 23 39 42 43 44 45 ) &amp;gt;
+&amp;gt;      
+ndwm ( 36 ) &amp;gt;
+KOELS ( 0 ) &amp;gt;
+&amp;gt;
+HNDV ( &amp;gt;
+1.E+05 3.E05 1.E+06 3.E+06 1.E+07 3.E+07 1.E+08 3.E+08 1.E+09 3.E+09 &amp;gt;
+1.E+10 3.E+10 1.E+11 3.E+11 1.E+12 3.E+12 1.E+13 3.E+13 1.E+14 3.E+14 &amp;gt;
+1.E+15 3.E+15 1.E+16 &amp;gt;
+) &amp;gt;
+VNH ( &amp;gt;
+30. 30. 29.5 26. 27. 25. 23.7 22.5  21. 5.3 &amp;gt;
+5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 5.3 &amp;gt;
+5.3 5. 5. ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;KURIN&lt;/code&gt;指定程序使用Kurucz中的谱线不透明度中的哪个。它们被储存在了&lt;code class=&quot;highlighter-rouge&quot;&gt;opacities/statistical.dat&lt;/code&gt;中，&lt;strong&gt;需要换不同的值去测试有什么影响&lt;/strong&gt;。[尝试从6换到了1，没有影响。]
+&lt;code class=&quot;highlighter-rouge&quot;&gt;NABS&lt;/code&gt;可以删除背景不透明度中包含的absorber/emitter，数字可以在输出的ATMOSPHERE中的’List of potential contributors to “continuum” or “background” absorbtion and emission’部分查到。&lt;strong&gt;注释掉它的话H-alpha和H-beta线就变成了发射线，所以应该是其中的某个东西发射了。&lt;/strong&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;ndwm&lt;/code&gt;指明了多普勒致宽的基准位置，可能是没有致宽和有致宽之间的那几个点。在这里它和默认值是一样的。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;KOELS&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;ORIGIN&lt;/code&gt;（光强形成位置）中每条线的输出开关，打开之后可能输出更多的东西。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;HNDV&lt;/code&gt;是与&lt;code class=&quot;highlighter-rouge&quot;&gt;VNH&lt;/code&gt;对应的氢密度表格，&lt;code class=&quot;highlighter-rouge&quot;&gt;VNH&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;V&lt;/code&gt;的标准表格，&lt;code class=&quot;highlighter-rouge&quot;&gt;V&lt;/code&gt;是致宽速度，也就是文章中的turbulent。这是因为turbulent或者说&lt;code class=&quot;highlighter-rouge&quot;&gt;V&lt;/code&gt;并不需要和Z
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Z&lt;/code&gt;一样，可以短一点，这个时候&lt;code class=&quot;highlighter-rouge&quot;&gt;HNDV&lt;/code&gt;就起到一个定位的作用了。&lt;strong&gt;需要改变V的取值看看谱线宽度怎么变化&lt;/strong&gt;。[将V全部改成0之后发现线翼稍微窄了一点，线心深了一点，和预期类似；但是幅度不大，可能因为是在高处才有大的速度。结论是影响不大。]&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; IRTIS ( 1 ) &amp;gt; default = 2, which uses log(FINK)
+&amp;gt; XINK ( 9.5 10. 500. 501. ) &amp;gt;
+&amp;gt; XINK ( 5.94 5.95 9.83 9.84 ) &amp;gt;
+&amp;gt; FINK ( M 1.E-15 0. 0. 0. 0. ) &amp;gt;
+XINK ( 5.948 5.949 7.48 7.51 13.16 13.17 ) &amp;gt;
+FINK ( M 5.E-11 0. 3. 3. 0. 0. 0. ) &amp;gt;
+IRTIS ( 1 ) &amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这堆命令控制的是入射的辐射（可能是在模型之外入射的辐射？）。&lt;code class=&quot;highlighter-rouge&quot;&gt;XINK&lt;/code&gt;指定入射光的频率，&lt;code class=&quot;highlighter-rouge&quot;&gt;FINK&lt;/code&gt;指定入射光的强度，&lt;code class=&quot;highlighter-rouge&quot;&gt;IRTIS&lt;/code&gt;控制&lt;code class=&quot;highlighter-rouge&quot;&gt;XINK&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;FINK&lt;/code&gt;的内插/外推方式，究竟是在&lt;code class=&quot;highlighter-rouge&quot;&gt;XINK&lt;/code&gt;中线性还是&lt;code class=&quot;highlighter-rouge&quot;&gt;log(XINK)&lt;/code&gt;中线性这样。上面使用的是默认的设置。&lt;strong&gt;需要注释掉看看有什么变化&lt;/strong&gt;。[全部改成0之后谱线似乎没什么很大的改变，应该可以保持默认。]&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&amp;gt; R1N ( 1.39E7 ) &amp;gt; = 20 solar radii
+&amp;gt; R1N ( 2.09E7 ) &amp;gt; = 30 solar radii
+R1N ( 5.88E7 ) &amp;gt; = 84 solar radii
+FABD ( 1. ) &amp;gt;
+CLOGG ( 1.74 ) &amp;gt;
+WZM ( .8 ) &amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;R1N&lt;/code&gt;的字面意思是距光源的距离，实际上基本上是作为恒星半径使用。大概是把色球层开始的地方作为一个恒星半径。[改变R1N的值对最后的谱线轮廓影响不大。]
+&lt;code class=&quot;highlighter-rouge&quot;&gt;FABD&lt;/code&gt;是元素丰度的乘数，所有的元素丰度都会乘上这个值，默认是1（奇怪的乘数真多啊）。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;CLOGG&lt;/code&gt;是&lt;script type=&quot;math/tex&quot;&gt;\log{\mathrm{surface gravity}}&lt;/script&gt;，就是平常的logg。不指定的话就会用&lt;code class=&quot;highlighter-rouge&quot;&gt;CGR&lt;/code&gt;，和太阳的logg比值。&lt;strong&gt;所以之前我一直用的是太阳的logg值……&lt;/strong&gt;[但是将&lt;code class=&quot;highlighter-rouge&quot;&gt;CLOGG&lt;/code&gt;增加到2.74谱线也没什么变化？为什么？]
+&lt;code class=&quot;highlighter-rouge&quot;&gt;WZM&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;Z&lt;/code&gt;的权重，默认是0.8。当我们要求&lt;code class=&quot;highlighter-rouge&quot;&gt;Z&lt;/code&gt;表要和别的表相匹配的时候（MASS什么的）它会参与计算。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Z                 ( &amp;gt;
+-1.34498000E+07 -1.21944000E+07 -1.12022000E+07 -1.02707000E+07 -9.37975000E+06
+...
+ 2.62733008E+04  2.90250000E+04
+) &amp;gt;
+TE                ( &amp;gt;
+ 1.32412000E+05  1.22873000E+05  1.14001000E+05  1.05571000E+05  9.73640000E+04
+...
+ 9.06100000E+03  9.29800000E+03
+) &amp;gt;
+&amp;gt; UPDATE
+&amp;gt; LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+NE                ( &amp;gt;
+ 1.15703990E+04  1.93011710E+04  3.01664670E+04  4.74718253E+04  7.59880490E+04
+ ...
+ 7.09270054E+14  8.86317471E+14  ) &amp;gt;                                            
+&amp;gt; LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+ZME               ( &amp;gt;
+ 1.11121707E-04  1.11121707E-04  1.11121707E-04  1.11121707E-04  1.11121707E-04
+ ...
+ 7.81938802E-06  9.47751718E-06  ) &amp;gt;                                            
+&amp;gt; LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+NC                ( &amp;gt;
+ 2.17200027E+04  3.62503735E+04  5.67030110E+04  8.93539750E+04  1.43384253E+05
+ ...
+ 1.41854011E+15  1.77263494E+15  ) &amp;gt;                                            
+&amp;gt; LEID       MODEL LEID   5 L H        ITER 52-62     13-Mar-21                 
+BDHM              ( &amp;gt;
+ 4.49889182E+03  3.97155540E+03  3.54675044E+03  3.15856061E+03  2.79582013E+03
+ ...
+ 1.00172011E+00  1.00163211E+00  ) &amp;gt;                                          
+&amp;gt; LEID       MODEL LEID   5 L H        ITER 32-39     12-Aug-06                 
+NH                ( &amp;gt;
+ 8.70412526E+03  1.45353581E+04  2.27573370E+04  3.59175776E+04  5.77983267E+04
+ ...
+ 9.55204350E+15  9.40788717E+15  ) &amp;gt;   
+ USE ( INPUT ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这堆就是正常操作了，模型中最重要的温度密度等参数。要留意除了&lt;code class=&quot;highlighter-rouge&quot;&gt;Z&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;TE&lt;/code&gt;之外其他都是经过更新的，以及&lt;code class=&quot;highlighter-rouge&quot;&gt;NC&lt;/code&gt;在手册上标的是在H部分，但是这里是在D部分，所以实际上可能是需要在D部分的。这些读完之后又回到了主控制文件。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lwnt ( 10 ) &amp;gt;   for KOMPRNT
+&amp;gt;
+&amp;gt; idfsw ( 1 ) &amp;gt;   for dI/dh at every line wavelength
+&amp;gt;
+iwsmd ( 1 ) &amp;gt;
+ibnview ( 50 ) &amp;gt;
+iprdd ( 10 )  iprdf ( 20 ) &amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LWNT&lt;/code&gt;是控制&lt;code class=&quot;highlighter-rouge&quot;&gt;KOMPRNT&lt;/code&gt;里面输出的命令，控制输出（谁的？）不透明度的波长间隔，默认是1。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;idfsw&lt;/code&gt;就和注释说的一样，控制输出&lt;code class=&quot;highlighter-rouge&quot;&gt;dI/dh&lt;/code&gt;。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;IWSMD&lt;/code&gt;应该是控制WAVE SUM输出的内容。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;ibnview&lt;/code&gt;是决定用哪个depth index去呈现BD和ND计算的值。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;IPRDD&lt;/code&gt;控制输出PRD结果的depth index间隔，比如每隔10个；默认是1。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;IPRDF&lt;/code&gt;控制输出PRD结果的频率间隔，比如每隔20个；默认是1。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ZXMIN ( 40. )  MNG1 ( 77 ) &amp;gt;   MN1 ( 38 )  &amp;gt;
+kdiag ( 5 )  kdifd1 ( 2 )  kdamp ( 0 )  n1nup ( 1 )  mdfg ( 0 )  &amp;gt;
+kdifgs ( 2 )  ipdij ( 0 )  nefdf ( 2 )  kbnds ( 0 )  kb1ws ( 2 )  &amp;gt;
+kb1wa ( 52 )  kb1wb ( 54 )  ldfd1 ( 1 )  &amp;gt;
+&amp;gt;
+KOOLSUM ( 5 ) &amp;gt;
+&amp;gt;
+USE ( ATOM ) &amp;gt;
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ZXMIN&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;MNG1&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;MN1&lt;/code&gt;是双极扩散的计算数值，不知道为什么这里要指定（因为&lt;code class=&quot;highlighter-rouge&quot;&gt;amdiff&lt;/code&gt;没有打开）。
+下面三行的东西应该都是扩散的计算细节，&lt;strong&gt;之后整体注释掉看看有没有很大的变化&lt;/strong&gt;。[没有任何变化，应该是因为双击扩散没有打开。]
+&lt;code class=&quot;highlighter-rouge&quot;&gt;KOOLSUM&lt;/code&gt;控制哪些成分在计算Total Cooling Rate中被加进了Total Hydrogen里面；具体见Note*41。&lt;strong&gt;也需要改变它的值看看有没有变化&lt;/strong&gt;[没有任何变化]&lt;/p&gt;
+
+&lt;p&gt;然后又跑到ATOM里面去了，这就不说了，继续看主控制文件的内容。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;
+cimethod ( -clark shah johnson onthefly ) &amp;gt;
+cemethod ( -scholz pb -aggrwl johnson onthefly ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CIMETHOD&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;CEMETHOD&lt;/code&gt;是计算CI的方法选择器，分别接受&lt;code class=&quot;highlighter-rouge&quot;&gt;CLARK, AR, VORONOV, JOHNSON, VS, SHAH, ONTHEFLY&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;SEATON, VREGE, SCHOLZ, PB, VS, JOHNSON, AGGRWL, ONTHEFLY&lt;/code&gt;这些参数。想打开的话将参数放到括号里面即可，关闭的话在前面加个减号（注意它们有默认打开的参数）。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CSDW ( 1. )  FSTKM ( 1. )  ISTARK ( 89 ) &amp;gt;
+IHSSW ( 1 )  &amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这些参数和Stark致宽有关，都是默认值。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jedit ( 1 )  jnedp ( 1 )  &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这两个和N-editing有关，暂时不知道是什么意思。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LSFPRINT  2  1 ( 1 )  LSFFDB  2  1 ( 1 )  PROF  2  1 ( 1 ) &amp;gt;
+LSFPRINT  3  1 ( 1 )  LSFFDB  3  1 ( 1 )  PROF  3  1 ( 1 ) &amp;gt;
+LSFPRINT  3  2 ( 1 )  lsffdb  3  2 ( 1 )  prof  3  2 ( 1 ) &amp;gt;
+LSFPRINT  4  2 ( 1 )  lsffdb  4  2 ( 1 )  prof  4  2 ( 1 ) &amp;gt;
+LSFPRINT  5  2 ( 1 )  lsffdb  5  2 ( 1 )  prof  5  2 ( 1 ) &amp;gt;
+&amp;gt;
+LSFTYP  4  2 ( 1 ) &amp;gt;
+LSFTYP  4  3 ( 1 ) &amp;gt;
+LSFTYP  5  2 ( 1 ) &amp;gt;
+LSFTYP  5  3 ( 1 ) &amp;gt;
+LSFTYP  5  4 ( 1 ) &amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LSFPRINT&lt;/code&gt;控制输出的line source function详细程度，默认是1；&lt;code class=&quot;highlighter-rouge&quot;&gt;LSFFDB&lt;/code&gt;是LSF背景选择，用1应该好一点。&lt;code class=&quot;highlighter-rouge&quot;&gt;PROF&lt;/code&gt;就不用说了，有它才有谱线出来。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;LSFTYP&lt;/code&gt;是解LSF方法的选择器，一般是1（参见Note*48）。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KRATE  3  2 ( 2 ) &amp;gt;
+KRATE  4  2 ( 2 ) &amp;gt;
+KRATE  4  3 ( 2 ) &amp;gt;
+KRATE  5  2 ( 2 ) &amp;gt;
+KRATE  5  3 ( 2 ) &amp;gt;
+KRATE  5  4 ( 2 ) &amp;gt;
+&amp;gt;
+BLCSW  2 1 ( 15 )  BLCSW  3 1 ( 15 )  BLCSW  3 2 ( 15 ) &amp;gt;
+&amp;gt;
+USE ( RESTART ) &amp;gt;
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;KRATE&lt;/code&gt;控制统计平衡方程里面某些项的建立。1是从密度计算，2是从Jbar计算（可能2比较好？）
+&lt;code class=&quot;highlighter-rouge&quot;&gt;BLCSW&lt;/code&gt;是damping constent选择器，决定有无辐射, van der Waals, Stark, resonance, ion collision致宽。&lt;strong&gt;应该是重要的参数&lt;/strong&gt;[改变的话对线心轮廓有比较大的影响。]&lt;/p&gt;
+
+&lt;p&gt;然后RESTART文件里面有一大堆参数，需要参考restart过程从rst文件中搞过来。&lt;/p&gt;
+
+&lt;p&gt;继续看主控制文件。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;metse 2 1 ( 1 ) &amp;gt;
+metse 3 1 ( 0 ) &amp;gt;
+metse 3 2 ( 1 ) &amp;gt;
+metse 4 1 ( 0 ) &amp;gt;
+metse 4 2 ( 1 ) &amp;gt;
+metse 4 3 ( 1 ) &amp;gt;
+metse 5 1 ( 0 ) &amp;gt;
+metse 5 2 ( 1 ) &amp;gt;
+metse 5 3 ( 1 ) &amp;gt;
+metse 5 4 ( 1 ) &amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;metse&lt;/code&gt;决定了怎么去计算统计平衡方程。输出的LINE (U/L)中有推荐方法，可以去那里看。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;smooth 2 1 ( IFS 25 ILS 40 WSM .5 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;RHO的平滑方法。&lt;code class=&quot;highlighter-rouge&quot;&gt;WSM&lt;/code&gt;是平滑强度，其他两个控制平滑的范围。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IOMX ( 11 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;迭代的次数。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bdopt ( bdr )  rhopt ( rhos ) &amp;gt;
+wrmn ( 0.4 )  wrmx ( 0.9 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bdopt&lt;/code&gt;是选择计算b-ratio的方法，在输出文件的RHO AND RBD中有讲。&lt;code class=&quot;highlighter-rouge&quot;&gt;rhopt&lt;/code&gt;类似。&lt;strong&gt;可能要调试一下&lt;/strong&gt;。[谱线整体稍微变浅了一丢丢。]
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wrmn&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;wrmx&lt;/code&gt;是调整RHO的权重的系数，不知道有什么用（Note*131）&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TMS ( 1.E+10 ) &amp;gt;  quadratic for larger tau
+TLARGE ( 500. )  TSMALL ( 1.E-10 )  &amp;gt;
+TSM ( 1.E-10 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;不知道，&lt;strong&gt;调试吧&lt;/strong&gt;。[谱线整体稍微变浅了一丢丢。]&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; WAVES ( 1025.6 150.0 60.0 ) &amp;gt;
+&amp;gt; WAVES ( 911.7 ) &amp;gt;
+WAVES ( 227.5 227.9 399. 399.2 400.6 400.8 503.8 504.1 &amp;gt;
+911.75 5000.0 6565. ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;额外算的连续谱不透明度。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; NABS moved to .mod file
+&amp;gt;
+CWJ ( 0.4 ) CWR ( .05 ) &amp;gt;
+HSEC ( .9 )  HEL ( .9 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;不知道，&lt;strong&gt;调试吧&lt;/strong&gt;。[没有区别]&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WEP ( .9 ) &amp;gt;
+LMT ( 5. )  LMF ( 0. )  LME ( .001 ) &amp;gt;
+WSM ( .3 )  INFSM ( 60 )  INLSM ( 70 ) &amp;gt;
+LMB ( 500. ) &amp;gt;
+&amp;gt; YL ( -3. )  YLYM ( F -3. ) &amp;gt; ***************omit when lyman=off
+&amp;gt; EXLYM ( 1.E6 )  TGLYM ( 1.E6 ) &amp;gt; ***********omit when lyman=off
+&amp;gt; METEP ( 1 ) &amp;gt; method in LYMAN
+&amp;gt; kxlym ( 0 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;有关Lyman线的东西，&lt;strong&gt;调试&lt;/strong&gt;。[没有区别，和预期一样]&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;POPUP ( HYDROGEN ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;需要更新的元素&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WPOP ( .9 ) &amp;gt;
+WBD ( .9 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;数密度和departure coefficient更新权重。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NDW ( 60 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;ND&lt;/code&gt;差不多的玩意儿。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WZM ( 0. ) &amp;gt; weight for newly calculated Z
+FZLIM ( 1.1 ) &amp;gt;  Z from MASS limiting parameter
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如注释所说。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; CVW 3 2 ( .0 ) &amp;gt;
+&amp;gt; CSK 3 2 ( .0 ) &amp;gt;
+&amp;gt; CRS 3 2 ( .0 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;van de Waals, Stark, resonance致宽宽度。Section 19。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; XI ( 0. 0.1 0.2  0.3  0.4 0.5 &amp;gt;
+...
+&amp;gt; 48. 48.5 49. 49.5 50. ) &amp;gt;
+XI ( 0. .1 .2 .3 .4 .5 .6 .7 .8 .9 1. 1.1 1.2 1.3 1.4 1.5 &amp;gt;
+     1.6 1.7 1.8 1.9 2. 2.2 2.4 2.6 2.8 3. 3.2 &amp;gt;
+     3.4 3.6 3.8 4. 4.25 4.5 4.75 5. 5.25 5.5 5.75 &amp;gt;
+     6. 7. 8. 9. 10. 11. 12. 14. 16. 18. 20. &amp;gt;
+     25. 30. 35. 40. 45. 50. &amp;gt;
+) &amp;gt;
+&amp;gt; KST    2 1 ( 44 ) &amp;gt;
+&amp;gt; XISYMT 2 1 ( 0. .2 .4 .6 .8 1. 1.2 1.4 1.6 1.8 2. 2.2 2.4 2.6 2.6 2.8 &amp;gt;
+&amp;gt;             3.6 4. 4.5 5. 6. 8. 10. 12. 15. 20. 30. 40. 60. &amp;gt;
+&amp;gt;             80. 100. 150. 200. 250. 300. 350. 400. 450. 500. &amp;gt;
+&amp;gt;             550. 600. 650. 700. 750. 800. ) &amp;gt;
+&amp;gt;
+&amp;gt; KST    3 1 ( 33 ) &amp;gt;
+&amp;gt; XISYMT 3 1 ( 0. .2 .4 .6 .8 1. 1.3 1.6 2. 2.5 3. 3.5 4. 4.5 5. 6. &amp;gt;
+&amp;gt;             8. 10. 12. 15. 20. 30. 40. 60. 80. 100. 120. 140. &amp;gt;
+&amp;gt;             180. 230. 280. 350. 400. ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;谱线覆盖的频率点/单条谱线覆盖的频率点。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;JNUNC ( 1 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如果有&lt;code class=&quot;highlighter-rouge&quot;&gt;JNU&lt;/code&gt;的话，&lt;code class=&quot;highlighter-rouge&quot;&gt;JNUNC&lt;/code&gt;设为1可以读入&lt;code class=&quot;highlighter-rouge&quot;&gt;JNU&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;idex ( 50 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;控制输出的东西。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; SCH 2 1 ( 1 )  GMMA 2 1 ( -0.99 )  XC 2 1 ( 2. )  XR 2 1 ( 0.005 ) &amp;gt;
+&amp;gt; SCH 3 1 ( 1 )  GMMA 3 1 ( -0.99 )  XC 3 1 ( 2. )  XR 3 1 ( 0.010 ) &amp;gt;
+&amp;gt; drlim ( 0.005 ) &amp;gt;
+&amp;gt;
+&amp;gt; YFLUX ( .1 ) &amp;gt;
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;被注释了，先不管。应该是PRD的东西。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;VXS              ( &amp;gt;
+ 1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02
+ 1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02
+ 1.00000000E+02  1.00000000E+02  9.95000000E+01  9.80000000E+01  9.60000000E+01
+ 9.30000000E+01  8.90000000E+01  8.20000000E+01  7.50000000E+01  6.70000000E+01
+ 6.00000000E+01  5.40000000E+01  4.95000000E+01  4.60000000E+01  4.30000000E+01
+ 4.00000000E+01  3.70000000E+01  3.40000000E+01  3.10000000E+01  2.70000000E+01
+ 2.25000000E+01  1.80000000E+01  1.20000000E+01  0.60000000E+01  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00
+) &amp;gt;
+GO &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;turbulence速度。part D结束。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; cvx ( 20. ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;见Section 16.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MUF ( 1.0 .9 .7 .5 .3 .1 ) &amp;gt;
+MU ( 1.0 .9 .7 .5 .3 .1 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;视线方向指定。开了SPHERE就没有用了。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lpmlr ( 1 ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;mass loss rate输出的开关。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CORMIN ( 6500. ) &amp;gt;
+CORMAX ( 6700. ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ORIGINS和CONTRIBUTORS的输出控制。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cvxf ( 300. )  wfb ( 0. )  fbvmx ( 100. )  &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;flow broadening的东西，&lt;strong&gt;调试&lt;/strong&gt;。[没有变化]&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GO &amp;gt;
+&amp;gt;
+USE ( MODEL ) &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;结束了！&lt;/p&gt;
+
+&lt;h4 id=&quot;需要留意的参数们&quot;&gt;需要留意的参数们&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NABS&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这个会对谱线轮廓产生巨大变化，而且暂无对应关系，需要问Dupree。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;V&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;V的重要性应该不用说了，反正是需要考虑以及修改的。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CLOGG&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;R1N&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我还以为logg可以通过具体的高度密度安排来体现，结果也是需要指定的。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;KRATE&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;改变这个会对线心部分的轮廓有比较大的影响.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;XINK&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;FINK&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这俩倒是对结果没什么很大的影响，不过我还没测试将&lt;code class=&quot;highlighter-rouge&quot;&gt;FINK&lt;/code&gt;调到一个很高的值会怎么样，以及对于He线来说有了高温层之后还需不需要外加的辐射。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BLCSW&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;改变的话对线心轮廓有比较大的影响。&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Apr 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/04/12/pandora/</link>
@@ -2217,7 +2884,7 @@ AND radial_velocity IS NOT NULL
 
 &lt;h3 id=&quot;下载整个星表&quot;&gt;下载整个星表&lt;/h3&gt;
 
-&lt;p&gt;SELECT * FROM table_name&lt;/p&gt;
+&lt;p&gt;SELECT * FROM “table_name”&lt;/p&gt;
 
 &lt;p&gt;星表的名字可以先去Vizier搜链接，然后在TAP上找，就有了。&lt;/p&gt;
 
@@ -2385,192 +3052,6 @@ AND radial_velocity IS NOT NULL
         <pubDate>Sat, 19 Jan 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/01/19/topcat/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/01/19/topcat/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>OASP笔记 - 16</title>
-        <description>&lt;p&gt;恒星的化学丰度所包含的信息我认为超过了其他恒星参数所含信息的量。现在的恒星演化模型、星团模型以及星系模型都可以给出恒星或者恒星群在HR图上的分布；但是恒星的化学丰度并不容易从模型中导出。这是因为化学丰度不仅和恒星自身的状况有关，还反映了形成时的星际环境状况。最近再次变得热门的银河考古学就是希望通过低质量恒星的长寿命以及它们的元素丰度去推断银河系早期的状况以及之后的演化。而对于恒星自身来说，锂和碳的同位素反映了恒星的演化阶段。&lt;/p&gt;
-
-&lt;p&gt;我们用于分析化学丰度的手段仍然是光谱的谱线。所以我们的第一反应应该是，元素丰度的分析是和恒星的有效温度、&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;等参数的确定耦合在一起的。要不然就先把基本的参数确定再搞丰度，要不然就一块定了。&lt;/p&gt;
-
-&lt;p&gt;低分辨率光谱只能告诉我们某条谱线的吸收总量，而高分辨率光谱还能告诉我们谱线的形状信息。当然，曝光充足的情况下，分辨率总是越高越好的。&lt;/p&gt;
-
-&lt;h2 id=&quot;几段概括&quot;&gt;几段概括&lt;/h2&gt;
-
-&lt;p&gt;确定元素丰度的方法主要有两个：生长曲线法以及合成光谱法。&lt;/p&gt;
-
-&lt;p&gt;生长曲线在&lt;a href=&quot;https://mingjiejian.github.io/2018/10/07/OASP13/&quot;&gt;第13章&lt;/a&gt;已经有提到。因为生长曲线代表了谱线等值宽度和元素丰度的一一对应关系，所以只要生长曲线和谱线等值宽度确定，就可以马上得到元素丰度。我们后来还找到了谱线深度和元素丰度的关系，实际上在谱线有致宽的情况下这也是一条生长曲线。&lt;/p&gt;
-
-&lt;p&gt;合成光谱法就是尽一切所能模拟观测到的光谱。我们相信总有一组参数使得观测和模拟光谱的差异达到最小，而这组参数就是我们想要的恒星参数。&lt;/p&gt;
-
-&lt;p&gt;当然这两种方法都是需要一个很可靠的谱线列表的。除了谱线位置要准确之外（废话要不然怎么对应起来），我们还要求有一个精确的振动强度，也就是&lt;script type=&quot;math/tex&quot;&gt;(13.31)&lt;/script&gt;中的&lt;script type=&quot;math/tex&quot;&gt;Af&lt;/script&gt;。这就是为什么除了一个大线表（比如&lt;a href=&quot;http://vald.astro.uu.se/&quot;&gt;VALD&lt;/a&gt;和&lt;a href=&quot;http://adsabs.harvard.edu/abs/1999ApJS..124..527M&quot;&gt;MB99&lt;/a&gt;）之外，几乎每个光谱仪都会有一个自己的线表（&lt;a href=&quot;http://adsabs.harvard.edu/abs/2013AJ....146..133M&quot;&gt;APGEE&lt;/a&gt;的以及不知道什么时候才能发出来的WINERED线表）。当然&lt;script type=&quot;math/tex&quot;&gt;Af&lt;/script&gt;的准确性就是靠实验室的同志们提高了，这里按下不表。&lt;/p&gt;
-
-&lt;p&gt;如果我们只需要较差测量，那么内部的误差将会很小。我们只需要拿两个其他恒星参数都类似的恒星，看看它们谱线的宽度差就好了。&lt;/p&gt;
-
-&lt;p&gt;最后几点注意：一般来说LTE就已经够了，但是对于某些谱线，如H、He等，来说，nLTE是需要考虑的。Again我又想到了Maria。同时这个结果只适用于表征这条谱线所在的恒星大气部分的丰度，比如说内部的丰度我们不知道，或者星冕层发出来的谱线测量的丰度要转成恒星大气的丰度可能不那么简单。&lt;/p&gt;
-
-&lt;h2 id=&quot;生长曲线法&quot;&gt;生长曲线法&lt;/h2&gt;
-
-&lt;h3 id=&quot;一些计算&quot;&gt;一些计算&lt;/h3&gt;
-
-&lt;p&gt;我们从&lt;script type=&quot;math/tex&quot;&gt;(7.15)&lt;/script&gt;出发，经过换元得到&lt;script type=&quot;math/tex&quot;&gt;(13.15)&lt;/script&gt;：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_\nu = 2\pi \int_{-\infty}^{\infty} B_\nu(\tau_0) E_2(\tau_\nu) \frac{[l_\nu(\tau_0)+\kappa_\nu(\tau_0)]\tau_0 d\log{\tau_0}}{\kappa_0(\tau_0)\log{e}}&lt;/script&gt;
-
-&lt;p&gt;我们想算的是等值宽度：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;W = \int_0^\infty \frac{F_\nu-F_c}{F_c}d\nu&lt;/script&gt;
-
-&lt;p&gt;实际上上面的变量我们都知道怎么算了，比如&lt;script type=&quot;math/tex&quot;&gt;l_\nu&lt;/script&gt;可以用&lt;script type=&quot;math/tex&quot;&gt;(11.53)&lt;/script&gt;算出来，而在其中未定的只有&lt;script type=&quot;math/tex&quot;&gt;(11.53)&lt;/script&gt;里面的&lt;script type=&quot;math/tex&quot;&gt;g_nAf&lt;/script&gt;。对于某条确定的线，我们知道&lt;script type=&quot;math/tex&quot;&gt;g_n&lt;/script&gt;；如果&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;也已知的话，&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;就知道了。只要重复上述过程，就可以搞出一堆生长曲线。如果谱线比较宽，则还需要考虑micorturbulence以及damping带来的致宽。&lt;/p&gt;
-
-&lt;p&gt;在现在的这个运算能力下，合成光谱的产生其实不难。但是生长曲线在为我们提供原理上的认识方面还是不可或缺的。&lt;/p&gt;
-
-&lt;h3 id=&quot;scaling-relations&quot;&gt;Scaling relations&lt;/h3&gt;
-
-&lt;p&gt;对于某一颗星来说，它的元素丰度是固定的。但是当我们考察同一种元素的不同谱线的时候，我们还是会发现它们也有不同的宽度。这是因为还有其他的因素能影响宽度。&lt;/p&gt;
-
-&lt;p&gt;我们应用弱线近似：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{F_c-F_\nu}{F_c} \approx \text{constant} \frac{l_\nu}{\kappa_\nu} \tag{16.1}&lt;/script&gt;
-
-&lt;p&gt;对整个频率域积分，得到等值宽度：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;w = \frac{\text{constant}}{\kappa_\nu} \int_0^\infty l_\nu d\nu&lt;/script&gt;
-
-&lt;p&gt;利用&lt;script type=&quot;math/tex&quot;&gt;l_\nu \rho = N\alpha&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;(11.9)&lt;/script&gt;以及考虑量子效应（强行加上个&lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt;）得到积分的结果：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;w = \text{constant}\frac{\pi e^2}{mc} \frac{\lambda^2}{c} f \frac{N}{\kappa_\nu} \tag{16.2}&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\rho&lt;/script&gt;被丢到了常数里面。引入元素丰度&lt;script type=&quot;math/tex&quot;&gt;A = N_E/N_H&lt;/script&gt;以及某元素第&lt;script type=&quot;math/tex&quot;&gt;j&lt;/script&gt;级电离的原子数&lt;script type=&quot;math/tex&quot;&gt;N_j&lt;/script&gt;，式子&lt;script type=&quot;math/tex&quot;&gt;(1.17)&lt;/script&gt;变为：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;N = A \frac{N_j}{N_E} N_H \frac{g_n}{u(T)} e^{\frac{-\chi}{kT}} \tag{16.3}&lt;/script&gt;
-
-&lt;p&gt;把上式丢进&lt;script type=&quot;math/tex&quot;&gt;(16.2)&lt;/script&gt;，有：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\log{\frac{w}{\lambda}} = \log{C} + \log{A} + \log{g_nf\lambda} - \theta_ex \chi - \log{\kappa_\nu} \tag{16.4}&lt;/script&gt;
-
-&lt;p&gt;(MOOG也用了这条式子)&lt;script type=&quot;math/tex&quot;&gt;\frac{w}{\lambda}&lt;/script&gt;是为了将和多普勒有关的现象归一化（&lt;em&gt;介又是什么？&lt;/em&gt;）。上式说明了右侧后面这四项的地位是一致的，所以当其他三个固定的时候，剩下那个就可以作为横坐标出现在生长曲线图上了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;之后的这一大段没有看懂&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;温度的影响&quot;&gt;温度的影响&lt;/h3&gt;
-
-&lt;p&gt;温度会影响&lt;script type=&quot;math/tex&quot;&gt;(16.4)&lt;/script&gt;中的&lt;script type=&quot;math/tex&quot;&gt;\frac{N_j}{N_E}, \kappa_\nu, \theta_ex&lt;/script&gt;，也就是说会将生长曲线向左或者右平移。不过一般100K的误差只相当于0.1dex的移动，所以还好。&lt;/p&gt;
-
-&lt;p&gt;但是有效温度的差异也会影响恒星模型的温度分布，从而移动生长曲线。图16.2就反应了这么一个情况。当然不同温度还会改变谱线饱和的点；温度越高，饱和点越早。这个现象在LDR的研究中也出现了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;logg的影响&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;的影响&lt;/h3&gt;
-
-&lt;p&gt;我们只讨论线性区间。&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;对谱线的影响主要在第13章讨论过了。对于低激发能元素的中性谱线来说，基本上&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;不会对谱线宽度有什么影响，但是其他的就不一定了。我们从图16.3中可以看出，&lt;script type=&quot;math/tex&quot;&gt;\Delta\log{A}, \Delta\log{g}&lt;/script&gt;之间是有线性关系的，所以我们在表上看到CaI基本上不怎么受影响，而其他的就不一定了。从Ca到Cr再到Fe的过程就是激发能逐渐上升的过程。&lt;/p&gt;
-
-&lt;p&gt;如果&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;已知，那么我们可以分别确定中性谱线和电离谱线的金属丰度。而如果&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;未知的话，我们也可以通过调整&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;来让中性和电离谱线的金属丰度一致，这也可以确定&lt;script type=&quot;math/tex&quot;&gt;\log{g}&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;如果非要用强线的话也行，不过会引入更多的变量。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;饱和部分&quot;&gt;饱和部分&lt;/h3&gt;
-
-&lt;p&gt;饱和部分的斜率很小，所以由此确定的金属丰度误差会大。另外还有一些因素会影响到这部分的生长曲线。&lt;/p&gt;
-
-&lt;p&gt;microturbulence(&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;)，&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;会将生长曲线的饱和部分拉高，并延迟饱和的点。当然这个特性也可以用来确定&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;的值，只要先用线性部分确定基本参数、再用不同&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;来拟合生长曲线的饱和部分就行了。超精细分裂以及磁场分裂造成的影响和&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;差不多，不过超精细的影响对不同种类的原子不一样。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/05.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;温度分布对饱和部分也有影响。温度越高，饱和得就早，和&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;类似。具体是为什么我还不是很理解。同时nLTE成分越大，饱和也越早。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;金属丰度的确定&quot;&gt;金属丰度的确定&lt;/h3&gt;
-
-&lt;p&gt;理论上来说对每条谱线都算一个曲线，然后直接读数就行。不过这样会引入很多无关的变量，比如&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;。我们得一个一个&lt;script type=&quot;math/tex&quot;&gt;\xi&lt;/script&gt;的值去试直到给出的丰度弥散最小，这样很累。&lt;/p&gt;
-
-&lt;p&gt;那怎么办呢？从&lt;script type=&quot;math/tex&quot;&gt;(16.4)&lt;/script&gt;我们可以得出一个很简便的方法：&lt;/p&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\frac{w}{\lambda}&lt;/script&gt;确定之后，&lt;script type=&quot;math/tex&quot;&gt;(16.4)&lt;/script&gt;右边可以有无数个解。那么我们取两条线（1和2），硬是代入这个&lt;script type=&quot;math/tex&quot;&gt;\frac{w}{\lambda}&lt;/script&gt;里面，就有&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\log{\frac{w}{\lambda}} &amp;= \log{C} + \log{A_1} + \log{g_{n1}f_1\lambda_1} - \theta_{ex} \chi_1 - \log{\kappa_{\nu 1}} \\
- &amp;= \log{C} + \log{A_2} + \log{g_{n2}f_1\lambda_2} - \theta_{ex} \chi_2 - \log{\kappa_{\nu 2}}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Rightarrow \Delta \log{A} = \log{\frac{g_{n1}f_1\lambda_1}{g_{n2}f_2\lambda_2}} - \log{\frac{\kappa_{\nu 1}}{\kappa_{\nu 2}}} - \theta_{ex} (\chi_1 - \chi_2) \tag{16.5}&lt;/script&gt;
-
-&lt;p&gt;也就是说，我们惊奇地发现，对于同一颗恒星来说，两条谱线在生长曲线上的横坐标差是固定的，由它们的参数确定。所以我们就可以利用这个&lt;script type=&quot;math/tex&quot;&gt;\Delta \log{A}&lt;/script&gt;将所有的测量点都平移到某一条生长曲线上，就可以快乐地拟合了。&lt;/p&gt;
-
-&lt;h2 id=&quot;较差测量&quot;&gt;较差测量&lt;/h2&gt;
-
-&lt;p&gt;好处前面已经讲了。其实就是拿标准星的生长曲线套在目标星上。由&lt;script type=&quot;math/tex&quot;&gt;(16.4)&lt;/script&gt;我们有：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\log{\frac{A}{A_\mathrm{ref}}} = \log{\frac{w}{w_\mathrm{ref}}} - \log{\frac{\kappa_{\nu}}{\kappa_{\nu\mathrm{ref}}}} - (\theta_{ex}-\theta_{ex\mathrm{ref}}) \chi \tag{16.7}&lt;/script&gt;
-
-&lt;p&gt;和&lt;script type=&quot;math/tex&quot;&gt;(16.5)&lt;/script&gt;相比，因为是同一条线，所以线的参数是一样的；但是标准星和目标星的温度差异使得最后两项还是留了下来。自然差异越小精度越高。&lt;/p&gt;
-
-&lt;h2 id=&quot;合成光谱法&quot;&gt;合成光谱法&lt;/h2&gt;
-
-&lt;p&gt;这方法在线重叠较多、温度较低的恒星上好使，虽然它需要把所有的线都证认出来并有良好的参数。具体就是试错呗，在参数空间里面找啊找，找到了就好了。&lt;a href=&quot;http://adsabs.harvard.edu/abs/2002ApJS..139..219J&quot;&gt;Johnson 2002&lt;/a&gt;讨论了误差。&lt;/p&gt;
-
-&lt;h2 id=&quot;丰度指标&quot;&gt;丰度指标&lt;/h2&gt;
-
-&lt;p&gt;UBV测光可以在一定程度上反应金属丰度，因为三个波段上的谱线数量依次递减，而金属丰度越高，自然吸收越多。所以恒星在双色图&lt;script type=&quot;math/tex&quot;&gt;(U-B)&lt;/script&gt;-&lt;script type=&quot;math/tex&quot;&gt;(B-V)&lt;/script&gt;上的位置可以反映它的金属丰度。当然得先改掉红化。&lt;/p&gt;
-
-&lt;p&gt;总谱线吸收当然也和金属丰度有关；但是需要先建立它与有效温度的关系。只对亮星有用。&lt;/p&gt;
-
-&lt;h2 id=&quot;太阳丰度&quot;&gt;太阳丰度&lt;/h2&gt;
-
-&lt;p&gt;太阳丰度的数据来源可以不只是光球层光谱，还可以是色球层、日冕、黑子等。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/A+09.png&quot; alt=&quot;&quot; /&gt;
-&lt;a href=&quot;http://adsabs.harvard.edu/abs/2009ARA%26A..47..481A&quot;&gt;Asplund+2009&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;太阳丰度在铁附近有峰值（银河考古学那篇应该有解释），同时偶数元素比奇数的多，这和&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;捕获有关。&lt;/p&gt;
-
-&lt;h2 id=&quot;银河系的恒星丰度&quot;&gt;银河系的恒星丰度&lt;/h2&gt;
-
-&lt;p&gt;应该在银河考古学那篇那加一些金属丰度梯度的东西。&lt;/p&gt;
-
-&lt;p&gt;金属丰度和年龄是有关系的。Velanti+06和最近都有用APOGEE去做恒星年龄。锂丰度也有一些有趣的现象。图16.13显示最早的恒星有类似的锂丰度（应该和大爆炸匹配），之后的丰度弥散很大，这是因为锂污染的不均匀以及锂的耗损（&lt;em&gt;什么？&lt;/em&gt;）。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;锂丰度&quot;&gt;锂丰度&lt;/h3&gt;
-
-&lt;p&gt;之前也说过锂丰度和恒星演化阶段有关。drege up当然会把内部的锂带上来，所以观测到的锂丰度是初始丰度和drege up的结合。&lt;/p&gt;
-
-&lt;p&gt;图16.14看到，老年低温恒星锂丰度很低，这是因为对流层底部温度和压强升高以及寿命长导致的锂被清除掉了。（&lt;em&gt;什么？&lt;/em&gt;）左边的平台和初始丰度有关，但是可能也有耗损。图16.15反映出越老的恒星锂丰度越小，同时Pleides的弥散来自于自转速度的不同，或者不止一个population。锂丰度在6400-6800K还有一个坑，可能和恒星自身有关。锂6在恒星中很少，所以可以用锂6来探测系外行星。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-OASP16/15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Be也可以用来探测恒星内部结构。&lt;/p&gt;
-
-&lt;h3 id=&quot;碳丰度&quot;&gt;碳丰度&lt;/h3&gt;
-
-&lt;p&gt;CNO循环的事情。又和韩国人联系上了。碳12和碳13的比值也会随着恒星演化发生改变，从最初的90跌到15左右。&lt;/p&gt;
-
-&lt;h3 id=&quot;特殊金属含量的恒星&quot;&gt;特殊金属含量的恒星&lt;/h3&gt;
-
-&lt;p&gt;多数是AB型星，锶和铕很多。它们都有光谱上的周期和变化。人们认为这是自转造成的，某个区域上某个元素含量很高，同时有强的磁场。磁场和金属量高的区域有联系。还有一些自转比较慢，磁场弱。&lt;/p&gt;
-
-&lt;p&gt;或者是双星？&lt;/p&gt;
-
-&lt;h2 id=&quot;碎碎念&quot;&gt;碎碎念&lt;/h2&gt;
-
-&lt;p&gt;化学丰度确定是一个循环的过程，因为它本身就会影响模型。O等对温度敏感的谱线会受米粒组织的影响。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 27 Nov 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018/11/27/OASP16/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/27/OASP16/</guid>
         
         <category>learning</category>
         
