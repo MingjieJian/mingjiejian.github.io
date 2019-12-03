@@ -38,10 +38,10 @@ tags:
 ```
 以及`PDF Chain`。
 
-### 若手  
-
 
 
 ### Reference
 
 http://www.asj.or.jp/nenkai/abs/
+
+https://www.logic.at/staff/salzer/etc/mhyphen/mhyphen.pdf

@@ -5,31 +5,94 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 23 Oct 2019 17:25:16 +0900</pubDate>
-    <lastBuildDate>Wed, 23 Oct 2019 17:25:16 +0900</lastBuildDate>
+    <pubDate>Tue, 03 Dec 2019 13:10:38 +0900</pubDate>
+    <lastBuildDate>Tue, 03 Dec 2019 13:10:38 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
-        <title>PANDORA说明书</title>
+        <title>分子线的gravity effect</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-9背景谱线不透明度&quot; id=&quot;markdown-toc-section-9背景谱线不透明度&quot;&gt;Section 9：背景谱线不透明度&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-18合成频率表&quot; id=&quot;markdown-toc-section-18合成频率表&quot;&gt;Section 18：合成频率表&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#缘起&quot; id=&quot;markdown-toc-缘起&quot;&gt;缘起&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#论文s&quot; id=&quot;markdown-toc-论文s&quot;&gt;论文s&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ch&quot; id=&quot;markdown-toc-ch&quot;&gt;CH&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cn&quot; id=&quot;markdown-toc-cn&quot;&gt;CN&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#co&quot; id=&quot;markdown-toc-co&quot;&gt;CO&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-9背景谱线不透明度&quot;&gt;Section 9：背景谱线不透明度&lt;/h2&gt;
+&lt;h2 id=&quot;缘起&quot;&gt;缘起&lt;/h2&gt;
 
-&lt;p&gt;PANDORA在计算谱线源函数的时候需要知道bakcground opacity，或者说是background continuum。这应该指的是OASP中的连续吸收系数。这一节主要讲的是连续吸收系数中其他谱线的贡献以及计算方式。&lt;/p&gt;
+&lt;p&gt;现在不是在搞谱线的gravity effect嘛，发现一些被blend的谱线中有分子线的贡献，就得知道分子线会不会对gravity effect有贡献。从观测和合成光谱来看是有的，而且在4000-5000K上分子线和原子线有一样的gravity effect。但是为什么呢？&lt;/p&gt;
 
-&lt;p&gt;如果是同种元素的谱线，那么PANDORA中的”blended line”机制可以搞定；对于其他的谱线，一般PANDORA会考虑H，He-II，CO的谱线（可以在输出的ATMOSPHERE中进行确认）。&lt;/p&gt;
+&lt;h2 id=&quot;论文s&quot;&gt;论文s&lt;/h2&gt;
 
-&lt;h2 id=&quot;section-18合成频率表&quot;&gt;Section 18：合成频率表&lt;/h2&gt;
+&lt;p&gt;我是从查”molecular line gravity / molecular line spectral classification”之类的开始的。&lt;/p&gt;
 
-&lt;p&gt;这其实就是合成光谱的频率点；PANDORA有内置的一个表，或者通过指定某些频率，我们可以控制合成光谱的采样点分布。这对于一些宽线（比如CaII H&amp;amp;K）有用。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;XISYM&lt;/code&gt;（长度为&lt;code class=&quot;highlighter-rouge&quot;&gt;KS&lt;/code&gt;）指定一个通用的轮廓，对所有线都生效；&lt;code class=&quot;highlighter-rouge&quot;&gt;XIBLU&lt;/code&gt;（长度&lt;code class=&quot;highlighter-rouge&quot;&gt;KB&lt;/code&gt;）指定蓝半边，&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1978ApJ...222..209W/abstract&quot;&gt;White &amp;amp; Wing 1978&lt;/a&gt;, section IV(c):&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Keenan (1963) has pointed out that the blue CN bands are a good luminosity indicator in late G and early K stars, but that they cannot be used alone because of abundance effects.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;ch&quot;&gt;CH&lt;/h3&gt;
+
+&lt;p&gt;Keenan (1963), page 96:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Since the association into molecules is favored by higher pressure, it is not surprising that the G band (mainly due to CH) has a negative luminosity effect and is too weak in supergiants to be useful as a temperature criterion.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;cn&quot;&gt;CN&lt;/h3&gt;
+
+&lt;p&gt;Keenan (1963), page 96:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;About 1921, Lindblad recognized that the absorption (around 3883A) was due primarily to CN ans showed that the integrated absorption had a strong positive correlation with luminosity (&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1922ApJ....55...85L/abstract&quot;&gt;Lindblad 1922&lt;/a&gt;). In the photometric classifications that grew out of this work, the intergrated CN absorption is the definitive criterion of luminosity (for summaries and references see Lindblad and Stenquist 1934, and &lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1946ApJ...104..325L/abstract&quot;&gt;Lindblad 1946&lt;/a&gt;).
+The &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; 4216 and &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; 3883 bands are scarcely noticeable in dwarfs of any type but are conspicuous in giants (G5-K3) and are even stronger in supergiants （Iwanowska 1936; Keenan 1941). They have accordingly been used generally to detect stars of high luminosity on even the shortest objective-prism spectra.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/2007A%26A...468..205L/abstract&quot;&gt;Lançon et al. 2007&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Strong CN bands are predicted for low gravity stars with temperatures around 4500 K, and are indeed observed in local red supergiants (Lançon &amp;amp; Wood 2000) and in extragalactic objects such as the bright star clusters of M 82 (Lançon et al. 2003).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;co&quot;&gt;CO&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1997AJ....113.1411R/abstract&quot;&gt;Ramirez et al. 1997&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The CO absorption strength depends on both luminosity and effective temperature (Frogel 1971; Baldwin et al. 1973; McWilliam &amp;amp; Lambert 1984; Kleinmann &amp;amp; Hall 1986).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1986ApJS...62..501K/abstract&quot;&gt;Kleinmann &amp;amp; Hall 1986&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The strengthening of CO absorption with decreasing temperature and increasing luminosity is well known;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1984PASP...96..882M/abstract&quot;&gt;McWilliam &amp;amp; Lambert 1984&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The gravity and carbon abundance changes are expected because the cooler and more luminous giants are at a more advanced
+stage of thermal pulsing and dredge-up of carbon. In general, microturbulence appears to increase with increasing luminosity.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1973ApJ...184..427B/abstract&quot;&gt;Baldwin et al. 1973&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Several trends stand out in figure 3. The CO index increases with increasing luminosity. The giant and supergiant sequences are parallel, with a separation of about 0.04 in the index. The division between the dwarfs and giants for spectral types later than K0 is most pronounced.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Calculations by V. G. Kunde (personal communication) have shown that changes of ~5 &lt;script type=&quot;math/tex&quot;&gt;\mathrm{km\,s^{-1}}&lt;/script&gt; in the microturbulent velocity can produce large changes in the strength of the CO absorption bands. These changes are considerably greater than any change produced by reasonable variations in any of the other parameters including CO abundance. An increase in microturbulence with decreasing temperature among the giants and supergiants, and a similar increase with increasing luminosity from dwarfs to supergiants, could then account for the observed variation of CO absorption. This effect would be strongest if the bands were saturated.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ui.adsabs.harvard.edu/abs/1971PhDT........67F/abstract&quot;&gt;Frogel 1971&lt;/a&gt;, page 91:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The pressure operates vis-a-vis (face to face) collisional broadening in a manner which will increase line widths with increasing pressure. Since pressure decreases with increasing luminosity and both pressure and temperature decrease with advancing spectral type, these two parameters cannot account for the observed behavior of the CO bands.&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
-        <pubDate>Mon, 21 Oct 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/10/21/pandora-manual/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/10/21/pandora-manual/</guid>
+        <pubDate>Tue, 03 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/12/03/molecular-gravity/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/12/03/molecular-gravity/</guid>
         
         <category>learning</category>
         
@@ -1014,11 +1077,15 @@
       &lt;li&gt;&lt;a href=&quot;#示例三&quot; id=&quot;markdown-toc-示例三&quot;&gt;示例三&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#示例四&quot; id=&quot;markdown-toc-示例四&quot;&gt;示例四&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#示例六&quot; id=&quot;markdown-toc-示例六&quot;&gt;示例六&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#h线部分&quot; id=&quot;markdown-toc-h线部分&quot;&gt;H线部分&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#caii线部分&quot; id=&quot;markdown-toc-caii线部分&quot;&gt;CaII线部分&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#需要留意的参数们&quot; id=&quot;markdown-toc-需要留意的参数们&quot;&gt;需要留意的参数们&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-9背景谱线不透明度&quot; id=&quot;markdown-toc-section-9背景谱线不透明度&quot;&gt;Section 9：背景谱线不透明度&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-18合成频率表&quot; id=&quot;markdown-toc-section-18合成频率表&quot;&gt;Section 18：合成频率表&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;fortran-编译器选择&quot;&gt;Fortran 编译器选择&lt;/h2&gt;
@@ -2060,6 +2127,8 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
   &lt;li&gt;为什么简单模型里面提高TR温度会使得H-alpha线变成发射而Dupree+13中的不会？是因为有些选项不是默认了吗？&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h4 id=&quot;h线部分&quot;&gt;H线部分&lt;/h4&gt;
+
 &lt;p&gt;我们从leidh.dat以及leid.mod开始。&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; LEID       MODEL LEID   5 L H        ITER 07-17     13-Oct-24
@@ -2286,7 +2355,7 @@ ELEMENT ( BA LAB -.20 ) &amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MODLAB&lt;/code&gt;定义了这个大气模型的名字，你喜欢的话叫村花也没人会抗议的。后面的一堆&lt;code class=&quot;highlighter-rouge&quot;&gt;ELEMENT&lt;/code&gt;请参阅前面章节。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MODLAB&lt;/code&gt;定义了这个大气模型的名字，你喜欢的话叫村花也没人会抗议的。后面的一堆&lt;code class=&quot;highlighter-rouge&quot;&gt;ELEMENT&lt;/code&gt;请参阅前面章节。&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ELEMENT&lt;/code&gt;的选择非常重要！对H-alpha线有很大的影响！&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;KURIN ( 6 ) &amp;gt;  
 &amp;gt;
@@ -2635,7 +2704,122 @@ USE ( MODEL ) &amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;结束了！&lt;/p&gt;
 
+&lt;h4 id=&quot;caii线部分&quot;&gt;CaII线部分&lt;/h4&gt;
+
+&lt;p&gt;这里就不说ATOM和MODEL的部分了。之前重复过的也不写了。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; LEID       MODEL LEID   5 L CA-II    ITER 05-15     13-Apr-13
+&amp;gt;  ---------1------------1------------1------------1------------1
+&amp;gt;
+USE ( MODEL ) &amp;gt;
+USE ( ATOM ) &amp;gt;
+&amp;gt;
+K   ( 39 ) &amp;gt;
+&amp;gt;
+LF ( 7 )  &amp;gt;
+&amp;gt; L ( 7 ) &amp;gt;
+NWV ( 3 ) &amp;gt;
+&amp;gt; nvx ( 1 ) &amp;gt; number of additional expansion velocities
+DO ( ADDCOPR ) &amp;gt;
+OMIT ( COMPCOPR ) &amp;gt;
+OMIT ( EMERINT ) &amp;gt;
+DO ( EMIPRNT ) &amp;gt;
+do ( expand ) &amp;gt;
+omit ( flwbroad ) &amp;gt;
+OMIT ( iterrho ITERS ) &amp;gt;
+DO ( LINECOPR ) &amp;gt;
+OMIT ( METSW ) &amp;gt;
+DO ( OPAPRNT ) &amp;gt;
+DO ( PHASE2 ) &amp;gt;
+do ( prdmeth ) &amp;gt;
+omit ( procprnt ) &amp;gt;
+OMIT ( RATEFULL ) &amp;gt;
+do ( RCOMPRNT ) &amp;gt;
+DO ( RHBPRNT ) &amp;gt;
+omit ( secomp ) &amp;gt;
+omit ( SPECSAV ) &amp;gt;
+do ( sphere ) &amp;gt;
+do ( STANDARD ) &amp;gt;
+omit ( truecopr ) &amp;gt;
+DO ( TAUPRNT ) &amp;gt;
+OMIT ( WAVEPRNT ) &amp;gt;
+&amp;gt;
+GO &amp;gt;
+&amp;gt;
+USE ( MODEL ) &amp;gt;
+&amp;gt;
+USE ( ATOM ) &amp;gt;
+ldint ( 20 ) &amp;gt;
+&amp;gt;
+KRATE 4 2 ( 2 )  KRATE 5 2 ( 2 )  KRATE 5 3 ( 2 )  &amp;gt;
+PROF 4 1 ( 1 )  progli 4 1 ( 2. ) &amp;gt;
+PROF 4 2 ( 1 )  progli 4 2 ( 2. ) &amp;gt;
+PROF 5 1 ( 1 )  progli 5 1 ( 2. ) &amp;gt;
+PROF 5 2 ( 1 )  progli 5 2 ( 2. ) &amp;gt;
+PROF 5 3 ( 1 )  progli 5 3 ( 2. ) &amp;gt;
+&amp;gt;
+USE ( RESTART ) &amp;gt;
+&amp;gt;
+metse 4 1 ( 4 )  metse 5 1 ( 1 ) &amp;gt;
+METSE 4 2 ( 1 )  METSE 5 2 ( 1 ) &amp;gt;
+&amp;gt;
+IOMX ( 11 ) &amp;gt;
+&amp;gt;
+TSM ( 1.E-7 ) &amp;gt;
+TMS ( 1.E+7 ) &amp;gt;
+XI ( 0. .1 .2 .4 .6 .8  1. 1.2 1.4 1.6 1.8 2. 2.2 2.4 2.6 2.8 3.
+3.3 3.6 4. 5. 6. 8. 10. 15. 20. 25.
+30. 35. 40. 50. 60. 80. 100. 120. 140. 160. 180. 200. ) &amp;gt;
+BDOPT ( BDQ )  RHOPT ( RHOS )  CWR ( .1 )  &amp;gt;
+wrmn ( 0.5 )  wrmx ( 1.0 ) &amp;gt;
+WPOP ( .6 )  &amp;gt;
+NDW ( 55 ) &amp;gt;
+&amp;gt;
+JNUNC ( 1 ) &amp;gt;
+XCL ( 2. ) &amp;gt;
+&amp;gt; SCH 4 1 ( 1 )  XC 4 1 ( 2. )  XP 4 1 ( 2. )  GMMA 4 1 ( -1. ) &amp;gt;
+&amp;gt; SCH 5 1 ( 1 )  XC 5 1 ( 2. )  XP 5 1 ( 2. )  GMMA 5 1 ( -1. ) &amp;gt;
+&amp;gt;
+WAVES ( 3934.8 3952. 3969.5 ) &amp;gt;
+&amp;gt;
+VXS              ( &amp;gt;
+ 1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02
+ 1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02  1.00000000E+02
+ 1.00000000E+02  1.00000000E+02  9.95000000E+01  9.80000000E+01  9.60000000E+01
+ 9.30000000E+01  8.90000000E+01  8.20000000E+01  7.50000000E+01  6.70000000E+01
+ 6.00000000E+01  5.40000000E+01  4.95000000E+01  4.60000000E+01  4.30000000E+01
+ 4.00000000E+01  3.70000000E+01  3.40000000E+01  3.10000000E+01  2.70000000E+01
+ 2.25000000E+01  1.80000000E+01  1.20000000E+01  0.60000000E+01  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 0.00000000E+00  0.00000000E+00
+) &amp;gt;
+GO &amp;gt;
+&amp;gt;
+&amp;gt; MUF ( 1. .8 .6 .4 .2 .1 .05 ) &amp;gt;
+&amp;gt; MU  ( 1. .8 .6 .4 .2 .1 .05 ) &amp;gt;
+&amp;gt; MUF ( 1. ) &amp;gt;
+&amp;gt; MU ( 1. ) &amp;gt;
+&amp;gt;
+GO &amp;gt; part G
+&amp;gt;
+USE ( MODEL ) &amp;gt;
+&amp;gt;
+GO &amp;gt; part I
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h4 id=&quot;需要留意的参数们&quot;&gt;需要留意的参数们&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ELEMENT&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这个是要调整的。为什么示例文件里面的ELEMENT有复数？&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NABS&lt;/code&gt;&lt;/li&gt;
@@ -2672,6 +2856,17 @@ USE ( MODEL ) &amp;gt;
 &lt;/ul&gt;
 
 &lt;p&gt;改变的话对线心轮廓有比较大的影响。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-9背景谱线不透明度&quot;&gt;Section 9：背景谱线不透明度&lt;/h2&gt;
+
+&lt;p&gt;PANDORA在计算谱线源函数的时候需要知道bakcground opacity，或者说是background continuum。这应该指的是OASP中的连续吸收系数。这一节主要讲的是连续吸收系数中其他谱线的贡献以及计算方式。&lt;/p&gt;
+
+&lt;p&gt;如果是同种元素的谱线，那么PANDORA中的”blended line”机制可以搞定；对于其他的谱线，一般PANDORA会考虑H，He-II，CO的谱线（可以在输出的ATMOSPHERE中进行确认）。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-18合成频率表&quot;&gt;Section 18：合成频率表&lt;/h2&gt;
+
+&lt;p&gt;这其实就是合成光谱的频率点；PANDORA有内置的一个表，或者通过指定某些频率，我们可以控制合成光谱的采样点分布。这对于一些宽线（比如CaII H&amp;amp;K）有用。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;XISYM&lt;/code&gt;（长度为&lt;code class=&quot;highlighter-rouge&quot;&gt;KS&lt;/code&gt;）指定一个通用的轮廓，对所有线都生效；&lt;code class=&quot;highlighter-rouge&quot;&gt;XIBLU&lt;/code&gt;（长度&lt;code class=&quot;highlighter-rouge&quot;&gt;KB&lt;/code&gt;）指定蓝半边，&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Apr 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/04/12/pandora/</link>

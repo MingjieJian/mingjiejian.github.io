@@ -68,7 +68,7 @@ $$ N = A \frac{N_j}{N_E} N_H \frac{g_n}{u(T)} e^{\frac{-\chi}{kT}} \tag{16.3}$$
 
 把上式丢进$$ (16.2) $$，有：
 
-$$ \log{\frac{w}{\lambda}} = \log{C} + \log{A} + \log{g_nf\lambda} - \theta_ex \chi - \log{\kappa_\nu} \tag{16.4} $$
+$$ \log{\frac{w}{\lambda}} = \log{C} + \log{A} + \log{g_nf\lambda} - \theta_{ex} \chi - \log{\kappa_\nu} \tag{16.4} $$
 
 (MOOG也用了这条式子)$$ \frac{w}{\lambda} $$是为了将和多普勒有关的现象归一化（*介又是什么？*）。上式说明了右侧后面这四项的地位是一致的，所以当其他三个固定的时候，剩下那个就可以作为横坐标出现在生长曲线图上了。
 
