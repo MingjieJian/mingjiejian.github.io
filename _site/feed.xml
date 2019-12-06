@@ -5,9 +5,66 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 03 Dec 2019 13:10:38 +0900</pubDate>
-    <lastBuildDate>Tue, 03 Dec 2019 13:10:38 +0900</lastBuildDate>
+    <pubDate>Fri, 06 Dec 2019 17:28:03 +0900</pubDate>
+    <lastBuildDate>Fri, 06 Dec 2019 17:28:03 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>加权平均值的误差</title>
+        <description>&lt;p&gt;我受不了了。&lt;/p&gt;
+
+&lt;p&gt;究竟加权平均值的误差的表达式应该是什么？这个问题困扰了我很久。今天决定用实验去解决它。&lt;/p&gt;
+
+&lt;h2 id=&quot;问题&quot;&gt;问题&lt;/h2&gt;
+
+&lt;h3 id=&quot;古典描述&quot;&gt;古典描述&lt;/h3&gt;
+
+&lt;p&gt;我们想测量一个物理量；它有一个真值&lt;script type=&quot;math/tex&quot;&gt;\hat{x}&lt;/script&gt;。我们对它进行&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;次测量，每次测量用下标的&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;来表示，也就是&lt;script type=&quot;math/tex&quot;&gt;x_i&lt;/script&gt;。因为每次测量的环境都不同（仪器温度变了啊、天气变阴了啊、观测助手抖腿了啊、隔壁猫叫了啊、etc），每次测量的误差&lt;script type=&quot;math/tex&quot;&gt;\sigma_i&lt;/script&gt;都不一样。误差是怎么估计的也是一个大问题，但这里就直接给定了。那么当我们用加权平均去估计这个物理量的值的时候，这个估计值的误差是多少？&lt;/p&gt;
+
+&lt;h3 id=&quot;贝叶斯描述&quot;&gt;贝叶斯描述&lt;/h3&gt;
+
+&lt;p&gt;我们测量一个物理量，测了好多次。每次都有一个测量值&lt;script type=&quot;math/tex&quot;&gt;x_i&lt;/script&gt;以及它的误差&lt;script type=&quot;math/tex&quot;&gt;\sigma_i&lt;/script&gt;。怎么样利用这些测量值和误差给出这个物理量的参数的限制呢？这里没有真值。&lt;/p&gt;
+
+&lt;h2 id=&quot;古典方法&quot;&gt;古典方法&lt;/h2&gt;
+
+&lt;p&gt;我不会。但是有些地方给出了结论：&lt;/p&gt;
+
+&lt;p&gt;先定义权重：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;w_i = \frac{1}{\sigma_i^2}&lt;/script&gt;
+
+&lt;p&gt;那么加权平均值就是&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu = \frac{\sum w_i x_i}{\sum w_i}&lt;/script&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Weight sample variance&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2 = \frac{\sum w_i}{(\sum w_i)^2 - \sum w_i^2} \sum w_i (x_i - \mu)^2&lt;/script&gt;
+
+&lt;p&gt;来自&lt;a href=&quot;https://en.wikipedia.org/wiki/Weighted_arithmetic_mean#Reliability_weights&quot;&gt;维基百科&lt;/a&gt;以及&lt;a href=&quot;https://www.gnu.org/software/gsl/doc/html/statistics.html&quot;&gt;GNU Project&lt;/a&gt;。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;From error propagation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2 = \frac{1}{\sum 1 / \sigma_i^2}&lt;/script&gt;
+
+&lt;p&gt;来自&lt;a href=&quot;https://ned.ipac.caltech.edu/level5/Leo/Stats4_5.html&quot;&gt;STATISTICS AND THE TREATMENT OF EXPERIMENTAL DATA&lt;/a&gt;以及&lt;a href=&quot;https://en.wikipedia.org/wiki/Weighted_arithmetic_mean&quot;&gt;维基百科&lt;/a&gt;的error of the weighted mean部分。&lt;/p&gt;
+
+&lt;p&gt;它们在误差分布比较正常的时候结果是一样的。&lt;/p&gt;
+
+&lt;h2 id=&quot;贝叶斯方法&quot;&gt;贝叶斯方法&lt;/h2&gt;
+</description>
+        <pubDate>Fri, 06 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/12/06/error-weighted-mean/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/12/06/error-weighted-mean/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>分子线的gravity effect</title>
@@ -93,6 +150,49 @@ stage of thermal pulsing and dredge-up of carbon. In general, microturbulence ap
         <pubDate>Tue, 03 Dec 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/12/03/molecular-gravity/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/12/03/molecular-gravity/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Arxiv存档</title>
+        <description>&lt;h2 id=&quot;191200999&quot;&gt;1912.00999&lt;/h2&gt;
+
+&lt;p&gt;作者通过Subaru Suprime-Cam对NGC5907的成像在双色图上选出了703个球状星团候选体，并用光谱认证了其中的一些（11个中的8个）。另外还有34个疑似年轻星团的源，有14个在盘的外围。还有3个球状星团在星流上。
+由此作者估计了NGC5907的球状星团总数。&lt;/p&gt;
+
+&lt;p&gt;感想：人有多大胆，地有多大产。8个GC就敢讨论总数了。&lt;/p&gt;
+
+&lt;h2 id=&quot;191200900&quot;&gt;1912.00900&lt;/h2&gt;
+
+&lt;p&gt;我们发现了一些亮度超过预期的Ia型超新星，可能预示着它的前身白矮星质量超过了钱德拉塞卡极限。目前有的解释是：强磁场、引力影响、带电白矮星等。&lt;/p&gt;
+
+&lt;p&gt;感想：前有挑战宇宙加速膨胀、后有脚踹钱德拉塞卡。&lt;/p&gt;
+
+&lt;h2 id=&quot;191200255&quot;&gt;1912.00255&lt;/h2&gt;
+
+&lt;p&gt;用一个比以前更详细的模型导出了主星的元素丰度，发现和行星的元素丰度没什么关系，和以前的结果不一致。&lt;/p&gt;
+
+&lt;p&gt;感想：这里倒是有不少确定元素丰度的办法。&lt;/p&gt;
+
+&lt;h2 id=&quot;191113132&quot;&gt;1911.13132&lt;/h2&gt;
+
+&lt;p&gt;确定了2133个FGK矮星的碳丰度；有1751颗有Gaia数据，所以可以加上年龄等信息。
+碳从哪里来？大质量恒星还是小质量恒星，还是早期是大质量现在是小质量恒星？这还是不确定的。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;恒星参数直接由pipeline（大概是）来&lt;/li&gt;
+  &lt;li&gt;C丰度重新分析&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;又不少好玩的trend。&lt;/p&gt;
+
+&lt;p&gt;感想：大数据就是好；我也想玩Gaia-ESO！&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/12/03/arxiv/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/12/03/arxiv/</guid>
         
         <category>learning</category>
         
@@ -1086,6 +1186,14 @@ stage of thermal pulsing and dredge-up of carbon. In general, microturbulence ap
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section-9背景谱线不透明度&quot; id=&quot;markdown-toc-section-9背景谱线不透明度&quot;&gt;Section 9：背景谱线不透明度&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#section-18合成频率表&quot; id=&quot;markdown-toc-section-18合成频率表&quot;&gt;Section 18：合成频率表&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#合并程序pmerge&quot; id=&quot;markdown-toc-合并程序pmerge&quot;&gt;合并程序pmerge&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#rst文件&quot; id=&quot;markdown-toc-rst文件&quot;&gt;.rst文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#msc文件&quot; id=&quot;markdown-toc-msc文件&quot;&gt;.msc文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#pop文件&quot; id=&quot;markdown-toc-pop文件&quot;&gt;.pop文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jnr文件&quot; id=&quot;markdown-toc-jnr文件&quot;&gt;.jnr文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#具体实施&quot; id=&quot;markdown-toc-具体实施&quot;&gt;具体实施&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;fortran-编译器选择&quot;&gt;Fortran 编译器选择&lt;/h2&gt;
@@ -2867,386 +2975,135 @@ GO &amp;gt; part I
 
 &lt;p&gt;这其实就是合成光谱的频率点；PANDORA有内置的一个表，或者通过指定某些频率，我们可以控制合成光谱的采样点分布。这对于一些宽线（比如CaII H&amp;amp;K）有用。
 &lt;code class=&quot;highlighter-rouge&quot;&gt;XISYM&lt;/code&gt;（长度为&lt;code class=&quot;highlighter-rouge&quot;&gt;KS&lt;/code&gt;）指定一个通用的轮廓，对所有线都生效；&lt;code class=&quot;highlighter-rouge&quot;&gt;XIBLU&lt;/code&gt;（长度&lt;code class=&quot;highlighter-rouge&quot;&gt;KB&lt;/code&gt;）指定蓝半边，&lt;/p&gt;
+
+&lt;h2 id=&quot;合并程序pmerge&quot;&gt;合并程序pmerge&lt;/h2&gt;
+
+&lt;p&gt;PANDORA的运行不是互相独立的。一般来说我们需要先运行H，再运行He，然后运行我们想要的其他元素。在H和He的运行中，我们需要将它们的一些参数（比如说密度等）放到mod文件中；作者为此提供了一个Perl的&lt;code class=&quot;highlighter-rouge&quot;&gt;pmerge&lt;/code&gt;程序。
+程序的使用方法不是很难，这里着重说一下里面的一些坑以及那些参数是需要更新的。&lt;/p&gt;
+
+&lt;p&gt;现在的&lt;code class=&quot;highlighter-rouge&quot;&gt;pmerge&lt;/code&gt;程序中如果mod文件没有需要合并的参数的话，会报错。第一件事情就是将这个改成没有也能加上的功能。这样的话我们需要将这个Perl程序移植到python上来。
+目标：实现与pmerge类似的功能，将没有的参数放到合适的地方。&lt;/p&gt;
+
+&lt;p&gt;我们进行一揽子处理，将所有的restart数据一起考虑了。&lt;/p&gt;
+
+&lt;p&gt;restart数据分布在四个文件中：19 (.rst), 20 (.msc), 21 (.pop), 22 (.jnr)。下面来看看这三个文件都有什么、应该怎么处理。&lt;/p&gt;
+
+&lt;h3 id=&quot;rst文件&quot;&gt;.rst文件&lt;/h3&gt;
+
+&lt;p&gt;.rst文件和.res文件是一对双胞胎，在重启的时候只需要将.res文件用.rst文件代替即可。&lt;code class=&quot;highlighter-rouge&quot;&gt;METSW&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;LYMAN&lt;/code&gt;可以增加在.rst文件里面的内容。&lt;/p&gt;
+
+&lt;h3 id=&quot;msc文件&quot;&gt;.msc文件&lt;/h3&gt;
+
+&lt;p&gt;教程中说如果.mod文件中有与.msc参数重合的话也要相应更新。暂时不管它，因为demo中也没有动。&lt;/p&gt;
+
+&lt;h3 id=&quot;pop文件&quot;&gt;.pop文件&lt;/h3&gt;
+
+&lt;p&gt;需要在.mod文件的开头加上NLH ( 15 )等参数。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;条件&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;出现参数&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HSE (on)&lt;/code&gt; &amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (HYDROGEN)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;NE_i, ZME_i, NC_i&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HMS (on)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;BDHM_i&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AMDIFF (on)&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;VELGRAD (on)&lt;/code&gt; &amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;VBMB&lt;/code&gt; not 0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;VBMB_i&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HSE (on)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;NH_i&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (HYDROGEN)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;NP_i, HN_i^j, BDH_i^j (1&amp;lt;=j&amp;lt;=15)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (CARBON)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CK_i, CN_i^j, BDC_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (SILICON)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;SIK_i, SIN_i^j, BDSI_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (HELIUM)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;HEK_i, HEN_i^j, BDHE_i^j (1&amp;lt;=j&amp;lt;=13)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (HELIUM2)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;HE2K_i, HE2N_i^j, BDHE2_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (ALUMINUM)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ALK_i, ALN_i^j, BDAL_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (MAGNESIUM)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MGK_i, MGN_i^j, BDMG_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (IRON)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FEK_i, FEN_i^j, BDFE_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (SODIUM)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;NAK_i, NAN_i^j, BDNA_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (CALCIUM)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CAK_i, CAN_i^j, BDCA_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (OXYGEN)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;OK_i, ON_i^j, BDO_i^j (1&amp;lt;=j&amp;lt;=14)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (OXYGEN2)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O2K_i, O2N_i^j, BDO2_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (OXYGEN3)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O3K_i, O3N_i^j, BDO3_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POPUP (SULPHUR)&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;SK_i, SN_i^j, BDS_i^j (1&amp;lt;=j&amp;lt;=8)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;需要的时候照着这个表打开相应的开关就好了。&lt;/p&gt;
+
+&lt;p&gt;demo中的重启script给出了H与He运行后需要更新的参数：&lt;/p&gt;
+
+&lt;p&gt;H运行：@NE+,@NP+&lt;/p&gt;
+
+&lt;p&gt;He运行：@HE+&lt;/p&gt;
+
+&lt;p&gt;这使得&lt;code class=&quot;highlighter-rouge&quot;&gt;HMS&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;HSE&lt;/code&gt;的打开成为标配。&lt;/p&gt;
+
+&lt;h3 id=&quot;jnr文件&quot;&gt;.jnr文件&lt;/h3&gt;
+
+&lt;p&gt;它是特殊的restart文件；没有不影响计算，但是程序会叫一声。它的输出与否由&lt;code class=&quot;highlighter-rouge&quot;&gt;JNUPRNT&lt;/code&gt;决定。如果有这个文件的话将它名字里的.run删掉就好了。&lt;/p&gt;
+
+&lt;h3 id=&quot;具体实施&quot;&gt;具体实施&lt;/h3&gt;
+
+&lt;p&gt;因为很多时候的restart都是全的，所以第一次的话就直接将.pop文件的内容加到.mod文件后面，在NP上方以及最后加上一行&lt;code class=&quot;highlighter-rouge&quot;&gt;USE ( INPUT ) &amp;gt;&lt;/code&gt;，之后的重启就都用pmerge了。&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Apr 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/04/12/pandora/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/04/12/pandora/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>逃离东京的24小时</title>
-        <description>&lt;h2 id=&quot;缘起&quot;&gt;缘起&lt;/h2&gt;
-
-&lt;p&gt;我印象中最早说起去看星星是在地铁解谜人齐之后，大家高兴地说着去看星星吧，就有了这个想法。当然实际上组织的时候大家都各种有事情、回家什么的（虽然是预料之中），结果群里7个人最后只去了4个。&lt;/p&gt;
-
-&lt;h2 id=&quot;哪里&quot;&gt;哪里？&lt;/h2&gt;
-
-&lt;p&gt;去哪里看？这是个大问题。当然网络上有很多很多的地点可供选择，我主要参考的是&lt;a href=&quot;&quot;&gt;这个网站&lt;/a&gt;。虽然它题目说的是做巴士或者火车可以去到的观星地，但是还有一些是只有开车才能去（或者就是在高速公路路边）的地方。地点是不少的，但是考虑到距离东京的远近、星空质量的好坏（以及某位蓝担的想法），我们还是选了阿智村。&lt;/p&gt;
-
-&lt;p&gt;阿智村是距离东京约200公里的一个小村子，被誉为“日本一の星空”。它就在中央自動車道的旁边，而且大约十公里外有昼神温泉，算是一个既有一点点基本生活设施又没有什么光污染的村子。&lt;/p&gt;
-
-&lt;h2 id=&quot;冷&quot;&gt;冷&lt;/h2&gt;
-
-&lt;p&gt;冬天的日本乡下巨冷，更何况是晚上。所以两件（以及以上）的保暖衣、羽绒服以及暖贴是很有必要的。暖贴还得在出发之前贴好，否则就热不起来了。&lt;/p&gt;
-
-&lt;h2 id=&quot;怎么去&quot;&gt;怎么去？&lt;/h2&gt;
-
-&lt;p&gt;在公路旁边意味着很可能可以坐巴士去，事实上也是这样的：从东京站或者新宿站出发，乘坐JRバス的中央ライナーなごや号巴士，到中央道昼神温泉站下车即可（昼神温泉站实际上在阿智村里，离昼神温泉还有一段距离）。每天从东京出发有三趟车，早上8点、中午12点以及下午4点各一趟。因为车程大约4个小时，所以选择中午出发的那一趟是比较合适的。我们这次是因为某（预备硕士）师妹要答辩，所以选了下午4点的大巴，下车的时候已经是9点多了。&lt;/p&gt;
-
-&lt;p&gt;巴士在到达昼神温泉之前会在三鹰附近停三个站，然后继续将近两个多小时的车程。过了三鹰附近的最后一个站之后还会在服务区休息两次。在快到站的时候会有报站，那个时候记得按下车铃，否则是可能会飞站的。下车之后就会惊喜地发现：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/01.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;被丢到荒郊野岭啦~ credit:HMX&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;住哪&quot;&gt;住哪？&lt;/h2&gt;
-
-&lt;p&gt;阿智村村里其实没有什么宾馆，只有一家我们住的民宿，みんなのいえ。多数的住宿都在昼神温泉那（盛惠一万日元/晚）。虽说昼神温泉旁边有个专门观星的公园，但是我们到那已经是9点了而且冬天好像不是每天都有星空Tour（倒是有一堆室内的玩意儿），还是住一晚3000日元的みんなのいえ比较好。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/02.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;其实就是穷&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;みんなのいえ从车站走十来分钟就到了，房东是个很亲切的日本人，会要求你提前告诉她到达时间然后在房子里迎接。这家是个Airbnb页面上附有注册号码的正规民宿，所以需要登记护照或者在留卡号（一个人的就行）。我估计Airbnb上的回复是房东用谷歌翻译看懂的，因为房东基本不会讲英语，看到我们都会日语之后超放心(……)。房间应该有4张床，所以4个人出行的话大概率会分到同一间房里面。同时房东似乎不会在Airbnb页面上开放床位，所以想订房的时候可以先问问房东还有没有空位，有的话她会开放的。&lt;/p&gt;
-
-&lt;p&gt;其实也可以提前告诉房东我们的目的是去看星，这样她可以推荐一些地方以及做好夜不归宿的准备。&lt;/p&gt;
-
-&lt;h2 id=&quot;在哪看&quot;&gt;在哪看？&lt;/h2&gt;
-
-&lt;p&gt;房东给我们推荐的是一个公园，走路大概二十分钟。我们没走那么远，在半路上的一个小岔路上就停下来了。实际上一下车的时候就可以看到很多的星了，这个小岔路稍微算开阔一点，而且对面有一盏设计感不错的灯可以造景，可以拍合照什么的。这个时间晚上10点左右北斗七星正好在这个路灯上方，组合起来还是很有意思的。&lt;/p&gt;
-
-&lt;h2 id=&quot;show-time&quot;&gt;Show Time&lt;/h2&gt;
-
-&lt;p&gt;好了我这个没有单反也没有微单的人就可以退场了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/03.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;credit: HMX&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/04.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;credit: Rainy&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;观星之后&quot;&gt;观星之后&lt;/h2&gt;
-
-&lt;p&gt;第一件事当然是饿了！好在民宿出门左转那有一家24小时的罗森，那里基本上什么都有。当然可以坐的位置是没有的（就算有晚上也不会让你坐），所以买完东西之后就回民宿吧。&lt;/p&gt;
-
-&lt;p&gt;房东会给留门或者告诉我们密码锁的密码，不过无论如何在回到民宿之后都要保持安静然后把门锁上，悄悄地回到房间里面睡觉。洗澡房晚上10点之后就不许用了，所以可以在之前洗完或者第二天再洗。记得把贴着的暖贴取下来。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/05.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;ゆうめし。credit: Rainy&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/06.jpg&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;合照 credit: XT&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;番外1满蒙博物馆&quot;&gt;番外1：满蒙博物馆&lt;/h2&gt;
-
-&lt;p&gt;第二天早上吃早饭的时候和房东聊起来（我负责点头表示赞同），房东推荐了附近的满蒙博物馆。我倒是之前就看到了房东的推荐，但是担心是左翼的东西就没敢说，结果房东说这是记录日本做过的坏事的地方，而且可以开车送我们过去，然后就高兴地答应了。&lt;/p&gt;
-
-&lt;p&gt;博物馆其实主要讲的是日本占领了东三省之后将大量日本人迁到东北（满洲国）的事情，并且将着重点放在了这些移民的悲惨生活上。讲解员得知我们是中国人之后还给我们放了中文的介绍视频，看了二十分钟（大概）。这个博物馆建在阿智村的原因大概是当时长野县的移民是数量最大的，而现在的很多日本人（甚至是讲解员）都渐渐地不知道这段历史了。不过毕竟是在小村子里，来参观的人多数还是老年人，或许以后日本人就真的不知道这段历史的这些细节了吧。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/07.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;番外2房东的facebook&quot;&gt;番外2：房东的Facebook&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-achi/08.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;哈哈哈哈哈。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 29 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/01/29/achi/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/01/29/achi/</guid>
-        
-        <category>hanging-around</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>TOPCAT大型星表筛选交叉方法</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#星团证认m4&quot; id=&quot;markdown-toc-星团证认m4&quot;&gt;星团证认：M4&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#一获取m4附近的gaia数据&quot; id=&quot;markdown-toc-一获取m4附近的gaia数据&quot;&gt;一、获取M4附近的Gaia数据&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#二通过自行挑出星团成员&quot; id=&quot;markdown-toc-二通过自行挑出星团成员&quot;&gt;二、通过自行挑出星团成员&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#三验证成员星&quot; id=&quot;markdown-toc-三验证成员星&quot;&gt;三、验证成员星&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#四确定m4的视差&quot; id=&quot;markdown-toc-四确定m4的视差&quot;&gt;四、确定M4的视差&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#相空间的星团证认毕星团&quot; id=&quot;markdown-toc-相空间的星团证认毕星团&quot;&gt;相空间的星团证认：毕星团&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#获取太阳附近的gaia数据&quot; id=&quot;markdown-toc-获取太阳附近的gaia数据&quot;&gt;获取太阳附近的Gaia数据&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#tap教程&quot; id=&quot;markdown-toc-tap教程&quot;&gt;TAP教程&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#下载整个星表&quot; id=&quot;markdown-toc-下载整个星表&quot;&gt;下载整个星表&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#选择星表的前n行select&quot; id=&quot;markdown-toc-选择星表的前n行select&quot;&gt;选择星表的前n行：SELECT&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#排序order-by&quot; id=&quot;markdown-toc-排序order-by&quot;&gt;排序：ORDER BY&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#表达式的一些内容&quot; id=&quot;markdown-toc-表达式的一些内容&quot;&gt;表达式的一些内容&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#有条件选择where&quot; id=&quot;markdown-toc-有条件选择where&quot;&gt;有条件选择：WHERE&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#交叉证认join&quot; id=&quot;markdown-toc-交叉证认join&quot;&gt;交叉证认：JOIN&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#更复杂的交叉证认join-on&quot; id=&quot;markdown-toc-更复杂的交叉证认join-on&quot;&gt;更复杂的交叉证认：JOIN ON&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#令人头大的交叉证认基于位置&quot; id=&quot;markdown-toc-令人头大的交叉证认基于位置&quot;&gt;令人头大的交叉证认：基于位置&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#俄罗斯套娃查询中的查询&quot; id=&quot;markdown-toc-俄罗斯套娃查询中的查询&quot;&gt;俄罗斯套娃：查询中的查询&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#topcat使用的某些tips&quot; id=&quot;markdown-toc-topcat使用的某些tips&quot;&gt;TOPCAT使用的某些tips&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#表格&quot; id=&quot;markdown-toc-表格&quot;&gt;表格&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;TOPCAT是个神器。师兄说的好，要是把它用6了，编程工作减少一半。它在星表读入输出、交叉、画图中具有的非常多的功能使得我们可以方便地获取数据、进行初步处理并查看某些参数的分布。这里通过两个有关Gaia的教程（&lt;a href=&quot;https://github.com/mbtaylor/tctuto/releases/download/asterics-vo-school-4/tctuto.pdf&quot;&gt;1&lt;/a&gt;、&lt;a href=&quot;http://docs.g-vo.org/adql-gaia/html/&quot;&gt;2&lt;/a&gt;）介绍一下如何获取像Gaia DR2这样的星表。这里默认读者已经有TOPCAT的基本使用经验。&lt;/p&gt;
-
-&lt;h2 id=&quot;星团证认m4&quot;&gt;星团证认：M4&lt;/h2&gt;
-
-&lt;h3 id=&quot;一获取m4附近的gaia数据&quot;&gt;一、获取M4附近的Gaia数据&lt;/h3&gt;
-
-&lt;p&gt;这里我们将会用到Cone Search。这是专用于获取某个坐标附近一定角距离的程序。如果想获取多个坐标附近的源的话，用Multicone就可以了（当然得准备一个位置和搜索半径的表）。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开VO|Cone Search&lt;br /&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/1.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;在&lt;strong&gt;Keyword&lt;/strong&gt;中输入&lt;code class=&quot;highlighter-rouge&quot;&gt;gaia dr2&lt;/code&gt;并点击&lt;strong&gt;Find Service&lt;/strong&gt;&lt;br /&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/2.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;在搜索结果中选择&lt;code class=&quot;highlighter-rouge&quot;&gt;ARI-Gaia&lt;/code&gt;并在下面的&lt;strong&gt;Object Name&lt;/strong&gt;中输入&lt;code class=&quot;highlighter-rouge&quot;&gt;M4&lt;/code&gt;并点击&lt;strong&gt;Resove&lt;/strong&gt;，在&lt;strong&gt;Radius&lt;/strong&gt;中填入&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;(degree)
-&lt;img src=&quot;/img/in-post/post-topcat/3.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;点击&lt;strong&gt;OK&lt;/strong&gt;并等待一会，TOPCAT就会将我们要的星表准备好了，44662个源&lt;/li&gt;
-  &lt;li&gt;回到主界面点击&lt;code class=&quot;highlighter-rouge&quot;&gt;Sky Plot&lt;/code&gt;，看一下这个星表的空间分布
-&lt;img src=&quot;/img/in-post/post-topcat/4.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;你看这个Gaia它又大又圆&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;至于实际上应该选择哪个星表，我的建议是在TAP窗口中搜索并看看星表的各种参数以及列名再确定。&lt;/p&gt;
-
-&lt;h3 id=&quot;二通过自行挑出星团成员&quot;&gt;二、通过自行挑出星团成员&lt;/h3&gt;
-
-&lt;p&gt;这样下下来的星表包含了M3的成员星以及非常多的前景场星，而且它们混在了一起，所以我们需要通过星团成员星有相似的移动速度这个条件来将成员星挑出来。要注意这个方法只是为了演示，因为M4的自行非常大所以才能这样做，其他的星团基本上不行。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;回到主界面点击&lt;code class=&quot;highlighter-rouge&quot;&gt;Plane Plot&lt;/code&gt;，并将x与y轴设为&lt;code class=&quot;highlighter-rouge&quot;&gt;pmra&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;pmdec&lt;/code&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/5.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;场星一般都是太阳附近的恒星，所以它们相对太阳应该没有整体的运动。所以中心不在(0,0)的那坨星就是星团的成员星了；将他们框起来并命名为&lt;code class=&quot;highlighter-rouge&quot;&gt;comoving&lt;/code&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/6.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;三验证成员星&quot;&gt;三、验证成员星&lt;/h3&gt;
-
-&lt;p&gt;这里我们将成员星与非成员星的自行画出来看一下。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开&lt;strong&gt;Row Subset&lt;/strong&gt;，选中&lt;strong&gt;comoving&lt;/strong&gt;，然后点击创建互补subset的按钮，瞬间就多了个&lt;strong&gt;not_comoving&lt;/strong&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/7.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;打开&lt;strong&gt;SKy Plot&lt;/strong&gt;，将&lt;strong&gt;subsets&lt;/strong&gt;选为&lt;strong&gt;comoving&lt;/strong&gt;与&lt;strong&gt;NOT_comoving&lt;/strong&gt;并换一下位置
-&lt;img src=&quot;/img/in-post/post-topcat/8.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;在&lt;strong&gt;Frame&lt;/strong&gt;中加入&lt;strong&gt;Sky Vector&lt;/strong&gt;，然后将&lt;strong&gt;Delta Longitude&lt;/strong&gt;设为&lt;code class=&quot;highlighter-rouge&quot;&gt;pmra&lt;/code&gt;以及&lt;em&gt;*Delta Latitude设为&lt;code class=&quot;highlighter-rouge&quot;&gt;pmdec&lt;/code&gt;，你就会发现
-&lt;img src=&quot;/img/in-post/post-topcat/9.png&quot; alt=&quot;&quot; /&gt;
-*好多头发！&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;将&lt;strong&gt;Scale&lt;/strong&gt;调小，就可以看到两个subset不同的自行规律了
-&lt;img src=&quot;/img/in-post/post-topcat/10.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;四确定m4的视差&quot;&gt;四、确定M4的视差&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开上述两个subset的&lt;strong&gt;Histogram Plot&lt;/strong&gt;，x轴设为&lt;code class=&quot;highlighter-rouge&quot;&gt;parallax&lt;/code&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/11.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;在&lt;strong&gt;Forms&lt;/strong&gt;中添加&lt;strong&gt;Add Gaussian&lt;/strong&gt;，就可以看到这两个subset的视差平均值了
-&lt;img src=&quot;/img/in-post/post-topcat/12.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/13.png&quot; alt=&quot;&quot; /&gt;
-&lt;script type=&quot;math/tex&quot;&gt;d_{\mathrm{M4}} = 1000 / \mathrm{Mean} = 2000 pc&lt;/script&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;要注意的是因为Gaia的视差误差不小（特别对于远的恒星来说），所以直接计算视差的倒数作为距离是不合适的。这里可以这样做是因为我们有很多恒星在同一个距离上。&lt;/p&gt;
-
-&lt;h2 id=&quot;相空间的星团证认毕星团&quot;&gt;相空间的星团证认：毕星团&lt;/h2&gt;
-
-&lt;p&gt;这个例子使用相空间（3维速度空间）的密度来找星团。&lt;/p&gt;
-
-&lt;h3 id=&quot;获取太阳附近的gaia数据&quot;&gt;获取太阳附近的Gaia数据&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开TAP窗口，搜索&lt;code class=&quot;highlighter-rouge&quot;&gt;gaia&lt;/code&gt;并选择&lt;strong&gt;GAIA&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;选择&lt;code class=&quot;highlighter-rouge&quot;&gt;gaiadr2_gata_source&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;在ADQL Text窗口输入：
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT ra, dec, pmra, pmdec, parallax, radial_velocity, bp_rp,
-phot_g_mean_mag + 5*log10(parallax/100) as g_abs
-FROM gaiadr2.gaia_source WHERE parallax &amp;gt; 15 AND parallax_over_error &amp;gt; 5
-AND radial_velocity IS NOT NULL
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;tap教程&quot;&gt;TAP教程&lt;/h2&gt;
-
-&lt;h3 id=&quot;下载整个星表&quot;&gt;下载整个星表&lt;/h3&gt;
-
-&lt;p&gt;SELECT * FROM “table_name”&lt;/p&gt;
-
-&lt;p&gt;星表的名字可以先去Vizier搜链接，然后在TAP上找，就有了。&lt;/p&gt;
-
-&lt;h3 id=&quot;选择星表的前n行select&quot;&gt;选择星表的前n行：SELECT&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT TOP 1 1+1 AS result FROM gaiadr1.tgas_source&lt;/code&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/T-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT [TOP setLimit] selectList FROM fromClause [WHERE conditions] [GROUP BY columns] [ORDER BY columns] &lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;选择 行内容 列内容 AS 结果列名 FROM 源星表&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT TOP 10 * FROM gaiadr1.tgas_source&lt;/code&gt;
-&lt;img src=&quot;/img/in-post/post-topcat/T-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;表示全部列都要（握拳）。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;排序order-by&quot;&gt;排序：ORDER BY&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
-  FROM gaiadr1.tgas_source
-  ORDER BY parallax
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-topcat/T-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;降序的话可以这样写：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, parallax
-  FROM gaiadr1.tgas_source
-  ORDER BY parallax DESC
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5 source_id, phot_g_mean_mag , parallax
-  FROM gaiadr1.tgas_source
-  ORDER BY phot_g_mean_mag, parallax
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;第二个排序列名的作用暂未确定。噢顺便，首行不缩进是因为：好看。&lt;/p&gt;
-
-&lt;p&gt;练习：在gaiadr1.tgas_source中选出最亮的20颗星的id和视星等&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;表达式的一些内容&quot;&gt;表达式的一些内容&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;SQL中的名字是大小写敏感的&lt;/li&gt;
-  &lt;li&gt;浮点数形式：&lt;code class=&quot;highlighter-rouge&quot;&gt;4.5e-8&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;字符串必须用单引号括起来（双引号不行）&lt;/li&gt;
-  &lt;li&gt;运算符号们
-    &lt;ul&gt;
-      &lt;li&gt;加减乘除：&lt;code class=&quot;highlighter-rouge&quot;&gt;+-*/&lt;/code&gt;；次幂：&lt;code class=&quot;highlighter-rouge&quot;&gt;POWER(), SQRT(x),  SQUARE(x)&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;不等号：&lt;code class=&quot;highlighter-rouge&quot;&gt;=, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=&lt;/code&gt;；注意不是&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;和或否：&lt;code class=&quot;highlighter-rouge&quot;&gt;AND, OR, NOT&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;字符串相加：&lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;（未验证）&lt;/li&gt;
-      &lt;li&gt;格式化字符串：&lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE()&lt;/code&gt;；支持&lt;code class=&quot;highlighter-rouge&quot;&gt;%, _, *, ?&lt;/code&gt;等（未验证）&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COS, ASIN, ATAN, ATAN2, COS, SIN, TAN&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;EXP, LOG&lt;/code&gt;(natural logarithm),&lt;code class=&quot;highlighter-rouge&quot;&gt;LOG10&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FLOOR(x), CEILING(x), ROUND(x), ROUND(x, n), TRUNCATE(x), TRUNCATE(x,n)&lt;/code&gt;；n表示截止到多少位小数&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DEGREES(rads), RADIANS(degs)&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RAND(seed)&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MOD(x,y)&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10
-  source_id,
-  SQRT(POWER(pmdec_error,2)+POWER(pmra_error,2)) AS pm_errTot
-  FROM gaiadr1.tgas_source
-  ORDER BY pm_errTot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;自己算出来的东西&lt;code class=&quot;highlighter-rouge&quot;&gt;pm_errTot&lt;/code&gt;马上就可以拿来排序。&lt;/p&gt;
-
-&lt;p&gt;练习：Select the source id, position, proper motion in arcsec/yr and mag g for the 20 fastest stars in tgas_source.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;有条件选择where&quot;&gt;有条件选择：WHERE&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT source_id, ra, dec
-  FROM gaiadr1.tgas_source
-  WHERE
-  phot_g_mean_flux &amp;gt; 13
-  AND parallax &amp;lt; 0.2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;练习：Select the absolute magnitude, position and the source id for the 20 stars with the largest observed apparent magnitude in the g band from the table tgas_source (in case you don’t remember: The absolute magnitude is M= 5 + 5log π+ m with the parallax in arcsec π and the apparent magnitude m (check the units!). This will fail. Try to fix it.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;交叉证认join&quot;&gt;交叉证认：JOIN&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 10 h1.ra, h1.dec, h1.hip, t1.hip
-  FROM hipparcos AS h1
-  JOIN tycho2 AS t1
-  USING (hip)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM hipparcos AS h1
-  JOIN tycho2 AS t1
-  USING (hip)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Don’t execute them.这俩是假例子。这俩的结果应该是内积。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;更复杂的交叉证认join-on&quot;&gt;更复杂的交叉证认：JOIN ON&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 20 source_id, h.hip
-  FROM gaiadr1.tgas_source AS tgas
-  LEFT OUTER JOIN hipparcos as h ON (tgas.phot_g_mean_mag BETWEEN h.hpmag -0.05 AND h.hpmag+0.05)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这里就不是内积了，是留左表，同时交叉条件改成了星等差在&lt;script type=&quot;math/tex&quot;&gt;\pm 0.05&lt;/script&gt;之内。
-（会出现1对n的情况吗？）&lt;/p&gt;
-
-&lt;p&gt;举一反三，肯定还有&lt;code class=&quot;highlighter-rouge&quot;&gt;INNER JOIN&lt;/code&gt;（和&lt;code class=&quot;highlighter-rouge&quot;&gt;JOIN&lt;/code&gt;一样）、&lt;code class=&quot;highlighter-rouge&quot;&gt;RIGHT OUTER JOIN&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;FULL OUTER JOIN&lt;/code&gt;。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;令人头大的交叉证认基于位置&quot;&gt;令人头大的交叉证认：基于位置&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT TOP 5
-  source_id, tgas.ra, tgas.dec, tm.raj2000, tm.dej2000, hmag, e_hmag
-  FROM gaiadr1.tgas_source as tgas
-  JOIN twomass AS tm
-  ON 1=CONTAINS (
-     POINT('ICRS', tm.raj2000, tm.dej2000),
-     CIRCLE('ICRS', tgas.ra, tgas.dec, 1.5/3600))
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;如果历元不同的话，最好不要在查询中转换历元（位置加减自行），而是将交叉半径扩大，然后用WHERE去解决历元的问题：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT
-   TOP 30
-   *
-   FROM ppmxl AS m
-   JOIN gaiadr2.gaia_source AS g
-   ON 1=CONTAINS(POINT('ICRS', m.raj2000, m.dej2000),
-                 CIRCLE('ICRS', g.ra, g.dec, 30./3600.))
-   WHERE 1=CONTAINS(POINT('ICRS',
-   m.raj2000+m.pmra*COS(RADIANS(m.dej2000))*15,
-   m.dej2000+m.pmde*15),
-   CIRCLE('ICRS', g.ra, g.dec, 0.5/3600.))
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;俄罗斯套娃查询中的查询&quot;&gt;俄罗斯套娃：查询中的查询&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT count(*) as n, round((hmag-jmag)*2) as bin
-  FROM (SELECT TOP 4000 * FROM twomass) AS q
-  GROUP BY bin
-  ORDER BY bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(SELECT TOP 4000 * FROM twomass)&lt;/code&gt;就是一个小的查询，用括号括起来就行了&lt;/p&gt;
-
-&lt;h2 id=&quot;topcat使用的某些tips&quot;&gt;TOPCAT使用的某些tips&lt;/h2&gt;
-
-&lt;h3 id=&quot;表格&quot;&gt;表格&lt;/h3&gt;
-
-&lt;p&gt;Column Window中的 &lt;img src=&quot;/img/in-post/post-topcat/T-4.png&quot; alt=&quot;&quot; /&gt; 可以为subset在总表中添加布尔值标识&lt;/p&gt;
-</description>
-        <pubDate>Sat, 19 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/01/19/topcat/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/01/19/topcat/</guid>
         
         <category>learning</category>
         

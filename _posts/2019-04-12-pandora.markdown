@@ -1266,3 +1266,66 @@ PANDORA在计算谱线源函数的时候需要知道bakcground opacity，或者�
 
 这其实就是合成光谱的频率点；PANDORA有内置的一个表，或者通过指定某些频率，我们可以控制合成光谱的采样点分布。这对于一些宽线（比如CaII H&K）有用。
 `XISYM`（长度为`KS`）指定一个通用的轮廓，对所有线都生效；`XIBLU`（长度`KB`）指定蓝半边，
+
+## 合并程序pmerge
+
+PANDORA的运行不是互相独立的。一般来说我们需要先运行H，再运行He，然后运行我们想要的其他元素。在H和He的运行中，我们需要将它们的一些参数（比如说密度等）放到mod文件中；作者为此提供了一个Perl的`pmerge`程序。
+程序的使用方法不是很难，这里着重说一下里面的一些坑以及那些参数是需要更新的。
+
+现在的`pmerge`程序中如果mod文件没有需要合并的参数的话，会报错。第一件事情就是将这个改成没有也能加上的功能。这样的话我们需要将这个Perl程序移植到python上来。
+目标：实现与pmerge类似的功能，将没有的参数放到合适的地方。
+
+我们进行一揽子处理，将所有的restart数据一起考虑了。
+
+restart数据分布在四个文件中：19 (.rst), 20 (.msc), 21 (.pop), 22 (.jnr)。下面来看看这三个文件都有什么、应该怎么处理。
+
+### .rst文件
+
+.rst文件和.res文件是一对双胞胎，在重启的时候只需要将.res文件用.rst文件代替即可。`METSW`与`LYMAN`可以增加在.rst文件里面的内容。
+
+### .msc文件
+
+教程中说如果.mod文件中有与.msc参数重合的话也要相应更新。暂时不管它，因为demo中也没有动。
+
+### .pop文件
+
+需要在.mod文件的开头加上NLH ( 15 )等参数。
+
+| 条件 | 出现参数 |
+| :--: | :--: |
+|`HSE (on)` & `POPUP (HYDROGEN)`|NE_i, ZME_i, NC_i|
+|`HMS (on)`|BDHM_i|
+|`AMDIFF (on)` or `VELGRAD (on)` & `VBMB` not 0|VBMB_i|
+|`HSE (on)`|NH_i|
+|`POPUP (HYDROGEN)`|NP_i, HN_i^j, BDH_i^j (1<=j<=15)|
+|`POPUP (CARBON)`|CK_i, CN_i^j, BDC_i^j (1<=j<=8)|
+|`POPUP (SILICON)`|SIK_i, SIN_i^j, BDSI_i^j (1<=j<=8)|
+|`POPUP (HELIUM)`|HEK_i, HEN_i^j, BDHE_i^j (1<=j<=13)|
+|`POPUP (HELIUM2)`|HE2K_i, HE2N_i^j, BDHE2_i^j (1<=j<=8)|
+|`POPUP (ALUMINUM)`|ALK_i, ALN_i^j, BDAL_i^j (1<=j<=8)|
+|`POPUP (MAGNESIUM)`|MGK_i, MGN_i^j, BDMG_i^j (1<=j<=8)|
+|`POPUP (IRON)`|FEK_i, FEN_i^j, BDFE_i^j (1<=j<=8)|
+|`POPUP (SODIUM)`|NAK_i, NAN_i^j, BDNA_i^j (1<=j<=8)|
+|`POPUP (CALCIUM)`|CAK_i, CAN_i^j, BDCA_i^j (1<=j<=8)|
+|`POPUP (OXYGEN)`|OK_i, ON_i^j, BDO_i^j (1<=j<=14)|
+|`POPUP (OXYGEN2)`|O2K_i, O2N_i^j, BDO2_i^j (1<=j<=8)|
+|`POPUP (OXYGEN3)`|O3K_i, O3N_i^j, BDO3_i^j (1<=j<=8)|
+|`POPUP (SULPHUR)`|SK_i, SN_i^j, BDS_i^j (1<=j<=8)|
+
+需要的时候照着这个表打开相应的开关就好了。
+
+demo中的重启script给出了H与He运行后需要更新的参数：
+
+H运行：@NE+,@NP+
+
+He运行：@HE+
+
+这使得`HMS`和`HSE`的打开成为标配。
+
+### .jnr文件
+
+它是特殊的restart文件；没有不影响计算，但是程序会叫一声。它的输出与否由`JNUPRNT`决定。如果有这个文件的话将它名字里的.run删掉就好了。
+
+### 具体实施
+
+因为很多时候的restart都是全的，所以第一次的话就直接将.pop文件的内容加到.mod文件后面，在NP上方以及最后加上一行`USE ( INPUT ) >`，之后的重启就都用pmerge了。
