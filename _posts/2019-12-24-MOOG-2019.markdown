@@ -1,0 +1,93 @@
+---
+layout:     post
+title:      "MOOG 2017与2019版本对比"
+subtitle:   "Oh"
+date:       2019-12-24
+author:     "mingjie"
+header-img: "img/post-contri_func.png"
+tags:
+    - learning
+
+---
+
+Chris Sneden的[MOOG](https://www.as.utexas.edu/~chris/moog.html)悄咪咪地从FEB2017版变成了NOV2019版。
+
+## 有什么不同？
+
+### 文件上的变化 (New/deleted files)
+
+2017版的`Estim.f`和`Minimax.f`在2019版中消失了。2019版中多了`Inmodel.new`、`Setmols.f`和`Setmols.r`。
+
+`Estim.f` and `Minimax.f` no longer exist in 2019 version.
+`Inmodel.new`,`Setmols.f` and `Setmols.r` are added in 2019 version.
+
+### 文件之间的变化 (Changes in files)
+
+有21个文件发生了变化。一个一个来看有什么不同吧。程序文件：`Bmolec.f`, `Eqlib.f`, `Ewfind.f`, `Inmodel.f`, `Lineinfo.f`, `Mol.com`, `Moog.f`, `Moogsilent.f`, `Nearly.f`, `Opacit.f`, `Opacmetals.f`, `Specplot.f`, `Sunder.f`；安装文件：`Makefile.macdesk`, `Makefile.macdesksilent`, `Makefile.maclap`, `Makefile.maclapsilent`, `Makefile.rh`, `Makefile.rh64`, `Makefile.rh64silent`, `Makefile.rhsilent`。
+几乎有一半是安装文件。
+
+21 files have been changed in 2019 version.  
+They are program files: `Bmolec.f`, `Eqlib.f`, `Ewfind.f`, `Inmodel.f`, `Lineinfo.f`, `Mol.com`, `Moog.f`, `Moogsilent.f`, `Nearly.f`, `Opacit.f`, `Opacmetals.f`, `Specplot.f`, `Sunder.f`; and installation files: `Makefile.macdesk`, `Makefile.macdesksilent`, `Makefile.maclap`, `Makefile.maclapsilent`, `Makefile.rh`, `Makefile.rh64`, `Makefile.rh64silent`, `Makefile.rhsilent`.
+
+#### Bmolec
+
+> This routine contains the default list of molecules and ions used in the
+     equilibrium calculations. This list includes species needed for
+     continuous opacity and damping calculations in addition to the ions and
+     molecules that have an affect of the partial pressures of the following:
+     H, He, C, N, O, Mg, Al, Si, P, S, Cl, Ca, Ti, V, Cr, and Fe.
+
+- He+, F+, Al+, Si+, Ti+, Fe+, AlH, SiH, FeH, MgO, and TiO are added into variable `smallmollist`.
+- F+ is added into variable `largemollist`.
+- Partition functions of H_2O and CO_2 are added and are from [HITRAN](https://hitran.org/data/Q/) website.
+
+#### Eqlib
+
+Only some comments are added.
+
+#### Ewfind
+
+Some calculation detail and output format is change (I think they just simply the code but do not make change to the result).
+Further I am not using this subroutine.
+
+#### Inmodel
+
+The length of default molecule list is enlarged (probably consistent with `Bmolec`).
+The valiable `numdens` now are not used in 2019 version.
+
+#### Lineinfo
+
+Some calculation detail is changed according to `Sunder`.
+
+#### Makefile
+
+The make detail is changed. Hope it works without modification.
+
+A sentence "NOTE: the isotop driver has been eliminated; your synthesis needs for elemental and isotopic abundances now can be handled with the synth driver" is added.
+
+#### Mol.com
+
+Variable name changed and added.
+
+#### Moog.f
+
+A new warning on `isotop`.
+
+#### Nearly
+
+Allowed triatomic calculation for H_2O and CO_2.
+
+#### Opacit, Opacmetals
+
+Number slightly changed.
+
+#### Specplot
+
+Output changed, but this subroutine is not used by me.
+
+#### Sunder
+
+> This routine breaks up molecule amol into leftmost atom i1 and        
+     the rest of the molecule i2.
+
+Not sure yet.
