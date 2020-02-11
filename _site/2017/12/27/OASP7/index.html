@@ -183,7 +183,8 @@
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{align} \frac{dI_\nu}{d\tau_\nu} &= -I_\nu + \frac{j_\nu}{\kappa_\nu} \\  &= -I_\nu + S_\nu \end{align} \tag{7.1} %]]></script>
 
-<p>“对吧看着很复杂的东西为什么要去管呢？把它搞成另一个变量就好了嘛！”在这样的思想指导下我们把<script type="math/tex">\frac{j_\nu}{\kappa_\nu}</script>叫做<strong>源函数</strong><script type="math/tex">S_\nu</script>。当然实际上源函数还是代表着辐射转移方程发射（光强增加）的那一部分，只是为了凑前面光损部分的简单形式它打了个折扣，衡量得是发射与吸收的比；吸收占比越大，就越靠近负e指数下降。</p>
+<p>在这里光深的微分（当然光深本身也一样）<script type="math/tex">d\tau_\nu</script>是一个无量纲量，所以<script type="math/tex">\kappa_\nu \rho</script>的单位是<script type="math/tex">\text{cm}^{-1}</script>，<script type="math/tex">\kappa_\nu</script>的单位是<script type="math/tex">\text{cm}^{2} \text{g}^{-1}</script>；同时要注意的是不同的作者对<script type="math/tex">\kappa_\nu</script>的定义不同：有的将<script type="math/tex">\kappa_\nu \rho</script>叫做<script type="math/tex">\kappa_\nu</script>。
+“看着很复杂的东西为什么要去管呢？把它搞成另一个变量就好了嘛！”在这样的思想指导下我们把<script type="math/tex">\frac{j_\nu}{\kappa_\nu}</script>叫做<strong>源函数</strong><script type="math/tex">S_\nu</script>。当然实际上源函数还是代表着辐射转移方程发射（光强增加）的那一部分，只是为了凑前面光损部分的简单形式它打了个折扣，衡量得是发射与吸收的比；吸收占比越大，就越靠近负e指数下降。</p>
 
 <p>看着式<script type="math/tex">(7.1)</script>我们很轻易地用膝盖想到了方程的通解应该有这样的形式：</p>
 
@@ -230,20 +231,20 @@
 
 <script type="math/tex; mode=display">\frac{d I_\nu}{d r} \frac{\cos{\theta}}{\kappa_\nu\rho} = -I_\nu + S_\nu</script>
 
-<p>虽然不知道为什么，但是在这里我们可以定义一个和<script type="math/tex">dr</script>反向的量<script type="math/tex">dx = -dr</script>以及<script type="math/tex">d\tau'_\nu = \kappa_\nu\rho dr</script>，使得这个方程的解为：</p>
+<p>虽然不知道为什么，但是在这里我们可以定义一个和<script type="math/tex">dr</script>反向的量<script type="math/tex">dx = -dr</script>以及径向的光深<script type="math/tex">d\tau'_\nu = \kappa_\nu\rho dr</script>，使得这个方程的解为（推到过程和前面一样）：</p>
 
-<script type="math/tex; mode=display">I_\nu(\tau_\nu) = \int_c^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} d\tau'_\nu \tag{7.8}</script>
+<script type="math/tex; mode=display">I_\nu(\tau_\nu) = \int_c^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \tag{7.8}</script>
 
-<p>就是在<script type="math/tex">t_\nu, \tau_\nu</script>后面加了个<script type="math/tex">-\sec{\theta}</script>同时把常数放进了积分下限而已。这里把原来式子的<script type="math/tex">I_\nu(0)e^{-\tau_\nu}</script>放到了积分号的下限里面是因为之前只有视线方向一个方向，但是现在有了恒星的径向（以及反径向）和视线方向，就有一个夹角的问题：</p>
+<p>就是在<script type="math/tex">t_\nu, \tau_\nu</script>后面加了个<script type="math/tex">-\sec{\theta}</script>而已。这里的<script type="math/tex">c</script>是任意的一个点，所以我们要引入恒星大气的边界条件：大气顶部(<script type="math/tex">c=0</script>)或者底部(<script type="math/tex">c=\infty</script>)。现在有了恒星的径向（以及反径向）和视线方向，就有一个夹角的问题：</p>
 
 <p><img src="/img/in-post/post-OASP7/rt2.png" alt="" /></p>
 
 <p>当<script type="math/tex">\theta > 90^\circ</script>的时候是从外往里的方向，反之是从里往外。对于式子<script type="math/tex">(7.4)</script>来说不同的方向只是换一个起始点和矢量而已，但是现在对于恒星光球层内部和外部来说有不同（而且可以确定）的边界条件，所以视线方向向内和向外的光强分别为：</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
-\begin{align} I_\nu^\mathrm{out} &= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \\ I_\nu^\mathrm{in} &= -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \end{align} %]]></script>
+\begin{align} I_\nu^\mathrm{out} &= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu + I_\nu(\infty) e^{-(\infty-\tau_\nu)\sec{\theta}} \\ I_\nu^\mathrm{in} &= -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu + I_\nu(0) e^{-(0-\tau_\nu)\sec{\theta}} \end{align} %]]></script>
 
-<p>也就是说方向向外时从光球层最底层开始算，光深为<script type="math/tex">\infty</script>，向内时从恒星表面开始算，光深为<script type="math/tex">0</script>。视线方向上某一点的“总光强”为：</p>
+<p>也就是说方向向外时从光球层最底层开始算，光深为<script type="math/tex">\infty</script>，向内时从恒星表面开始算，光深为<script type="math/tex">0</script>。一般来说我们认为从恒星大气顶部往里的光强<script type="math/tex">I_\nu(0)=0</script>（忽略其他天体照射到恒星的光），同时从恒星大气底部向外的光强<script type="math/tex">I_\nu(\infty)=0</script>，因为里面辐射和物质完全热动平衡，光是透不出来的。那么视线方向上某一点的“总光强”为：</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{align} I_\nu(\tau_\nu) &= I_\nu^\mathrm{out} + I_\nu^\mathrm{in} \\ &= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \end{align} \tag{7.9} %]]></script>
@@ -504,7 +505,7 @@ I(\tau) = \begin{cases} I^\mathrm{out}(\tau) & 0 \le \theta \le \pi/2 \\ I^\math
                             
         				
                             
-                				<a href="/tags/#learning" title="learning" rel="37">
+                				<a href="/tags/#learning" title="learning" rel="38">
                                     learning
                                 </a>
                             
@@ -640,7 +641,7 @@ I(\tau) = \begin{cases} I^\mathrm{out}(\tau) & 0 \le \theta \le \pi/2 \\ I^\math
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2019
+                    Copyright &copy; Mingjie's Blog 2020
                     <br>
                     Theme by <a href="http://huangxuan.me">Hux</a> |
                     <iframe

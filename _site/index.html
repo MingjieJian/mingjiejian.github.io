@@ -154,6 +154,73 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/02/05/NLTE-RT-Model/">
+        <h2 class="post-title">
+            NLTE下的辐射转移和大气模型
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Avrett 2008 Lecture Note
+        </h3>
+        
+        <div class="post-content-preview">
+            
+  基本概念/方程
+  单色散射
+  谱线辐射 （二能级原子）    
+      二能级原子的解
+    
+  
+
+
+基本概念/方程
+
+参考OASP5。
+
+
+
+在各向同性下辐射强度：
+
+
+
+平均辐射强度：
+
+
+
+单色能量密度：
+
+
+
+单色天文流量（还是各向同性）：
+
+
+
+流量的另一个定义：
+
+
+
+斯特芬-玻尔兹曼定律：
+
+
+
+辐射转移方程(1)：
+
+
+
+源函数、光深：
+
+
+
+所以辐射转移...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on February 5, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2019/12/24/MOOG-2019/">
         <h2 class="post-title">
             MOOG 2017与2019版本对比
@@ -165,14 +232,12 @@
         
         <div class="post-content-preview">
             Chris Sneden的MOOG悄咪咪地从FEB2017版变成了NOV2019版。
+Let’s see what is changed.
 
-有什么不同？
+Modified functions
 
-文件上的变化 (New/deleted files)
-
-2017版的Estim.f和Minimax.f在2019版中消失了。2019版中多了Inmodel.new、Setmols.f和Setmols.r。
-
-Estim.f and Minimax.f no longer exist in ...
+The driver isotop is deprecated, and its functions are merged into the driver synth.
+To my understanding, ...
         </div>
     </a>
     <p class="post-meta">
@@ -417,38 +482,6 @@ Points：
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/06/10/sr-process/">
-        <h2 class="post-title">
-            快过程和慢过程
-        </h2>
-        
-        <h3 class="post-subtitle">
-            上上下下左右左右BA!
-        </h3>
-        
-        <div class="post-content-preview">
-            先来复习一下
-
-衰变
-
-
-
-原子喷出一个粒子（或者说氦原子核）；质量数-4，原子序数-2。基本上只会在比较重的原子里面发生，由核力和电磁力主导。在恒星核合成中比较少见，因为需要重的原子。
-
-衰变
-
-
-
-原子里面的某一个中子喷出一个电子，自己变成质子；原子质量数不变，原子序数+1，原子变得更稳定(衰变)。可以有反过程，原子里面的某一个质子喷出一个反电子，自己变成中子(衰变)。原子吸收一个电子使...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on June 10, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -503,7 +536,7 @@ Points：
                             
                         
                             
-                                <a href="/tags/#learning" title="learning" rel="37">
+                                <a href="/tags/#learning" title="learning" rel="38">
                                     learning
                                 </a>
                             
@@ -628,7 +661,7 @@ Points：
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2019
+                    Copyright &copy; Mingjie's Blog 2020
                     <br>
                     Theme by <a href="http://huangxuan.me">Hux</a> |
                     <iframe

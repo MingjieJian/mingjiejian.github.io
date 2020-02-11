@@ -22,7 +22,8 @@ $$ dI_\nu = -\kappa_\nu \rho I_\nu ds + j_\nu\rho ds $$
 
 $$ \begin{align} \frac{dI_\nu}{d\tau_\nu} &= -I_\nu + \frac{j_\nu}{\kappa_\nu} \\  &= -I_\nu + S_\nu \end{align} \tag{7.1}$$
 
-“对吧看着很复杂的东西为什么要去管呢？把它搞成另一个变量就好了嘛！”在这样的思想指导下我们把$$ \frac{j_\nu}{\kappa_\nu} $$叫做**源函数**$$ S_\nu $$。当然实际上源函数还是代表着辐射转移方程发射（光强增加）的那一部分，只是为了凑前面光损部分的简单形式它打了个折扣，衡量得是发射与吸收的比；吸收占比越大，就越靠近负e指数下降。
+在这里光深的微分（当然光深本身也一样）$$ d\tau_\nu $$是一个无量纲量，所以$$ \kappa_\nu \rho $$的单位是$$ \text{cm}^{-1} $$，$$ \kappa_\nu $$的单位是$$ \text{cm}^{2} \text{g}^{-1} $$；同时要注意的是不同的作者对$$ \kappa_\nu $$的定义不同：有的将$$ \kappa_\nu \rho $$叫做$$ \kappa_\nu $$。
+“看着很复杂的东西为什么要去管呢？把它搞成另一个变量就好了嘛！”在这样的思想指导下我们把$$ \frac{j_\nu}{\kappa_\nu} $$叫做**源函数**$$ S_\nu $$。当然实际上源函数还是代表着辐射转移方程发射（光强增加）的那一部分，只是为了凑前面光损部分的简单形式它打了个折扣，衡量得是发射与吸收的比；吸收占比越大，就越靠近负e指数下降。
 
 看着式$$ (7.1) $$我们很轻易地用膝盖想到了方程的通解应该有这样的形式：
 
@@ -68,19 +69,19 @@ $$ \frac{\partial I_\nu}{\partial r} \frac{\cos{\theta}}{\kappa_\nu\rho} - \frac
 
 $$ \frac{d I_\nu}{d r} \frac{\cos{\theta}}{\kappa_\nu\rho} = -I_\nu + S_\nu$$
 
-虽然不知道为什么，但是在这里我们可以定义一个和$$ dr $$反向的量$$ dx = -dr $$以及$$ d\tau'_\nu = \kappa_\nu\rho dr $$，使得这个方程的解为：
+虽然不知道为什么，但是在这里我们可以定义一个和$$ dr $$反向的量$$ dx = -dr $$以及径向的光深$$ d\tau'_\nu = \kappa_\nu\rho dr $$，使得这个方程的解为（推到过程和前面一样）：
 
-$$ I_\nu(\tau_\nu) = \int_c^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} d\tau'_\nu \tag{7.8} $$
+$$ I_\nu(\tau_\nu) = \int_c^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \tag{7.8} $$
 
-就是在$$ t_\nu, \tau_\nu $$后面加了个$$ -\sec{\theta} $$同时把常数放进了积分下限而已。这里把原来式子的$$ I_\nu(0)e^{-\tau_\nu} $$放到了积分号的下限里面是因为之前只有视线方向一个方向，但是现在有了恒星的径向（以及反径向）和视线方向，就有一个夹角的问题：
+就是在$$ t_\nu, \tau_\nu $$后面加了个$$ -\sec{\theta} $$而已。这里的$$ c $$是任意的一个点，所以我们要引入恒星大气的边界条件：大气顶部($$ c=0 $$)或者底部($$ c=\infty $$)。现在有了恒星的径向（以及反径向）和视线方向，就有一个夹角的问题：
 
 ![](/img/in-post/post-OASP7/rt2.png)
 
 当$$ \theta > 90^\circ $$的时候是从外往里的方向，反之是从里往外。对于式子$$ (7.4) $$来说不同的方向只是换一个起始点和矢量而已，但是现在对于恒星光球层内部和外部来说有不同（而且可以确定）的边界条件，所以视线方向向内和向外的光强分别为：
 
-$$ \begin{align} I_\nu^\mathrm{out} &= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \\ I_\nu^\mathrm{in} &= -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \end{align} $$
+$$ \begin{align} I_\nu^\mathrm{out} &= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu + I_\nu(\infty) e^{-(\infty-\tau_\nu)\sec{\theta}} \\ I_\nu^\mathrm{in} &= -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu + I_\nu(0) e^{-(0-\tau_\nu)\sec{\theta}} \end{align} $$
 
-也就是说方向向外时从光球层最底层开始算，光深为$$ \infty $$，向内时从恒星表面开始算，光深为$$ 0 $$。视线方向上某一点的“总光强”为：
+也就是说方向向外时从光球层最底层开始算，光深为$$ \infty $$，向内时从恒星表面开始算，光深为$$ 0 $$。一般来说我们认为从恒星大气顶部往里的光强$$ I_\nu(0)=0 $$（忽略其他天体照射到恒星的光），同时从恒星大气底部向外的光强$$ I_\nu(\infty)=0 $$，因为里面辐射和物质完全热动平衡，光是透不出来的。那么视线方向上某一点的“总光强”为：
 
 $$ \begin{align} I_\nu(\tau_\nu) &= I_\nu^\mathrm{out} + I_\nu^\mathrm{in} \\ &= \int_{\tau_\nu}^\infty S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu -\int_0^{\tau_\nu} S_\nu e^{-(t_\nu-\tau_\nu)\sec{\theta}}\sec{\theta} dt_\nu \end{align} \tag{7.9}$$
 

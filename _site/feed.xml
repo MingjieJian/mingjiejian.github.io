@@ -5,17 +5,210 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 24 Dec 2019 18:00:23 +0900</pubDate>
-    <lastBuildDate>Tue, 24 Dec 2019 18:00:23 +0900</lastBuildDate>
+    <pubDate>Tue, 11 Feb 2020 15:25:17 +0900</pubDate>
+    <lastBuildDate>Tue, 11 Feb 2020 15:25:17 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
+        <title>NLTE下的辐射转移和大气模型</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#基本概念方程&quot; id=&quot;markdown-toc-基本概念方程&quot;&gt;基本概念/方程&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#单色散射&quot; id=&quot;markdown-toc-单色散射&quot;&gt;单色散射&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#谱线辐射-二能级原子&quot; id=&quot;markdown-toc-谱线辐射-二能级原子&quot;&gt;谱线辐射 （二能级原子）&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#二能级原子的解&quot; id=&quot;markdown-toc-二能级原子的解&quot;&gt;二能级原子的解&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;基本概念方程&quot;&gt;基本概念/方程&lt;/h1&gt;
+
+&lt;p&gt;参考&lt;a href=&quot;https://mingjiejian.github.io/2017/12/18/OASP5/&quot;&gt;OASP5&lt;/a&gt;。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu = \cos{\theta}&lt;/script&gt;
+
+&lt;p&gt;在各向同性下辐射强度&lt;script type=&quot;math/tex&quot;&gt;I_\mu&lt;/script&gt;：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = I_\nu(r, \mu)&lt;/script&gt;
+
+&lt;p&gt;平均辐射强度：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_\nu = \frac{1}{4\pi} \int I_\nu d\Omega = \frac{1}{2} \int_{-1}^1 I_\nu d\mu&lt;/script&gt;
+
+&lt;p&gt;单色能量密度：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;U_\nu = \frac{4\pi}{c} J_\nu&lt;/script&gt;
+
+&lt;p&gt;单色天文流量（还是各向同性）：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi F_\nu = \int I_\nu \cos{\theta} d\Omega = 2\pi \int_{-1}^1 \mu I_\nu d\mu&lt;/script&gt;
+
+&lt;p&gt;流量的另一个定义：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H_\nu = \frac{1}{2} \int I_\nu \mu d\mu = \frac{\pi F_\nu}{4\pi}&lt;/script&gt;
+
+&lt;p&gt;斯特芬-玻尔兹曼定律：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi F = \pi \int_{0}^\infty F_\nu d\nu = \sigma T_\mathrm{eff}&lt;/script&gt;
+
+&lt;p&gt;辐射转移方程(1)：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI_\nu}{dl} = -\kappa_\nu I_\nu + \eta_\nu&lt;/script&gt;
+
+&lt;p&gt;源函数、光深：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu = \frac{\eta_\nu}{\kappa_\nu}, d\tau_\nu = -\kappa_\nu \mu dl&lt;/script&gt;
+
+&lt;p&gt;所以辐射转移方程(2)：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu \frac{dI_\nu}{d\tau_\nu} = I_\nu - S_\nu&lt;/script&gt;
+
+&lt;p&gt;这里的&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;是OASP5中的&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu \rho&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;对上式在&lt;script type=&quot;math/tex&quot;&gt;\mu&lt;/script&gt;方向上积分，有：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dH_\nu}{d\tau_\nu} = J_\nu - S_\nu&lt;/script&gt;
+
+&lt;p&gt;辐射转移方程的解为（忽略频率下标）：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(\tau, \mu) =I(0,\mu)e^{-\frac{(0-\tau)}{\mu}} - \frac{1}{\mu} \int_0^\tau e^{-\frac{t-\tau}{\mu}} S(t) dt, ~ \text{inward}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(\tau, \mu) =I(\tau_m,\mu)e^{-\frac{(\tau_m-\tau)}{\mu}} + \frac{1}{\mu} \int_\tau^{\tau_m} e^{-\frac{t-\tau}{\mu}} S(t) dt, ~ \text{outward}&lt;/script&gt;
+
+&lt;p&gt;因为&lt;script type=&quot;math/tex&quot;&gt;\tau_m=\infty&lt;/script&gt;时光射不出来，&lt;script type=&quot;math/tex&quot;&gt;I(\tau_m,\mu)&lt;/script&gt;一般不会为指数增长，则在恒星表面向外的光强为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(0, \mu) = \frac{1}{\mu} \int_0^{\infty} e^{-\frac{t}{\mu}} S(t) dt&lt;/script&gt;
+
+&lt;p&gt;可以推出当&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;是&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;的线性函数的时候有&lt;script type=&quot;math/tex&quot;&gt;I(0,\mu) = S(\tau=\mu)&lt;/script&gt;，这是Eddington-Barbier关系。&lt;/p&gt;
+
+&lt;p&gt;参考OASP7的&lt;script type=&quot;math/tex&quot;&gt;(7.16)&lt;/script&gt;，引入&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;积分之后平均光强为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\tau) = \frac{1}{2} \int_0^{\tau_m} E_1(|t-\tau|) S(t)dt = \Lambda\{S\}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;叫做Lambda opeartor。&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\int_0^\infty E_1(t)dt = 1&lt;/script&gt;（未证实），所以当&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;为常数的时候在光深大的地方有&lt;script type=&quot;math/tex&quot;&gt;J=S&lt;/script&gt;（未证实），在表面有&lt;script type=&quot;math/tex&quot;&gt;J=\frac{1}{2}S&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;参考OASP7&lt;script type=&quot;math/tex&quot;&gt;(7.14)&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt;也可以写成&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;积分，以及&lt;script type=&quot;math/tex&quot;&gt;H(\tau) = \Phi\{S\}&lt;/script&gt;；同时&lt;script type=&quot;math/tex&quot;&gt;\int_0^\infty E_2(t)dt = 0.5&lt;/script&gt;（未证实），所以当&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;为常数的时候在光深大的地方有&lt;script type=&quot;math/tex&quot;&gt;H=0&lt;/script&gt;（未证实），在表面有&lt;script type=&quot;math/tex&quot;&gt;H=\frac{1}{4}S&lt;/script&gt;。当&lt;script type=&quot;math/tex&quot;&gt;S(\tau) = C_0 + C_1 \tau&lt;/script&gt;时光深大的时候&lt;script type=&quot;math/tex&quot;&gt;H \rightarrow (1/3)C_1&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;当热动平衡的时候，光强各向同性且由普朗克函数&lt;script type=&quot;math/tex&quot;&gt;B_\nu(T)&lt;/script&gt;描述。所有的粒子速度由麦克斯韦分布描述、跃迁由玻尔兹曼方程描述、电离由萨哈-玻尔兹曼方程描述。&lt;/p&gt;
+
+&lt;p&gt;LTE下不同层上有不同的温度，所以这个时候只有&lt;script type=&quot;math/tex&quot;&gt;S_\nu = B_\nu&lt;/script&gt;，而光强&lt;script type=&quot;math/tex&quot;&gt;I_\nu&lt;/script&gt;必须由辐射转移方程通过&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;计算出来。但是这里讨论的是NLTE，&lt;script type=&quot;math/tex&quot;&gt;S_\nu \ne B_\nu&lt;/script&gt;，那么我们如何获得&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;呢？这就是这个Note要解决的事情了。&lt;/p&gt;
+
+&lt;h1 id=&quot;单色散射&quot;&gt;单色散射&lt;/h1&gt;
+
+&lt;p&gt;我们先看一个简单的例子，看看怎么从&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;求出&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;来。这里假设原子的散射是各向同性以及不改变光子的频率的，那么根据OASP5中的“纯各向同性散射”有&lt;script type=&quot;math/tex&quot;&gt;S_\nu = J_\nu&lt;/script&gt;。我们将辐射转移方程写成LTE部分以及散射部分：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\frac{dI}{dl} &amp; = -\kappa^{ab} (I-S^{ab}) \\
+\frac{dI}{dl} &amp; = -\kappa^{sc} (I-S^{sc}) \\
+S^{ab} &amp;= B_\nu, ~ \text{LTE part}\\
+S^{ab} &amp;= J_\nu, ~ \text{scatter part}\\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;所以&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI}{dl} = -\kappa^{ab} (I-B) - \kappa^{sc} (I-J)&lt;/script&gt;
+
+&lt;p&gt;然后我们凑辐射转移方程的形式，令：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d\tau = - (\kappa^{ab} + \kappa^{sc}) \mu dl, \epsilon = \frac{\kappa^{ab}}{\kappa^{ab}+\kappa^{sc}}&lt;/script&gt;
+
+&lt;p&gt;则有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu \frac{dI}{d\tau} = I - S&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+S &amp;= \epsilon B + (1-\epsilon) J \\
+&amp;= \epsilon B + (1-\epsilon) \Lambda\{S\}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;这个时候我们发现上式中只有&lt;script type=&quot;math/tex&quot;&gt;B, S&lt;/script&gt;，那么我们就可以从&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;求出&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;了。&lt;/p&gt;
+
+&lt;p&gt;我们来看看&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;的一些解。将&lt;script type=&quot;math/tex&quot;&gt;E_1(x)&lt;/script&gt;用1阶近似&lt;script type=&quot;math/tex&quot;&gt;\sqrt{3} e^{-\sqrt{3}x}&lt;/script&gt;代替，有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(\tau) = (1-\epsilon) \int_0^\infty \frac{\sqrt{3}}{2} e^{-\sqrt{3}|t-\tau|}S(t)dt + \epsilon B&lt;/script&gt;
+
+&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;S, \epsilon&lt;/script&gt;都为常数的时候，有解：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(\tau) = B [1-(1-\sqrt{\epsilon})e^{-\sqrt{3\epsilon}\tau}]&lt;/script&gt;
+
+&lt;p&gt;可以代进去验证。它说明了1)&lt;script type=&quot;math/tex&quot;&gt;S(0) = \sqrt{\epsilon} B&lt;/script&gt;，2)仅当&lt;script type=&quot;math/tex&quot;&gt;\tau &gt; 1 / \sqrt{\epsilon}&lt;/script&gt;的时候（量级上）&lt;script type=&quot;math/tex&quot;&gt;S \rightarrow B&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;上述的论证说明了尽管吸收是LTE的，当散射比例比较高的时候（&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;较小），&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;是不等于&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;的，而是小于&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;，导致了更深处的光也能射出来。同时&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{\sqrt{\epsilon}}&lt;/script&gt;为热化长度（LTE与否的判据），虽然下一节会说谱线的热化长度实际上是&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{\epsilon}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h1 id=&quot;谱线辐射-二能级原子&quot;&gt;谱线辐射 （二能级原子）&lt;/h1&gt;
+
+&lt;p&gt;这一部分的内容在TSA的14.2中有更详细的描述，这里有的描述会参考那一章。&lt;/p&gt;
+
+&lt;p&gt;思路是一样的，从LTE到NLTE。我们从包含辐射以及碰撞平衡的统计平衡方程开始：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;n_2(A_{21} + B_{21}\bar{J} + C_{21}) = n_1 (B_{12} \bar{J} + C_12)&lt;/script&gt;
+
+&lt;p&gt;这里&lt;script type=&quot;math/tex&quot;&gt;\bar{J} = \int_0^\infty J_\nu \phi_\nu d\nu&lt;/script&gt;是经过谱线轮廓函数&lt;script type=&quot;math/tex&quot;&gt;\phi_\nu&lt;/script&gt;调制的平均光强。在CDR的情况下，&lt;script type=&quot;math/tex&quot;&gt;\phi_\nu = \frac{1}{\Delta\nu_D \sqrt{\pi}} e^{-\left(\frac{\nu-\nu_0}{\Delta\nu_D}\right)^2}&lt;/script&gt;是一个高斯函数，并且&lt;script type=&quot;math/tex&quot;&gt;\Delta\nu_D = \frac{\nu_0}{c} \sqrt{\frac{2kT}{m_a}}&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;m_a&lt;/script&gt;是吸收光子的原子的质量。&lt;script type=&quot;math/tex&quot;&gt;A, B, C&lt;/script&gt;为自发、受激辐射以及碰撞跃迁的爱因斯坦系数。&lt;/p&gt;
+
+&lt;p&gt;此时的辐射转移方程为&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI_\nu}{dl} = -\frac{h\nu}{4\pi} \phi_\nu [(n_1B_{12} - n_2B_{21})I_\nu - n_2 A_{21}]&lt;/script&gt;
+
+&lt;p&gt;定义光深、吸收系数以及源函数：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+d\tau_\nu &amp;= -\kappa_\nu \mu dl \\
+\kappa_\nu &amp;= \frac{h\nu}{4\pi} (n_1B_{12} - n_2B_{21}) \phi_nu = \frac{h\nu}{4\pi} n_1B_{12} (1 - \frac{n_2g_1}{n_1g_2}) \phi_nu \\
+S_\nu &amp;= \frac{2h\nu^3}{c^2} \frac{1}{\frac{n_2g_1}{n_1g_2}-1} \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;在热动平衡的情况下，上式的&lt;script type=&quot;math/tex&quot;&gt;A, B&lt;/script&gt;系数项相等，有&lt;script type=&quot;math/tex&quot;&gt;\frac{n_2}{n_1} = \frac{n_2^*}{n_1^*} = \frac{C_{12}}{C_{21}}&lt;/script&gt;，源函数就退成了&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;。但是我们现在关心的是NLTE的情况，&lt;script type=&quot;math/tex&quot;&gt;A, B&lt;/script&gt;系数项不相等导致&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt;的关系不是LTE的情况，所以我们需要把整个统计平衡方程代到源函数里面。经过一段运算之后（我算不出来，TSA说里面的参考文献[721]中有，但是我还没找到），我们可以得出：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+S &amp;= \frac{\bar{J} + \varepsilon B}{1 + \varepsilon} \\
+\varepsilon &amp;= \frac{C_{21}}{A_{21}}{1-e^{-\frac{h\nu}{kT}}}\\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;以及&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+S &amp;= (1-\epsilon)\bar{J} + \epsilon B \\
+\epsilon &amp;= \frac{\varepsilon}{1+\varepsilon}\\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;这个形式就和上一节散射的源函数一致了。最后有（未确认）：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\bar{J} = \int_0^\infty \int_0^\infty \phi^2 E_1(\phi |t-\tau|) d\nu S(t) dt&lt;/script&gt;
+
+&lt;h2 id=&quot;二能级原子的解&quot;&gt;二能级原子的解&lt;/h2&gt;
+
+&lt;p&gt;具体的解方法在TSA书中，这里抛开所有的推到过程定性地看看在某些特定的&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;下源函数和光强是什么样子的。&lt;/p&gt;
+
+&lt;p&gt;为了简化我们定义：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x = \frac{\nu - \nu_0}{\Delta \nu_D}&lt;/script&gt;
+</description>
+        <pubDate>Wed, 05 Feb 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/02/05/NLTE-RT-Model/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/02/05/NLTE-RT-Model/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
+    
+      <item>
         <title>MOOG 2017与2019版本对比</title>
-        <description>&lt;p&gt;Chris Sneden的&lt;a href=&quot;https://www.as.utexas.edu/~chris/moog.html&quot;&gt;MOOG&lt;/a&gt;悄咪咪地从FEB2017版变成了NOV2019版。&lt;/p&gt;
+        <description>&lt;p&gt;Chris Sneden的&lt;a href=&quot;https://www.as.utexas.edu/~chris/moog.html&quot;&gt;MOOG&lt;/a&gt;悄咪咪地从FEB2017版变成了NOV2019版。
+Let’s see what is changed.&lt;/p&gt;
 
-&lt;h2 id=&quot;有什么不同&quot;&gt;有什么不同？&lt;/h2&gt;
+&lt;h2 id=&quot;modified-functions&quot;&gt;Modified functions&lt;/h2&gt;
 
-&lt;h3 id=&quot;文件上的变化-newdeleted-files&quot;&gt;文件上的变化 (New/deleted files)&lt;/h3&gt;
+&lt;p&gt;The driver &lt;code class=&quot;highlighter-rouge&quot;&gt;isotop&lt;/code&gt; is deprecated, and its functions are merged into the driver &lt;code class=&quot;highlighter-rouge&quot;&gt;synth&lt;/code&gt;.
+To my understanding, we need to use &lt;code class=&quot;highlighter-rouge&quot;&gt;isotop&lt;/code&gt; driver before when we specify the &lt;code class=&quot;highlighter-rouge&quot;&gt;isotope&lt;/code&gt; variable, but now we don’t need to do this.&lt;/p&gt;
+
+&lt;h2 id=&quot;newdeleted-files&quot;&gt;New/deleted files&lt;/h2&gt;
 
 &lt;p&gt;2017版的&lt;code class=&quot;highlighter-rouge&quot;&gt;Estim.f&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Minimax.f&lt;/code&gt;在2019版中消失了。2019版中多了&lt;code class=&quot;highlighter-rouge&quot;&gt;Inmodel.new&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;Setmols.f&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Setmols.r&lt;/code&gt;。&lt;/p&gt;
 
@@ -98,6 +291,10 @@ The valiable &lt;code class=&quot;highlighter-rouge&quot;&gt;numdens&lt;/code&gt
 &lt;/blockquote&gt;
 
 &lt;p&gt;Not sure yet.&lt;/p&gt;
+
+&lt;h2 id=&quot;does-the-synthetic-spectra-changed&quot;&gt;Does the synthetic spectra changed?&lt;/h2&gt;
+
+&lt;p&gt;No (or I haven’t found them for now). I did a quick compare using the same patch file and found the differences between spectra are 0.&lt;/p&gt;
 </description>
         <pubDate>Tue, 24 Dec 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/12/24/MOOG-2019/</link>
@@ -1116,107 +1313,6 @@ stage of thermal pulsing and dredge-up of carbon. In general, microturbulence ap
         <pubDate>Wed, 19 Jun 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/06/19/spec-term/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/06/19/spec-term/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>快过程和慢过程</title>
-        <description>&lt;h2 id=&quot;先来复习一下&quot;&gt;先来复习一下&lt;/h2&gt;
-
-&lt;h3 id=&quot;alpha衰变&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;衰变&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-sr-process/01-Alpha_Decay.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;原子喷出一个&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;粒子（或者说氦原子核）；质量数-4，原子序数-2。基本上只会在比较重的原子里面发生，由核力和电磁力主导。在恒星核合成中比较少见，因为需要重的原子。&lt;/p&gt;
-
-&lt;h3 id=&quot;beta衰变&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/post-sr-process/02-Beta-minus_Decay.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;原子里面的某一个中子喷出一个电子，自己变成质子；原子质量数不变，原子序数+1，原子变得更稳定(&lt;script type=&quot;math/tex&quot;&gt;\beta^-&lt;/script&gt;衰变)。可以有反过程，原子里面的某一个质子喷出一个反电子，自己变成中子(&lt;script type=&quot;math/tex&quot;&gt;\beta^+&lt;/script&gt;衰变)。原子吸收一个电子使得里面的质子变成中子有的时候也包含在&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变里面。&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变在之后的r和s过程中充当很重要的角色。&lt;/p&gt;
-
-&lt;h3 id=&quot;gamma衰变&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt;衰变&lt;/h3&gt;
-
-&lt;p&gt;就是普通的电子能级跃迁而已，不说了。&lt;/p&gt;
-
-&lt;h2 id=&quot;然后来学习一下&quot;&gt;然后来学习一下&lt;/h2&gt;
-
-&lt;h3 id=&quot;核素图&quot;&gt;核素图&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://blog.sdss.org/wp-content/uploads/2017/01/periodic_table.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;元素周期表上只列出了同种类的原子；它通过横向和纵向两个方向表征元素化学性质的变化；但是它并不能标示出全部的原子（质子数、中子数不同的原子），所以我们需要如下的核素图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Table_isotopes_en.svg/800px-Table_isotopes_en.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;核素图以质子数为横轴，中子数为纵轴，元素周期表上的稳定元素一般在图中的黑色线上；图中竖线表示同一种元素的同位素。由此我们可以将所有可能形成的原子都标示在这张图上。&lt;/p&gt;
-
-&lt;h4 id=&quot;beta稳定等高线&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;稳定等高线&lt;/h4&gt;
-
-&lt;p&gt;核素图中的核素大多数都不是稳定的；越靠近核素分布的中央它们的结合能越高，所以图中中央的黑色阶梯状分布核素就是稳定核素。其他所有的核素都会以各种方式向稳定核素衰变，这些各种方式（从图上能看出来）主要就是&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变，所以这条线也叫做&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;稳定等高线。顺便一提等高线的左上方为丰中子核素，右下方为丰质子核素。&lt;/p&gt;
-
-&lt;h4 id=&quot;原子核滴线nuclear-drip-line&quot;&gt;原子核滴线(Nuclear drip line)&lt;/h4&gt;
-
-&lt;p&gt;并不是任意的质子-中子数组合都能形成核素的；上面说的核素虽然不稳定，但还能存在一会；而核素图上白色的地方则根本不能形成核素；这个白色区域和有色区域的交界线就叫做原子核滴线（鬼知道这个名字是怎么滴出来的…）。丰质子一侧的滴线称为质子滴线，丰中子一侧的滴线称为中子滴线。&lt;/p&gt;
-
-&lt;h2 id=&quot;正文元素是怎么来的&quot;&gt;正文：元素是怎么来的？&lt;/h2&gt;
-
-&lt;p&gt;大爆炸来的呗。乔治·伽莫夫就是这么想的。虽然他提出了大爆炸理论，但是他当时认为现在宇宙中所有的元素都是大爆炸时候的核反应产生的。然后被汉斯·贝特等人提出的质子-质子链和碳氮氧循环抽了一巴掌：氦也可以在恒星内部合成，恒星内部核聚变最重可以形成到铁。那其他元素还是大爆炸的残留呗？又被&lt;a href=&quot;https://en.wikipedia.org/wiki/B2FH_paper&quot;&gt;B2FH理论&lt;/a&gt;抽了一巴掌：比铁重的元素还是在恒星里面合成的！&lt;/p&gt;
-
-&lt;p&gt;那这些元素是怎么样合成的呢？&lt;/p&gt;
-
-&lt;h3 id=&quot;r过程&quot;&gt;R过程&lt;/h3&gt;
-
-&lt;p&gt;恒星总是会挂的；恒星挂掉的时候一般都会将里面合成的元素像三蹦子的排气管一样嘣出来（超新星爆发）。元素之间肯定会有碰撞，但是大家都是电中性的，里面又有电子又有核，不太容易凑到一起形成更重的元素；但是中子单纯地不带电（而且不大），可以方便地跑到原子核上和原子核纠缠在一起。正好超新星爆发的时候会在短时间内产生大量的中子流，正好让原子核吃个够。所以原子核在大量中子轰击下变成新元素的过程就是R（快）过程了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Fig3_nuclear_chart.jpg/1920px-Fig3_nuclear_chart.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如上图，原子核在短时间内接收了大量中子，会在核素图上向右移动（横纵轴反了）；但是它不能产生不稳定元素，所以只能沿着中子滴线走：往右几步，向上挪；再往右几步，又向上挪。在中子数达到50, 82, 186时因为中子壳层闭合，核素和中子的碰撞截面变小，所以主要发生&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变而不是接收中子。而因为中子很多，所以R过程最终形成的核素的原子序数会比较大（也就是比较重了）。当然了这个过程不是无限的，我认为主要是因为超新星爆发的时间很短，中子流很快就扩散到了宇宙空间，所以R过程只能在很短的时间内发生。&lt;/p&gt;
-
-&lt;p&gt;说白了R过程就是原子核被中子轰得一脸蒙蔽，还来不及&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变下一个就来了所以越吃越胖的故事。当然不能无限吃胖，太重了会有&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;衰变将中子和质子数降下来的。&lt;/p&gt;
-
-&lt;h3 id=&quot;s过程&quot;&gt;S过程&lt;/h3&gt;
-
-&lt;p&gt;反过来说，如果中子密度比较低，原子核反应过来了，吃一个中子&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变一下，不就是S（慢）过程了嘛。&lt;/p&gt;
-
-&lt;p&gt;具体来说就是原子核接收了一个中子之后停了下来，如果稳定就继续吃瓜等下一个中子，如果不稳定就&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;衰变到稳定，然后吃瓜。这样使得生成的核素更容易达到最终的稳定态（核素图中的黑色元素），所以S过程生成的元素质量没有R过程的那么大。&lt;/p&gt;
-
-&lt;p&gt;那哪里才有这些稀疏中子流让S过程发生呢？答案在渐进巨星支(AGB)里。AGB星可以提供中子源：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{^{13}_6C + ^4_2He \rightarrow ^{16}_{8}O + n}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{^{22}_{10}Ne + ^4_2He \rightarrow ^{25}_{12}Mg + n}&lt;/script&gt;
-
-&lt;p&gt;然后核素就可以快乐地像下图一样奔跑了：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/S-process-elem-Ag-to-Sb.svg/800px-S-process-elem-Ag-to-Sb.svg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/S-R-processes-atomic-mass-201-to-210.svg/500px-S-R-processes-atomic-mass-201-to-210.svg.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;这里的浅绿色箭头和深绿色箭头各是什么衰变呢？&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;还是因为S过程太慢，到达铋(83)之后会短暂生成钋(84)，但是钋接收中子之后会回到铅(82)，然后生成铋，如此循环。&lt;/p&gt;
-
-&lt;h3 id=&quot;谁多谁少&quot;&gt;谁多谁少？&lt;/h3&gt;
-
-&lt;p&gt;前面的元素周期表已经给出了模型的预测值：Dying low-mass stars的是S过程，其他的出除去Big bang fusion, cosmic ray fission和human synthesis剩下的都是R过程元素。另外其实还有P（质子）过程和Rp（快质子捕获）过程，对某些核素素也有贡献，但是不在本文范围内就略过了，&lt;/p&gt;
-
-&lt;h2 id=&quot;这俩过程有什么用&quot;&gt;这俩过程有什么用？&lt;/h2&gt;
-
-&lt;p&gt;这两个过程为银河系考古学提供了更多的选择；我们不仅仅可以选择铁元素丰度来表征不同population的恒星，也可以选择更重的元素。如果某个地方R过程元素特别高，我们可以猜测那里之前可能有过很多的超新星爆发，也就是很久以前有大量的恒星形成；如果银河系中心到边缘的S过程元素逐渐减少，那么……我还没有好的结论。这些元素也可以被用到河外星系的观测里面。&lt;/p&gt;
-
-&lt;h2 id=&quot;refs&quot;&gt;Refs&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/S-process&quot;&gt;s过程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/R-process&quot;&gt;r过程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 10 Jun 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/06/10/sr-process/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/10/sr-process/</guid>
         
         <category>learning</category>
         
