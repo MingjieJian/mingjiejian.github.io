@@ -196,3 +196,13 @@ import random
 list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 slice = random.sample(list, 5)  #从list中随机获取5个元素，作为一个片断返回  
 ```
+
+# Unbuntu备忘
+
+https://server.etutsplus.com/apt-get-404-not-found/
+
+合并pdf
+`pdftk file1.pdf file2.pdf cat output mergedfile.pdf`
+
+# 服务器备忘
+https://blog.einverne.info/archive.html
