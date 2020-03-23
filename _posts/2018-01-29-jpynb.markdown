@@ -10,22 +10,14 @@ tags:
 
 ---
 
-## Catagory
+* any words
+{:toc}
 
-1. [Jpynb备忘](#jpynb)
-	1. [改变Notebook里面Markdown文字颜色](#jpynb-color_change)
-	2. [Matplotlib中`'\theta'`变为`heta`的问题](#jpynb-theta)
-2. [Python备忘](#py)
-	1. [Numpy中的矩阵合并](#py-array_stack)
-	2. [自己写包](#py-package)
-  3. Pandas
-  4. matplotlib
 
-<p id = "jpynb"></p>
-### Jpynb备忘
+# Jpynb备忘
 
-<p id = "jpynb-color_change"></p>
-#### 改变Notebook里面Markdown文字颜色
+
+## 改变Notebook里面Markdown文字颜色
 
 例如想要这样的效果：foo <font color='red'> bar </font> foo
 
@@ -33,32 +25,32 @@ tags:
 
 其实就是一个HTML的attribute。
 
-<p id = "jpynb-theta"></p>
-#### Matplotlib中`'\theta'`变为`heta`的问题
+
+## Matplotlib中`'\theta'`变为`heta`的问题
 
 这是因为`\t`在字符串中会被转义为Tab，所以要在字符串前加上一个`r`。
 
-<p id = "py"></p>
 
-#### 更新markdown中的图像
+
+## 更新markdown中的图像
 
 在路径后面加上一个`?1`，数字可以改变。
 
 [来源](https://stackoverflow.com/questions/37023166/how-to-reload-image-in-ipython-notebook)
 
-### Python备忘
+# Python备忘
 
 <p id = "py-array_stack"></p>
-#### Numpy中的矩阵合并
+## Numpy中的矩阵合并
 - 列合并/扩展：np.column_stack()
 - 行合并/扩展：np.row_stack()
 
 <p id = "py-pandas"></p>
-#### Pandas
+## Pandas
 
 DataFrame里面选出几列：`df[['a', 'b']]`
 
-#### 从pdf中提取表格
+### 从pdf中提取表格
 先安装tabula-py：
 `pip install tablua-py`
 
@@ -69,8 +61,88 @@ import tabula
 tabula.read_pdf('xxx.pdf', options='--pages 4')
 ```
 
-<p id = "py-package"></p>
-#### 自己写包
+### 读取固定宽度表格
+```py
+pd.read_fwf('catalog/Kovtyukh/Kovtyukh04/table1.dat',
+                           colspecs=[(0,10), (11, 15), (16,19), (20,24), (25,29), (30,34), (35,40), (41,46),
+                                     (47,52), (53,68)],
+                           names=['Star', 'Teff', 'N', 'e_Teff', 'logg', 'Vt', '[Fe/H]', 'VMAG',
+                                  'B-V', 'Rem'])
+```
+
+### 在已有的DataFeame中添加列
+
+`df1 = df1.assign(e=p.Series(np.random.randn(sLength)).values)`
+
+### 有关SettingwithCopy警告
+
+[这里](https://zhuanlan.zhihu.com/p/41202576)
+
+## Matplotlib
+
+### 防止重叠或者出边界
+
+`plt.tight_layout()`
+
+### 画密度散点图
+
+来自[这里](https://stackoverflow.com/questions/20105364/how-can-i-make-a-scatter-plot-colored-by-density-in-matplotlib?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import gaussian_kde
+
+# Generate fake data
+x = np.random.normal(size=1000)
+y = x * 3 + np.random.normal(size=1000)
+
+# Calculate the point density
+xy = np.vstack([x,y])
+z = gaussian_kde(xy)(xy)
+
+# Sort the points by density, so that the densest points are plotted last
+idx = z.argsort()
+x, y, z = x[idx], y[idx], z[idx]
+
+fig, ax = plt.subplots()
+cax = ax.scatter(x, y, c=z, s=5, edgecolor='')
+fig.colorbar(cax)
+plt.show()
+```
+
+### subplot中加上总标题
+```py
+plt.suptitle('This is a somewhat long figure title', fontsize=16)
+```
+
+### subplot中加上总xylabel
+```py
+plt.gcf().text(0.5, 0.04, 'LDR', fontsize=17)
+plt.subplots_adjust(left=0.07, right=0.93, top=0.85, bottom=0.15)
+```
+
+### subplot中加上编号（子图相对位置统一）
+```py
+ax1 = plt.subplot(121)
+plt.text(0.86, 0.89, '(a)', fontsize=14, transform = ax1.transAxes)
+```
+
+### 防止text重叠
+
+用[adjustText包](https://github.com/Phlya/adjustText)。
+
+## 在一个数组中随机抽取元素的方法
+
+来自[这里](https://blog.csdn.net/amy_wumanfang/article/details/64483340)
+```py
+import random
+#使用python random模块的sample函数从列表中随机选择一组元素
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+slice = random.sample(list, 5)  #从list中随机获取5个元素，作为一个片断返回  
+```
+
+# 自己写包
 
 一直都想这么干了，之前的代码都是复制粘贴，觉得很没有效率；所以决定将常用的代码写成一个包方便调用。目标是想numpy一样有层级，同时只导入包名能用Tab提示下面层级的内容。
 
@@ -117,85 +189,6 @@ from . import subpackage
 [Python Tutorial Chap. 6](https://docs.python.org/3/tutorial/modules.html#packages)<br>
 [How To Package Your Python Code](https://python-packaging.readthedocs.io/en/latest/index.html)<br>
 [Python导入模块的几种姿势](http://codingpy.com/article/python-import-101/)
-
-#### Pandas
-
-##### 读取固定宽度表格
-```py
-pd.read_fwf('catalog/Kovtyukh/Kovtyukh04/table1.dat',
-                           colspecs=[(0,10), (11, 15), (16,19), (20,24), (25,29), (30,34), (35,40), (41,46),
-                                     (47,52), (53,68)],
-                           names=['Star', 'Teff', 'N', 'e_Teff', 'logg', 'Vt', '[Fe/H]', 'VMAG',
-                                  'B-V', 'Rem'])
-```
-
-##### 在已有的DataFeame中添加列
-
-`df1 = df1.assign(e=p.Series(np.random.randn(sLength)).values)`
-
-##### 有关SettingwithCopy警告
-
-[这里](https://zhuanlan.zhihu.com/p/41202576)
-
-#### Matplotlib
-
-##### 防止重叠或者出边界
-
-`plt.tight_layout()`
-
-##### 画密度散点图
-
-来自[这里](https://stackoverflow.com/questions/20105364/how-can-i-make-a-scatter-plot-colored-by-density-in-matplotlib?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
-
-```py
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import gaussian_kde
-
-# Generate fake data
-x = np.random.normal(size=1000)
-y = x * 3 + np.random.normal(size=1000)
-
-# Calculate the point density
-xy = np.vstack([x,y])
-z = gaussian_kde(xy)(xy)
-
-# Sort the points by density, so that the densest points are plotted last
-idx = z.argsort()
-x, y, z = x[idx], y[idx], z[idx]
-
-fig, ax = plt.subplots()
-cax = ax.scatter(x, y, c=z, s=5, edgecolor='')
-fig.colorbar(cax)
-plt.show()
-```
-
-##### subplot中加上总标题
-```py
-plt.suptitle('This is a somewhat long figure title', fontsize=16)
-```
-
-##### subplot中加上总xylabel
-```py
-plt.gcf().text(0.5, 0.04, 'LDR', fontsize=17)
-plt.subplots_adjust(left=0.07, right=0.93, top=0.85, bottom=0.15)
-```
-
-##### subplot中加上编号（子图相对位置统一）
-```py
-ax1 = plt.subplot(121)
-plt.text(0.86, 0.89, '(a)', fontsize=14, transform = ax1.transAxes)
-```
-
-##### 在一个数组中随机抽取元素的方法
-
-来自[这里](https://blog.csdn.net/amy_wumanfang/article/details/64483340)
-```py
-import random
-#使用python random模块的sample函数从列表中随机选择一组元素
-list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-slice = random.sample(list, 5)  #从list中随机获取5个元素，作为一个片断返回  
-```
 
 # Unbuntu备忘
 
