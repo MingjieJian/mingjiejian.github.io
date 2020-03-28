@@ -1,0 +1,39 @@
+---
+layout:     post
+title:      "Win下bash的使用备忘"
+subtitle:   "好多备忘啊"
+date:       2020-03-28
+author:     "mingjie"
+header-img: "img/post-bg-achi.jpg"
+tags:
+    - learning
+
+---
+
+* any words
+{:toc}
+
+# 安装bash on ubunto on windows
+
+因为我已经装过了所以就随便在网上找了个[教程](https://itsfoss.com/install-bash-on-windows/)。应该能行。
+
+# Jupyter Notebook的使用
+
+我有的时候需要用jpynb控制bash来运行一些老掉牙的Frotran程序，而如果将anaconda装在win下就不能这么干了。搜了一下是可以在ubuntu中打开jpynb然后在win下的浏览器打开的：[看这里](https://medium.com/@sayanghosh_49221/jupyter-notebook-in-windows-subsystem-for-linux-wsl-f075f7ec8691)。
+
+然后其他Jpynb的控制就看[这里](https://mingjiejian.github.io/2018/01/29/jpynb/)。
+
+# 挂载其他硬盘
+
+要是我的数据在移动硬盘上面怎么办呢？Win下的Ubuntu默认只挂载C盘。这个时候就要[自己挂载了](https://superuser.com/questions/1114341/windows-10-ubuntu-bash-shell-how-do-i-mount-other-windows-drives)：
+
+```bash
+# 挂载
+sudo mkdir /mnt/d
+sudo mount -t drvfs D: /mnt/d
+
+# 取消挂载
+sudo umount /mnt/d
+```
+
+实测挂载之后把terminal关掉挂载也不会消失，可以挂载一次永久使用。
