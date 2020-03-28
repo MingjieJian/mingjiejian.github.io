@@ -389,7 +389,7 @@ PANDORA有自带的输出部分提取程序（作者也知道输出文件巨长.
 
 我不会告诉你我是突然间顿悟这个东西的.....
 
-还记得在格式大坑里面我提到的log文件中报的错误么？从1到10有一堆不明所以的名字。那其实是用来在aaa文件里面定位错误的，在`ABORT`上一行的名字就是aaa文件中报错的地方，复制然后到aaa文件中去找就好了。
+还记得在格式大坑里面我提到的log文件中报的错误么？从1到10有一堆不明所以的名字。那其实是程序运行中报错的函数以及它的上级函数的名字。要定位aaa中的错误位置只需要在aaa文件中搜索`ABORT`。
 
 ### 迭代中的错误处理
 
@@ -411,6 +411,12 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 - `Error in LUCK : trying to Open/formatted for read on unit   8; IOSTAT =        29`
 
 这个具体是指没有找到`.res`文件，加上就好了；其他的话去说明文档里面看看`unit`对应的文件，检查一下有没有。
+
+- `IU =         2, IL =         1 is not an INPAIR-transition.`
+
+`RHO`出问题了。有的时候当程序很快就停下来的时候，看看`.jrl`里面的命令是否完全被读进去了。
+
+- `Continuum Optical Depth, Lambda =  5.999999999994E+01       : is unacceptable.`
 
 ## 输出结果阅读理解
 

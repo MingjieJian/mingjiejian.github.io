@@ -191,3 +191,13 @@ from . import subpackage
 [Python Tutorial Chap. 6](https://docs.python.org/3/tutorial/modules.html#packages)<br>
 [How To Package Your Python Code](https://python-packaging.readthedocs.io/en/latest/index.html)<br>
 [Python导入模块的几种姿势](http://codingpy.com/article/python-import-101/)
+
+# Unbuntu备忘
+
+https://server.etutsplus.com/apt-get-404-not-found/
+
+合并pdf
+`pdftk file1.pdf file2.pdf cat output mergedfile.pdf`
+
+# 服务器备忘
+https://blog.einverne.info/archive.html
