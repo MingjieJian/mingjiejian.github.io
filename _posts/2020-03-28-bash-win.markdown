@@ -13,23 +13,23 @@ tags:
 * any words
 {:toc}
 
-# Remore jupyter Notebook
+# Remote jupyter Notebook
 
 ## Going back to the campus
 
-First thing first, we need to go back to the network environment we used to, that is, the sos notwork.
+First thing first, we need to go back to the network environment we used to, that is, the sos network.
 A VPN is needed for this purpose.
 The detail discription is in [here](http://jimubu.adm.s.u-tokyo.ac.jp/public/index.php/VPN_connection_service), which support both Windows and Linux (sorry Mac; but maybe the same as Linux).
 
 ## ssh to your computer
 
-This can be done simply by an ssh command.
+This can be done easily by an ssh command.
 However, we need to know the ip address of our desktop.
-Furtunately (if you have registered your desktop in the system), you can check the ip address in [here](https://dhcp.adm.s.u-tokyo.ac.jp/user/host).
+Fortunately (if you have registered your desktop in the system), you can check the ip address in [here](https://dhcp.adm.s.u-tokyo.ac.jp/user/host).
 As long as your computer is open, the ip address is usually fixed.
 Even though it is changed, you can refresh the page to get the latest one.
 
-Then you can try using `ssh [your_accnount_name@your.ip.address]` to test if everything goes well so far.
+Then you can try using `ssh your_accnount_name@your.ip.address` to test if everything goes well so far.
 It should be.
 
 ## Open the jupyter notebook
@@ -48,7 +48,7 @@ Of course, your will be required to enter the token - just copy that from the fi
 You can check the token of the opened notebooks using `jupyter notebook list`.
 This certificate is necessary when we use the notebook remotely.
 We can also set a password so we don't need to copy and paste the token every time - try `jupyter notebook passowrd`.
-Once finished, simply close the second terminal (this release http://localhost:8888/) and then exit jupyter notebook in the first terminal using Ctrl+C.
+Once finished using the notebook, simply close the second terminal (this releases http://localhost:8888/) and then exit jupyter notebook in the first terminal using `Ctrl+C`.
 If more than one notebook services is required, simply change the port number.
 
 ### Reinstall the latest anaconda
@@ -69,7 +69,7 @@ sh Anaconda3-2020.02-Linux-x86_64.sh
 # Don't forget to install your packages after this.
 ```
 
-# Setting up the jupyter notebook on bash on ubuntu on windows
+# Setting up bash on ubuntu on windows
 
 ## 安装bash on ubunto on windows
 
