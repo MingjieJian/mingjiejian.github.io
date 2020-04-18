@@ -30,6 +30,10 @@ apt-get install g++-multilib
 会有`Unsupported OS`的提示，跳过即可。
 如果位置不够的话可以将其他不需要的软件包取消掉，和Fortran有关的只有500M左右的东西；Intel的Fortran数学库可以不装。
 
+### License过期之后
+
+Intel的学生License仅有一年，一年之后将不能使用编译器。这个时候如果还是学生的话只需要再次到intel那获取一个序列号，然后重装ifort就行了。卸载方法在[这里](https://software.intel.com/en-us/download/parallel-studio-xe-2020-install-guide-linux)有。
+
 ## 安装csh
 
 `sudo apt-get install csh`
