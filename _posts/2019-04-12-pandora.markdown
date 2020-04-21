@@ -440,6 +440,11 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 
 呈现的是各个参数（不是全部）各次迭代除以最后一次的比例。
 
+### PROF
+
+PROF分为Background Intensity, Background Flux, Line-free Intensity, Line-free Flux和Profile，其中Intensity和Profile分$$ \mu $$，Flux不分，Profile没有明确的章节头。
+暂未知打开SPHERE后会有什么变化。
+
 ## 示例文件
 
 这里给出了7个示例，前4个有详细说明。
