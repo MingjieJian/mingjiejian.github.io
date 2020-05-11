@@ -422,6 +422,8 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 
 - `Continuum Optical Depth, Lambda =  5.999999999994E+01       : is unacceptable.`
 
+这个一般是算出来的`Z`不是单调递增引起的，修改`Z`并restart一次一般可以解决。
+
 ## 输出结果阅读理解
 
 `bin/lookat.x`提供了一个在命令行里面阅读的程序，里面有解释；不过这都是老黄历的东西了，还是用extract出来用编辑器看方便。
