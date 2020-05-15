@@ -62,8 +62,9 @@ $$  y(x) = f(x) + \lambda \int_a^x K(x, t_1) y(t_1) dt_1 $$
 $$ \begin{align}
 y(x) &= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) + \lambda \int_a^{t_1} K(t_1, t_2) y(t_2) dt_2 dt_1 \\
 &= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) y(t_2) dt_2 dt_1\\
-&= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) + \lambda \int_a^{t_2} K(t_2, t_3) y(t_3) dt_3 dt_2 dt_1
-&= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) dt_2 dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) + \lambda \int_a^{t_2} K(t_2, t_3) y(t_3) dt_3 dt_2 dt_1
+&= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) + \lambda \int_a^{t_2} K(t_2, t_3) y(t_3) dt_3 dt_2 dt_1 \\
+&= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) dt_2 dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) \\
+~~~~+ \lambda \int_a^{t_2} K(t_2, t_3) y(t_3) dt_3 dt_2 dt_1
 \end{align}
  $$
 
@@ -79,7 +80,7 @@ $$
 
 将$$ K(t_1, t_2) $$叫做$$ K_1(t_1, t_2) $$，并将$$ K_2(x, t_2) $$向更高次项推广，有
 
-$$ K_{n+1}(x, t) = \int_t^x, K(x, z) K_n(z, t) dz $$
+$$ K_{n+1}(x, t) = \int_t^x K(x, z) K_n(z, t) dz $$
 
 并且
 

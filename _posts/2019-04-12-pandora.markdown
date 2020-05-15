@@ -424,6 +424,14 @@ Matrix inversion failed:                     Script-M matrix for CSF, lambda =  
 
 这个一般是算出来的`Z`不是单调递增引起的，修改`Z`并restart一次一般可以解决。
 
+- `The "averaged" opacity data file is empty.`
+
+这是因为选项`AVELOP`被打开了但是叫做`average`的文件并不在主文件夹里面；参见wup第272页。`Pandora-v2.2.0/tables/opacities`中有一个`average.dat`文件，但是是空的，暂时不知道有无联系。
+
+- `The given set is bad.`
+
+我遇上是在从头开始的run里面的`RHO`（或者`Jbar`）算着算着就全部变成NaN了，所以算不下去。这种情况的话测试表明将RHO selection parameters `RHOPT`从默认的`RHOJ`换成`RHOS`就不会报错了。可能是initial run里面`RHOS`需要的参数为正确初始化。这里连带出另外一个错，但是错误提示里面有说将`METEP`从0换成3就可以了。
+
 ## 输出结果阅读理解
 
 `bin/lookat.x`提供了一个在命令行里面阅读的程序，里面有解释；不过这都是老黄历的东西了，还是用extract出来用编辑器看方便。
