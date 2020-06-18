@@ -92,4 +92,4 @@ $$ y(x) = f(x) + \int_a^x \left[ \sum_{n=1}^\infty \lambda^n K_n(x, t) \right] f
 
 解方程$$ y(x) = e^{x^2} + \int_0^x e^{x^2-t^2} y(t) dt $$。
 
-答案：$$ y(x) = e^{x^2+x}。
+答案：$$ y(x) = e^{x^2+x} $$。
