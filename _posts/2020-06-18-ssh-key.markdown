@@ -2,7 +2,7 @@
 layout:     post
 title:      "不需要输入密码的SSH key"
 subtitle:   "懒，就是"
-date:       2020-06-28
+date:       2020-06-18
 author:     "mingjie"
 header-img: "img/post-bg-achi.jpg"
 tags:
