@@ -1,0 +1,97 @@
+---
+layout:     post
+title:      "Working from home: remote jupyter notebok set up"
+subtitle:   "Code the same thing anywhere"
+date:       2020-04-08
+author:     "mingjie"
+header-img: "img/post-bg-achi.jpg"
+tags:
+    - learning
+
+---
+
+* any words
+{:toc}
+
+# Remote jupyter Notebook
+
+## Going back to the campus
+
+First thing first, we need to go back to the network environment we used to, that is, the sos network.
+A VPN is needed for this purpose.
+The detail discription is in [here](http://jimubu.adm.s.u-tokyo.ac.jp/public/index.php/VPN_connection_service), which support both Windows and Linux (sorry Mac; but maybe the same as Linux).
+
+## ssh to your computer
+
+This can be done easily by an ssh command.
+However, we need to know the ip address of our desktop.
+Fortunately (if you have registered your desktop in the system), you can check the ip address in [here](https://dhcp.adm.s.u-tokyo.ac.jp/user/host).
+As long as your computer is open, the ip address is usually fixed.
+Even though it is changed, you can refresh the page to get the latest one.
+
+Then you can try using `ssh your_accnount_name@your.ip.address` to test if everything goes well so far.
+It should be.
+
+## Open the jupyter notebook
+
+Now open a terminal and ssh to your desktop, and then `cd` to the workplace where your notebooks are in.
+This terminal is used to launch the jupyter notebook service and later we need another to ssh the link to our laptop.
+
+In the first terminal, launch the service by `jupyter notebook --no-browser --port=8889`.
+We need to check if any token shows up after `http://localhost:8889/`.
+If no, then you need to upgrade your anaconda or even reinstall the latest version (see below).
+
+Then in the second terminal, do `ssh -N -f -L localhost:8888:localhost:8889 remote_user@remote_host`.
+After entering the password, nothing should present.
+Now you can open the browser and input http://localhost:8888/ to see if you can get to your familiar interface.
+Of course, your will be required to enter the token - just copy that from the fitst terminal.
+You can check the token of the opened notebooks using `jupyter notebook list`.
+This certificate is necessary when we use the notebook remotely.
+We can also set a password so we don't need to copy and paste the token every time - try `jupyter notebook passowrd`.
+Once finished using the notebook, simply close the second terminal (this releases http://localhost:8888/) and then exit jupyter notebook in the first terminal using `Ctrl+C`.
+If more than one notebook services is required, simply change the port number.
+
+### Reinstall the latest anaconda
+
+```sh
+# Remove the anaconda file
+rm -rf the/path/of/anaconda
+
+# (optional) delete the path added in ~/.bashrc. Please do it manually and use vim to open .bashrc
+
+# Download the latest anaconda
+wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+
+# Install anaconda
+sh Anaconda3-2020.02-Linux-x86_64.sh
+# Then follow the prompts
+
+# Don't forget to install your packages after this.
+```
+
+# Setting up bash on ubuntu on windows
+
+## 安装bash on ubunto on windows
+
+因为我已经装过了所以就随便在网上找了个[教程](https://itsfoss.com/install-bash-on-windows/)。应该能行。
+
+## Jupyter Notebook的使用
+
+我有的时候需要用jpynb控制bash来运行一些老掉牙的Frotran程序，而如果将anaconda装在win下就不能这么干了。搜了一下是可以在ubuntu中打开jpynb然后在win下的浏览器打开的：[看这里](https://medium.com/@sayanghosh_49221/jupyter-notebook-in-windows-subsystem-for-linux-wsl-f075f7ec8691)。
+
+然后其他Jpynb的控制就看[这里](https://mingjiejian.github.io/2018/01/29/jpynb/)。
+
+## 挂载其他硬盘
+
+要是我的数据在移动硬盘上面怎么办呢？Win下的Ubuntu默认只挂载C盘。这个时候就要[自己挂载了](https://superuser.com/questions/1114341/windows-10-ubuntu-bash-shell-how-do-i-mount-other-windows-drives)：
+
+```bash
+# 挂载
+sudo mkdir /mnt/d
+sudo mount -t drvfs D: /mnt/d
+
+# 取消挂载
+sudo umount /mnt/d
+```
+
+实测挂载之后把terminal关掉挂载也不会消失，可以挂载一次永久使用。
