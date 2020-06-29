@@ -154,6 +154,43 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/03/24/PANDORA-code/">
+        <h2 class="post-title">
+            PANDORA源码阅读备忘
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Pandora and box
+        </h3>
+        
+        <div class="post-content-preview">
+            
+  COMMON block
+
+
+COMMON block
+
+COMMON block是Fortran中在不同函数之间传递变量的第二种方法（第一种是通过函数的输入参数）（但是我很讨厌这种方法）。它通过在不同函数中定义跟随在COMMON后的变量来传输。比如说在主程序中有
+
+COMMON A, B, C
+
+A = -2
+B = 0.9
+C = 66
+
+
+然后在子程序中有
+
+COMMON C, ...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on March 24, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/02/05/NLTE-RT-Model/">
         <h2 class="post-title">
             NLTE下的辐射转移和大气模型
@@ -456,32 +493,6 @@ Points：
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/06/19/spec-term/">
-        <h2 class="post-title">
-            原子的光谱项
-        </h2>
-        
-        <h3 class="post-subtitle">
-            本科原子物理的内容
-        </h3>
-        
-        <div class="post-content-preview">
-            这玩意我从本科开始就没怎么搞懂（这数字哪来的？LPS这些又是什么鬼东西？）；还以为做光谱只需要用到别人做好的表格（拿来主义hhh），结果还是要搞懂。不然别人问起为什么这是三重态那是单重态我都说不出来。
-
-复习一下：电子态
-
-光谱项是描述原子的标识。而原子之间的区别实际上只在于电子所处的能级不同，所以光谱项说白了还是电子量子数的反映。
-
-我们只需要四个量子数来描述电子，；主量子数、角量子数、磁...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on June 19, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -536,7 +547,7 @@ Points：
                             
                         
                             
-                                <a href="/tags/#learning" title="learning" rel="37">
+                                <a href="/tags/#learning" title="learning" rel="38">
                                     learning
                                 </a>
                             

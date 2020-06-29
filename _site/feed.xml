@@ -5,9 +5,44 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 16 Mar 2020 14:19:02 +0900</pubDate>
-    <lastBuildDate>Mon, 16 Mar 2020 14:19:02 +0900</lastBuildDate>
+    <pubDate>Tue, 24 Mar 2020 16:02:32 +0900</pubDate>
+    <lastBuildDate>Tue, 24 Mar 2020 16:02:32 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>PANDORA源码阅读备忘</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#common-block&quot; id=&quot;markdown-toc-common-block&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;common-block&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block是Fortran中在不同函数之间传递变量的第二种方法（第一种是通过函数的输入参数）（但是我很讨厌这种方法）。它通过在不同函数中定义跟随在&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt;后的变量来传输。比如说在主程序中有&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;COMMON A, B, C
+
+A = -2
+B = 0.9
+C = 66
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后在子程序中有&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;COMMON C, B, D
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;则子程序中&lt;code class=&quot;highlighter-rouge&quot;&gt;C&lt;/code&gt;为-2、&lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;为0.9、&lt;code class=&quot;highlighter-rouge&quot;&gt;D&lt;/code&gt;为66。注意这和变量名无关，只和顺序有关。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.obliquity.com/computer/fortran/common.html&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 24 Mar 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/24/PANDORA-code/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/24/PANDORA-code/</guid>
+        
+        <category>learning</category>
+        
+        
+      </item>
     
       <item>
         <title>NLTE下的辐射转移和大气模型</title>
@@ -1201,118 +1236,6 @@ stage of thermal pulsing and dredge-up of carbon. In general, microturbulence ap
         <pubDate>Thu, 18 Jul 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/07/18/astero-he/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/07/18/astero-he/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>原子的光谱项</title>
-        <description>&lt;p&gt;这玩意我从本科开始就没怎么搞懂（这数字哪来的？LPS这些又是什么鬼东西？）；还以为做光谱只需要用到别人做好的表格（拿来主义hhh），结果还是要搞懂。不然别人问起为什么这是三重态那是单重态我都说不出来。&lt;/p&gt;
-
-&lt;h2 id=&quot;复习一下电子态&quot;&gt;复习一下：电子态&lt;/h2&gt;
-
-&lt;p&gt;光谱项是描述原子的标识。而原子之间的区别实际上只在于电子所处的能级不同，所以光谱项说白了还是电子量子数的反映。&lt;/p&gt;
-
-&lt;p&gt;我们只需要四个量子数来描述电子，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}, \boldsymbol{l}, \boldsymbol{m}, \boldsymbol{s} \in \mathbb{Z}&lt;/script&gt;；主量子数、角量子数、磁量子数和自选量子数。&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n} \in [0, ...]&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l} \in [0, ..., \boldsymbol{n}-1]&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{m} \in [-\boldsymbol{l}, ..., \boldsymbol{l}]&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{s} = \pm \frac{1}{2}&lt;/script&gt;。一个&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}&lt;/script&gt;叫一个壳层，一个&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l}&lt;/script&gt;叫一个轨道，一个壳层一共可以容纳&lt;script type=&quot;math/tex&quot;&gt;2n^2&lt;/script&gt;个电子。&lt;/p&gt;
-
-&lt;p&gt;麻烦的事情来了：我们用不同（但是会重复！）的字母来表示轨道和壳层。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;主量子数&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}&lt;/script&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;壳层名称&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;K&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;L&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;M&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;N&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;P&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;角量子数&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l}&lt;/script&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;0&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;轨道名称&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;s&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;p&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;d&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;f&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;g&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;h&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;i&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;轨道鸣名称的前几个还是有来头的，其他的我不知道是怎么来的；总之这些名字增加了记忆的难度，好在它们大小写不同以及后面只会用到轨道名称，所以记住spd是012就可以了。&lt;/p&gt;
-
-&lt;h2 id=&quot;电子组态&quot;&gt;电子组态&lt;/h2&gt;
-
-&lt;p&gt;原子里面可能不止有一个电子，那如何表示原子里面电子的状态呢？我们用电子组态来表示，也就是&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n}&lt;/script&gt;加上轨道名称。&lt;/p&gt;
-
-&lt;p&gt;比如说处于基态的氢原子电子为&lt;script type=&quot;math/tex&quot;&gt;1s&lt;/script&gt;，被激发的氦原子可以为&lt;script type=&quot;math/tex&quot;&gt;1s3p&lt;/script&gt;，某个处于激发态的氧原子电子组态为&lt;script type=&quot;math/tex&quot;&gt;2s^22p^4&lt;/script&gt;；平方意味着有多少个电子处于这个态。我们能看出来电子组态只用了电子前两个量子数（我也不知道为什么不全部指明），所以一个电子组态有不止一种可能；比如&lt;script type=&quot;math/tex&quot;&gt;sp^2&lt;/script&gt;有15种可能。这些可能性由泡利不相容原理，能量最低原则和Hund定则决定（所以不是20个）。&lt;/p&gt;
-
-&lt;h2 id=&quot;原子光谱项&quot;&gt;原子光谱项&lt;/h2&gt;
-
-&lt;p&gt;只考虑LS耦合（因为研究的原子比较轻，原子序数小于40；如果重的话就要用jj耦合了），这个时候的好量子数是总轨道角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{L} = \sum{\boldsymbol{l}}_i&lt;/script&gt;、总自旋角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{S} = \sum{\boldsymbol{s}}_i&lt;/script&gt;和总角动量&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{J} = \boldsymbol{L} + \boldsymbol{S}&lt;/script&gt;。
-所以只要给定了原子中每个电子的&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{l}, \boldsymbol{s}&lt;/script&gt;，就可以将这三个值定下来了。
-前面两个都好说，&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{S}&lt;/script&gt;的取值为&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{J} \in [\boldsymbol{L}+\boldsymbol{S}, ..., |\boldsymbol{L}-\boldsymbol{S}|]&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;有了这三个角动量量子数之后，我们就可以可以区分不同的原子状态了；定义如下的光谱支项：&lt;/p&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;^{2\boldsymbol{S}+1}L_\boldsymbol{J}&lt;/script&gt;,  &lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n} ^{2\boldsymbol{S}+1}L_\boldsymbol{J}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{n} \boldsymbol{l}^x&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;^{2\boldsymbol{S}+1}L_\boldsymbol{J}&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;三种写法都有，信息量依次增大；当然只有后两种才能完全区分光谱项。因为在原子物理里面多数时候是讨论原子最外层电子的激发，还有一种写法是只写出被激发电子的电子态。把&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{J}&lt;/script&gt;省略掉的话就是光谱项了（求你写全好不好）。
-这里的&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;是角动量量子数&lt;strong&gt;对应的轨道名称&lt;/strong&gt;，也就是前面第二个表格的名称&lt;strong&gt;的大写&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;实际上光谱项就是我们在能级图上看到的一条条横线，也是我们这么大费周章搞出这个东西的原因。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://www.mdpi.com/atoms/atoms-04-00026/article_deploy/html/images/atoms-04-00026-g001.png&quot; alt=&quot;&quot; /&gt;
-&lt;em&gt;credit:&lt;a href=&quot;https://www.mdpi.com/2218-2004/4/4/26/htm&quot;&gt;here&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;就我关心的He &lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{S} \rightarrow 2^3\mathrm{P}&lt;/script&gt;跃迁来说，&lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{S}&lt;/script&gt;的三个量子数分别为0, 1, 0，所以只有一个态（单重态），但是&lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{P}&lt;/script&gt;可以有三个，&lt;script type=&quot;math/tex&quot;&gt;2^3\mathrm{P}_0, 2^3\mathrm{P}_1, 2^3\mathrm{P}_2&lt;/script&gt;，所以这个跃迁有三条靠得很近的线。&lt;/p&gt;
-
-&lt;p&gt;至于它们具体怎么分布，那就不是我的事情了；找到了一个不错的网站，可以查询很多原子的能级分布，&lt;a href=&quot;https://physics.nist.gov/PhysRefData/Handbook/element_name.htm&quot;&gt;在这里&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;ref&quot;&gt;Ref&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;http://www.astro.sunysb.edu/fwalter/AST341/qn.html&lt;/li&gt;
-  &lt;li&gt;https://www.nist.gov/pml/handbook-basic-atomic-spectroscopic-data&lt;/li&gt;
-  &lt;li&gt;https://www.gemini.edu/sciops/instruments/nearir-resources/&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 19 Jun 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/06/19/spec-term/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/19/spec-term/</guid>
         
         <category>learning</category>
         
