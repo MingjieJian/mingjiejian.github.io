@@ -154,9 +154,173 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2018/05/16/OASP11/">
+        <h2 class="post-title">
+            OASP笔记 - 11
+        </h2>
+        
+        <h3 class="post-subtitle">
+            谱线吸收系数
+        </h3>
+        
+        <div class="post-content-preview">
+            看了这么久从这一章开始才是正餐。
+
+谱线的强度和形状都是我们很关心的东西，因为它们可以同时受多个物理量影响；相反连续谱的形状基本上只是有效温度的函数。谱线吸收系数就决定了这条谱线位于什么波长、将会有什么形状。
+
+这一章我们基本上讨论三种谱线致宽的机制：自然致宽、压强致宽以及热运动致宽。虽然字面上看起来这三个机制只会告诉我们谱线宽了多少，但是实际上我们会推导出谱线吸收系数，也就把能定的都定下来...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on May 16, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/05/11/OASP10/">
+        <h2 class="post-title">
+            OASP笔记 - 10
+        </h2>
+        
+        <h3 class="post-subtitle">
+            连续谱
+        </h3>
+        
+        <div class="post-content-preview">
+            又是比较简单的一章。而且因为连续谱一般和流量的绝对定标有关，我平常其实用得不多。
+
+连续谱的确定主要能匹配出有效温度来，如果细节多一些的话也可以确定。至于金属丰度就有点困难了，虽然也是有办法的。那么为了一次性地得到比较宽的光谱范围（毕竟高分辨率光谱需要更长的曝光时间，以及不同级数之间的流量定标相当麻烦），这里所说的连续谱的分辨率一般在10到15埃左右。在得到目标星光谱之后一般会有如下的流程：...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on May 11, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/04/20/DL-3/">
+        <h2 class="post-title">
+            Deep Learning笔记3
+        </h2>
+        
+        <h3 class="post-subtitle">
+            机器学习策略
+        </h3>
+        
+        <div class="post-content-preview">
+            这么多改进的方式，究竟要用哪个？
+
+正交化
+
+我们希望某个/些参数只影响某些结果。我们有训练样本、发展样本、测试样本、真实数据上的结果。最好就是存在某些参数可以分别改变网络在它们上的表现。
+
+Single Number evaluation metric
+
+找一个可以方便比较的数字。
+
+精确度和完整性：Harmonic average.
+
+复杂目标
+
+optimizing：数字越小/大越好；...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on April 20, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/03/14/DL-2/">
+        <h2 class="post-title">
+            Deep Learning笔记2
+        </h2>
+        
+        <h3 class="post-subtitle">
+            调参
+        </h3>
+        
+        <div class="post-content-preview">
+            数据集
+
+以前是分成两个的，训练和测试。现在分成3个，训练、发展和测试集。用发展去测试训练，最后再用测试去测试表现；甚至没有测试集都行。这里的区别是发展集是用来overfitting的，测试集不是。
+
+要注意不同数据集的数据要同质，质量相同
+
+
+
+bias和variance
+
+训练集的错误率比与预期的高：高bias；发展集的错误率比训练集的高：高variance
+
+
+
+
+
+正则化
+
+在代价函...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on March 14, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/03/14/DL-1/">
+        <h2 class="post-title">
+            Deep Learning笔记1
+        </h2>
+        
+        <h3 class="post-subtitle">
+            逻辑回归与神经网络
+        </h3>
+        
+        <div class="post-content-preview">
+            逻辑回归
+
+Binary Classification
+
+Binary Classification指的是输入一堆东西，最后给出一个只有两个结果（0或者1）的输出的分类过程。一个典型而符合惯例的例子是判断某张图片上有没有猫，也就是将图片的红绿蓝像素值矩阵作为输入，是猫(1)以及不是猫(0)作为输出。
+
+在这里我们不考虑这么多细节，直接将红绿蓝的像素排成一列，作为输入。的大小就是总的像素数或者...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on March 14, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/03/08/OASP9/">
+        <h2 class="post-title">
+            OASP笔记 - 9
+        </h2>
+        
+        <h3 class="post-subtitle">
+            光球层模型
+        </h3>
+        
+        <div class="post-content-preview">
+            乍看起来人为地制造一个恒星或者光球层的模型似乎没有必要。难道就不能从观测到的恒星光谱中导出我们想要的参数吗？就像从视差算出距离一样，只不过现在的公式或者方法比倒数麻烦很多而已。不过抱歉还真的不能，因为影响恒星光谱的因素实在太多，所以这样做一般是不现实的。所以要知道我们想知道的信息，我们只能倒过来，从一些理论和物理规律去造出一个模型，然后将模型产生的光谱和实际的光谱对比并不断修正，直到它们非常...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on March 8, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2018/01/29/jpynb/">
         <h2 class="post-title">
-            Jupyter Notebook + Python 备忘
+            Jupyter Notebook + Python + Bash 备忘
         </h2>
         
         <h3 class="post-subtitle">
@@ -169,13 +333,13 @@
       改变Notebook里面Markdown文字颜色
       Matplotlib中'\theta'变为heta的问题
       更新markdown中的图像
+      Kill 宋体！
     
   
   Python备忘    
       Numpy中的矩阵合并
       Pandas        
-          从pdf中提取表格
-          读取固...
+          从pdf中提取表...
         </div>
     </a>
     <p class="post-meta">
@@ -256,189 +420,6 @@ ht...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2017/12/27/OASP7/">
-        <h2 class="post-title">
-            OASP笔记 - 7
-        </h2>
-        
-        <h3 class="post-subtitle">
-            辐射与对流传能
-        </h3>
-        
-        <div class="post-content-preview">
-            恒星表面的主要传能方式是辐射。对流传能在恒星内部以及低温恒星是不可以忽略的，所以最后会稍微涉及到。同时也只有在辐射传能主导的区域内恒星的物理参数才会跟光谱有关系，之后也会有有效温度的例子。这一章我们会建立辐射传能的微分方程，然后讨论几种简单的解。但是除此之外的解都是数值的，需要进行数值积分。我们希望计算出合成光谱，而这个目标的前提就是有恒星光球层内尽可能多的物理参数；第七八九章就是干这个的。...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 27, 2017
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2017/12/19/OASP6/">
-        <h2 class="post-title">
-            OASP笔记 - 6
-        </h2>
-        
-        <h3 class="post-subtitle">
-            黑体和黑体辐射
-        </h3>
-        
-        <div class="post-content-preview">
-            无聊的一章。请自行谷歌黑体辐射。
-
-可公开的信息
-
-韦恩定律（高频）：
-
-
-
-瑞利金斯近似（低频/长波）：
-
-
-
-“推导”
-
-前提：只有两个能级 + 处于热动平衡
-
-第一章的原子激发与电离里面有这样的一个公式：
-
-
-
-从第五章最后的两个公式得出细致平衡原理：
-
-
-
-
-
-合在一起就有
-
-
-
-将指数展开
-
-
-
-令它等于瑞利金斯近似，得
-
-
-
-所以
-
-
-
-求导等于0可以得出韦恩位移定律，对频率积分...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 19, 2017
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2017/12/18/OASP5/">
-        <h2 class="post-title">
-            OASP笔记 - 5
-        </h2>
-        
-        <h3 class="post-subtitle">
-            有关辐射的各种定义
-        </h3>
-        
-        <div class="post-content-preview">
-            辐射强度 (specific intensity)
-
-辐射强度描述的是某一点的光的强度分布，是辐射场的性质，跟接下来用到的面元的性质无关。这个量当然需要是在单位时间、单位频率下的；同时这个表面处在不同位置也会不一样，所以要将表面缩小成面元。我们先将面元固定在一个点上，看如何描述光的强度分布。
-
-我们只能通过单位时间、单位频率下穿过单位面积面元的能量大小来描述光的强度。但是面元是有朝向的，一个...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 18, 2017
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2017/12/18/OASP4/">
-        <h2 class="post-title">
-            OASP笔记 - 4
-        </h2>
-        
-        <h3 class="post-subtitle">
-            光电探测器
-        </h3>
-        
-        <div class="post-content-preview">
-            这一章讲的是有关光电探测器的东西。从观测的角度来说，知道光电探测器的一些参数是很有必要的，比如说在仪器选择和之后的数据处理上。光电探测器分为两大类，积分的（常见的硅CCD）和脉冲计数的（光电倍增管）。积分类型的适合获取高信噪比图像，脉冲计数的信噪比稍低一点。当然除了探测器本身之外，我们还需要有很多其他的电子器件，来控制开关、记录时间、进行模数转换等。
-
-量子效率和光谱响应
-
-量子效率定义为探...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 18, 2017
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2017/12/18/OASP3/">
-        <h2 class="post-title">
-            OASP笔记 - 3
-        </h2>
-        
-        <h3 class="post-subtitle">
-            光谱仪
-        </h3>
-        
-        <div class="post-content-preview">
-            我们需要光谱仪，没有光谱仪哪来的光谱。低分辨率光谱仪可以得到天体的连续谱（第十章），而高分辨率的光谱仪可以得到天体的谱线（第十二章）。
-
-概述
-
-
-光谱仪示意图
-
-从望远镜中过来的光在狭缝的中心聚焦，然后被准直器变为平行光照到光栅上面，色散后经过改正镜再被聚焦到CCD上。单色光会在焦面上形成一条线；而因为一般狭缝的宽度都比较大，最终在焦面形成的线宽基本不受光栅衍射条纹的影响。而当复色光入射到...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 18, 2017
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2017/12/03/course-group1/">
-        <h2 class="post-title">
-            公开课微信群
-        </h2>
-        
-        <h3 class="post-subtitle">
-            有监督人工学习
-        </h3>
-        
-        <div class="post-content-preview">
-            2018.1
-
-这次的总结主要是对自己完成状况的评价吧。
-
-到现在来说有的时候会陷入一种比较迷茫的状态；不知道现在所学的对以后有没有用处，所以会上很多的课，但是有的时候又不是很有动力。实际上编程的课仍然不难，但是总会自己寻找理由去拖延。希望3月开始能继续之前的习惯每周按时完成，要时刻提醒自己一件事情只要开始了就不会太难。
-
-其他的话，还在机器学习的课程里面，完成了一周。另外尝试了学习论文写作...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Mingjie on December 3, 2017
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -479,7 +460,7 @@ ht...
                             
                         
                             
-                                <a href="/tags/#hanging-around" title="hanging-around" rel="6">
+                                <a href="/tags/#hanging-around" title="hanging-around" rel="7">
                                     hanging-around
                                 </a>
                             
@@ -491,13 +472,13 @@ ht...
                             
                         
                             
-                                <a href="/tags/#experience" title="experience" rel="2">
+                                <a href="/tags/#experience" title="experience" rel="3">
                                     experience
                                 </a>
                             
                         
                             
-                                <a href="/tags/#learning" title="learning" rel="38">
+                                <a href="/tags/#learning" title="learning" rel="42">
                                     learning
                                 </a>
                             

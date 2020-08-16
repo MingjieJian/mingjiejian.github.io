@@ -4,9 +4,9 @@ title:      "在气象卫星图里看日食"
 subtitle:   ""
 date:       2020-06-22
 author:     "mingjie"
-header-img: "img/post-bg-achi.jpg"
+header-img: "img/post-bg-weather-satellite.png"
 tags:
-    - learning
+    - experience
 
 ---
 

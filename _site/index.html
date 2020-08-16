@@ -154,6 +154,183 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/08/16/miura/">
+        <h2 class="post-title">
+            三浦日落
+        </h2>
+        
+        <h3 class="post-subtitle">
+            
+        </h3>
+        
+        <div class="post-content-preview">
+            题图from L指导；真是好看
+
+好久没出去看风景了。想起来在这个blog第一次正儿八经写东西是17年的6月，正好也是去的横须贺和横滨；三年过去了也算是半个故地重游吧。
+
+四轮自走设施的极限距离探究
+
+得益于Q老师可以在日本开车，我们已经嚷嚷了好久要开车去哪里逛一圈了。
+在新冠疫情的大环境下在外面住一天我是不太敢的，所以当天来回就是一个不错的选择。
+而当天来回的极限地点其实四不那么明确的。
+...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on August 16, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/06/22/weather-satellite/">
+        <h2 class="post-title">
+            在气象卫星图里看日食
+        </h2>
+        
+        <h3 class="post-subtitle">
+            
+        </h3>
+        
+        <div class="post-content-preview">
+            中国区约15分钟间隔的风云四号真彩色图可以在这里爬到；图片被纵向分成了编号为5/6/7，横向分成了编号为10-14的小块，爬下来拼合就行。wget的时候要带上浏览器伪装。
+
+全圆盘风云4/2号云图可以在这里下载，网站本身就有动图下载。
+
+这里汇总了美国GOES、欧盟Meteosat系列卫星和日本向日葵8号的图像；里面提供低分辨率的缩略动图。高分辨率的图要到各家自己的网站（图片下方链接）去下。...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on June 22, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/06/21/astroph/">
+        <h2 class="post-title">
+            0621论文阅读
+        </h2>
+        
+        <h3 class="post-subtitle">
+            
+        </h3>
+        
+        <div class="post-content-preview">
+            星系光谱模拟简介
+
+
+  步骤
+    
+      覆盖整个赫罗图的恒星光谱
+        
+          从LTE到NLTE（对高温恒星的He线有很大影响）
+        
+      
+      恒星演化模型提供各个光谱的权重（什么星有多少）
+        
+          主要是大质量恒星（因为亮）
+          1980s：overshooting；1990...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on June 21, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/06/18/ssh-key/">
+        <h2 class="post-title">
+            不需要输入密码的SSH key
+        </h2>
+        
+        <h3 class="post-subtitle">
+            懒，就是
+        </h3>
+        
+        <div class="post-content-preview">
+            如果想不用密码登陆某主机的话，需要用到ssh key：
+
+ssh-keygen -t rsa -b 4096 -C "你的邮箱地址"
+
+在生成ssh key的时候不输入密码的话，即使之后将公钥复制到了远程主机(ssh-copy-id -i .ssh/id_rsa.pub git@12.56.224.61 )，ssh的hi和还是需要输入密码的。
+
+这个时候将identity添加到私钥里就可以了...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on June 18, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/05/11/neumann-series/">
+        <h2 class="post-title">
+            Neumann级数
+        </h2>
+        
+        <h3 class="post-subtitle">
+            算源函数要用到的东西
+        </h3>
+        
+        <div class="post-content-preview">
+            
+  问题
+  Neumann级数    
+      例子
+    
+  
+
+
+问题
+
+文中公式如果有编号则来自Radiative Transfer in Stellar and Planetary Atmospheres。
+
+在算辐射转移方程的时候我们会遇到这样的一个循环：
+
+
+(Figure 2.10; Radiative Transfer in Stellar and Planeta...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on May 11, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/04/08/bash-win/">
+        <h2 class="post-title">
+            Working from home: remote jupyter notebok set up
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Code the same thing anywhere
+        </h3>
+        
+        <div class="post-content-preview">
+            
+  Remote jupyter Notebook    
+      Going back to the campus
+      ssh to your computer
+      Open the jupyter notebook        
+          Reinstall the latest anaconda
+        
+      
+    
+  
+  Se...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mingjie on April 8, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/03/24/PANDORA-code/">
         <h2 class="post-title">
             PANDORA源码阅读备忘
@@ -311,188 +488,6 @@ To my understanding, ...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/12/03/molecular-gravity/">
-        <h2 class="post-title">
-            分子线的gravity effect
-        </h2>
-        
-        <h3 class="post-subtitle">
-            好早就被人搞过啦
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  缘起
-  论文s    
-      CH
-      CN
-      CO
-    
-  
-
-
-缘起
-
-现在不是在搞谱线的gravity effect嘛，发现一些被blend的谱线中有分子线的贡献，就得知道分子线会不会对gravity effect有贡献。从观测和合成光谱来看是有的，而且在4000-5000K上分子线和原子线有一样的gravity effect。但是为什么呢？
-
-论...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 3, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/12/03/arxiv/">
-        <h2 class="post-title">
-            Arxiv存档
-        </h2>
-        
-        <h3 class="post-subtitle">
-            191203
-        </h3>
-        
-        <div class="post-content-preview">
-            1912.00999
-
-作者通过Subaru Suprime-Cam对NGC5907的成像在双色图上选出了703个球状星团候选体，并用光谱认证了其中的一些（11个中的8个）。另外还有34个疑似年轻星团的源，有14个在盘的外围。还有3个球状星团在星流上。
-由此作者估计了NGC5907的球状星团总数。
-
-感想：人有多大胆，地有多大产。8个GC就敢讨论总数了。
-
-1912.00900
-
-我们发现了...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 3, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/10/01/he-exop-paper/">
-        <h2 class="post-title">
-            我所知道的关于系外行星红外氦线的一切
-        </h2>
-        
-        <h3 class="post-subtitle">
-            过去论文的总结 2
-        </h3>
-        
-        <div class="post-content-preview">
-            Salz+18：对HD189733在系外行星transit过程中的观测
-
-
-  1个木星质量的行星围绕着活跃的K dwarf
-  行星的信号遮挡可能不足以解释全部的吸收变化
-  中心线:蓝线线深比是2.8，和恒星大气模型不符；从这一点里面我们可以推断出行星大气的厚度以及柱密度
-  transit前后的信号（虽然这个星没有）可以表征行星的蒸发
-
-
-Points：
-
-  因为He线在恒星表面是不...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on October 1, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/09/16/he-paper/">
-        <h2 class="post-title">
-            我所知道的关于红外氦线的一切
-        </h2>
-        
-        <h3 class="post-subtitle">
-            过去论文的总结
-        </h3>
-        
-        <div class="post-content-preview">
-            直接上表格。
-
-
-  
-    
-      论文
-      内容
-      结论
-      要点
-      我可以做的
-    
-  
-  
-    
-      Zirin 1982底片0.8A有表
-      1. 用底片测量了455颗恒星（包括月亮）的氦线等值宽度(EW)以及半高全宽2. 有很多星有不止一次测量 3. 给出了表格
-      1. EW与软X射线辐射有正相关2...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on September 16, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/08/04/contri_func/">
-        <h2 class="post-title">
-            谱线是在哪里形成的？
-        </h2>
-        
-        <h3 class="post-subtitle">
-            谱线的贡献函数：一堆老论文
-        </h3>
-        
-        <div class="post-content-preview">
-            题图Credit：Kravchenko+2018.
-
-谱线是在哪里形成的？搜了一些看了一些论文之后这个问题变成了谱线究竟是在哪里形成的？
-
-其实这不是一个很复杂的问题，不过不同人有不同的解决方式，所以哪种是最好的，以及在什么情况下适用是需要总结一下的。看完这篇之后很多论文就不用看了。
-
-我们要解决什么问题？
-
-这不是废话嘛，谱线在哪里形成的。那么这个问题应该如何放入在我们的恒星大气模型中呢？...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on August 4, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/18/astero-he/">
-        <h2 class="post-title">
-            利用星震学方法测量恒星的氦丰度
-        </h2>
-        
-        <h3 class="post-subtitle">
-            It should solve all the problem
-        </h3>
-        
-        <div class="post-content-preview">
-            这里作为星震学测量氦丰度方法的补充说明，估计会比较散。主要是看Verma+19得出的问题以及查询得到的答案。
-
-原理
-
-恒星内部的温度是越来越高的，而温度高到一定程度之后就会将原子电离；比如说氢原子会逐渐被剥成质子和电子，氦原子(HeI)会变成(HeII)和(HeIII)。原子电离情况和温度的关系请参照OASP1, Fig. 1.10。在这里我们主要讨论恒星内部的情况，Kippenhahn的...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on July 18, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -529,7 +524,7 @@ Points：
                             
                         
                             
-                                <a href="/tags/#hanging-around" title="hanging-around" rel="6">
+                                <a href="/tags/#hanging-around" title="hanging-around" rel="7">
                                     hanging-around
                                 </a>
                             
@@ -541,13 +536,13 @@ Points：
                             
                         
                             
-                                <a href="/tags/#experience" title="experience" rel="2">
+                                <a href="/tags/#experience" title="experience" rel="3">
                                     experience
                                 </a>
                             
                         
                             
-                                <a href="/tags/#learning" title="learning" rel="38">
+                                <a href="/tags/#learning" title="learning" rel="42">
                                     learning
                                 </a>
                             
