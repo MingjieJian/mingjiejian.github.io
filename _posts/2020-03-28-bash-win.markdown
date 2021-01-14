@@ -25,7 +25,7 @@ The detail discription is in [here](http://jimubu.adm.s.u-tokyo.ac.jp/public/ind
 
 This can be done easily by an ssh command.
 However, we need to know the ip address of our desktop.
-Fortunately (if you have registered your desktop in the system), you can check the ip address in [here](https://dhcp.adm.s.u-tokyo.ac.jp/user/host).
+Fortunately (if you have registered your desktop in the system), you can check the ip address in [here](https://dhcp.adm.s.u-tokyo.ac.jp/).
 As long as your computer is open, the ip address is usually fixed.
 Even though it is changed, you can refresh the page to get the latest one.
 
