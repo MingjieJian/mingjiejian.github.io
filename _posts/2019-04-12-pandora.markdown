@@ -18,6 +18,13 @@ tags:
 可以从pgfortran、ifort和pgf77中选一个。
 我选的是ifort；2021年后Intel将各种编译器集成到了Intel® oneAPI Toolkit里面，到[这里](https://software.intel.com/content/www/us/en/develop/tools/oneapi/base-toolkit/download.html)下载Base Toolkit，然后再到[这里](https://software.intel.com/content/www/us/en/develop/tools/oneapi/hpc-toolkit/download.html)下载HPC Toolkit然后按顺序安装就好了。
 有图形化界面的安装程序，就是要记得将无关的内容全部取消选择（Base中可以全部取消、HPC中只留Fortran的）就行了，这俩Toolkit全部免费，也没有了学生license的事情了。
+
+安装成功后在.bashrc文件里面加上：
+```sh
+alias ifort='/opt/intel/oneapi/compiler/latest/linux/bin/intel64/ifort'
+source /opt/intel/bin/ifortvars.sh ia32
+```
+
 装之前或者之后记得将这些32位的包装上：
 ```sh
 apt-get install lib32z1
