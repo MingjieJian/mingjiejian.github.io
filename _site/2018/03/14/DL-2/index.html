@@ -5,35 +5,54 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="Write everything, think everything.">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/myicon.ico">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#000000">
 
-    <title>Deep Learning笔记2 - Mingjie的博客 | Mingjie's Blog</title>
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="Deep Learning笔记2 - Mingjie's Page">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="数据集
+">
+    
+    <meta property="article:published_time" content=" 2018-03-14T00:00:00Z">
+    
+    
+    <meta property="article:author" content="mingjie">
+    
+    
+    <meta property="article:tag" content="learning">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/profile_small.jpeg">
+    <meta property="og:url" content="http://localhost:4000/2018/03/14/DL-2/">
+    <meta property="og:site_name" content="Mingjie's Page">
 
+    <title>Deep Learning笔记2 - Mingjie's Page</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/2018/03/14/DL-2/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" /css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href=" /css/hux-blog.min.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,6 +64,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 
@@ -52,112 +75,265 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Mingjie's Blog</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Mingjie's page</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/projects/">Projects</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- Add research note link if its switch in _config.yml is true. -->
+                        
+                        <li>
+                            <a href="https://mk-cookbook.readthedocs.io/en/latest//">Research-Notes</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/blog/">Mingjie's Blog</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+        <!-- /.container -->
+    </nav>
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
         }
-    }
-</script>
 
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="/img/post-bg-DL-1.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
+
+
+
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-DL-1.jpg')
+        background-image: url('/img/post-bg-DL-1.jpg');
+        background: ;
     }
 
     
 </style>
+
 <header class="intro-header" >
+
     <div class="header-mask"></div>
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        <a class="tag" href="/archive/?tag=learning" title="learning">learning</a>
                         
                     </div>
                     <h1>Deep Learning笔记2</h1>
                     
-                    
                     <h2 class="subheading">调参</h2>
-                    
                     <span class="meta">Posted by mingjie on March 14, 2018</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+
+
+
+
 
 <!-- Post Content -->
 <article>
@@ -169,6 +345,9 @@
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
+
+                <!-- Multi-Lingual -->
+                
 
 				<h4 id="数据集">数据集</h4>
 
@@ -188,9 +367,9 @@
 
 <h4 id="正则化">正则化</h4>
 
-<p>在代价函数后面加上<script type="math/tex">w</script>的2或者1范数</p>
+<p>在代价函数后面加上\(w\)的2或者1范数</p>
 
-<p>通过强制减小<script type="math/tex">w</script>简化神经网络，减小权重。</p>
+<p>通过强制减小\(w\)简化神经网络，减小权重。</p>
 
 <p><img src="/img/in-post/post-DL-2/1-4.png" alt="" /></p>
 
@@ -206,11 +385,11 @@
 
 <p>增加训练样本：把图像翻过来/旋转/放大，或者几种加起来。不过信息量其实还是一样的。标准是人脑还是会把它当成同一样东西。</p>
 
-<p>提早停止：看发展集的误差，以它的最小值为基准。思路是<script type="math/tex">w</script>会随着迭代而不断增大，导致太大以至于我们不想看到。提早停止可以防止这个。</p>
+<p>提早停止：看发展集的误差，以它的最小值为基准。思路是\(w\)会随着迭代而不断增大，导致太大以至于我们不想看到。提早停止可以防止这个。</p>
 
 <p>正交化：将减小损失函数和防止overfit分开。提早停止违反了这个原则。</p>
 
-<p>L2正则化比较简单，不过要试各种的<script type="math/tex">\lambda</script>。</p>
+<p>L2正则化比较简单，不过要试各种的\(\lambda\)。</p>
 
 <h3 id="建立最优化问题">建立最优化问题</h3>
 
@@ -228,13 +407,13 @@
 
 <p>在训练很深的神经网络的时候，有的时候导数值可能会很大或者很小，比如矩阵遇到了指数增长/减小什么的。</p>
 
-<p>一个治标的办法是选择初始的权重。<script type="math/tex">z = w_1x_1 + w_2x_2 + \cdots + w_nx_n</script>。<script type="math/tex">n</script>越大，<script type="math/tex">z</script>就越大，所以我们控制<script type="math/tex">w</script>的标准差为<script type="math/tex">\sqrt{\frac{2}{n^{[l-1]}}}</script>。这里的2是Relu函数带来的。当然也可以当它是一个超参数来试。</p>
+<p>一个治标的办法是选择初始的权重。\(z = w_1x_1 + w_2x_2 + \cdots + w_nx_n\)。\(n\)越大，\(z\)就越大，所以我们控制\(w\)的标准差为\(\sqrt{\frac{2}{n^{[l-1]}}}\)。这里的2是Relu函数带来的。当然也可以当它是一个超参数来试。</p>
 
 <p><img src="/img/in-post/post-DL-2/1-9.png" alt="" /></p>
 
 <h4 id="导数值检查">导数值检查</h4>
 
-<p>往左和往右挪，计算<script type="math/tex">\frac{y}{x}</script>。愣算就行。</p>
+<p>往左和往右挪，计算\(\frac{y}{x}\)。愣算就行。</p>
 
 <p>具体：将所有的参数竖着排成一个巨长的向量，包括正向的和反向的。然后愣算其中某个参数的导数，看两个向量之间的二范数比各自的二范数的大小。比值是拿来看相对大小的，防止它们本来就很小或者大。</p>
 
@@ -255,25 +434,24 @@
 <h5 id="指数平均">指数平均</h5>
 <p>其实就是滑动平均的一种，只不过前后的数据不平权。</p>
 
-<script type="math/tex; mode=display">v_t = \beta v_{t-1} + (1-\beta)\theta_t</script>
+\[v_t = \beta v_{t-1} + (1-\beta)\theta_t\]
 
-<p>它会将之前的数据累积起来，但是不断乘上<script type="math/tex">\beta</script>。大概相当于前<script type="math/tex">\frac{1}{1-\beta}</script>天的温度平均：<script type="math/tex">v_t = \sum_{i=0}^n 0.1 \times 0.9^i \theta_i</script>。</p>
+<p>它会将之前的数据累积起来，但是不断乘上\(\beta\)。大概相当于前\(\frac{1}{1-\beta}\)天的温度平均：\(v_t = \sum_{i=0}^n 0.1 \times 0.9^i \theta_i\)。</p>
 
 <h5 id="bias-correction">Bias Correction</h5>
 
-<p>更准确的计算。因为上式从0开始，所以一开始的时候肯定是不对的。当然一般数据量大的话可以不管，反正可以等。或者除一个<script type="math/tex">(1-\beta^t)</script>。</p>
+<p>更准确的计算。因为上式从0开始，所以一开始的时候肯定是不对的。当然一般数据量大的话可以不管，反正可以等。或者除一个\((1-\beta^t)\)。</p>
 
 <h5 id="gradient-descent-with-momentum">Gradient descent with momentum</h5>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
- v_{dW} &= \beta v_{dW} + (1-\beta) dW \\
- v_{db} &= \beta v_{db} + (1-\beta) db \\
- W &= W - \alpha v_{dW} \\
- b &= b - \alpha v_{db} \\
-\end{align} %]]></script>
+\[\begin{align}
+ v_{dW} &amp;= \beta v_{dW} + (1-\beta) dW \\
+ v_{db} &amp;= \beta v_{db} + (1-\beta) db \\
+ W &amp;= W - \alpha v_{dW} \\
+ b &amp;= b - \alpha v_{db} \\
+\end{align}\]
 
-<p>这样做的好处是它会在摆动的方向将摆动平均掉，在正确的方向保留导数值，所以可以加速收敛。一般<script type="math/tex">\beta = 0.9</script>是个不错的选择。</p>
+<p>这样做的好处是它会在摆动的方向将摆动平均掉，在正确的方向保留导数值，所以可以加速收敛。一般\(\beta = 0.9\)是个不错的选择。</p>
 
 <h5 id="rmsprop">RMSprop</h5>
 
@@ -295,7 +473,7 @@
 
 <h3 id="要调的东西">要调的东西</h3>
 
-<p>学习速率<script type="math/tex">\alpha</script>；动量项<script type="math/tex">\beta / (\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8})</script>、多少节点、mini-batch大小；多少隐层、学习速率变化。</p>
+<p>学习速率\(\alpha\)；动量项\(\beta / (\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8})\)、多少节点、mini-batch大小；多少隐层、学习速率变化。</p>
 
 <p>但是调超参的时候不要用网格，随即就好；因为超参数量太多了，而且不同的超参对模型影响不同，所以随机会给所有的超参更多选择。最初的参数空间可能比较大，都跑一次之后可以缩小参数空间再做一次。随机的时候，对于某些超参，也可以不用平均随机，而是用其他的概率分布，或者log scale，量级上平均就行。或者说在模型对超参变化更剧烈的时候放更多的点。</p>
 
@@ -305,11 +483,11 @@
 
 <h3 id="让模型更稳健">让模型更稳健</h3>
 
-<p>逻辑回归的时候将输入归一化可以让代价函数更规则，那么在神经网络里面也可以这么做，对<script type="math/tex">z</script>归一化。可以将<script type="math/tex">z</script>的平均值和标准差倒过来，或者自己设定一组数，或者让网络自己学习去。<script type="math/tex">b</script>也可以不要了，因为归一化的时候带上了常数。</p>
+<p>逻辑回归的时候将输入归一化可以让代价函数更规则，那么在神经网络里面也可以这么做，对\(z\)归一化。可以将\(z\)的平均值和标准差倒过来，或者自己设定一组数，或者让网络自己学习去。\(b\)也可以不要了，因为归一化的时候带上了常数。</p>
 
 <p>其他具体流程和普通的差不多。它防止了隐层的值的分布距离原点太远。它会带来一些噪声。</p>
 
-<p>在测试集的时候，我们可以用指数平均的方法记录训练集的平均值和scatter，然后当成测试集的均值以及<script type="math/tex">\sigma</script>。</p>
+<p>在测试集的时候，我们可以用指数平均的方法记录训练集的平均值和scatter，然后当成测试集的均值以及\(\sigma\)。</p>
 
 <h2 id="多项选择题">多项选择题</h2>
 
@@ -317,7 +495,7 @@
 
 <p>损失函数：</p>
 
-<script type="math/tex; mode=display">L(y, \hat{y}) = -\sum y_j \ln{\hat{y_j}}</script>
+\[L(y, \hat{y}) = -\sum y_j \ln{\hat{y_j}}\]
 
 <p>只留下正确的那一项，然后最大化它的概率。</p>
 
@@ -325,7 +503,7 @@
 
 <p>反向传递：</p>
 
-<script type="math/tex; mode=display">dz^{[l]} = \hat{y} - y</script>
+\[dz^{[l]} = \hat{y} - y\]
 
 <p>但是在用框架的时候，只要正向传递对了，反向传递交给框架就行。</p>
 
@@ -335,14 +513,10 @@
 
 
                 <hr style="visibility: hidden;">
-
-                
-
-
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/03/14/DL-1/" >
+                        <a href="/2018/03/14/DL-1/" data-toggle="tooltip" data-placement="top" title="Deep Learning笔记1">
                         Previous<br>
                         <span>Deep Learning笔记1</span>
                         </a>
@@ -350,16 +524,14 @@
                     
                     
                     <li class="next">
-                        <a href="/2018/04/20/DL-3/" >
+                        <a href="/2018/04/20/DL-3/" data-toggle="tooltip" data-placement="top" title="Deep Learning笔记3">
                         Next<br>
                         <span>Deep Learning笔记3</span>
                         </a>
                     </li>
                     
                 </ul>
-
-
-                
+                <hr style="visibility: hidden;">
 
                 
                 <!-- disqus 评论框 start -->
@@ -370,9 +542,23 @@
                 
 
                 
-            </div>
+            </div>  
 
     <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
     <!-- Sidebar Container -->
@@ -383,78 +569,79 @@
 
                 <!-- Featured Tags -->
                 
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-        				
-                            
-                				<a href="/tags/#random" title="random" rel="4">
-                                    random
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#hanging-around" title="hanging-around" rel="7">
-                                    hanging-around
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
-                                    astro-ph
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#experience" title="experience" rel="3">
-                                    experience
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#learning" title="learning" rel="42">
-                                    learning
-                                </a>
-                            
-        				
-                            
-        				
-        			</div>
-                </section>
-                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=random"
+                    title="random"
+                    rel="4">random</a>
+        
+                <a data-sort="0020" 
+                    href="/archive/?tag=learning"
+                    title="learning"
+                    rel="42">learning</a>
+        
+                <a data-sort="0055" 
+                    href="/archive/?tag=hanging-around"
+                    title="hanging-around"
+                    rel="7">hanging-around</a>
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=astro-ph"
+                    title="astro-ph"
+                    rel="4">astro-ph</a>
+        
+                <a data-sort="0059" 
+                    href="/archive/?tag=experience"
+                    title="experience"
+                    rel="3">experience</a>
+    </div>
+</section>
+
 
                 <!-- Friends Blog -->
                 
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
-                    
-                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
-                    
-                </ul>
-                
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+  
+  <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+  
+  <li><a href="http://huangxuan.me">Hux Blog</a></li>
+  
+</ul>
+
             </div>
         </div>
     </div>
 </article>
 
+<!-- add support for mathjax by voleking-->
 
 
 
 
 
 
-
-<div id="disqus_thread"></div>
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "mingjiejian-github-io";
-    var disqus_identifier = "mingjiejian-github-io//2018/03/14/DL-2/";
+    var disqus_identifier = "/2018/03/14/DL-2";
     var disqus_url = "http://localhost:4000/2018/03/14/DL-2/";
 
     (function() {
@@ -483,9 +670,9 @@
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
+          visible: 'hover',
           placement: 'right',
-          icon: '#'
+          // icon: '#'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
@@ -509,53 +696,56 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                        <a href="/feed.xml">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
+                <!-- SNS Link -->
+                
 
 
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/mingjieJian">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
+<ul class="list-inline text-center">
+
+
+  
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/mingjieJian">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2020
+                    Copyright &copy; Mingjie's page 2021
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -567,32 +757,42 @@
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
 <script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/hux-blog.min.js "></script>
 
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
 
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
 -->
 <!--
     <script>
@@ -604,25 +804,16 @@
 -->
 
 
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+
+
+
+
 
 <!--fastClick.js -->
 <script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -635,10 +826,12 @@
     var _gaDomain = 'mingjiejian.github.io';
 
     // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
@@ -650,14 +843,134 @@
 
 
 
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason, 
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure 
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
 
 <!-- Image to hack wechat -->
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
-
 </body>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 
 </html>

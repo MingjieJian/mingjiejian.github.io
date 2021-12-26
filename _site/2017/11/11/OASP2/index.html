@@ -5,35 +5,54 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="Write everything, think everything.">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/myicon.ico">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#000000">
 
-    <title>OASP - 2 - Mingjie的博客 | Mingjie's Blog</title>
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="OASP - 2 - Mingjie's Page">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="傅里叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅里叶变换器。在这里有一点需要明确的是我们以后会经常讨论光谱，所以傅里叶变换的\(x\)域一般是光谱的频率域，而\(\sigma\)域并没有很好的名字；所以下文统一称傅里叶变换前后的域为\(x\)域与\(\sigma\)域。
+">
+    
+    <meta property="article:published_time" content=" 2017-11-11T00:00:00Z">
+    
+    
+    <meta property="article:author" content="mingjie">
+    
+    
+    <meta property="article:tag" content="learning">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/profile_small.jpeg">
+    <meta property="og:url" content="http://localhost:4000/2017/11/11/OASP2/">
+    <meta property="og:site_name" content="Mingjie's Page">
 
+    <title>OASP - 2 - Mingjie's Page</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/2017/11/11/OASP2/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" /css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href=" /css/hux-blog.min.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,6 +64,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 
@@ -52,112 +75,265 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Mingjie's Blog</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Mingjie's page</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/projects/">Projects</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- Add research note link if its switch in _config.yml is true. -->
+                        
+                        <li>
+                            <a href="https://mk-cookbook.readthedocs.io/en/latest//">Research-Notes</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/blog/">Mingjie's Blog</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+        <!-- /.container -->
+    </nav>
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
         }
-    }
-</script>
 
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="/img/post-bg-OASP2.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
+
+
+
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-OASP2.jpg')
+        background-image: url('/img/post-bg-OASP2.jpg');
+        background: ;
     }
 
     
 </style>
+
 <header class="intro-header" >
+
     <div class="header-mask"></div>
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        <a class="tag" href="/archive/?tag=learning" title="learning">learning</a>
                         
                     </div>
                     <h1>OASP - 2</h1>
                     
-                    
                     <h2 class="subheading">傅里叶变换</h2>
-                    
                     <span class="meta">Posted by mingjie on November 11, 2017</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+
+
+
+
 
 <!-- Post Content -->
 <article>
@@ -170,25 +346,28 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>傅里叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅里叶变换器。在这里有一点需要明确的是我们以后会经常讨论光谱，所以傅里叶变换的<script type="math/tex">x</script>域一般是光谱的频率域，而<script type="math/tex">\sigma</script>域并没有很好的名字；所以下文统一称傅里叶变换前后的域为<script type="math/tex">x</script>域与<script type="math/tex">\sigma</script>域。</p>
+                <!-- Multi-Lingual -->
+                
+
+				<p>傅里叶变换是非常有用的工具；不仅在时序上可以确定周期/频率，之后还会看到一个光谱仪也相当于一个傅里叶变换器。在这里有一点需要明确的是我们以后会经常讨论光谱，所以傅里叶变换的\(x\)域一般是光谱的频率域，而\(\sigma\)域并没有很好的名字；所以下文统一称傅里叶变换前后的域为\(x\)域与\(\sigma\)域。</p>
 
 <h3 id="定义">定义</h3>
 
-<p>一个函数<script type="math/tex">F(x)</script>和它的傅里叶变换<script type="math/tex">f(\sigma)</script>的关系为：</p>
+<p>一个函数\(F(x)\)和它的傅里叶变换\(f(\sigma)\)的关系为：</p>
 
-<script type="math/tex; mode=display">f(\sigma) = \int_{-\infty}^\infty F(x) e^{2\pi i x\sigma} \mathrm{d}x</script>
+\[f(\sigma) = \int_{-\infty}^\infty F(x) e^{2\pi i x\sigma} \mathrm{d}x\]
 
-<script type="math/tex; mode=display">F(x) = \int_{-\infty}^\infty f(\sigma) e^{-2\pi i x\sigma} \mathrm{d}\sigma</script>
+\[F(x) = \int_{-\infty}^\infty f(\sigma) e^{-2\pi i x\sigma} \mathrm{d}\sigma\]
 
-<p>对于傅里叶变换的直观理解<a href="https://www.zhihu.com/topic/19600515/top-answers">知乎上</a>已经有了很多不错的答案，我觉得只要了解可以将任何函数拆成各种各样的三角函数相加就可以了。<script type="math/tex">F,f</script>一般都是复函数，只有当<script type="math/tex">F(x)</script>为实偶函数的时候对应的<script type="math/tex">f(\sigma)</script>才是实函数。</p>
+<p>对于傅里叶变换的直观理解<a href="https://www.zhihu.com/topic/19600515/top-answers">知乎上</a>已经有了很多不错的答案，我觉得只要了解可以将任何函数拆成各种各样的三角函数相加就可以了。\(F,f\)一般都是复函数，只有当\(F(x)\)为实偶函数的时候对应的\(f(\sigma)\)才是实函数。</p>
 
-<p>当<script type="math/tex">\sigma</script>或<script type="math/tex">x = 0</script>的时候，傅里叶和逆傅里叶变换变为</p>
+<p>当\(\sigma\)或\(x = 0\)的时候，傅里叶和逆傅里叶变换变为</p>
 
-<script type="math/tex; mode=display">f(0) = \int_{-\infty}^\infty F(x)  \mathrm{d}x</script>
+\[f(0) = \int_{-\infty}^\infty F(x)  \mathrm{d}x\]
 
-<script type="math/tex; mode=display">F(0) = \int_{-\infty}^\infty f(\sigma)  \mathrm{d}\sigma</script>
+\[F(0) = \int_{-\infty}^\infty f(\sigma)  \mathrm{d}\sigma\]
 
-<p>如果讨论谱线，此时傅里叶变换的意义就是谱线和<script type="math/tex">x</script>轴围成的面积，也就是总吸收量。</p>
+<p>如果讨论谱线，此时傅里叶变换的意义就是谱线和\(x\)轴围成的面积，也就是总吸收量。</p>
 
 <h3 id="常见的傅里叶变换">常见的傅里叶变换</h3>
 
@@ -196,18 +375,17 @@
 
 <h5 id="方波">方波</h5>
 
-<script type="math/tex; mode=display">% <![CDATA[
-B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\frac{W}{2}, \frac{W}{2}] \end{cases} %]]></script>
+\[B(x) = \begin{cases} 0 &amp; x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 &amp; x \in [-\frac{W}{2}, \frac{W}{2}] \end{cases}\]
 
-<script type="math/tex; mode=display">b(\sigma) = W \frac{\sin{(\pi W\sigma)}}{\pi W\sigma}</script>
+\[b(\sigma) = W \frac{\sin{(\pi W\sigma)}}{\pi W\sigma}\]
 
 <p><img src="/img/in-post/post-OASP2/01square_wave.png" alt="" /></p>
 
 <h5 id="高斯函数">高斯函数</h5>
 
-<script type="math/tex; mode=display">G(x) = \frac{1}{\beta\pi^\frac{1}{2}} e^{-\frac{x^2}{\beta^2}}</script>
+\[G(x) = \frac{1}{\beta\pi^\frac{1}{2}} e^{-\frac{x^2}{\beta^2}}\]
 
-<script type="math/tex; mode=display">g(\sigma) = e^{-(\pi\beta\sigma)^2}</script>
+\[g(\sigma) = e^{-(\pi\beta\sigma)^2}\]
 
 <p>高斯的傅里叶变换是另一个高斯。</p>
 
@@ -215,19 +393,19 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 <h5 id="洛仑兹函数">洛仑兹函数</h5>
 
-<script type="math/tex; mode=display">L(x) = \frac{1}{\pi} \frac{\beta}{x^2+\beta^2}</script>
+\[L(x) = \frac{1}{\pi} \frac{\beta}{x^2+\beta^2}\]
 
-<script type="math/tex; mode=display">l(x) = e^{-2\pi\beta|\sigma|}</script>
+\[l(x) = e^{-2\pi\beta|\sigma|}\]
 
 <p><img src="/img/in-post/post-OASP2/03lorentz.png" alt="" /></p>
 
-<h5 id="delta函数"><script type="math/tex">\delta</script>函数</h5>
+<h5 id="delta函数">\(\delta\)函数</h5>
 
-<script type="math/tex; mode=display">F(x) = \delta(x-x_1)</script>
+\[F(x) = \delta(x-x_1)\]
 
-<script type="math/tex; mode=display">f(\sigma) = e^{2\pi i x_1\sigma}</script>
+\[f(\sigma) = e^{2\pi i x_1\sigma}\]
 
-<p>单个<script type="math/tex">\delta</script>函数的傅里叶变换的振幅是常数，相位随着<script type="math/tex">\sigma</script>线性增加；两个正而且对称的<script type="math/tex">\delta</script>函数的傅里叶变换是余弦函数，一正一负（对称）的傅里叶变换的振幅是正弦函数。</p>
+<p>单个\(\delta\)函数的傅里叶变换的振幅是常数，相位随着\(\sigma\)线性增加；两个正而且对称的\(\delta\)函数的傅里叶变换是余弦函数，一正一负（对称）的傅里叶变换的振幅是正弦函数。</p>
 
 <p><img src="/img/in-post/post-OASP2/04delta.png" alt="" /></p>
 
@@ -235,13 +413,13 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 <h5 id="shah函数">Shah函数</h5>
 
-<p>Shah函数实际上是一堆等间距分布的<script type="math/tex">\delta</script>函数：</p>
+<p>Shah函数实际上是一堆等间距分布的\(\delta\)函数：</p>
 
-<script type="math/tex; mode=display">III(x) = \sum\limits_{n=-\infty}^{\infty} \delta(x - n\Delta x)</script>
+\[III(x) = \sum\limits_{n=-\infty}^{\infty} \delta(x - n\Delta x)\]
 
 <p>它的傅里叶变换还是一个Shah函数，只不过间距变了：</p>
 
-<script type="math/tex; mode=display">iii(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta x})</script>
+\[iii(\sigma) = \sum\limits_{n=-\infty}^{\infty} \delta(\sigma - n\frac{1}{\Delta x})\]
 
 <p><img src="/img/in-post/post-OASP2/06shah.png" alt="" /></p>
 
@@ -253,19 +431,19 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 <p>仍然从连续函数出发，离散化意味着将连续函数与Shah函数相乘（以波长为横坐标）：</p>
 
-<script type="math/tex; mode=display">D(\lambda) = III(\lambda)F(\lambda)</script>
+\[D(\lambda) = III(\lambda)F(\lambda)\]
 
-<p>实际测量的函数等于Shah函数与理想的连续函数相乘。同时一般来说，无论是时变数据还是光谱数据，我们都不可能无限地测量下去（望远镜时间不是无限的，光谱仪有截止波长），所以我们还需要加上一个响应度函数<script type="math/tex">B(\lambda)</script>，来限制波长范围以及修改每个波长上的响应度（时间域上的数据应该不需要有响应度）：</p>
+<p>实际测量的函数等于Shah函数与理想的连续函数相乘。同时一般来说，无论是时变数据还是光谱数据，我们都不可能无限地测量下去（望远镜时间不是无限的，光谱仪有截止波长），所以我们还需要加上一个响应度函数\(B(\lambda)\)，来限制波长范围以及修改每个波长上的响应度（时间域上的数据应该不需要有响应度）：</p>
 
-<script type="math/tex; mode=display">D(\lambda) = B(\lambda)III(\lambda)F(\lambda)</script>
+\[D(\lambda) = B(\lambda)III(\lambda)F(\lambda)\]
 
-<p>这个时候如果想求<script type="math/tex">D(\lambda)</script>的傅里叶变换的话就需要知道几个函数相乘的傅里叶变换是什么，这就涉及到卷积了。</p>
+<p>这个时候如果想求\(D(\lambda)\)的傅里叶变换的话就需要知道几个函数相乘的傅里叶变换是什么，这就涉及到卷积了。</p>
 
 <h3 id="卷积">卷积</h3>
 
-<p>两个函数<script type="math/tex">f(\sigma), g(\sigma)</script>的卷积定义为：</p>
+<p>两个函数\(f(\sigma), g(\sigma)\)的卷积定义为：</p>
 
-<script type="math/tex; mode=display">k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1</script>
+\[k(\sigma) = f(\sigma) * g(\sigma) = \int_{-\infty}^{\infty} f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1\]
 
 <p><a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF">维基百科</a>上的一张图可以比较直观地帮助理解卷积：</p>
 
@@ -273,91 +451,90 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 <p>将其中一个函数以0为中心翻转、从左往右平移，两函数每点相乘在求和的结果就是这两个函数在第一个函数对称中心处的值。</p>
 
-<p>从定义以及理解可以容易得到<script type="math/tex">f(\sigma) * g(\sigma) = g(\sigma) * f(\sigma)</script>。</p>
+<p>从定义以及理解可以容易得到\(f(\sigma) * g(\sigma) = g(\sigma) * f(\sigma)\)。</p>
 
 <h5 id="卷积和傅里叶变换的关系">卷积和傅里叶变换的关系</h5>
 
 <p>实际上两函数相乘的傅里叶变换就是这两函数各自傅里叶变换的卷积(倒过来也对)，即</p>
 
-<script type="math/tex; mode=display">F(x)G(x) \Longrightarrow f(\sigma) * g(\sigma)</script>
+\[F(x)G(x) \Longrightarrow f(\sigma) * g(\sigma)\]
 
-<script type="math/tex; mode=display">F(x) * G(x) \Longrightarrow f(\sigma)g(\sigma)</script>
+\[F(x) * G(x) \Longrightarrow f(\sigma)g(\sigma)\]
 
 <p><a href="https://zh.wikipedia.org/wiki/%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86">维基百科</a>上有证明；这里为了理解方便将证明过程倒过来写一遍。简单起见我们证明两函数各自傅里叶变换的卷积的逆傅里叶变换为两函数的乘积，可用富比尼定理，则：</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}  \int f(\sigma) * g(\sigma) e^{-2\pi ix\sigma} \mathrm{d}\sigma & = F(x)G(x) \\ \int \left(\int f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1\right) e^{-2\pi ix\sigma} d\sigma & = \int f(\sigma_1) \left( \int g(\sigma-\sigma_1) e^{-2\pi ix\sigma} \mathrm{d}\sigma\right) \mathrm{d}\sigma_1 \\ & = \int f(\sigma_1) \left( \int g(\alpha) e^{-2\pi ix(\alpha + \sigma_1)} \mathrm{d}\alpha\right) \mathrm{d}\sigma_1 \\ & = \int f(\sigma_1) e^{-2\pi ix\sigma_1} \mathrm{d}\sigma_1 \int g(\alpha) e^{-2\pi ix\alpha} \mathrm{d}\alpha \\ & = F(x)G(x) \end{align} %]]></script>
+\[\begin{align}  \int f(\sigma) * g(\sigma) e^{-2\pi ix\sigma} \mathrm{d}\sigma &amp; = F(x)G(x) \\ \int \left(\int f(\sigma_1) g(\sigma-\sigma_1) \mathrm{d}\sigma_1\right) e^{-2\pi ix\sigma} d\sigma &amp; = \int f(\sigma_1) \left( \int g(\sigma-\sigma_1) e^{-2\pi ix\sigma} \mathrm{d}\sigma\right) \mathrm{d}\sigma_1 \\ &amp; = \int f(\sigma_1) \left( \int g(\alpha) e^{-2\pi ix(\alpha + \sigma_1)} \mathrm{d}\alpha\right) \mathrm{d}\sigma_1 \\ &amp; = \int f(\sigma_1) e^{-2\pi ix\sigma_1} \mathrm{d}\sigma_1 \int g(\alpha) e^{-2\pi ix\alpha} \mathrm{d}\alpha \\ &amp; = F(x)G(x) \end{align}\]
 
-<h5 id="与delta函数的卷积">与<script type="math/tex">\delta</script>函数的卷积</h5>
+<h5 id="与delta函数的卷积">与\(\delta\)函数的卷积</h5>
 
-<script type="math/tex; mode=display">F(x) * \delta(x-x_1) = F(x-x_1) \Longrightarrow f(\sigma) e^{2\pi ix_1\sigma}</script>
+\[F(x) * \delta(x-x_1) = F(x-x_1) \Longrightarrow f(\sigma) e^{2\pi ix_1\sigma}\]
 
 <p>这个结果会在接下来的性质2中用到。</p>
 
 <h5 id="高斯洛仑兹函数之间的卷积">高斯、洛仑兹函数之间的卷积</h5>
 
-<p>高斯函数的傅里叶变换还是高斯函数<script type="math/tex">g(\sigma) = e^{-(\pi\beta\sigma)^2}</script>，所以两个高斯函数卷积的傅里叶变换为</p>
+<p>高斯函数的傅里叶变换还是高斯函数\(g(\sigma) = e^{-(\pi\beta\sigma)^2}\)，所以两个高斯函数卷积的傅里叶变换为</p>
 
-<script type="math/tex; mode=display">g_a(\sigma)g_b(\sigma) = e^{-(\pi\beta_a\sigma)^2}e^{-(\pi\beta_b\sigma)^2} = e^{-(\pi\beta_c\sigma)^2}</script>
+\[g_a(\sigma)g_b(\sigma) = e^{-(\pi\beta_a\sigma)^2}e^{-(\pi\beta_b\sigma)^2} = e^{-(\pi\beta_c\sigma)^2}\]
 
-<p>还是一个高斯函数；此时的<script type="math/tex">G(x)</script>更窄，但是<script type="math/tex">g(\sigma)</script>更宽<script type="math/tex">(\beta_c^2 = \beta_a^2+\beta_b^2)</script>。</p>
+<p>还是一个高斯函数；此时的\(G(x)\)更窄，但是\(g(\sigma)\)更宽\((\beta_c^2 = \beta_a^2+\beta_b^2)\)。</p>
 
-<p>同理，洛仑兹与洛仑兹函数的卷积也还是个洛仑兹函数，只不过现在<script type="math/tex">\beta_c = \beta_a + \beta_b</script>。</p>
+<p>同理，洛仑兹与洛仑兹函数的卷积也还是个洛仑兹函数，只不过现在\(\beta_c = \beta_a + \beta_b\)。</p>
 
 <p>高斯函数和洛仑兹函数的卷积叫做福格特(Voigt)函数，它的傅里叶变换为</p>
 
-<script type="math/tex; mode=display">v(\sigma) = e^{-\pi^2\beta_g^2\sigma^2} e^{-2\pi\beta_l|\sigma|}</script>
+\[v(\sigma) = e^{-\pi^2\beta_g^2\sigma^2} e^{-2\pi\beta_l|\sigma|}\]
 
 <p>在第11章会用到。</p>
 
 <h3 id="被模糊的数据">被模糊的数据</h3>
 
-<p>我们现在可以回到<script type="math/tex">D(\lambda)</script>中。除了截断和采样之外，观测仪器当然也会在最终的结果中留下一些特征，叫做仪器轮廓(instrumental profile)。一般来说这些特征是一个<script type="math/tex">\delta</script>函数；也就是说一个很窄的<script type="math/tex">\delta</script>函数在经过观测仪器之后会变成另一个宽一点的<script type="math/tex">\delta</script>函数，或者说两个<script type="math/tex">\delta</script>函数卷积了。仪器轮廓可以被测出来（通过观测很细的谱线；第12章），我们在这里记作<script type="math/tex">I(\lambda)</script>。所以现在的<script type="math/tex">D(\lambda)</script>变成了</p>
+<p>我们现在可以回到\(D(\lambda)\)中。除了截断和采样之外，观测仪器当然也会在最终的结果中留下一些特征，叫做仪器轮廓(instrumental profile)。一般来说这些特征是一个\(\delta\)函数；也就是说一个很窄的\(\delta\)函数在经过观测仪器之后会变成另一个宽一点的\(\delta\)函数，或者说两个\(\delta\)函数卷积了。仪器轮廓可以被测出来（通过观测很细的谱线；第12章），我们在这里记作\(I(\lambda)\)。所以现在的\(D(\lambda)\)变成了</p>
 
-<script type="math/tex; mode=display">D(\lambda) = [B(\lambda)III(\lambda)F(\lambda)] * I(\lambda)</script>
+\[D(\lambda) = [B(\lambda)III(\lambda)F(\lambda)] * I(\lambda)\]
 
-<p>在<script type="math/tex">\sigma</script>域，上式变为</p>
+<p>在\(\sigma\)域，上式变为</p>
 
-<script type="math/tex; mode=display">d(\sigma) = [b(\sigma) * III(\sigma) * f(\sigma)] \times i(\sigma)</script>
+\[d(\sigma) = [b(\sigma) * III(\sigma) * f(\sigma)] \times i(\sigma)\]
 
-<p>可以看到最终傅里叶域的函数被乘上了一个<script type="math/tex">i(\sigma)</script>。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅里叶变换是一个相对宽的轮廓，对<script type="math/tex">\sigma</script>域中的“低频”部分没有很大影响；但是轮廓会在高<script type="math/tex">\sigma</script>部分下降，所以会抹掉高<script type="math/tex">\sigma</script>部分的信息。在<script type="math/tex">\lambda</script>域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高<script type="math/tex">\lambda</script>的信息“平均”掉。</p>
+<p>可以看到最终傅里叶域的函数被乘上了一个\(i(\sigma)\)。一般仪器轮廓是一个比较窄的高斯或者洛仑兹轮廓，所以它的傅里叶变换是一个相对宽的轮廓，对\(\sigma\)域中的“低频”部分没有很大影响；但是轮廓会在高\(\sigma\)部分下降，所以会抹掉高\(\sigma\)部分的信息。在\(\lambda\)域上这意味着每个数据点不再是一个孤立的点，而因为与仪器轮廓的卷积会和旁边的数据点耦合，将高\(\lambda\)的信息“平均”掉。</p>
 
-<h3 id="采样-iiisigma的影响">采样 <script type="math/tex">III(\sigma)</script>的影响</h3>
+<h3 id="采样-iiisigma的影响">采样 \(III(\sigma)\)的影响</h3>
 
-<p>采样对高<script type="math/tex">\sigma</script>信号的也会产生影响（可能比仪器轮廓更大）。信号与Shah函数的卷积<script type="math/tex">III(\sigma) * f(\sigma)</script>会使得信号在Shah函数每个不为0处附近重复，使得一样的图样发生重叠，同样抹掉了高<script type="math/tex">x</script>的信息。因为Shah函数傅里叶变换后成为间隔为<script type="math/tex">\frac{1}{\Delta x}</script>的Shah函数，所以我们认为在这个间隔的一半区间内，信号是没有重叠的，叫做奈奎斯特频率：</p>
+<p>采样对高\(\sigma\)信号的也会产生影响（可能比仪器轮廓更大）。信号与Shah函数的卷积\(III(\sigma) * f(\sigma)\)会使得信号在Shah函数每个不为0处附近重复，使得一样的图样发生重叠，同样抹掉了高\(x\)的信息。因为Shah函数傅里叶变换后成为间隔为\(\frac{1}{\Delta x}\)的Shah函数，所以我们认为在这个间隔的一半区间内，信号是没有重叠的，叫做奈奎斯特频率：</p>
 
-<script type="math/tex; mode=display">\sigma_N = \frac{1}{2\Delta x}</script>
+\[\sigma_N = \frac{1}{2\Delta x}\]
 
 <p>在这里因为我们对信号进行了采样，所以得到的实际上是离散的信号点；我们并不知道点和点之间究竟是怎么样的（虽然经常认为是平滑过渡的），而点和点之间丢失的信息就对应着频域中大于奈奎斯特频率的部分，它们重叠了。与仪器轮廓的不同在于采样是离散化，而仪器轮廓是模糊。</p>
 
-<p>我们想做的是通过测量<script type="math/tex">D(\lambda)</script>求得<script type="math/tex">d(\sigma)</script>，再转换成<script type="math/tex">f(\sigma)</script>最后求得<script type="math/tex">F(\lambda)</script>。从<script type="math/tex">d(\sigma)</script>到<script type="math/tex">f(\sigma)</script>这一步有<script type="math/tex">III(\sigma)</script>的作用，它们都抹掉了高<script type="math/tex">\sigma</script>的信息。如果<script type="math/tex">f(\sigma)</script>在高<script type="math/tex">\sigma</script>处趋于0，那么转换这一步基本上是正确的。但是如果重叠的部分很宽，这部分就不会有唯一的解，解决办法是减少采样的间隔。实际上<script type="math/tex">f(\sigma)</script>一般的确在高<script type="math/tex">\sigma</script>处趋于0，而且<script type="math/tex">i(\sigma)</script>的存在也会强制使得<script type="math/tex">f(\sigma)</script>高<script type="math/tex">\sigma</script>的值减小，所以转换是成立的。</p>
+<p>我们想做的是通过测量\(D(\lambda)\)求得\(d(\sigma)\)，再转换成\(f(\sigma)\)最后求得\(F(\lambda)\)。从\(d(\sigma)\)到\(f(\sigma)\)这一步有\(III(\sigma)\)的作用，它们都抹掉了高\(\sigma\)的信息。如果\(f(\sigma)\)在高\(\sigma\)处趋于0，那么转换这一步基本上是正确的。但是如果重叠的部分很宽，这部分就不会有唯一的解，解决办法是减少采样的间隔。实际上\(f(\sigma)\)一般的确在高\(\sigma\)处趋于0，而且\(i(\sigma)\)的存在也会强制使得\(f(\sigma)\)高\(\sigma\)的值减小，所以转换是成立的。</p>
 
-<p>最后一个需要提及的是<script type="math/tex">b(\sigma)</script>。只要<script type="math/tex">B(x)</script>够宽，问题就不大；但是不够宽的时候<script type="math/tex">b(\sigma)</script>本身的宽度和在<script type="math/tex">\sigma > \frac{1}{W}</script>处的起伏都会导致数据的模糊，所以有必要修改<script type="math/tex">B(x)</script>的边缘以消除起伏。<script type="math/tex">b(\sigma)</script>本身的宽度会使和<script type="math/tex">f(\sigma)</script>的卷积很大，所以有必要稍微减小<script type="math/tex">f(\sigma)</script>。12章会有更多介绍。</p>
+<p>最后一个需要提及的是\(b(\sigma)\)。只要\(B(x)\)够宽，问题就不大；但是不够宽的时候\(b(\sigma)\)本身的宽度和在\(\sigma &gt; \frac{1}{W}\)处的起伏都会导致数据的模糊，所以有必要修改\(B(x)\)的边缘以消除起伏。\(b(\sigma)\)本身的宽度会使和\(f(\sigma)\)的卷积很大，所以有必要稍微减小\(f(\sigma)\)。12章会有更多介绍。</p>
 
 <h3 id="一些定理">一些定理</h3>
 
 <ol>
   <li>
-    <script type="math/tex; mode=display">F(x_1) + F(x_2) \Leftrightarrow f(\sigma_1) + f(\sigma_2)</script>
+\[F(x_1) + F(x_2) \Leftrightarrow f(\sigma_1) + f(\sigma_2)\]
   </li>
   <li>
-    <script type="math/tex; mode=display">F(x - x_1) \Leftrightarrow e^{2\pi ix_1\sigma}f(\sigma)</script>
+\[F(x - x_1) \Leftrightarrow e^{2\pi ix_1\sigma}f(\sigma)\]
   </li>
   <li>
-    <script type="math/tex; mode=display">F(ax) \Leftrightarrow |\frac{1}{a}|f(\frac{1}{a})</script>
+\[F(ax) \Leftrightarrow |\frac{1}{a}|f(\frac{1}{a})\]
   </li>
   <li>
-    <script type="math/tex; mode=display">\frac{\mathrm{d}F(x)}{\mathrm{d}x} \Leftrightarrow 2\pi i \sigma f(\sigma)</script>
+\[\frac{\mathrm{d}F(x)}{\mathrm{d}x} \Leftrightarrow 2\pi i \sigma f(\sigma)\]
   </li>
   <li>
-    <script type="math/tex; mode=display">K(x) = F(x) * G(x) \Rightarrow \frac{\mathrm{d}K(x)}{\mathrm{d}x} = \frac{\mathrm{d}F(x)}{\mathrm{d}x} * G(x) + F(x) * \frac{\mathrm{d}G(x)}{\mathrm{d}x}</script>
+\[K(x) = F(x) * G(x) \Rightarrow \frac{\mathrm{d}K(x)}{\mathrm{d}x} = \frac{\mathrm{d}F(x)}{\mathrm{d}x} * G(x) + F(x) * \frac{\mathrm{d}G(x)}{\mathrm{d}x}\]
   </li>
   <li>
-    <script type="math/tex; mode=display">\int G(x) \mathrm{d}x = 1 \Rightarrow \int F(x) * G(x) \mathrm{d}x = \int F(x) \mathrm{d}x</script>
+\[\int G(x) \mathrm{d}x = 1 \Rightarrow \int F(x) * G(x) \mathrm{d}x = \int F(x) \mathrm{d}x\]
   </li>
-  <li>定义<script type="math/tex">z = \frac{\int xF(x) \mathrm{d}x}{\int F(x) \mathrm{d}x}</script>，则若<script type="math/tex">K(x) = F(x) * G(x)</script>，有<script type="math/tex">z_K = z_F + z_G</script></li>
+  <li>定义\(z = \frac{\int xF(x) \mathrm{d}x}{\int F(x) \mathrm{d}x}\)，则若\(K(x) = F(x) * G(x)\)，有\(z_K = z_F + z_G\)</li>
   <li>
-    <script type="math/tex; mode=display">\int F(x) G^+(x) \mathrm{d}x = \int f(\sigma) g^+(\sigma) \mathrm{d}\sigma</script>
+\[\int F(x) G^+(x) \mathrm{d}x = \int f(\sigma) g^+(\sigma) \mathrm{d}\sigma\]
   </li>
 </ol>
 
@@ -365,29 +542,29 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 <p>用定义计算有的时候会带来很大的计算量；而我们经常遇到的数据是均匀采样的，这个时候用快速傅里叶变换(FFT)可以很方便地计算。</p>
 
-<p>FFT中的输入和结果都是离散的，也就是说<script type="math/tex">D(x)</script>变成了<script type="math/tex">D(j\Delta x)</script>，<script type="math/tex">j</script>是整数，从<script type="math/tex">0</script>到<script type="math/tex">N</script>。同理，将结果也离散化成<script type="math/tex">\sigma = k \Delta \sigma</script>，从傅里叶变换的定义出发我们可以得到</p>
+<p>FFT中的输入和结果都是离散的，也就是说\(D(x)\)变成了\(D(j\Delta x)\)，\(j\)是整数，从\(0\)到\(N\)。同理，将结果也离散化成\(\sigma = k \Delta \sigma\)，从傅里叶变换的定义出发我们可以得到</p>
 
-<script type="math/tex; mode=display">d(\sigma) = d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk\Delta x \Delta\sigma} \Delta x</script>
+\[d(\sigma) = d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk\Delta x \Delta\sigma} \Delta x\]
 
-<p>从上一节我们知道，采样后数据的傅里叶变换只在奈奎斯特频率以下包含有用数据，所以结果的计算也只到<script type="math/tex">\sigma_N  = \frac{1}{2\Delta x}</script>为止。同时我们要求结果的长度和输入的数组长度一致，而且中间为0，所以频域的步长</p>
+<p>从上一节我们知道，采样后数据的傅里叶变换只在奈奎斯特频率以下包含有用数据，所以结果的计算也只到\(\sigma_N  = \frac{1}{2\Delta x}\)为止。同时我们要求结果的长度和输入的数组长度一致，而且中间为0，所以频域的步长</p>
 
-<script type="math/tex; mode=display">\Delta \sigma = \frac{\sigma_N}{N/2} = \frac{1}{\Delta x N}</script>
+\[\Delta \sigma = \frac{\sigma_N}{N/2} = \frac{1}{\Delta x N}\]
 
 <p>或者</p>
 
-<script type="math/tex; mode=display">\Delta \sigma \Delta x = \frac{1}{N}</script>
+\[\Delta \sigma \Delta x = \frac{1}{N}\]
 
 <p>所以最后我们得到</p>
 
-<script type="math/tex; mode=display">d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk/N} \Delta x</script>
+\[d(k) = \sum_{j=1}^N D(j)e^{2\pi ijk/N} \Delta x\]
 
 <p>其实现在就是一个FFT命令的事情。</p>
 
 <h5 id="有关numpy中的fft">有关numpy中的fft</h5>
 
-<p>因为采样的缘故，fft只计算到奈奎斯特频率的位置。而如果原函数不是实数函数，那么傅里叶变换关于0点对称的复数值将不会共轭，所以numpy中的fft先计算0到<script type="math/tex">\sigma_N</script>的值，再计算0到<script type="math/tex">-\sigma_N</script>的值，并使傅里叶变换的长度与源函数长度一致（一半分给正频率，一半给负频率）。这给我们画图带来了一些麻烦，所以numpy提供了<code class="highlighter-rouge">numpy.fft.fftfreq(n[, d])</code>来给出傅里叶变换的x值，只需输入原函数长度和步长即可。上面的画图中因为结果已知而且基本上特征都在0附近，所以人为地截断到了和原函数同样的x值上；也能看出fft的结果分辨率比解析的差一点，是采样带来的后果。</p>
+<p>因为采样的缘故，fft只计算到奈奎斯特频率的位置。而如果原函数不是实数函数，那么傅里叶变换关于0点对称的复数值将不会共轭，所以numpy中的fft先计算0到\(\sigma_N\)的值，再计算0到\(-\sigma_N\)的值，并使傅里叶变换的长度与源函数长度一致（一半分给正频率，一半给负频率）。这给我们画图带来了一些麻烦，所以numpy提供了<code class="language-plaintext highlighter-rouge">numpy.fft.fftfreq(n[, d])</code>来给出傅里叶变换的x值，只需输入原函数长度和步长即可。上面的画图中因为结果已知而且基本上特征都在0附近，所以人为地截断到了和原函数同样的x值上；也能看出fft的结果分辨率比解析的差一点，是采样带来的后果。</p>
 
-<p>有关模，fft结果乘上步长之后取模才是正确的大小，这是因为fft只计算了前两项，没有乘上最后的<script type="math/tex">\Delta x</script>；当然这是因为程序不知道步长的缘故了。</p>
+<p>有关模，fft结果乘上步长之后取模才是正确的大小，这是因为fft只计算了前两项，没有乘上最后的\(\Delta x\)；当然这是因为程序不知道步长的缘故了。</p>
 
 <p><em>（暂未解决shah函数的fft结果和预计不符的问题）</em></p>
 
@@ -395,29 +572,29 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 <h3 id="误差">误差</h3>
 
-<p>测量是有误差的，那么测量的傅里叶变换误差是多少呢？假设<script type="math/tex">E(x)</script>为函数<script type="math/tex">F_0(x)</script>的测量误差，即<script type="math/tex">F(x) = F_0(x) + E(x)</script>，那么根据定理1，<script type="math/tex">F(x)</script>的傅里叶变换为<script type="math/tex">f(\sigma) = f_0(\sigma) + e(\sigma)</script>。同时定理8告诉我们<script type="math/tex">\int \vert E(x)\vert^2  \mathrm{d}x = \int \vert e(\sigma)\vert^2 \mathrm{d}\sigma</script>。</p>
+<p>测量是有误差的，那么测量的傅里叶变换误差是多少呢？假设\(E(x)\)为函数\(F_0(x)\)的测量误差，即\(F(x) = F_0(x) + E(x)\)，那么根据定理1，\(F(x)\)的傅里叶变换为\(f(\sigma) = f_0(\sigma) + e(\sigma)\)。同时定理8告诉我们\(\int \vert E(x)\vert^2  \mathrm{d}x = \int \vert e(\sigma)\vert^2 \mathrm{d}\sigma\)。</p>
 
-<p><em>（实际上我们并不一定能知道<script type="math/tex">E(x)</script>，更多时候是知道<script type="math/tex">E(x)</script>的一些性质比如说平均值，这个时候怎么办？）</em></p>
+<p><em>（实际上我们并不一定能知道\(E(x)\)，更多时候是知道\(E(x)\)的一些性质比如说平均值，这个时候怎么办？）</em></p>
 
 <p>离散傅里叶变换里面上式会变为</p>
 
-<script type="math/tex; mode=display">\sum_1^N E^2(x_j)\Delta x = \sum_1^N e^2(\sigma_j) \Delta \sigma</script>
+\[\sum_1^N E^2(x_j)\Delta x = \sum_1^N e^2(\sigma_j) \Delta \sigma\]
 
 <p>定义误差的标准差为</p>
 
-<script type="math/tex; mode=display">S_x = [\sum_1^N \frac{E^2(x_j)}{N-1}]^{1/2}</script>
+\[S_x = [\sum_1^N \frac{E^2(x_j)}{N-1}]^{1/2}\]
 
-<script type="math/tex; mode=display">S_\sigma = [\sum_1^N \frac{E^2(\sigma_j)}{N-1}]^{1/2}</script>
+\[S_\sigma = [\sum_1^N \frac{E^2(\sigma_j)}{N-1}]^{1/2}\]
 
-<p>代进定理8导出来的式子里面，再加上<script type="math/tex">\Delta x</script>和<script type="math/tex">\Delta \sigma</script>的关系，我们有</p>
+<p>代进定理8导出来的式子里面，再加上\(\Delta x\)和\(\Delta \sigma\)的关系，我们有</p>
 
-<script type="math/tex; mode=display">S_\sigma = S_x \Delta x N^{1/2}</script>
+\[S_\sigma = S_x \Delta x N^{1/2}\]
 
 <p>也就是说想减少傅里叶变换的误差，可以减少测量误差或者缩短采样间隔，或者增大采样范围。实际测量的时候只把关心的数据点纳入（比如说某条谱线），将其他的点改成平均值或者1这种误差为0的数值可以减少测量误差。</p>
 
 <p><em>（书里提到了FFT的数组长度必须为2的指数，但是实际上似乎不是？）</em></p>
 
-<p>当误差与<script type="math/tex">x,\sigma</script>无关，并且采样间隔小到除了<script type="math/tex">\sigma</script>域的主体之外，还有一部分高<script type="math/tex">\sigma</script>的变换也在<script type="math/tex">\sigma_N</script>之内时，我们通过可以高<script type="math/tex">\sigma</script>部分直接测量<script type="math/tex">S_\sigma</script>从而算出<script type="math/tex">S_x</script>。</p>
+<p>当误差与\(x,\sigma\)无关，并且采样间隔小到除了\(\sigma\)域的主体之外，还有一部分高\(\sigma\)的变换也在\(\sigma_N\)之内时，我们通过可以高\(\sigma\)部分直接测量\(S_\sigma\)从而算出\(S_x\)。</p>
 
 <h3 id="时间序列略">时间序列（略）</h3>
 
@@ -425,14 +602,10 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 
                 <hr style="visibility: hidden;">
-
-                
-
-
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/11/11/OASP1/" >
+                        <a href="/2017/11/11/OASP1/" data-toggle="tooltip" data-placement="top" title="恒星光球层的观测与分析(OASP) - 1">
                         Previous<br>
                         <span>恒星光球层的观测与分析(OASP) - 1</span>
                         </a>
@@ -440,16 +613,14 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
                     
                     
                     <li class="next">
-                        <a href="/2017/12/03/course-group1/" >
+                        <a href="/2017/12/03/course-group1/" data-toggle="tooltip" data-placement="top" title="公开课微信群">
                         Next<br>
                         <span>公开课微信群</span>
                         </a>
                     </li>
                     
                 </ul>
-
-
-                
+                <hr style="visibility: hidden;">
 
                 
                 <!-- disqus 评论框 start -->
@@ -460,9 +631,23 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
                 
 
                 
-            </div>
+            </div>  
 
     <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
     <!-- Sidebar Container -->
@@ -473,78 +658,79 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
                 <!-- Featured Tags -->
                 
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-        				
-                            
-                				<a href="/tags/#random" title="random" rel="4">
-                                    random
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#hanging-around" title="hanging-around" rel="7">
-                                    hanging-around
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
-                                    astro-ph
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#experience" title="experience" rel="3">
-                                    experience
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#learning" title="learning" rel="42">
-                                    learning
-                                </a>
-                            
-        				
-                            
-        				
-        			</div>
-                </section>
-                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=random"
+                    title="random"
+                    rel="4">random</a>
+        
+                <a data-sort="0020" 
+                    href="/archive/?tag=learning"
+                    title="learning"
+                    rel="42">learning</a>
+        
+                <a data-sort="0055" 
+                    href="/archive/?tag=hanging-around"
+                    title="hanging-around"
+                    rel="7">hanging-around</a>
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=astro-ph"
+                    title="astro-ph"
+                    rel="4">astro-ph</a>
+        
+                <a data-sort="0059" 
+                    href="/archive/?tag=experience"
+                    title="experience"
+                    rel="3">experience</a>
+    </div>
+</section>
+
 
                 <!-- Friends Blog -->
                 
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
-                    
-                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
-                    
-                </ul>
-                
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+  
+  <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+  
+  <li><a href="http://huangxuan.me">Hux Blog</a></li>
+  
+</ul>
+
             </div>
         </div>
     </div>
 </article>
 
+<!-- add support for mathjax by voleking-->
 
 
 
 
 
 
-
-<div id="disqus_thread"></div>
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "mingjiejian-github-io";
-    var disqus_identifier = "mingjiejian-github-io//2017/11/11/OASP2/";
+    var disqus_identifier = "/2017/11/11/OASP2";
     var disqus_url = "http://localhost:4000/2017/11/11/OASP2/";
 
     (function() {
@@ -573,9 +759,9 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
+          visible: 'hover',
           placement: 'right',
-          icon: '#'
+          // icon: '#'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
@@ -599,53 +785,56 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                        <a href="/feed.xml">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
+                <!-- SNS Link -->
+                
 
 
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/mingjieJian">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
+<ul class="list-inline text-center">
+
+
+  
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/mingjieJian">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2020
+                    Copyright &copy; Mingjie's page 2021
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -657,32 +846,42 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
 <script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/hux-blog.min.js "></script>
 
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
 
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
 -->
 <!--
     <script>
@@ -694,25 +893,16 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 -->
 
 
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+
+
+
+
 
 <!--fastClick.js -->
 <script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -725,10 +915,12 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
     var _gaDomain = 'mingjiejian.github.io';
 
     // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
@@ -740,14 +932,134 @@ B(x) = \begin{cases} 0 & x \notin [-\frac{W}{2}, \frac{W}{2}] \\ 1 & x \in [-\fr
 
 
 
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason, 
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure 
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
 
 <!-- Image to hack wechat -->
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
-
 </body>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 
 </html>

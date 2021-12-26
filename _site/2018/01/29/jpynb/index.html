@@ -5,35 +5,53 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="Write everything, think everything.">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/myicon.ico">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#000000">
 
-    <title>Jupyter Notebook + Python + Bash 备忘 - Mingjie的博客 | Mingjie's Blog</title>
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="Jupyter Notebook + Python + Bash 备忘 - Mingjie's Page">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="">
+    
+    <meta property="article:published_time" content=" 2018-01-29T00:00:00Z">
+    
+    
+    <meta property="article:author" content="mingjie">
+    
+    
+    <meta property="article:tag" content="learning">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/profile_small.jpeg">
+    <meta property="og:url" content="http://localhost:4000/2018/01/29/jpynb/">
+    <meta property="og:site_name" content="Mingjie's Page">
 
+    <title>Jupyter Notebook + Python + Bash 备忘 - Mingjie's Page</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/2018/01/29/jpynb/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" /css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href=" /css/hux-blog.min.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,6 +63,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 
@@ -52,112 +74,265 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Mingjie's Blog</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Mingjie's page</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/projects/">Projects</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- Add research note link if its switch in _config.yml is true. -->
+                        
+                        <li>
+                            <a href="https://mk-cookbook.readthedocs.io/en/latest//">Research-Notes</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/blog/">Mingjie's Blog</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+        <!-- /.container -->
+    </nav>
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
         }
-    }
-</script>
 
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="/img/post-bg-jpynb.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
+
+
+
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-jpynb.jpg')
+        background-image: url('/img/post-bg-jpynb.jpg');
+        background: ;
     }
 
     
 </style>
+
 <header class="intro-header" >
+
     <div class="header-mask"></div>
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        <a class="tag" href="/archive/?tag=learning" title="learning">learning</a>
                         
                     </div>
                     <h1>Jupyter Notebook + Python + Bash 备忘</h1>
                     
-                    
                     <h2 class="subheading">人蠢就得多动手</h2>
-                    
                     <span class="meta">Posted by mingjie on January 29, 2018</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+
+
+
+
 
 <!-- Post Content -->
 <article>
@@ -170,10 +345,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
+                <!-- Multi-Lingual -->
+                
+
 				<ul id="markdown-toc">
   <li><a href="#jpynb备忘" id="markdown-toc-jpynb备忘">Jpynb备忘</a>    <ul>
       <li><a href="#改变notebook里面markdown文字颜色" id="markdown-toc-改变notebook里面markdown文字颜色">改变Notebook里面Markdown文字颜色</a></li>
-      <li><a href="#matplotlib中theta变为heta的问题" id="markdown-toc-matplotlib中theta变为heta的问题">Matplotlib中<code class="highlighter-rouge">'\theta'</code>变为<code class="highlighter-rouge">heta</code>的问题</a></li>
+      <li><a href="#matplotlib中theta变为heta的问题" id="markdown-toc-matplotlib中theta变为heta的问题">Matplotlib中<code class="language-plaintext highlighter-rouge">'\theta'</code>变为<code class="language-plaintext highlighter-rouge">heta</code>的问题</a></li>
       <li><a href="#更新markdown中的图像" id="markdown-toc-更新markdown中的图像">更新markdown中的图像</a></li>
       <li><a href="#kill-宋体" id="markdown-toc-kill-宋体">Kill 宋体！</a></li>
     </ul>
@@ -211,17 +389,17 @@
 
 <p>例如想要这样的效果：foo <font color="red"> bar </font> foo</p>
 
-<p><code class="highlighter-rouge">foo &lt;font color='red'&gt; bar &lt;/font&gt; foo</code></p>
+<p><code class="language-plaintext highlighter-rouge">foo &lt;font color='red'&gt; bar &lt;/font&gt; foo</code></p>
 
 <p>其实就是一个HTML的attribute。</p>
 
-<h2 id="matplotlib中theta变为heta的问题">Matplotlib中<code class="highlighter-rouge">'\theta'</code>变为<code class="highlighter-rouge">heta</code>的问题</h2>
+<h2 id="matplotlib中theta变为heta的问题">Matplotlib中<code class="language-plaintext highlighter-rouge">'\theta'</code>变为<code class="language-plaintext highlighter-rouge">heta</code>的问题</h2>
 
-<p>这是因为<code class="highlighter-rouge">\t</code>在字符串中会被转义为Tab，所以要在字符串前加上一个<code class="highlighter-rouge">r</code>。</p>
+<p>这是因为<code class="language-plaintext highlighter-rouge">\t</code>在字符串中会被转义为Tab，所以要在字符串前加上一个<code class="language-plaintext highlighter-rouge">r</code>。</p>
 
 <h2 id="更新markdown中的图像">更新markdown中的图像</h2>
 
-<p>在路径后面加上一个<code class="highlighter-rouge">?1</code>，数字可以改变。</p>
+<p>在路径后面加上一个<code class="language-plaintext highlighter-rouge">?1</code>，数字可以改变。</p>
 
 <p><a href="https://stackoverflow.com/questions/37023166/how-to-reload-image-in-ipython-notebook">来源</a></p>
 
@@ -241,29 +419,36 @@
 <p id="py-pandas"></p>
 <h2 id="pandas">Pandas</h2>
 
-<p>DataFrame里面选出几列：<code class="highlighter-rouge">df[['a', 'b']]</code></p>
+<p>DataFrame里面选出几列：<code class="language-plaintext highlighter-rouge">df[['a', 'b']]</code></p>
 
 <h3 id="从pdf中提取表格">从pdf中提取表格</h3>
 <p>先安装tabula-py：
-<code class="highlighter-rouge">pip install tablua-py</code></p>
+<code class="language-plaintext highlighter-rouge">pip install tablua-py</code></p>
 
 <p>导入，使用：</p>
 
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tabula</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">tabula</span>
 <span class="n">tabula</span><span class="o">.</span><span class="n">read_pdf</span><span class="p">(</span><span class="s">'xxx.pdf'</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s">'--pages 4'</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="读取固定宽度表格">读取固定宽度表格</h3>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="s">'catalog/Kovtyukh/Kovtyukh04/table1.dat'</span><span class="p">,</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="s">'catalog/Kovtyukh/Kovtyukh04/table1.dat'</span><span class="p">,</span>
                            <span class="n">colspecs</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">24</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">41</span><span class="p">,</span><span class="mi">46</span><span class="p">),</span>
                                      <span class="p">(</span><span class="mi">47</span><span class="p">,</span><span class="mi">52</span><span class="p">),</span> <span class="p">(</span><span class="mi">53</span><span class="p">,</span><span class="mi">68</span><span class="p">)],</span>
                            <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">'Star'</span><span class="p">,</span> <span class="s">'Teff'</span><span class="p">,</span> <span class="s">'N'</span><span class="p">,</span> <span class="s">'e_Teff'</span><span class="p">,</span> <span class="s">'logg'</span><span class="p">,</span> <span class="s">'Vt'</span><span class="p">,</span> <span class="s">'[Fe/H]'</span><span class="p">,</span> <span class="s">'VMAG'</span><span class="p">,</span>
                                   <span class="s">'B-V'</span><span class="p">,</span> <span class="s">'Rem'</span><span class="p">])</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="在已有的datafeame中添加列">在已有的DataFeame中添加列</h3>
 
-<p><code class="highlighter-rouge">df1 = df1.assign(e=p.Series(np.random.randn(sLength)).values)</code></p>
+<p><code class="language-plaintext highlighter-rouge">df1 = df1.assign(e=p.Series(np.random.randn(sLength)).values)</code></p>
 
 <h3 id="有关settingwithcopy警告">有关SettingwithCopy警告</h3>
 
@@ -273,13 +458,33 @@
 
 <h3 id="防止重叠或者出边界">防止重叠或者出边界</h3>
 
-<p><code class="highlighter-rouge">plt.tight_layout()</code></p>
+<p><code class="language-plaintext highlighter-rouge">plt.tight_layout()</code></p>
 
 <h3 id="画密度散点图">画密度散点图</h3>
 
 <p>来自<a href="https://stackoverflow.com/questions/20105364/how-can-i-make-a-scatter-plot-colored-by-density-in-matplotlib?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa">这里</a></p>
 
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
 
@@ -299,21 +504,26 @@
 <span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="subplot中加上总标题">subplot中加上总标题</h3>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'This is a somewhat long figure title'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'This is a somewhat long figure title'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="subplot中加上总xylabel">subplot中加上总xylabel</h3>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s">'LDR'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="s">'LDR'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.93</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="subplot中加上编号子图相对位置统一">subplot中加上编号（子图相对位置统一）</h3>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.89</span><span class="p">,</span> <span class="s">'(a)'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h3 id="防止text重叠">防止text重叠</h3>
 
@@ -322,15 +532,19 @@
 <h2 id="在一个数组中随机抽取元素的方法">在一个数组中随机抽取元素的方法</h2>
 
 <p>来自<a href="https://blog.csdn.net/amy_wumanfang/article/details/64483340">这里</a></p>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">random</span>
 <span class="c1">#使用python random模块的sample函数从列表中随机选择一组元素
 </span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="nb">slice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1">#从list中随机获取5个元素，作为一个片断返回  
-</span></code></pre></div></div>
+</span></pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="latex相关">Latex相关</h2>
 
-<p>输出<code class="highlighter-rouge">\num{3.2e-1}</code>：<code class="highlighter-rouge">\num}</code>。</p>
+<p>输出<code class="language-plaintext highlighter-rouge">\num{3.2e-1}</code>：<code class="language-plaintext highlighter-rouge">\num}</code>。</p>
 
 <h1 id="自己写包">自己写包</h1>
 
@@ -338,7 +552,15 @@
 
 <p>首先描述文件结构：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\ruler
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>\ruler
   \ruler
     __init__.py
     convert.py
@@ -346,11 +568,22 @@
       __init__.py
       something.py
   setup.py
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>因为还没完全写好，就先把一个示例放上来。最外面的ruler是安装用的，不叫包名应该也可以（但是如果要上传到PyPi的话应该有要求），里面的setup.py需要有这样的内容：</p>
 
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
 <span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'ruler'</span><span class="p">,</span>
       <span class="n">version</span><span class="o">=</span><span class="s">'0.1'</span><span class="p">,</span>
@@ -361,16 +594,18 @@
       <span class="n">license</span><span class="o">=</span><span class="s">'MIT'</span><span class="p">,</span>
       <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s">'ruler'</span><span class="p">],</span>
       <span class="n">zip_safe</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></div></div>
-<p>如果只有<code class="highlighter-rouge">name</code>和<code class="highlighter-rouge">version</code>的话可能也行。第二层的ruler是真正的包，它以及里面的每个文件夹都需要有一个<code class="highlighter-rouge">__init__.py</code>，表示这是包。从这一级开始里面就可以放module，也就是<code class="highlighter-rouge">.py</code>文件了。不过要达到之前的目的（仅import包名但自动提示模块）需要在每一个<code class="highlighter-rouge">__init__.py</code>里面将对应文件夹包含的module以及子文件夹们import掉；比如ruler里面的要这样写：</p>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>如果只有<code class="language-plaintext highlighter-rouge">name</code>和<code class="language-plaintext highlighter-rouge">version</code>的话可能也行。第二层的ruler是真正的包，它以及里面的每个文件夹都需要有一个<code class="language-plaintext highlighter-rouge">__init__.py</code>，表示这是包。从这一级开始里面就可以放module，也就是<code class="language-plaintext highlighter-rouge">.py</code>文件了。不过要达到之前的目的（仅import包名但自动提示模块）需要在每一个<code class="language-plaintext highlighter-rouge">__init__.py</code>里面将对应文件夹包含的module以及子文件夹们import掉；比如ruler里面的要这样写：</p>
 
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">convert</span>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">convert</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">subpackage</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>当然subpackage里面的也需要这样写才能把所有的module都带上。想要测试的话先import然后用<code class="highlighter-rouge">dir()</code>看看module和子文件夹在不在里面就行。</p>
+<p>当然subpackage里面的也需要这样写才能把所有的module都带上。想要测试的话先import然后用<code class="language-plaintext highlighter-rouge">dir()</code>看看module和子文件夹在不在里面就行。</p>
 
-<p>这些搞定之后就可以跑回最外级的ruler里面打开终端，运行<code class="highlighter-rouge">pip install -e .</code>。<code class="highlighter-rouge">-e</code>的意思是<code class="highlighter-rouge">--editable</code>，每次更新之后不用再<code class="highlighter-rouge">pip install</code>就可以直接用了；之后把Jpynb重启一遍就行了。</p>
+<p>这些搞定之后就可以跑回最外级的ruler里面打开终端，运行<code class="language-plaintext highlighter-rouge">pip install -e .</code>。<code class="language-plaintext highlighter-rouge">-e</code>的意思是<code class="language-plaintext highlighter-rouge">--editable</code>，每次更新之后不用再<code class="language-plaintext highlighter-rouge">pip install</code>就可以直接用了；之后把Jpynb重启一遍就行了。</p>
 
 <p>参考资料：<br />
 <a href="https://docs.python.org/3/tutorial/modules.html#packages">Python Tutorial Chap. 6</a><br />
@@ -382,21 +617,17 @@
 <p>https://server.etutsplus.com/apt-get-404-not-found/</p>
 
 <p>合并pdf
-<code class="highlighter-rouge">pdftk file1.pdf file2.pdf cat output mergedfile.pdf</code></p>
+<code class="language-plaintext highlighter-rouge">pdftk file1.pdf file2.pdf cat output mergedfile.pdf</code></p>
 
 <h1 id="服务器备忘">服务器备忘</h1>
 <p>https://blog.einverne.info/archive.html</p>
 
 
                 <hr style="visibility: hidden;">
-
-                
-
-
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/01/22/hakone-pathfinder/" >
+                        <a href="/2018/01/22/hakone-pathfinder/" data-toggle="tooltip" data-placement="top" title="箱根探路者">
                         Previous<br>
                         <span>箱根探路者</span>
                         </a>
@@ -404,16 +635,14 @@
                     
                     
                     <li class="next">
-                        <a href="/2018/03/08/OASP9/" >
+                        <a href="/2018/03/08/OASP9/" data-toggle="tooltip" data-placement="top" title="OASP笔记 - 9">
                         Next<br>
                         <span>OASP笔记 - 9</span>
                         </a>
                     </li>
                     
                 </ul>
-
-
-                
+                <hr style="visibility: hidden;">
 
                 
                 <!-- disqus 评论框 start -->
@@ -424,9 +653,23 @@
                 
 
                 
-            </div>
+            </div>  
 
     <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
     <!-- Sidebar Container -->
@@ -437,78 +680,79 @@
 
                 <!-- Featured Tags -->
                 
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-        				
-                            
-                				<a href="/tags/#random" title="random" rel="4">
-                                    random
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#hanging-around" title="hanging-around" rel="7">
-                                    hanging-around
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
-                                    astro-ph
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#experience" title="experience" rel="3">
-                                    experience
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#learning" title="learning" rel="42">
-                                    learning
-                                </a>
-                            
-        				
-                            
-        				
-        			</div>
-                </section>
-                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=random"
+                    title="random"
+                    rel="4">random</a>
+        
+                <a data-sort="0020" 
+                    href="/archive/?tag=learning"
+                    title="learning"
+                    rel="42">learning</a>
+        
+                <a data-sort="0055" 
+                    href="/archive/?tag=hanging-around"
+                    title="hanging-around"
+                    rel="7">hanging-around</a>
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=astro-ph"
+                    title="astro-ph"
+                    rel="4">astro-ph</a>
+        
+                <a data-sort="0059" 
+                    href="/archive/?tag=experience"
+                    title="experience"
+                    rel="3">experience</a>
+    </div>
+</section>
+
 
                 <!-- Friends Blog -->
                 
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
-                    
-                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
-                    
-                </ul>
-                
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+  
+  <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+  
+  <li><a href="http://huangxuan.me">Hux Blog</a></li>
+  
+</ul>
+
             </div>
         </div>
     </div>
 </article>
 
+<!-- add support for mathjax by voleking-->
 
 
 
 
 
 
-
-<div id="disqus_thread"></div>
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "mingjiejian-github-io";
-    var disqus_identifier = "mingjiejian-github-io//2018/01/29/jpynb/";
+    var disqus_identifier = "/2018/01/29/jpynb";
     var disqus_url = "http://localhost:4000/2018/01/29/jpynb/";
 
     (function() {
@@ -537,9 +781,9 @@
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
+          visible: 'hover',
           placement: 'right',
-          icon: '#'
+          // icon: '#'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
@@ -563,53 +807,56 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                        <a href="/feed.xml">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
+                <!-- SNS Link -->
+                
 
 
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/mingjieJian">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
+<ul class="list-inline text-center">
+
+
+  
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/mingjieJian">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2020
+                    Copyright &copy; Mingjie's page 2021
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -621,32 +868,42 @@
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
 <script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/hux-blog.min.js "></script>
 
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
 
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
 -->
 <!--
     <script>
@@ -658,25 +915,16 @@
 -->
 
 
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+
+
+
+
 
 <!--fastClick.js -->
 <script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -689,10 +937,12 @@
     var _gaDomain = 'mingjiejian.github.io';
 
     // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
@@ -704,14 +954,134 @@
 
 
 
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason, 
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure 
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
 
 <!-- Image to hack wechat -->
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
-
 </body>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 
 </html>

@@ -5,35 +5,45 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="Write everything, think everything.">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/myicon.ico">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#000000">
 
-    <title>Mingjie的博客 | Mingjie's Blog</title>
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="Mingjie's Page">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:description"
+        content="Mingjieです">
+    
+    <meta property="og:image" content="http://localhost:4000/img/profile_small.jpeg">
+    <meta property="og:url" content="http://localhost:4000/">
+    <meta property="og:site_name" content="Mingjie's Page">
 
+    <title>Mingjie's Page</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" /css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href=" /css/hux-blog.min.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,6 +55,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 
@@ -52,574 +66,552 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Mingjie's Blog</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Mingjie's page</a>
             </div>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Mingjie's Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">Mingjie's Blog</span>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/projects/">Projects</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- Add research note link if its switch in _config.yml is true. -->
+                        
+                        <li>
+                            <a href="https://mk-cookbook.readthedocs.io/en/latest//">Research-Notes</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/blog/">Mingjie's Blog</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container -->
+    </nav>
+
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
+        }
+
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
     </div>
+  </div>
+</div>
+
+    <!-- Page Header -->
+
+
+
+
+
+
+
+<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <div class="site-heading">
+        
+          <h1>Mingjie's page</h1>
+          <span class="subheading">Mingjieです</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
+
 
 <!-- Main Content -->
 <div class="container">
-	<div class="row">
-        
+  <div class="row">
+    
 
-<!-- USE SIDEBAR -->
+    <!-- USE SIDEBAR -->
     <!-- PostList Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
-    			
-<div class="post-preview">
-    <a href="/2020/08/16/miura/">
-        <h2 class="post-title">
-            三浦日落
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
-        </h3>
-        
-        <div class="post-content-preview">
-            题图from L指导；真是好看
+    <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
+      col-xs-12 postlist-container">
+      <!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> English </option>
+    <option value="1"> Chinese </option>
+</select>
 
-好久没出去看风景了。想起来在这个blog第一次正儿八经写东西是17年的6月，正好也是去的横须贺和横滨；三年过去了也算是半个故地重游吧。
-
-四轮自走设施的极限距离探究
-
-得益于Q老师可以在日本开车，我们已经嚷嚷了好久要开车去哪里逛一圈了。
-在新冠疫情的大环境下在外面住一天我是不太敢的，所以当天来回就是一个不错的选择。
-而当天来回的极限地点其实四不那么明确的。
-...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on August 16, 2020
-    </p>
+<!-- Chinese Version -->
+<div class="zh post-container">
+    <blockquote>
+        学习天文的人；喜欢打游戏。
+    </blockquote>
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/2020/06/22/weather-satellite/">
-        <h2 class="post-title">
-            在气象卫星图里看日食
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
-        </h3>
-        
-        <div class="post-content-preview">
-            中国区约15分钟间隔的风云四号真彩色图可以在这里爬到；图片被纵向分成了编号为5/6/7，横向分成了编号为10-14的小块，爬下来拼合就行。wget的时候要带上浏览器伪装。
+<!-- English Version -->
+<div class="en post-container">
+    <center>
+        <i>Diving into Astronomy. </i>
+    </center>
+  <p>
+    <h4> Education </h4>
+    <table>
+      <tr align="middle" vertical-align="baseline">
+        <td> PhD student </td> <td> Department of Astronomy, University of Tokyo<br> (Supervisor: Noriyuki Matsunaga) </td> <td> 2018 - present </td>
+      </tr>
+      <tr align="middle" vertical-align="baseline">
+        <td> Master </td> <td> Department of Astronomy, University of Tokyo<br> (Supervisor: Noriyuki Matsunaga) </td> <td> 2016 - 2018 </td>
+      </tr>
+      <tr align="middle">
+        <td> Bachelor </td> <td> Department of Astronomy, Beijing Normal Univsersity<br> (Supervisor: Biwei Jiang) </td> <td> 2012 - 2016 </td>
+    </table>
+  </p>
 
-全圆盘风云4/2号云图可以在这里下载，网站本身就有动图下载。
+	<p>
+    <h4> Research Interest </h4>
+    Stellar helium abundance and its evolution in galactic archaeology.
+	</p>
 
-这里汇总了美国GOES、欧盟Meteosat系列卫星和日本向日葵8号的图像；里面提供低分辨率的缩略动图。高分辨率的图要到各家自己的网站（图片下方链接）去下。...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on June 22, 2020
+	<p>
+    <h4> Refereed Publication </h4>
+
+    <b>Jian, M.</b>;Taniguchi, D.; Matsunaga, N.; Kobayashi, N.; Ikeda, Y.; ...; The effect of surface gravity on line-depth ratios in the wavelength range 0.97-1.32 µm. <a href="http://adsabs.harvard.edu/abs/2020MNRAS.494.1724J"> <i>Monthly Notices of the Royal Astronomical Society</i> <b>494</b>, 1724J (2020) </a>.<br>
+
+    Matsunaga, N.; Taniguchi, D.; <b>Jian, M.</b>; Ikeda, Y.; Fukue, K.; ...; Identification of Absorption Lines of Heavy Metals in the Wavelength Range 0.97–1.32 μm. <a href="http://adsabs.harvard.edu/abs/2020ApJS..246...10M"> <i>The Astrophysical Journal Supplement Series</i> <b>246</b>, 10M (2020) </a>.<br>
+
+    Deng, D.; Sun, Y.; <b>Jian, M.</b>; Jiang, B.; Yuan, H.; Intrinsic Color Indices of Early-type Dwarf Stars. <a href="http://adsabs.harvard.edu/abs/2020AJ....159..208D"> <i>The Astrophysical Journal</i> <b>459</b>, 208D (2020) </a>.<br>
+
+    <b>Jian, M.</b>; Matsunaga, N.; Fukue, K.; The metallicity effect on line-depth ratios in APOGEE H-band spectra. <a href="http://adsabs.harvard.edu/abs/2019MNRAS.485.1310J"> <i>Monthly Notices of the Royal Astronomical Society</i> <b>485</b>, 1310J (2019) </a>.<br>
+
+    Sun, Mingxu; Jiang, B. W.; Zhao, He; Gao, Jian; Gao, Shuang; <b>Jian, Mingjie</b>; Yuan, Haibo; The Ultraviolet Extinction in the  GALEX  Bands. <a href="http://adsabs.harvard.edu/abs/2018ApJ...861..153S"> <i>The Astrophysical Journal</i> <b>861</b>, 153S (2018) </a>.<br>
+
+    <b>Jian, M.</b>; Gao, S.; Zhao, H.; & Jiang, B. W.; Revision of Stellar Intrinsic Colors in the Infrared by Spectroscopic Surveys. <a href="http://adsabs.harvard.edu/abs/2017AJ....153....5J"> <i>The Astronomical Journal</i> <b>153</b>, 5 (2017) </a>.
+	</p>
+
+  <p>
+    <h4> Conference </h4>
+    <ul>
+    <li> <a href="http://kiaa.pku.edu.cn/conference/stellar-populations-and-distance-scale-conference-honour-jeremy-mould"> Stellar Populations and the Distance Scale</a>  (a conference in honour of Jeremy Mould)  </li>
+    <i>11-15 September 2017</i><br>
+    <a href="/img/about/1709bjposter.pdf" > Poster </a>
+
+    <li> <a href="http://astro-wakate.org/ss2017/web/index.html"> 2017年度 第47回　天文・天体物理若手夏の学校 </a> </li>
+    <i> 25-28 July, 2017 </i><br>
+    <a href="http://www.astro-wakate.sakura.ne.jp/ss2017/web/file/abst/ss17_abst_sun.pdf"> Abstract (page 6)</a>
+  </ul>
+  </p>
+
+	<p>
+    <h4> Reward </h4>
+    2021 Japan Society for the Promotion of Science <a href="https://www.jsps.go.jp/j-pd/index.html">Research Fellowship for Young Scientists</a> DC2 
+	</p>
+
+  <p>
+    <h4> Obsrervation </h4>
+    <ul>
+      <li>Proposal 2020A103 and 2020B108 on IRTF</li>
+      <i>7-10 August, 2020</i><br>
+      PI: <b>Mingjie Jian</b>; CoI: Noriyuki Matsunaga, Alan Tokunaga, Naoto Kobayashi, Daisuke Taniguchi, ...
+
+      <li>Proposal 0100.D-0852 on New Technology Telescope, European Southern Observatory</li>
+      <i>1-5 December, 2017</i><br>
+      PI: Noriyuki Matsunaga; CoI: <b>Mingjie Jian</b>, Fukue Kei, Daisuke Taniguchi, Scarlet Saez Elgueta, ...
+    </ul>
+  </p>
+
+  <p>
+    <h4> Research note </h4>
+    <a href="https://mk-cookbook.readthedocs.io/en/latest/">MK-cookbook</a>: the READTHEDOCS notebook for my research.
+  </p>
+
+  <p>
+    <h4> Github project </h4>
+    <a href="https://github.com/MingjieJian/ir_ldr">ir_ldr</a>: a python3 code for measuring the spectral line depth of the APOGEE and WINERED spectra, calculating the line depth ratio (LDR) and finally deriving the effective temperature (T_LDR).<br>
+    <a href="https://github.com/MingjieJian/pymoog">pymoog</a>: a python3 wrapper for running the LTE spectrum synthesis part of the code MOOG.<br>
+  </p>
+
+  <p>
+    <h4> Astronomical Outreach </h4>
+    Teacher of Astronomical club on Affiliated Middle School of Beijing Jiaotong University (2015.9 - 2016.9)
+
+  </p>
+    <p>
+      <blockquote>
+        There is a doctrine well known to philosophers that the moon ceases to exist when no one is looking at it. I will not discuss the doctrine since I have not the least idea what is the meaning of the word existence when used in this connection. At any rate the science of astronomy has not been based on this spasmodic kind of moon. In the scientific world (which has to fulfill functions less vague than merely existing) there is a moon which appeared on the scene before the astronomer; it reflects sunlight when no one sees it; it has mass when no one is measuring the mass; it is distant 240,000 miles from the earth when no one is surveying the distance; and it will eclipse the sun in 1999 even if the human race has succeeded in killing itself off before that date.
+      </blockquote>
     </p>
+
+    <p style="text-align:right;">
+    --  Eddington, The Nature of the Physical World, 226
+    </p>
+
 </div>
-<hr>
 
-<div class="post-preview">
-    <a href="/2020/06/21/astroph/">
-        <h2 class="post-title">
-            0621论文阅读
-        </h2>
-        
-        <h3 class="post-subtitle">
-            
-        </h3>
-        
-        <div class="post-content-preview">
-            星系光谱模拟简介
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    function onLanChange(index){
+        if(index == 1){
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }else{
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        }
+    }
+    onLanChange(0);
+</script>
 
 
-  步骤
-    
-      覆盖整个赫罗图的恒星光谱
-        
-          从LTE到NLTE（对高温恒星的He线有很大影响）
-        
+
+
+
+
+
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://mingjiejian-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<!-- disqus 公共JS代码 end -->
+
+
+    </div>
+    <!-- Sidebar Container -->
+    <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
+      col-xs-12 sidebar-container">
+      <!-- Featured Tags -->
       
-      恒星演化模型提供各个光谱的权重（什么星有多少）
-        
-          主要是大质量恒星（因为亮）
-          1980s：overshooting；1990...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on June 21, 2020
-    </p>
-</div>
-<hr>
 
-<div class="post-preview">
-    <a href="/2020/06/18/ssh-key/">
-        <h2 class="post-title">
-            不需要输入密码的SSH key
-        </h2>
-        
-        <h3 class="post-subtitle">
-            懒，就是
-        </h3>
-        
-        <div class="post-content-preview">
-            如果想不用密码登陆某主机的话，需要用到ssh key：
 
-ssh-keygen -t rsa -b 4096 -C "你的邮箱地址"
-
-在生成ssh key的时候不输入密码的话，即使之后将公钥复制到了远程主机(ssh-copy-id -i .ssh/id_rsa.pub git@12.56.224.61 )，ssh的hi和还是需要输入密码的。
-
-这个时候将identity添加到私钥里就可以了...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on June 18, 2020
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2020/05/11/neumann-series/">
-        <h2 class="post-title">
-            Neumann级数
-        </h2>
-        
-        <h3 class="post-subtitle">
-            算源函数要用到的东西
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  问题
-  Neumann级数    
-      例子
+<section>
     
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=random"
+                    title="random"
+                    rel="4">random</a>
+        
+                <a data-sort="0020" 
+                    href="/archive/?tag=learning"
+                    title="learning"
+                    rel="42">learning</a>
+        
+                <a data-sort="0055" 
+                    href="/archive/?tag=hanging-around"
+                    title="hanging-around"
+                    rel="7">hanging-around</a>
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=astro-ph"
+                    title="astro-ph"
+                    rel="4">astro-ph</a>
+        
+                <a data-sort="0059" 
+                    href="/archive/?tag=experience"
+                    title="experience"
+                    rel="3">experience</a>
+    </div>
+</section>
+
+
+      <!-- Short About -->
+      <section class="visible-md visible-lg">
+  <hr>
+  <h5><a href="/about/">ABOUT ME</a></h5>
+  <div class="short-about">
+    
+    <img src="/img/profile_small.jpeg" />
+    
+    
+    <p>Diving into Astronomy</p>
+    
+    <!-- SNS Link -->
+    
+
+
+<ul class="list-inline">
+
+
   
-
-
-问题
-
-文中公式如果有编号则来自Radiative Transfer in Stellar and Planetary Atmospheres。
-
-在算辐射转移方程的时候我们会遇到这样的一个循环：
-
-
-(Figure 2.10; Radiative Transfer in Stellar and Planeta...
-        </div>
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
     </a>
-    <p class="post-meta">
-        Posted by mingjie on May 11, 2020
-    </p>
-</div>
-<hr>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/mingjieJian">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+  </div>
+</section>
 
-<div class="post-preview">
-    <a href="/2020/04/08/bash-win/">
-        <h2 class="post-title">
-            Working from home: remote jupyter notebok set up
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Code the same thing anywhere
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  Remote jupyter Notebook    
-      Going back to the campus
-      ssh to your computer
-      Open the jupyter notebook        
-          Reinstall the latest anaconda
-        
+      <!-- Friends Blog -->
       
-    
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
   
-  Se...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on April 8, 2020
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2020/03/24/PANDORA-code/">
-        <h2 class="post-title">
-            PANDORA源码阅读备忘
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Pandora and box
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  COMMON block
-
-
-COMMON block
-
-COMMON block是Fortran中在不同函数之间传递变量的第二种方法（第一种是通过函数的输入参数）（但是我很讨厌这种方法）。它通过在不同函数中定义跟随在COMMON后的变量来传输。比如说在主程序中有
-
-COMMON A, B, C
-
-A = -2
-B = 0.9
-C = 66
-
-
-然后在子程序中有
-
-COMMON C, ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on March 24, 2020
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2020/02/05/NLTE-RT-Model/">
-        <h2 class="post-title">
-            NLTE下的辐射转移和大气模型
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Avrett 2008 Lecture Note
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  基本概念/方程
-  单色散射
-  谱线辐射 （二能级原子）    
-      二能级原子的解
-    
+  <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
   
-
-
-基本概念/方程
-
-参考OASP5。
-
-
-
-在各向同性下辐射强度：
-
-
-
-平均辐射强度：
-
-
-
-单色能量密度：
-
-
-
-单色天文流量（还是各向同性）：
-
-
-
-流量的另一个定义：
-
-
-
-斯特芬-玻尔兹曼定律：
-
-
-
-辐射转移方程(1)：
-
-
-
-源函数、光深：
-
-
-
-所以辐射转移...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on February 5, 2020
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/12/24/MOOG-2019/">
-        <h2 class="post-title">
-            MOOG 2017与2019版本对比
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Oh
-        </h3>
-        
-        <div class="post-content-preview">
-            Chris Sneden的MOOG悄咪咪地从FEB2017版变成了NOV2019版。
-Let’s see what is changed.
-
-Modified functions
-
-The driver isotop is deprecated, and its functions are merged into the driver synth.
-To my understanding, ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 24, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/12/06/error-weighted-mean/">
-        <h2 class="post-title">
-            加权平均值的误差
-        </h2>
-        
-        <h3 class="post-subtitle">
-            the error of the weighted mean
-        </h3>
-        
-        <div class="post-content-preview">
-            我受不了了。
-
-究竟加权平均值的误差的表达式应该是什么？这个问题困扰了我很久。今天决定用实验去解决它。
-
-问题
-
-古典描述
-
-我们想测量一个物理量；它有一个真值。我们对它进行次测量，每次测量用下标的来表示，也就是。因为每次测量的环境都不同（仪器温度变了啊、天气变阴了啊、观测助手抖腿了啊、隔壁猫叫了啊、etc），每次测量的误差都不一样。误差是怎么估计的也是一个大问题，但这里就直接给定了。那么当...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mingjie on December 6, 2019
-    </p>
-</div>
-<hr>
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    
-    <li class="next">
-        <a href="/page2">Older Posts &rarr;</a>
-    </li>
-    
+  <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+  
+  <li><a href="http://huangxuan.me">Hux Blog</a></li>
+  
 </ul>
 
 
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            
-                                <a href="/tags/#random" title="random" rel="4">
-                                    random
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#hanging-around" title="hanging-around" rel="7">
-                                    hanging-around
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#astro-ph" title="astro-ph" rel="4">
-                                    astro-ph
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#experience" title="experience" rel="3">
-                                    experience
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#learning" title="learning" rel="42">
-                                    learning
-                                </a>
-                            
-                        
-                            
-                        
-                    </div>
-                </section>
-                
+      <!-- Ads -->
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- first shot -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6487568398225121" data-ad-slot="4814308751"
+     data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/profile_small.jpeg" />
-                        
-                        
-                            <p>Diving into Astronomy</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            <li>
-                                <a href="/feed.xml">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/mingjieJian">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
-                    
-                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
-                    
-                </ul>
-                
-    		</div>
-        
-	</div>
+    </div>
+    
+  </div>
 </div>
+
+
 
 
     <!-- Footer -->
@@ -627,53 +619,56 @@ To my understanding, ...
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                        <a href="/feed.xml">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
+                <!-- SNS Link -->
+                
 
 
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/mingjieJian">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
+<ul class="list-inline text-center">
+
+
+  
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/mingjieJian">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2020
+                    Copyright &copy; Mingjie's page 2021
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -685,32 +680,42 @@ To my understanding, ...
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
 <script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/hux-blog.min.js "></script>
 
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
 
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
 -->
 <!--
     <script>
@@ -722,25 +727,16 @@ To my understanding, ...
 -->
 
 
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+
+
+
+
 
 <!--fastClick.js -->
 <script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -753,10 +749,12 @@ To my understanding, ...
     var _gaDomain = 'mingjiejian.github.io';
 
     // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
@@ -768,14 +766,134 @@ To my understanding, ...
 
 
 
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason, 
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure 
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
 
 <!-- Image to hack wechat -->
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
-
 </body>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 
 </html>

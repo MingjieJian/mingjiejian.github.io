@@ -5,35 +5,54 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="Write everything, think everything.">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/myicon.ico">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#000000">
 
-    <title>OASP笔记 - 12 - Mingjie的博客 | Mingjie's Blog</title>
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="OASP笔记 - 12 - Mingjie's Page">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="手里有数据，心里不慌。上一章讲了谱线的轮廓，那么实际我们怎么去测这个轮廓呢？毕竟测到了才能推出下面几章的东西来，那么就要看看我们是拿什么东西来测量谱线轮廓，以及怎么还原谱线轮廓的了。
+">
+    
+    <meta property="article:published_time" content=" 2018-06-14T00:00:00Z">
+    
+    
+    <meta property="article:author" content="mingjie">
+    
+    
+    <meta property="article:tag" content="learning">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/profile_small.jpeg">
+    <meta property="og:url" content="http://localhost:4000/2018/06/14/OASP12/">
+    <meta property="og:site_name" content="Mingjie's Page">
 
+    <title>OASP笔记 - 12 - Mingjie's Page</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/2018/06/14/OASP12/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" /css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href=" /css/hux-blog.min.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,6 +64,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 
@@ -52,112 +75,265 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Mingjie's Blog</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Mingjie's page</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/projects/">Projects</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- Add research note link if its switch in _config.yml is true. -->
+                        
+                        <li>
+                            <a href="https://mk-cookbook.readthedocs.io/en/latest//">Research-Notes</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/blog/">Mingjie's Blog</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+        <!-- /.container -->
+    </nav>
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
         }
-    }
-</script>
 
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="/img/post-bg-OASP11.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
+
+
+
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-OASP11.jpg')
+        background-image: url('/img/post-bg-OASP11.jpg');
+        background: ;
     }
 
     
 </style>
+
 <header class="intro-header" >
+
     <div class="header-mask"></div>
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        <a class="tag" href="/archive/?tag=learning" title="learning">learning</a>
                         
                     </div>
                     <h1>OASP笔记 - 12</h1>
                     
-                    
                     <h2 class="subheading">谱线的测量</h2>
-                    
                     <span class="meta">Posted by mingjie on June 14, 2018</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+
+
+
+
 
 <!-- Post Content -->
 <article>
@@ -170,38 +346,40 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
+                <!-- Multi-Lingual -->
+                
+
 				<p>手里有数据，心里不慌。上一章讲了谱线的轮廓，那么实际我们怎么去测这个轮廓呢？毕竟测到了才能推出下面几章的东西来，那么就要看看我们是拿什么东西来测量谱线轮廓，以及怎么还原谱线轮廓的了。</p>
 
 <h3 id="仪器">仪器</h3>
 
-<p>打住。我不是做仪器的，所以这块就不详细说了。要有轮廓肯定需要高色散光谱仪（虽然不同波段的高指的分辨率不一样，大家也都在吹自己的是高色散），光谱仪有分辨率公式<script type="math/tex">(3.15)</script>：</p>
+<p>打住。我不是做仪器的，所以这块就不详细说了。要有轮廓肯定需要高色散光谱仪（虽然不同波段的高指的分辨率不一样，大家也都在吹自己的是高色散），光谱仪有分辨率公式\((3.15)\)：</p>
 
-<script type="math/tex; mode=display">\Delta \lambda = - \frac{W'}{f_\mathrm{coll}} \frac{d}{n} \cos{\alpha} \tag{12.1}</script>
+\[\Delta \lambda = - \frac{W'}{f_\mathrm{coll}} \frac{d}{n} \cos{\alpha} \tag{12.1}\]
 
-<p>所以要减小<script type="math/tex">\Delta \lambda</script>，提高分辨率，主要就是增大<script type="math/tex">f_\mathrm{coll}</script>或者<script type="math/tex">n</script>。所以要不就做得老长老长，要不就把反射光栅搞好，提升可用级数大小。</p>
+<p>所以要减小\(\Delta \lambda\)，提高分辨率，主要就是增大\(f_\mathrm{coll}\)或者\(n\)。所以要不就做得老长老长，要不就把反射光栅搞好，提升可用级数大小。</p>
 
 <p>第二是每个光谱仪都需要有一个slit viewer，说白了就是导星镜。但是恒星的光都到狭缝里面去了，射到导星镜的光又怎么来呢？实际上是将狭缝的两边变成镜子，然后将狭缝稍微斜过来，就可以反光了。</p>
 
 <h3 id="仪器轮廓">仪器轮廓</h3>
 
-<p>仪器肯定会对谱线有致宽，这个致宽就叫仪器轮廓。假设我们有一个理想谱线，宽度可以忽略不计，它通过光谱仪之后的形状我们叫做<script type="math/tex">I(\lambda)</script>。令理想光谱为<script type="math/tex">F(\lambda)</script>，那么观测到的光谱<script type="math/tex">D(\lambda)</script>自然是它们俩的卷积：</p>
+<p>仪器肯定会对谱线有致宽，这个致宽就叫仪器轮廓。假设我们有一个理想谱线，宽度可以忽略不计，它通过光谱仪之后的形状我们叫做\(I(\lambda)\)。令理想光谱为\(F(\lambda)\)，那么观测到的光谱\(D(\lambda)\)自然是它们俩的卷积：</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-  D(\lambda) &= \int_{-\infty}^{\infty} I(\lambda-\lambda_0) F(\lambda_0) d\lambda_0\\
-  &= I(\lambda) * F(\lambda) \tag{12.2}
-  \end{align} %]]></script>
+\[\begin{align}
+  D(\lambda) &amp;= \int_{-\infty}^{\infty} I(\lambda-\lambda_0) F(\lambda_0) d\lambda_0\\
+  &amp;= I(\lambda) * F(\lambda) \tag{12.2}
+  \end{align}\]
 
 <p>假设一个仪器轮廓是半高全宽为0.1埃的高斯函数，那么它的傅立叶变换还是一个高斯，只是宽度变为了10埃而已。</p>
 
 <p><img src="" alt="" />
 <em>这里有图</em></p>
 
-<p>在<script type="math/tex">\sigma</script>域里面说话，观测到的光谱的傅立叶变换<script type="math/tex">d(\sigma)</script>就是</p>
+<p>在\(\sigma\)域里面说话，观测到的光谱的傅立叶变换\(d(\sigma)\)就是</p>
 
-<script type="math/tex; mode=display">d(\sigma) = i(\sigma) f(\sigma) \tag{12.3}</script>
+\[d(\sigma) = i(\sigma) f(\sigma) \tag{12.3}\]
 
-<p>这意味着仪器轮廓充当了一个低通滤波器的角色，把高<script type="math/tex">\sigma</script>的信号滤掉了。从<script type="math/tex">\lambda</script>域的角度来说，也就是卷积将光谱模糊/平滑了。这都是第二章的东西。</p>
+<p>这意味着仪器轮廓充当了一个低通滤波器的角色，把高\(\sigma\)的信号滤掉了。从\(\lambda\)域的角度来说，也就是卷积将光谱模糊/平滑了。这都是第二章的东西。</p>
 
 <p>这看起来没什么，毕竟这么高分辨率的信号我们也看不到（后面还有采样在）。不过需要留意的一点是仪器轮廓还会改变谱线的深度和宽度。当然这也是显然的。</p>
 
@@ -212,52 +390,50 @@
 
 <p><del>说完生光我们就该复圆了。</del></p>
 
-<p>我们想求<script type="math/tex">f(\sigma)</script>。这好说，把<script type="math/tex">(12.3)</script>的<script type="math/tex">i(\sigma)</script>除过去不就完了：</p>
+<p>我们想求\(f(\sigma)\)。这好说，把\((12.3)\)的\(i(\sigma)\)除过去不就完了：</p>
 
-<script type="math/tex; mode=display">f(\sigma) = d(\sigma) / i(\sigma) \tag{12.4}</script>
+\[f(\sigma) = d(\sigma) / i(\sigma) \tag{12.4}\]
 
 <p>为了处理不对称的轮廓，我们需要让上式中的三个量都为复数，则有：</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-  f_\mathrm{R}(\sigma) &= \frac{d_\mathrm{R}(\sigma)i_\mathrm{R}(\sigma) + d_\mathrm{I}(\sigma)i_\mathrm{I}(\sigma)}{i_\mathrm{R}(\sigma)^2 + i_\mathrm{I}(\sigma)^2} \\
-  f_\mathrm{I}(\sigma) &= \frac{d_\mathrm{I}(\sigma)i_\mathrm{R}(\sigma) - d_\mathrm{R}(\sigma)i_\mathrm{I}(\sigma)}{i_\mathrm{R}(\sigma)^2 + i_\mathrm{I}(\sigma)^2} \\
-\end{align} %]]></script>
+\[\begin{align}
+  f_\mathrm{R}(\sigma) &amp;= \frac{d_\mathrm{R}(\sigma)i_\mathrm{R}(\sigma) + d_\mathrm{I}(\sigma)i_\mathrm{I}(\sigma)}{i_\mathrm{R}(\sigma)^2 + i_\mathrm{I}(\sigma)^2} \\
+  f_\mathrm{I}(\sigma) &amp;= \frac{d_\mathrm{I}(\sigma)i_\mathrm{R}(\sigma) - d_\mathrm{R}(\sigma)i_\mathrm{I}(\sigma)}{i_\mathrm{R}(\sigma)^2 + i_\mathrm{I}(\sigma)^2} \\
+\end{align}\]
 
 <p>最后做个逆傅立叶变换就好了。</p>
 
 <h3 id="噪声">噪声</h3>
 
-<p>问题在于噪声和另外一个东西。令噪声为<script type="math/tex">n(\sigma0)</script>，则有</p>
+<p>问题在于噪声和另外一个东西。令噪声为\(n(\sigma0)\)，则有</p>
 
-<script type="math/tex; mode=display">d(\sigma) = d_0(\sigma) + n(\sigma) \tag{12.6}</script>
+\[d(\sigma) = d_0(\sigma) + n(\sigma) \tag{12.6}\]
 
 <p>所以</p>
 
-<script type="math/tex; mode=display">f(\sigma) = \frac{d_0(\sigma)}{i(\sigma)} + \frac{n(\sigma)}{i(\sigma)}</script>
+\[f(\sigma) = \frac{d_0(\sigma)}{i(\sigma)} + \frac{n(\sigma)}{i(\sigma)}\]
 
-<p>噪声一般是高频的，而<script type="math/tex">i(\sigma)</script>在高频处很小，所以仪器轮廓会加大噪声。</p>
+<p>噪声一般是高频的，而\(i(\sigma)\)在高频处很小，所以仪器轮廓会加大噪声。</p>
 
 <p><em>这里有图</em></p>
 
 <p>那怎么办？这么搞的话光谱毛刺特别多。这个时候我们就要人为加入一个低通滤波器将高频的信号滤掉，反正主要是噪声。</p>
 
-<p>我们将低通滤波器叫做<script type="math/tex">\phi(\sigma)</script>，那么加入了滤波器的“真实”信号就是</p>
+<p>我们将低通滤波器叫做\(\phi(\sigma)\)，那么加入了滤波器的“真实”信号就是</p>
 
-<script type="math/tex; mode=display">f_1(\sigma) = d(\sigma) \phi(\sigma) / i(\sigma) \tag{12.7}</script>
+\[f_1(\sigma) = d(\sigma) \phi(\sigma) / i(\sigma) \tag{12.7}\]
 
-<p>我们希望<script type="math/tex">f_1(\sigma)</script>与<script type="math/tex">f_0(\sigma)</script>的区别尽量的小，所以我们需要将</p>
+<p>我们希望\(f_1(\sigma)\)与\(f_0(\sigma)\)的区别尽量的小，所以我们需要将</p>
 
-<script type="math/tex; mode=display">\epsilon = f_0(\sigma) - f_1(\sigma) = f_0(\sigma)[1-\phi(\sigma)] - n(\sigma)\phi(\sigma)/i(\sigma)</script>
+\[\epsilon = f_0(\sigma) - f_1(\sigma) = f_0(\sigma)[1-\phi(\sigma)] - n(\sigma)\phi(\sigma)/i(\sigma)\]
 
 <p>最小化。结论是</p>
 
-<script type="math/tex; mode=display">\phi = \frac{1}{1+[n(\sigma)/d(\sigma)]^2} \tag{12.9}</script>
+\[\phi = \frac{1}{1+[n(\sigma)/d(\sigma)]^2} \tag{12.9}\]
 
-<p>噪声的傅立叶变换大小可以测量出来，令<script type="math/tex">% <![CDATA[
-B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以用一个高斯函数来近似：<script type="math/tex">d(\sigma) \approx A 10^{-b_0^2\sigma^2}</script>，所以</p>
+<p>噪声的傅立叶变换大小可以测量出来，令\(B= &lt;n(\sigma)&gt;\)；\(d(\sigma)\)可以用一个高斯函数来近似：\(d(\sigma) \approx A 10^{-b_0^2\sigma^2}\)，所以</p>
 
-<script type="math/tex; mode=display">\phi = \frac{1}{1+(B/A)^2 10^{-2b_0^2\sigma^2}} \tag{12.9}</script>
+\[\phi = \frac{1}{1+(B/A)^2 10^{-2b_0^2\sigma^2}} \tag{12.9}\]
 
 <p>就安排得明明白白了。</p>
 
@@ -271,36 +447,32 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
 
 <h3 id="散射光">散射光</h3>
 
-<p>略写。主要是因为我们只考虑了仪器轮廓附近的波长范围，如果外面还有光进来的话就归为散射光。散射光主要集中在低<script type="math/tex">\sigma</script>部分，抬高了<script type="math/tex">i(\sigma)</script>所以会使得整个光谱被压低，所以散射光越小越好。</p>
+<p>略写。主要是因为我们只考虑了仪器轮廓附近的波长范围，如果外面还有光进来的话就归为散射光。散射光主要集中在低\(\sigma\)部分，抬高了\(i(\sigma)\)所以会使得整个光谱被压低，所以散射光越小越好。</p>
 
 <h3 id="等值宽度">等值宽度</h3>
 
 <p>等值宽度定义为</p>
 
-<script type="math/tex; mode=display">W = \int_{-\infty}^{\infty} \frac{F_\mathrm{c}-F_\mathrm{\nu}}{F_\mathrm{c}} \mathrm{d}\nu \tag{12.20}</script>
+\[W = \int_{-\infty}^{\infty} \frac{F_\mathrm{c}-F_\mathrm{\nu}}{F_\mathrm{c}} \mathrm{d}\nu \tag{12.20}\]
 
-<p>但是实际上我们测得的是<script type="math/tex">D_\mathrm{\nu} = I(\lambda) * (F_\mathrm{c}-F_\mathrm{\nu})</script>，所以</p>
+<p>但是实际上我们测得的是\(D_\mathrm{\nu} = I(\lambda) * (F_\mathrm{c}-F_\mathrm{\nu})\)，所以</p>
 
-<script type="math/tex; mode=display">W_\mathrm{m} = \int_{-\lambda_0}^{\lambda_0} \frac{I(\lambda) * (F_\mathrm{c}-F_\mathrm{\nu})}{D_\mathrm{c}} \mathrm{d}\nu \tag{12.20}</script>
+\[W_\mathrm{m} = \int_{-\lambda_0}^{\lambda_0} \frac{I(\lambda) * (F_\mathrm{c}-F_\mathrm{\nu})}{D_\mathrm{c}} \mathrm{d}\nu \tag{12.20}\]
 
-<p>这导致了我们有的时候不能覆盖整条谱线的范围，因为有别的线在；同时一般来说我们会低估<script type="math/tex">D_\mathrm{c}</script>，导致<script type="math/tex">W_\mathrm{m}</script>被高估。</p>
+<p>这导致了我们有的时候不能覆盖整条谱线的范围，因为有别的线在；同时一般来说我们会低估\(D_\mathrm{c}\)，导致\(W_\mathrm{m}\)被高估。</p>
 
 <h3 id="谱线测量方法">谱线测量方法</h3>
 
 <p>在波长域我们可以测量谱线的半高全宽，以此表征比如自转之类的一些物理量。谱线的位置不对称性可以从谱线的中线看出来。</p>
 
-<p>在<script type="math/tex">\sigma</script>域我们可以方便地测量误差（看高<script type="math/tex">\sigma</script>的弥散）、将卷积可视化（变成相乘了）等等。</p>
+<p>在\(\sigma\)域我们可以方便地测量误差（看高\(\sigma\)的弥散）、将卷积可视化（变成相乘了）等等。</p>
 
 
                 <hr style="visibility: hidden;">
-
-                
-
-
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/06/03/latex-asj/" >
+                        <a href="/2018/06/03/latex-asj/" data-toggle="tooltip" data-placement="top" title="日本天文年会相关文件">
                         Previous<br>
                         <span>日本天文年会相关文件</span>
                         </a>
@@ -308,16 +480,14 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
                     
                     
                     <li class="next">
-                        <a href="/2018/10/07/OASP13/" >
+                        <a href="/2018/10/07/OASP13/" data-toggle="tooltip" data-placement="top" title="OASP笔记 - 13">
                         Next<br>
                         <span>OASP笔记 - 13</span>
                         </a>
                     </li>
                     
                 </ul>
-
-
-                
+                <hr style="visibility: hidden;">
 
                 
                 <!-- disqus 评论框 start -->
@@ -328,9 +498,23 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
                 
 
                 
-            </div>
+            </div>  
 
     <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
     <!-- Sidebar Container -->
@@ -341,78 +525,79 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
 
                 <!-- Featured Tags -->
                 
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-        				
-                            
-                				<a href="/tags/#random" title="random" rel="4">
-                                    random
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#hanging-around" title="hanging-around" rel="7">
-                                    hanging-around
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
-                                    astro-ph
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#experience" title="experience" rel="3">
-                                    experience
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#learning" title="learning" rel="42">
-                                    learning
-                                </a>
-                            
-        				
-                            
-        				
-        			</div>
-                </section>
-                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=random"
+                    title="random"
+                    rel="4">random</a>
+        
+                <a data-sort="0020" 
+                    href="/archive/?tag=learning"
+                    title="learning"
+                    rel="42">learning</a>
+        
+                <a data-sort="0055" 
+                    href="/archive/?tag=hanging-around"
+                    title="hanging-around"
+                    rel="7">hanging-around</a>
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=astro-ph"
+                    title="astro-ph"
+                    rel="4">astro-ph</a>
+        
+                <a data-sort="0059" 
+                    href="/archive/?tag=experience"
+                    title="experience"
+                    rel="3">experience</a>
+    </div>
+</section>
+
 
                 <!-- Friends Blog -->
                 
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
-                    
-                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
-                    
-                </ul>
-                
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+  
+  <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+  
+  <li><a href="http://huangxuan.me">Hux Blog</a></li>
+  
+</ul>
+
             </div>
         </div>
     </div>
 </article>
 
+<!-- add support for mathjax by voleking-->
 
 
 
 
 
 
-
-<div id="disqus_thread"></div>
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "mingjiejian-github-io";
-    var disqus_identifier = "mingjiejian-github-io//2018/06/14/OASP12/";
+    var disqus_identifier = "/2018/06/14/OASP12";
     var disqus_url = "http://localhost:4000/2018/06/14/OASP12/";
 
     (function() {
@@ -441,9 +626,9 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
+          visible: 'hover',
           placement: 'right',
-          icon: '#'
+          // icon: '#'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
@@ -467,53 +652,56 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                        <a href="/feed.xml">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
+                <!-- SNS Link -->
+                
 
 
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/mingjieJian">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
+<ul class="list-inline text-center">
+
+
+  
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/mingjieJian">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2020
+                    Copyright &copy; Mingjie's page 2021
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -525,32 +713,42 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
 <script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/hux-blog.min.js "></script>
 
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
 
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
 -->
 <!--
     <script>
@@ -562,25 +760,16 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
 -->
 
 
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+
+
+
+
 
 <!--fastClick.js -->
 <script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -593,10 +782,12 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
     var _gaDomain = 'mingjiejian.github.io';
 
     // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
@@ -608,14 +799,134 @@ B= <n(\sigma)> %]]></script>；<script type="math/tex">d(\sigma)</script>可以�
 
 
 
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason, 
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure 
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
 
 <!-- Image to hack wechat -->
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
-
 </body>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 
 </html>

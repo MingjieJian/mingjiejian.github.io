@@ -5,35 +5,53 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="description" content="Write everything, think everything.">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/myicon.ico">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#000000">
 
-    <title>OASP笔记 - 9 - Mingjie的博客 | Mingjie's Blog</title>
+    <!-- Open Graph -->
+    <meta property="og:title"
+        content="OASP笔记 - 9 - Mingjie's Page">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="乍看起来人为地制造一个恒星或者光球层的模型似乎没有必要。难道就不能从观测到的恒星光谱中导出我们想要的参数吗？就像从视差算出距离一样，只不过现在的公式或者方法比倒数麻烦很多而已。不过抱歉还真的不能，因为影响恒星光谱的因素实在太多，所以这样做一般是不现实的。所以要知道我们想知道的信息，我们只能倒过来，从一些理论和物理规律去造出一个模型，然后将模型产生的光谱和实际的光谱对比并不断修正，直到它们非常...">
+    
+    <meta property="article:published_time" content=" 2018-03-08T00:00:00Z">
+    
+    
+    <meta property="article:author" content="mingjie">
+    
+    
+    <meta property="article:tag" content="learning">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/profile_small.jpeg">
+    <meta property="og:url" content="http://localhost:4000/2018/03/08/OASP9/">
+    <meta property="og:site_name" content="Mingjie's Page">
 
+    <title>OASP笔记 - 9 - Mingjie's Page</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/2018/03/08/OASP9/">
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href=" /css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href=" /css/hux-blog.min.css">
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,6 +63,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-6487568398225121" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 
@@ -52,112 +74,265 @@
 <body ontouchstart="">
 
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Mingjie's Blog</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Mingjie's page</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/projects/">Projects</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <!-- Add research note link if its switch in _config.yml is true. -->
+                        
+                        <li>
+                            <a href="https://mk-cookbook.readthedocs.io/en/latest//">Research-Notes</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/blog/">Mingjie's Blog</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="search-icon">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+        <!-- /.container -->
+    </nav>
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
+    <script>
+        // Drop Bootstarp low-performance Navbar
+        // Use customize navbar with high-quality material design animation
+        // in high-perf jank-free CSS3 implementation
+        var $body = document.body;
+        var $toggle = document.querySelector('.navbar-toggle');
+        var $navbar = document.querySelector('#huxblog_navbar');
+        var $collapse = document.querySelector('.navbar-collapse');
+
+        var __HuxNav__ = {
+            close: function () {
+                $navbar.className = " ";
+                // wait until animation end.
+                setTimeout(function () {
+                    // prevent frequently toggle
+                    if ($navbar.className.indexOf('in') < 0) {
+                        $collapse.style.height = "0px"
+                    }
+                }, 400)
+            },
+            open: function () {
+                $collapse.style.height = "auto"
+                $navbar.className += " in";
+            }
         }
-    }
-</script>
 
+        // Bind Event
+        $toggle.addEventListener('click', function (e) {
+            if ($navbar.className.indexOf('in') > 0) {
+                __HuxNav__.close()
+            } else {
+                __HuxNav__.open()
+            }
+        })
+
+        /**
+         * Since Fastclick is used to delegate 'touchstart' globally
+         * to hack 300ms delay in iOS by performing a fake 'click',
+         * Using 'e.stopPropagation' to stop 'touchstart' event from 
+         * $toggle/$collapse will break global delegation.
+         * 
+         * Instead, we use a 'e.target' filter to prevent handler
+         * added to document close HuxNav.  
+         *
+         * Also, we use 'click' instead of 'touchstart' as compromise
+         */
+        document.addEventListener('click', function (e) {
+            if (e.target == $toggle) return;
+            if (e.target.className == 'icon-bar') return;
+            __HuxNav__.close();
+        })
+    </script>
+    <!-- Search -->
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="/img/post-bg-OASP9.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
+
+
+
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-OASP9.jpg')
+        background-image: url('/img/post-bg-OASP9.jpg');
+        background: ;
     }
 
     
 </style>
+
 <header class="intro-header" >
+
     <div class="header-mask"></div>
+    
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#learning" title="learning">learning</a>
+                        <a class="tag" href="/archive/?tag=learning" title="learning">learning</a>
                         
                     </div>
                     <h1>OASP笔记 - 9</h1>
                     
-                    
                     <h2 class="subheading">光球层模型</h2>
-                    
                     <span class="meta">Posted by mingjie on March 8, 2018</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
+
+
+
+
 
 <!-- Post Content -->
 <article>
@@ -170,24 +345,27 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
+                <!-- Multi-Lingual -->
+                
+
 				<p>乍看起来人为地制造一个恒星或者光球层的模型似乎没有必要。难道就不能从观测到的恒星光谱中导出我们想要的参数吗？就像从视差算出距离一样，只不过现在的公式或者方法比倒数麻烦很多而已。不过抱歉还真的不能，因为影响恒星光谱的因素实在太多，所以这样做一般是不现实的。所以要知道我们想知道的信息，我们只能倒过来，从一些理论和物理规律去造出一个模型，然后将模型产生的光谱和实际的光谱对比并不断修正，直到它们非常相像，我们才认为这个模型至少反映了一些实际，并用模型的参数去反映恒星的参数。</p>
 
-<p>我们在第七章看到计算光强或者流量的时候我们需要源函数，同时在第八章看到计算<script type="math/tex">\kappa</script>的时候还需要压强（气体的和电子的）；所以光球层模型至少需要包括不同光深下面的源函数和压强（三列很多行的一个表），当然需要的话还可以在后面加上其他的参数。作为例子，这里给出一个Kurucz的模型（MOOG格式）：</p>
+<p>我们在第七章看到计算光强或者流量的时候我们需要源函数，同时在第八章看到计算\(\kappa\)的时候还需要压强（气体的和电子的）；所以光球层模型至少需要包括不同光深下面的源函数和压强（三列很多行的一个表），当然需要的话还可以在后面加上其他的参数。作为例子，这里给出一个Kurucz的模型（MOOG格式）：</p>
 
-<p><code class="highlighter-rouge">KURUCZ</code></p>
+<p><code class="language-plaintext highlighter-rouge">KURUCZ</code></p>
 
-<p><code class="highlighter-rouge">TEFF   4750.  GRAVITY 2.50000 LTE[0.0] VTURB=2  L/H=1.25 NOVER</code></p>
+<p><code class="language-plaintext highlighter-rouge">TEFF   4750.  GRAVITY 2.50000 LTE[0.0] VTURB=2  L/H=1.25 NOVER</code></p>
 
-<p><code class="highlighter-rouge">ntau=       72</code></p>
+<p><code class="language-plaintext highlighter-rouge">ntau=       72</code></p>
 
 <table>
   <thead>
     <tr>
-      <th><script type="math/tex">\rho x</script></th>
-      <th><script type="math/tex">T</script></th>
-      <th><script type="math/tex">P_\mathrm{g}</script></th>
-      <th><script type="math/tex">N_\mathrm{e}</script></th>
-      <th><script type="math/tex">\kappa_\mathrm{ross}</script></th>
+      <th>\(\rho x\)</th>
+      <th>\(T\)</th>
+      <th>\(P_\mathrm{g}\)</th>
+      <th>\(N_\mathrm{e}\)</th>
+      <th>\(\kappa_\mathrm{ross}\)</th>
       <th> </th>
       <th> </th>
     </tr>
@@ -223,20 +401,20 @@
   </tbody>
 </table>
 
-<p>第一行是指明模型类型（MOOG也接受其他的一些模型），第二行是注释（有效温度和logg），第三行指名接下来的72行都是模型的内容。计算光谱的时候用到的物理量是光深、温度、气体压强、电子数密度或者是压强、Rossland不透明度。这里没有用到源函数的原因应该是认为热动平衡下每层的源函数都是普朗克函数，所以有温度就可以算出源函数了。所以有了模型之后就可以根据<script type="math/tex">(7.15)</script>来算流量了。</p>
+<p>第一行是指明模型类型（MOOG也接受其他的一些模型），第二行是注释（有效温度和logg），第三行指名接下来的72行都是模型的内容。计算光谱的时候用到的物理量是光深、温度、气体压强、电子数密度或者是压强、Rossland不透明度。这里没有用到源函数的原因应该是认为热动平衡下每层的源函数都是普朗克函数，所以有温度就可以算出源函数了。所以有了模型之后就可以根据\((7.15)\)来算流量了。</p>
 
 <p>From the left to right column:</p>
 <ul>
-  <li>Mass per square centimeter <script type="math/tex">\mathrm{RHOX} = \int_0^x \rho(x) dx \mathrm{[g~cm^{-2}]}</script> at the depth x</li>
-  <li>Temperature <script type="math/tex">T~\mathrm{[K]}</script></li>
-  <li>Gas pressure <script type="math/tex">P_g~\mathrm{[dyne~cm^{−2}]}</script></li>
-  <li>electron number density <script type="math/tex">\mathrm{XNE}~\mathrm{[cm^{-3}]}</script></li>
-  <li>Rosseland mass absorption coefficient <script type="math/tex">\mathrm{ABROSS} = \kappa_\mathrm{Ross}~\mathrm{[cm2~g^{−1}]}</script></li>
-  <li>acceleration due to the absorption of radiation <script type="math/tex">\mathrm{ACCRAD}~\mathrm{[cm~s^{−2}]}</script></li>
-  <li>microturbulent velocity <script type="math/tex">\mathrm{VTURB}~\mathrm{[km~s^{−1}]}</script></li>
-  <li>energy flux that bear a convection <script type="math/tex">\mathrm{FLXCNV}~\mathrm{[erg~cm^2~s^{−1}]}</script></li>
-  <li>convective velocity <script type="math/tex">\mathrm{VCONV}~\mathrm{[km~s^{−1}]}</script></li>
-  <li>sound velocity <script type="math/tex">\mathrm{VELSND}~\mathrm{[cm~s^{−1}]}</script>.</li>
+  <li>Mass per square centimeter \(\mathrm{RHOX} = \int_0^x \rho(x) dx \mathrm{[g~cm^{-2}]}\) at the depth x</li>
+  <li>Temperature \(T~\mathrm{[K]}\)</li>
+  <li>Gas pressure \(P_g~\mathrm{[dyne~cm^{−2}]}\)</li>
+  <li>electron number density \(\mathrm{XNE}~\mathrm{[cm^{-3}]}\)</li>
+  <li>Rosseland mass absorption coefficient \(\mathrm{ABROSS} = \kappa_\mathrm{Ross}~\mathrm{[cm2~g^{−1}]}\)</li>
+  <li>acceleration due to the absorption of radiation \(\mathrm{ACCRAD}~\mathrm{[cm~s^{−2}]}\)</li>
+  <li>microturbulent velocity \(\mathrm{VTURB}~\mathrm{[km~s^{−1}]}\)</li>
+  <li>energy flux that bear a convection \(\mathrm{FLXCNV}~\mathrm{[erg~cm^2~s^{−1}]}\)</li>
+  <li>convective velocity \(\mathrm{VCONV}~\mathrm{[km~s^{−1}]}\)</li>
+  <li>sound velocity \(\mathrm{VELSND}~\mathrm{[cm~s^{−1}]}\).</li>
 </ul>
 
 <p>这本书的主旨是“读完某一章之后就可以拿这一章的内容来做计算”，所以这里提到的模型肯定有很多假设，距离真实情况有一定距离。但是这不代表着它们没有用，它们仍然是不错的工具和真实模型的起点。这里的假设和简化包括：</p>
@@ -246,35 +424,34 @@
   <li>处于流体静力学平衡，没有很大的膨胀和收缩，没有质量损失</li>
   <li>忽略米粒组织和和黑子，或者把它们也包括在光球层的平均物理量里面</li>
   <li>忽略磁场的影响</li>
-  <li>处于热动平衡，有<script type="math/tex">(1.18), (1.19)</script>以及源函数为普朗克函数</li>
+  <li>处于热动平衡，有\((1.18), (1.19)\)以及源函数为普朗克函数</li>
 </ol>
 
-<p>很明显想要改进模型的话放宽这些条件就行了。十七、十八章会放宽最后一个条件。热动平衡并不是全局的，只是在某一个（相对光球层）比较小的<script type="math/tex">dx</script>里面成立，所以我们将光球层分成很多个子层，每一层有一个温度对应（上面的模型表格）；这就叫局部热动平衡(LTE)。</p>
+<p>很明显想要改进模型的话放宽这些条件就行了。十七、十八章会放宽最后一个条件。热动平衡并不是全局的，只是在某一个（相对光球层）比较小的\(dx\)里面成立，所以我们将光球层分成很多个子层，每一层有一个温度对应（上面的模型表格）；这就叫局部热动平衡(LTE)。</p>
 
 <h3 id="流体静力学平衡">流体静力学平衡</h3>
 
 <p>流体静力学平衡就意味着压强差等于体元的所受的重力：</p>
 
-<script type="math/tex; mode=display">dP = dF/dA = \rho g dx</script>
+\[dP = dF/dA = \rho g dx\]
 
-<p>这里的<script type="math/tex">dF,dx</script>都是里面减外面；而我们用<script type="math/tex">dx</script>定义的光深刚好也是这个方向的，所以：</p>
+<p>这里的\(dF,dx\)都是里面减外面；而我们用\(dx\)定义的光深刚好也是这个方向的，所以：</p>
 
-<script type="math/tex; mode=display">\frac{dP}{d\tau_\nu} = \frac{g}{\kappa_\nu} \tag{9.1}</script>
+\[\frac{dP}{d\tau_\nu} = \frac{g}{\kappa_\nu} \tag{9.1}\]
 
-<p>这里的压强是总的压强。一般来说这里面气体压强占大头，除了一些特殊情况：高温恒星的辐射压<script type="math/tex">(5.11)</script>、磁场的压强或者湍流的压强。所以我们又欢乐地将总压强替换成气体压强<script type="math/tex">P_\mathrm{g}</script>了。</p>
+<p>这里的压强是总的压强。一般来说这里面气体压强占大头，除了一些特殊情况：高温恒星的辐射压\((5.11)\)、磁场的压强或者湍流的压强。所以我们又欢乐地将总压强替换成气体压强\(P_\mathrm{g}\)了。</p>
 
-<p>对<script type="math/tex">(9.1)</script>两边都乘一个<script type="math/tex">P_\mathrm{g}^{1/2}</script>，然后为了方便起见将某波长上的光深<script type="math/tex">\kappa_\nu</script>换成参考波长5000Å上的光深<script type="math/tex">\kappa_0</script>，得：</p>
+<p>对\((9.1)\)两边都乘一个\(P_\mathrm{g}^{1/2}\)，然后为了方便起见将某波长上的光深\(\kappa_\nu\)换成参考波长5000Å上的光深\(\kappa_0\)，得：</p>
 
-<script type="math/tex; mode=display">P_\mathrm{g}^{1/2} dP_\mathrm{g} = P_\mathrm{g}^{1/2}\frac{g}{\kappa_0} d\tau_0</script>
+\[P_\mathrm{g}^{1/2} dP_\mathrm{g} = P_\mathrm{g}^{1/2}\frac{g}{\kappa_0} d\tau_0\]
 
-<p>要多说两句的是以后下标带<script type="math/tex">0</script>的量都指的是在参考波长上的量；在后面会看到<script type="math/tex">\tau_0</script>可以转换成其他波长上的光深，并且因为不同波长上的同一个光深值一般代表着不同的几何深度，在比较不同波长上的量的时候转换到同一个光深尺度下面是有必要的。</p>
+<p>要多说两句的是以后下标带\(0\)的量都指的是在参考波长上的量；在后面会看到\(\tau_0\)可以转换成其他波长上的光深，并且因为不同波长上的同一个光深值一般代表着不同的几何深度，在比较不同波长上的量的时候转换到同一个光深尺度下面是有必要的。</p>
 
 <p>将上式两边积分，得：</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align} P_\mathrm{g}(\tau_0) &= ( \frac{3}{2} g \int_0^{\tau_0} \frac{P_\mathrm{g}^{1/2}}{\kappa_0} dt_0 )^{2/3} \\ &= ( \frac{3}{2} g \int_{-\infty}^{\log{\tau_0}} \frac{t_0^{1/2}P_\mathrm{g}^{1/2}}{\kappa_0 \log{e}} d\log{t_0} )^{2/3} \end{align} \tag{9.2} %]]></script>
+\[\begin{align} P_\mathrm{g}(\tau_0) &amp;= ( \frac{3}{2} g \int_0^{\tau_0} \frac{P_\mathrm{g}^{1/2}}{\kappa_0} dt_0 )^{2/3} \\ &amp;= ( \frac{3}{2} g \int_{-\infty}^{\log{\tau_0}} \frac{t_0^{1/2}P_\mathrm{g}^{1/2}}{\kappa_0 \log{e}} d\log{t_0} )^{2/3} \end{align} \tag{9.2}\]
 
-<p>换成<script type="math/tex">\log{}</script>是因为这样能有更高的精度。这是个超越方程所以我们先猜一个<script type="math/tex">P_\mathrm{g}(\tau_0)</script>，代进去算出新的<script type="math/tex">P_\mathrm{g}(\tau_0)</script>之后再重复直到收敛。即使我们猜了<script type="math/tex">P_\mathrm{g}(\tau_0)</script>，上面的式子里仍有吸收系数<script type="math/tex">\kappa_0</script>是未知的，所以我们先要知道<script type="math/tex">\kappa_0</script>。这就是第八章干的活，而从那里的结论我们知道<script type="math/tex">\kappa_0</script>是温度和电子压强的函数，然后我们就要去求<script type="math/tex">T(\tau_0), P_\mathrm{e}(\tau_0)</script>了。</p>
+<p>换成\(\log{}\)是因为这样能有更高的精度。这是个超越方程所以我们先猜一个\(P_\mathrm{g}(\tau_0)\)，代进去算出新的\(P_\mathrm{g}(\tau_0)\)之后再重复直到收敛。即使我们猜了\(P_\mathrm{g}(\tau_0)\)，上面的式子里仍有吸收系数\(\kappa_0\)是未知的，所以我们先要知道\(\kappa_0\)。这就是第八章干的活，而从那里的结论我们知道\(\kappa_0\)是温度和电子压强的函数，然后我们就要去求\(T(\tau_0), P_\mathrm{e}(\tau_0)\)了。</p>
 
 <h3 id="恒星光球层的温度">恒星光球层的温度</h3>
 
@@ -282,37 +459,37 @@
 
 <p>我们有两个方法获取恒星光球层的温度：临边昏暗以及吸收系数在不同波长上的变化。</p>
 
-<p>很明显临边昏暗只能用在太阳身上。<script type="math/tex">(7.10)</script>给出：</p>
+<p>很明显临边昏暗只能用在太阳身上。\((7.10)\)给出：</p>
 
-<script type="math/tex; mode=display">I_\nu(0) = \int_{0}^\infty S_\nu e^{-t_\nu\sec{\theta}}\sec{\theta} dt_\nu \tag{9.3}</script>
+\[I_\nu(0) = \int_{0}^\infty S_\nu e^{-t_\nu\sec{\theta}}\sec{\theta} dt_\nu \tag{9.3}\]
 
-<p>也就是说太阳表面的辐射强度是受<script type="math/tex">e^{-t_\nu\sec{\theta}}</script>调节的。辐射强度主要的贡献来自于<script type="math/tex">S_\nu\sec{\theta} \sim \frac{1}{e} S_\nu\sec{\theta}</script>的这个范围内，而随着我们的视线方向逐渐远离太阳中心，达到<script type="math/tex">\frac{1}{e} S_\nu\sec{\theta}</script>所需的光深越来越小，也就是我们能看到的表面越来越浅。</p>
+<p>也就是说太阳表面的辐射强度是受\(e^{-t_\nu\sec{\theta}}\)调节的。辐射强度主要的贡献来自于\(S_\nu\sec{\theta} \sim \frac{1}{e} S_\nu\sec{\theta}\)的这个范围内，而随着我们的视线方向逐渐远离太阳中心，达到\(\frac{1}{e} S_\nu\sec{\theta}\)所需的光深越来越小，也就是我们能看到的表面越来越浅。</p>
 
 <p><img src="/img/in-post/post-OASP9/Limb_darkening.png" alt="" />
 <em>太阳的临边昏暗</em></p>
 
-<p>在灰大气模型下，<script type="math/tex">(7.34)</script>可以写成：</p>
+<p>在灰大气模型下，\((7.34)\)可以写成：</p>
 
-<script type="math/tex; mode=display">S_\nu = a + b\tau_\nu</script>
+\[S_\nu = a + b\tau_\nu\]
 
-<p>代进<script type="math/tex">(9.3)</script>里面可以得到：</p>
+<p>代进\((9.3)\)里面可以得到：</p>
 
-<script type="math/tex; mode=display">I_\nu(0) = a + b \cos{\theta}</script>
+\[I_\nu(0) = a + b \cos{\theta}\]
 
-<p>也就是说在<script type="math/tex">\theta</script>角观测到的辐射强度就是在光深<script type="math/tex">\tau_\nu</script>处的源函数的值，所以只要观测辐射强度我们就知道了源函数；这叫做Eddington-Barbier关系。当然更复杂一点的源函数也可以通过数值模拟来找到。</p>
+<p>也就是说在\(\theta\)角观测到的辐射强度就是在光深\(\tau_\nu\)处的源函数的值，所以只要观测辐射强度我们就知道了源函数；这叫做Eddington-Barbier关系。当然更复杂一点的源函数也可以通过数值模拟来找到。</p>
 
-<p>一个稍微定量一点的方法是将<script type="math/tex">(9.3)</script>写成对数坐标下的形式：</p>
+<p>一个稍微定量一点的方法是将\((9.3)\)写成对数坐标下的形式：</p>
 
-<script type="math/tex; mode=display">I_\nu(0) = \int_{-\infty}^\infty S_\nu e^{-t_\nu\sec{\theta}}t_\nu\sec{\theta} \frac{d\log{t_\nu}}{\log{e}} \tag{9.4}</script>
+\[I_\nu(0) = \int_{-\infty}^\infty S_\nu e^{-t_\nu\sec{\theta}}t_\nu\sec{\theta} \frac{d\log{t_\nu}}{\log{e}} \tag{9.4}\]
 
 <p>右边的积分叫做贡献函数，它反映了每层的辐射对表面光强的贡献。</p>
 
 <p><img src="/img/in-post/post-OASP9/9.3.png" alt="" />
 <em>不同角度位置上的贡献函数</em></p>
 
-<p>如上图，右边为大气底部，左边为大气顶端（对于光深来讲）。我们可以看到没有光从很顶端以及底部的区域发射出来，同时越靠近恒星边缘我们主要看见的光就越从光深更小的地方发射。这里的源函数取得非常随意，只是保证了普朗克函数的形式(<script type="math/tex">\frac{1}{e^{0.001/\tau}-1}</script>)，所以<script type="math/tex">dI_\nu</script>的值和书上的有较大差异。同样实际操作中我们也是把顺序倒过来，通过观测到的<script type="math/tex">I_\nu</script>计算出源函数。</p>
+<p>如上图，右边为大气底部，左边为大气顶端（对于光深来讲）。我们可以看到没有光从很顶端以及底部的区域发射出来，同时越靠近恒星边缘我们主要看见的光就越从光深更小的地方发射。这里的源函数取得非常随意，只是保证了普朗克函数的形式(\(\frac{1}{e^{0.001/\tau}-1}\))，所以\(dI_\nu\)的值和书上的有较大差异。同样实际操作中我们也是把顺序倒过来，通过观测到的\(I_\nu\)计算出源函数。</p>
 
-<p>第二个办法是在不同波段上观测。除了角度之外，吸收系数<script type="math/tex">\kappa_\nu</script>也会决定我们能看得多深，所以对于中低温恒星来说在16000Å左右我们能看得最深，；往短波方向走我们看得越来越浅因为负氢离子的吸收变大（第八章的gif图）；波长小于2500Å之后虽然负氢离子的吸收变小了但是金属的吸收变大了。当然能结合临边昏暗以及不同波长能给我们带来最多的信息。其他还有的办法是观测强的谱线，将在第十三章详述。</p>
+<p>第二个办法是在不同波段上观测。除了角度之外，吸收系数\(\kappa_\nu\)也会决定我们能看得多深，所以对于中低温恒星来说在16000Å左右我们能看得最深，；往短波方向走我们看得越来越浅因为负氢离子的吸收变大（第八章的gif图）；波长小于2500Å之后虽然负氢离子的吸收变小了但是金属的吸收变大了。当然能结合临边昏暗以及不同波长能给我们带来最多的信息。其他还有的办法是观测强的谱线，将在第十三章详述。</p>
 
 <p>所以对于太阳来说，结果大致是这样的：</p>
 
@@ -321,8 +498,7 @@
 <p><a href="http://wwwuser.oats.inaf.it/castelli/sun.html">Kurucz模型</a>
 <a href="http://marcs.astro.uu.se/index.php">MARCS</a></p>
 
-<p>基本上在<script type="math/tex">% <![CDATA[
--3 < \log{\tau_0} < 1 %]]></script>的范围内所有模型都一致，因为有观测数据支撑；更深的地方模型们开始有分歧，因为处理对流的方式不一样。而在光深很小的地方的分歧部分原因是LTE不再成立。</p>
+<p>基本上在\(-3 &lt; \log{\tau_0} &lt; 1\)的范围内所有模型都一致，因为有观测数据支撑；更深的地方模型们开始有分歧，因为处理对流的方式不一样。而在光深很小的地方的分歧部分原因是LTE不再成立。</p>
 
 <p>另一个必须要提及的点是实际上同一层内温度肯定不会处处相同；温度起伏在百分之几到25%左右，这也是模型没有顾及的。</p>
 
@@ -330,23 +506,23 @@
 
 <p>显然我们不能用临边昏暗去得到其他恒星的温度（边看都看不见还昏什么暗）。所以我们一是完全从理论计算，或者直接将太阳的模型变换到别的恒星上。</p>
 
-<p>理论计算来源于<script type="math/tex">(7.14)</script>。当然还要加上<script type="math/tex">(7.22), (7.28), (7.30)</script>和流量守恒（恒星大气不发光）。先猜一个源函数，代进<script type="math/tex">(7.14)</script>算出流量，再根据流量守恒去修改源函数直到收敛。具体例子可以看P179中间提到的论文。有的时候我们还要加上谱线的影响，称之为line blanketing。</p>
+<p>理论计算来源于\((7.14)\)。当然还要加上\((7.22), (7.28), (7.30)\)和流量守恒（恒星大气不发光）。先猜一个源函数，代进\((7.14)\)算出流量，再根据流量守恒去修改源函数直到收敛。具体例子可以看P179中间提到的论文。有的时候我们还要加上谱线的影响，称之为line blanketing。</p>
 
-<p>理论计算主要的误差来源与不准确的<script type="math/tex">\kappa_\nu</script>以及对对流的处理（混合长的选择什么的）。对流并不会对表面流量产生很大的影响，但是会改变底层的温度。我们会在第十七章引入对流。</p>
+<p>理论计算主要的误差来源与不准确的\(\kappa_\nu\)以及对对流的处理（混合长的选择什么的）。对流并不会对表面流量产生很大的影响，但是会改变底层的温度。我们会在第十七章引入对流。</p>
 
 <p>恒星大气的理论模型十分复杂，所以多数的研究都会把模型算好并发布，直接拿来用就行了。</p>
 
 <p>将太阳的模型变换到别的恒星上虽然看起来比较粗暴但是还是有一些理由的。它的做法是用一个常数去乘太阳的温度，得到恒星的温度：</p>
 
-<script type="math/tex; mode=display">T(\tau_0) = S_0 T_\odot(\tau_0)</script>
+\[T(\tau_0) = S_0 T_\odot(\tau_0)\]
 
-<p>灰大气模型下面这么做是完全没有问题的，因为<script type="math/tex">(7.36)</script>：</p>
+<p>灰大气模型下面这么做是完全没有问题的，因为\((7.36)\)：</p>
 
-<script type="math/tex; mode=display">T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff}</script>
+\[T(\tau) = [\frac{3}{4}(\tau+\frac{2}{3})]^{1/4} T_\mathrm{eff}\]
 
 <p>可得</p>
 
-<script type="math/tex; mode=display">T(\tau) = \frac{T_\mathrm{eff}}{T_\mathrm{eff}^\odot}T_\odot(\tau)</script>
+\[T(\tau) = \frac{T_\mathrm{eff}}{T_\mathrm{eff}^\odot}T_\odot(\tau)\]
 
 <p>这两种方法的结果是差不多的</p>
 
@@ -354,104 +530,103 @@
 
 <p>当然巨星和矮星会有不同，可能需要一个标准巨星。</p>
 
-<p>实际操作中也可以直接拿格点中的恒星模型来稍作变换然后得到想要的模型，因为常数<script type="math/tex">S_0</script>可以随便取。</p>
+<p>实际操作中也可以直接拿格点中的恒星模型来稍作变换然后得到想要的模型，因为常数\(S_0\)可以随便取。</p>
 
 <p>到此我们就认为我们已经知道恒星大气每层的温度了。下一个要知道的是气体压强。</p>
 
 <h3 id="气体压强-电子压强-温度关系">气体压强-电子压强-温度关系</h3>
 
-<p>当我们在解<script type="math/tex">(9.2)</script>的时候我们先猜一个气体压强<script type="math/tex">P_\mathrm{g}</script>。之后我们就需要算<script type="math/tex">\kappa_0</script>，所以我们马上就要求出电子压强<script type="math/tex">p_\mathrm{e}</script>和气体压强的关系。令单位体积内某种元素<script type="math/tex">j</script>的一次电离离子的数量为<script type="math/tex">N_{1j}</script>，原子数量为<script type="math/tex">N_{0j}</script>，则根据<script type="math/tex">(1.20)</script>有：</p>
+<p>当我们在解\((9.2)\)的时候我们先猜一个气体压强\(P_\mathrm{g}\)。之后我们就需要算\(\kappa_0\)，所以我们马上就要求出电子压强\(p_\mathrm{e}\)和气体压强的关系。令单位体积内某种元素\(j\)的一次电离离子的数量为\(N_{1j}\)，原子数量为\(N_{0j}\)，则根据\((1.20)\)有：</p>
 
-<script type="math/tex; mode=display">\frac{N_{1j}}{N_{0j}} = \frac{\Phi_j(T)}{P_\mathrm{e}}</script>
+\[\frac{N_{1j}}{N_{0j}} = \frac{\Phi_j(T)}{P_\mathrm{e}}\]
 
-<p>忽略二次及以上的电离，<script type="math/tex">N_{1j}</script>就和<script type="math/tex">j</script>元素贡献的电子的数量<script type="math/tex">N_{ej}</script>相同，有</p>
+<p>忽略二次及以上的电离，\(N_{1j}\)就和\(j\)元素贡献的电子的数量\(N_{ej}\)相同，有</p>
 
-<script type="math/tex; mode=display">\frac{\Phi_j(T)}{P_\mathrm{e}} = \frac{N_{ej}}{N_{0j}} = \frac{N_{ej}}{N_{j} - N_{ej}}</script>
+\[\frac{\Phi_j(T)}{P_\mathrm{e}} = \frac{N_{ej}}{N_{0j}} = \frac{N_{ej}}{N_{j} - N_{ej}}\]
 
-<script type="math/tex; mode=display">\Rightarrow N_{\mathrm{e}j} = N_j \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}} \tag{9.6}</script>
+\[\Rightarrow N_{\mathrm{e}j} = N_j \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}} \tag{9.6}\]
 
 <p>由理想气体公式，压强为：</p>
 
-<script type="math/tex; mode=display">P_\mathrm{\mathrm{e}} = \sum_j N_{\mathrm{e}j}kT</script>
+\[P_\mathrm{\mathrm{e}} = \sum_j N_{\mathrm{e}j}kT\]
 
-<script type="math/tex; mode=display">P_\mathrm{g} = \sum_j (N_{\mathrm{e}j} + N_{j})kT \tag{9.7}</script>
+\[P_\mathrm{g} = \sum_j (N_{\mathrm{e}j} + N_{j})kT \tag{9.7}\]
 
 <p>所以压强之比为：</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align} \frac{P_\mathrm{e}}{P_\mathrm{g}} &= \frac{\sum_j N_{\mathrm{e}j}kT}{\sum_j (N_{\mathrm{e}j} + N_{j})kT} \\ &= \frac{\sum_j N_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j N_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} \end{align} %]]></script>
+\[\begin{align} \frac{P_\mathrm{e}}{P_\mathrm{g}} &amp;= \frac{\sum_j N_{\mathrm{e}j}kT}{\sum_j (N_{\mathrm{e}j} + N_{j})kT} \\ &amp;= \frac{\sum_j N_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j N_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} \end{align}\]
 
-<p>上下同除以单位体积内氢原子数量<script type="math/tex">N_\mathrm{H}</script>，令<script type="math/tex">A_j = N_\mathrm{j}/N_\mathrm{H}</script>为相对丰度，有：</p>
+<p>上下同除以单位体积内氢原子数量\(N_\mathrm{H}\)，令\(A_j = N_\mathrm{j}/N_\mathrm{H}\)为相对丰度，有：</p>
 
-<script type="math/tex; mode=display">P_\mathrm{e} = P_\mathrm{g} \frac{\sum_j A_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j A_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} \tag{9.8}</script>
+\[P_\mathrm{e} = P_\mathrm{g} \frac{\sum_j A_j [\frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]}{\sum_j A_j [1 +  \frac{\Phi_j(T)/P_\mathrm{e}}{1 + \Phi_j(T)/P_\mathrm{e}}]} \tag{9.8}\]
 
 <p>这是一个超越方程，同样也需要迭代对于每一个光深的值去解。</p>
 
 <p><img src="/img/in-post/post-OASP9/9.7.png" alt="" /></p>
 
-<p>如上图，我们能看出高温时<script type="math/tex">P_\mathrm{g} \approx 2P_\mathrm{e}</script>，或者<script type="math/tex">\log{P_\mathrm{g}} \approx \log{P_\mathrm{e}} + 0.3</script>（因为氢基本上电离了），低温时<script type="math/tex">P_\mathrm{e} \approx P_\mathrm{g}^{1/2}</script>，或者<script type="math/tex">\log{P_\mathrm{e}} \approx 0.5 \log{P_\mathrm{g}}</script>。低温这个结论也可以从公式中推出来。先认为恒星大气中只由一种元素的原子组成，则<script type="math/tex">(9.8)</script>变为：</p>
+<p>如上图，我们能看出高温时\(P_\mathrm{g} \approx 2P_\mathrm{e}\)，或者\(\log{P_\mathrm{g}} \approx \log{P_\mathrm{e}} + 0.3\)（因为氢基本上电离了），低温时\(P_\mathrm{e} \approx P_\mathrm{g}^{1/2}\)，或者\(\log{P_\mathrm{e}} \approx 0.5 \log{P_\mathrm{g}}\)。低温这个结论也可以从公式中推出来。先认为恒星大气中只由一种元素的原子组成，则\((9.8)\)变为：</p>
 
-<script type="math/tex; mode=display">P_\mathrm{e} = P_\mathrm{g} \frac{\Phi(T)/P_\mathrm{e}}{1 + 2\Phi(T)/P_\mathrm{e}}</script>
+\[P_\mathrm{e} = P_\mathrm{g} \frac{\Phi(T)/P_\mathrm{e}}{1 + 2\Phi(T)/P_\mathrm{e}}\]
 
-<script type="math/tex; mode=display">\Rightarrow P_\mathrm{e}^2 = \Phi(T)(P_\mathrm{g} - 2P_\mathrm{e})</script>
+\[\Rightarrow P_\mathrm{e}^2 = \Phi(T)(P_\mathrm{g} - 2P_\mathrm{e})\]
 
-<p>低温时<script type="math/tex">P_\mathrm{e} \ll P_\mathrm{g}</script>，所以</p>
+<p>低温时\(P_\mathrm{e} \ll P_\mathrm{g}\)，所以</p>
 
-<script type="math/tex; mode=display">P_\mathrm{e}^2 \approx \Phi(T)P_\mathrm{g} \tag{9.9}</script>
+\[P_\mathrm{e}^2 \approx \Phi(T)P_\mathrm{g} \tag{9.9}\]
 
 <p>低温恒星在迭代的时候还要注意元素丰度的问题，因为这个时候金属元素提供了主要的电子，迭代的时候可能也需要修改元素丰度。</p>
 
 <h3 id="模型小结">模型小结</h3>
 
-<p>我们已经可以计算大气模型了。拿已经有了的<script type="math/tex">T(\tau_0)</script>和猜测的<script type="math/tex">P_\mathrm{g}(\tau_0)</script>计算<script type="math/tex">P_\mathrm{e}(\tau_0)</script>和<script type="math/tex">\kappa_0(\tau_0)</script>，然后通过<script type="math/tex">(9.2)</script>算出一个新的<script type="math/tex">P_\mathrm{g}(\tau_0)</script>，如此重复。如果<script type="math/tex">T(\tau_0)</script>是从太阳的转换来的话那收敛之后就完了；但如果<script type="math/tex">T(\tau_0)</script>是理论值的话我们还要求它满足流量守恒，修正<script type="math/tex">T(\tau_0)</script>然后再重复。</p>
+<p>我们已经可以计算大气模型了。拿已经有了的\(T(\tau_0)\)和猜测的\(P_\mathrm{g}(\tau_0)\)计算\(P_\mathrm{e}(\tau_0)\)和\(\kappa_0(\tau_0)\)，然后通过\((9.2)\)算出一个新的\(P_\mathrm{g}(\tau_0)\)，如此重复。如果\(T(\tau_0)\)是从太阳的转换来的话那收敛之后就完了；但如果\(T(\tau_0)\)是理论值的话我们还要求它满足流量守恒，修正\(T(\tau_0)\)然后再重复。</p>
 
 <h3 id="从模型中导出来的东西">从模型中导出来的东西</h3>
 
 <h5 id="几何深度">几何深度</h5>
 
-<p>几何深度就是<script type="math/tex">dx = d\tau_0 / \kappa_0 \rho</script>啦，所以</p>
+<p>几何深度就是\(dx = d\tau_0 / \kappa_0 \rho\)啦，所以</p>
 
-<script type="math/tex; mode=display">x(\tau_0) = \int_0^{\tau_0} \frac{1}{\kappa(t_0)\rho(t_0)} dt_0 \tag{9.10}</script>
+\[x(\tau_0) = \int_0^{\tau_0} \frac{1}{\kappa(t_0)\rho(t_0)} dt_0 \tag{9.10}\]
 
-<p><script type="math/tex">\kappa</script>已经在刚刚的迭代中确定了，<script type="math/tex">\rho</script>可以算出来：</p>
+<p>\(\kappa\)已经在刚刚的迭代中确定了，\(\rho\)可以算出来：</p>
 
-<script type="math/tex; mode=display">\rho = N_\mathrm{H} \times \sum A_j \mu_j</script>
+\[\rho = N_\mathrm{H} \times \sum A_j \mu_j\]
 
 <p>同时</p>
 
-<script type="math/tex; mode=display">N_\mathrm{H} = \frac{N - N_\mathrm{e}}{\sum A_j} = \frac{P_\mathrm{g} - P_\mathrm{e}}{kT\sum A_j}</script>
+\[N_\mathrm{H} = \frac{N - N_\mathrm{e}}{\sum A_j} = \frac{P_\mathrm{g} - P_\mathrm{e}}{kT\sum A_j}\]
 
-<script type="math/tex; mode=display">\Rightarrow x(\tau_0) = \int_0^{\log{\tau_0}} \frac{kT(t_0)\sum A_jt_0}{\kappa(t_0) \sum A_j\mu_j[P_\mathrm{g} - P_\mathrm{e}]\log{e}} d\log{t_0} \tag{9.11}</script>
+\[\Rightarrow x(\tau_0) = \int_0^{\log{\tau_0}} \frac{kT(t_0)\sum A_jt_0}{\kappa(t_0) \sum A_j\mu_j[P_\mathrm{g} - P_\mathrm{e}]\log{e}} d\log{t_0} \tag{9.11}\]
 
-<p>或者利用本文第一条公式<script type="math/tex">dP_\mathrm{g} = \rho g dx</script>积分，有</p>
+<p>或者利用本文第一条公式\(dP_\mathrm{g} = \rho g dx\)积分，有</p>
 
-<script type="math/tex; mode=display">x(P_\mathrm{g}) = \frac{1}{g} \int_0^{P_\mathrm{g}} \frac{kT(p)\sum A_j}{\sum A_j\mu_j} \frac{dp}{p-P_\mathrm{e}} \tag{9.12}</script>
+\[x(P_\mathrm{g}) = \frac{1}{g} \int_0^{P_\mathrm{g}} \frac{kT(p)\sum A_j}{\sum A_j\mu_j} \frac{dp}{p-P_\mathrm{e}} \tag{9.12}\]
 
-<p>从这里我们可以看到恒星大气的几何深度和<script type="math/tex">g</script>是成反比的。</p>
+<p>从这里我们可以看到恒星大气的几何深度和\(g\)是成反比的。</p>
 
 <p><img src="/img/in-post/post-OASP9/9.8.png" alt="" /></p>
 
 <h5 id="模型的计算">模型的计算</h5>
 
-<p>模型最重要的结果自然是光谱，或者说是不同波长上的流量。这个东西可以从<script type="math/tex">(7.15)</script>计算出来：</p>
+<p>模型最重要的结果自然是光谱，或者说是不同波长上的流量。这个东西可以从\((7.15)\)计算出来：</p>
 
-<script type="math/tex; mode=display">F_\nu = 2\pi \int_{-\infty}^{\infty} S_\nu(\tau_0) E_2(\tau_\nu) \frac{\kappa_\nu(\tau_0)\tau_0 d\log{\tau_0}}{\kappa_0(\tau_0)\log{e}} \tag{9.13}</script>
+\[F_\nu = 2\pi \int_{-\infty}^{\infty} S_\nu(\tau_0) E_2(\tau_\nu) \frac{\kappa_\nu(\tau_0)\tau_0 d\log{\tau_0}}{\kappa_0(\tau_0)\log{e}} \tag{9.13}\]
 
-<p>这条式子和<script type="math/tex">(7.15)</script>的区别在于<script type="math/tex">S_\nu</script>以及<script type="math/tex">d \tau_\nu</script>。</p>
+<p>这条式子和\((7.15)\)的区别在于\(S_\nu\)以及\(d \tau_\nu\)。</p>
 
-<p><script type="math/tex">S_\nu</script>的自变量被改成了<script type="math/tex">\tau_\nu</script>，这是因为热动平衡下<script type="math/tex">S_\nu(\tau_\nu) = B_\nu[T(\tau_\nu)]</script>，当我们在讨论同一个几何深度的薄层时无论用的自变量是<script type="math/tex">\tau_\nu</script>还是<script type="math/tex">\tau_0</script>，所表达的温度都是一样的（因为是同一层），所以方便起见我们用<script type="math/tex">\tau_0</script>。要注意的是<script type="math/tex">E_2</script>不能这样做，因为<script type="math/tex">E_2</script>是一个积分，整个积分是随着<script type="math/tex">\tau_\nu</script>的变化而变化的。</p>
+<p>\(S_\nu\)的自变量被改成了\(\tau_\nu\)，这是因为热动平衡下\(S_\nu(\tau_\nu) = B_\nu[T(\tau_\nu)]\)，当我们在讨论同一个几何深度的薄层时无论用的自变量是\(\tau_\nu\)还是\(\tau_0\)，所表达的温度都是一样的（因为是同一层），所以方便起见我们用\(\tau_0\)。要注意的是\(E_2\)不能这样做，因为\(E_2\)是一个积分，整个积分是随着\(\tau_\nu\)的变化而变化的。</p>
 
-<p><script type="math/tex">d \tau_\nu</script>的话根据几何深度的定义，我们有</p>
+<p>\(d \tau_\nu\)的话根据几何深度的定义，我们有</p>
 
-<script type="math/tex; mode=display">dx = \frac{d\tau_\nu}{\kappa_\nu \rho} = \frac{d\tau_0}{\kappa_0 \rho}</script>
+\[dx = \frac{d\tau_\nu}{\kappa_\nu \rho} = \frac{d\tau_0}{\kappa_0 \rho}\]
 
 <p>代进去再换成log scale，就有了最后的那坨东西。</p>
 
-<p><script type="math/tex">(9.13)</script>式的微分是恒星某一层在某个波长上发出的光的流量多少，我们将他称为flux contribution function。它说明了在这个波长下，恒星的光主要是从哪一层发出来的。</p>
+<p>\((9.13)\)式的微分是恒星某一层在某个波长上发出的光的流量多少，我们将他称为flux contribution function。它说明了在这个波长下，恒星的光主要是从哪一层发出来的。</p>
 
 <p><img src="/img/in-post/post-OASP9/9.9.png" alt="" /></p>
 
-<p>从上图我们可以看出8000埃处的恒星光主要来自更高的位置，说明了<script type="math/tex">\kappa_{8000}</script>更大。</p>
+<p>从上图我们可以看出8000埃处的恒星光主要来自更高的位置，说明了\(\kappa_{8000}\)更大。</p>
 
 <p>另一个明显的例子是巴尔末跳跃前后的flux contribution function。</p>
 
@@ -459,38 +634,38 @@
 
 <p>可以看到3646的辐射层远高于3648，说明多数的3646辐射都被氢原子吸收掉了。</p>
 
-<p>以上讨论的主要是<script type="math/tex">E_2</script>对FCF的影响，同时源函数（其实也就是温度分度分布）对FCF也有影响。温度越高，辐射越多，辐射峰值也稍微往高处走（因为温度会使吸收系数发生变化）。</p>
+<p>以上讨论的主要是\(E_2\)对FCF的影响，同时源函数（其实也就是温度分度分布）对FCF也有影响。温度越高，辐射越多，辐射峰值也稍微往高处走（因为温度会使吸收系数发生变化）。</p>
 
-<p>最后，我们还有别的方法去计算流量，比如对<script type="math/tex">(7.15)</script>的另一种积分（把0单拿出来然后后面分部积分）：</p>
+<p>最后，我们还有别的方法去计算流量，比如对\((7.15)\)的另一种积分（把0单拿出来然后后面分部积分）：</p>
 
-<script type="math/tex; mode=display">F_\nu = \pi S_\nu(0) + 2\pi \int_0^\infty \frac{dS}{d\tau_\nu}E_3(\tau_\nu)d \tau_\nu \tag{9.15}</script>
+\[F_\nu = \pi S_\nu(0) + 2\pi \int_0^\infty \frac{dS}{d\tau_\nu}E_3(\tau_\nu)d \tau_\nu \tag{9.15}\]
 
-<p>它和边界的流量以及源函数的梯度有关；在LTE情况下<script type="math/tex">S_\nu(0) = B_\nu(T_0)</script>，所以和边界温度有关。</p>
+<p>它和边界的流量以及源函数的梯度有关；在LTE情况下\(S_\nu(0) = B_\nu(T_0)\)，所以和边界温度有关。</p>
 
 <h5 id="模型的性质压强关系">模型的性质：压强关系</h5>
 
 <p><img src="/img/in-post/post-OASP9/9.12.png" alt="" /></p>
 
-<p>图9.12显示了气体压强和温度的关系<script type="math/tex">T(P_g)</script>。可以看到不同温度下的曲线并不像<script type="math/tex">T(\tau_0)</script>一样可以直接乘上一个常数；这是我们用光深而不用气体压强做自变量的一个原因（不方便）。</p>
+<p>图9.12显示了气体压强和温度的关系\(T(P_g)\)。可以看到不同温度下的曲线并不像\(T(\tau_0)\)一样可以直接乘上一个常数；这是我们用光深而不用气体压强做自变量的一个原因（不方便）。</p>
 
-<p><script type="math/tex">(7.39)</script>表明了当上图的斜率超过<script type="math/tex">1-1/\gamma \approx 0.4</script>的时候，会发生对流。所以很多模型到了这里附近会不稳定，需要加入对流的因素。一件好事是对流一般发生在恒星大气的底部，因为大气比较稀薄的时候主要还是辐射传能。</p>
+<p>\((7.39)\)表明了当上图的斜率超过\(1-1/\gamma \approx 0.4\)的时候，会发生对流。所以很多模型到了这里附近会不稳定，需要加入对流的因素。一件好事是对流一般发生在恒星大气的底部，因为大气比较稀薄的时候主要还是辐射传能。</p>
 
 <p><img src="/img/in-post/post-OASP9/9.13.png" alt="" />
 <img src="/img/in-post/post-OASP9/9.14.png" alt="" /></p>
 
 <p>图9.13和9.14显示了两个不同温度的模型在不同光深处的气体以及电子压强。在低温模型的大气上层，电子压强远远小于气体压强；向恒星内部走，温度升高使得电离增强，所以电子压强也升高，但是仍然没有完全电离。对于高温恒星，两条线距离很小，意味着基本上完全电离了。</p>
 
-<p>我们还可以看看表面重力加速度和压强的关系。由<script type="math/tex">(9.2)</script>，我们有</p>
+<p>我们还可以看看表面重力加速度和压强的关系。由\((9.2)\)，我们有</p>
 
-<script type="math/tex; mode=display">P_\mathrm{g} \approx C(T) g^{2/3} \tag{9.19}</script>
+\[P_\mathrm{g} \approx C(T) g^{2/3} \tag{9.19}\]
 
-<p><script type="math/tex">C(T)</script>就是那一堆积分加常数。然后从<script type="math/tex">(9.9)</script>，对于低温模型，有</p>
+<p>\(C(T)\)就是那一堆积分加常数。然后从\((9.9)\)，对于低温模型，有</p>
 
-<script type="math/tex; mode=display">P_\mathrm{e} \approx \text{constant}\, g^{1/3} \tag{9.20}</script>
+\[P_\mathrm{e} \approx \text{constant}\, g^{1/3} \tag{9.20}\]
 
-<p>高温模型下因为<script type="math/tex">P_\mathrm{e} \approx 0.5 P_\mathrm{g}</script>，所以</p>
+<p>高温模型下因为\(P_\mathrm{e} \approx 0.5 P_\mathrm{g}\)，所以</p>
 
-<script type="math/tex; mode=display">P_\mathrm{e} \approx \text{constant}\, g^{2/3} \tag{9.21}</script>
+\[P_\mathrm{e} \approx \text{constant}\, g^{2/3} \tag{9.21}\]
 
 <p>这个结论是和计算一致的。</p>
 
@@ -503,67 +678,67 @@
 
 <p>当然这可以用公式推出来；我们计算这么一个量：</p>
 
-<script type="math/tex; mode=display">\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} = \frac{P_\mathrm{e}}{P_\mathrm{g}} \frac{N_\mathrm{H}}{\sum N_J} \frac{kT}{kT} = \frac{P_\mathrm{e}}{P_\mathrm{g}} \frac{P_\mathrm{H}}{\sum N_j kT} \approx \frac{P_\mathrm{e}}{\sum N_j kT}</script>
+\[\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} = \frac{P_\mathrm{e}}{P_\mathrm{g}} \frac{N_\mathrm{H}}{\sum N_J} \frac{kT}{kT} = \frac{P_\mathrm{e}}{P_\mathrm{g}} \frac{P_\mathrm{H}}{\sum N_j kT} \approx \frac{P_\mathrm{e}}{\sum N_j kT}\]
 
-<p>恒星里面主要是氢嘛，所以<script type="math/tex">P_\mathrm{g}</script>和<script type="math/tex">P_\mathrm{H}</script>就近似相等了。继续，<script type="math/tex">N_j</script>和<script type="math/tex">P_\mathrm{e}</script>可以表述为原子离子的组合：</p>
+<p>恒星里面主要是氢嘛，所以\(P_\mathrm{g}\)和\(P_\mathrm{H}\)就近似相等了。继续，\(N_j\)和\(P_\mathrm{e}\)可以表述为原子离子的组合：</p>
 
-<script type="math/tex; mode=display">\sum N_j = \sum (N_1+N_0)_j, P_\mathrm{e} = N_\mathrm{e}kT = \sum N_{1j}kT</script>
+\[\sum N_j = \sum (N_1+N_0)_j, P_\mathrm{e} = N_\mathrm{e}kT = \sum N_{1j}kT\]
 
 <p>所以</p>
 
-<script type="math/tex; mode=display">\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx \frac{\sum N_{1j}}{\sum (N_1+N_0)_j}</script>
+\[\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx \frac{\sum N_{1j}}{\sum (N_1+N_0)_j}\]
 
-<p>那么当金属基本上被电离的时候，<script type="math/tex">\sum N_{1j} \gg \sum N_{0j}</script>：</p>
+<p>那么当金属基本上被电离的时候，\(\sum N_{1j} \gg \sum N_{0j}\)：</p>
 
-<script type="math/tex; mode=display">\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx 1 \tag{9.22}</script>
+\[\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx 1 \tag{9.22}\]
 
-<p>金属处于中性的时候，<script type="math/tex">\sum N_{1j} \ll \sum (N_{1j} + N_{0j})</script>：</p>
+<p>金属处于中性的时候，\(\sum N_{1j} \ll \sum (N_{1j} + N_{0j})\)：</p>
 
-<script type="math/tex; mode=display">\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx \frac{\sum N_{1j}}{\sum N_{0j}} \tag{9.23}</script>
+\[\frac{P_\mathrm{e}}{P_\mathrm{g}}\frac{1}{\sum A_j} \approx \frac{\sum N_{1j}}{\sum N_{0j}} \tag{9.23}\]
 
-<p>在金属电离的情况下，<script type="math/tex">(9.1)</script>可以写成：</p>
+<p>在金属电离的情况下，\((9.1)\)可以写成：</p>
 
-<script type="math/tex; mode=display">d P_\mathrm{g} = \frac{g}{\kappa_0}d\tau_0 = \frac{g}{P_\mathrm{e}\kappa_0/P_\mathrm{e}}d\tau_0 = \frac{g}{P_\mathrm{g}\sum A_j \kappa_0/P_\mathrm{e}}d\tau_0</script>
+\[d P_\mathrm{g} = \frac{g}{\kappa_0}d\tau_0 = \frac{g}{P_\mathrm{e}\kappa_0/P_\mathrm{e}}d\tau_0 = \frac{g}{P_\mathrm{g}\sum A_j \kappa_0/P_\mathrm{e}}d\tau_0\]
 
-<p>对<script type="math/tex">P_\mathrm{g}</script>积分，有</p>
+<p>对\(P_\mathrm{g}\)积分，有</p>
 
-<script type="math/tex; mode=display">\frac{1}{2} P_\mathrm{g}^2 = \frac{1}{\sum A_j} \int_0^{\tau_0} \frac{g}{\kappa_0 / P_\mathrm{e}} d\tau_0</script>
+\[\frac{1}{2} P_\mathrm{g}^2 = \frac{1}{\sum A_j} \int_0^{\tau_0} \frac{g}{\kappa_0 / P_\mathrm{e}} d\tau_0\]
 
 <p>把后面的积分当作常数，有</p>
 
-<script type="math/tex; mode=display">P_\mathrm{g} = c_0 (\sum A_j)^{-1/2} \tag{9.24}</script>
+\[P_\mathrm{g} = c_0 (\sum A_j)^{-1/2} \tag{9.24}\]
 
-<p>然后从<script type="math/tex">(9.22)</script>有</p>
+<p>然后从\((9.22)\)有</p>
 
-<script type="math/tex; mode=display">P_\mathrm{e} = c_0 (\sum A_j)^{1/2} \tag{9.25}</script>
+\[P_\mathrm{e} = c_0 (\sum A_j)^{1/2} \tag{9.25}\]
 
 <p>当然这只是一个定性的估算，而且只在大气外部成立。</p>
 
-<p>在金属中性的情况下，只考虑一种金属使得<script type="math/tex">N_1/N_0 = \Phi(T)/P_\mathrm{e}</script>，则有</p>
+<p>在金属中性的情况下，只考虑一种金属使得\(N_1/N_0 = \Phi(T)/P_\mathrm{e}\)，则有</p>
 
-<script type="math/tex; mode=display">P_\mathrm{g} = c_1 (\sum A_j)^{-1/3}</script>
+\[P_\mathrm{g} = c_1 (\sum A_j)^{-1/3}\]
 
-<script type="math/tex; mode=display">P_\mathrm{e} = c_1 (\sum A_j)^{1/3}</script>
+\[P_\mathrm{e} = c_1 (\sum A_j)^{1/3}\]
 
-<p>我们还可以比较一下图9.13和9.16，可以发现在恒星大气顶部，增大金属丰度和增大<script type="math/tex">\log{g}</script>对电子压强的影响是类似的，所以这两个物理量同向变化的时候对大气顶端的光谱特征的影响也是类似的。也就是说从光谱特征的变化我们分不出究竟是金属丰度还是<script type="math/tex">\log{g}</script>变大/变小了。</p>
+<p>我们还可以比较一下图9.13和9.16，可以发现在恒星大气顶部，增大金属丰度和增大\(\log{g}\)对电子压强的影响是类似的，所以这两个物理量同向变化的时候对大气顶端的光谱特征的影响也是类似的。也就是说从光谱特征的变化我们分不出究竟是金属丰度还是\(\log{g}\)变大/变小了。</p>
 
-<p>氦元素丰度也可以稍微使得压强发生变化。利用<script type="math/tex">(8.19)</script>我们可以将<script type="math/tex">(9.1)</script>写成</p>
+<p>氦元素丰度也可以稍微使得压强发生变化。利用\((8.19)\)我们可以将\((9.1)\)写成</p>
 
-<script type="math/tex; mode=display">dP_\mathrm{g} = \frac{g}{\kappa_0}d\tau_0 = \frac{g}{\kappa}\sum A_j \mu_j d\tau_0</script>
+\[dP_\mathrm{g} = \frac{g}{\kappa_0}d\tau_0 = \frac{g}{\kappa}\sum A_j \mu_j d\tau_0\]
 
-<p>从这里我们能看到<script type="math/tex">\sum A_j \mu_j</script>和<script type="math/tex">g</script>的地位是相似的，所以根据<script type="math/tex">(9.19)</script>有</p>
+<p>从这里我们能看到\(\sum A_j \mu_j\)和\(g\)的地位是相似的，所以根据\((9.19)\)有</p>
 
-<script type="math/tex; mode=display">P_\mathrm{g} = \text{constant} (\sum A_j \mu_j)^{2/3}</script>
+\[P_\mathrm{g} = \text{constant} (\sum A_j \mu_j)^{2/3}\]
 
 <p>同时</p>
 
-<script type="math/tex; mode=display">\sum A_j \mu_j = A(\mathrm{H})\mu_\mathrm{H} + A(\mathrm{He})\mu_\mathrm{He} + ... \approx 1.66\times 10^{-24} [1+4A(\mathrm{He})]</script>
+\[\sum A_j \mu_j = A(\mathrm{H})\mu_\mathrm{H} + A(\mathrm{He})\mu_\mathrm{He} + ... \approx 1.66\times 10^{-24} [1+4A(\mathrm{He})]\]
 
 <p>我们又忽略了其他元素。所以类似的，有</p>
 
-<script type="math/tex; mode=display">P_\mathrm{g} = \text{constant} [1+4A(\mathrm{He})]^{2/3}</script>
+\[P_\mathrm{g} = \text{constant} [1+4A(\mathrm{He})]^{2/3}\]
 
-<p>至于电子压强，代进<script type="math/tex">(9.9)</script>附近的结论就行了。</p>
+<p>至于电子压强，代进\((9.9)\)附近的结论就行了。</p>
 
 <h5 id="压强和有效温度的关系">压强和有效温度的关系</h5>
 
@@ -574,18 +749,14 @@
 
 <h4 id="复习">复习</h4>
 
-<p>够长的一章。这里所提及的模型都是很简单的，只要确定了有效温度、<script type="math/tex">\log{g}</script>和金属丰度的话就可以完全确定。放松最开始提到的假设可以造出更符合实际（或者需要）的模型，这个会在之后提到。</p>
+<p>够长的一章。这里所提及的模型都是很简单的，只要确定了有效温度、\(\log{g}\)和金属丰度的话就可以完全确定。放松最开始提到的假设可以造出更符合实际（或者需要）的模型，这个会在之后提到。</p>
 
 
                 <hr style="visibility: hidden;">
-
-                
-
-
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/01/29/jpynb/" >
+                        <a href="/2018/01/29/jpynb/" data-toggle="tooltip" data-placement="top" title="Jupyter Notebook + Python + Bash 备忘">
                         Previous<br>
                         <span>Jupyter Notebook + Python + Bash 备忘</span>
                         </a>
@@ -593,16 +764,14 @@
                     
                     
                     <li class="next">
-                        <a href="/2018/03/14/DL-1/" >
+                        <a href="/2018/03/14/DL-1/" data-toggle="tooltip" data-placement="top" title="Deep Learning笔记1">
                         Next<br>
                         <span>Deep Learning笔记1</span>
                         </a>
                     </li>
                     
                 </ul>
-
-
-                
+                <hr style="visibility: hidden;">
 
                 
                 <!-- disqus 评论框 start -->
@@ -613,9 +782,23 @@
                 
 
                 
-            </div>
+            </div>  
 
     <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
     <!-- Sidebar Container -->
@@ -626,78 +809,79 @@
 
                 <!-- Featured Tags -->
                 
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-        				
-                            
-                				<a href="/tags/#random" title="random" rel="4">
-                                    random
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#hanging-around" title="hanging-around" rel="7">
-                                    hanging-around
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#astro-ph" title="astro-ph" rel="4">
-                                    astro-ph
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#experience" title="experience" rel="3">
-                                    experience
-                                </a>
-                            
-        				
-                            
-                				<a href="/tags/#learning" title="learning" rel="42">
-                                    learning
-                                </a>
-                            
-        				
-                            
-        				
-        			</div>
-                </section>
-                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=random"
+                    title="random"
+                    rel="4">random</a>
+        
+                <a data-sort="0020" 
+                    href="/archive/?tag=learning"
+                    title="learning"
+                    rel="42">learning</a>
+        
+                <a data-sort="0055" 
+                    href="/archive/?tag=hanging-around"
+                    title="hanging-around"
+                    rel="7">hanging-around</a>
+        
+                <a data-sort="0058" 
+                    href="/archive/?tag=astro-ph"
+                    title="astro-ph"
+                    rel="4">astro-ph</a>
+        
+                <a data-sort="0059" 
+                    href="/archive/?tag=experience"
+                    title="experience"
+                    rel="3">experience</a>
+    </div>
+</section>
+
 
                 <!-- Friends Blog -->
                 
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
-                    
-                        <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
-                    
-                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
-                    
-                </ul>
-                
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="http://gerry.lamost.org/blog/">Gerry</a></li>
+  
+  <li><a href="http://fmajor.lamost.org/blog/">Fmajor's Blog</a></li>
+  
+  <li><a href="http://huangxuan.me">Hux Blog</a></li>
+  
+</ul>
+
             </div>
         </div>
     </div>
 </article>
 
+<!-- add support for mathjax by voleking-->
 
 
 
 
 
 
-
-<div id="disqus_thread"></div>
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "mingjiejian-github-io";
-    var disqus_identifier = "mingjiejian-github-io//2018/03/08/OASP9/";
+    var disqus_identifier = "/2018/03/08/OASP9";
     var disqus_url = "http://localhost:4000/2018/03/08/OASP9/";
 
     (function() {
@@ -726,9 +910,9 @@
 <script>
     async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
-          visible: 'always',
+          visible: 'hover',
           placement: 'right',
-          icon: '#'
+          // icon: '#'
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
@@ -752,53 +936,56 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <li>
-                        <a href="/feed.xml">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
+                <!-- SNS Link -->
+                
 
 
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/mingjieJian">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                </ul>
+<ul class="list-inline text-center">
+
+
+  
+  <li>
+    <a href="/feed.xml">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://www.zhihu.com/people/jian-ming-jie">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa  fa-stack-1x fa-inverse">知</i>
+      </span>
+    </a>
+  </li>
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/mingjieJian">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
                 <p class="copyright text-muted">
-                    Copyright &copy; Mingjie's Blog 2020
+                    Copyright &copy; Mingjie's page 2021
                     <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
                     </iframe>
                 </p>
             </div>
@@ -810,32 +997,42 @@
 <script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
 <script src="/js/bootstrap.min.js "></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/js/hux-blog.min.js "></script>
 
+<!-- Simple Jekyll Search -->
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
 
 <!-- async load function -->
 <script>
     function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
     }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
      so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
 -->
 <!--
     <script>
@@ -847,25 +1044,16 @@
 -->
 
 
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+
+
+
+
 
 <!--fastClick.js -->
 <script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 
@@ -878,10 +1066,12 @@
     var _gaDomain = 'mingjiejian.github.io';
 
     // Originial
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
@@ -893,14 +1083,134 @@
 
 
 
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+<!-- Simple Jekyll Search -->
+<script>
+    // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
+    function htmlDecode(input) {
+        var e = document.createElement('textarea');
+        e.innerHTML = input;
+        // handle case of empty input
+        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    }
+
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('search-results'),
+        json: '/search.json',
+        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+        noResultsText: 'No results',
+        limit: 50,
+        fuzzy: false,
+        // a hack to get escaped subtitle unescaped. for some reason, 
+        // post.subtitle w/o escape filter nuke entire search.
+        templateMiddleware: function (prop, value, template) {
+            if (prop === 'subtitle' || prop === 'title') {
+                if (value.indexOf("code")) {
+                    return htmlDecode(value);
+                } else {
+                    return value;
+                }
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var $searchPage = $('.search-page');
+        var $searchOpen = $('.search-icon');
+        var $searchClose = $('.search-icon-close');
+        var $searchInput = $('#search-input');
+        var $body = $('body');
+
+        $searchOpen.on('click', function (e) {
+            e.preventDefault();
+            $searchPage.toggleClass('search-active');
+            var prevClasses = $body.attr('class') || '';
+            setTimeout(function () {
+                $body.addClass('no-scroll');
+            }, 400)
+
+            if ($searchPage.hasClass('search-active')) {
+                $searchClose.on('click', function (e) {
+                    e.preventDefault();
+                    $searchPage.removeClass('search-active');
+                    $body.attr('class', prevClasses);  // from closure 
+                });
+                $searchInput.focus();
+            }
+        });
+    });
+</script>
+
 
 <!-- Image to hack wechat -->
 <img src="/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
-
 </body>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 
 </html>

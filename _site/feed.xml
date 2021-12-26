@@ -1,13 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mingjie's Blog</title>
+    <title>Mingjie's page</title>
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 28 Sep 2020 14:11:43 +0900</pubDate>
-    <lastBuildDate>Mon, 28 Sep 2020 14:11:43 +0900</lastBuildDate>
-    <generator>Jekyll v3.8.6</generator>
+    <pubDate>Mon, 27 Dec 2021 00:48:06 +0900</pubDate>
+    <lastBuildDate>Mon, 27 Dec 2021 00:48:06 +0900</lastBuildDate>
+    <generator>Jekyll v4.2.1</generator>
+    
+      <item>
+        <title>两两配对！</title>
+        <description>&lt;p&gt;题图from &lt;a href=&quot;https://betterprogramming.pub/yield-in-python-76413d5e2a27&quot;&gt;BetterProgramming&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;最近继续搞LDR的事情。
+然后遇到了一个问题：假设有一个列表&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[1, 2, 3, 4]&lt;/code&gt;，我需要将列表中的元素两两分组，组成元素对；其中每一个元素只出现一次。
+我需要的是在此条件下出现的所有可能组合，也就是说输出应该是另一个列表：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[(1,2), (3,4)], [(1,3), (2,4)], [(1,4), (2,3)]]&lt;/code&gt;。
+那么应该怎么实现？&lt;/p&gt;
+
+&lt;p&gt;本来我以为这种基础的需求应该有现成的包可以用，网上多数也给了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;itertool.combination&lt;/code&gt;这个函数。
+但是这个函数的作用是列出所有两两（或者其他数量）的组合，元素不止出现一次，所以并不符合我的需求。
+我也想过自己写个轮子，觉着应该要用迭代；但是因为自己技艺不精只有个大概思路。
+最后在&lt;a href=&quot;https://stackoverflow.com/questions/5360220/how-to-split-a-list-into-pairs-in-all-possible-ways&quot;&gt;这里&lt;/a&gt;找到了别人写的code，记录如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;all_pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Handle odd length list
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all_pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pair&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all_pairs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rest&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;非常简单的一个小生成器，但是我觉得写法非常精妙，所以又花了两个小时学习了一下&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/1016959663602400/1017318207388128&quot;&gt;生成器的相关知识&lt;/a&gt;，看懂了这段代码，也一并记录下来。&lt;/p&gt;
+
+&lt;h2 id=&quot;基本思路&quot;&gt;基本思路&lt;/h2&gt;
+
+&lt;p&gt;从这里开始，为了简化情况，假设输入的列表都是从1开始增大的自然数，长度为\(N\)。&lt;/p&gt;
+
+&lt;p&gt;既然用上了迭代，那么基本思路和我想的是差不多的。
+我们需要分情况讨论，并且每次迭代只进行一步：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;当输入列表长度小于2时：
+    &lt;ul&gt;
+      &lt;li&gt;这个时候根本没有组合可以产生，那么返回一个空列表&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;当输入列表长度为奇数时：
+    &lt;ul&gt;
+      &lt;li&gt;长度为奇数代表着一定有某一个元素不能形成组合，而这个元素可能是列表里面的任何一个元素。所以这时先把这个元素挑出来从列表中去掉，然后将剩下的列表(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lst[:i] + lst[i+1:]&lt;/code&gt;)重新放入函数中。这个时候的输入列表长度为偶数，放到下一个情况讨论。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;当输入列表长度为偶数时：
+    &lt;ul&gt;
+      &lt;li&gt;从列表中挑出两个元素并组合成元组；&lt;/li&gt;
+      &lt;li&gt;将这两个元素在列表中去掉&lt;/li&gt;
+      &lt;li&gt;将新的列表作为输入放到函数中&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这样的思路就符合迭代的思想了。&lt;/p&gt;
+
+&lt;p&gt;但是这里（对我来说）有两个难点：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;如何在步骤3中遍历所有可能的情况？&lt;/li&gt;
+  &lt;li&gt;当输入列表的长度大于4时，如果先挑出了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1,2)&lt;/code&gt;，则后面有不止一种可能性，在程序中如何将这些可能性都与&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1,2)&lt;/code&gt;联系起来？
+要解决这两个问题，要理解迭代的作用、以及Python中生成器的特性。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;问题1&quot;&gt;问题1&lt;/h3&gt;
+
+&lt;p&gt;迭代器的作用本身就是为了简化每一次迭代所要做的事情，所以这个问题的答案是：在每一次迭代中不需要遍历所有可能的情况，只需遍历下一层迭代不能遍历的情况。
+假设输入列表是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[1, 2, 3, 4, 5]&lt;/code&gt;，第一次迭代的时候取了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1, 2)&lt;/code&gt;，第二次迭代的时候因为剩下了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[3, 4, 5]&lt;/code&gt;，这个时候是可以取到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(3, 4)&lt;/code&gt;的，所以在第一次迭代中不需要取到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(3, 4)&lt;/code&gt;。
+那么第一次（实际上是每一次）迭代中需要遍历什么组合呢？
+因为每一次迭代实际上是取走了列表中的两个元素，所以迭代只需要遍历下层迭代&lt;strong&gt;不能&lt;/strong&gt;取到的元素即可。
+最方便的做法是，固定组合中的一个数（比如&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1, 2)&lt;/code&gt;中的1），遍历另一个数（比如&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1, 2)&lt;/code&gt;中的2可以为3、4和5）。
+这样遍历就保证了下层迭代的时候永远和1无关，同时在这一层迭代中遍历了与1有关的所有组合。
+更进一步说，既然一个迭代层中只需要取一个固定的数，那么干脆就取输入列表中的第一个数来固定就好了。
+这也是程序中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = lst[0]&lt;/code&gt;，组合的第一个数永远是是输入列表的第一个数的原因。
+反正到下一层时第一个数就变了，所有的组合总是能被取到的。&lt;/p&gt;
+
+&lt;h3 id=&quot;问题2&quot;&gt;问题2&lt;/h3&gt;
+
+&lt;p&gt;这个问题就要利用到生成器的特性了，也是我觉得这个生成器最精妙的地方。
+这里每次涉及到输出的时候用的都是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;，它使得这个函数变成了生成器。
+每次程序执行到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;时都会暂停，回到上一层迭代器；同时本层迭代器的所有情况被保留（或者说冻结），等待下一次被引用时继续。
+这个特性就使得每次迭代到末端（基本思路中的情况1）时，从最底层开始、每一层迭代都会遇到yield。
+在迭代中被抽出的各个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pair&lt;/code&gt;就会通过&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[pair] + rest&lt;/code&gt;累积起来，组成一组元素对。
+同时这些pair在此刻的值会被&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;保存起来，下次用到的时候仍会保持原状，或者被情况3的循环更新为下一组。
+这个特性既保证了每一组元素对集合都能被输出，又不会出现输出完之后不知道下次该遍历哪个元素的情况。
+通过下面的例子应该可以更好地看出来这些&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;是怎么运作的。&lt;/p&gt;
+
+&lt;h2 id=&quot;运行实例6元素列表&quot;&gt;运行实例：6元素列表&lt;/h2&gt;
+
+&lt;p&gt;从程序中可以看出来，奇数元素列表实际上是回到偶数元素列表的情况，所以只要掌握了偶数元素列表的情况即可，这里也只举偶数的例子。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;这里我们的输入列表为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[1, 2, 3, 4, 5, 6]&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;因为是偶数列表，程序会直接进入到第二个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt;判断的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else&lt;/code&gt;部分。&lt;/li&gt;
+  &lt;li&gt;这个部分首先将第一个元素拿出来，然后对第2到第6个元素进行循环。&lt;/li&gt;
+  &lt;li&gt;循环的第一次取出了第二个元素2，与1组成了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1, 2)&lt;/code&gt;这个元素对。&lt;/li&gt;
+  &lt;li&gt;这个时候剩下来的元素是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[3, 4, 5, 6]&lt;/code&gt;，它们作为新的输入列表进入第二层迭代。&lt;/li&gt;
+  &lt;li&gt;第一层迭代停在了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;中
+    &lt;ul&gt;
+      &lt;li&gt;同理，第二层迭代首先取出了3，然后循环的第一次取出了4组成了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(3, 4)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;剩下的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[5, 6]&lt;/code&gt;进入第三层迭代。&lt;/li&gt;
+      &lt;li&gt;第二层迭代停在了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;中
+        &lt;ul&gt;
+          &lt;li&gt;继续同理，在第三层迭代中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(5, 6)&lt;/code&gt;被取了出来。&lt;/li&gt;
+          &lt;li&gt;此时因为列表长度已经是2了，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for i in range(1,len(lst)):&lt;/code&gt;只运行一次，并没有循环。&lt;/li&gt;
+          &lt;li&gt;但是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;还是被执行了；程序进入第四层迭代。
+            &lt;ul&gt;
+              &lt;li&gt;第四层的迭代输入数组为空，直接&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield []&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;并且由于后面接的是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;return&lt;/code&gt;，本层的生成器直接结束，不再迭代了。&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;这个时候程序回到了第三层的迭代中，获取了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rest = []&lt;/code&gt;的结果&lt;/li&gt;
+          &lt;li&gt;紧接着&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield [pair] + rest&lt;/code&gt;被执行，实际上相当于返回了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(5, 6)]&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;第三层迭代停在了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield [pair] + rest&lt;/code&gt;，回到第二层迭代。&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;类似的，第三层迭代中的结果和第二层的结果合并，第二层的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield [pair] + rest&lt;/code&gt;被执行，返回了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(3, 4), (5, 6)]&lt;/code&gt;，第二层迭代器暂停&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;继续类似，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(1, 2), (3, 4), (5, 6)]&lt;/code&gt;被第一层返回，第一层迭代器暂停。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;诶怎么都暂停了？那我们只取出了第一种组合而已，哪来的其他结果？
+实际上这是运行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;next(all_pairs([1, 2, 3, 4, 5, 6]))&lt;/code&gt;的结果。
+这个时候整个生成器只完成了一步；再次运行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;next&lt;/code&gt;的话，会运行第二步。
+要注意这个时候三层的迭代器都停在了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield [pair] + rest&lt;/code&gt;这个地方。&lt;/p&gt;
+
+&lt;p&gt;我们继续：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;第一层迭代器此时的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pair&lt;/code&gt;为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(1, 2)&lt;/code&gt;；它处于&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;的循环中，继续运行将恢复第二层迭代器的运行。
+    &lt;ul&gt;
+      &lt;li&gt;第二层迭代器此时的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pair&lt;/code&gt;为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(3, 4)&lt;/code&gt;；它处于&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;的循环中，继续运行将恢复第三层迭代器的运行。
+        &lt;ul&gt;
+          &lt;li&gt;第三层迭代器此时的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pair&lt;/code&gt;为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(5, 6)&lt;/code&gt;；它处于&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;的循环中&lt;/li&gt;
+          &lt;li&gt;由于第四层迭代器在第一步中已经结束，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;被结束&lt;/li&gt;
+          &lt;li&gt;由于&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for i in range(1,len(lst)):&lt;/code&gt;只运行一次（在第一步中已被运行），第三层迭代器结束&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;第二层迭代器的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;循环结束（结果只有一个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(5, 6)&lt;/code&gt;），进入&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for i in range(1,len(lst)):&lt;/code&gt;循环的第二次循环中。&lt;/li&gt;
+      &lt;li&gt;此时&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt;增加了1，取出的组合为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(3, 5)&lt;/code&gt;；又进入了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for rest in all_pairs(lst[1:i]+lst[i+1:]):&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;一个新的第三层迭代器被创建，输入列表为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(4, 6)]&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;我们这个时候应该可以直接看出来这个迭代器会且只会返回&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(4, 6)]&lt;/code&gt;，中间过程就略过了&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;与第一步同理，这里的返回值为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(3, 5), (4, 6)]&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;与第一步同理，这里的返回值为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(1, 2), (3, 5), (4, 6)]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;写到这里基本上我们可以直接推出之后的结果了。显然是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(1, 2), (3, 6), (4, 5)]&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[(1, 3), (2, 4), (5, 6)]&lt;/code&gt;, …。
+就这样通过一个一个的循环以及迭代，我们把所有可能的组合都列了出来。
+又利用了生成器在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;时会暂停，下次被引用时会继续的特性，每次迭代到最下层时将每一层的结果都返回，同时将上层迭代器的结果暂时冻结，下次引用整个生成器时只改变相对下层的结果，通过这样的方式遍历所有的组合可能性。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Dec 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021/12/14/pair-generation/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/12/14/pair-generation/</guid>
+        
+        <category>study</category>
+        
+        
+      </item>
     
       <item>
         <title>三浦日落</title>
@@ -207,27 +390,31 @@ https://medium.com/@iKhushPatel/convert-video-to-images-images-to-video-using-op
         <title>不需要输入密码的SSH key</title>
         <description>&lt;p&gt;如果想不用密码登陆某主机的话，需要用到ssh key：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ssh-keygen -t rsa -b 4096 -C &quot;你的邮箱地址&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh-keygen -t rsa -b 4096 -C &quot;你的邮箱地址&quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;在生成ssh key的时候不输入密码的话，即使之后将公钥复制到了远程主机(&lt;code class=&quot;highlighter-rouge&quot;&gt;ssh-copy-id -i .ssh/id_rsa.pub git@12.56.224.61 &lt;/code&gt;)，ssh的hi和还是需要输入密码的。&lt;/p&gt;
+&lt;p&gt;在生成ssh key的时候不输入密码的话，即使之后将公钥复制到了远程主机(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh-copy-id -i .ssh/id_rsa.pub git@12.56.224.61 &lt;/code&gt;)，ssh的hi和还是需要输入密码的。&lt;/p&gt;
 
 &lt;p&gt;这个时候将identity添加到私钥里就可以了：&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ssh-add -K ~/.ssh/id_rsa&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh-add -K ~/.ssh/id_rsa&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;以上。&lt;/p&gt;
 
 &lt;p&gt;–0619追加：&lt;/p&gt;
 
-&lt;p&gt;上面的方法只能临时添加ssh-key，在bash窗口关闭了之后就没用了；所以一劳永逸的解决办法是先生成一个没有密码的密钥对，将公钥添加到远程主机，然后在本地编辑/创建&lt;code class=&quot;highlighter-rouge&quot;&gt;.ssh/config&lt;/code&gt;文件如下：&lt;/p&gt;
+&lt;p&gt;上面的方法只能临时添加ssh-key，在bash窗口关闭了之后就没用了；所以一劳永逸的解决办法是先生成一个没有密码的密钥对，将公钥添加到远程主机，然后在本地编辑/创建&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.ssh/config&lt;/code&gt;文件如下：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Host server_name
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Host server_name
   Hostname server.ip.address
   User server_user_name
   IdentityFile path/to/rsa/file
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;就可以了。这样做之后还能直接&lt;code class=&quot;highlighter-rouge&quot;&gt;ssh server_name&lt;/code&gt;，简单省事。&lt;/p&gt;
+&lt;p&gt;就可以了。这样做之后还能直接&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh server_name&lt;/code&gt;，简单省事。&lt;/p&gt;
 
 &lt;p&gt;参考：
 http://martincl2.me/archives/937
@@ -263,27 +450,26 @@ https://stackoverflow.com/questions/21095054/ssh-key-still-asking-for-password-a
 &lt;p&gt;&lt;img src=&quot;/img/in-post/post-neumann-series/RTE-loop.png&quot; alt=&quot;&quot; /&gt;
 &lt;em&gt;(Figure 2.10; &lt;a href=&quot;https://www.cambridge.org/jp/academic/subjects/physics/astrophysics/radiative-transfer-stellar-and-planetary-atmospheres?format=HB&quot;&gt;Radiative Transfer in Stellar and Planetary Atmospheres&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;本质上就是源函数里面有辐射项（平均光强&lt;script type=&quot;math/tex&quot;&gt;J_\nu&lt;/script&gt;），耦合在了一起所以不能独立解辐射转移方程。其中一个解决的办法就是利用平均光强的定义：&lt;/p&gt;
+&lt;p&gt;本质上就是源函数里面有辐射项（平均光强\(J_\nu\)），耦合在了一起所以不能独立解辐射转移方程。其中一个解决的办法就是利用平均光强的定义：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-J_\nu(\tau_\nu) &amp;= \frac{1}{2} \int_{-1}^1 I_\nu(\tau_\nu, \mu) d\mu \\
-&amp;= \frac{1}{2} \int_{0}^\infty S_\nu(t_\nu) E_1(|t_\nu - \tau_\nu|) dt_\nu \tag{2.49}
-\end{align} %]]&gt;&lt;/script&gt;
+\[\begin{align}
+J_\nu(\tau_\nu) &amp;amp;= \frac{1}{2} \int_{-1}^1 I_\nu(\tau_\nu, \mu) d\mu \\
+&amp;amp;= \frac{1}{2} \int_{0}^\infty S_\nu(t_\nu) E_1(|t_\nu - \tau_\nu|) dt_\nu \tag{2.49}
+\end{align}\]
 
-&lt;p&gt;加上定义&lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;算符：&lt;/p&gt;
+&lt;p&gt;加上定义\(\Lambda\)算符：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Lambda_{\tau_\nu} [f(t)] = \frac{1}{2} \int_0^\infty f(t) E_1(|t_\nu - \tau_\nu|) dt_\nu \tag{2.52}&lt;/script&gt;
+\[\Lambda_{\tau_\nu} [f(t)] = \frac{1}{2} \int_0^\infty f(t) E_1(|t_\nu - \tau_\nu|) dt_\nu \tag{2.52}\]
 
 &lt;p&gt;则有&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_\nu(\tau_\nu) = \Lambda_{\tau_\nu} [S_\nu(t_\nu)] \tag{2.53}&lt;/script&gt;
+\[J_\nu(\tau_\nu) = \Lambda_{\tau_\nu} [S_\nu(t_\nu)] \tag{2.53}\]
 
 &lt;p&gt;在二能级原子下谱线的源函数可以写为：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu(\tau) = \epsilon B(T) + (1-\epsilon) J_\phi(\tau) = \epsilon B(T) + (1-\epsilon) \Lambda [S_\nu(t)] \tag{1.58, 3.65}&lt;/script&gt;
+\[S_\nu(\tau) = \epsilon B(T) + (1-\epsilon) J_\phi(\tau) = \epsilon B(T) + (1-\epsilon) \Lambda [S_\nu(t)] \tag{1.58, 3.65}\]
 
-&lt;p&gt;谱线轮廓&lt;script type=&quot;math/tex&quot;&gt;\phi&lt;/script&gt;被算进了&lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;算符中。虽然可以求&lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;算符的逆，但是这样计算量太大，所以就用&lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;迭代来做。&lt;/p&gt;
+&lt;p&gt;谱线轮廓\(\phi\)被算进了\(\Lambda\)算符中。虽然可以求\(\Lambda\)算符的逆，但是这样计算量太大，所以就用\(\Lambda\)迭代来做。&lt;/p&gt;
 
 &lt;p&gt;对于这种形式的方程（源函数），它的解是一个叫做Neumann级数的东西。上网查了查中文的资料不多，基本上都是印度人讲的英文资料，就在这记录一下以便查阅。&lt;/p&gt;
 
@@ -293,46 +479,44 @@ J_\nu(\tau_\nu) &amp;= \frac{1}{2} \int_{-1}^1 I_\nu(\tau_\nu, \mu) d\mu \\
 
 &lt;p&gt;我们想解的是这样的一个方程：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;y(x) = f(x) + \lambda \int_a^x K(x, t_1) y(t_1) dt_1&lt;/script&gt;
+\[y(x) = f(x) + \lambda \int_a^x K(x, t_1) y(t_1) dt_1\]
 
-&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;f(x), K(x, t)&lt;/script&gt;已知，求&lt;script type=&quot;math/tex&quot;&gt;y(x)&lt;/script&gt;。
+&lt;p&gt;其中\(f(x), K(x, t)\)已知，求\(y(x)\)。
 这里简单假设各种函数的性质都良好，怎么积分都还有值而且不发散（其实就是懒）。&lt;/p&gt;
 
-&lt;p&gt;将上式中的&lt;script type=&quot;math/tex&quot;&gt;y(t)&lt;/script&gt;不断展开，有：&lt;/p&gt;
+&lt;p&gt;将上式中的\(y(t)\)不断展开，有：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-y(x) &amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) + \lambda \int_a^{t_1} K(t_1, t_2) y(t_2) dt_2 dt_1 \\
-&amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) y(t_2) dt_2 dt_1\\
-&amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) + \lambda \int_a^{t_2} K(t_2, t_3) y(t_3) dt_3 dt_2 dt_1 \\
-&amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) dt_2 dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) \\
+\[\begin{align}
+y(x) &amp;amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) + \lambda \int_a^{t_1} K(t_1, t_2) y(t_2) dt_2 dt_1 \\
+&amp;amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) y(t_2) dt_2 dt_1\\
+&amp;amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) + \lambda \int_a^{t_2} K(t_2, t_3) y(t_3) dt_3 dt_2 dt_1 \\
+&amp;amp;= f(x) + \lambda \int_a^x K(x, t_1) f(t_1) dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) dt_2 dt_1 + \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) \\
 ~~~~+ \lambda \int_a^{t_2} K(t_2, t_3) y(t_3) dt_3 dt_2 dt_1
-\end{align} %]]&gt;&lt;/script&gt;
+\end{align}\]
 
-&lt;p&gt;我们来看上式最后一个等号的第二项（姑且叫做&lt;script type=&quot;math/tex&quot;&gt;T_2&lt;/script&gt;）：&lt;/p&gt;
+&lt;p&gt;我们来看上式最后一个等号的第二项（姑且叫做\(T_2\)）：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
- T_2 &amp;= \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) dt_2 dt_1 \\
- &amp;= \lambda^2 \int_a^x \int_{t_2}^x K(x, t_1)K(t_1, t_2)  dt_1 f(t_2) dt_2 \\
- &amp;= \lambda^2 \int_a^x K_2(x, t_2) f(t_2) dt_2
-\end{align} %]]&gt;&lt;/script&gt;
+\[\begin{align}
+ T_2 &amp;amp;= \lambda^2 \int_a^x K(x, t_1) \int_a^{t_1} K(t_1, t_2) f(t_2) dt_2 dt_1 \\
+ &amp;amp;= \lambda^2 \int_a^x \int_{t_2}^x K(x, t_1)K(t_1, t_2)  dt_1 f(t_2) dt_2 \\
+ &amp;amp;= \lambda^2 \int_a^x K_2(x, t_2) f(t_2) dt_2
+\end{align}\]
 
-&lt;p&gt;将&lt;script type=&quot;math/tex&quot;&gt;K(t_1, t_2)&lt;/script&gt;叫做&lt;script type=&quot;math/tex&quot;&gt;K_1(t_1, t_2)&lt;/script&gt;，并将&lt;script type=&quot;math/tex&quot;&gt;K_2(x, t_2)&lt;/script&gt;向更高次项推广，有&lt;/p&gt;
+&lt;p&gt;将\(K(t_1, t_2)\)叫做\(K_1(t_1, t_2)\)，并将\(K_2(x, t_2)\)向更高次项推广，有&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;K_{n+1}(x, t) = \int_t^x K(x, z) K_n(z, t) dz&lt;/script&gt;
+\[K_{n+1}(x, t) = \int_t^x K(x, z) K_n(z, t) dz\]
 
 &lt;p&gt;并且&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;y(x) = f(x) + \int_a^x \left[ \sum_{n=1}^\infty \lambda^n K_n(x, t) \right] f(t) dt&lt;/script&gt;
+\[y(x) = f(x) + \int_a^x \left[ \sum_{n=1}^\infty \lambda^n K_n(x, t) \right] f(t) dt\]
 
 &lt;p&gt;这个就是Neumann级数。&lt;/p&gt;
 
 &lt;h2 id=&quot;例子&quot;&gt;例子&lt;/h2&gt;
 
-&lt;p&gt;解方程&lt;script type=&quot;math/tex&quot;&gt;y(x) = e^{x^2} + \int_0^x e^{x^2-t^2} y(t) dt&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;解方程\(y(x) = e^{x^2} + \int_0^x e^{x^2-t^2} y(t) dt\)。&lt;/p&gt;
 
-&lt;p&gt;答案：&lt;script type=&quot;math/tex&quot;&gt;y(x) = e^{x^2+x}&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;答案：\(y(x) = e^{x^2+x}\)。&lt;/p&gt;
 </description>
         <pubDate>Mon, 11 May 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2020/05/11/neumann-series/</link>
@@ -375,35 +559,48 @@ The detail discription is in &lt;a href=&quot;http://jimubu.adm.s.u-tokyo.ac.jp/
 
 &lt;p&gt;This can be done easily by an ssh command.
 However, we need to know the ip address of our desktop.
-Fortunately (if you have registered your desktop in the system), you can check the ip address in &lt;a href=&quot;https://dhcp.adm.s.u-tokyo.ac.jp/user/host&quot;&gt;here&lt;/a&gt;.
+Fortunately (if you have registered your desktop in the system), you can check the ip address in &lt;a href=&quot;https://dhcp.adm.s.u-tokyo.ac.jp/&quot;&gt;here&lt;/a&gt;.
 As long as your computer is open, the ip address is usually fixed.
 Even though it is changed, you can refresh the page to get the latest one.&lt;/p&gt;
 
-&lt;p&gt;Then you can try using &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh your_accnount_name@your.ip.address&lt;/code&gt; to test if everything goes well so far.
+&lt;p&gt;Then you can try using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh your_accnount_name@your.ip.address&lt;/code&gt; to test if everything goes well so far.
 It should be.&lt;/p&gt;
 
 &lt;h2 id=&quot;open-the-jupyter-notebook&quot;&gt;Open the jupyter notebook&lt;/h2&gt;
 
-&lt;p&gt;Now open a terminal and ssh to your desktop, and then &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; to the workplace where your notebooks are in.
+&lt;p&gt;Now open a terminal and ssh to your desktop, and then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt; to the workplace where your notebooks are in.
 This terminal is used to launch the jupyter notebook service and later we need another to ssh the link to our laptop.&lt;/p&gt;
 
-&lt;p&gt;In the first terminal, launch the service by &lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook --no-browser --port=8889&lt;/code&gt;.
-We need to check if any token shows up after &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:8889/&lt;/code&gt;.
+&lt;p&gt;In the first terminal, launch the service by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupyter notebook --no-browser --port=8889&lt;/code&gt;.
+We need to check if any token shows up after &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:8889/&lt;/code&gt;.
 If no, then you need to upgrade your anaconda or even reinstall the latest version (see below).&lt;/p&gt;
 
-&lt;p&gt;Then in the second terminal, do &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh -N -f -L localhost:8888:localhost:8889 remote_user@remote_host&lt;/code&gt;.
+&lt;p&gt;Then in the second terminal, do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh -N -f -L localhost:8888:localhost:8889 remote_user@remote_host&lt;/code&gt;.
 After entering the password, nothing should present.
 Now you can open the browser and input http://localhost:8888/ to see if you can get to your familiar interface.
 Of course, your will be required to enter the token - just copy that from the fitst terminal.
-You can check the token of the opened notebooks using &lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook list&lt;/code&gt;.
+You can check the token of the opened notebooks using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupyter notebook list&lt;/code&gt;.
 This certificate is necessary when we use the notebook remotely.
-We can also set a password so we don’t need to copy and paste the token every time - try &lt;code class=&quot;highlighter-rouge&quot;&gt;jupyter notebook passowrd&lt;/code&gt;.
-Once finished using the notebook, simply close the second terminal (this releases http://localhost:8888/) and then exit jupyter notebook in the first terminal using &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+C&lt;/code&gt;.
+We can also set a password so we don’t need to copy and paste the token every time - try &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jupyter notebook passowrd&lt;/code&gt;.
+Once finished using the notebook, simply close the second terminal (this releases http://localhost:8888/) and then exit jupyter notebook in the first terminal using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl+C&lt;/code&gt;.
 If more than one notebook services is required, simply change the port number.&lt;/p&gt;
 
 &lt;h3 id=&quot;reinstall-the-latest-anaconda&quot;&gt;Reinstall the latest anaconda&lt;/h3&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Remove the anaconda file&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# Remove the anaconda file&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; the/path/of/anaconda
 
 &lt;span class=&quot;c&quot;&gt;# (optional) delete the path added in ~/.bashrc. Please do it manually and use vim to open .bashrc&lt;/span&gt;
@@ -416,7 +613,7 @@ sh Anaconda3-2020.02-Linux-x86_64.sh
 &lt;span class=&quot;c&quot;&gt;# Then follow the prompts&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Don't forget to install your packages after this.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;setting-up-bash-on-ubuntu-on-windows&quot;&gt;Setting up bash on ubuntu on windows&lt;/h1&gt;
 
@@ -434,13 +631,19 @@ sh Anaconda3-2020.02-Linux-x86_64.sh
 
 &lt;p&gt;要是我的数据在移动硬盘上面怎么办呢？Win下的Ubuntu默认只挂载C盘。这个时候就要&lt;a href=&quot;https://superuser.com/questions/1114341/windows-10-ubuntu-bash-shell-how-do-i-mount-other-windows-drives&quot;&gt;自己挂载了&lt;/a&gt;：&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 挂载&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 挂载&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;sudo mkdir&lt;/span&gt; /mnt/d
 &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mount &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; drvfs D: /mnt/d
 
 &lt;span class=&quot;c&quot;&gt;# 取消挂载&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;umount /mnt/d
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;实测挂载之后把terminal关掉挂载也不会消失，可以挂载一次永久使用。&lt;/p&gt;
 </description>
@@ -456,26 +659,32 @@ sh Anaconda3-2020.02-Linux-x86_64.sh
       <item>
         <title>PANDORA源码阅读备忘</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#common-block&quot; id=&quot;markdown-toc-common-block&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#common-block&quot; id=&quot;markdown-toc-common-block&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;common-block&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block&lt;/h1&gt;
+&lt;h1 id=&quot;common-block&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block&lt;/h1&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block是Fortran中在不同函数之间传递变量的第二种方法（第一种是通过函数的输入参数）（但是我很讨厌这种方法）。它通过在不同函数中定义跟随在&lt;code class=&quot;highlighter-rouge&quot;&gt;COMMON&lt;/code&gt;后的变量来传输。比如说在主程序中有&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COMMON&lt;/code&gt; block是Fortran中在不同函数之间传递变量的第二种方法（第一种是通过函数的输入参数）（但是我很讨厌这种方法）。它通过在不同函数中定义跟随在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COMMON&lt;/code&gt;后的变量来传输。比如说在主程序中有&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;COMMON A, B, C
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;COMMON A, B, C
 
 A = -2
 B = 0.9
 C = 66
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;然后在子程序中有&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;COMMON C, B, D
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;COMMON C, B, D
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;则子程序中&lt;code class=&quot;highlighter-rouge&quot;&gt;C&lt;/code&gt;为-2、&lt;code class=&quot;highlighter-rouge&quot;&gt;B&lt;/code&gt;为0.9、&lt;code class=&quot;highlighter-rouge&quot;&gt;D&lt;/code&gt;为66。注意这和变量名无关，只和顺序有关。&lt;/p&gt;
+&lt;p&gt;则子程序中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C&lt;/code&gt;为-2、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B&lt;/code&gt;为0.9、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;D&lt;/code&gt;为66。注意这和变量名无关，只和顺序有关。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.obliquity.com/computer/fortran/common.html&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -503,119 +712,117 @@ C = 66
 
 &lt;p&gt;参考&lt;a href=&quot;https://mingjiejian.github.io/2017/12/18/OASP5/&quot;&gt;OASP5&lt;/a&gt;。&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu = \cos{\theta}&lt;/script&gt;
+\[\mu = \cos{\theta}\]
 
-&lt;p&gt;在各向同性下辐射强度&lt;script type=&quot;math/tex&quot;&gt;I_\mu&lt;/script&gt;：&lt;/p&gt;
+&lt;p&gt;在各向同性下辐射强度\(I_\mu\)：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I_\nu = I_\nu(r, \mu)&lt;/script&gt;
+\[I_\nu = I_\nu(r, \mu)\]
 
 &lt;p&gt;平均辐射强度：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_\nu = \frac{1}{4\pi} \int I_\nu d\Omega = \frac{1}{2} \int_{-1}^1 I_\nu d\mu&lt;/script&gt;
+\[J_\nu = \frac{1}{4\pi} \int I_\nu d\Omega = \frac{1}{2} \int_{-1}^1 I_\nu d\mu\]
 
 &lt;p&gt;单色能量密度：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;U_\nu = \frac{4\pi}{c} J_\nu&lt;/script&gt;
+\[U_\nu = \frac{4\pi}{c} J_\nu\]
 
 &lt;p&gt;单色天文流量（还是各向同性）：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi F_\nu = \int I_\nu \cos{\theta} d\Omega = 2\pi \int_{-1}^1 \mu I_\nu d\mu&lt;/script&gt;
+\[\pi F_\nu = \int I_\nu \cos{\theta} d\Omega = 2\pi \int_{-1}^1 \mu I_\nu d\mu\]
 
 &lt;p&gt;流量的另一个定义：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;H_\nu = \frac{1}{2} \int I_\nu \mu d\mu = \frac{\pi F_\nu}{4\pi}&lt;/script&gt;
+\[H_\nu = \frac{1}{2} \int I_\nu \mu d\mu = \frac{\pi F_\nu}{4\pi}\]
 
 &lt;p&gt;斯特芬-玻尔兹曼定律：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi F = \pi \int_{0}^\infty F_\nu d\nu = \sigma T_\mathrm{eff}&lt;/script&gt;
+\[\pi F = \pi \int_{0}^\infty F_\nu d\nu = \sigma T_\mathrm{eff}\]
 
 &lt;p&gt;辐射转移方程(1)：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI_\nu}{dl} = -\kappa_\nu I_\nu + \eta_\nu&lt;/script&gt;
+\[\frac{dI_\nu}{dl} = -\kappa_\nu I_\nu + \eta_\nu\]
 
 &lt;p&gt;源函数、光深：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S_\nu = \frac{\eta_\nu}{\kappa_\nu}, d\tau_\nu = -\kappa_\nu \mu dl&lt;/script&gt;
+\[S_\nu = \frac{\eta_\nu}{\kappa_\nu}, d\tau_\nu = -\kappa_\nu \mu dl\]
 
 &lt;p&gt;所以辐射转移方程(2)：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu \frac{dI_\nu}{d\tau_\nu} = I_\nu - S_\nu&lt;/script&gt;
+\[\mu \frac{dI_\nu}{d\tau_\nu} = I_\nu - S_\nu\]
 
-&lt;p&gt;这里的&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu&lt;/script&gt;是OASP5中的&lt;script type=&quot;math/tex&quot;&gt;\kappa_\nu \rho&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;这里的\(\kappa_\nu\)是OASP5中的\(\kappa_\nu \rho\)。&lt;/p&gt;
 
-&lt;p&gt;对上式在&lt;script type=&quot;math/tex&quot;&gt;\mu&lt;/script&gt;方向上积分，有：&lt;/p&gt;
+&lt;p&gt;对上式在\(\mu\)方向上积分，有：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dH_\nu}{d\tau_\nu} = J_\nu - S_\nu&lt;/script&gt;
+\[\frac{dH_\nu}{d\tau_\nu} = J_\nu - S_\nu\]
 
 &lt;p&gt;辐射转移方程的解为（忽略频率下标）：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(\tau, \mu) =I(0,\mu)e^{-\frac{(0-\tau)}{\mu}} - \frac{1}{\mu} \int_0^\tau e^{-\frac{t-\tau}{\mu}} S(t) dt, ~ \text{inward}&lt;/script&gt;
+\[I(\tau, \mu) =I(0,\mu)e^{-\frac{(0-\tau)}{\mu}} - \frac{1}{\mu} \int_0^\tau e^{-\frac{t-\tau}{\mu}} S(t) dt, ~ \text{inward}\]
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(\tau, \mu) =I(\tau_m,\mu)e^{-\frac{(\tau_m-\tau)}{\mu}} + \frac{1}{\mu} \int_\tau^{\tau_m} e^{-\frac{t-\tau}{\mu}} S(t) dt, ~ \text{outward}&lt;/script&gt;
+\[I(\tau, \mu) =I(\tau_m,\mu)e^{-\frac{(\tau_m-\tau)}{\mu}} + \frac{1}{\mu} \int_\tau^{\tau_m} e^{-\frac{t-\tau}{\mu}} S(t) dt, ~ \text{outward}\]
 
-&lt;p&gt;因为&lt;script type=&quot;math/tex&quot;&gt;\tau_m=\infty&lt;/script&gt;时光射不出来，&lt;script type=&quot;math/tex&quot;&gt;I(\tau_m,\mu)&lt;/script&gt;一般不会为指数增长，则在恒星表面向外的光强为&lt;/p&gt;
+&lt;p&gt;因为\(\tau_m=\infty\)时光射不出来，\(I(\tau_m,\mu)\)一般不会为指数增长，则在恒星表面向外的光强为&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;I(0, \mu) = \frac{1}{\mu} \int_0^{\infty} e^{-\frac{t}{\mu}} S(t) dt&lt;/script&gt;
+\[I(0, \mu) = \frac{1}{\mu} \int_0^{\infty} e^{-\frac{t}{\mu}} S(t) dt\]
 
-&lt;p&gt;可以推出当&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;是&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;的线性函数的时候有&lt;script type=&quot;math/tex&quot;&gt;I(0,\mu) = S(\tau=\mu)&lt;/script&gt;，这是Eddington-Barbier关系。&lt;/p&gt;
+&lt;p&gt;可以推出当\(S\)是\(t\)的线性函数的时候有\(I(0,\mu) = S(\tau=\mu)\)，这是Eddington-Barbier关系。&lt;/p&gt;
 
-&lt;p&gt;参考OASP7的&lt;script type=&quot;math/tex&quot;&gt;(7.16)&lt;/script&gt;，引入&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;积分之后平均光强为：&lt;/p&gt;
+&lt;p&gt;参考OASP7的\((7.16)\)，引入\(E\)积分之后平均光强为：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\tau) = \frac{1}{2} \int_0^{\tau_m} E_1(|t-\tau|) S(t)dt = \Lambda\{S\}&lt;/script&gt;
+\[J(\tau) = \frac{1}{2} \int_0^{\tau_m} E_1(|t-\tau|) S(t)dt = \Lambda\{S\}\]
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\Lambda&lt;/script&gt;叫做Lambda opeartor。&lt;/p&gt;
+&lt;p&gt;\(\Lambda\)叫做Lambda opeartor。&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\int_0^\infty E_1(t)dt = 1&lt;/script&gt;（未证实），所以当&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;为常数的时候在光深大的地方有&lt;script type=&quot;math/tex&quot;&gt;J=S&lt;/script&gt;（未证实），在表面有&lt;script type=&quot;math/tex&quot;&gt;J=\frac{1}{2}S&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;\(\int_0^\infty E_1(t)dt = 1\)（未证实），所以当\(S\)为常数的时候在光深大的地方有\(J=S\)（未证实），在表面有\(J=\frac{1}{2}S\)。&lt;/p&gt;
 
-&lt;p&gt;参考OASP7&lt;script type=&quot;math/tex&quot;&gt;(7.14)&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt;也可以写成&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;积分，以及&lt;script type=&quot;math/tex&quot;&gt;H(\tau) = \Phi\{S\}&lt;/script&gt;；同时&lt;script type=&quot;math/tex&quot;&gt;\int_0^\infty E_2(t)dt = 0.5&lt;/script&gt;（未证实），所以当&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;为常数的时候在光深大的地方有&lt;script type=&quot;math/tex&quot;&gt;H=0&lt;/script&gt;（未证实），在表面有&lt;script type=&quot;math/tex&quot;&gt;H=\frac{1}{4}S&lt;/script&gt;。当&lt;script type=&quot;math/tex&quot;&gt;S(\tau) = C_0 + C_1 \tau&lt;/script&gt;时光深大的时候&lt;script type=&quot;math/tex&quot;&gt;H \rightarrow (1/3)C_1&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;参考OASP7\((7.14)\)，\(H\)也可以写成\(E\)积分，以及\(H(\tau) = \Phi\{S\}\)；同时\(\int_0^\infty E_2(t)dt = 0.5\)（未证实），所以当\(S\)为常数的时候在光深大的地方有\(H=0\)（未证实），在表面有\(H=\frac{1}{4}S\)。当\(S(\tau) = C_0 + C_1 \tau\)时光深大的时候\(H \rightarrow (1/3)C_1\)。&lt;/p&gt;
 
-&lt;p&gt;当热动平衡的时候，光强各向同性且由普朗克函数&lt;script type=&quot;math/tex&quot;&gt;B_\nu(T)&lt;/script&gt;描述。所有的粒子速度由麦克斯韦分布描述、跃迁由玻尔兹曼方程描述、电离由萨哈-玻尔兹曼方程描述。&lt;/p&gt;
+&lt;p&gt;当热动平衡的时候，光强各向同性且由普朗克函数\(B_\nu(T)\)描述。所有的粒子速度由麦克斯韦分布描述、跃迁由玻尔兹曼方程描述、电离由萨哈-玻尔兹曼方程描述。&lt;/p&gt;
 
-&lt;p&gt;LTE下不同层上有不同的温度，所以这个时候只有&lt;script type=&quot;math/tex&quot;&gt;S_\nu = B_\nu&lt;/script&gt;，而光强&lt;script type=&quot;math/tex&quot;&gt;I_\nu&lt;/script&gt;必须由辐射转移方程通过&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;计算出来。但是这里讨论的是NLTE，&lt;script type=&quot;math/tex&quot;&gt;S_\nu \ne B_\nu&lt;/script&gt;，那么我们如何获得&lt;script type=&quot;math/tex&quot;&gt;S_\nu&lt;/script&gt;呢？这就是这个Note要解决的事情了。&lt;/p&gt;
+&lt;p&gt;LTE下不同层上有不同的温度，所以这个时候只有\(S_\nu = B_\nu\)，而光强\(I_\nu\)必须由辐射转移方程通过\(S_\nu\)计算出来。但是这里讨论的是NLTE，\(S_\nu \ne B_\nu\)，那么我们如何获得\(S_\nu\)呢？这就是这个Note要解决的事情了。&lt;/p&gt;
 
 &lt;h1 id=&quot;单色散射&quot;&gt;单色散射&lt;/h1&gt;
 
-&lt;p&gt;我们先看一个简单的例子，看看怎么从&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;求出&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;来。这里假设原子的散射是各向同性以及不改变光子的频率的，那么根据OASP5中的“纯各向同性散射”有&lt;script type=&quot;math/tex&quot;&gt;S_\nu = J_\nu&lt;/script&gt;。我们将辐射转移方程写成LTE部分以及散射部分：&lt;/p&gt;
+&lt;p&gt;我们先看一个简单的例子，看看怎么从\(B\)求出\(S\)来。这里假设原子的散射是各向同性以及不改变光子的频率的，那么根据OASP5中的“纯各向同性散射”有\(S_\nu = J_\nu\)。我们将辐射转移方程写成LTE部分以及散射部分：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\frac{dI}{dl} &amp; = -\kappa^{ab} (I-S^{ab}) \\
-\frac{dI}{dl} &amp; = -\kappa^{sc} (I-S^{sc}) \\
-S^{ab} &amp;= B_\nu, ~ \text{LTE part}\\
-S^{ab} &amp;= J_\nu, ~ \text{scatter part}\\
-\end{align} %]]&gt;&lt;/script&gt;
+\[\begin{align}
+\frac{dI}{dl} &amp;amp; = -\kappa^{ab} (I-S^{ab}) \\
+\frac{dI}{dl} &amp;amp; = -\kappa^{sc} (I-S^{sc}) \\
+S^{ab} &amp;amp;= B_\nu, ~ \text{LTE part}\\
+S^{ab} &amp;amp;= J_\nu, ~ \text{scatter part}\\
+\end{align}\]
 
 &lt;p&gt;所以&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI}{dl} = -\kappa^{ab} (I-B) - \kappa^{sc} (I-J)&lt;/script&gt;
+\[\frac{dI}{dl} = -\kappa^{ab} (I-B) - \kappa^{sc} (I-J)\]
 
 &lt;p&gt;然后我们凑辐射转移方程的形式，令：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;d\tau = - (\kappa^{ab} + \kappa^{sc}) \mu dl, \epsilon = \frac{\kappa^{ab}}{\kappa^{ab}+\kappa^{sc}}&lt;/script&gt;
+\[d\tau = - (\kappa^{ab} + \kappa^{sc}) \mu dl, \epsilon = \frac{\kappa^{ab}}{\kappa^{ab}+\kappa^{sc}}\]
 
 &lt;p&gt;则有&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu \frac{dI}{d\tau} = I - S&lt;/script&gt;
+\[\mu \frac{dI}{d\tau} = I - S\]
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-S &amp;= \epsilon B + (1-\epsilon) J \\
-&amp;= \epsilon B + (1-\epsilon) \Lambda\{S\}
-\end{align} %]]&gt;&lt;/script&gt;
+\[\begin{align}
+S &amp;amp;= \epsilon B + (1-\epsilon) J \\
+&amp;amp;= \epsilon B + (1-\epsilon) \Lambda\{S\}
+\end{align}\]
 
-&lt;p&gt;这个时候我们发现上式中只有&lt;script type=&quot;math/tex&quot;&gt;B, S&lt;/script&gt;，那么我们就可以从&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;求出&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;了。&lt;/p&gt;
+&lt;p&gt;这个时候我们发现上式中只有\(B, S\)，那么我们就可以从\(B\)求出\(S\)了。&lt;/p&gt;
 
-&lt;p&gt;我们来看看&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;的一些解。将&lt;script type=&quot;math/tex&quot;&gt;E_1(x)&lt;/script&gt;用1阶近似&lt;script type=&quot;math/tex&quot;&gt;\sqrt{3} e^{-\sqrt{3}x}&lt;/script&gt;代替，有&lt;/p&gt;
+&lt;p&gt;我们来看看\(S\)的一些解。将\(E_1(x)\)用1阶近似\(\sqrt{3} e^{-\sqrt{3}x}\)代替，有&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(\tau) = (1-\epsilon) \int_0^\infty \frac{\sqrt{3}}{2} e^{-\sqrt{3}|t-\tau|}S(t)dt + \epsilon B&lt;/script&gt;
+\[S(\tau) = (1-\epsilon) \int_0^\infty \frac{\sqrt{3}}{2} e^{-\sqrt{3}|t-\tau|}S(t)dt + \epsilon B\]
 
-&lt;p&gt;当&lt;script type=&quot;math/tex&quot;&gt;S, \epsilon&lt;/script&gt;都为常数的时候，有解：&lt;/p&gt;
+&lt;p&gt;当\(S, \epsilon\)都为常数的时候，有解：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(\tau) = B [1-(1-\sqrt{\epsilon})e^{-\sqrt{3\epsilon}\tau}]&lt;/script&gt;
+\[S(\tau) = B [1-(1-\sqrt{\epsilon})e^{-\sqrt{3\epsilon}\tau}]\]
 
-&lt;p&gt;可以代进去验证。它说明了1)&lt;script type=&quot;math/tex&quot;&gt;S(0) = \sqrt{\epsilon} B&lt;/script&gt;，2)仅当&lt;script type=&quot;math/tex&quot;&gt;\tau &gt; 1 / \sqrt{\epsilon}&lt;/script&gt;的时候（量级上）&lt;script type=&quot;math/tex&quot;&gt;S \rightarrow B&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;可以代进去验证。它说明了1)\(S(0) = \sqrt{\epsilon} B\)，2)仅当\(\tau &amp;gt; 1 / \sqrt{\epsilon}\)的时候（量级上）\(S \rightarrow B\)。&lt;/p&gt;
 
-&lt;p&gt;上述的论证说明了尽管吸收是LTE的，当散射比例比较高的时候（&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;较小），&lt;script type=&quot;math/tex&quot;&gt;S&lt;/script&gt;是不等于&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;的，而是小于&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;，导致了更深处的光也能射出来。同时&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{\sqrt{\epsilon}}&lt;/script&gt;为热化长度（LTE与否的判据），虽然下一节会说谱线的热化长度实际上是&lt;script type=&quot;math/tex&quot;&gt;\frac{1}{\epsilon}&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;上述的论证说明了尽管吸收是LTE的，当散射比例比较高的时候（\(\epsilon\)较小），\(S\)是不等于\(B\)的，而是小于\(B\)，导致了更深处的光也能射出来。同时\(\frac{1}{\sqrt{\epsilon}}\)为热化长度（LTE与否的判据），虽然下一节会说谱线的热化长度实际上是\(\frac{1}{\epsilon}\)。&lt;/p&gt;
 
 &lt;h1 id=&quot;谱线辐射-二能级原子&quot;&gt;谱线辐射 （二能级原子）&lt;/h1&gt;
 
@@ -623,50 +830,47 @@ S &amp;= \epsilon B + (1-\epsilon) J \\
 
 &lt;p&gt;思路是一样的，从LTE到NLTE。我们从包含辐射以及碰撞平衡的统计平衡方程开始：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;n_2(A_{21} + B_{21}\bar{J} + C_{21}) = n_1 (B_{12} \bar{J} + C_12)&lt;/script&gt;
+\[n_2(A_{21} + B_{21}\bar{J} + C_{21}) = n_1 (B_{12} \bar{J} + C_12)\]
 
-&lt;p&gt;这里&lt;script type=&quot;math/tex&quot;&gt;\bar{J} = \int_0^\infty J_\nu \phi_\nu d\nu&lt;/script&gt;是经过谱线轮廓函数&lt;script type=&quot;math/tex&quot;&gt;\phi_\nu&lt;/script&gt;调制的平均光强。在CDR的情况下，&lt;script type=&quot;math/tex&quot;&gt;\phi_\nu = \frac{1}{\Delta\nu_D \sqrt{\pi}} e^{-\left(\frac{\nu-\nu_0}{\Delta\nu_D}\right)^2}&lt;/script&gt;是一个高斯函数，并且&lt;script type=&quot;math/tex&quot;&gt;\Delta\nu_D = \frac{\nu_0}{c} \sqrt{\frac{2kT}{m_a}}&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;m_a&lt;/script&gt;是吸收光子的原子的质量。&lt;script type=&quot;math/tex&quot;&gt;A, B, C&lt;/script&gt;为自发、受激辐射以及碰撞跃迁的爱因斯坦系数。&lt;/p&gt;
+&lt;p&gt;这里\(\bar{J} = \int_0^\infty J_\nu \phi_\nu d\nu\)是经过谱线轮廓函数\(\phi_\nu\)调制的平均光强。在CDR的情况下，\(\phi_\nu = \frac{1}{\Delta\nu_D \sqrt{\pi}} e^{-\left(\frac{\nu-\nu_0}{\Delta\nu_D}\right)^2}\)是一个高斯函数，并且\(\Delta\nu_D = \frac{\nu_0}{c} \sqrt{\frac{2kT}{m_a}}\)，\(m_a\)是吸收光子的原子的质量。\(A, B, C\)为自发、受激辐射以及碰撞跃迁的爱因斯坦系数。&lt;/p&gt;
 
 &lt;p&gt;此时的辐射转移方程为&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dI_\nu}{dl} = -\frac{h\nu}{4\pi} \phi_\nu [(n_1B_{12} - n_2B_{21})I_\nu - n_2 A_{21}]&lt;/script&gt;
+\[\frac{dI_\nu}{dl} = -\frac{h\nu}{4\pi} \phi_\nu [(n_1B_{12} - n_2B_{21})I_\nu - n_2 A_{21}]\]
 
 &lt;p&gt;定义光深、吸收系数以及源函数：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-d\tau_\nu &amp;= -\kappa_\nu \mu dl \\
-\kappa_\nu &amp;= \frac{h\nu}{4\pi} (n_1B_{12} - n_2B_{21}) \phi_nu = \frac{h\nu}{4\pi} n_1B_{12} (1 - \frac{n_2g_1}{n_1g_2}) \phi_nu \\
-S_\nu &amp;= \frac{2h\nu^3}{c^2} \frac{1}{\frac{n_2g_1}{n_1g_2}-1} \\
-\end{align} %]]&gt;&lt;/script&gt;
+\[\begin{align}
+d\tau_\nu &amp;amp;= -\kappa_\nu \mu dl \\
+\kappa_\nu &amp;amp;= \frac{h\nu}{4\pi} (n_1B_{12} - n_2B_{21}) \phi_nu = \frac{h\nu}{4\pi} n_1B_{12} (1 - \frac{n_2g_1}{n_1g_2}) \phi_nu \\
+S_\nu &amp;amp;= \frac{2h\nu^3}{c^2} \frac{1}{\frac{n_2g_1}{n_1g_2}-1} \\
+\end{align}\]
 
-&lt;p&gt;在热动平衡的情况下，上式的&lt;script type=&quot;math/tex&quot;&gt;A, B&lt;/script&gt;系数项相等，有&lt;script type=&quot;math/tex&quot;&gt;\frac{n_2}{n_1} = \frac{n_2^*}{n_1^*} = \frac{C_{12}}{C_{21}}&lt;/script&gt;，源函数就退成了&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;。但是我们现在关心的是NLTE的情况，&lt;script type=&quot;math/tex&quot;&gt;A, B&lt;/script&gt;系数项不相等导致&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt;的关系不是LTE的情况，所以我们需要把整个统计平衡方程代到源函数里面。经过一段运算之后（我算不出来，TSA说里面的参考文献[721]中有，但是我还没找到），我们可以得出：&lt;/p&gt;
+&lt;p&gt;在热动平衡的情况下，上式的\(A, B\)系数项相等，有\(\frac{n_2}{n_1} = \frac{n_2^*}{n_1^*} = \frac{C_{12}}{C_{21}}\)，源函数就退成了\(B\)。但是我们现在关心的是NLTE的情况，\(A, B\)系数项不相等导致\(n\)和\(C\)的关系不是LTE的情况，所以我们需要把整个统计平衡方程代到源函数里面。经过一段运算之后（我算不出来，TSA说里面的参考文献[721]中有，但是我还没找到），我们可以得出：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-S &amp;= \frac{\bar{J} + \varepsilon B}{1 + \varepsilon} \\
-\varepsilon &amp;= \frac{C_{21}}{A_{21}}{1-e^{-\frac{h\nu}{kT}}}\\
-\end{align} %]]&gt;&lt;/script&gt;
+\[\begin{align}
+S &amp;amp;= \frac{\bar{J} + \varepsilon B}{1 + \varepsilon} \\
+\varepsilon &amp;amp;= \frac{C_{21}}{A_{21}}{1-e^{-\frac{h\nu}{kT}}}\\
+\end{align}\]
 
 &lt;p&gt;以及&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-S &amp;= (1-\epsilon)\bar{J} + \epsilon B \\
-\epsilon &amp;= \frac{\varepsilon}{1+\varepsilon}\\
-\end{align} %]]&gt;&lt;/script&gt;
+\[\begin{align}
+S &amp;amp;= (1-\epsilon)\bar{J} + \epsilon B \\
+\epsilon &amp;amp;= \frac{\varepsilon}{1+\varepsilon}\\
+\end{align}\]
 
 &lt;p&gt;这个形式就和上一节散射的源函数一致了。最后有（未确认）：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\bar{J} = \int_0^\infty \int_0^\infty \phi^2 E_1(\phi |t-\tau|) d\nu S(t) dt&lt;/script&gt;
+\[\bar{J} = \int_0^\infty \int_0^\infty \phi^2 E_1(\phi |t-\tau|) d\nu S(t) dt\]
 
 &lt;h2 id=&quot;二能级原子的解&quot;&gt;二能级原子的解&lt;/h2&gt;
 
-&lt;p&gt;具体的解方法在TSA书中，这里抛开所有的推到过程定性地看看在某些特定的&lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;下源函数和光强是什么样子的。&lt;/p&gt;
+&lt;p&gt;具体的解方法在TSA书中，这里抛开所有的推到过程定性地看看在某些特定的\(B\)下源函数和光强是什么样子的。&lt;/p&gt;
 
 &lt;p&gt;为了简化我们定义：&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;x = \frac{\nu - \nu_0}{\Delta \nu_D}&lt;/script&gt;
+\[x = \frac{\nu - \nu_0}{\Delta \nu_D}\]
 </description>
         <pubDate>Wed, 05 Feb 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2020/02/05/NLTE-RT-Model/</link>
@@ -684,23 +888,23 @@ Let’s see what is changed.&lt;/p&gt;
 
 &lt;h2 id=&quot;modified-functions&quot;&gt;Modified functions&lt;/h2&gt;
 
-&lt;p&gt;The driver &lt;code class=&quot;highlighter-rouge&quot;&gt;isotop&lt;/code&gt; is deprecated, and its functions are merged into the driver &lt;code class=&quot;highlighter-rouge&quot;&gt;synth&lt;/code&gt;.
-To my understanding, we need to use &lt;code class=&quot;highlighter-rouge&quot;&gt;isotop&lt;/code&gt; driver before when we specify the &lt;code class=&quot;highlighter-rouge&quot;&gt;isotope&lt;/code&gt; variable, but now we don’t need to do this.&lt;/p&gt;
+&lt;p&gt;The driver &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotop&lt;/code&gt; is deprecated, and its functions are merged into the driver &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synth&lt;/code&gt;.
+To my understanding, we need to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotop&lt;/code&gt; driver before when we specify the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotope&lt;/code&gt; variable, but now we don’t need to do this.&lt;/p&gt;
 
 &lt;h2 id=&quot;newdeleted-files&quot;&gt;New/deleted files&lt;/h2&gt;
 
-&lt;p&gt;2017版的&lt;code class=&quot;highlighter-rouge&quot;&gt;Estim.f&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Minimax.f&lt;/code&gt;在2019版中消失了。2019版中多了&lt;code class=&quot;highlighter-rouge&quot;&gt;Inmodel.new&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;Setmols.f&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;Setmols.r&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;2017版的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Estim.f&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Minimax.f&lt;/code&gt;在2019版中消失了。2019版中多了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.new&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.f&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.r&lt;/code&gt;。&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Estim.f&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Minimax.f&lt;/code&gt; no longer exist in 2019 version.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Inmodel.new&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;Setmols.f&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Setmols.r&lt;/code&gt; are added in 2019 version.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Estim.f&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Minimax.f&lt;/code&gt; no longer exist in 2019 version.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.new&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.f&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.r&lt;/code&gt; are added in 2019 version.&lt;/p&gt;
 
 &lt;h3 id=&quot;文件之间的变化-changes-in-files&quot;&gt;文件之间的变化 (Changes in files)&lt;/h3&gt;
 
-&lt;p&gt;有21个文件发生了变化。一个一个来看有什么不同吧。程序文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;Bmolec.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Eqlib.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Ewfind.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Inmodel.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Lineinfo.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Mol.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Moog.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Moogsilent.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Nearly.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Opacit.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Opacmetals.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Specplot.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Sunder.f&lt;/code&gt;；安装文件：&lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.macdesk&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.macdesksilent&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.maclap&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.maclapsilent&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rh&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rh64&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rh64silent&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rhsilent&lt;/code&gt;。
+&lt;p&gt;有21个文件发生了变化。一个一个来看有什么不同吧。程序文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bmolec.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Eqlib.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ewfind.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lineinfo.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mol.com&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moog.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moogsilent.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Nearly.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacit.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacmetals.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Specplot.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sunder.f&lt;/code&gt;；安装文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesksilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclap&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclapsilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64silent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rhsilent&lt;/code&gt;。
 几乎有一半是安装文件。&lt;/p&gt;
 
 &lt;p&gt;21 files have been changed in 2019 version.&lt;br /&gt;
-They are program files: &lt;code class=&quot;highlighter-rouge&quot;&gt;Bmolec.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Eqlib.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Ewfind.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Inmodel.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Lineinfo.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Mol.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Moog.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Moogsilent.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Nearly.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Opacit.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Opacmetals.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Specplot.f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Sunder.f&lt;/code&gt;; and installation files: &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.macdesk&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.macdesksilent&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.maclap&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.maclapsilent&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rh&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rh64&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rh64silent&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile.rhsilent&lt;/code&gt;.&lt;/p&gt;
+They are program files: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bmolec.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Eqlib.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ewfind.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lineinfo.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mol.com&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moog.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moogsilent.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Nearly.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacit.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacmetals.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Specplot.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sunder.f&lt;/code&gt;; and installation files: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesksilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclap&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclapsilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64silent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rhsilent&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;bmolec&quot;&gt;Bmolec&lt;/h4&gt;
 
@@ -713,8 +917,8 @@ They are program files: &lt;code class=&quot;highlighter-rouge&quot;&gt;Bmolec.f
 &lt;/blockquote&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;He+, F+, Al+, Si+, Ti+, Fe+, AlH, SiH, FeH, MgO, and TiO are added into variable &lt;code class=&quot;highlighter-rouge&quot;&gt;smallmollist&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;F+ is added into variable &lt;code class=&quot;highlighter-rouge&quot;&gt;largemollist&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;He+, F+, Al+, Si+, Ti+, Fe+, AlH, SiH, FeH, MgO, and TiO are added into variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;smallmollist&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;F+ is added into variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;largemollist&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;Partition functions of H_2O and CO_2 are added and are from &lt;a href=&quot;https://hitran.org/data/Q/&quot;&gt;HITRAN&lt;/a&gt; website.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -729,12 +933,12 @@ Further I am not using this subroutine.&lt;/p&gt;
 
 &lt;h4 id=&quot;inmodel&quot;&gt;Inmodel&lt;/h4&gt;
 
-&lt;p&gt;The length of default molecule list is enlarged (probably consistent with &lt;code class=&quot;highlighter-rouge&quot;&gt;Bmolec&lt;/code&gt;).
-The valiable &lt;code class=&quot;highlighter-rouge&quot;&gt;numdens&lt;/code&gt; now are not used in 2019 version.&lt;/p&gt;
+&lt;p&gt;The length of default molecule list is enlarged (probably consistent with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bmolec&lt;/code&gt;).
+The valiable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;numdens&lt;/code&gt; now are not used in 2019 version.&lt;/p&gt;
 
 &lt;h4 id=&quot;lineinfo&quot;&gt;Lineinfo&lt;/h4&gt;
 
-&lt;p&gt;Some calculation detail is changed according to &lt;code class=&quot;highlighter-rouge&quot;&gt;Sunder&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Some calculation detail is changed according to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sunder&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;makefile&quot;&gt;Makefile&lt;/h4&gt;
 
@@ -748,7 +952,7 @@ The valiable &lt;code class=&quot;highlighter-rouge&quot;&gt;numdens&lt;/code&gt
 
 &lt;h4 id=&quot;moogf&quot;&gt;Moog.f&lt;/h4&gt;
 
-&lt;p&gt;A new warning on &lt;code class=&quot;highlighter-rouge&quot;&gt;isotop&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A new warning on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotop&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;nearly&quot;&gt;Nearly&lt;/h4&gt;
 
@@ -778,63 +982,6 @@ The valiable &lt;code class=&quot;highlighter-rouge&quot;&gt;numdens&lt;/code&gt
         <pubDate>Tue, 24 Dec 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2019/12/24/MOOG-2019/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/12/24/MOOG-2019/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>加权平均值的误差</title>
-        <description>&lt;p&gt;我受不了了。&lt;/p&gt;
-
-&lt;p&gt;究竟加权平均值的误差的表达式应该是什么？这个问题困扰了我很久。今天决定用实验去解决它。&lt;/p&gt;
-
-&lt;h2 id=&quot;问题&quot;&gt;问题&lt;/h2&gt;
-
-&lt;h3 id=&quot;古典描述&quot;&gt;古典描述&lt;/h3&gt;
-
-&lt;p&gt;我们想测量一个物理量；它有一个真值&lt;script type=&quot;math/tex&quot;&gt;\hat{x}&lt;/script&gt;。我们对它进行&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;次测量，每次测量用下标的&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;来表示，也就是&lt;script type=&quot;math/tex&quot;&gt;x_i&lt;/script&gt;。因为每次测量的环境都不同（仪器温度变了啊、天气变阴了啊、观测助手抖腿了啊、隔壁猫叫了啊、etc），每次测量的误差&lt;script type=&quot;math/tex&quot;&gt;\sigma_i&lt;/script&gt;都不一样。误差是怎么估计的也是一个大问题，但这里就直接给定了。那么当我们用加权平均去估计这个物理量的值的时候，这个估计值的误差是多少？&lt;/p&gt;
-
-&lt;h3 id=&quot;贝叶斯描述&quot;&gt;贝叶斯描述&lt;/h3&gt;
-
-&lt;p&gt;我们测量一个物理量，测了好多次。每次都有一个测量值&lt;script type=&quot;math/tex&quot;&gt;x_i&lt;/script&gt;以及它的误差&lt;script type=&quot;math/tex&quot;&gt;\sigma_i&lt;/script&gt;。怎么样利用这些测量值和误差给出这个物理量的参数的限制呢？这里没有真值。&lt;/p&gt;
-
-&lt;h2 id=&quot;古典方法&quot;&gt;古典方法&lt;/h2&gt;
-
-&lt;p&gt;我不会。但是有些地方给出了结论：&lt;/p&gt;
-
-&lt;p&gt;先定义权重：&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;w_i = \frac{1}{\sigma_i^2}&lt;/script&gt;
-
-&lt;p&gt;那么加权平均值就是&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu = \frac{\sum w_i x_i}{\sum w_i}&lt;/script&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Weight sample variance&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2 = \frac{\sum w_i}{(\sum w_i)^2 - \sum w_i^2} \sum w_i (x_i - \mu)^2&lt;/script&gt;
-
-&lt;p&gt;来自&lt;a href=&quot;https://en.wikipedia.org/wiki/Weighted_arithmetic_mean#Reliability_weights&quot;&gt;维基百科&lt;/a&gt;以及&lt;a href=&quot;https://www.gnu.org/software/gsl/doc/html/statistics.html&quot;&gt;GNU Project&lt;/a&gt;。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;From error propagation&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma^2 = \frac{1}{\sum 1 / \sigma_i^2}&lt;/script&gt;
-
-&lt;p&gt;来自&lt;a href=&quot;https://ned.ipac.caltech.edu/level5/Leo/Stats4_5.html&quot;&gt;STATISTICS AND THE TREATMENT OF EXPERIMENTAL DATA&lt;/a&gt;以及&lt;a href=&quot;https://en.wikipedia.org/wiki/Weighted_arithmetic_mean&quot;&gt;维基百科&lt;/a&gt;的error of the weighted mean部分。&lt;/p&gt;
-
-&lt;p&gt;它们在误差分布比较正常的时候结果是一样的。&lt;/p&gt;
-
-&lt;h2 id=&quot;贝叶斯方法&quot;&gt;贝叶斯方法&lt;/h2&gt;
-</description>
-        <pubDate>Fri, 06 Dec 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/12/06/error-weighted-mean/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/12/06/error-weighted-mean/</guid>
         
         <category>learning</category>
         
