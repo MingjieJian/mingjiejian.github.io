@@ -36,7 +36,7 @@ $$ \Lambda_{\tau_\nu} [f(t)] = \frac{1}{2} \int_0^\infty f(t) E_1(|t_\nu - \tau_
 
 则有
 
-$$ J_\nu(\tau_\nu) = \Lambda_{\tau_\nu} [S_\nu(t_\nu)] \tag{2.53}$$
+$$ J_\nu(\tau_\nu) = \Lambda_{\tau_\nu} [S_\nu(t_\nu)] \tag{2.53} $$
 
 在二能级原子下谱线的源函数可以写为：
 
