@@ -1,0 +1,101 @@
+---
+layout:     post
+title:      "我的2021"
+subtitle:   "寻找自我的一年"
+date:       2021-12-31
+author:     "mingjie"
+header-img: "img/post-bg-year-end.png"
+tags:
+    - Living
+
+---
+
+皆様、よいお年を。
+
+<form id='pwd_form' onsubmit="return false;">
+  My wechat name, then right shift 2: <input type="text" name="password" id='password'/>
+  <input type="submit" onclick="myFunction()" />
+</form>
+
+<div id='hide' style="display:none">
+其实从收获的角度来说，今年在心理上的收获或者说改变是最大的。
+<br>
+不那么自怨自艾了、不那么具有攻击性了；最重要的是，不那么折磨自己了。
+想象之前很多的时间，我都在逼迫自己，或者说让自己忽略一件事情：我为什么要去做事？
+<br>
+那个时候的答案是：因为别人在做。
+因为别人在写论文、因为别人在申请位置、因为别人在进步。
+那....我呢？我为什么要写？我为什么要进步？
+<br>
+说实话，不知道。
+这一年里面我意识到了，我一直以来受周围和他人的影响非常大。
+我会很不自觉地去猜测他人想要什么，然后尽力去满足这个需求。
+听起来不是坏事，但是在这个过程中我往往压抑了我自己地需求。
+我实际上是体会到我的需求的，但是很快我就否定掉了我自己。
+“不，我自己的不重要，优先满足别人的”。
+久而久之自己的视野就越来越窄，越来越不想和别人交往（因为总是在耗费自己的精力），越来越..颓废？
+<br>
+这种情况越来越严重，以致我感觉我需要通过暂时切断各种社交来让自己获得喘息的机会。
+我就是这么做的。
+It does work. Although it pays.
+最后这两个月的独居生活让我烦躁、让我抓狂，但是也让我去思考：为什么？
+实际想想可能从9月份开始，我才真正有了自己的一片空间，才有了自己。
+我用一种并不合适但是我能做到的最好的方式让自己停下来，
+成功了，也损失惨重。
+<br>
+但是要说后悔吗？
+并不。或者说，没有后悔这一选项。
+有的事情，如果要现在的我重新经历一次，我会做出不同的选择。
+因为原因很大部分在我。
+更多的沟通、放下一些没有必要的坚持，会有一个更好的结果。
+但是，当时的我，的确做不到。
+所以，有的事情，我想去做。
+而不是，有的事情，我不做就不行。
+<br>
+我需要感谢所有的人。
+你们都很温柔的对待我，尽管我很长一段时间没有意识到。
+我决定，要改变自己对待他人的方式，希望能达到更舒适的沟通。
+我也要享受生活，将自己投入到生活中去，而不只是做一个旁观者。
+有些事情我晚了，单还有的事情我没有晚。
+I want to make it.
+<br>
+享受生活，活在当下。
+我第一次，真诚地，向自己说。
+
+</div>
+
+<script>
+function myFunction() {
+  var pwd = document.getElementById("password").value
+  var x = document.getElementById("hide");
+  if (pwd === 'OMM') {
+        x.style.display = "block"
+  } else {
+        alert("Password is not correct!")
+        document.getElementById("pwd_form").reset();
+  }
+}
+function toggleAppear(element) {
+  var x = document.getElementById("letterlist");
+  if (x.style.display==="none"){
+    x.style.display = "block"
+    } else {
+      x.style.display = "none"
+    }
+
+}
+
+function blindAndFade(element){
+  new Effect.Parallel(
+      [ new Effect.Fade(element, {sync: true}),
+        new Effect.BlindUp(element, {sync: true})]);
+}
+
+function blindAndAppear(element){
+  new Effect.Parallel(
+      [ new Effect.Appear(element, {sync: true}),
+        new Effect.BlindDown(element, {sync: true,
+              afterFinish: function(effect) { Effect.ScrollTo(effect.element); }
+          })]);
+}
+</script>

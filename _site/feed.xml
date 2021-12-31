@@ -5,9 +5,111 @@
     <description>Write everything, think everything.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 28 Dec 2021 00:09:44 +0900</pubDate>
-    <lastBuildDate>Tue, 28 Dec 2021 00:09:44 +0900</lastBuildDate>
+    <pubDate>Fri, 31 Dec 2021 23:47:33 +0900</pubDate>
+    <lastBuildDate>Fri, 31 Dec 2021 23:47:33 +0900</lastBuildDate>
     <generator>Jekyll v4.2.1</generator>
+    
+      <item>
+        <title>我的2021</title>
+        <description>&lt;p&gt;皆様、よいお年を。&lt;/p&gt;
+
+&lt;form id=&quot;pwd_form&quot; onsubmit=&quot;return false;&quot;&gt;
+  My wechat name, then right shift 2: &lt;input type=&quot;text&quot; name=&quot;password&quot; id=&quot;password&quot; /&gt;
+  &lt;input type=&quot;submit&quot; onclick=&quot;myFunction()&quot; /&gt;
+&lt;/form&gt;
+
+&lt;div id=&quot;hide&quot; style=&quot;display:none&quot;&gt;
+其实从收获的角度来说，今年在心理上的收获或者说改变是最大的。
+&lt;br /&gt;
+不那么自怨自艾了、不那么具有攻击性了；最重要的是，不那么折磨自己了。
+想象之前很多的时间，我都在逼迫自己，或者说让自己忽略一件事情：我为什么要去做事？
+&lt;br /&gt;
+那个时候的答案是：因为别人在做。
+因为别人在写论文、因为别人在申请位置、因为别人在进步。
+那....我呢？我为什么要写？我为什么要进步？
+&lt;br /&gt;
+说实话，不知道。
+这一年里面我意识到了，我一直以来受周围和他人的影响非常大。
+我会很不自觉地去猜测他人想要什么，然后尽力去满足这个需求。
+听起来不是坏事，但是在这个过程中我往往压抑了我自己地需求。
+我实际上是体会到我的需求的，但是很快我就否定掉了我自己。
+“不，我自己的不重要，优先满足别人的”。
+久而久之自己的视野就越来越窄，越来越不想和别人交往（因为总是在耗费自己的精力），越来越..颓废？
+&lt;br /&gt;
+这种情况越来越严重，以致我感觉我需要通过暂时切断各种社交来让自己获得喘息的机会。
+我就是这么做的。
+It does work. Although it pays.
+最后这两个月的独居生活让我烦躁、让我抓狂，但是也让我去思考：为什么？
+实际想想可能从9月份开始，我才真正有了自己的一片空间，才有了自己。
+我用一种并不合适但是我能做到的最好的方式让自己停下来，
+成功了，也损失惨重。
+&lt;br /&gt;
+但是要说后悔吗？
+并不。或者说，没有后悔这一选项。
+有的事情，如果要现在的我重新经历一次，我会做出不同的选择。
+因为原因很大部分在我。
+更多的沟通、放下一些没有必要的坚持，会有一个更好的结果。
+但是，当时的我，的确做不到。
+所以，有的事情，我想去做。
+而不是，有的事情，我不做就不行。
+&lt;br /&gt;
+我需要感谢所有的人。
+你们都很温柔的对待我，尽管我很长一段时间没有意识到。
+我决定，要改变自己对待他人的方式，希望能达到更舒适的沟通。
+我也要享受生活，将自己投入到生活中去，而不只是做一个旁观者。
+有些事情我晚了，单还有的事情我没有晚。
+I want to make it.
+&lt;br /&gt;
+享受生活，活在当下。
+我第一次，真诚地，向自己说。
+
+&lt;/div&gt;
+
+&lt;script&gt;
+function myFunction() {
+  var pwd = document.getElementById(&quot;password&quot;).value
+  var x = document.getElementById(&quot;hide&quot;);
+  if (pwd === 'OMM') {
+        x.style.display = &quot;block&quot;
+  } else {
+        alert(&quot;Password is not correct!&quot;)
+        document.getElementById(&quot;pwd_form&quot;).reset();
+  }
+}
+function toggleAppear(element) {
+  var x = document.getElementById(&quot;letterlist&quot;);
+  if (x.style.display===&quot;none&quot;){
+    x.style.display = &quot;block&quot;
+    } else {
+      x.style.display = &quot;none&quot;
+    }
+
+}
+
+function blindAndFade(element){
+  new Effect.Parallel(
+      [ new Effect.Fade(element, {sync: true}),
+        new Effect.BlindUp(element, {sync: true})]);
+}
+
+function blindAndAppear(element){
+  new Effect.Parallel(
+      [ new Effect.Appear(element, {sync: true}),
+        new Effect.BlindDown(element, {sync: true,
+              afterFinish: function(effect) { Effect.ScrollTo(effect.element); }
+          })]);
+}
+&lt;/script&gt;
+
+</description>
+        <pubDate>Fri, 31 Dec 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021/12/31/year-end/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/12/31/year-end/</guid>
+        
+        <category>Living</category>
+        
+        
+      </item>
     
       <item>
         <title>两两配对！</title>
@@ -875,113 +977,6 @@ S &amp;amp;= (1-\epsilon)\bar{J} + \epsilon B \\
         <pubDate>Wed, 05 Feb 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2020/02/05/NLTE-RT-Model/</link>
         <guid isPermaLink="true">http://localhost:4000/2020/02/05/NLTE-RT-Model/</guid>
-        
-        <category>learning</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>MOOG 2017与2019版本对比</title>
-        <description>&lt;p&gt;Chris Sneden的&lt;a href=&quot;https://www.as.utexas.edu/~chris/moog.html&quot;&gt;MOOG&lt;/a&gt;悄咪咪地从FEB2017版变成了NOV2019版。
-Let’s see what is changed.&lt;/p&gt;
-
-&lt;h2 id=&quot;modified-functions&quot;&gt;Modified functions&lt;/h2&gt;
-
-&lt;p&gt;The driver &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotop&lt;/code&gt; is deprecated, and its functions are merged into the driver &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synth&lt;/code&gt;.
-To my understanding, we need to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotop&lt;/code&gt; driver before when we specify the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotope&lt;/code&gt; variable, but now we don’t need to do this.&lt;/p&gt;
-
-&lt;h2 id=&quot;newdeleted-files&quot;&gt;New/deleted files&lt;/h2&gt;
-
-&lt;p&gt;2017版的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Estim.f&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Minimax.f&lt;/code&gt;在2019版中消失了。2019版中多了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.new&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.f&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.r&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Estim.f&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Minimax.f&lt;/code&gt; no longer exist in 2019 version.
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.new&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.f&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Setmols.r&lt;/code&gt; are added in 2019 version.&lt;/p&gt;
-
-&lt;h3 id=&quot;文件之间的变化-changes-in-files&quot;&gt;文件之间的变化 (Changes in files)&lt;/h3&gt;
-
-&lt;p&gt;有21个文件发生了变化。一个一个来看有什么不同吧。程序文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bmolec.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Eqlib.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ewfind.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lineinfo.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mol.com&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moog.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moogsilent.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Nearly.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacit.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacmetals.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Specplot.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sunder.f&lt;/code&gt;；安装文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesksilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclap&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclapsilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64silent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rhsilent&lt;/code&gt;。
-几乎有一半是安装文件。&lt;/p&gt;
-
-&lt;p&gt;21 files have been changed in 2019 version.&lt;br /&gt;
-They are program files: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bmolec.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Eqlib.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ewfind.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Inmodel.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lineinfo.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mol.com&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moog.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Moogsilent.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Nearly.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacit.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opacmetals.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Specplot.f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sunder.f&lt;/code&gt;; and installation files: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.macdesksilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclap&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.maclapsilent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rh64silent&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile.rhsilent&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;bmolec&quot;&gt;Bmolec&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This routine contains the default list of molecules and ions used in the
-     equilibrium calculations. This list includes species needed for
-     continuous opacity and damping calculations in addition to the ions and
-     molecules that have an affect of the partial pressures of the following:
-     H, He, C, N, O, Mg, Al, Si, P, S, Cl, Ca, Ti, V, Cr, and Fe.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;He+, F+, Al+, Si+, Ti+, Fe+, AlH, SiH, FeH, MgO, and TiO are added into variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;smallmollist&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;F+ is added into variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;largemollist&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Partition functions of H_2O and CO_2 are added and are from &lt;a href=&quot;https://hitran.org/data/Q/&quot;&gt;HITRAN&lt;/a&gt; website.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;eqlib&quot;&gt;Eqlib&lt;/h4&gt;
-
-&lt;p&gt;Only some comments are added.&lt;/p&gt;
-
-&lt;h4 id=&quot;ewfind&quot;&gt;Ewfind&lt;/h4&gt;
-
-&lt;p&gt;Some calculation detail and output format is change (I think they just simply the code but do not make change to the result).
-Further I am not using this subroutine.&lt;/p&gt;
-
-&lt;h4 id=&quot;inmodel&quot;&gt;Inmodel&lt;/h4&gt;
-
-&lt;p&gt;The length of default molecule list is enlarged (probably consistent with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bmolec&lt;/code&gt;).
-The valiable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;numdens&lt;/code&gt; now are not used in 2019 version.&lt;/p&gt;
-
-&lt;h4 id=&quot;lineinfo&quot;&gt;Lineinfo&lt;/h4&gt;
-
-&lt;p&gt;Some calculation detail is changed according to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sunder&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;makefile&quot;&gt;Makefile&lt;/h4&gt;
-
-&lt;p&gt;The make detail is changed. Hope it works without modification.&lt;/p&gt;
-
-&lt;p&gt;A sentence “NOTE: the isotop driver has been eliminated; your synthesis needs for elemental and isotopic abundances now can be handled with the synth driver” is added.&lt;/p&gt;
-
-&lt;h4 id=&quot;molcom&quot;&gt;Mol.com&lt;/h4&gt;
-
-&lt;p&gt;Variable name changed and added.&lt;/p&gt;
-
-&lt;h4 id=&quot;moogf&quot;&gt;Moog.f&lt;/h4&gt;
-
-&lt;p&gt;A new warning on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isotop&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;nearly&quot;&gt;Nearly&lt;/h4&gt;
-
-&lt;p&gt;Allowed triatomic calculation for H_2O and CO_2.&lt;/p&gt;
-
-&lt;h4 id=&quot;opacit-opacmetals&quot;&gt;Opacit, Opacmetals&lt;/h4&gt;
-
-&lt;p&gt;Number slightly changed.&lt;/p&gt;
-
-&lt;h4 id=&quot;specplot&quot;&gt;Specplot&lt;/h4&gt;
-
-&lt;p&gt;Output changed, but this subroutine is not used by me.&lt;/p&gt;
-
-&lt;h4 id=&quot;sunder&quot;&gt;Sunder&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This routine breaks up molecule amol into leftmost atom i1 and      &lt;br /&gt;
-     the rest of the molecule i2.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Not sure yet.&lt;/p&gt;
-
-&lt;h2 id=&quot;does-the-synthetic-spectra-changed&quot;&gt;Does the synthetic spectra changed?&lt;/h2&gt;
-
-&lt;p&gt;No (or I haven’t found them for now). I did a quick compare using the same patch file and found the differences between spectra are 0.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 24 Dec 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2019/12/24/MOOG-2019/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/12/24/MOOG-2019/</guid>
         
         <category>learning</category>
         
