@@ -84,8 +84,8 @@ analytics:
 
 # Sidebar settings
 sidebar: true                         # whether or not using Sidebar.
-sidebar-about-description: "School of Science Building No. 1W, <br>the University of Tokyo"
-sidebar-avatar: /img/profile_small.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "Researcher and gamer"
+sidebar-avatar: /img/profile_small.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
