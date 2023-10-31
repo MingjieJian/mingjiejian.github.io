@@ -74,6 +74,12 @@ netease_comment: false
 ga_track_id: 'G-DCJ7NPZE95'            # Format: UA-xxxxxx-xx
 ga_domain: mingjiejian.github.io
 
+# Google Analytics
+analytics:
+  provider               : "google-gtag"
+  google:
+    measurement_id          : 'G-DCJ7NPZE95'
+    anonymize_ip         : false
 
 
 # Sidebar settings
