@@ -4,7 +4,7 @@ title:      "近况报告"
 subtitle:   ""
 date:       2023-12-19
 author:     "mingjie"
-header-img: "img/post-bg-miura.jpg"
+header-img: "img/post-bg-year-end-2023.png"
 tags:
     - hanging-around
 
@@ -51,6 +51,8 @@ tags:
 自己再开心一些。
 
 所以这大概也是2024年的目标吧。
+
+希望我、我的亲人、我最喜欢的人、以及我的朋友们在新的一年里面能过的开心，做成自己想做的事情。
 
 ## 未来的安排
 
