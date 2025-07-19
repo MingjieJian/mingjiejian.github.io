@@ -69,18 +69,18 @@ Visby的住宿选择有很多，既有宾馆也有青旅；而离开visby之后�
 ![](/img/in-post/post-gotland-cycling-1/bike-rental.jpg)
 
 我们因为担心车的性能问题，一开始是顶格选了GRAVEL MB31 Bramley GRX。
-![](/img/in-post/post-gotland-cycling-1/gravel-bike.jpg)
+![](/img/in-post/post-gotland-cycling-1/gravel-bike.png)
 *就这个*
 
 结果发现这里毕竟是北欧，最小号的车对我来说还是太大了，而且我们背着背包不适合趴着骑车。
 车店就给我们推荐了Trekking bicycle
 
-![](/img/in-post/post-gotland-cycling-1/trekking-bike.jpg)
+![](/img/in-post/post-gotland-cycling-1/trekking-bike.png)
 
 事实证明这是一个非常正确的选择。
 抛开车座高低和骑行的姿势不谈，Gravel bike虽然店里可以选配车包套装，但是能装的东西还是太少。
 Treaking bike配的是两个车架包，能装的东西就多了非常多，让我们的骑行轻松了很多。
-（当然我们最后一天才发现可以将我们的背包折起来塞进车架包这种事情就，呃，不说了）
+（当然我们最后一天才发现可以将我们的背包折起来塞进车架包这种事情就，呃，不说了。）
 车店还有存包服务，可以将我们的背包存到车店，还车的时候再来拿。
 
 ![](/img/in-post/post-gotland-cycling-1/rented-bikes.jpg)
