@@ -42,3 +42,7 @@ python3 build.py           # assemble ../index.html from template.html + svg_*.s
 - Phosphorus plot: 8 Cepheids are digitised from the paper figure without error bars; one of the 20 Cepheids is hidden by overlap — replace with the CDS table.
 - Sections below the hero (research, software, publications, about) still carry earlier placeholder copy and facts to confirm (dates, "25+ papers", PySME snippet, selected papers).
 - Port to the production structure (Jekyll layout or static build), clean unused code (isophote renderer), retire the old theme and its service worker.
+
+## Live site
+
+The root `index.html` is the published homepage: run `python3 redesign/deploy.py` after rebuilding the prototype (it rewrites asset paths to `/assets/home/` and copies the assets). The page has no front matter, so Jekyll copies it unchanged. The blog (`/blog/`, posts, tags, feed) still uses the old Hux-blog layouts. `sw.js` now only clears the old caches and unregisters itself; `service-worker: false` in `_config.yml` stops new registrations. `redesign/` is excluded from the Jekyll build.
