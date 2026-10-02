@@ -16,6 +16,10 @@ python3 -m http.server 8765 --directory redesign/prototype
   - **PySME** — animated real PySME fit (`pysme_fit/run_fit.py`)
   - **Phosphorus** — A(P)–age from Jian et al. 2025 (`p_paper/`) + chemical-evolution schematic
   - **He I 10830** — EW vs log R'HK from Jian et al. 2024 (`he_paper/`)
+- **Research**: three rows (physics → tools → astrophysics) with figures computed for the page:
+  - broadening sequence of one Ca I 6162 line (PySME; `broad/run.py`)
+  - a column of PySME syntheses of 11 FGK stars, 4569–4581 Å, R = 20000 (`stack/run.py`)
+  - edge-on Milky Way star field sampled from simple density laws, with sightlines from the Sun (`src/gen_galaxy.py`)
 - **Portrait**: objective-prism plate drawn from `portrait_round.jpg`; appears 3 s after load and 3 s after a panel closes; hover reveals the photo.
 
 ## Rebuild
@@ -29,7 +33,9 @@ python3 build.py           # assemble ../index.html from template.html + svg_*.s
 
 ## Still to do
 
-- Replace the **synthetic hero spectrum** with real data (weak-line forest and O₂ A/B bands are placeholders; candidate: NSO/Kitt Peak solar flux atlas).
+- Hero spectrum now uses the Kitt Peak solar flux atlas (Kurucz et al. 1984) smoothed to R ≈ 6000 (`solar/prep_solar.py`; the 25 MB `solarflux.asc` is not committed — download from kurucz.harvard.edu/sun/fluxatlas/). Telluric H₂O bands are real but unlabelled.
+- `pysme_fit/run_fit.py` and `stack/run.py` read line lists from absolute local paths.
+- Ca I 6162 atomic data in `broad/ca6162.lin` were entered by hand — check against VALD.
 - Phosphorus plot: 8 Cepheids are digitised from the paper figure without error bars; one of the 20 Cepheids is hidden by overlap — replace with the CDS table.
 - Sections below the hero (research, software, publications, about) still carry earlier placeholder copy and facts to confirm (dates, "25+ papers", PySME snippet, selected papers).
 - Port to the production structure (Jekyll layout or static build), clean unused code (isophote renderer), retire the old theme and its service worker.

@@ -23,6 +23,7 @@
     };
   })();
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/zqfs@3.0.0/dist/ZhuqueFangsong-Regular/result.css">   <!-- 朱雀仿宋 (OFL); loads only the chunks used -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Spectral+SC:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -70,7 +71,7 @@
   .nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .brand { font: 400 20px var(--serif); text-decoration: none; }
-  .brand span { font: 300 14px "Songti SC", "Noto Serif SC", serif; color: var(--muted); letter-spacing: .12em; margin-left: 10px; }
+  .brand span { font: 400 16px "Zhuque Fangsong (technical preview)", "Songti SC", "Noto Serif SC", serif; color: var(--muted); letter-spacing: .12em; margin-left: 10px; }   /* 朱雀仿宋 */
   .nav nav { display: flex; align-items: center; gap: 28px; font: var(--kicker-font); text-transform: var(--kicker-case); letter-spacing: var(--kicker-track); color: var(--muted); }
   .nav nav a { text-decoration: none; }
   .nav .pill { border: 1px solid var(--rule); border-radius: 999px; padding: 6px 15px; color: var(--ink); }
@@ -247,23 +248,21 @@
   .facts .t { font-size: 14px; line-height: 1.35; color: var(--muted); }
 
   /* question */
-  .split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; }
+  .split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
+  .split p:last-child { margin-bottom: 0; }
   .split p { margin: 0 0 16px; color: var(--body); }
 
   /* research */
   .rhead { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; margin-bottom: 52px; }
   .rhead p { margin: 0; color: var(--muted); }
-  .cards { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; }
-  .card { position: relative; background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius); padding: 26px 28px 28px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .cards { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .card { position: relative; background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius); padding: 40px 44px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
   .paper .card { border-top-color: var(--ink); }
-  .card.tall { grid-row: span 2; justify-content: space-between; }
-  .card.tall .art { flex: 1; display: flex; align-items: center; }
   .card .num { position: absolute; top: 16px; right: 22px; font: italic 400 17px var(--serif); color: var(--accent); }
-  .card .art { margin: 8px 0 16px; }
-  .card .art svg { display: block; width: 100%; height: auto; }
-  .card h3 { font: 400 30px/1.12 var(--serif); letter-spacing: -.012em; margin: 8px 0 10px; }
-  .card.tall h3 { font-size: 40px; }
-  .card p { margin: 0 0 12px; color: var(--body); font-size: 17px; }
+  .card .art { order: 2; }
+  .card .art svg { display: block; width: 100%; height: auto; max-height: 320px; }
+  .card h3 { font: 400 34px/1.12 var(--serif); letter-spacing: -.012em; margin: 8px 0 12px; }
+  .card p { margin: 0 0 14px; color: var(--body); font-size: 17px; }
   .card .kw { font: 400 12px/1.6 var(--mono); color: var(--muted); }
   .art-base { stroke: var(--rule); }
   .art-line { stroke: var(--accent); stroke-width: 1.3; }
@@ -277,6 +276,18 @@
   .night .art-star { fill: var(--panel); }
   .art-spot { fill: color-mix(in srgb, var(--ink) 18%, transparent); stroke: var(--muted); stroke-width: .8; }
   .art-eq { fill: none; stroke: var(--muted); stroke-width: .8; stroke-dasharray: 2 3; }
+  .gx-star { fill: none; stroke: var(--ink); stroke-linecap: round; }
+  .gx-obs { fill: none; stroke: var(--accent); stroke-width: 2.8; stroke-linecap: round; }
+  .gx-los { stroke: var(--accent); stroke-width: .6; opacity: .45; }
+  .gx-sun { fill: none; stroke: var(--accent); stroke-width: 1; }
+  .gx-sund { fill: var(--accent); }
+  .art-prof { fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-linejoin: round; }
+  .art-ghost { fill: none; stroke: var(--muted); stroke-width: .9; stroke-dasharray: 3 3; opacity: .7; }
+  .art-c1 { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 1.5 2.5; }
+  .art-c2 { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 5 3; }
+  .art-c3 { fill: none; stroke: var(--ink); stroke-width: 1; opacity: .55; }
+  .art-thin { stroke: var(--muted); stroke-width: .8; fill: none; }
+  .art-dot { fill: var(--accent); }
 
   .split > *, .rhead > *, .sw > *, .about > *, .cards > * { min-width: 0; }   /* let long code lines scroll instead of widening the page */
   /* software */
@@ -284,6 +295,8 @@
   .sw > div > p { color: var(--body); margin: 22px 0 0; }
   .caps { list-style: none; padding: 0; margin: 26px 0 0; border-top: 1px solid var(--rule); }
   .caps li { display: grid; grid-template-columns: 44px 1fr; padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+  .caps li b { display: block; font-weight: 400; color: var(--ink); }
+  .caps li small { display: block; font-size: 15px; line-height: 1.45; color: var(--muted); margin-top: 2px; }
   .caps li span { font: 400 12px/2 var(--mono); color: var(--accent); }
   .sw .links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
   pre.code { margin: 0; background: var(--code-bg); color: var(--code-ink); border-radius: var(--radius); padding: 26px 28px; font: 400 13.5px/1.75 var(--mono); overflow-x: auto; border: 1px solid var(--panel-line); }
@@ -329,9 +342,9 @@
     .facts .f:nth-child(-n+2) { border-top: 0; }
     section { padding: 76px 0; }
     .split, .rhead, .sw, .about { grid-template-columns: 1fr; gap: 26px; }
-    .cards { grid-template-columns: 1fr; }
-    .card.tall { grid-row: auto; }
-    .card.tall h3 { font-size: 32px; }
+    .card { grid-template-columns: 1fr; gap: 22px; padding: 30px 24px 28px; }
+    .card .art { order: 0; }
+    .card h3 { font-size: 30px; }
     .pub { grid-template-columns: 1fr; gap: 4px; }
     .pub .arr { display: none; }
     .phead { flex-direction: column; align-items: start; }
@@ -408,9 +421,8 @@
       <h2 class="big">How well do we really understand <em>the light from stars?</em></h2>
     </div>
     <div>
-      <p>Every stellar abundance is an inference through a model: an atmosphere, a line list, a treatment of line formation. When a survey observes four million stars, any weakness in that chain is repeated four million times.</p>
-      <p>My work goes after the chain itself — testing its physics against high‑quality spectra, building the software that carries it, and using it to study stars directly.</p>
-      <a class="textlink" href="#research">How the pieces connect ↘</a>
+      <p>Every stellar abundance rests on a chain of models and assumptions: the stellar atmosphere, the atomic data, and the physics of line formation. When a survey observes four million stars, any weakness in that chain is repeated four million times.</p>
+      <p>My work goes after the chain itself: testing its physics against high‑quality spectra, building the software that puts it into practice, and applying it from individual stars to surveys of the Milky Way.</p>
     </div>
   </div>
 </section>
@@ -418,33 +430,30 @@
 <section id="research">
   <div class="wrap">
     <div class="rhead">
-      <div><div class="kicker">Research</div><h2 class="big">From atoms <em>to surveys.</em></h2></div>
-      <p>Three connected layers of the same problem: the physics that shapes a spectrum, the tools that model it at scale, and the stars it lets us read.</p>
+      <div><div class="kicker">Research</div><h2 class="big">From atoms<br> <em>to the Milky Way.</em></h2></div>
+      <p>From the physics that shapes a spectrum, through the tools that interpret it, to the stars and Galaxy we read from it.</p>
     </div>
     <div class="cards">
-      <article class="card tall">
-        <span class="num">I</span>
-        <div class="art"><!--SVG:D_balmer--></div>
-        <div><div class="kicker">Line‑formation physics</div>
-        <h3>The physics of the spectrum</h3>
-        <p>Are our atomic and atmospheric models good enough for the spectra we now observe? High‑order Balmer lines test how hydrogen’s Rydberg levels dissolve in a stellar plasma — a direct check on the Hummer–Mihalas occupation‑probability formalism.</p>
-        <div class="kw">balmer series · occupation probability · NLTE · broadening</div></div>
+      <article class="card">
+        <div class="art"><!--SVG:D_broad--></div>
+        <div class="txt"><div class="kicker">Physics</div>
+        <h3>The physics behind the spectrum</h3>
+        <p>Stellar spectra depend on model atmospheres, atomic data, line formation, broadening and departures from LTE. I work on understanding and validating these ingredients so that the information we infer from spectra rests on solid physical ground.</p>
+        <div class="kw">line formation · atomic data · NLTE · model atmospheres · spectral synthesis</div></div>
       </article>
       <article class="card">
-        <span class="num">II</span>
         <div class="art"><!--SVG:D_stack--></div>
-        <div class="kicker">Software &amp; surveys</div>
+        <div class="txt"><div class="kicker">Tools</div>
         <h3>Spectroscopy at scale</h3>
-        <p>Turning millions of spectra into parameters and abundances we can trust.</p>
-        <div class="kw">pysme · 4most · validation · benchmarks</div>
+        <p>I build and validate the tools that turn large collections of stellar spectra into reliable stellar parameters, abundances and radial velocities.</p>
+        <div class="kw">PySME · 4MOST · pipelines · validation · benchmarks</div></div>
       </article>
       <article class="card">
-        <span class="num">III</span>
-        <div class="art"><!--SVG:D_star--></div>
-        <div class="kicker">Stellar astrophysics</div>
-        <h3>Stars as laboratories</h3>
-        <p>Activity, accretion, rotation and circumstellar disks, read from line profiles.</p>
-        <div class="kw">young stars · Li &amp; Be · spots · Be‑star disks</div>
+        <div class="art"><!--SVG:D_galaxy--></div>
+        <div class="txt"><div class="kicker">Astrophysics</div>
+        <h3>Reading stars and the Milky Way</h3>
+        <p>I use stellar spectra to study chemical abundances, stellar evolution and activity, circumstellar material, and the populations that build the Milky Way.</p>
+        <div class="kw">chemical abundances · stellar populations · young stars · Be stars · activity</div></div>
       </article>
     </div>
   </div>
@@ -455,12 +464,12 @@
     <div>
       <div class="kicker">Software</div>
       <h2 class="big"><em>PySME</em> — Spectroscopy Made Easy, in Python.</h2>
-      <p>A spectrum‑synthesis and fitting code for stellar parameters and abundances, built on the SME radiative‑transfer core. I lead its current development, with a focus on survey‑scale performance and on physics that can be validated.</p>
+      <p>A spectrum‑synthesis and fitting framework for stellar parameters and abundances, built on the SME radiative‑transfer core. I lead its current development, with a focus on scalable spectroscopy, numerical reliability, and physically testable modelling.</p>
       <ul class="caps">
-        <li><span>01</span>Line‑list preselection and dynamic line lists for very large line data</li>
-        <li><span>02</span>NLTE departure coefficients, implementation and validation</li>
-        <li><span>03</span>Line broadening, instrumental and rotational convolution</li>
-        <li><span>04</span>Parallel synthesis for survey pipelines</li>
+        <li><span>01</span><div><b>Physical modelling</b><small>Model atmospheres, atomic data, NLTE and detailed line formation</small></div></li>
+        <li><span>02</span><div><b>Spectrum synthesis &amp; inference</b><small>From forward synthesis to stellar parameters and elemental abundances</small></div></li>
+        <li><span>03</span><div><b>Validation &amp; reliability</b><small>Benchmark stars, numerical checks and tests against observed spectra</small></div></li>
+        <li><span>04</span><div><b>Spectroscopy at scale</b><small>Efficient synthesis and fitting for large stellar surveys</small></div></li>
       </ul>
       <div class="links"><a class="textlink" href="#">Documentation ↗</a><a class="textlink" href="#">GitHub ↗</a><a class="textlink" href="#">Paper ↗</a></div>
     </div>
@@ -473,11 +482,10 @@
 sme = SME_Structure()
 sme.teff, sme.logg, sme.monh = <span class="s">5772</span>, <span class="s">4.44</span>, <span class="s">0.0</span>
 sme.vmic, sme.vmac, sme.vsini = <span class="s">1.0</span>, <span class="s">3.6</span>, <span class="s">1.6</span>
-sme.linelist = ValdFile(<span class="s">"sun_6500-6620.lin"</span>)
+sme.linelist = ValdFile(<span class="s">"linelist.lin"</span>)
 sme.wave = np.arange(<span class="s">6540</span>, <span class="s">6590</span>, <span class="s">0.01</span>)
 
 sme = synthesize_spectrum(sme)</pre>
-      <div class="codenote">ILLUSTRATIVE — CHECK AGAINST THE CURRENT PYSME API BEFORE PUBLISHING</div>
     </div>
   </div>
 </section>

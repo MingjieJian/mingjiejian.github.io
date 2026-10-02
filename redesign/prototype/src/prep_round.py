@@ -1,6 +1,5 @@
-import os
 from PIL import Image
-im = Image.open(os.environ.get("PORTRAIT_SRC", "portrait_original.jpg")).convert("RGB")
+im = Image.open("../../images/21.jpg").convert("RGB")
 # head centre: (370, 410) in the 720x791 grey crop -> original coordinates
 k = 1600 / 720
 cx, cy = 200 + 370 * k, 157 + 405 * k
