@@ -84,6 +84,13 @@
   .night .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
     background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
     background-size: 64px 64px; -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%); }
+  /* night: the dark sections share the hero's grid; the lighter (alt) sections get a dot lattice */
+  .night section:not(.alt):not(.hero) {
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 64px 64px; background-position: center -1px; }
+  .night section.alt {      /* dot lattice: no horizontal lines to collide with the rules inside (publication rows, lists) */
+    background-image: radial-gradient(circle, rgba(231, 227, 217, .11) 1px, transparent 1.4px);
+    background-size: 32px 32px; background-position: center 16px; }
   .hero .top { position: relative; width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 56px; padding-bottom: 8px; }
   .hero .where { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 0; font: 500 14px/1.4 var(--sc); letter-spacing: .06em; color: var(--muted); }
   .hero .where::before { content: ""; flex: none; align-self: flex-start; margin-top: .45em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
