@@ -20,6 +20,9 @@ python3 -m http.server 8765 --directory redesign/prototype
   - broadening sequence of one Ca I 6162 line (PySME; `broad/run.py`)
   - a column of PySME syntheses of 11 FGK stars, 4569–4581 Å, R = 20000 (`stack/run.py`)
   - edge-on Milky Way star field sampled from simple density laws, with sightlines from the Sun (`src/gen_galaxy.py`)
+- **Software (PySME)**: the code snippet drives a step-by-step diagram (click a line to jump to it). The model atmosphere is drawn with the author's radiative-transfer cell figure (`rt_cell.png`); the synthesis step shows real PySME spectra computed with only the deepest 14, 18, 23, 31 and all 55 layers (`codeanim/cells.py`); the final spectrum is the snippet run as written (`codeanim/run.py`).
+- **Survey (4MOST)**: ~110 spectra drawn on a canvas from the 11 PySME syntheses with random RV shifts and noise, feeding the 4MOST box (`4most_logo.png`) and the measured quantities (`src/gen_survey.py`).
+- **Publications / About**: five selected papers linked to SciX; full CV is `Mingjie_Jian_CV.pdf` (a copy — re-copy when the CV changes).
 - **Portrait**: objective-prism plate drawn from `portrait_round.jpg`; appears 3 s after load and 3 s after a panel closes; hover reveals the photo.
 
 ## Rebuild

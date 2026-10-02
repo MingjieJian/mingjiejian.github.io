@@ -1,0 +1,24 @@
+<svg viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hundreds of stellar spectra pass through the 4MOST pipeline and validation, giving radial velocities, effective temperatures, surface gravities and abundances.">
+<path d="M218,40.0 C234,40.0 224,132.8 242,132.8" class="pp-wire"/>
+<path d="M218,80.0 C234,80.0 224,149.6 242,149.6" class="pp-wire"/>
+<path d="M218,120.0 C234,120.0 224,166.4 242,166.4" class="pp-wire"/>
+<path d="M218,160.0 C234,160.0 224,183.2 242,183.2" class="pp-wire"/>
+<path d="M218,200.0 C234,200.0 224,200.0 242,200.0" class="pp-wire"/>
+<path d="M218,240.0 C234,240.0 224,216.8 242,216.8" class="pp-wire"/>
+<path d="M218,280.0 C234,280.0 224,233.6 242,233.6" class="pp-wire"/>
+<path d="M218,320.0 C234,320.0 224,250.4 242,250.4" class="pp-wire"/>
+<path d="M218,360.0 C234,360.0 224,267.2 242,267.2" class="pp-wire"/>
+<rect x="242" y="106" width="142" height="188" class="pp-box"/>
+<image href="4most_logo.png" x="267.0" y="122" width="92" height="119"><title>4MOST</title></image>
+<text x="313.0" y="278" class="pp-sub" text-anchor="middle">pipeline · validation</text>
+<path d="M384,172.0 C408,172.0 406,81 428,81" class="pp-wire"/>
+<text x="436" y="90" class="sv-out">RV</text>
+<path d="M384,186.0 C408,186.0 406,141 428,141" class="pp-wire"/>
+<text x="436" y="150" class="sv-out">T<tspan baseline-shift="sub" font-size="72%">eff</tspan></text>
+<path d="M384,200.0 C408,200.0 406,201 428,201" class="pp-wire"/>
+<text x="436" y="210" class="sv-out">log g</text>
+<path d="M384,214.0 C408,214.0 406,261 428,261" class="pp-wire"/>
+<text x="436" y="270" class="sv-out">[Fe/H]</text>
+<path d="M384,228.0 C408,228.0 406,321 428,321" class="pp-wire"/>
+<text x="436" y="330" class="sv-out">[X/Fe]</text>
+</svg>
