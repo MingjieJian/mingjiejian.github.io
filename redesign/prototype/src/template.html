@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en" class="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mingjie Jian — G · Paper + Night (auto)</title>
+<script>
+  /* theme: follow the system unless the visitor picked one; no-JS stays on paper */
+  (function () {
+    var root = document.documentElement, mq = matchMedia("(prefers-color-scheme: dark)"), pick = null;
+    try { pick = localStorage.getItem("theme"); } catch (e) {}
+    function apply() {
+      var t = pick || (mq.matches ? "dark" : "light");
+      root.className = t === "dark" ? "night" : "paper";
+      root.dataset.pick = pick || "auto";
+    }
+    apply();
+    mq.addEventListener("change", apply);
+    window.cycleTheme = function () {
+      pick = { auto: "light", light: "dark", dark: null }[pick || "auto"];
+      try { pick ? localStorage.setItem("theme", pick) : localStorage.removeItem("theme"); } catch (e) {}
+      apply();
+    };
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Spectral+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --serif: "Spectral", Georgia, serif; --sc: "Spectral SC", "Spectral", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --kicker-font: 500 14px/1.4 var(--sc); --kicker-case: none; --kicker-track: .08em;
+  }
+  .paper {
+    --bg: #f6f3ec; --bg2: #efeadf; --panel: transparent; --panel-line: #d9d2c3;
+    --ink: #1d1b17; --body: #34312b; --muted: #6d675b; --rule: #d9d2c3;
+    --accent: #8b2c1f; --code-bg: #1d1b17; --code-ink: #e9e4d8; --code-c: #8e877a; --code-k: #e0a35a; --code-s: #b9cfa8;
+    --radius: 0;
+  }
+  .night {
+    --bg: #0b0f14; --bg2: #0f141a; --panel: #121922; --panel-line: rgba(231, 227, 217, .12);
+    --ink: #ebe7dd; --body: #bfc3c0; --muted: #868e94; --rule: rgba(231, 227, 217, .12);
+    --accent: #e9b35b; --code-bg: #070a0d; --code-ink: #d7dbd6; --code-c: #66717a; --code-k: #e9b35b; --code-s: #a5d1b5;
+    --radius: 4px;
+    --grid: rgba(231, 227, 217, .045);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 300 19px/1.6 var(--serif); }
+  a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .kicker { font: var(--kicker-font); text-transform: var(--kicker-case); letter-spacing: var(--kicker-track); color: var(--accent); }
+  .mono { font-family: var(--mono); }
+  h2.big { font: 300 clamp(36px, 4.6vw, 64px)/1.06 var(--serif); letter-spacing: -.018em; margin: 14px 0 0; }
+  h2.big em { color: var(--accent); }
+  section { padding: 112px 0; }
+  section.alt { background: var(--bg2); }
+  .textlink { font: var(--kicker-font); text-transform: var(--kicker-case); letter-spacing: var(--kicker-track); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+  .only-night { display: none; } .night .only-night { display: block; } .night .only-paper { display: none; }
+  .paper { color-scheme: light; } .night { color-scheme: dark; }
+  .themebtn { width: 4.6em; text-align: left; white-space: nowrap; background: none; border: 0; padding: 0; cursor: pointer; color: var(--muted); font: var(--kicker-font); text-transform: var(--kicker-case); letter-spacing: var(--kicker-track); }
+  .themebtn:hover { color: var(--accent); }
+  .themebtn::after { content: "Auto"; } [data-pick="light"] .themebtn::after { content: "Light"; } [data-pick="dark"] .themebtn::after { content: "Dark"; }
+  .themebtn::before { content: "◐ "; }
+  @media (max-width: 960px) { .nav nav .themebtn { display: inline-block; width: 1.2em; } .themebtn::after, [data-pick] .themebtn::after { content: none; } }
+  .brand { white-space: nowrap; }
+  /* nav */
+  .nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font: 400 20px var(--serif); text-decoration: none; }
+  .brand span { font: 300 14px "Songti SC", "Noto Serif SC", serif; color: var(--muted); letter-spacing: .12em; margin-left: 10px; }
+  .nav nav { display: flex; align-items: center; gap: 28px; font: var(--kicker-font); text-transform: var(--kicker-case); letter-spacing: var(--kicker-track); color: var(--muted); }
+  .nav nav a { text-decoration: none; }
+  .nav .pill { border: 1px solid var(--rule); border-radius: 999px; padding: 6px 15px; color: var(--ink); }
+
+  /* hero */
+  .hero { position: relative; display: flex; flex-direction: column; min-height: calc(100vh - 64px); overflow: hidden; }
+  .night .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 64px 64px; -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%); }
+  .hero .top { position: relative; width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 56px; padding-bottom: 8px; }
+  .hero .where { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 0; font: 500 14px/1.4 var(--sc); letter-spacing: .06em; color: var(--muted); }
+  .hero .where::before { content: ""; flex: none; align-self: flex-start; margin-top: .45em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .night .hero .where::before { box-shadow: 0 0 0 4px rgba(233, 179, 91, .16); }
+  .hero h1 { font: 300 clamp(46px, 6vw, 88px)/1.0 var(--serif); letter-spacing: -.022em; margin: 0; }
+  .hero h1 em { white-space: nowrap; }
+  .hero h1 em { color: var(--accent); font-weight: 300; }
+  .hero h1 .cjk { display: none; }
+  .hero p.sub { text-wrap: balance; max-width: 37.5em; font-size: 21px; line-height: 1.55; color: var(--body); margin: 26px 0 0; }
+  .hero p.sub b { font-weight: 500; color: var(--ink); }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; text-decoration: none; font: var(--kicker-font); text-transform: var(--kicker-case); letter-spacing: var(--kicker-track); }
+  .btn.solid { background: var(--accent); color: var(--bg); }
+  .btn.ghost { border: 1px solid var(--rule); }
+  .readout { position: absolute; right: 48px; top: 28px; font: 400 11px/1.7 var(--mono); color: var(--muted); text-align: right; letter-spacing: .06em; }
+  .paper .readout { display: none; }
+
+  /* hero spectrum — paper: framed figure; night: full-bleed horizon */
+  .figure-wrap { position: relative; flex: none; max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 48px; }
+  .figure-wrap svg { display: block; width: 100%; height: auto; }
+  .figure-wrap figcaption { display: flex; gap: 16px; font-size: 14px; color: var(--muted); margin: 6px 0 18px; }
+  .figure-wrap figcaption b { font: 500 14px var(--sc); color: var(--ink); letter-spacing: .05em; white-space: nowrap; }
+  .paper .glow { display: none; }
+  .spec { fill: none; stroke: var(--ink); stroke-width: .8; stroke-linejoin: round; }
+  .night .spec { stroke: var(--accent); stroke-width: 1; }
+  .glow { fill: none; stroke: var(--accent); stroke-width: 6; opacity: .1; filter: blur(3px); }
+  .cont { stroke: var(--rule); stroke-width: .7; stroke-dasharray: 2 3; }
+  .tick { stroke: var(--muted); stroke-width: .8; }
+  .fl { font: italic 400 17px var(--serif); fill: var(--accent); text-anchor: middle; }
+  .sp { font: 400 11px var(--sc); fill: var(--muted); text-anchor: middle; letter-spacing: .03em; }
+  .grid { stroke: var(--grid); stroke-width: 1; }
+  .gl { font: 400 10px var(--mono); fill: var(--muted); opacity: .6; }
+  .lab { font: 400 11px var(--mono); fill: var(--body); }
+
+
+  /* hero spectrum: wide track panned opposite to the pointer */
+  .scope-fig { flex: none; margin: 20px 0 28px; }
+  .scope { position: relative; width: 100%; overflow: clip; -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent); mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent); }
+  .track { position: relative; width: 4400px; height: 250px; will-change: transform; }
+  .track > svg { position: absolute; left: 0; top: 36px; display: block; pointer-events: none; }   /* clicks fall through to the work bands */
+  .hs-layer { position: absolute; inset: 0 0 16px 0; }   /* bands end on the x axis (svg top 36 + axis y 198 = 234 = 250 − 16) */
+  .hs { position: absolute; bottom: 0; padding: 0; border: 0; margin: 0; cursor: pointer; font: inherit; color: inherit; text-align: left;
+        background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  .hs.row0 { top: 0; } .hs.row1 { top: 22px; }
+  .hs:hover, .hs:focus-visible, .hs[aria-pressed="true"] { background: color-mix(in srgb, var(--accent) 15%, transparent); outline: none; }
+  .hs-label { position: absolute; top: 0; left: 50%; transform: translateX(-50%); white-space: nowrap; text-align: center; }   /* title centred on its band */
+  .hs-t { font: 500 14px/1.2 var(--sc); letter-spacing: .05em; color: var(--accent); }
+  .hs:hover .hs-t, .hs:focus-visible .hs-t { text-decoration: underline; text-underline-offset: 3px; }
+  .axis { stroke: var(--muted); stroke-width: .8; }
+  .tkl { font: 400 10.5px var(--mono); fill: var(--muted); }
+  .lim { stroke: var(--accent); stroke-width: .8; stroke-dasharray: 3 3; }
+  .ruler { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; margin: 14px 0 28px; font: 400 10.5px var(--mono); color: var(--muted); }
+  .ruler .bar { position: relative; height: 14px; border-bottom: 1px solid var(--rule); }
+  .ruler .rt { position: absolute; bottom: -1px; width: 1px; height: 9px; background: var(--accent); }
+  .ruler .win { position: absolute; bottom: -2px; height: 16px; border: 1px solid var(--ink); border-bottom-width: 2px; background: color-mix(in srgb, var(--ink) 5%, transparent); }
+  .scope-fig figcaption { display: flex; justify-content: space-between; gap: 24px; margin: 8px 0 16px; font-size: 14px; color: var(--muted); }
+  .scope-fig figcaption b { font: 500 14px var(--sc); color: var(--ink); letter-spacing: .05em; white-space: nowrap; margin-right: 14px; }
+  .scope-fig figcaption .now { white-space: nowrap; font-size: 11.5px; padding-top: 2px; }
+  @media (hover: none), (pointer: coarse) {
+    .scope { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .scope::-webkit-scrollbar { display: none; }
+    .track { will-change: auto; }
+  }
+
+  /* work panel: opened from the spectrum bands; space is reserved so nothing moves */
+  .work-panel { visibility: hidden; opacity: 0; transition: opacity .18s ease; }
+  .work-panel.open { visibility: visible; opacity: 1; }
+  .wp-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 6px; margin-bottom: 10px; }
+  .wp-title { font: 500 15px/1.3 var(--sc); letter-spacing: .06em; color: var(--accent); }
+  .wp-close { background: none; border: 0; padding: 0 2px; cursor: pointer; font: 300 22px/1 var(--serif); color: var(--muted); }
+  .wp-close:hover { color: var(--accent); }
+  .wp-fig { margin: 0; }
+  .wp-fig svg { display: block; width: 100%; height: auto; }
+  .wp-cap { margin: 8px 0 6px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .wp-link { font: 400 12px var(--mono); color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .wp-link:hover { color: var(--accent); border-color: var(--accent); }
+  .fa-obs { fill: none; stroke: var(--muted); stroke-width: 2.1; stroke-linecap: round; opacity: .8; }
+  .fa-model { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .fa-read { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; margin-top: 6px; font: 400 11.5px/1.6 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .fa-read b { font-weight: 500; color: var(--ink); display: inline-block; min-width: 3.4ch; text-align: right; }
+  .fa-read .fa-it b { min-width: 1ch; color: var(--accent); }
+  .wp-foot { display: flex; justify-content: space-between; align-items: baseline; padding-right: calc(100% * 10 / 420); }   /* right edge = plot frame (R = 410 of 420) */
+  .fa-replay { background: none; border: 0; border-bottom: 1px solid transparent; padding: 0; cursor: pointer; font: 400 12px var(--mono); line-height: inherit; color: var(--muted); }
+  .fa-replay:hover { color: var(--accent); }
+  .hl-lev { stroke: var(--ink); stroke-width: 1; }
+  .hl-fuzz { stroke: var(--ink); opacity: 0; }
+  .hl-anim + .wp-foot { margin-top: 8px; }
+  .hl-limit { stroke: var(--accent); stroke-width: .9; stroke-dasharray: 3 3; }
+  .hl-cont-a { stop-color: var(--accent); stop-opacity: .22; } .hl-cont-b { stop-color: var(--accent); stop-opacity: 0; }
+  .hl-arrow { stroke: var(--accent); stroke-width: 1.1; }
+  .hl-head { fill: none; stroke: var(--accent); stroke-width: 1.1; stroke-linejoin: round; }
+  .hl-t { font: 400 9.5px var(--serif); fill: var(--muted); }
+  .hl-n { font: 400 10px var(--mono); fill: var(--muted); }
+  .hl-r { font: 400 9.5px var(--mono); fill: var(--muted); }
+  .hl-brace { fill: none; stroke: var(--muted); stroke-width: .8; }
+  .wp-status { font: 400 12px var(--mono); color: var(--accent); }
+  .seq-anim svg + svg { margin-top: -2px; }
+  .ph-lg { font: 400 9.5px var(--serif); fill: var(--muted); }
+  .ph-eb { stroke: currentColor; stroke-width: .8; fill: none; opacity: .45; }
+  .ph-grey { color: var(--muted); fill: var(--muted); opacity: .5; }
+  .ph-blue { color: var(--ink); fill: var(--ink); }
+  .ph-orange { color: var(--accent); fill: var(--accent); }
+  .ph-o-fit { stroke: var(--accent); stroke-width: 1.6; } .ph-b-fit { stroke: var(--ink); stroke-width: 1.4; }
+  .ph-draw { stroke-dasharray: 1; }
+  .ph-axhead { fill: none; stroke: var(--muted); stroke-width: .8; }
+  .ph-cloud-lo { fill: color-mix(in srgb, var(--ink) 13%, var(--bg)); }
+  .ph-cloud-hi { fill: color-mix(in srgb, var(--accent) 20%, var(--bg)); }
+  .ph-star { fill: var(--muted); } .ph-star2 { fill: var(--accent); }
+  .ph-ar line, .ph-ar path { stroke: var(--accent); stroke-width: 3.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .ph-flow line, .ph-flow path { stroke: var(--muted); stroke-width: 3.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .ph-lab { font: 500 32px var(--sc); letter-spacing: .05em; fill: var(--ink); }
+  .ph-sm { font: 400 28px var(--serif); font-style: italic; fill: var(--muted); }
+  .ph-yl { font: 500 31px var(--serif); fill: var(--ink); }
+  .ph-yl2 { font: 400 30px var(--serif); font-style: italic; fill: var(--accent); }
+  .ph-scope rect, .ph-scope path, .ph-scope line, .ph-scope circle { fill: none; stroke: var(--muted); stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+  .he-sm { fill: var(--muted); opacity: .75; }
+  .he-st { color: var(--accent); fill: var(--accent); }
+  .he-fit-st { stroke: var(--accent); stroke-width: 1.6; }
+  .he-fit-sm { stroke: var(--muted); stroke-width: 1.3; stroke-dasharray: 5 3; }
+  .pf-frame { fill: none; stroke: var(--muted); stroke-width: .8; }
+  .pf-ax { stroke: var(--muted); stroke-width: .8; }
+  .pf-tk { font: 400 9.5px var(--mono); fill: var(--muted); }
+  .pf-axl { font: 400 10px var(--mono); fill: var(--muted); }
+  .pf-title { font: 500 13px var(--serif); fill: var(--ink); }
+  .pf-sp { font: 400 9px var(--mono); fill: var(--muted); }
+  .pf-lg { font: 400 10.5px var(--serif); fill: var(--body); }
+  .pf-lg .sub { font-size: 8px; }
+  .pf-cont { stroke: var(--rule); stroke-dasharray: 2 3; }
+  .pf-mark { stroke: var(--accent); stroke-width: .9; stroke-dasharray: 1.5 2.5; }
+  .pf-band { fill: var(--accent); fill-opacity: .3; stroke: none; }
+  .night .pf-band { fill-opacity: .38; }
+  .pf-target { fill: none; stroke: var(--accent); stroke-width: 1.7; stroke-linejoin: round; }
+  .pf-other { fill: none; stroke: var(--muted); stroke-width: .9; opacity: .8; }
+  .pf-total { fill: none; stroke: var(--ink); stroke-width: 1.1; stroke-linejoin: round; }
+  @media (min-width: 1100px) {
+    .hero .top { display: grid; grid-template-columns: minmax(0, 1fr) 400px; column-gap: 48px; align-items: stretch; align-content: center; }
+    .panel-slot { position: relative; }                       /* reserves the column; never changes height */
+    .work-panel { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); }   /* centred on the intro block */
+  }
+  @media (max-width: 1099px) {
+    .work-panel { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 10; max-height: 72vh; overflow: auto; padding: 14px 16px; background: var(--bg); border: 1px solid var(--rule); box-shadow: 0 8px 30px rgba(0, 0, 0, .18); }
+  }
+  @media (prefers-reduced-motion: reduce) { .work-panel { transition: none; } }
+
+  /* portrait in the right column when no work is selected */
+  .portrait { margin: 0; transition: opacity .25s ease; }
+  .panel-slot.is-open .portrait { opacity: 0; pointer-events: none; }
+  .portrait { position: relative; }
+  .pt-art { position: absolute; inset: 0; width: 320px; height: 320px; transition: opacity .45s ease .25s; }
+  .pt-round { transition: opacity .45s ease .25s; }
+  .portrait:not(.revealed) .pt-round { opacity: 0; transition-delay: 0s; }
+  .portrait.revealed .pt-art { opacity: 0; }
+  .pt-round { display: block; width: 320px; height: 320px;
+    -webkit-mask-image: radial-gradient(circle closest-side, #000 48%, rgba(0,0,0,.55) 74%, transparent 100%);
+            mask-image: radial-gradient(circle closest-side, #000 48%, rgba(0,0,0,.55) 74%, transparent 100%); }   /* round, edge fades out softly */
+  @media (min-width: 1100px) {
+    .portrait { position: absolute; left: 50%; top: 50%; width: 320px; transform: translate(-50%, -50%); }
+  }
+  @media (max-width: 1099px) { .portrait { display: none !important; } }
+  .facts { flex: none; border-top: 1px solid var(--rule); }
+  .facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .facts .f { display: flex; align-items: center; gap: 14px; padding: 18px 22px; border-left: 1px solid var(--rule); }
+  .facts .f:first-child { border-left: 0; padding-left: 0; }
+  .facts .n { font: 300 38px/1 var(--serif); color: var(--accent); }
+  .facts .t { font-size: 14px; line-height: 1.35; color: var(--muted); }
+
+  /* question */
+  .split { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; }
+  .split p { margin: 0 0 16px; color: var(--body); }
+
+  /* research */
+  .rhead { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; margin-bottom: 52px; }
+  .rhead p { margin: 0; color: var(--muted); }
+  .cards { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; }
+  .card { position: relative; background: var(--panel); border: 1px solid var(--panel-line); border-radius: var(--radius); padding: 26px 28px 28px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .paper .card { border-top-color: var(--ink); }
+  .card.tall { grid-row: span 2; justify-content: space-between; }
+  .card.tall .art { flex: 1; display: flex; align-items: center; }
+  .card .num { position: absolute; top: 16px; right: 22px; font: italic 400 17px var(--serif); color: var(--accent); }
+  .card .art { margin: 8px 0 16px; }
+  .card .art svg { display: block; width: 100%; height: auto; }
+  .card h3 { font: 400 30px/1.12 var(--serif); letter-spacing: -.012em; margin: 8px 0 10px; }
+  .card.tall h3 { font-size: 40px; }
+  .card p { margin: 0 0 12px; color: var(--body); font-size: 17px; }
+  .card .kw { font: 400 12px/1.6 var(--mono); color: var(--muted); }
+  .art-base { stroke: var(--rule); }
+  .art-line { stroke: var(--accent); stroke-width: 1.3; }
+  .paper .art-line { stroke: var(--ink); stroke-width: 1; }
+  .art-lim { stroke: var(--accent); stroke-dasharray: 3 4; }
+  .art-lab { font: 400 10.5px var(--mono); fill: var(--muted); }
+  .art-spec { fill: none; stroke: var(--accent); stroke-width: .9; }
+  .paper .art-spec { stroke: var(--ink); stroke-width: .8; }
+  .art-disk { fill: none; stroke: var(--accent); stroke-width: 1; }
+  .art-star { fill: var(--bg); stroke: var(--ink); stroke-width: 1.1; }
+  .night .art-star { fill: var(--panel); }
+  .art-spot { fill: color-mix(in srgb, var(--ink) 18%, transparent); stroke: var(--muted); stroke-width: .8; }
+  .art-eq { fill: none; stroke: var(--muted); stroke-width: .8; stroke-dasharray: 2 3; }
+
+  .split > *, .rhead > *, .sw > *, .about > *, .cards > * { min-width: 0; }   /* let long code lines scroll instead of widening the page */
+  /* software */
+  .sw { display: grid; grid-template-columns: 1fr 1.05fr; gap: 72px; align-items: start; }
+  .sw > div > p { color: var(--body); margin: 22px 0 0; }
+  .caps { list-style: none; padding: 0; margin: 26px 0 0; border-top: 1px solid var(--rule); }
+  .caps li { display: grid; grid-template-columns: 44px 1fr; padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+  .caps li span { font: 400 12px/2 var(--mono); color: var(--accent); }
+  .sw .links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
+  pre.code { margin: 0; background: var(--code-bg); color: var(--code-ink); border-radius: var(--radius); padding: 26px 28px; font: 400 13.5px/1.75 var(--mono); overflow-x: auto; border: 1px solid var(--panel-line); }
+  .paper pre.code { border-color: var(--code-bg); }
+  pre.code .c { color: var(--code-c); } pre.code .k { color: var(--code-k); } pre.code .s { color: var(--code-s); }
+  .codenote { font: 400 11px var(--mono); color: var(--muted); margin-top: 10px; letter-spacing: .04em; }
+
+  /* publications */
+  .phead { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; }
+  .pubs { border-top: 1px solid var(--ink); }
+  .night .pubs { border-top-color: var(--rule); }
+  .pub { display: grid; grid-template-columns: 96px 1fr 250px 24px; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--rule); text-decoration: none; }
+  .pub:hover .ttl { color: var(--accent); }
+  .pub .d { font: 400 12px/2 var(--mono); color: var(--muted); }
+  .pub .ttl { font: 400 21px/1.32 var(--serif); }
+  .pub .res { font-style: italic; color: var(--muted); font-size: 16px; margin-top: 6px; }
+  .pub .who { font: 400 12px/1.7 var(--mono); color: var(--muted); }
+  .pub .who b { color: var(--accent); font-weight: 500; }
+  .pub .arr { font: 400 16px var(--mono); color: var(--muted); text-align: right; }
+
+  /* about */
+  .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; }
+  .about p { color: var(--body); margin: 0 0 16px; }
+  .timeline { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .timeline li { display: grid; grid-template-columns: 110px 1fr; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+  .timeline li span { font: 400 12px/2 var(--mono); color: var(--muted); }
+  footer { border-top: 1px solid var(--rule); padding: 36px 0 48px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font: 400 12px var(--mono); color: var(--muted); letter-spacing: .04em; }
+
+  @media (max-width: 960px) {
+    body { font-size: 17px; }
+    .wrap, .figure-wrap { padding: 0 16px; }
+    .nav nav a:not(.pill) { display: none; }
+    .readout { display: none; }
+    .hero { min-height: 0; }
+    .hero .top { padding-top: 40px; }
+    .hero h1 br.wide { display: none; }
+    .hero p.sub { font-size: 18px; }
+    .scope-fig figcaption { flex-direction: column; gap: 6px; }
+    .facts .wrap { grid-template-columns: 1fr 1fr; }
+    .facts .f { padding: 16px 12px; border-top: 1px solid var(--rule); }
+    .facts .f:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .facts .f:nth-child(-n+2) { border-top: 0; }
+    section { padding: 76px 0; }
+    .split, .rhead, .sw, .about { grid-template-columns: 1fr; gap: 26px; }
+    .cards { grid-template-columns: 1fr; }
+    .card.tall { grid-row: auto; }
+    .card.tall h3 { font-size: 32px; }
+    .pub { grid-template-columns: 1fr; gap: 4px; }
+    .pub .arr { display: none; }
+    .phead { flex-direction: column; align-items: start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#">Mingjie Jian<span lang="zh">简明杰</span></a>
+    <nav aria-label="Main"><a href="#research">Research</a><a href="#software">Software</a><a href="#publications">Publications</a><a href="#">CV</a><a href="#">Notes</a><button class="themebtn" type="button" onclick="cycleTheme()" aria-label="Colour theme: cycle auto, light, dark"></button><a class="pill" href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="wrap top">
+    <div class="intro">
+      <h1>Between physics<br class="wide"> <em>and the sky.</em></h1>
+      <p class="sub">I’m <b>Mingjie Jian</b>, an astrophysicist reading stellar spectra. I study what they reveal, from individual stars to the Milky Way, and how far we can trust the physics used to interpret them.</p>
+      <p class="where">Research Associate · Institute of Astronomy, University of Cambridge</p>
+    </div>
+    <div class="panel-slot">
+      <figure class="portrait"><img class="pt-round" src="portrait_round.jpg" alt="Mingjie Jian" width="640" height="640"><canvas class="pt-art" aria-hidden="true"></canvas></figure>
+      <aside class="work-panel" aria-live="polite" aria-hidden="true">
+      <div class="wp-head"><span class="wp-title"></span><button class="wp-close" type="button" aria-label="Close">×</button></div>
+      <div class="wp-body"></div>
+    </aside></div>
+  </div>
+  <template id="work-pysme">
+    <figure class="wp-fig fit-anim">
+      <!--SVG:FA-->
+      <script type="application/json" class="fa-steps"><!--SVG:FAsteps--></script>
+      <div class="fa-read" aria-live="off">
+        <span class="fa-it">iter <b data-k="it">1</b></span>
+        <span>T<sub>eff</sub> <b data-k="teff">5250</b> K</span>
+        <span>log g <b data-k="logg">4.00</b></span>
+        <span>[M/H] <b data-k="monh">−0.40</b></span>
+        <span>χ²<sub>ν</sub> <b data-k="chi2">44.55</b></span>
+      </div>
+    </figure>
+    <p class="wp-cap">Spectral synthesis and parameter fitting</p>
+    <div class="wp-foot"><a class="wp-link" href="https://arxiv.org/abs/2605.04007">PySME v1.0 · Jian et al. 2026 ↗</a><button class="fa-replay" type="button">↻ replay</button></div>
+  </template>
+  <template id="work-dissolution">
+    <figure class="wp-fig hl-anim"><!--SVG:HL--></figure>
+    <div class="wp-foot"><span class="wp-status">Ongoing work</span><button class="fa-replay" type="button">↻ replay</button></div>
+  </template>
+  <template id="work-phosphorus">
+    <figure class="wp-fig seq-anim"><!--SVG:PH1--><!--SVG:PH2--></figure>
+    <div class="wp-foot"><a class="wp-link" href="https://arxiv.org/abs/2510.14791">Jian et al. 2025 ↗</a><button class="fa-replay" type="button">↻ replay</button></div>
+  </template>
+  <template id="work-helium">
+    <figure class="wp-fig seq-anim"><!--SVG:HE--></figure>
+    <div class="wp-foot"><a class="wp-link" href="https://arxiv.org/abs/2404.09975">Jian et al. 2024 ↗</a><button class="fa-replay" type="button">↻ replay</button></div>
+  </template>
+  <template id="work-pending">
+    <p class="wp-cap"><em>Figure in preparation.</em></p>
+  </template>
+  <figure class="scope-fig">
+    <div class="scope">
+      <div class="track">
+        <div class="hs-layer"><!--SVG:Whs--></div>
+        <!--SVG:W-->
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="alt">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">The question</div>
+      <h2 class="big">How well do we really understand <em>the light from stars?</em></h2>
+    </div>
+    <div>
+      <p>Every stellar abundance is an inference through a model: an atmosphere, a line list, a treatment of line formation. When a survey observes four million stars, any weakness in that chain is repeated four million times.</p>
+      <p>My work goes after the chain itself — testing its physics against high‑quality spectra, building the software that carries it, and using it to study stars directly.</p>
+      <a class="textlink" href="#research">How the pieces connect ↘</a>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="rhead">
+      <div><div class="kicker">Research</div><h2 class="big">From atoms <em>to surveys.</em></h2></div>
+      <p>Three connected layers of the same problem: the physics that shapes a spectrum, the tools that model it at scale, and the stars it lets us read.</p>
+    </div>
+    <div class="cards">
+      <article class="card tall">
+        <span class="num">I</span>
+        <div class="art"><!--SVG:D_balmer--></div>
+        <div><div class="kicker">Line‑formation physics</div>
+        <h3>The physics of the spectrum</h3>
+        <p>Are our atomic and atmospheric models good enough for the spectra we now observe? High‑order Balmer lines test how hydrogen’s Rydberg levels dissolve in a stellar plasma — a direct check on the Hummer–Mihalas occupation‑probability formalism.</p>
+        <div class="kw">balmer series · occupation probability · NLTE · broadening</div></div>
+      </article>
+      <article class="card">
+        <span class="num">II</span>
+        <div class="art"><!--SVG:D_stack--></div>
+        <div class="kicker">Software &amp; surveys</div>
+        <h3>Spectroscopy at scale</h3>
+        <p>Turning millions of spectra into parameters and abundances we can trust.</p>
+        <div class="kw">pysme · 4most · validation · benchmarks</div>
+      </article>
+      <article class="card">
+        <span class="num">III</span>
+        <div class="art"><!--SVG:D_star--></div>
+        <div class="kicker">Stellar astrophysics</div>
+        <h3>Stars as laboratories</h3>
+        <p>Activity, accretion, rotation and circumstellar disks, read from line profiles.</p>
+        <div class="kw">young stars · Li &amp; Be · spots · Be‑star disks</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="software">
+  <div class="wrap sw">
+    <div>
+      <div class="kicker">Software</div>
+      <h2 class="big"><em>PySME</em> — Spectroscopy Made Easy, in Python.</h2>
+      <p>A spectrum‑synthesis and fitting code for stellar parameters and abundances, built on the SME radiative‑transfer core. I lead its current development, with a focus on survey‑scale performance and on physics that can be validated.</p>
+      <ul class="caps">
+        <li><span>01</span>Line‑list preselection and dynamic line lists for very large line data</li>
+        <li><span>02</span>NLTE departure coefficients, implementation and validation</li>
+        <li><span>03</span>Line broadening, instrumental and rotational convolution</li>
+        <li><span>04</span>Parallel synthesis for survey pipelines</li>
+      </ul>
+      <div class="links"><a class="textlink" href="#">Documentation ↗</a><a class="textlink" href="#">GitHub ↗</a><a class="textlink" href="#">Paper ↗</a></div>
+    </div>
+    <div>
+      <pre class="code"><span class="c"># synthesise a solar spectrum around Hα</span>
+<span class="k">from</span> pysme.sme <span class="k">import</span> SME_Structure
+<span class="k">from</span> pysme.linelist.vald <span class="k">import</span> ValdFile
+<span class="k">from</span> pysme.synthesize <span class="k">import</span> synthesize_spectrum
+
+sme = SME_Structure()
+sme.teff, sme.logg, sme.monh = <span class="s">5772</span>, <span class="s">4.44</span>, <span class="s">0.0</span>
+sme.vmic, sme.vmac, sme.vsini = <span class="s">1.0</span>, <span class="s">3.6</span>, <span class="s">1.6</span>
+sme.linelist = ValdFile(<span class="s">"sun_6500-6620.lin"</span>)
+sme.wave = np.arange(<span class="s">6540</span>, <span class="s">6590</span>, <span class="s">0.01</span>)
+
+sme = synthesize_spectrum(sme)</pre>
+      <div class="codenote">ILLUSTRATIVE — CHECK AGAINST THE CURRENT PYSME API BEFORE PUBLISHING</div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="phead">
+      <div><div class="kicker">Publications</div><h2 class="big">Selected recent work</h2></div>
+      <a class="btn ghost" href="#">Full record on ADS ↗</a>
+    </div>
+    <div class="pubs">
+      <a class="pub" href="https://arxiv.org/abs/2605.04007"><span class="d">2026.05</span><div><div class="ttl">PySME v1.0: improved modelling of stellar spectra for survey‑scale applications</div><div class="res">A revised line‑selection framework and dynamic line lists let SME‑based synthesis scale to survey workloads while preserving accuracy.</div></div><span class="who"><b>Jian, M.</b>, Piskunov, N., Valenti, J., et al.<br>arXiv:2605.04007</span><span class="arr">↗</span></a>
+      <a class="pub" href="https://arxiv.org/abs/2604.14642"><span class="d">2026.04</span><div><div class="ttl">Revisiting Ca II activity indices in FGK stars: systematic biases in infrared‑triplet measurements</div><div class="res">Systematically negative IRT activity indices point to photospheric templates that underestimate the depth of the line cores.</div></div><span class="who">Yang, X., Fu, X., <b>Jian, M.</b>, et al.<br>arXiv:2604.14642</span><span class="arr">↗</span></a>
+      <a class="pub" href="https://arxiv.org/abs/2512.15888"><span class="d">2025.12</span><div><div class="ttl">Combining NLTE and machine learning for chemical diagnostics of 4 million stars in the 4MIDABLE‑HR survey</div><div class="res">An NLTE neural‑network emulator for the pipeline that will analyse the 4MOST high‑resolution disc and bulge survey.</div></div><span class="who">Storm, N., Bergemann, M., et al. incl. <b>Jian, M.</b><br>arXiv:2512.15888</span><span class="arr">↗</span></a>
+      <a class="pub" href="https://arxiv.org/abs/2507.06357"><span class="d">2025.07</span><div><div class="ttl">Differentiable stellar atmospheres with physics‑informed neural networks</div><div class="res">A neural emulator of 1D LTE model atmospheres that enforces hydrostatic equilibrium, towards fully differentiable stellar spectroscopy.</div></div><span class="who">Li, J., <b>Jian, M.</b>, Ting, Y.‑S., Green, G. M.<br>arXiv:2507.06357</span><span class="arr">↗</span></a>
+      <a class="pub" href="https://arxiv.org/abs/2404.09975"><span class="d">2024.04</span><div><div class="ttl">The He I 10830 Å line in giants of the open cluster Stock 2</div><div class="res">Characterises the helium feature in nine cluster giants after recalibrating the weak blends that contaminate it.</div></div><span class="who"><b>Jian, M.</b>, Fu, X., Matsunaga, N., et al.<br>A&amp;A 687, A189</span><span class="arr">↗</span></a>
+      <a class="pub" href="https://arxiv.org/abs/2311.08395"><span class="d">2023.11</span><div><div class="ttl">Exploring Be phenomena in OBA stars: a mid‑infrared search</div><div class="res">A systematic search for disk‑building events in Milky Way OBA stars using WISE time‑domain photometry.</div></div><span class="who"><b>Jian, M.</b>, Matsunaga, N., Jiang, B., et al.<br>arXiv:2311.08395</span><span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="contact">
+  <div class="wrap about">
+    <div>
+      <div class="kicker">About</div>
+      <h2 class="big" style="margin-bottom:26px">Short bio</h2>
+      <p>I am a Research Associate at the Institute of Astronomy, University of Cambridge. Before Cambridge I spent three years as a postdoctoral researcher at Stockholm University. I received my PhD from the University of Tokyo in 2022 and my BSc from Beijing Normal University in 2016.</p>
+      <p><a class="textlink" href="#">Full CV ↗</a></p>
+    </div>
+    <div>
+      <ul class="timeline">
+        <li><span>2025–</span>Research Associate, IoA, University of Cambridge</li>
+        <li><span>2022–2025</span>Postdoctoral researcher, Stockholm University</li>
+        <li><span>2022</span>PhD, University of Tokyo</li>
+        <li><span>2016</span>BSc, Beijing Normal University</li>
+        <li><span>Contact</span><div><a href="#">email</a> · <a href="#">ORCID</a> · <a href="#">ADS</a> · <a href="#">GitHub</a></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Mingjie Jian · Institute of Astronomy, Madingley Road, Cambridge</span><span>Hero spectrum: synthetic placeholder</span></div>
+</footer>
+
+<script>
+  /* hero spectrum: pointer x maps to wavelength; the track moves the opposite way */
+  (function () {
+    var scope = document.querySelector(".scope"), track = scope.querySelector(".track");
+    var outs = document.querySelectorAll("[data-range]");
+    var L0 = Math.log(3560), L1 = Math.log(6562.8 * 6562.8 / 3560);   /* Hα at the centre */
+    var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var target = 0.5, cur = 0.5, raf = 0;          /* start on Hα */
+    function span() { return Math.max(0, track.offsetWidth - scope.clientWidth); }
+    function fmt(l) { return l < 10000 ? Math.round(l / 10) * 10 + " Å" : (l / 1e4).toFixed(2) + " μm"; }
+    function show(x) {
+      var a = x / track.offsetWidth, b = (x + scope.clientWidth) / track.offsetWidth;
+      var txt = "λλ " + fmt(Math.exp(L0 + a * (L1 - L0))) + " – " + fmt(Math.exp(L0 + b * (L1 - L0)));
+      outs.forEach(function (o) { o.textContent = txt; });
+    }
+    function render() { var x = cur * span(); track.style.transform = "translateX(" + (-x) + "px)"; show(x); }
+    function tick() {
+      cur += (target - cur) * 0.12;
+      if (Math.abs(target - cur) < 1e-4) cur = target;
+      render();
+      raf = cur === target ? 0 : requestAnimationFrame(tick);
+    }
+    function go(t) {
+      target = Math.min(1, Math.max(0, t));
+      if (reduce) { cur = target; render(); } else if (!raf) raf = requestAnimationFrame(tick);
+    }
+    if (fine) {
+      scope.addEventListener("pointermove", function (e) {
+        var r = scope.getBoundingClientRect();
+        go(((e.clientX - r.left) / r.width - 0.08) / 0.84);
+      });
+      scope.querySelectorAll(".hs").forEach(function (h) {
+        h.addEventListener("focus", function () {
+          if (!h.matches(":focus-visible")) return;            /* keyboard only; a mouse click must not move the strip */
+          var c = h.offsetLeft + h.offsetWidth / 2;
+          go((c - scope.clientWidth / 2) / span());
+        });
+      });
+      addEventListener("resize", render);
+      render();
+    } else {
+      scope.scrollLeft = target * span();
+      var onScroll = function () { show(scope.scrollLeft); };
+      scope.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+    /* clicking a band opens its figure in the panel; same band, × or Esc closes */
+    var panel = document.querySelector(".work-panel"), pbody = panel.querySelector(".wp-body"), ptitle = panel.querySelector(".wp-title");
+    var bands = scope.querySelectorAll(".hs"), openKey = null;
+    function closePanel() {
+      panel.classList.remove("open"); panel.setAttribute("aria-hidden", "true"); openKey = null;
+      panel.parentNode.classList.remove("is-open");
+      document.dispatchEvent(new Event("workpanel:close"));
+      bands.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+    }
+    function openPanel(btn) {
+      var key = btn.dataset.work, tpl = document.getElementById("work-" + key) || document.getElementById("work-pending");
+      pbody.replaceChildren(tpl.content.cloneNode(true));
+      ptitle.textContent = btn.textContent;
+      bands.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+      panel.classList.add("open"); panel.setAttribute("aria-hidden", "false"); openKey = key;
+      panel.parentNode.classList.add("is-open");
+      document.dispatchEvent(new Event("workpanel:open"));
+      var anim = pbody.querySelector(".fit-anim");
+      if (anim) playFit(anim);
+      var hl = pbody.querySelector(".hl-anim");
+      if (hl) playLevels(hl);
+      var sq = pbody.querySelector(".seq-anim");
+      if (sq) playSeq(sq);
+    }
+    bands.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () { openKey === b.dataset.work ? closePanel() : openPanel(b); });
+    });
+    panel.querySelector(".wp-close").addEventListener("click", closePanel);
+
+    /* PySME fit animation: draw each iteration left→right; earlier ones fade back */
+    var fitRun = 0;
+    function playFit(root) {
+      var run = ++fitRun;
+      var steps = JSON.parse(root.querySelector(".fa-steps").textContent);
+      var models = root.querySelectorAll(".fa-model");
+      var out = {}; root.querySelectorAll(".fa-read b").forEach(function (b) { out[b.dataset.k] = b; });
+      function fmt(k, v) { return k === "monh" ? (v < 0 ? "−" : "+") + Math.abs(v).toFixed(2) : k === "logg" ? v.toFixed(2) : k === "chi2" ? v.toFixed(2) : String(v); }
+      function read(st) { Object.keys(out).forEach(function (k) { out[k].textContent = fmt(k, st[k]); }); }
+      models.forEach(function (m) { m.getAnimations().forEach(function (a) { a.cancel(); }); m.style.opacity = 1; m.style.strokeDashoffset = 1; });
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) {
+        models.forEach(function (m, k) { m.style.strokeDashoffset = 0; m.style.opacity = k === models.length - 1 ? 1 : .22; });
+        read(steps[steps.length - 1]); return;
+      }
+      var DRAW = 1300, GAP = 350;
+      models.forEach(function (m, k) {
+        setTimeout(function () {
+          if (run !== fitRun) return;
+          read(steps[k]);
+          if (k > 0) models[k - 1].animate([{ opacity: 1 }, { opacity: .22 }], { duration: 400, fill: "forwards" });
+          m.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: DRAW, easing: "ease-in-out", fill: "forwards" });
+        }, 250 + k * (DRAW + GAP));
+      });
+    }
+    /* High-n H lines: levels start sharp, then the high ones broaden and fade (dissolve) */
+    var lvRun = 0;
+    function playLevels(root) {
+      var run = ++lvRun;
+      var parts = root.querySelectorAll(".hl-lev, .hl-fuzz, .hl-tr");
+      parts.forEach(function (p) { p.getAnimations().forEach(function (a) { a.cancel(); }); });
+      function end(p) { return { opacity: p.dataset.o }; }
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        parts.forEach(function (p) { var e = end(p); Object.keys(e).forEach(function (k) { p.style[k] = e[k]; }); });
+        return;
+      }
+      parts.forEach(function (p) { p.style.opacity = ""; });
+      setTimeout(function () {
+        if (run !== lvRun) return;
+        parts.forEach(function (p) {
+          var from = { opacity: p.classList.contains("hl-fuzz") ? 0 : 1 };   /* sharp line fades out, blurred band fades in */
+          p.animate([from, end(p)], { duration: 1800, easing: "ease-in-out", fill: "forwards" });
+        });
+      }, 600);
+    }
+    /* generic reveal: every [data-t] element fades in at its delay; .ph-draw lines also draw themselves */
+    var sqRun = 0;
+    function playSeq(root) {
+      var run = ++sqRun, els = root.querySelectorAll("[data-t]");
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      els.forEach(function (el) {
+        el.getAnimations().forEach(function (a) { a.cancel(); });
+        el.style.opacity = reduce ? "" : 0;
+        if (el.classList.contains("ph-draw")) el.style.strokeDashoffset = reduce ? 0 : 1;
+      });
+      if (reduce) return;
+      els.forEach(function (el) {
+        setTimeout(function () {
+          if (run !== sqRun) return;
+          el.style.opacity = "";
+          var o = getComputedStyle(el).opacity;
+          el.animate([{ opacity: 0 }, { opacity: o }], { duration: 350, easing: "ease-out" });
+          if (el.classList.contains("ph-draw")) el.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 700, easing: "ease-in-out", fill: "forwards" });
+        }, +el.dataset.t);
+      });
+    }
+    pbody.addEventListener("click", function (e) {
+      if (!e.target.closest(".fa-replay")) return;
+      var fa = pbody.querySelector(".fit-anim"), hl = pbody.querySelector(".hl-anim"), sq = pbody.querySelector(".seq-anim");
+      if (fa) playFit(fa); if (hl) playLevels(hl); if (sq) playSeq(sq);
+    });
+    addEventListener("keydown", function (e) { if (e.key === "Escape" && openKey) closePanel(); });
+  })();
+</script>
+
+
+<script>
+  /* portrait renderers drawn from the photo itself: objective-prism plate (?p=prism, default) or isophotes (?p=iso).
+     Hover removes the "prism" / contours and reveals the photo. */
+  (function () {
+    var fig = document.querySelector(".portrait"); if (!fig) return;
+    var img = fig.querySelector(".pt-round"), cv = fig.querySelector(".pt-art"), ctx = cv.getContext("2d");
+    var mode = "prism";
+    var S = 320, dpr = Math.min(window.devicePixelRatio || 1, 2), root = document.documentElement;
+    cv.width = S * dpr; cv.height = S * dpr; ctx.scale(dpr, dpr);
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var N = 160, lum = null, msk = null, pts = null, segs = null, collapse = 0, raf = 0;
+    var appear = 0, appearRaf = 0, appearTimer = 0, ready = false;   /* appear: 0 = nothing, 1 = full plate */
+    var SIL = [[134.7,65.4],[161.3,62.2],[186.7,69.2],[212.1,83.8],[231.2,101.0],[245.8,122.5],[254.7,146.7],[256.6,169.5],[242.6,186.0],[246.4,206.3],[240.7,223.5],[227.4,231.7],[223.6,248.9],[218.5,269.8],[215.9,283.8],[242.6,291.4],[271.2,304.1],[283.9,323.2],[302.9,348.6],[331.5,385.4],[345.5,405.1],[-62.2,405.1],[-49.5,361.3],[-29.1,335.9],[9.0,324.4],[52.1,309.2],[55.9,285.1],[69.9,277.5],[87.7,259.7],[91.5,248.9],[78.8,234.3],[72.4,216.5],[68.0,198.7],[66.1,179.7],[67.4,161.9],[58.5,126.3],[72.4,112.4],[87.7,101.0],[100.4,89.5],[114.3,76.8]];   /* figure outline, css px */
+
+    function M(x, y) { var i = Math.min(N - 1, Math.max(0, x / S * N | 0)), j = Math.min(N - 1, Math.max(0, y / S * N | 0)); return msk ? msk[j * N + i] : 1; }
+    function fade(x, y) {                         /* same radial fade as the photo mask */
+      var r = Math.hypot(x - S / 2, y - S / 2) / (S / 2);
+      if (r < 0.48) return 1; if (r < 0.74) return 1 - 0.45 * (r - 0.48) / 0.26; return Math.max(0, 0.55 * (1 - r) / 0.26);
+    }
+    function L(x, y) {                            /* bilinear luminance on the N x N grid, x,y in css px */
+      var gx = Math.min(N - 1.001, Math.max(0, x / S * N - 0.5)), gy = Math.min(N - 1.001, Math.max(0, y / S * N - 0.5));
+      var i = gx | 0, j = gy | 0, fx = gx - i, fy = gy - j, a = lum[j * N + i], b = lum[j * N + i + 1], c = lum[(j + 1) * N + i], d = lum[(j + 1) * N + i + 1];
+      return (a * (1 - fx) + b * fx) * (1 - fy) + (c * (1 - fx) + d * fx) * fy;
+    }
+    function colour() { return getComputedStyle(root).getPropertyValue("--accent").trim(); }   /* oxblood on paper, amber at night */
+
+    function prepare() {
+      var off = document.createElement("canvas"); off.width = N; off.height = N;
+      var o = off.getContext("2d"); o.drawImage(img, 0, 0, N, N);
+      var d = o.getImageData(0, 0, N, N).data; lum = new Float32Array(N * N);
+      for (var k = 0; k < N * N; k++) lum[k] = (0.299 * d[4 * k] + 0.587 * d[4 * k + 1] + 0.114 * d[4 * k + 2]) / 255;
+      /* silhouette mask (feathered) and a tone stretch measured inside the figure only */
+      var mc = document.createElement("canvas"); mc.width = N; mc.height = N; var mx = mc.getContext("2d");
+      mx.filter = "blur(1.2px)"; mx.beginPath(); SIL.forEach(function (p, i) { (i ? mx.lineTo : mx.moveTo).call(mx, p[0] / S * N, p[1] / S * N); }); mx.closePath(); mx.fill();
+      var md = mx.getImageData(0, 0, N, N).data; msk = new Float32Array(N * N);
+      for (var k3 = 0; k3 < N * N; k3++) msk[k3] = md[4 * k3 + 3] / 255;
+      var vals = []; for (var k4 = 0; k4 < N * N; k4++) if (msk[k4] > 0.6) vals.push(lum[k4]);
+      vals.sort(function (a, b) { return a - b; });
+      var lo = vals[Math.floor(vals.length * 0.03)], hi = vals[Math.floor(vals.length * 0.97)];
+      for (var k5 = 0; k5 < N * N; k5++) lum[k5] = Math.min(1, Math.max(0, (lum[k5] - lo) / (hi - lo)));
+      if (mode === "prism") {
+        pts = []; var seed = 7; function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+        for (var y = 2; y < S; y += 3.2) for (var x = 2 + rnd() * 9; x < S; x += 9 + rnd() * 3)
+          { var w = fade(x, y) * M(x, y); if (w > 0.02) pts.push([x, y + (rnd() - 0.5) * 0.6, L(x, y), w, rnd()]); }
+      } else {
+        var bl = lum.slice();                    /* smooth: 3 box-blur passes */
+        for (var pass = 0; pass < 1; pass++) {
+          var t = new Float32Array(N * N);
+          for (var j = 0; j < N; j++) for (var i = 0; i < N; i++) { var s2 = 0, n = 0;
+            for (var dj = -1; dj <= 1; dj++) for (var di = -1; di <= 1; di++) { var ii = i + di, jj = j + dj; if (ii >= 0 && jj >= 0 && ii < N && jj < N) { s2 += bl[jj * N + ii]; n++; } }
+            t[j * N + i] = s2 / n; }
+          bl = t;
+        }
+        var inside = []; for (var k2 = 0; k2 < N * N; k2++) { if (msk[k2] > 0.6) inside.push(bl[k2]); }
+        inside.sort(function (a, b) { return a - b; });
+        segs = [];
+        for (var q2 = 0; q2 < SIL.length; q2++) {   /* the silhouette is the outermost contour */
+          var a2 = SIL[q2], b2 = SIL[(q2 + 1) % SIL.length], wq = fade((a2[0] + b2[0]) / 2, (a2[1] + b2[1]) / 2);
+          if (wq > 0.03) segs.push([a2[0], a2[1], b2[0], b2[1], wq, true]);
+        }
+        for (var lv = 1; lv <= 10; lv++) {
+          var thr = inside[Math.floor(inside.length * lv / 11)], index = lv % 3 === 0;
+          for (var j2 = 0; j2 < N - 1; j2++) for (var i2 = 0; i2 < N - 1; i2++) {   /* marching squares */
+            var v0 = bl[j2 * N + i2], v1 = bl[j2 * N + i2 + 1], v2 = bl[(j2 + 1) * N + i2 + 1], v3 = bl[(j2 + 1) * N + i2];
+            var c = (v0 > thr ? 8 : 0) | (v1 > thr ? 4 : 0) | (v2 > thr ? 2 : 0) | (v3 > thr ? 1 : 0);
+            if (c === 0 || c === 15) continue;
+            var cs = S / N, x0 = (i2 + 0.5) * cs, y0 = (j2 + 0.5) * cs;
+            var e = [[x0 + cs * (thr - v0) / (v1 - v0), y0], [x0 + cs, y0 + cs * (thr - v1) / (v2 - v1)],
+                     [x0 + cs * (thr - v3) / (v2 - v3), y0 + cs], [x0, y0 + cs * (thr - v0) / (v3 - v0)]];
+            var tab = { 1: [[3, 2]], 2: [[2, 1]], 3: [[3, 1]], 4: [[0, 1]], 5: [[3, 0], [2, 1]], 6: [[0, 2]], 7: [[3, 0]],
+                        8: [[3, 0]], 9: [[0, 2]], 10: [[0, 1], [3, 2]], 11: [[0, 1]], 12: [[3, 1]], 13: [[2, 1]], 14: [[3, 2]] }[c];
+            tab.forEach(function (pr) { var a = e[pr[0]], b = e[pr[1]], w2 = fade((a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
+              w2 *= M((a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
+              if (w2 > 0.03) segs.push([a[0], a[1], b[0], b[1], w2, index]); });
+          }
+        }
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, S, S);
+      var night = root.classList.contains("night"); ctx.fillStyle = ctx.strokeStyle = colour();
+      if (mode === "prism") {
+        function sm(t) { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); }
+        for (var k = 0; k < pts.length; k++) {
+          var p = pts[k], v = night ? p[2] : 1 - p[2], a = (0.08 + 0.92 * Math.pow(v, 1.6)) * p[3];
+          if (a < 0.03) continue;
+          var lit = sm((appear / 0.45 * 1.6 - p[4]) / 0.6);              /* 1. stars light up in random order */
+          if (lit <= 0) continue;
+          var disp = sm((appear - 0.45 - p[4] * 0.12) / 0.43);            /* 2. the prism goes in: points spread into spectra */
+          var len = 1.4 + 12 * disp * (1 - collapse);
+          ctx.globalAlpha = Math.min(1, a * 1.25) * lit;
+          var x0 = p[0] - len / 2, h = 1.25;
+          if (len > 7) {                         /* two absorption gaps, like Hβ and Hα */
+            ctx.fillRect(x0, p[1], len * 0.36, h); ctx.fillRect(x0 + len * 0.42, p[1], len * 0.30, h); ctx.fillRect(x0 + len * 0.78, p[1], len * 0.22, h);
+          } else ctx.fillRect(x0, p[1], len, h);
+        }
+      } else {
+        for (var q = 0; q < segs.length; q++) {
+          var sg = segs[q]; ctx.globalAlpha = sg[4] * (1 - collapse); ctx.lineWidth = sg[5] ? 1.1 : 0.6;
+          ctx.beginPath(); ctx.moveTo(sg[0], sg[1]); ctx.lineTo(sg[2], sg[3]); ctx.stroke();
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+    function animateTo(target) {
+      if (reduce) { collapse = target; draw(); return; }
+      cancelAnimationFrame(raf); var c0 = collapse, t0 = performance.now();
+      (function step(now) { var t = Math.min(1, (now - t0) / 550), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        collapse = c0 + (target - c0) * e; draw(); if (t < 1) raf = requestAnimationFrame(step); })(t0);
+    }
+    function playAppear() {
+      cancelAnimationFrame(appearRaf); ready = false;
+      if (reduce) { appear = 1; ready = true; draw(); return; }
+      var t0 = performance.now();
+      (function step(now) { appear = Math.min(1, (now - t0) / 2400); draw();
+        if (appear < 1) appearRaf = requestAnimationFrame(step); else ready = true; })(t0);
+    }
+    function hidePortrait() {                     /* a work panel opened: clear and cancel any pending reveal */
+      clearTimeout(appearTimer); cancelAnimationFrame(appearRaf); appear = 0; ready = false; collapse = 0;
+      fig.classList.remove("revealed"); if (lum) draw();
+    }
+    function showLater() {                        /* page load or panel closed: reveal after 3 s */
+      clearTimeout(appearTimer); appear = 0; ready = false; if (lum) draw();
+      appearTimer = setTimeout(function () { if (lum) playAppear(); else pending = true; }, 3000);
+    }
+    var pending = false;
+    function start() { prepare(); draw(); if (pending) { pending = false; playAppear(); } }
+    if (img.complete && img.naturalWidth) start(); else img.addEventListener("load", start);
+    showLater();
+    document.addEventListener("workpanel:open", hidePortrait);
+    document.addEventListener("workpanel:close", showLater);
+    fig.addEventListener("mouseenter", function () { if (!ready) return; animateTo(1); fig.classList.add("revealed"); });
+    fig.addEventListener("mouseleave", function () { if (!fig.classList.contains("revealed")) return; fig.classList.remove("revealed"); animateTo(0); });
+    new MutationObserver(function () { if (lum) draw(); }).observe(root, { attributes: true, attributeFilter: ["class"] });
+  })();
+</script>
+</body>
+</html>

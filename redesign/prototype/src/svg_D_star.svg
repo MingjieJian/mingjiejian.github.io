@@ -1,0 +1,11 @@
+<svg viewBox="0 0 420 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<ellipse cx="210" cy="105" rx="180" ry="26" class="art-disk"/>
+<ellipse cx="210" cy="105" rx="130" ry="18" class="art-disk" opacity=".6"/>
+<circle cx="210" cy="105" r="52" class="art-star"/>
+<circle cx="192" cy="85" r="7" class="art-spot"/>
+<circle cx="224" cy="113" r="5" class="art-spot"/>
+<circle cx="206" cy="131" r="4" class="art-spot"/>
+<path d="M158,105 A52,14 0 0 0 262,105" class="art-eq"/>
+<line x1="210" y1="27" x2="210" y2="47" class="art-eq"/>
+<path d="M198,35 q12,-8 24,0" class="art-eq"/>
+</svg>

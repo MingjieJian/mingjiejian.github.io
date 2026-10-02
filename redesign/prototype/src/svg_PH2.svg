@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1360 356" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic: in a low-metallicity cloud, massive stars produce much iron and phosphorus and AGB stars a little phosphorus; in a later, metal-rich cloud, massive stars produce less and AGB stars more phosphorus, so the clusters we observe are slightly enriched in phosphorus">
+<g class="ph-cloud-lo" data-t="1700"><ellipse cx="228" cy="172" rx="188" ry="132"/><circle cx="402" cy="196" r="68"/><circle cx="376" cy="240" r="62"/><circle cx="326" cy="274" r="51"/><circle cx="262" cy="292" r="49"/><circle cx="193" cy="292" r="58"/><circle cx="129" cy="273" r="67"/><circle cx="80" cy="239" r="65"/><circle cx="53" cy="195" r="54"/><circle cx="54" cy="148" r="48"/><circle cx="80" cy="104" r="54"/><circle cx="130" cy="70" r="65"/><circle cx="194" cy="52" r="67"/><circle cx="263" cy="52" r="58"/><circle cx="327" cy="71" r="49"/><circle cx="376" cy="105" r="51"/><circle cx="403" cy="149" r="62"/></g>
+<text x="70" y="128" class="ph-sm" text-anchor="start" data-t="1850" transform="rotate(-27 70 128)">Massive stars</text>
+<polygon points="205.0,56.0 211.2,93.8 249.0,100.0 211.2,106.2 205.0,144.0 198.8,106.2 161.0,100.0 198.8,93.8" class="ph-star" data-t="1850"/>
+<polygon points="115.0,116.0 121.2,153.8 159.0,160.0 121.2,166.2 115.0,204.0 108.8,166.2 71.0,160.0 108.8,153.8" class="ph-star" data-t="1850"/>
+<g class="ph-ar" data-t="2050"><line x1="262" y1="103" x2="326.0" y2="120.0"/><path d="M310.5,123.8 L326.0,120.0 L314.4,109.0"/></g>
+<text x="338" y="108" class="ph-yl" text-anchor="start" data-t="2050">Fe↑↑,</text>
+<text x="346" y="142" class="ph-yl" text-anchor="start" data-t="2050">P↑↑</text>
+<g class="ph-ar" data-t="2200"><line x1="370" y1="160" x2="376.0" y2="222.0"/><path d="M367.0,208.8 L376.0,222.0 L382.3,207.3"/></g>
+<polygon points="210.0,175.0 214.2,200.8 240.0,205.0 214.2,209.2 210.0,235.0 205.8,209.2 180.0,205.0 205.8,200.8" class="ph-star" data-t="1900"/>
+<polygon points="160.0,215.0 164.2,240.8 190.0,245.0 164.2,249.2 160.0,275.0 155.8,249.2 130.0,245.0 155.8,240.8" class="ph-star" data-t="1900"/>
+<g class="ph-ar" data-t="2150"><line x1="244" y1="205" x2="287.0" y2="186.0"/><path d="M277.3,198.7 L287.0,186.0 L271.1,184.7"/></g>
+<text x="296" y="190" class="ph-yl" text-anchor="start" data-t="2150">P↑</text>
+<g class="ph-ar" data-t="2250"><line x1="314" y1="208" x2="330.0" y2="246.0"/><path d="M317.5,236.0 L330.0,246.0 L331.6,230.1"/></g>
+<text x="150" y="306" class="ph-sm" text-anchor="start" data-t="1900" transform="rotate(-27 150 306)">AGB stars</text>
+<g class="ph-flow" data-t="2450"><line x1="458" y1="172" x2="592.0" y2="172.0"/><path d="M576.2,180.6 L592.0,172.0 L576.2,163.4"/></g>
+<g class="ph-cloud-hi" data-t="2650"><ellipse cx="820" cy="172" rx="185" ry="132"/><circle cx="992" cy="196" r="68"/><circle cx="965" cy="240" r="62"/><circle cx="917" cy="274" r="51"/><circle cx="854" cy="292" r="49"/><circle cx="785" cy="292" r="58"/><circle cx="722" cy="273" r="67"/><circle cx="674" cy="239" r="65"/><circle cx="648" cy="195" r="54"/><circle cx="648" cy="148" r="48"/><circle cx="675" cy="104" r="54"/><circle cx="723" cy="70" r="65"/><circle cx="786" cy="52" r="67"/><circle cx="855" cy="52" r="58"/><circle cx="918" cy="71" r="49"/><circle cx="966" cy="105" r="51"/><circle cx="992" cy="149" r="62"/></g>
+<polygon points="700.0,116.0 706.2,153.8 744.0,160.0 706.2,166.2 700.0,204.0 693.8,166.2 656.0,160.0 693.8,153.8" class="ph-star2" data-t="2800"/>
+<g class="ph-ar" data-t="3000"><line x1="764" y1="152" x2="916.0" y2="123.0"/><path d="M903.6,133.2 L916.0,123.0 L900.8,118.1"/></g>
+<text x="930" y="108" class="ph-yl" text-anchor="start" data-t="3000">Fe↑,</text>
+<text x="938" y="142" class="ph-yl" text-anchor="start" data-t="3000">P↑</text>
+<g class="ph-ar" data-t="3150"><line x1="958" y1="156" x2="964.0" y2="218.0"/><path d="M955.0,204.8 L964.0,218.0 L970.3,203.3"/></g>
+<polygon points="795.0,177.0 799.0,201.0 823.0,205.0 799.0,209.0 795.0,233.0 791.0,209.0 767.0,205.0 791.0,201.0" class="ph-star2" data-t="2850"/>
+<polygon points="745.0,217.0 749.0,241.0 773.0,245.0 749.0,249.0 745.0,273.0 741.0,249.0 717.0,245.0 741.0,241.0" class="ph-star2" data-t="2850"/>
+<polygon points="815.0,230.0 819.0,254.0 843.0,258.0 819.0,262.0 815.0,286.0 811.0,262.0 787.0,258.0 811.0,254.0" class="ph-star2" data-t="2850"/>
+<g class="ph-ar" data-t="3100"><line x1="834" y1="203" x2="876.0" y2="186.0"/><path d="M865.9,198.4 L876.0,186.0 L860.1,184.2"/></g>
+<text x="882" y="190" class="ph-yl" text-anchor="start" data-t="3100">P↑↑</text>
+<g class="ph-ar" data-t="3200"><line x1="902" y1="206" x2="916.0" y2="246.0"/><path d="M904.1,235.3 L916.0,246.0 L918.6,230.2"/></g>
+<g class="ph-flow" data-t="3400"><line x1="1048" y1="172" x2="1256.0" y2="172.0"/><path d="M1240.2,180.6 L1256.0,172.0 L1240.2,163.4"/></g>
+<text x="1152.0" y="218" class="ph-yl2" text-anchor="middle" data-t="3550">P slightly</text>
+<text x="1152.0" y="252" class="ph-yl2" text-anchor="middle" data-t="3550">enriched</text>
+<g class="ph-scope" data-t="3400"><g transform="rotate(-32 1300 150)"><rect x="1270" y="139" width="62" height="22" rx="3"/><line x1="1284" y1="139" x2="1284" y2="161"/><line x1="1290" y1="139" x2="1290" y2="161"/><rect x="1332" y="136" width="10" height="28" rx="2"/><rect x="1258" y="144" width="12" height="12" rx="2"/></g><circle cx="1300" cy="172" r="5"/><line x1="1300" y1="177" x2="1300" y2="194"/><path d="M1300,194 L1284,232 M1300,194 L1300,234 M1300,194 L1316,232"/></g>
+</svg>
